@@ -1,0 +1,15 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202507;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class ShopifyPaymentsDisputeEvidenceFileTypeEnumObject extends EnumObject
+{
+    const CUSTOMER_COMMUNICATION_FILE = "CUSTOMER_COMMUNICATION_FILE";
+    const REFUND_POLICY_FILE = "REFUND_POLICY_FILE";
+    const CANCELLATION_POLICY_FILE = "CANCELLATION_POLICY_FILE";
+    const UNCATEGORIZED_FILE = "UNCATEGORIZED_FILE";
+    const SHIPPING_DOCUMENTATION_FILE = "SHIPPING_DOCUMENTATION_FILE";
+    const SERVICE_DOCUMENTATION_FILE = "SERVICE_DOCUMENTATION_FILE";
+}

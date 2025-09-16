@@ -1,0 +1,20 @@
+{
+    "name": "fo3nix/shopify-graphql-php-app",
+    "description": "A PHP Library to interact with the GraphQLAdmin API of Shopify",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fo3nix\\ShopifyGraphQL\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Finn van Oosterhout",
+            "email": "finn.dev@ofeastwood.com"
+        }
+    ],
+    "require": {
+        "fo3nix/php-graphql-oqm": "^1.0"
+    }
+}

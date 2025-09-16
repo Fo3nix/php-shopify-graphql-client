@@ -1,0 +1,33 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202507;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class MetafieldOwnerTypeEnumObject extends EnumObject
+{
+    const API_PERMISSION = "API_PERMISSION";
+    const COMPANY = "COMPANY";
+    const COMPANY_LOCATION = "COMPANY_LOCATION";
+    const PAYMENT_CUSTOMIZATION = "PAYMENT_CUSTOMIZATION";
+    const VALIDATION = "VALIDATION";
+    const CUSTOMER = "CUSTOMER";
+    const DELIVERY_CUSTOMIZATION = "DELIVERY_CUSTOMIZATION";
+    const DRAFTORDER = "DRAFTORDER";
+    const GIFT_CARD_TRANSACTION = "GIFT_CARD_TRANSACTION";
+    const MARKET = "MARKET";
+    const CARTTRANSFORM = "CARTTRANSFORM";
+    const COLLECTION = "COLLECTION";
+    const PRODUCT = "PRODUCT";
+    const PRODUCTVARIANT = "PRODUCTVARIANT";
+    const SELLING_PLAN = "SELLING_PLAN";
+    const ARTICLE = "ARTICLE";
+    const BLOG = "BLOG";
+    const PAGE = "PAGE";
+    const FULFILLMENT_CONSTRAINT_RULE = "FULFILLMENT_CONSTRAINT_RULE";
+    const ORDER_ROUTING_LOCATION_RULE = "ORDER_ROUTING_LOCATION_RULE";
+    const DISCOUNT = "DISCOUNT";
+    const ORDER = "ORDER";
+    const LOCATION = "LOCATION";
+    const SHOP = "SHOP";
+}
