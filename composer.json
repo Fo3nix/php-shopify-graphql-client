@@ -2,7 +2,7 @@
     "name": "fo3nix/shopify-graphql-php-app",
     "description": "A PHP Library to interact with the GraphQLAdmin API of Shopify",
     "type": "library",
-    "license": "MIT",
+    "license": "GNU GPLv3",
     "autoload": {
         "psr-4": {
             "Fo3nix\\ShopifyGraphQL\\": "src/"
