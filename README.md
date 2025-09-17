@@ -13,7 +13,7 @@ Stop guessing field names and start leveraging your IDE's autocompletion!
 - **Automatic Type Handling:** Includes automatic handling of date/time fields with Carbon and recursive handling of nested objects.
 
 ## Installation
-`composer require your-vendor/typed-shopify-graphql-client`
+`composer require fo3nix/php-shopify-graphql-client`
 
 ## Usage
 ### Example: Query Builder and Execution
