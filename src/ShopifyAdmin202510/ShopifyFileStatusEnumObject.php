@@ -1,0 +1,13 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202510;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class ShopifyFileStatusEnumObject extends EnumObject
+{
+    const UPLOADED = "UPLOADED";
+    const PROCESSING = "PROCESSING";
+    const READY = "READY";
+    const FAILED = "FAILED";
+}

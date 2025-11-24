@@ -1,0 +1,17 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202510;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyOnlineStoreThemeFileBodyUrlQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "OnlineStoreThemeFileBodyUrl";
+
+    public function selectUrl()
+    {
+        $this->selectField("url");
+
+        return $this;
+    }
+}
