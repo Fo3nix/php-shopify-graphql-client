@@ -1,0 +1,83 @@
+name: Update Shopify Admin schema
+
+on:
+  schedule:
+    # 06:00 UTC on the 2nd day of every month
+    - cron: '0 6 2 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-shopify-schema
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.versions.outputs.versions }}
+    steps:
+      - name: Discover supported API versions
+        id: versions
+        run: |
+          RESPONSE=$(curl -fsS -X POST "https://shopify.dev/admin-graphql-direct-proxy/unstable" \
+            -H 'Content-Type: application/json' \
+            -d '{"query":"{ publicApiVersions { handle supported } }"}')
+          VERSIONS=$(echo "$RESPONSE" | jq -c '[.data.publicApiVersions[] | select(.supported) | .handle]')
+          echo "versions=$VERSIONS" >> "$GITHUB_OUTPUT"
+
+  generate:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ${{ fromJson(needs.discover.outputs.versions) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+
+      - name: Install generator
+        run: composer install --no-interaction --no-progress
+
+      - name: Generate schema classes
+        id: generate
+        run: |
+          VERSION="${{ matrix.version }}"
+          NODASH="${VERSION//-}"
+          DIR="src/ShopifyAdmin${NODASH}"
+          mkdir -p "$DIR"
+          printf '\n\n' | php vendor/bin/generate_schema_objects \
+            -u "https://shopify.dev/admin-graphql-direct-proxy/${VERSION}" \
+            -d "$DIR" \
+            -n "Fo3nix\\ShopifyGraphQL\\ShopifyAdmin${NODASH}" \
+            -p "Shopify"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          if [ -n "$(git status --porcelain -- "$DIR")" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update pull request
+        if: steps.generate.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: ${{ steps.generate.outputs.dir }}
+          branch: shopify-schema/${{ matrix.version }}
+          delete-branch: true
+          commit-message: Update Shopify Admin API ${{ matrix.version }} schema classes
+          title: Update Shopify Admin API ${{ matrix.version }} schema classes
+          body: |
+            Automated regeneration of the Shopify Admin API `${{ matrix.version }}` schema classes.
+
+            - Generated with `fo3nix/php-graphql-oqm` from the public introspection proxy
+            - Release notes: https://shopify.dev/docs/api/release-notes
