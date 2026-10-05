@@ -73,6 +73,8 @@ jobs:
         with:
           add-paths: ${{ steps.generate.outputs.dir }}
           branch: shopify-schema/${{ matrix.version }}
+          assignees: Fo3nix
+          reviewers: Fo3nix
           delete-branch: true
           commit-message: Update Shopify Admin API ${{ matrix.version }} schema classes
           title: Update Shopify Admin API ${{ matrix.version }} schema classes
