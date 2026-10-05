@@ -171,7 +171,6 @@ jobs:
           DIR="src/ShopifyAdmin${NODASH}"
           BRANCH="shopify-schema/remove-${VERSION}"
           git rm -r --quiet -- "$DIR"
-          git add -A -- "$DIR"
           if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
             git fetch --depth=1 origin "$BRANCH"
             if git diff --cached --quiet FETCH_HEAD -- "$DIR"; then
