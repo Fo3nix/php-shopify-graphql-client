@@ -1,0 +1,305 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetaobjectAccess;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetaobjectCapabilities;
+use Carbon\Carbon;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyStaffMember;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetaobjectFieldDefinition;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetaobjectConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyStandardMetaobjectDefinitionTemplate;
+
+class ShopifyMetaobjectDefinition
+{
+    protected $access;
+    protected $capabilities;
+    protected $createdAt;
+    protected $createdByApp;
+    protected $createdByStaff;
+    protected $description;
+    protected $displayNameKey;
+    protected $fieldDefinitions;
+    protected $hasThumbnailField;
+    protected $id;
+    protected $metaobjects;
+    protected $metaobjectsCount;
+    protected $name;
+    protected $standardTemplate;
+    protected $type;
+    protected $updatedAt;
+
+    
+    /**
+     * @return ShopifyMetaobjectAccess
+     */
+    public function getAccess()
+    {
+        return $this->access;
+    }
+
+    
+    /**
+     * @return ShopifyMetaobjectCapabilities
+     */
+    public function getCapabilities()
+    {
+        return $this->capabilities;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    
+    /**
+     * @return ShopifyApp
+     */
+    public function getCreatedByApp()
+    {
+        return $this->createdByApp;
+    }
+
+    
+    /**
+     * @return ShopifyStaffMember
+     */
+    public function getCreatedByStaff()
+    {
+        return $this->createdByStaff;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getDisplayNameKey()
+    {
+        return $this->displayNameKey;
+    }
+
+    
+    /**
+     * @return ShopifyMetaobjectFieldDefinition[]
+     */
+    public function getFieldDefinitions()
+    {
+        return $this->fieldDefinitions;
+    }
+
+    
+    /**
+     * @return bool
+     */
+    public function getHasThumbnailField()
+    {
+        return $this->hasThumbnailField;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * @return ShopifyMetaobjectConnection
+     */
+    public function getMetaobjects()
+    {
+        return $this->metaobjects;
+    }
+
+    
+    /**
+     * @return int
+     */
+    public function getMetaobjectsCount()
+    {
+        return $this->metaobjectsCount;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    
+    /**
+     * @return ShopifyStandardMetaobjectDefinitionTemplate
+     */
+    public function getStandardTemplate()
+    {
+        return $this->standardTemplate;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['access']) && $data['access'] !== null) {
+                $instance->access = ShopifyMetaobjectAccess::fromArray($data['access']);
+            }
+            if (isset($data['capabilities']) && $data['capabilities'] !== null) {
+                $instance->capabilities = ShopifyMetaobjectCapabilities::fromArray($data['capabilities']);
+            }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
+            if (isset($data['createdByApp']) && $data['createdByApp'] !== null) {
+                $instance->createdByApp = ShopifyApp::fromArray($data['createdByApp']);
+            }
+            if (isset($data['createdByStaff']) && $data['createdByStaff'] !== null) {
+                $instance->createdByStaff = ShopifyStaffMember::fromArray($data['createdByStaff']);
+            }
+            if (isset($data['description']) && $data['description'] !== null) {
+                $instance->description = $data['description'];
+            }
+            if (isset($data['displayNameKey']) && $data['displayNameKey'] !== null) {
+                $instance->displayNameKey = $data['displayNameKey'];
+            }
+            if (isset($data['fieldDefinitions']) && $data['fieldDefinitions'] !== null) {
+                $instance->fieldDefinitions = array_map(function($item) { return ShopifyMetaobjectFieldDefinition::fromArray($item); }, $data['fieldDefinitions']);
+            }
+            if (isset($data['hasThumbnailField']) && $data['hasThumbnailField'] !== null) {
+                $instance->hasThumbnailField = $data['hasThumbnailField'];
+            }
+            if (isset($data['id']) && $data['id'] !== null) {
+                $instance->id = $data['id'];
+            }
+            if (isset($data['metaobjects']) && $data['metaobjects'] !== null) {
+                $instance->metaobjects = ShopifyMetaobjectConnection::fromArray($data['metaobjects']);
+            }
+            if (isset($data['metaobjectsCount']) && $data['metaobjectsCount'] !== null) {
+                $instance->metaobjectsCount = $data['metaobjectsCount'];
+            }
+            if (isset($data['name']) && $data['name'] !== null) {
+                $instance->name = $data['name'];
+            }
+            if (isset($data['standardTemplate']) && $data['standardTemplate'] !== null) {
+                $instance->standardTemplate = ShopifyStandardMetaobjectDefinitionTemplate::fromArray($data['standardTemplate']);
+            }
+            if (isset($data['type']) && $data['type'] !== null) {
+                $instance->type = $data['type'];
+            }
+            if (isset($data['updatedAt']) && $data['updatedAt'] !== null) {
+                $instance->updatedAt = new Carbon($data['updatedAt']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->access !== null) {
+                $data['access'] = $this->access->asArray();
+            }
+            if ($this->capabilities !== null) {
+                $data['capabilities'] = $this->capabilities->asArray();
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
+            }
+            if ($this->createdByApp !== null) {
+                $data['createdByApp'] = $this->createdByApp->asArray();
+            }
+            if ($this->createdByStaff !== null) {
+                $data['createdByStaff'] = $this->createdByStaff->asArray();
+            }
+            if ($this->description !== null) {
+                $data['description'] = $this->description;
+            }
+            if ($this->displayNameKey !== null) {
+                $data['displayNameKey'] = $this->displayNameKey;
+            }
+            if ($this->fieldDefinitions !== null) {
+                $data['fieldDefinitions'] = array_map(function($item) { return $item->asArray(); }, $this->fieldDefinitions);
+            }
+            if ($this->hasThumbnailField !== null) {
+                $data['hasThumbnailField'] = $this->hasThumbnailField;
+            }
+            if ($this->id !== null) {
+                $data['id'] = $this->id;
+            }
+            if ($this->metaobjects !== null) {
+                $data['metaobjects'] = $this->metaobjects->asArray();
+            }
+            if ($this->metaobjectsCount !== null) {
+                $data['metaobjectsCount'] = $this->metaobjectsCount;
+            }
+            if ($this->name !== null) {
+                $data['name'] = $this->name;
+            }
+            if ($this->standardTemplate !== null) {
+                $data['standardTemplate'] = $this->standardTemplate->asArray();
+            }
+            if ($this->type !== null) {
+                $data['type'] = $this->type;
+            }
+            if ($this->updatedAt !== null) {
+                $data['updatedAt'] = $this->updatedAt->toIso8601String();
+            }
+            return $data;
+        }
+}

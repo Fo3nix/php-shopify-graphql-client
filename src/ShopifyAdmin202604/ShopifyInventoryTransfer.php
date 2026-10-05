@@ -1,0 +1,354 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use Carbon\Carbon;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocationSnapshot;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyEventConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyInventoryTransferLineItemConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCount;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafield;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyInventoryShipmentConnection;
+
+class ShopifyInventoryTransfer
+{
+    protected $dateCreated;
+    protected $destination;
+    protected $events;
+    protected $hasTimelineComment;
+    protected $id;
+    protected $lineItems;
+    protected $lineItemsCount;
+    protected $metafield;
+    protected $metafieldDefinitions;
+    protected $metafields;
+    protected $name;
+    protected $note;
+    protected $origin;
+    protected $receivedQuantity;
+    protected $referenceName;
+    protected $shipments;
+    protected $status;
+    protected $tags;
+    protected $totalQuantity;
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    
+    /**
+     * @return ShopifyLocationSnapshot
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+    
+    /**
+     * @return ShopifyEventConnection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    
+    /**
+     * @return bool
+     */
+    public function getHasTimelineComment()
+    {
+        return $this->hasTimelineComment;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * @return ShopifyInventoryTransferLineItemConnection
+     */
+    public function getLineItems()
+    {
+        return $this->lineItems;
+    }
+
+    
+    /**
+     * @return ShopifyCount
+     */
+    public function getLineItemsCount()
+    {
+        return $this->lineItemsCount;
+    }
+
+    
+    /**
+     * @return ShopifyMetafield
+     */
+    public function getMetafield()
+    {
+        return $this->metafield;
+    }
+
+    
+    /**
+     * @return ShopifyMetafieldDefinitionConnection
+     */
+    public function getMetafieldDefinitions()
+    {
+        return $this->metafieldDefinitions;
+    }
+
+    
+    /**
+     * @return ShopifyMetafieldConnection
+     */
+    public function getMetafields()
+    {
+        return $this->metafields;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    
+    /**
+     * @return ShopifyLocationSnapshot
+     */
+    public function getOrigin()
+    {
+        return $this->origin;
+    }
+
+    
+    /**
+     * @return int
+     */
+    public function getReceivedQuantity()
+    {
+        return $this->receivedQuantity;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getReferenceName()
+    {
+        return $this->referenceName;
+    }
+
+    
+    /**
+     * @return ShopifyInventoryShipmentConnection
+     */
+    public function getShipments()
+    {
+        return $this->shipments;
+    }
+
+    
+    /**
+     * @return ShopifyInventoryTransferStatusEnumObject
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    
+    /**
+     * @return string[]
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    
+    /**
+     * @return int
+     */
+    public function getTotalQuantity()
+    {
+        return $this->totalQuantity;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['dateCreated']) && $data['dateCreated'] !== null) {
+                $instance->dateCreated = new Carbon($data['dateCreated']);
+            }
+            if (isset($data['destination']) && $data['destination'] !== null) {
+                $instance->destination = ShopifyLocationSnapshot::fromArray($data['destination']);
+            }
+            if (isset($data['events']) && $data['events'] !== null) {
+                $instance->events = ShopifyEventConnection::fromArray($data['events']);
+            }
+            if (isset($data['hasTimelineComment']) && $data['hasTimelineComment'] !== null) {
+                $instance->hasTimelineComment = $data['hasTimelineComment'];
+            }
+            if (isset($data['id']) && $data['id'] !== null) {
+                $instance->id = $data['id'];
+            }
+            if (isset($data['lineItems']) && $data['lineItems'] !== null) {
+                $instance->lineItems = ShopifyInventoryTransferLineItemConnection::fromArray($data['lineItems']);
+            }
+            if (isset($data['lineItemsCount']) && $data['lineItemsCount'] !== null) {
+                $instance->lineItemsCount = ShopifyCount::fromArray($data['lineItemsCount']);
+            }
+            if (isset($data['metafield']) && $data['metafield'] !== null) {
+                $instance->metafield = ShopifyMetafield::fromArray($data['metafield']);
+            }
+            if (isset($data['metafieldDefinitions']) && $data['metafieldDefinitions'] !== null) {
+                $instance->metafieldDefinitions = ShopifyMetafieldDefinitionConnection::fromArray($data['metafieldDefinitions']);
+            }
+            if (isset($data['metafields']) && $data['metafields'] !== null) {
+                $instance->metafields = ShopifyMetafieldConnection::fromArray($data['metafields']);
+            }
+            if (isset($data['name']) && $data['name'] !== null) {
+                $instance->name = $data['name'];
+            }
+            if (isset($data['note']) && $data['note'] !== null) {
+                $instance->note = $data['note'];
+            }
+            if (isset($data['origin']) && $data['origin'] !== null) {
+                $instance->origin = ShopifyLocationSnapshot::fromArray($data['origin']);
+            }
+            if (isset($data['receivedQuantity']) && $data['receivedQuantity'] !== null) {
+                $instance->receivedQuantity = $data['receivedQuantity'];
+            }
+            if (isset($data['referenceName']) && $data['referenceName'] !== null) {
+                $instance->referenceName = $data['referenceName'];
+            }
+            if (isset($data['shipments']) && $data['shipments'] !== null) {
+                $instance->shipments = ShopifyInventoryShipmentConnection::fromArray($data['shipments']);
+            }
+            if (isset($data['status']) && $data['status'] !== null) {
+                $instance->status = $data['status'];
+            }
+            if (isset($data['tags']) && $data['tags'] !== null) {
+                $instance->tags = $data['tags'];
+            }
+            if (isset($data['totalQuantity']) && $data['totalQuantity'] !== null) {
+                $instance->totalQuantity = $data['totalQuantity'];
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->dateCreated !== null) {
+                $data['dateCreated'] = $this->dateCreated->toIso8601String();
+            }
+            if ($this->destination !== null) {
+                $data['destination'] = $this->destination->asArray();
+            }
+            if ($this->events !== null) {
+                $data['events'] = $this->events->asArray();
+            }
+            if ($this->hasTimelineComment !== null) {
+                $data['hasTimelineComment'] = $this->hasTimelineComment;
+            }
+            if ($this->id !== null) {
+                $data['id'] = $this->id;
+            }
+            if ($this->lineItems !== null) {
+                $data['lineItems'] = $this->lineItems->asArray();
+            }
+            if ($this->lineItemsCount !== null) {
+                $data['lineItemsCount'] = $this->lineItemsCount->asArray();
+            }
+            if ($this->metafield !== null) {
+                $data['metafield'] = $this->metafield->asArray();
+            }
+            if ($this->metafieldDefinitions !== null) {
+                $data['metafieldDefinitions'] = $this->metafieldDefinitions->asArray();
+            }
+            if ($this->metafields !== null) {
+                $data['metafields'] = $this->metafields->asArray();
+            }
+            if ($this->name !== null) {
+                $data['name'] = $this->name;
+            }
+            if ($this->note !== null) {
+                $data['note'] = $this->note;
+            }
+            if ($this->origin !== null) {
+                $data['origin'] = $this->origin->asArray();
+            }
+            if ($this->receivedQuantity !== null) {
+                $data['receivedQuantity'] = $this->receivedQuantity;
+            }
+            if ($this->referenceName !== null) {
+                $data['referenceName'] = $this->referenceName;
+            }
+            if ($this->shipments !== null) {
+                $data['shipments'] = $this->shipments->asArray();
+            }
+            if ($this->status !== null) {
+                $data['status'] = $this->status;
+            }
+            if ($this->tags !== null) {
+                $data['tags'] = $this->tags;
+            }
+            if ($this->totalQuantity !== null) {
+                $data['totalQuantity'] = $this->totalQuantity;
+            }
+            return $data;
+        }
+}
