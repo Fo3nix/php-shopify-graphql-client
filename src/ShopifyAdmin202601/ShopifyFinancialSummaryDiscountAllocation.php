@@ -1,0 +1,75 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyBag;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyFinancialSummaryDiscountApplication;
+
+class ShopifyFinancialSummaryDiscountAllocation
+{
+    protected $approximateAllocatedAmountPerItem;
+    protected $discountApplication;
+
+    
+    /**
+     * @return ShopifyMoneyBag
+     */
+    public function getApproximateAllocatedAmountPerItem()
+    {
+        return $this->approximateAllocatedAmountPerItem;
+    }
+
+    
+    /**
+     * @return ShopifyFinancialSummaryDiscountApplication
+     */
+    public function getDiscountApplication()
+    {
+        return $this->discountApplication;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['approximateAllocatedAmountPerItem']) && $data['approximateAllocatedAmountPerItem'] !== null) {
+                $instance->approximateAllocatedAmountPerItem = ShopifyMoneyBag::fromArray($data['approximateAllocatedAmountPerItem']);
+            }
+            if (isset($data['discountApplication']) && $data['discountApplication'] !== null) {
+                $instance->discountApplication = ShopifyFinancialSummaryDiscountApplication::fromArray($data['discountApplication']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->approximateAllocatedAmountPerItem !== null) {
+                $data['approximateAllocatedAmountPerItem'] = $this->approximateAllocatedAmountPerItem->asArray();
+            }
+            if ($this->discountApplication !== null) {
+                $data['discountApplication'] = $this->discountApplication->asArray();
+            }
+            return $data;
+        }
+}
