@@ -127,13 +127,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Find unsupported API versions
+      - name: Find retired API versions
         id: removals
         run: |
           RESPONSE=$(curl -fsS -X POST "https://shopify.dev/admin-graphql-direct-proxy/unstable" \
             -H 'Content-Type: application/json' \
-            -d '{"query":"{ publicApiVersions { handle displayName } }"}')
-          KEEP=$(echo "$RESPONSE" | jq -c '[.data.publicApiVersions[] | select(.displayName | contains("Unsupported") | not) | .handle]')
+            -d '{"query":"{ publicApiVersions { handle } }"}')
+          KEEP=$(echo "$RESPONSE" | jq -c '[.data.publicApiVersions[].handle]')
           REMOVE=()
           for DIR in src/ShopifyAdmin*; do
             [ -d "$DIR" ] || continue
@@ -163,7 +163,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Remove unsupported version
+      - name: Remove retired version
         id: prune
         run: |
           VERSION="${{ matrix.version }}"
@@ -192,10 +192,10 @@ jobs:
           assignees: Fo3nix
           reviewers: Fo3nix
           delete-branch: true
-          commit-message: Remove unsupported Shopify Admin API ${{ matrix.version }} classes
-          title: Remove unsupported Shopify Admin API ${{ matrix.version }} classes
+          commit-message: Remove retired Shopify Admin API ${{ matrix.version }} classes
+          title: Remove retired Shopify Admin API ${{ matrix.version }} classes
           body: |
-            Shopify no longer supports the Admin API version `${{ matrix.version }}`, so its generated classes are removed to keep the package lean.
+            Shopify no longer lists the Admin API version `${{ matrix.version }}`, so its generated classes are removed to keep the package lean.
 
             This is a breaking change for consumers still using this API version.
 
@@ -213,4 +213,4 @@ jobs:
             echo "Removal pull request #$PR was just created; skipping reminder comment"
             exit 0
           fi
-          gh pr comment "$PR" --body "Monthly check: the removal of unsupported Admin API ${{ matrix.version }} is still awaiting review."
+          gh pr comment "$PR" --body "Monthly check: the removal of retired Admin API ${{ matrix.version }} is still awaiting review."
