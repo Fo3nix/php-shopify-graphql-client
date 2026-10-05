@@ -54,6 +54,7 @@ jobs:
           VERSION="${{ matrix.version }}"
           NODASH="${VERSION//-}"
           DIR="src/ShopifyAdmin${NODASH}"
+          BRANCH="shopify-schema/${VERSION}"
           mkdir -p "$DIR"
           printf '\n\n' | php vendor/bin/generate_schema_objects \
             -u "https://shopify.dev/admin-graphql-direct-proxy/${VERSION}" \
@@ -61,11 +62,23 @@ jobs:
             -n "Fo3nix\\ShopifyGraphQL\\ShopifyAdmin${NODASH}" \
             -p "Shopify"
           echo "dir=$DIR" >> "$GITHUB_OUTPUT"
-          if [ -n "$(git status --porcelain -- "$DIR")" ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+          git add -A -- "$DIR"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            git fetch --depth=1 origin "$BRANCH"
+            if git diff --cached --quiet FETCH_HEAD -- "$DIR"; then
+              CHANGED=false
+              FILES=0
+            else
+              CHANGED=true
+              FILES=$(git diff --cached --name-only FETCH_HEAD -- "$DIR" | wc -l)
+            fi
           else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            CHANGED=true
+            FILES=$(git diff --cached --name-only HEAD -- "$DIR" | wc -l)
           fi
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
+          echo "changed_files=$FILES" >> "$GITHUB_OUTPUT"
+          echo "changed=$CHANGED changed_files=$FILES"
 
       - name: Create or update pull request
         id: cpr
@@ -101,8 +114,7 @@ jobs:
             exit 0
           fi
           if [ "${{ steps.generate.outputs.changed }}" = "true" ]; then
-            FILES=$(gh pr diff "$PR" --name-only | wc -l)
-            BODY="Monthly schema check for ${VERSION}: classes were regenerated. Cumulative diff vs main: ${FILES} file(s)."
+            BODY="Monthly schema check for ${VERSION}: schema classes were updated (${{ steps.generate.outputs.changed_files }} file(s) changed)."
           else
             BODY="Monthly schema check for ${VERSION}: no schema changes this month. This pull request is still open and awaiting review."
           fi
