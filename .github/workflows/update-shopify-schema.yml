@@ -119,3 +119,99 @@ jobs:
             BODY="Monthly schema check for ${VERSION}: no schema changes this month. This pull request is still open and awaiting review."
           fi
           gh pr comment "$PR" --body "$BODY"
+
+  find-removals:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.removals.outputs.versions }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find unsupported API versions
+        id: removals
+        run: |
+          RESPONSE=$(curl -fsS -X POST "https://shopify.dev/admin-graphql-direct-proxy/unstable" \
+            -H 'Content-Type: application/json' \
+            -d '{"query":"{ publicApiVersions { handle displayName } }"}')
+          KEEP=$(echo "$RESPONSE" | jq -c '[.data.publicApiVersions[] | select(.displayName | contains("Unsupported") | not) | .handle]')
+          REMOVE=()
+          for DIR in src/ShopifyAdmin*; do
+            [ -d "$DIR" ] || continue
+            CODE="${DIR#src/ShopifyAdmin}"
+            [ ${#CODE} -eq 6 ] || continue
+            HANDLE="${CODE:0:4}-${CODE:4:2}"
+            if echo "$KEEP" | jq -e --arg h "$HANDLE" 'index($h) != null' >/dev/null; then
+              echo "keep $HANDLE"
+            else
+              echo "remove $HANDLE"
+              REMOVE+=("$HANDLE")
+            fi
+          done
+          VERSIONS=$(jq -n -c --args '$ARGS.positional' "${REMOVE[@]}")
+          echo "versions=$VERSIONS" >> "$GITHUB_OUTPUT"
+          echo "versions=$VERSIONS"
+
+  prune:
+    needs: find-removals
+    if: needs.find-removals.outputs.versions != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ${{ fromJson(needs.find-removals.outputs.versions) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove unsupported version
+        id: prune
+        run: |
+          VERSION="${{ matrix.version }}"
+          NODASH="${VERSION//-}"
+          DIR="src/ShopifyAdmin${NODASH}"
+          BRANCH="shopify-schema/remove-${VERSION}"
+          git rm -r --quiet -- "$DIR"
+          git add -A -- "$DIR"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            git fetch --depth=1 origin "$BRANCH"
+            if git diff --cached --quiet FETCH_HEAD -- "$DIR"; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              echo "Removal pull request already up to date"
+            else
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update removal pull request
+        id: prune-cpr
+        if: steps.prune.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: shopify-schema/remove-${{ matrix.version }}
+          assignees: Fo3nix
+          reviewers: Fo3nix
+          delete-branch: true
+          commit-message: Remove unsupported Shopify Admin API ${{ matrix.version }} classes
+          title: Remove unsupported Shopify Admin API ${{ matrix.version }} classes
+          body: |
+            Shopify no longer supports the Admin API version `${{ matrix.version }}`, so its generated classes are removed to keep the package lean.
+
+            This is a breaking change for consumers still using this API version.
+
+      - name: Comment on still-open removal pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="shopify-schema/remove-${{ matrix.version }}"
+          PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [ -z "$PR" ]; then
+            echo "No open removal pull request for $BRANCH"
+            exit 0
+          fi
+          if [ "${{ steps.prune-cpr.outputs.pull-request-operation }}" = "created" ]; then
+            echo "Removal pull request #$PR was just created; skipping reminder comment"
+            exit 0
+          fi
+          gh pr comment "$PR" --body "Monthly check: the removal of unsupported Admin API ${{ matrix.version }} is still awaiting review."
