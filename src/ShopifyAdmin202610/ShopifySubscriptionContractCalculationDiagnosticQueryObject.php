@@ -15,7 +15,7 @@ class ShopifySubscriptionContractCalculationDiagnosticQueryObject extends QueryO
         return $this;
     }
 
-    public function selectField()
+    public function selectField_()
     {
         $this->selectField("field");
 

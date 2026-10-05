@@ -77,7 +77,7 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $this;
     }
 
-    public function selectField(ShopifyMetaobjectFieldArgumentsObject $argsObject = null)
+    public function selectField_(ShopifyMetaobjectFieldArgumentsObject $argsObject = null)
     {
         $object = new ShopifyMetaobjectFieldQueryObject("field");
         if ($argsObject !== null) {

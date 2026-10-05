@@ -22,7 +22,7 @@ class ShopifyDiscountUserErrorQueryObject extends QueryObject
         return $this;
     }
 
-    public function selectField()
+    public function selectField_()
     {
         $this->selectField("field");
 

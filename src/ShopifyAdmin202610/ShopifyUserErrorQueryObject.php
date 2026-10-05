@@ -8,7 +8,7 @@ class ShopifyUserErrorQueryObject extends QueryObject
 {
     const OBJECT_NAME = "UserError";
 
-    public function selectField()
+    public function selectField_()
     {
         $this->selectField("field");
 

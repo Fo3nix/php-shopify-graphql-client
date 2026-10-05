@@ -19,7 +19,7 @@ class ShopifyDeliveryConditionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectField()
+    public function selectField_()
     {
         $this->selectField("field");
 
