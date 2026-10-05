@@ -1,0 +1,17 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyGiftCardTransactionEdgeQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "GiftCardTransactionEdge";
+
+    public function selectCursor()
+    {
+        $this->selectField("cursor");
+
+        return $this;
+    }
+}
