@@ -1,0 +1,63 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyMenuItemQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "MenuItem";
+
+    public function selectId()
+    {
+        $this->selectField("id");
+
+        return $this;
+    }
+
+    public function selectItems(ShopifyMenuItemItemsArgumentsObject $argsObject = null)
+    {
+        $object = new ShopifyMenuItemQueryObject("items");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
+    }
+
+    public function selectResourceId()
+    {
+        $this->selectField("resourceId");
+
+        return $this;
+    }
+
+    public function selectTags()
+    {
+        $this->selectField("tags");
+
+        return $this;
+    }
+
+    public function selectTitle()
+    {
+        $this->selectField("title");
+
+        return $this;
+    }
+
+    public function selectType()
+    {
+        $this->selectField("type");
+
+        return $this;
+    }
+
+    public function selectUrl()
+    {
+        $this->selectField("url");
+
+        return $this;
+    }
+}

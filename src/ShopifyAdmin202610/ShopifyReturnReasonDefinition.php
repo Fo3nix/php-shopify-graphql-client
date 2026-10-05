@@ -1,0 +1,104 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+class ShopifyReturnReasonDefinition
+{
+    protected $deleted;
+    protected $handle;
+    protected $id;
+    protected $name;
+
+    
+    /**
+     * @return bool
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getHandle()
+    {
+        return $this->handle;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['deleted']) && $data['deleted'] !== null) {
+                $instance->deleted = $data['deleted'];
+            }
+            if (isset($data['handle']) && $data['handle'] !== null) {
+                $instance->handle = $data['handle'];
+            }
+            if (isset($data['id']) && $data['id'] !== null) {
+                $instance->id = $data['id'];
+            }
+            if (isset($data['name']) && $data['name'] !== null) {
+                $instance->name = $data['name'];
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->deleted !== null) {
+                $data['deleted'] = $this->deleted;
+            }
+            if ($this->handle !== null) {
+                $data['handle'] = $this->handle;
+            }
+            if ($this->id !== null) {
+                $data['id'] = $this->id;
+            }
+            if ($this->name !== null) {
+                $data['name'] = $this->name;
+            }
+            return $data;
+        }
+}

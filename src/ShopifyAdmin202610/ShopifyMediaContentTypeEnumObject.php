@@ -1,0 +1,13 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class ShopifyMediaContentTypeEnumObject extends EnumObject
+{
+    const VIDEO = "VIDEO";
+    const EXTERNAL_VIDEO = "EXTERNAL_VIDEO";
+    const MODEL_3D = "MODEL_3D";
+    const IMAGE = "IMAGE";
+}

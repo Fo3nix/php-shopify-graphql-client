@@ -1,0 +1,56 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyAppPurchaseOneTimeQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "AppPurchaseOneTime";
+
+    public function selectCreatedAt()
+    {
+        $this->selectField("createdAt");
+
+        return $this;
+    }
+
+    public function selectId()
+    {
+        $this->selectField("id");
+
+        return $this;
+    }
+
+    public function selectName()
+    {
+        $this->selectField("name");
+
+        return $this;
+    }
+
+    public function selectPrice(ShopifyAppPurchaseOneTimePriceArgumentsObject $argsObject = null)
+    {
+        $object = new ShopifyMoneyV2QueryObject("price");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
+    }
+
+    public function selectStatus()
+    {
+        $this->selectField("status");
+
+        return $this;
+    }
+
+    public function selectTest()
+    {
+        $this->selectField("test");
+
+        return $this;
+    }
+}

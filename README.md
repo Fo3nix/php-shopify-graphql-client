@@ -4,7 +4,7 @@ This is a strongly-typed PHP client library for interacting with the Shopify Gra
 Stop guessing field names and start leveraging your IDE's autocompletion!
 
 ## Supported Shopify GraphQL APIs
-- Admin API Version: 2025-07
+- Admin API Version: 2026-10
 
 ## Features
 - **Fluent Query Builder:** Construct complex GraphQL queries with a simple and readable PHP object interface.
@@ -24,13 +24,13 @@ The following example demonstrates how to build a query to fetch the first 5 cus
 
 // Assuming your client and generated classes are autoloaded.
 // The namespace will correspond to the API version.
-use YourVendor\ShopifyAdmin202507\RootQueryObject;
-use YourVendor\ShopifyAdmin202507\RootCustomersArgumentsObject;
-use YourVendor\ShopifyAdmin202507\CustomerOrdersArgumentsObject;
+use YourVendor\ShopifyAdmin202610\RootQueryObject;
+use YourVendor\ShopifyAdmin202610\RootCustomersArgumentsObject;
+use YourVendor\ShopifyAdmin202610\CustomerOrdersArgumentsObject;
 
 // 1. Initialize your GraphQL client
 $client = new \GraphQL\Client(
-    'https://{your-shop-name}[.myshopify.com/admin/api/2025-07/graphql.json](https://.myshopify.com/admin/api/2025-07/graphql.json)',
+    'https://{your-shop-name}.myshopify.com/admin/api/2026-10/graphql.json',
     ['X-Shopify-Access-Token' => '{your-admin-api-token}']
 );
 
@@ -71,7 +71,7 @@ This example takes the raw array from the previous step and hydrates it into str
 <?php
 
 // Use your generated result classes
-use YourVendor\ShopifyAdmin202507\Customer;
+use YourVendor\ShopifyAdmin202610\Customer;
 
 // $customersData is the result from the query execution example above.
 

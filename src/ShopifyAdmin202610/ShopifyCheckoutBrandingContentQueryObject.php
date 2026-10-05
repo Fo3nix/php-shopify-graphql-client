@@ -1,0 +1,21 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyCheckoutBrandingContentQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "CheckoutBrandingContent";
+
+    public function selectDivider(ShopifyCheckoutBrandingContentDividerArgumentsObject $argsObject = null)
+    {
+        $object = new ShopifyCheckoutBrandingContainerDividerQueryObject("divider");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
+    }
+}

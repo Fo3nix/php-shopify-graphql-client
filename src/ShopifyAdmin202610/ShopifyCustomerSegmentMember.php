@@ -1,0 +1,272 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMailingAddress;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerEmailAddress;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerPhoneNumber;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerMergeable;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafield;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldConnection;
+
+class ShopifyCustomerSegmentMember
+{
+    protected $amountSpent;
+    protected $defaultAddress;
+    protected $defaultEmailAddress;
+    protected $defaultPhoneNumber;
+    protected $displayName;
+    protected $firstName;
+    protected $id;
+    protected $lastName;
+    protected $lastOrderId;
+    protected $mergeable;
+    protected $metafield;
+    protected $metafields;
+    protected $note;
+    protected $numberOfOrders;
+
+    
+    /**
+     * @return ShopifyMoneyV2
+     */
+    public function getAmountSpent()
+    {
+        return $this->amountSpent;
+    }
+
+    
+    /**
+     * @return ShopifyMailingAddress
+     */
+    public function getDefaultAddress()
+    {
+        return $this->defaultAddress;
+    }
+
+    
+    /**
+     * @return ShopifyCustomerEmailAddress
+     */
+    public function getDefaultEmailAddress()
+    {
+        return $this->defaultEmailAddress;
+    }
+
+    
+    /**
+     * @return ShopifyCustomerPhoneNumber
+     */
+    public function getDefaultPhoneNumber()
+    {
+        return $this->defaultPhoneNumber;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getLastOrderId()
+    {
+        return $this->lastOrderId;
+    }
+
+    
+    /**
+     * @return ShopifyCustomerMergeable
+     */
+    public function getMergeable()
+    {
+        return $this->mergeable;
+    }
+
+    
+    /**
+     * @return ShopifyMetafield
+     */
+    public function getMetafield()
+    {
+        return $this->metafield;
+    }
+
+    
+    /**
+     * @return ShopifyMetafieldConnection
+     */
+    public function getMetafields()
+    {
+        return $this->metafields;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getNumberOfOrders()
+    {
+        return $this->numberOfOrders;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['amountSpent']) && $data['amountSpent'] !== null) {
+                $instance->amountSpent = ShopifyMoneyV2::fromArray($data['amountSpent']);
+            }
+            if (isset($data['defaultAddress']) && $data['defaultAddress'] !== null) {
+                $instance->defaultAddress = ShopifyMailingAddress::fromArray($data['defaultAddress']);
+            }
+            if (isset($data['defaultEmailAddress']) && $data['defaultEmailAddress'] !== null) {
+                $instance->defaultEmailAddress = ShopifyCustomerEmailAddress::fromArray($data['defaultEmailAddress']);
+            }
+            if (isset($data['defaultPhoneNumber']) && $data['defaultPhoneNumber'] !== null) {
+                $instance->defaultPhoneNumber = ShopifyCustomerPhoneNumber::fromArray($data['defaultPhoneNumber']);
+            }
+            if (isset($data['displayName']) && $data['displayName'] !== null) {
+                $instance->displayName = $data['displayName'];
+            }
+            if (isset($data['firstName']) && $data['firstName'] !== null) {
+                $instance->firstName = $data['firstName'];
+            }
+            if (isset($data['id']) && $data['id'] !== null) {
+                $instance->id = $data['id'];
+            }
+            if (isset($data['lastName']) && $data['lastName'] !== null) {
+                $instance->lastName = $data['lastName'];
+            }
+            if (isset($data['lastOrderId']) && $data['lastOrderId'] !== null) {
+                $instance->lastOrderId = $data['lastOrderId'];
+            }
+            if (isset($data['mergeable']) && $data['mergeable'] !== null) {
+                $instance->mergeable = ShopifyCustomerMergeable::fromArray($data['mergeable']);
+            }
+            if (isset($data['metafield']) && $data['metafield'] !== null) {
+                $instance->metafield = ShopifyMetafield::fromArray($data['metafield']);
+            }
+            if (isset($data['metafields']) && $data['metafields'] !== null) {
+                $instance->metafields = ShopifyMetafieldConnection::fromArray($data['metafields']);
+            }
+            if (isset($data['note']) && $data['note'] !== null) {
+                $instance->note = $data['note'];
+            }
+            if (isset($data['numberOfOrders']) && $data['numberOfOrders'] !== null) {
+                $instance->numberOfOrders = $data['numberOfOrders'];
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->amountSpent !== null) {
+                $data['amountSpent'] = $this->amountSpent->asArray();
+            }
+            if ($this->defaultAddress !== null) {
+                $data['defaultAddress'] = $this->defaultAddress->asArray();
+            }
+            if ($this->defaultEmailAddress !== null) {
+                $data['defaultEmailAddress'] = $this->defaultEmailAddress->asArray();
+            }
+            if ($this->defaultPhoneNumber !== null) {
+                $data['defaultPhoneNumber'] = $this->defaultPhoneNumber->asArray();
+            }
+            if ($this->displayName !== null) {
+                $data['displayName'] = $this->displayName;
+            }
+            if ($this->firstName !== null) {
+                $data['firstName'] = $this->firstName;
+            }
+            if ($this->id !== null) {
+                $data['id'] = $this->id;
+            }
+            if ($this->lastName !== null) {
+                $data['lastName'] = $this->lastName;
+            }
+            if ($this->lastOrderId !== null) {
+                $data['lastOrderId'] = $this->lastOrderId;
+            }
+            if ($this->mergeable !== null) {
+                $data['mergeable'] = $this->mergeable->asArray();
+            }
+            if ($this->metafield !== null) {
+                $data['metafield'] = $this->metafield->asArray();
+            }
+            if ($this->metafields !== null) {
+                $data['metafields'] = $this->metafields->asArray();
+            }
+            if ($this->note !== null) {
+                $data['note'] = $this->note;
+            }
+            if ($this->numberOfOrders !== null) {
+                $data['numberOfOrders'] = $this->numberOfOrders;
+            }
+            return $data;
+        }
+}

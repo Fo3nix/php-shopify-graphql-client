@@ -1,0 +1,21 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class ShopifyFulfillmentOrderActionEnumObject extends EnumObject
+{
+    const CREATE_FULFILLMENT = "CREATE_FULFILLMENT";
+    const REQUEST_FULFILLMENT = "REQUEST_FULFILLMENT";
+    const CANCEL_FULFILLMENT_ORDER = "CANCEL_FULFILLMENT_ORDER";
+    const MOVE = "MOVE";
+    const REQUEST_CANCELLATION = "REQUEST_CANCELLATION";
+    const MARK_AS_OPEN = "MARK_AS_OPEN";
+    const RELEASE_HOLD = "RELEASE_HOLD";
+    const HOLD = "HOLD";
+    const EXTERNAL = "EXTERNAL";
+    const SPLIT = "SPLIT";
+    const MERGE = "MERGE";
+    const REPORT_PROGRESS = "REPORT_PROGRESS";
+}

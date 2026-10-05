@@ -1,0 +1,17 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\EnumObject;
+
+class ShopifyFulfillmentHoldReasonEnumObject extends EnumObject
+{
+    const AWAITING_PAYMENT = "AWAITING_PAYMENT";
+    const HIGH_RISK_OF_FRAUD = "HIGH_RISK_OF_FRAUD";
+    const INCORRECT_ADDRESS = "INCORRECT_ADDRESS";
+    const INVENTORY_OUT_OF_STOCK = "INVENTORY_OUT_OF_STOCK";
+    const UNKNOWN_DELIVERY_DATE = "UNKNOWN_DELIVERY_DATE";
+    const ONLINE_STORE_POST_PURCHASE_CROSS_SELL = "ONLINE_STORE_POST_PURCHASE_CROSS_SELL";
+    const AWAITING_RETURN_ITEMS = "AWAITING_RETURN_ITEMS";
+    const OTHER = "OTHER";
+}
