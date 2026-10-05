@@ -1,0 +1,17 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+use GraphQL\SchemaObject\QueryObject;
+
+class ShopifyOrderCancellationQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "OrderCancellation";
+
+    public function selectStaffNote()
+    {
+        $this->selectField("staffNote");
+
+        return $this;
+    }
+}

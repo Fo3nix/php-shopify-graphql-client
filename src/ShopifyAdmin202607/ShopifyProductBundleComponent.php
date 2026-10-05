@@ -1,0 +1,142 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProduct;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductVariantConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCount;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductBundleComponentOptionSelection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductBundleComponentQuantityOption;
+
+class ShopifyProductBundleComponent
+{
+    protected $componentProduct;
+    protected $componentVariants;
+    protected $componentVariantsCount;
+    protected $optionSelections;
+    protected $quantity;
+    protected $quantityOption;
+
+    
+    /**
+     * @return ShopifyProduct
+     */
+    public function getComponentProduct()
+    {
+        return $this->componentProduct;
+    }
+
+    
+    /**
+     * @return ShopifyProductVariantConnection
+     */
+    public function getComponentVariants()
+    {
+        return $this->componentVariants;
+    }
+
+    
+    /**
+     * @return ShopifyCount
+     */
+    public function getComponentVariantsCount()
+    {
+        return $this->componentVariantsCount;
+    }
+
+    
+    /**
+     * @return ShopifyProductBundleComponentOptionSelection[]
+     */
+    public function getOptionSelections()
+    {
+        return $this->optionSelections;
+    }
+
+    
+    /**
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    
+    /**
+     * @return ShopifyProductBundleComponentQuantityOption
+     */
+    public function getQuantityOption()
+    {
+        return $this->quantityOption;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['componentProduct']) && $data['componentProduct'] !== null) {
+                $instance->componentProduct = ShopifyProduct::fromArray($data['componentProduct']);
+            }
+            if (isset($data['componentVariants']) && $data['componentVariants'] !== null) {
+                $instance->componentVariants = ShopifyProductVariantConnection::fromArray($data['componentVariants']);
+            }
+            if (isset($data['componentVariantsCount']) && $data['componentVariantsCount'] !== null) {
+                $instance->componentVariantsCount = ShopifyCount::fromArray($data['componentVariantsCount']);
+            }
+            if (isset($data['optionSelections']) && $data['optionSelections'] !== null) {
+                $instance->optionSelections = array_map(function($item) { return ShopifyProductBundleComponentOptionSelection::fromArray($item); }, $data['optionSelections']);
+            }
+            if (isset($data['quantity']) && $data['quantity'] !== null) {
+                $instance->quantity = $data['quantity'];
+            }
+            if (isset($data['quantityOption']) && $data['quantityOption'] !== null) {
+                $instance->quantityOption = ShopifyProductBundleComponentQuantityOption::fromArray($data['quantityOption']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->componentProduct !== null) {
+                $data['componentProduct'] = $this->componentProduct->asArray();
+            }
+            if ($this->componentVariants !== null) {
+                $data['componentVariants'] = $this->componentVariants->asArray();
+            }
+            if ($this->componentVariantsCount !== null) {
+                $data['componentVariantsCount'] = $this->componentVariantsCount->asArray();
+            }
+            if ($this->optionSelections !== null) {
+                $data['optionSelections'] = array_map(function($item) { return $item->asArray(); }, $this->optionSelections);
+            }
+            if ($this->quantity !== null) {
+                $data['quantity'] = $this->quantity;
+            }
+            if ($this->quantityOption !== null) {
+                $data['quantityOption'] = $this->quantityOption->asArray();
+            }
+            return $data;
+        }
+}
