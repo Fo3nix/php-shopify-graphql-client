@@ -8,6 +8,7 @@ class ShopifyCashTrackingSessionsSortKeysEnumObject extends EnumObject
 {
     const CLOSING_TIME_ASC = "CLOSING_TIME_ASC";
     const CLOSING_TIME_DESC = "CLOSING_TIME_DESC";
+    const CREATED_AT = "CREATED_AT";
     const ID = "ID";
     const OPENING_TIME_ASC = "OPENING_TIME_ASC";
     const OPENING_TIME_DESC = "OPENING_TIME_DESC";
