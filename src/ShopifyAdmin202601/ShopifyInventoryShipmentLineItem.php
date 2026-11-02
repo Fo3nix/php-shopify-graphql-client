@@ -2,11 +2,13 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyInventoryItem;
 
 class ShopifyInventoryShipmentLineItem
 {
     protected $acceptedQuantity;
+    protected $createdAt;
     protected $id;
     protected $inventoryItem;
     protected $quantity;
@@ -20,6 +22,15 @@ class ShopifyInventoryShipmentLineItem
     public function getAcceptedQuantity()
     {
         return $this->acceptedQuantity;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     
@@ -77,6 +88,9 @@ class ShopifyInventoryShipmentLineItem
             if (isset($data['acceptedQuantity']) && $data['acceptedQuantity'] !== null) {
                 $instance->acceptedQuantity = $data['acceptedQuantity'];
             }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
             if (isset($data['id']) && $data['id'] !== null) {
                 $instance->id = $data['id'];
             }
@@ -117,6 +131,9 @@ class ShopifyInventoryShipmentLineItem
             $data = [];
             if ($this->acceptedQuantity !== null) {
                 $data['acceptedQuantity'] = $this->acceptedQuantity;
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->id !== null) {
                 $data['id'] = $this->id;
