@@ -2,12 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryPurchaseOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
 class ShopifyInventoryPurchaseOrderLineItem
 {
+    protected $createdAt;
     protected $id;
     protected $inventoryItem;
     protected $purchaseOrder;
@@ -19,6 +21,15 @@ class ShopifyInventoryPurchaseOrderLineItem
     protected $totalQuantity;
     protected $unitCost;
     protected $variantTitle;
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
     
     /**
@@ -126,6 +137,9 @@ class ShopifyInventoryPurchaseOrderLineItem
         public static function fromArray(array $data): self
         {
             $instance = new self();
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
             if (isset($data['id']) && $data['id'] !== null) {
                 $instance->id = $data['id'];
             }
@@ -182,6 +196,9 @@ class ShopifyInventoryPurchaseOrderLineItem
         public function asArray(): array
         {
             $data = [];
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
+            }
             if ($this->id !== null) {
                 $data['id'] = $this->id;
             }
