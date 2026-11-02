@@ -8,6 +8,13 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryPurchaseOrderLineItem";
 
+    public function selectCreatedAt()
+    {
+        $this->selectField("createdAt");
+
+        return $this;
+    }
+
     public function selectId()
     {
         $this->selectField("id");

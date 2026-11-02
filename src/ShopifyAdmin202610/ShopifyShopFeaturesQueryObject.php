@@ -239,6 +239,9 @@ class ShopifyShopFeaturesQueryObject extends QueryObject
         return $this;
     }
 
+    /**
+     * @deprecated Unified Markets is enabled for all shops. Remove checks against this field.
+     */
     public function selectUnifiedMarkets()
     {
         $this->selectField("unifiedMarkets");
