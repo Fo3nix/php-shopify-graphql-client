@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTaxonomyCategoryAttribute;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTaxonomyCategoryAttributeHydrator;
 
+/**
+ * An auto-generated type which holds one TaxonomyCategoryAttribute and a cursor during pagination.
+ */
 class ShopifyTaxonomyCategoryAttributeEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyTaxonomyCategoryAttributeEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifyTaxonomyCategoryAttribute
+     * The item at the end of TaxonomyCategoryAttributeEdge.
+     *
+     * @return ShopifyTaxonomyAttribute|ShopifyTaxonomyChoiceListAttribute|ShopifyTaxonomyMeasurementAttribute
      */
-    public function getNode()
+    public function getNode(): ShopifyTaxonomyAttribute|ShopifyTaxonomyChoiceListAttribute|ShopifyTaxonomyMeasurementAttribute|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifyTaxonomyCategoryAttributeEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifyTaxonomyCategoryAttribute::fromArray($data['node']);
+                $instance->node = ShopifyTaxonomyCategoryAttributeHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyTaxonomyCategoryAttributeEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifyTaxonomyCategoryAttributeHydrator::toArray($this->node);
             }
             return $data;
         }

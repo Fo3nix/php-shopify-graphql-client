@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryCountryCodesOrRestOfWorld;
 
+/**
+ * A shipping service and a list of countries that the service is available for.
+ */
 class ShopifyDeliveryAvailableService
 {
     protected $countries;
@@ -11,18 +14,22 @@ class ShopifyDeliveryAvailableService
 
     
     /**
+     * The countries the service provider ships to.
+     *
      * @return ShopifyDeliveryCountryCodesOrRestOfWorld
      */
-    public function getCountries()
+    public function getCountries(): ?ShopifyDeliveryCountryCodesOrRestOfWorld
     {
         return $this->countries;
     }
 
     
     /**
+     * The name of the service.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

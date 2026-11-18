@@ -12,7 +12,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTranslation;
 
-class ShopifyBlog
+/**
+ * A blog for publishing articles in the online store. Stores can have multiple blogs to organize content by topic or purpose.
+ *
+ * Each blog contains articles with their associated comments, tags, and metadata. The comment policy controls whether readers can post comments and whether moderation is required. Blogs use customizable URL handles and can apply alternate templates for specialized layouts.
+ */
+class ShopifyBlog implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $articles;
     protected $articlesCount;
@@ -33,144 +38,181 @@ class ShopifyBlog
 
     
     /**
+     * List of the blog's articles.
+     *
      * @return ShopifyArticleConnection
      */
-    public function getArticles()
+    public function getArticles(): ?ShopifyArticleConnection
     {
         return $this->articles;
     }
 
     
     /**
+     * Count of articles. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getArticlesCount()
+    public function getArticlesCount(): ?ShopifyCount
     {
         return $this->articlesCount;
     }
 
     
     /**
-     * @return ShopifyCommentPolicyEnumObject
+     * Indicates whether readers can post comments to the blog and if comments are moderated or not.
+     *
+     * @return string A ShopifyCommentPolicyEnumObject value
      */
-    public function getCommentPolicy()
+    public function getCommentPolicy(): ?string
     {
         return $this->commentPolicy;
     }
 
     
     /**
+     * The date and time when the blog was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * FeedBurner provider details. Any blogs that aren't already integrated with FeedBurner can't use the service.
+     *
      * @return ShopifyBlogFeed
      */
-    public function getFeed()
+    public function getFeed(): ?ShopifyBlogFeed
     {
         return $this->feed;
     }
 
     
     /**
+     * A unique, human-friendly string for the blog. If no handle is specified, a handle will be generated automatically from the blog title.
+     * The handle is customizable and is used by the Liquid templating language to refer to the blog.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * A list of tags associated with the 200 most recent blog articles.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The name of the template a blog is using if it's using an alternate template.
+     * Returns `null` if a blog is using the default blog.liquid template.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }
 
     
     /**
+     * The title of the blog.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The date and time when the blog was update.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

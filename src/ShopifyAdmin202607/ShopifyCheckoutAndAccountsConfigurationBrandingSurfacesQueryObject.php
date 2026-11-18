@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The surface-specific component customizations for checkout and customer accounts.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingSurfaces";
 
-    public function selectCheckout(ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesCheckoutArgumentsObject $argsObject = null)
+    /**
+     * The checkout-specific component overrides.
+     */
+    public function selectCheckout(?ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesCheckoutArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutSurfaceQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutSurfaceQueryObject("checkout");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesQueryObject extends
         return $object;
     }
 
-    public function selectCustomerAccounts(ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesCustomerAccountsArgumentsObject $argsObject = null)
+    /**
+     * The customer accounts-specific component overrides.
+     */
+    public function selectCustomerAccounts(?ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesCustomerAccountsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurfaceQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurfaceQueryObject("customerAccounts");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesQueryObject extends
         return $object;
     }
 
-    public function selectSignIn(ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesSignInArgumentsObject $argsObject = null)
+    /**
+     * The sign-in-specific component overrides.
+     */
+    public function selectSignIn(?ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesSignInArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurfaceQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurfaceQueryObject("signIn");
         if ($argsObject !== null) {

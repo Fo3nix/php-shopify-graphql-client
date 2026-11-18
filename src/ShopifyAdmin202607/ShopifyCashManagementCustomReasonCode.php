@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-class ShopifyCashManagementCustomReasonCode
+/**
+ * Custom reason code.
+ */
+class ShopifyCashManagementCustomReasonCode implements ShopifyNode
 {
     protected $code;
     protected $id;
 
     
     /**
+     * The code for the custom reason code.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootProductResourceFeedbackArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["id"];
+
     protected $id;
     protected $channelId;
 
-    public function setId($id)
+    /**
+     * The product associated with the resource feedback.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setChannelId($channelId)
+    /**
+     * The channel to filter resource feedback by. Use this when your app manages multiple channels and each channel may have different feedback for the same product.
+     */
+    public function setChannelId($channelId): static
     {
         $this->channelId = $channelId;
 

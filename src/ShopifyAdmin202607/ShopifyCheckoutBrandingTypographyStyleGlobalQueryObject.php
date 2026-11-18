@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The global typography customizations.
+ */
 class ShopifyCheckoutBrandingTypographyStyleGlobalQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingTypographyStyleGlobal";
 
-    public function selectKerning()
+    /**
+     * The kerning.
+     */
+    public function selectKerning(): static
     {
         $this->selectField("kerning");
 
         return $this;
     }
 
-    public function selectLetterCase()
+    /**
+     * The letter case.
+     */
+    public function selectLetterCase(): static
     {
         $this->selectField("letterCase");
 

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A cash drawer for cash management.
+ */
 class ShopifyCashDrawerQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CashDrawer";
 
-    public function selectBalance(ShopifyCashDrawerBalanceArgumentsObject $argsObject = null)
+    /**
+     * The current balance in the cash drawer.
+     */
+    public function selectBalance(?ShopifyCashDrawerBalanceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("balance");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCashDrawerQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCashActivities(ShopifyCashDrawerCashActivitiesArgumentsObject $argsObject = null)
+    /**
+     * The activities on the cash drawer.
+     */
+    public function selectCashActivities(?ShopifyCashDrawerCashActivitiesArgumentsObject $argsObject = null): ShopifyCashActivityConnectionQueryObject
     {
         $object = new ShopifyCashActivityConnectionQueryObject("cashActivities");
         if ($argsObject !== null) {
@@ -30,14 +39,20 @@ class ShopifyCashDrawerQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A unique ID for the cash drawer.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLocation(ShopifyCashDrawerLocationArgumentsObject $argsObject = null)
+    /**
+     * The location of the cash drawer.
+     */
+    public function selectLocation(?ShopifyCashDrawerLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -48,25 +63,32 @@ class ShopifyCashDrawerQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectName()
+    /**
+     * The name of the cash drawer.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectNetSales(ShopifyCashDrawerNetSalesArgumentsObject $argsObject = null)
+    /**
+     * The net sales for this cash drawer.
+     */
+    public function selectNetSales(ShopifyCashDrawerNetSalesArgumentsObject $argsObject): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("netSales");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectPointOfSaleDevices(ShopifyCashDrawerPointOfSaleDevicesArgumentsObject $argsObject = null)
+    /**
+     * The Point of Sale devices assigned to this cash drawer.
+     */
+    public function selectPointOfSaleDevices(?ShopifyCashDrawerPointOfSaleDevicesArgumentsObject $argsObject = null): ShopifyPointOfSaleDeviceConnectionQueryObject
     {
         $object = new ShopifyPointOfSaleDeviceConnectionQueryObject("pointOfSaleDevices");
         if ($argsObject !== null) {
@@ -77,45 +99,49 @@ class ShopifyCashDrawerQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalAdjustments(ShopifyCashDrawerTotalAdjustmentsArgumentsObject $argsObject = null)
+    /**
+     * The total adjustments for this cash drawer.
+     */
+    public function selectTotalAdjustments(ShopifyCashDrawerTotalAdjustmentsArgumentsObject $argsObject): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalAdjustments");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectTotalDiscrepancies(ShopifyCashDrawerTotalDiscrepanciesArgumentsObject $argsObject = null)
+    /**
+     * The total discrepancies for this cash drawer.
+     */
+    public function selectTotalDiscrepancies(ShopifyCashDrawerTotalDiscrepanciesArgumentsObject $argsObject): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalDiscrepancies");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectTotalRefunds(ShopifyCashDrawerTotalRefundsArgumentsObject $argsObject = null)
+    /**
+     * The total refunds for this cash drawer.
+     */
+    public function selectTotalRefunds(ShopifyCashDrawerTotalRefundsArgumentsObject $argsObject): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalRefunds");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectTotalSales(ShopifyCashDrawerTotalSalesArgumentsObject $argsObject = null)
+    /**
+     * The total sales for this cash drawer.
+     */
+    public function selectTotalSales(ShopifyCashDrawerTotalSalesArgumentsObject $argsObject): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalSales");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;

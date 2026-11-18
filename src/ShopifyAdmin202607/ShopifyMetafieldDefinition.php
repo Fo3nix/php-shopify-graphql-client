@@ -10,7 +10,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyStandardMetafieldDefinitionT
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionValidation;
 
-class ShopifyMetafieldDefinition
+/**
+ * Defines the structure, validation rules, and permissions for [`Metafield`](https://shopify.dev/docs/api/admin-graphql/current/objects/Metafield) objects attached to a specific owner type. Each definition establishes a schema that metafields must follow, including the data type and validation constraints.
+ *
+ * The definition controls access permissions across different APIs, determines whether the metafield can be used for filtering or as a collection condition, and can be constrained to specific resource subtypes.
+ */
+class ShopifyMetafieldDefinition implements ShopifyNode
 {
     protected $access;
     protected $capabilities;
@@ -32,153 +37,192 @@ class ShopifyMetafieldDefinition
 
     
     /**
+     * The access settings associated with the metafield definition.
+     *
      * @return ShopifyMetafieldAccess
      */
-    public function getAccess()
+    public function getAccess(): ?ShopifyMetafieldAccess
     {
         return $this->access;
     }
 
     
     /**
+     * The capabilities of the metafield definition.
+     *
      * @return ShopifyMetafieldCapabilities
      */
-    public function getCapabilities()
+    public function getCapabilities(): ?ShopifyMetafieldCapabilities
     {
         return $this->capabilities;
     }
 
     
     /**
+     * The [constraints](https://shopify.dev/apps/build/custom-data/metafields/conditional-metafield-definitions)
+     * that determine what subtypes of resources a metafield definition applies to.
+     *
      * @return ShopifyMetafieldDefinitionConstraints
      */
-    public function getConstraints()
+    public function getConstraints(): ?ShopifyMetafieldDefinitionConstraints
     {
         return $this->constraints;
     }
 
     
     /**
+     * The description of the metafield definition.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The unique identifier for the metafield definition within its namespace.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The metafields that belong to the metafield definition.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The count of the metafields that belong to the metafield definition.
+     *
      * @return int
      */
-    public function getMetafieldsCount()
+    public function getMetafieldsCount(): ?int
     {
         return $this->metafieldsCount;
     }
 
     
     /**
+     * The human-readable name of the metafield definition.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The container for a group of metafields that the metafield definition is associated with.
+     *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
     
     /**
-     * @return ShopifyMetafieldOwnerTypeEnumObject
+     * The resource type that the metafield definition is attached to.
+     *
+     * @return string A ShopifyMetafieldOwnerTypeEnumObject value
      */
-    public function getOwnerType()
+    public function getOwnerType(): ?string
     {
         return $this->ownerType;
     }
 
     
     /**
+     * The position of the metafield definition in the pinned list.
+     *
      * @return int
      */
-    public function getPinnedPosition()
+    public function getPinnedPosition(): ?int
     {
         return $this->pinnedPosition;
     }
 
     
     /**
+     * The standard metafield definition template associated with the metafield definition.
+     *
      * @return ShopifyStandardMetafieldDefinitionTemplate
      */
-    public function getStandardTemplate()
+    public function getStandardTemplate(): ?ShopifyStandardMetafieldDefinitionTemplate
     {
         return $this->standardTemplate;
     }
 
     
     /**
+     * The type of data that each of the metafields that belong to the metafield definition will store.
+     * Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
+     *
      * @return ShopifyMetafieldDefinitionType
      */
-    public function getType()
+    public function getType(): ?ShopifyMetafieldDefinitionType
     {
         return $this->type;
     }
 
     
     /**
+     * Whether the metafield definition can be used as a collection condition.
+     *
      * @return bool
      */
-    public function getUseAsCollectionCondition()
+    public function getUseAsCollectionCondition(): ?bool
     {
         return $this->useAsCollectionCondition;
     }
 
     
     /**
-     * @return ShopifyMetafieldDefinitionValidationStatusEnumObject
+     * The validation status for the metafields that belong to the metafield definition.
+     *
+     * @return string A ShopifyMetafieldDefinitionValidationStatusEnumObject value
      */
-    public function getValidationStatus()
+    public function getValidationStatus(): ?string
     {
         return $this->validationStatus;
     }
 
     
     /**
+     * A list of [validation options](https://shopify.dev/apps/metafields/definitions/validation) for
+     * the metafields that belong to the metafield definition. For example, for a metafield definition with the
+     * type `date`, you can set a minimum date validation so that each of the metafields that belong to it can only
+     * store dates after the specified minimum.
+     *
      * @return ShopifyMetafieldDefinitionValidation[]
      */
-    public function getValidations()
+    public function getValidations(): ?array
     {
         return $this->validations;
     }

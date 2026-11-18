@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyMetaobjectFieldArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["key"];
+
     protected $key;
 
-    public function setKey($key)
+    /**
+     * The metaobject key to access.
+     */
+    public function setKey($key): static
     {
         $this->key = $key;
 

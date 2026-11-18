@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a product duplication job.
+ */
 class ShopifyProductDuplicateJobQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductDuplicateJob";
 
-    public function selectDone()
+    /**
+     * This indicates if the job is still queued or has been run.
+     */
+    public function selectDone(): static
     {
         $this->selectField("done");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID that's returned when running an asynchronous mutation.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 

@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicyAdjustmentValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicyAdjustmentValueHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * Represents a Subscription Line Pricing Cycle Adjustment.
+ */
 class ShopifySubscriptionCyclePriceAdjustment
 {
     protected $adjustmentType;
@@ -14,36 +17,44 @@ class ShopifySubscriptionCyclePriceAdjustment
 
     
     /**
-     * @return ShopifySellingPlanPricingPolicyAdjustmentTypeEnumObject
+     * Price adjustment type.
+     *
+     * @return string A ShopifySellingPlanPricingPolicyAdjustmentTypeEnumObject value
      */
-    public function getAdjustmentType()
+    public function getAdjustmentType(): ?string
     {
         return $this->adjustmentType;
     }
 
     
     /**
-     * @return ShopifySellingPlanPricingPolicyAdjustmentValue
+     * Price adjustment value.
+     *
+     * @return ShopifyMoneyV2|ShopifySellingPlanPricingPolicyPercentageValue
      */
-    public function getAdjustmentValue()
+    public function getAdjustmentValue(): ShopifyMoneyV2|ShopifySellingPlanPricingPolicyPercentageValue|null
     {
         return $this->adjustmentValue;
     }
 
     
     /**
+     * The number of cycles required before this pricing policy applies.
+     *
      * @return int
      */
-    public function getAfterCycle()
+    public function getAfterCycle(): ?int
     {
         return $this->afterCycle;
     }
 
     
     /**
+     * The computed price after the adjustments applied.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getComputedPrice()
+    public function getComputedPrice(): ?ShopifyMoneyV2
     {
         return $this->computedPrice;
     }
@@ -59,7 +70,7 @@ class ShopifySubscriptionCyclePriceAdjustment
                 $instance->adjustmentType = $data['adjustmentType'];
             }
             if (isset($data['adjustmentValue']) && $data['adjustmentValue'] !== null) {
-                $instance->adjustmentValue = ShopifySellingPlanPricingPolicyAdjustmentValue::fromArray($data['adjustmentValue']);
+                $instance->adjustmentValue = ShopifySellingPlanPricingPolicyAdjustmentValueHydrator::fromArray($data['adjustmentValue']);
             }
             if (isset($data['afterCycle']) && $data['afterCycle'] !== null) {
                 $instance->afterCycle = $data['afterCycle'];
@@ -94,7 +105,7 @@ class ShopifySubscriptionCyclePriceAdjustment
                 $data['adjustmentType'] = $this->adjustmentType;
             }
             if ($this->adjustmentValue !== null) {
-                $data['adjustmentValue'] = $this->adjustmentValue->asArray();
+                $data['adjustmentValue'] = ShopifySellingPlanPricingPolicyAdjustmentValueHydrator::toArray($this->adjustmentValue);
             }
             if ($this->afterCycle !== null) {
                 $data['afterCycle'] = $this->afterCycle;

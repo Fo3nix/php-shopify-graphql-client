@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The possible types of publication operations.
+ */
 class ShopifyPublicationOperationUnionObject extends UnionObject
 {
-    public function onShopifyAddAllProductsOperation()
+    public function onShopifyAddAllProductsOperation(): ShopifyAddAllProductsOperationQueryObject
     {
         $object = new ShopifyAddAllProductsOperationQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyPublicationOperationUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCatalogCsvOperation()
+    public function onShopifyCatalogCsvOperation(): ShopifyCatalogCsvOperationQueryObject
     {
         $object = new ShopifyCatalogCsvOperationQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyPublicationOperationUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPublicationResourceOperation()
+    public function onShopifyPublicationResourceOperation(): ShopifyPublicationResourceOperationQueryObject
     {
         $object = new ShopifyPublicationResourceOperationQueryObject();
         $this->addPossibleType($object);

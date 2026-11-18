@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents the settings of price list adjustments.
+ */
 class ShopifyPriceListAdjustmentSettings
 {
     protected $compareAtMode;
 
     
     /**
-     * @return ShopifyPriceListCompareAtModeEnumObject
+     * The type of price list adjustment setting for compare at price.
+     *
+     * @return string A ShopifyPriceListCompareAtModeEnumObject value
      */
-    public function getCompareAtMode()
+    public function getCompareAtMode(): ?string
     {
         return $this->compareAtMode;
     }

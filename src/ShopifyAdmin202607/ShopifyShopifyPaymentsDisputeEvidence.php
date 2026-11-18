@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsDisputeFileUp
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsDispute;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsDisputeFulfillment;
 
-class ShopifyShopifyPaymentsDisputeEvidence
+/**
+ * The evidence associated with the dispute.
+ */
+class ShopifyShopifyPaymentsDisputeEvidence implements ShopifyNode
 {
     protected $accessActivityLog;
     protected $billingAddress;
@@ -36,216 +39,264 @@ class ShopifyShopifyPaymentsDisputeEvidence
 
     
     /**
+     * The activity logs associated with the dispute evidence.
+     *
      * @return string
      */
-    public function getAccessActivityLog()
+    public function getAccessActivityLog(): ?string
     {
         return $this->accessActivityLog;
     }
 
     
     /**
+     * The billing address that's provided by the customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyMailingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The cancellation policy disclosure associated with the dispute evidence.
+     *
      * @return string
      */
-    public function getCancellationPolicyDisclosure()
+    public function getCancellationPolicyDisclosure(): ?string
     {
         return $this->cancellationPolicyDisclosure;
     }
 
     
     /**
+     * The cancellation policy file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getCancellationPolicyFile()
+    public function getCancellationPolicyFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->cancellationPolicyFile;
     }
 
     
     /**
+     * The cancellation rebuttal associated with the dispute evidence.
+     *
      * @return string
      */
-    public function getCancellationRebuttal()
+    public function getCancellationRebuttal(): ?string
     {
         return $this->cancellationRebuttal;
     }
 
     
     /**
+     * The customer communication file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getCustomerCommunicationFile()
+    public function getCustomerCommunicationFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->customerCommunicationFile;
     }
 
     
     /**
+     * The customer's email address.
+     *
      * @return string
      */
-    public function getCustomerEmailAddress()
+    public function getCustomerEmailAddress(): ?string
     {
         return $this->customerEmailAddress;
     }
 
     
     /**
+     * The customer's first name.
+     *
      * @return string
      */
-    public function getCustomerFirstName()
+    public function getCustomerFirstName(): ?string
     {
         return $this->customerFirstName;
     }
 
     
     /**
+     * The customer's last name.
+     *
      * @return string
      */
-    public function getCustomerLastName()
+    public function getCustomerLastName(): ?string
     {
         return $this->customerLastName;
     }
 
     
     /**
+     * The customer purchase ip for this dispute evidence.
+     *
      * @return string
      */
-    public function getCustomerPurchaseIp()
+    public function getCustomerPurchaseIp(): ?string
     {
         return $this->customerPurchaseIp;
     }
 
     
     /**
+     * The dispute associated with the evidence.
+     *
      * @return ShopifyShopifyPaymentsDispute
      */
-    public function getDispute()
+    public function getDispute(): ?ShopifyShopifyPaymentsDispute
     {
         return $this->dispute;
     }
 
     
     /**
+     * The file uploads associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload[]
      */
-    public function getDisputeFileUploads()
+    public function getDisputeFileUploads(): ?array
     {
         return $this->disputeFileUploads;
     }
 
     
     /**
+     * The fulfillments associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFulfillment[]
      */
-    public function getFulfillments()
+    public function getFulfillments(): ?array
     {
         return $this->fulfillments;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The product description for this dispute evidence.
+     *
      * @return string
      */
-    public function getProductDescription()
+    public function getProductDescription(): ?string
     {
         return $this->productDescription;
     }
 
     
     /**
+     * The refund policy disclosure associated with the dispute evidence.
+     *
      * @return string
      */
-    public function getRefundPolicyDisclosure()
+    public function getRefundPolicyDisclosure(): ?string
     {
         return $this->refundPolicyDisclosure;
     }
 
     
     /**
+     * The refund policy file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getRefundPolicyFile()
+    public function getRefundPolicyFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->refundPolicyFile;
     }
 
     
     /**
+     * The refund refusal explanation associated with dispute evidence.
+     *
      * @return string
      */
-    public function getRefundRefusalExplanation()
+    public function getRefundRefusalExplanation(): ?string
     {
         return $this->refundRefusalExplanation;
     }
 
     
     /**
+     * The service documentation file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getServiceDocumentationFile()
+    public function getServiceDocumentationFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->serviceDocumentationFile;
     }
 
     
     /**
+     * The mailing address for shipping that's provided by the customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShopifyMailingAddress
     {
         return $this->shippingAddress;
     }
 
     
     /**
+     * The shipping documentation file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getShippingDocumentationFile()
+    public function getShippingDocumentationFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->shippingDocumentationFile;
     }
 
     
     /**
+     * Whether the dispute evidence is submitted.
+     *
      * @return bool
      */
-    public function getSubmitted()
+    public function getSubmitted(): ?bool
     {
         return $this->submitted;
     }
 
     
     /**
+     * The uncategorized file associated with the dispute evidence.
+     *
      * @return ShopifyShopifyPaymentsDisputeFileUpload
      */
-    public function getUncategorizedFile()
+    public function getUncategorizedFile(): ?ShopifyShopifyPaymentsDisputeFileUpload
     {
         return $this->uncategorizedFile;
     }
 
     
     /**
+     * The uncategorized text for the dispute evidence.
+     *
      * @return string
      */
-    public function getUncategorizedText()
+    public function getUncategorizedText(): ?string
     {
         return $this->uncategorizedText;
     }

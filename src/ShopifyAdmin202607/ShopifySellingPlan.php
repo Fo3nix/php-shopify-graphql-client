@@ -2,17 +2,27 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanBillingPolicy;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanBillingPolicyHydrator;
 use Carbon\Carbon;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanDeliveryPolicy;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanDeliveryPolicyHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanInventoryPolicy;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldConnection;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicy;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicyHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTranslation;
 
-class ShopifySellingPlan
+/**
+ * How a product can be sold and purchased through recurring billing or deferred purchase options. Defines the specific terms for subscriptions, pre-orders, or try-before-you-buy offers, including when to bill customers, when to fulfill orders, and what pricing adjustments to apply.
+ *
+ * Each selling plan has billing, delivery, and pricing policies that control the purchase experience. The plan's [`options`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan#field-SellingPlan.fields.options) and [`category`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan#field-SellingPlan.fields.category) help merchants organize and report on different selling strategies. Plans are grouped within a [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) that associates them with [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) and [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects.
+ *
+ * > Caution:
+ * > Selling plans and associated records are automatically deleted 48 hours after a merchant uninstalls the [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) that created them. Back up these records if you need to restore them later.
+ *
+ * Learn more about [selling plans](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan).
+ */
+class ShopifySellingPlan implements ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $billingPolicy;
     protected $category;
@@ -32,135 +42,170 @@ class ShopifySellingPlan
 
     
     /**
-     * @return ShopifySellingPlanBillingPolicy
+     * A selling plan policy which describes the recurring billing details.
+     *
+     * @return ShopifySellingPlanFixedBillingPolicy|ShopifySellingPlanRecurringBillingPolicy
      */
-    public function getBillingPolicy()
+    public function getBillingPolicy(): ShopifySellingPlanFixedBillingPolicy|ShopifySellingPlanRecurringBillingPolicy|null
     {
         return $this->billingPolicy;
     }
 
     
     /**
-     * @return ShopifySellingPlanCategoryEnumObject
+     * The category used to classify the selling plan for reporting purposes.
+     *
+     * @return string A ShopifySellingPlanCategoryEnumObject value
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     
     /**
+     * The date and time when the selling plan was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifySellingPlanDeliveryPolicy
+     * A selling plan policy which describes the delivery details.
+     *
+     * @return ShopifySellingPlanFixedDeliveryPolicy|ShopifySellingPlanRecurringDeliveryPolicy
      */
-    public function getDeliveryPolicy()
+    public function getDeliveryPolicy(): ShopifySellingPlanFixedDeliveryPolicy|ShopifySellingPlanRecurringDeliveryPolicy|null
     {
         return $this->deliveryPolicy;
     }
 
     
     /**
+     * Buyer facing string which describes the selling plan commitment.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * When to reserve inventory for a selling plan.
+     *
      * @return ShopifySellingPlanInventoryPolicy
      */
-    public function getInventoryPolicy()
+    public function getInventoryPolicy(): ?ShopifySellingPlanInventoryPolicy
     {
         return $this->inventoryPolicy;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * A customer-facing description of the selling plan.
+     *
+     * If your store supports multiple currencies, then don't include country-specific pricing content, such as "Buy monthly, get 10$ CAD off". This field won't be converted to reflect different currencies.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The values of all options available on the selling plan. Selling plans are grouped together in Liquid when they're created by the same app, and have the same `selling_plan_group.name` and `selling_plan_group.options` values.
+     *
      * @return string[]
      */
-    public function getOptions()
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     
     /**
+     * Relative position of the selling plan for display. A lower position will be displayed before a higher position.
+     *
      * @return int
      */
-    public function getPosition()
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
     
     /**
-     * @return ShopifySellingPlanPricingPolicy[]
+     * Selling plan pricing details.
+     *
+     * @return (ShopifySellingPlanFixedPricingPolicy|ShopifySellingPlanRecurringPricingPolicy)[]
      */
-    public function getPricingPolicies()
+    public function getPricingPolicies(): ?array
     {
         return $this->pricingPolicies;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
@@ -173,7 +218,7 @@ class ShopifySellingPlan
         {
             $instance = new self();
             if (isset($data['billingPolicy']) && $data['billingPolicy'] !== null) {
-                $instance->billingPolicy = ShopifySellingPlanBillingPolicy::fromArray($data['billingPolicy']);
+                $instance->billingPolicy = ShopifySellingPlanBillingPolicyHydrator::fromArray($data['billingPolicy']);
             }
             if (isset($data['category']) && $data['category'] !== null) {
                 $instance->category = $data['category'];
@@ -182,7 +227,7 @@ class ShopifySellingPlan
                 $instance->createdAt = new Carbon($data['createdAt']);
             }
             if (isset($data['deliveryPolicy']) && $data['deliveryPolicy'] !== null) {
-                $instance->deliveryPolicy = ShopifySellingPlanDeliveryPolicy::fromArray($data['deliveryPolicy']);
+                $instance->deliveryPolicy = ShopifySellingPlanDeliveryPolicyHydrator::fromArray($data['deliveryPolicy']);
             }
             if (isset($data['description']) && $data['description'] !== null) {
                 $instance->description = $data['description'];
@@ -212,7 +257,7 @@ class ShopifySellingPlan
                 $instance->position = $data['position'];
             }
             if (isset($data['pricingPolicies']) && $data['pricingPolicies'] !== null) {
-                $instance->pricingPolicies = array_map(function($item) { return ShopifySellingPlanPricingPolicy::fromArray($item); }, $data['pricingPolicies']);
+                $instance->pricingPolicies = array_map(function($item) { return ShopifySellingPlanPricingPolicyHydrator::fromArray($item); }, $data['pricingPolicies']);
             }
             if (isset($data['translations']) && $data['translations'] !== null) {
                 $instance->translations = array_map(function($item) { return ShopifyTranslation::fromArray($item); }, $data['translations']);
@@ -241,7 +286,7 @@ class ShopifySellingPlan
         {
             $data = [];
             if ($this->billingPolicy !== null) {
-                $data['billingPolicy'] = $this->billingPolicy->asArray();
+                $data['billingPolicy'] = ShopifySellingPlanBillingPolicyHydrator::toArray($this->billingPolicy);
             }
             if ($this->category !== null) {
                 $data['category'] = $this->category;
@@ -250,7 +295,7 @@ class ShopifySellingPlan
                 $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->deliveryPolicy !== null) {
-                $data['deliveryPolicy'] = $this->deliveryPolicy->asArray();
+                $data['deliveryPolicy'] = ShopifySellingPlanDeliveryPolicyHydrator::toArray($this->deliveryPolicy);
             }
             if ($this->description !== null) {
                 $data['description'] = $this->description;
@@ -280,7 +325,7 @@ class ShopifySellingPlan
                 $data['position'] = $this->position;
             }
             if ($this->pricingPolicies !== null) {
-                $data['pricingPolicies'] = array_map(function($item) { return $item->asArray(); }, $this->pricingPolicies);
+                $data['pricingPolicies'] = array_map(function($item) { return ShopifySellingPlanPricingPolicyHydrator::toArray($item); }, $this->pricingPolicies);
             }
             if ($this->translations !== null) {
                 $data['translations'] = array_map(function($item) { return $item->asArray(); }, $this->translations);

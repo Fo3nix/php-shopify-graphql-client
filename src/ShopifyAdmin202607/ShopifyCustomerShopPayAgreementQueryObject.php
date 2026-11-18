@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a Shop Pay card instrument for customer payment method.
+ */
 class ShopifyCustomerShopPayAgreementQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerShopPayAgreement";
 
-    public function selectBillingAddress(ShopifyCustomerShopPayAgreementBillingAddressArgumentsObject $argsObject = null)
+    /**
+     * The billing address of the card.
+     */
+    public function selectBillingAddress(?ShopifyCustomerShopPayAgreementBillingAddressArgumentsObject $argsObject = null): ShopifyCustomerCreditCardBillingAddressQueryObject
     {
         $object = new ShopifyCustomerCreditCardBillingAddressQueryObject("billingAddress");
         if ($argsObject !== null) {
@@ -19,56 +25,80 @@ class ShopifyCustomerShopPayAgreementQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectExpiresSoon()
+    /**
+     * Whether the card is about to expire.
+     */
+    public function selectExpiresSoon(): static
     {
         $this->selectField("expiresSoon");
 
         return $this;
     }
 
-    public function selectExpiryMonth()
+    /**
+     * The expiry month of the card.
+     */
+    public function selectExpiryMonth(): static
     {
         $this->selectField("expiryMonth");
 
         return $this;
     }
 
-    public function selectExpiryYear()
+    /**
+     * The expiry year of the card.
+     */
+    public function selectExpiryYear(): static
     {
         $this->selectField("expiryYear");
 
         return $this;
     }
 
-    public function selectInactive()
+    /**
+     * Whether the Shop Pay billing agreement is inactive.
+     */
+    public function selectInactive(): static
     {
         $this->selectField("inactive");
 
         return $this;
     }
 
-    public function selectIsRevocable()
+    /**
+     * The payment method can be revoked if there are no active subscription contracts.
+     */
+    public function selectIsRevocable(): static
     {
         $this->selectField("isRevocable");
 
         return $this;
     }
 
-    public function selectLastDigits()
+    /**
+     * The last 4 digits of the card.
+     */
+    public function selectLastDigits(): static
     {
         $this->selectField("lastDigits");
 
         return $this;
     }
 
-    public function selectMaskedNumber()
+    /**
+     * The masked card number with only the last 4 digits displayed.
+     */
+    public function selectMaskedNumber(): static
     {
         $this->selectField("maskedNumber");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the card holder.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

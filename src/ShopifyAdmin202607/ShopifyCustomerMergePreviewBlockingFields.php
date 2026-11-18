@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The blocking fields of a customer merge preview. These fields will block customer merge unless edited.
+ */
 class ShopifyCustomerMergePreviewBlockingFields
 {
     protected $note;
@@ -9,18 +12,22 @@ class ShopifyCustomerMergePreviewBlockingFields
 
     
     /**
+     * The merged note resulting from a customer merge. The merged note is over the 5000 character limit and will block customer merge.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The merged tags resulting from a customer merge. The merged tags are over the 250 limit and will block customer merge.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }

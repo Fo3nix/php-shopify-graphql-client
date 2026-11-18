@@ -5,10 +5,15 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrder;
 use Carbon\Carbon;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTenderTransactionDetails;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTenderTransactionDetailsHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyStaffMember;
 
-class ShopifyTenderTransaction
+/**
+ * A TenderTransaction represents a transaction with financial impact on a shop's balance sheet. A tender transaction always
+ * represents actual money movement between a buyer and a shop. TenderTransactions can be used instead of OrderTransactions
+ * for reconciling a shop's cash flow. A TenderTransaction is immutable once created.
+ */
+class ShopifyTenderTransaction implements ShopifyNode
 {
     protected $amount;
     protected $id;
@@ -22,81 +27,99 @@ class ShopifyTenderTransaction
 
     
     /**
+     * The amount and currency of the tender transaction.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The order that's related to the tender transaction. This value is null if the order has been deleted.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * Information about the payment method used for the transaction.
+     *
      * @return string
      */
-    public function getPaymentMethod()
+    public function getPaymentMethod(): ?string
     {
         return $this->paymentMethod;
     }
 
     
     /**
+     * Date and time when the transaction was processed.
+     *
      * @return Carbon
      */
-    public function getProcessedAt()
+    public function getProcessedAt(): ?Carbon
     {
         return $this->processedAt;
     }
 
     
     /**
+     * The remote gateway reference associated with the tender transaction.
+     *
      * @return string
      */
-    public function getRemoteReference()
+    public function getRemoteReference(): ?string
     {
         return $this->remoteReference;
     }
 
     
     /**
+     * Whether the transaction is a test transaction.
+     *
      * @return bool
      */
-    public function getTest()
+    public function getTest(): ?bool
     {
         return $this->test;
     }
 
     
     /**
-     * @return ShopifyTenderTransactionDetails
+     * Information about the payment instrument used for the transaction.
+     *
+     * @return ShopifyTenderTransactionCreditCardDetails
      */
-    public function getTransactionDetails()
+    public function getTransactionDetails(): ?ShopifyTenderTransactionCreditCardDetails
     {
         return $this->transactionDetails;
     }
 
     
     /**
+     * The staff member who performed the transaction.
+     *
      * @return ShopifyStaffMember
      */
-    public function getUser()
+    public function getUser(): ?ShopifyStaffMember
     {
         return $this->user;
     }
@@ -130,7 +153,7 @@ class ShopifyTenderTransaction
                 $instance->test = $data['test'];
             }
             if (isset($data['transactionDetails']) && $data['transactionDetails'] !== null) {
-                $instance->transactionDetails = ShopifyTenderTransactionDetails::fromArray($data['transactionDetails']);
+                $instance->transactionDetails = ShopifyTenderTransactionDetailsHydrator::fromArray($data['transactionDetails']);
             }
             if (isset($data['user']) && $data['user'] !== null) {
                 $instance->user = ShopifyStaffMember::fromArray($data['user']);
@@ -180,7 +203,7 @@ class ShopifyTenderTransaction
                 $data['test'] = $this->test;
             }
             if ($this->transactionDetails !== null) {
-                $data['transactionDetails'] = $this->transactionDetails->asArray();
+                $data['transactionDetails'] = ShopifyTenderTransactionDetailsHydrator::toArray($this->transactionDetails);
             }
             if ($this->user !== null) {
                 $data['user'] = $this->user->asArray();

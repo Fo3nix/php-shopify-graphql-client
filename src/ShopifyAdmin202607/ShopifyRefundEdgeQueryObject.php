@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one Refund and a cursor during pagination.
+ */
 class ShopifyRefundEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "RefundEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyRefundEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of RefundEdge.
+     */
+    public function selectNode(?ShopifyRefundEdgeNodeArgumentsObject $argsObject = null): ShopifyRefundQueryObject
     {
         $object = new ShopifyRefundQueryObject("node");
         if ($argsObject !== null) {

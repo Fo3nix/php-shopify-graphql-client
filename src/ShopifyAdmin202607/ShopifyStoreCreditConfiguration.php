@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The store credit configuration for a shop.
+ */
 class ShopifyStoreCreditConfiguration
 {
     protected $storeCreditEnabled;
 
     
     /**
+     * Whether store credit is enabled for customers on checkout.
+     *
      * @return bool
      */
-    public function getStoreCreditEnabled()
+    public function getStoreCreditEnabled(): ?bool
     {
         return $this->storeCreditEnabled;
     }

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A subscription billing cycle.
+ */
 class ShopifySubscriptionBillingCycleQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionBillingCycle";
 
-    public function selectBillingAttemptExpectedDate()
+    /**
+     * The date on which the billing attempt is expected to be made.
+     */
+    public function selectBillingAttemptExpectedDate(): static
     {
         $this->selectField("billingAttemptExpectedDate");
 
         return $this;
     }
 
-    public function selectBillingAttempts(ShopifySubscriptionBillingCycleBillingAttemptsArgumentsObject $argsObject = null)
+    /**
+     * The list of billing attempts associated with the billing cycle.
+     */
+    public function selectBillingAttempts(?ShopifySubscriptionBillingCycleBillingAttemptsArgumentsObject $argsObject = null): ShopifySubscriptionBillingAttemptConnectionQueryObject
     {
         $object = new ShopifySubscriptionBillingAttemptConnectionQueryObject("billingAttempts");
         if ($argsObject !== null) {
@@ -26,35 +35,50 @@ class ShopifySubscriptionBillingCycleQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCycleEndAt()
+    /**
+     * The end date of the billing cycle.
+     */
+    public function selectCycleEndAt(): static
     {
         $this->selectField("cycleEndAt");
 
         return $this;
     }
 
-    public function selectCycleIndex()
+    /**
+     * The index of the billing cycle.
+     */
+    public function selectCycleIndex(): static
     {
         $this->selectField("cycleIndex");
 
         return $this;
     }
 
-    public function selectCycleStartAt()
+    /**
+     * The start date of the billing cycle.
+     */
+    public function selectCycleStartAt(): static
     {
         $this->selectField("cycleStartAt");
 
         return $this;
     }
 
-    public function selectEdited()
+    /**
+     * Whether this billing cycle was edited.
+     */
+    public function selectEdited(): static
     {
         $this->selectField("edited");
 
         return $this;
     }
 
-    public function selectEditedContract(ShopifySubscriptionBillingCycleEditedContractArgumentsObject $argsObject = null)
+    /**
+     * The active edited contract for the billing cycle.
+     */
+    public function selectEditedContract(?ShopifySubscriptionBillingCycleEditedContractArgumentsObject $argsObject = null): ShopifySubscriptionBillingCycleEditedContractQueryObject
     {
         $object = new ShopifySubscriptionBillingCycleEditedContractQueryObject("editedContract");
         if ($argsObject !== null) {
@@ -65,14 +89,20 @@ class ShopifySubscriptionBillingCycleQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSkipped()
+    /**
+     * Whether this billing cycle was skipped.
+     */
+    public function selectSkipped(): static
     {
         $this->selectField("skipped");
 
         return $this;
     }
 
-    public function selectSourceContract(ShopifySubscriptionBillingCycleSourceContractArgumentsObject $argsObject = null)
+    /**
+     * The subscription contract that the billing cycle belongs to.
+     */
+    public function selectSourceContract(?ShopifySubscriptionBillingCycleSourceContractArgumentsObject $argsObject = null): ShopifySubscriptionContractQueryObject
     {
         $object = new ShopifySubscriptionContractQueryObject("sourceContract");
         if ($argsObject !== null) {
@@ -83,7 +113,10 @@ class ShopifySubscriptionBillingCycleQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the billing cycle.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

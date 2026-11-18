@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The address at which the fulfillment occurred. This object is intended for tax purposes, as a full address is required for tax providers to accurately calculate taxes. Typically this is the address of the warehouse or fulfillment center. To retrieve a fulfillment location's address, use the `assignedLocation` field on the [`FulfillmentOrder`](/docs/api/admin-graphql/latest/objects/FulfillmentOrder) object instead.
+ */
 class ShopifyFulfillmentOriginAddress
 {
     protected $address1;
@@ -13,54 +16,66 @@ class ShopifyFulfillmentOriginAddress
 
     
     /**
+     * The street address of the fulfillment location.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address. Typically the number of the apartment, suite, or unit.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city in which the fulfillment location is located.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The country code of the fulfillment location.
+     *
      * @return string
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The province code of the fulfillment location.
+     *
      * @return string
      */
-    public function getProvinceCode()
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }
 
     
     /**
+     * The zip code of the fulfillment location.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

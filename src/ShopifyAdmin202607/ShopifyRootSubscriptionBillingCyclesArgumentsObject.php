@@ -7,6 +7,8 @@ use GraphQL\RawObject;
 
 class ShopifyRootSubscriptionBillingCyclesArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["contractId"];
+
     protected $contractId;
     protected $billingCyclesDateRangeSelector;
     protected $billingCyclesIndexRangeSelector;
@@ -17,63 +19,90 @@ class ShopifyRootSubscriptionBillingCyclesArgumentsObject extends ArgumentsObjec
     protected $reverse;
     protected $sortKey;
 
-    public function setContractId($contractId)
+    /**
+     * The ID of the subscription contract to retrieve billing cycles for.
+     */
+    public function setContractId($contractId): static
     {
         $this->contractId = $contractId;
 
         return $this;
     }
 
-    public function setBillingCyclesDateRangeSelector(ShopifySubscriptionBillingCyclesDateRangeSelectorInputObject $shopifySubscriptionBillingCyclesDateRangeSelectorInputObject)
+    /**
+     * Select subscription billing cycles within a date range.
+     */
+    public function setBillingCyclesDateRangeSelector(ShopifySubscriptionBillingCyclesDateRangeSelectorInputObject $shopifySubscriptionBillingCyclesDateRangeSelectorInputObject): static
     {
         $this->billingCyclesDateRangeSelector = $shopifySubscriptionBillingCyclesDateRangeSelectorInputObject;
 
         return $this;
     }
 
-    public function setBillingCyclesIndexRangeSelector(ShopifySubscriptionBillingCyclesIndexRangeSelectorInputObject $shopifySubscriptionBillingCyclesIndexRangeSelectorInputObject)
+    /**
+     * Select subscription billing cycles within an index range.
+     */
+    public function setBillingCyclesIndexRangeSelector(ShopifySubscriptionBillingCyclesIndexRangeSelectorInputObject $shopifySubscriptionBillingCyclesIndexRangeSelectorInputObject): static
     {
         $this->billingCyclesIndexRangeSelector = $shopifySubscriptionBillingCyclesIndexRangeSelectorInputObject;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 
         return $this;
     }
 
-    public function setSortKey($shopifySubscriptionBillingCyclesSortKeys)
+    /**
+     * Sort the underlying list using a key. If your query is slow or returns an error, then [try specifying a sort key that matches the field used in the search](https://shopify.dev/api/usage/pagination-graphql#search-performance-considerations).
+     */
+    public function setSortKey($shopifySubscriptionBillingCyclesSortKeys): static
     {
         $this->sortKey = new RawObject($shopifySubscriptionBillingCyclesSortKeys);
 

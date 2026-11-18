@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPageEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple Pages.
+ */
 class ShopifyPageConnection
 {
     protected $edges;
@@ -14,27 +17,33 @@ class ShopifyPageConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyPageEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * A list of nodes that are contained in PageEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
      * @return ShopifyPage[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }

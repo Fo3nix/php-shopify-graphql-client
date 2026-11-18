@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fixed amount value of a discount.
+ */
 class ShopifyAppSubscriptionDiscountAmountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AppSubscriptionDiscountAmount";
 
-    public function selectAmount(ShopifyAppSubscriptionDiscountAmountAmountArgumentsObject $argsObject = null)
+    /**
+     * The fixed amount value of a discount.
+     */
+    public function selectAmount(?ShopifyAppSubscriptionDiscountAmountAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {

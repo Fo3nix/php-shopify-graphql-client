@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTranslation;
 
-class ShopifyShopPolicy
+/**
+ * Policy that a merchant has configured for their store, such as their refund or privacy policy.
+ */
+class ShopifyShopPolicy implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $body;
     protected $createdAt;
@@ -18,72 +21,88 @@ class ShopifyShopPolicy
 
     
     /**
+     * The text of the policy. The maximum size is 512kb.
+     *
      * @return string
      */
-    public function getBody()
+    public function getBody(): mixed
     {
         return $this->body;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The translated title of the policy. For example, Refund Policy or Politique de remboursement.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
-     * @return ShopifyShopPolicyTypeEnumObject
+     * The shop policy type.
+     *
+     * @return string A ShopifyShopPolicyTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was last modified.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The public URL of the policy.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

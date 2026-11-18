@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyInventoryQuantityName;
 
+/**
+ * General inventory properties for the shop.
+ */
 class ShopifyInventoryProperties
 {
     protected $quantityNames;
 
     
     /**
+     * All the quantity names.
+     *
      * @return ShopifyInventoryQuantityName[]
      */
-    public function getQuantityNames()
+    public function getQuantityNames(): ?array
     {
         return $this->quantityNames;
     }

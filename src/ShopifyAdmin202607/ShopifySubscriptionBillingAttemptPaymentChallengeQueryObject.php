@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A payment challenge that the customer must complete.
+ */
 class ShopifySubscriptionBillingAttemptPaymentChallengeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionBillingAttemptPaymentChallenge";
 
-    public function selectNextActionUrl()
+    /**
+     * URL to redirect the customer for authentication.
+     */
+    public function selectNextActionUrl(): static
     {
         $this->selectField("nextActionUrl");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the payment challenge.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

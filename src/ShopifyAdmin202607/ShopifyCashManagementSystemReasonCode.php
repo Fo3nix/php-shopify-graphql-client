@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-class ShopifyCashManagementSystemReasonCode
+/**
+ * System reason code.
+ */
+class ShopifyCashManagementSystemReasonCode implements ShopifyNode
 {
     protected $code;
     protected $id;
 
     
     /**
-     * @return ShopifyCashManagementSystemReasonCodeEnumEnumObject
+     * The code for the system reason code.
+     *
+     * @return string A ShopifyCashManagementSystemReasonCodeEnumEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

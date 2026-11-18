@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Payment details related to a transaction.
+ */
 class ShopifyPaymentDetailsUnionObject extends UnionObject
 {
-    public function onShopifyCardPaymentDetails()
+    public function onShopifyCardPaymentDetails(): ShopifyCardPaymentDetailsQueryObject
     {
         $object = new ShopifyCardPaymentDetailsQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyPaymentDetailsUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyLocalPaymentMethodsPaymentDetails()
+    public function onShopifyLocalPaymentMethodsPaymentDetails(): ShopifyLocalPaymentMethodsPaymentDetailsQueryObject
     {
         $object = new ShopifyLocalPaymentMethodsPaymentDetailsQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyPaymentDetailsUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPaypalWalletPaymentDetails()
+    public function onShopifyPaypalWalletPaymentDetails(): ShopifyPaypalWalletPaymentDetailsQueryObject
     {
         $object = new ShopifyPaypalWalletPaymentDetailsQueryObject();
         $this->addPossibleType($object);
@@ -30,7 +33,7 @@ class ShopifyPaymentDetailsUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyShopPayInstallmentsPaymentDetails()
+    public function onShopifyShopPayInstallmentsPaymentDetails(): ShopifyShopPayInstallmentsPaymentDetailsQueryObject
     {
         $object = new ShopifyShopPayInstallmentsPaymentDetailsQueryObject();
         $this->addPossibleType($object);

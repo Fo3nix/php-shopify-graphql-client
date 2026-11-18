@@ -4,25 +4,59 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The `DiscountCodeBasic` object lets you manage
+ * [amount off discounts](https://help.shopify.com/manual/discounts/discount-types/percentage-fixed-amount)
+ * that are applied on a cart and at checkout when a customer enters a code. Amount off discounts give customers a
+ * fixed value or a percentage off the products in an order, but don't apply to shipping costs.
+ *
+ * The `DiscountCodeBasic` object stores information about amount off code discounts that apply to
+ * specific [products and variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountProducts),
+ * [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCollections),
+ * or [all items in a cart](https://shopify.dev/docs/api/admin-graphql/latest/objects/AllDiscountItems).
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including limitations and considerations.
+ *
+ * > Note:
+ * > The [`DiscountAutomaticBasic`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticBasic)
+ * object has similar functionality to the `DiscountCodeBasic` object, but discounts are automatically applied,
+ * without the need for customers to enter a code.
+ */
 class ShopifyDiscountCodeBasicQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountCodeBasic";
 
-    public function selectAppliesOncePerCustomer()
+    /**
+     * Whether a customer can only use the discount once.
+     */
+    public function selectAppliesOncePerCustomer(): static
     {
         $this->selectField("appliesOncePerCustomer");
 
         return $this;
     }
 
-    public function selectAsyncUsageCount()
+    /**
+     * The number of times that the discount has been used.
+     * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+     * is automatically applied in 200 transactions, then the
+     * discount has been used 200 times.
+     * This value is updated asynchronously. As a result,
+     * it might be lower than the actual usage count until the
+     * asynchronous process is completed.
+     */
+    public function selectAsyncUsageCount(): static
     {
         $this->selectField("asyncUsageCount");
 
         return $this;
     }
 
-    public function selectCodes(ShopifyDiscountCodeBasicCodesArgumentsObject $argsObject = null)
+    /**
+     * A list codes that customers can use to redeem the discount.
+     */
+    public function selectCodes(?ShopifyDiscountCodeBasicCodesArgumentsObject $argsObject = null): ShopifyDiscountRedeemCodeConnectionQueryObject
     {
         $object = new ShopifyDiscountRedeemCodeConnectionQueryObject("codes");
         if ($argsObject !== null) {
@@ -33,7 +67,10 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCodesCount(ShopifyDiscountCodeBasicCodesCountArgumentsObject $argsObject = null)
+    /**
+     * The number of codes that a customer can use to redeem the discount.
+     */
+    public function selectCodesCount(?ShopifyDiscountCodeBasicCodesCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("codesCount");
         if ($argsObject !== null) {
@@ -44,7 +81,13 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCombinesWith(ShopifyDiscountCodeBasicCombinesWithArgumentsObject $argsObject = null)
+    /**
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
+     */
+    public function selectCombinesWith(?ShopifyDiscountCodeBasicCombinesWithArgumentsObject $argsObject = null): ShopifyDiscountCombinesWithQueryObject
     {
         $object = new ShopifyDiscountCombinesWithQueryObject("combinesWith");
         if ($argsObject !== null) {
@@ -55,7 +98,10 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectContext(ShopifyDiscountCodeBasicContextArgumentsObject $argsObject = null)
+    /**
+     * The context defining which buyers can use the discount.
+     */
+    public function selectContext(?ShopifyDiscountCodeBasicContextArgumentsObject $argsObject = null): ShopifyDiscountContextUnionObject
     {
         $object = new ShopifyDiscountContextUnionObject("context");
         if ($argsObject !== null) {
@@ -66,14 +112,20 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the discount was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCustomerGets(ShopifyDiscountCodeBasicCustomerGetsArgumentsObject $argsObject = null)
+    /**
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
+     */
+    public function selectCustomerGets(?ShopifyDiscountCodeBasicCustomerGetsArgumentsObject $argsObject = null): ShopifyDiscountCustomerGetsQueryObject
     {
         $object = new ShopifyDiscountCustomerGetsQueryObject("customerGets");
         if ($argsObject !== null) {
@@ -85,9 +137,11 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
     }
 
     /**
+     * The customers that can use the discount.
+     *
      * @deprecated Use `context` instead.
      */
-    public function selectCustomerSelection(ShopifyDiscountCodeBasicCustomerSelectionArgumentsObject $argsObject = null)
+    public function selectCustomerSelection(?ShopifyDiscountCodeBasicCustomerSelectionArgumentsObject $argsObject = null): ShopifyDiscountCustomerSelectionUnionObject
     {
         $object = new ShopifyDiscountCustomerSelectionUnionObject("customerSelection");
         if ($argsObject !== null) {
@@ -99,37 +153,55 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
     }
 
     /**
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
+     *
      * @deprecated Use `discountClasses` instead.
      */
-    public function selectDiscountClass()
+    public function selectDiscountClass(): static
     {
         $this->selectField("discountClass");
 
         return $this;
     }
 
-    public function selectDiscountClasses()
+    /**
+     * The classes of the discount.
+     */
+    public function selectDiscountClasses(): static
     {
         $this->selectField("discountClasses");
 
         return $this;
     }
 
-    public function selectEndsAt()
+    /**
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
+     */
+    public function selectEndsAt(): static
     {
         $this->selectField("endsAt");
 
         return $this;
     }
 
-    public function selectHasTimelineComment()
+    /**
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
+     */
+    public function selectHasTimelineComment(): static
     {
         $this->selectField("hasTimelineComment");
 
         return $this;
     }
 
-    public function selectMinimumRequirement(ShopifyDiscountCodeBasicMinimumRequirementArgumentsObject $argsObject = null)
+    /**
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
+     */
+    public function selectMinimumRequirement(?ShopifyDiscountCodeBasicMinimumRequirementArgumentsObject $argsObject = null): ShopifyDiscountMinimumRequirementUnionObject
     {
         $object = new ShopifyDiscountMinimumRequirementUnionObject("minimumRequirement");
         if ($argsObject !== null) {
@@ -140,14 +212,23 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRecurringCycleLimit()
+    /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     */
+    public function selectRecurringCycleLimit(): static
     {
         $this->selectField("recurringCycleLimit");
 
         return $this;
     }
 
-    public function selectShareableUrls(ShopifyDiscountCodeBasicShareableUrlsArgumentsObject $argsObject = null)
+    /**
+     * A list of URLs that the app can use to share the discount.
+     */
+    public function selectShareableUrls(?ShopifyDiscountCodeBasicShareableUrlsArgumentsObject $argsObject = null): ShopifyDiscountShareableUrlQueryObject
     {
         $object = new ShopifyDiscountShareableUrlQueryObject("shareableUrls");
         if ($argsObject !== null) {
@@ -158,49 +239,77 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShortSummary()
+    /**
+     * An abbreviated version of the discount
+     * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCodeBasic#field-summary)
+     * field.
+     */
+    public function selectShortSummary(): static
     {
         $this->selectField("shortSummary");
 
         return $this;
     }
 
-    public function selectStartsAt()
+    /**
+     * The date and time when the discount becomes active and is available to customers.
+     */
+    public function selectStartsAt(): static
     {
         $this->selectField("startsAt");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the discount that describes its availability,
+     * expiration, or pending activation.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectSummary()
+    /**
+     * A detailed explanation of what the discount is,
+     * who can use it, when and where it applies, and any associated
+     * rules or limitations.
+     */
+    public function selectSummary(): static
     {
         $this->selectField("summary");
 
         return $this;
     }
 
-    public function selectTags()
+    /**
+     * A list of searchable keywords that are associated with the discount.
+     * For example, a merchant might apply the `loyalty` tag to discounts
+     * that are associated with their loyalty program.
+     */
+    public function selectTags(): static
     {
         $this->selectField("tags");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTotalSales(ShopifyDiscountCodeBasicTotalSalesArgumentsObject $argsObject = null)
+    /**
+     * The total sales from orders where the discount was used.
+     */
+    public function selectTotalSales(?ShopifyDiscountCodeBasicTotalSalesArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalSales");
         if ($argsObject !== null) {
@@ -211,14 +320,21 @@ class ShopifyDiscountCodeBasicQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the discount was updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 
         return $this;
     }
 
-    public function selectUsageLimit()
+    /**
+     * The maximum number of times the discount can be redeemed.
+     * For unlimited usage, specify `null`.
+     */
+    public function selectUsageLimit(): static
     {
         $this->selectField("usageLimit");
 

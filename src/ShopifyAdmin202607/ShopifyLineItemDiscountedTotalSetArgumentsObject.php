@@ -8,7 +8,10 @@ class ShopifyLineItemDiscountedTotalSetArgumentsObject extends ArgumentsObject
 {
     protected $withCodeDiscounts;
 
-    public function setWithCodeDiscounts($withCodeDiscounts)
+    /**
+     * Whether to include code-based discounts in the total.
+     */
+    public function setWithCodeDiscounts($withCodeDiscounts): static
     {
         $this->withCodeDiscounts = $withCodeDiscounts;
 

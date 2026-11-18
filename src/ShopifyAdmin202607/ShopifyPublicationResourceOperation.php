@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyRowCount;
 
-class ShopifyPublicationResourceOperation
+/**
+ * A bulk update operation on a publication.
+ */
+class ShopifyPublicationResourceOperation implements ShopifyNode, ShopifyResourceOperation
 {
     protected $id;
     protected $processedRowCount;
@@ -13,36 +16,44 @@ class ShopifyPublicationResourceOperation
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The count of processed rows, summing imported, failed, and skipped rows.
+     *
      * @return int
      */
-    public function getProcessedRowCount()
+    public function getProcessedRowCount(): ?int
     {
         return $this->processedRowCount;
     }
 
     
     /**
+     * Represents a rows objects within this background operation.
+     *
      * @return ShopifyRowCount
      */
-    public function getRowCount()
+    public function getRowCount(): ?ShopifyRowCount
     {
         return $this->rowCount;
     }
 
     
     /**
-     * @return ShopifyResourceOperationStatusEnumObject
+     * The status of this operation.
+     *
+     * @return string A ShopifyResourceOperationStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The custom font customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
 {
     protected $genericFileId;
@@ -10,27 +13,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
 
     
     /**
+     * Globally unique ID reference to the custom font file.
+     *
      * @return string
      */
-    public function getGenericFileId()
+    public function getGenericFileId(): ?string
     {
         return $this->genericFileId;
     }
 
     
     /**
+     * The font sources.
+     *
      * @return string
      */
-    public function getSources()
+    public function getSources(): ?string
     {
         return $this->sources;
     }
 
     
     /**
+     * The font weight.
+     *
      * @return int
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }

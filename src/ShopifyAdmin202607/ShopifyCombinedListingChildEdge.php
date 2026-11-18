@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCombinedListingChild;
 
+/**
+ * An auto-generated type which holds one CombinedListingChild and a cursor during pagination.
+ */
 class ShopifyCombinedListingChildEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyCombinedListingChildEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of CombinedListingChildEdge.
+     *
      * @return ShopifyCombinedListingChild
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCombinedListingChild
     {
         return $this->node;
     }

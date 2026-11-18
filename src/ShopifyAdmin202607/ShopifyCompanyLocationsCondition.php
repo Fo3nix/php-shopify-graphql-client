@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyLocationConnection;
 
+/**
+ * A condition checking the company location a visitor is purchasing for.
+ */
 class ShopifyCompanyLocationsCondition
 {
     protected $applicationLevel;
@@ -11,18 +14,22 @@ class ShopifyCompanyLocationsCondition
 
     
     /**
-     * @return ShopifyMarketConditionApplicationTypeEnumObject
+     * The application level for the condition.
+     *
+     * @return string A ShopifyMarketConditionApplicationTypeEnumObject value
      */
-    public function getApplicationLevel()
+    public function getApplicationLevel(): ?string
     {
         return $this->applicationLevel;
     }
 
     
     /**
+     * The company locations that comprise the market.
+     *
      * @return ShopifyCompanyLocationConnection
      */
-    public function getCompanyLocations()
+    public function getCompanyLocations(): ?ShopifyCompanyLocationConnection
     {
         return $this->companyLocations;
     }

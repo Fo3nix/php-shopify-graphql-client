@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The store logo customizations.
+ */
 class ShopifyCheckoutBrandingLogoQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingLogo";
 
-    public function selectImage(ShopifyCheckoutBrandingLogoImageArgumentsObject $argsObject = null)
+    /**
+     * The logo image.
+     */
+    public function selectImage(?ShopifyCheckoutBrandingLogoImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyCheckoutBrandingLogoQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMaxWidth()
+    /**
+     * The maximum width of the logo.
+     */
+    public function selectMaxWidth(): static
     {
         $this->selectField("maxWidth");
 
         return $this;
     }
 
-    public function selectVisibility()
+    /**
+     * The visibility of the logo.
+     */
+    public function selectVisibility(): static
     {
         $this->selectField("visibility");
 

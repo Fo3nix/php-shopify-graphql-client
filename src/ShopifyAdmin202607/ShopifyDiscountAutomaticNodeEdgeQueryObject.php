@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one DiscountAutomaticNode and a cursor during pagination.
+ */
 class ShopifyDiscountAutomaticNodeEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountAutomaticNodeEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyDiscountAutomaticNodeEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of DiscountAutomaticNodeEdge.
+     */
+    public function selectNode(?ShopifyDiscountAutomaticNodeEdgeNodeArgumentsObject $argsObject = null): ShopifyDiscountAutomaticNodeQueryObject
     {
         $object = new ShopifyDiscountAutomaticNodeQueryObject("node");
         if ($argsObject !== null) {

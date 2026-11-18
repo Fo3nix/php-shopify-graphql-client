@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionValidation;
 
+/**
+ * A preset field definition on a standard metaobject definition template.
+ */
 class ShopifyStandardMetaobjectDefinitionFieldTemplate
 {
     protected $description;
@@ -17,63 +20,77 @@ class ShopifyStandardMetaobjectDefinitionFieldTemplate
 
     
     /**
+     * The administrative description.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The key owned by the definition after the definition has been enabled.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The human-readable name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The required status of the field within the object composition.
+     *
      * @return bool
      */
-    public function getRequired()
+    public function getRequired(): ?bool
     {
         return $this->required;
     }
 
     
     /**
+     * The associated [metafield definition type](https://shopify.dev/apps/metafields/definitions/types) that the metafield stores.
+     *
      * @return ShopifyMetafieldDefinitionType
      */
-    public function getType()
+    public function getType(): ?ShopifyMetafieldDefinitionType
     {
         return $this->type;
     }
 
     
     /**
+     * The configured validations for the standard metafield definition.
+     *
      * @return ShopifyMetafieldDefinitionValidation[]
      */
-    public function getValidations()
+    public function getValidations(): ?array
     {
         return $this->validations;
     }
 
     
     /**
+     * Whether metafields for the definition are by default visible using the Storefront API.
+     *
      * @return bool
      */
-    public function getVisibleToStorefrontApi()
+    public function getVisibleToStorefrontApi(): ?bool
     {
         return $this->visibleToStorefrontApi;
     }

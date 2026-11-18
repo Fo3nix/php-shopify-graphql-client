@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurface;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurface;
 
+/**
+ * The surface-specific component customizations for checkout and customer accounts.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSurfaces
 {
     protected $checkout;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSurfaces
 
     
     /**
+     * The checkout-specific component overrides.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutSurface
      */
-    public function getCheckout()
+    public function getCheckout(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutSurface
     {
         return $this->checkout;
     }
 
     
     /**
+     * The customer accounts-specific component overrides.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurface
      */
-    public function getCustomerAccounts()
+    public function getCustomerAccounts(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurface
     {
         return $this->customerAccounts;
     }
 
     
     /**
+     * The sign-in-specific component overrides.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurface
      */
-    public function getSignIn()
+    public function getSignIn(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurface
     {
         return $this->signIn;
     }

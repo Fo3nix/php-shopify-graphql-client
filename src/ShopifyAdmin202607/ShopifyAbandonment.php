@@ -8,7 +8,12 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomer;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerVisitProductInfoConnection;
 
-class ShopifyAbandonment
+/**
+ * Tracks a [customer](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer)'s incomplete shopping journey, whether they abandoned while browsing [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), adding items to cart, or during checkout. Provides data about the customer's behavior and products they interacted with.
+ *
+ * The abandonment includes fields that indicate whether the customer has completed any [orders](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) or [draft orders](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder) after the abandonment occurred. It also tracks when emails were sent and how long since the customer's last activity across different abandonment types.
+ */
+class ShopifyAbandonment implements ShopifyNode
 {
     protected $abandonedCheckoutPayload;
     protected $abandonmentType;
@@ -39,234 +44,286 @@ class ShopifyAbandonment
 
     
     /**
+     * The abandonment payload for the abandoned checkout.
+     *
      * @return ShopifyAbandonedCheckout
      */
-    public function getAbandonedCheckoutPayload()
+    public function getAbandonedCheckoutPayload(): ?ShopifyAbandonedCheckout
     {
         return $this->abandonedCheckoutPayload;
     }
 
     
     /**
-     * @return ShopifyAbandonmentAbandonmentTypeEnumObject
+     * The abandonment type.
+     *
+     * @return string A ShopifyAbandonmentAbandonmentTypeEnumObject value
      */
-    public function getAbandonmentType()
+    public function getAbandonmentType(): ?string
     {
         return $this->abandonmentType;
     }
 
     
     /**
+     * The app associated with an abandoned checkout.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * Permalink to the cart page.
+     *
      * @return string
      */
-    public function getCartUrl()
+    public function getCartUrl(): mixed
     {
         return $this->cartUrl;
     }
 
     
     /**
+     * The date and time when the abandonment was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The customer who abandoned this event.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * Whether the customer has a draft order since this abandonment has been abandoned.
+     *
      * @return bool
      */
-    public function getCustomerHasNoDraftOrderSinceAbandonment()
+    public function getCustomerHasNoDraftOrderSinceAbandonment(): ?bool
     {
         return $this->customerHasNoDraftOrderSinceAbandonment;
     }
 
     
     /**
+     * Whether the customer has completed an order since this checkout has been abandoned.
+     *
      * @return bool
      */
-    public function getCustomerHasNoOrderSinceAbandonment()
+    public function getCustomerHasNoOrderSinceAbandonment(): ?bool
     {
         return $this->customerHasNoOrderSinceAbandonment;
     }
 
     
     /**
+     * The number of days since the last abandonment email was sent to the customer.
+     *
      * @return int
      */
-    public function getDaysSinceLastAbandonmentEmail()
+    public function getDaysSinceLastAbandonmentEmail(): ?int
     {
         return $this->daysSinceLastAbandonmentEmail;
     }
 
     
     /**
+     * When the email was sent, if that's the case.
+     *
      * @return Carbon
      */
-    public function getEmailSentAt()
+    public function getEmailSentAt(): ?Carbon
     {
         return $this->emailSentAt;
     }
 
     
     /**
-     * @return ShopifyAbandonmentEmailStateEnumObject
+     * The email state (e.g., sent or not sent).
+     *
+     * @return string A ShopifyAbandonmentEmailStateEnumObject value
      */
-    public function getEmailState()
+    public function getEmailState(): ?string
     {
         return $this->emailState;
     }
 
     
     /**
+     * The number of hours since the customer has last abandoned a checkout.
+     *
      * @return float
      */
-    public function getHoursSinceLastAbandonedCheckout()
+    public function getHoursSinceLastAbandonedCheckout(): ?float
     {
         return $this->hoursSinceLastAbandonedCheckout;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the products in abandonment are available.
+     *
      * @return bool
      */
-    public function getInventoryAvailable()
+    public function getInventoryAvailable(): ?bool
     {
         return $this->inventoryAvailable;
     }
 
     
     /**
+     * Whether the abandonment event comes from a custom storefront channel.
+     *
      * @return bool
      */
-    public function getIsFromCustomStorefront()
+    public function getIsFromCustomStorefront(): ?bool
     {
         return $this->isFromCustomStorefront;
     }
 
     
     /**
+     * Whether the abandonment event comes from the Online Store sales channel.
+     *
      * @return bool
      */
-    public function getIsFromOnlineStore()
+    public function getIsFromOnlineStore(): ?bool
     {
         return $this->isFromOnlineStore;
     }
 
     
     /**
+     * Whether the abandonment event comes from the Shop app sales channel.
+     *
      * @return bool
      */
-    public function getIsFromShopApp()
+    public function getIsFromShopApp(): ?bool
     {
         return $this->isFromShopApp;
     }
 
     
     /**
+     * Whether the abandonment event comes from Shop Pay.
+     *
      * @return bool
      */
-    public function getIsFromShopPay()
+    public function getIsFromShopPay(): ?bool
     {
         return $this->isFromShopPay;
     }
 
     
     /**
+     * Whether the customer didn't complete another most significant step since this abandonment.
+     *
      * @return bool
      */
-    public function getIsMostSignificantAbandonment()
+    public function getIsMostSignificantAbandonment(): ?bool
     {
         return $this->isMostSignificantAbandonment;
     }
 
     
     /**
+     * The date for the latest browse abandonment.
+     *
      * @return Carbon
      */
-    public function getLastBrowseAbandonmentDate()
+    public function getLastBrowseAbandonmentDate(): ?Carbon
     {
         return $this->lastBrowseAbandonmentDate;
     }
 
     
     /**
+     * The date for the latest cart abandonment.
+     *
      * @return Carbon
      */
-    public function getLastCartAbandonmentDate()
+    public function getLastCartAbandonmentDate(): ?Carbon
     {
         return $this->lastCartAbandonmentDate;
     }
 
     
     /**
+     * The date for the latest checkout abandonment.
+     *
      * @return Carbon
      */
-    public function getLastCheckoutAbandonmentDate()
+    public function getLastCheckoutAbandonmentDate(): ?Carbon
     {
         return $this->lastCheckoutAbandonmentDate;
     }
 
     
     /**
-     * @return ShopifyAbandonmentAbandonmentTypeEnumObject
+     * The most recent step type.
+     *
+     * @return string A ShopifyAbandonmentAbandonmentTypeEnumObject value
      */
-    public function getMostRecentStep()
+    public function getMostRecentStep(): ?string
     {
         return $this->mostRecentStep;
     }
 
     
     /**
+     * The products added to the cart during the customer abandoned visit.
+     *
      * @return ShopifyCustomerVisitProductInfoConnection
      */
-    public function getProductsAddedToCart()
+    public function getProductsAddedToCart(): ?ShopifyCustomerVisitProductInfoConnection
     {
         return $this->productsAddedToCart;
     }
 
     
     /**
+     * The products viewed during the customer abandoned visit.
+     *
      * @return ShopifyCustomerVisitProductInfoConnection
      */
-    public function getProductsViewed()
+    public function getProductsViewed(): ?ShopifyCustomerVisitProductInfoConnection
     {
         return $this->productsViewed;
     }
 
     
     /**
+     * The date and time when the visit started.
+     *
      * @return Carbon
      */
-    public function getVisitStartedAt()
+    public function getVisitStartedAt(): ?Carbon
     {
         return $this->visitStartedAt;
     }

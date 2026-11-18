@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyNavigationItem;
 
+/**
+ * Requirements that must be met before an app can be installed.
+ */
 class ShopifyFailedRequirement
 {
     protected $action;
@@ -11,18 +14,23 @@ class ShopifyFailedRequirement
 
     
     /**
+     * Action to be taken to resolve a failed requirement, including URL link.
+     *
      * @return ShopifyNavigationItem
      */
-    public function getAction()
+    public function getAction(): ?ShopifyNavigationItem
     {
         return $this->action;
     }
 
     
     /**
+     * A concise set of copy strings to be displayed to merchants, to guide them in resolving problems your app
+     * encounters when trying to make use of their Shop and its resources.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

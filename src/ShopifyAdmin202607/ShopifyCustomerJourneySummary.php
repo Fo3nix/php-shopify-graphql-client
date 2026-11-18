@@ -6,6 +6,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerVisit;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerMomentConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCount;
 
+/**
+ * A [`CustomerJourney`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerJourney) through the online store leading up to an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order). Tracks session data, attribution sources, and the timeline from first visit to purchase conversion.
+ *
+ * The summary includes the customer's position in their order history, days between first visit and order creation, and details about their first and last sessions. Use the [`moments`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerJourneySummary#field-moments) connection to access the complete timeline of customer interactions before the purchase.
+ */
 class ShopifyCustomerJourneySummary
 {
     protected $customerOrderIndex;
@@ -18,63 +23,77 @@ class ShopifyCustomerJourneySummary
 
     
     /**
+     * The position of the current order within the customer's order history. Test orders aren't included.
+     *
      * @return int
      */
-    public function getCustomerOrderIndex()
+    public function getCustomerOrderIndex(): ?int
     {
         return $this->customerOrderIndex;
     }
 
     
     /**
+     * The number of days between the first session and the order creation date. The first session represents the first session since the last order, or the first session within the 30 day attribution window, if more than 30 days have passed since the last order.
+     *
      * @return int
      */
-    public function getDaysToConversion()
+    public function getDaysToConversion(): ?int
     {
         return $this->daysToConversion;
     }
 
     
     /**
+     * The customer's first session going into the shop.
+     *
      * @return ShopifyCustomerVisit
      */
-    public function getFirstVisit()
+    public function getFirstVisit(): ?ShopifyCustomerVisit
     {
         return $this->firstVisit;
     }
 
     
     /**
+     * The last session before an order is made.
+     *
      * @return ShopifyCustomerVisit
      */
-    public function getLastVisit()
+    public function getLastVisit(): ?ShopifyCustomerVisit
     {
         return $this->lastVisit;
     }
 
     
     /**
+     * The events preceding a customer's order, such as shop sessions.
+     *
      * @return ShopifyCustomerMomentConnection
      */
-    public function getMoments()
+    public function getMoments(): ?ShopifyCustomerMomentConnection
     {
         return $this->moments;
     }
 
     
     /**
+     * The total number of customer moments associated with this order. Returns null if the order is still in the process of being attributed.
+     *
      * @return ShopifyCount
      */
-    public function getMomentsCount()
+    public function getMomentsCount(): ?ShopifyCount
     {
         return $this->momentsCount;
     }
 
     
     /**
+     * Whether the attributed sessions for the order have been created yet.
+     *
      * @return bool
      */
-    public function getReady()
+    public function getReady(): ?bool
     {
         return $this->ready;
     }

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerCreditCardBillingAddress;
 
+/**
+ * Represents a credit card payment instrument.
+ */
 class ShopifyVaultCreditCard
 {
     protected $billingAddress;
@@ -16,63 +19,77 @@ class ShopifyVaultCreditCard
 
     
     /**
+     * The billing address of the card.
+     *
      * @return ShopifyCustomerCreditCardBillingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCustomerCreditCardBillingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The brand for the card.
+     *
      * @return string
      */
-    public function getBrand()
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
 
     
     /**
+     * Whether the card has been expired.
+     *
      * @return bool
      */
-    public function getExpired()
+    public function getExpired(): ?bool
     {
         return $this->expired;
     }
 
     
     /**
+     * The expiry month of the card.
+     *
      * @return int
      */
-    public function getExpiryMonth()
+    public function getExpiryMonth(): ?int
     {
         return $this->expiryMonth;
     }
 
     
     /**
+     * The expiry year of the card.
+     *
      * @return int
      */
-    public function getExpiryYear()
+    public function getExpiryYear(): ?int
     {
         return $this->expiryYear;
     }
 
     
     /**
+     * The last four digits for the card.
+     *
      * @return string
      */
-    public function getLastDigits()
+    public function getLastDigits(): ?string
     {
         return $this->lastDigits;
     }
 
     
     /**
+     * The name of the card holder.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

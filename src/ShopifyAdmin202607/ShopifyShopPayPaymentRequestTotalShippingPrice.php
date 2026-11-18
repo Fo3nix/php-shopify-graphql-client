@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopPayPaymentRequestDiscount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * Represents a shipping total for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestTotalShippingPrice
 {
     protected $discounts;
@@ -13,27 +16,33 @@ class ShopifyShopPayPaymentRequestTotalShippingPrice
 
     
     /**
+     * The discounts for the shipping total.
+     *
      * @return ShopifyShopPayPaymentRequestDiscount[]
      */
-    public function getDiscounts()
+    public function getDiscounts(): ?array
     {
         return $this->discounts;
     }
 
     
     /**
+     * The final total for the shipping line.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFinalTotal()
+    public function getFinalTotal(): ?ShopifyMoneyV2
     {
         return $this->finalTotal;
     }
 
     
     /**
+     * The original total for the shipping line.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalTotal()
+    public function getOriginalTotal(): ?ShopifyMoneyV2
     {
         return $this->originalTotal;
     }

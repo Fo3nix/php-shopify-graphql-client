@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Custom subscription discount.
+ */
 class ShopifySubscriptionManualDiscountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionManualDiscount";
 
-    public function selectEntitledLines(ShopifySubscriptionManualDiscountEntitledLinesArgumentsObject $argsObject = null)
+    /**
+     * Entitled line items used to apply the subscription discount on.
+     */
+    public function selectEntitledLines(?ShopifySubscriptionManualDiscountEntitledLinesArgumentsObject $argsObject = null): ShopifySubscriptionDiscountEntitledLinesQueryObject
     {
         $object = new ShopifySubscriptionDiscountEntitledLinesQueryObject("entitledLines");
         if ($argsObject !== null) {
@@ -19,56 +25,80 @@ class ShopifySubscriptionManualDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * The unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectRecurringCycleLimit()
+    /**
+     * The maximum number of times the subscription discount will be applied on orders.
+     */
+    public function selectRecurringCycleLimit(): static
     {
         $this->selectField("recurringCycleLimit");
 
         return $this;
     }
 
-    public function selectRejectionReason()
+    /**
+     * The reason that the discount on the subscription draft is rejected.
+     */
+    public function selectRejectionReason(): static
     {
         $this->selectField("rejectionReason");
 
         return $this;
     }
 
-    public function selectTargetType()
+    /**
+     * Type of line the discount applies on.
+     */
+    public function selectTargetType(): static
     {
         $this->selectField("targetType");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title associated with the subscription discount.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * The type of the subscription discount.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectUsageCount()
+    /**
+     * The number of times the discount was applied.
+     */
+    public function selectUsageCount(): static
     {
         $this->selectField("usageCount");
 
         return $this;
     }
 
-    public function selectValue(ShopifySubscriptionManualDiscountValueArgumentsObject $argsObject = null)
+    /**
+     * The value of the subscription discount.
+     */
+    public function selectValue(?ShopifySubscriptionManualDiscountValueArgumentsObject $argsObject = null): ShopifySubscriptionDiscountValueUnionObject
     {
         $object = new ShopifySubscriptionDiscountValueUnionObject("value");
         if ($argsObject !== null) {

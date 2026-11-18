@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A Shopify Function.
+ */
 class ShopifyShopifyFunctionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyFunction";
 
-    public function selectApiType()
+    /**
+     * The API type of the Shopify Function.
+     */
+    public function selectApiType(): static
     {
         $this->selectField("apiType");
 
         return $this;
     }
 
-    public function selectApiVersion()
+    /**
+     * The API version of the Shopify Function.
+     */
+    public function selectApiVersion(): static
     {
         $this->selectField("apiVersion");
 
         return $this;
     }
 
-    public function selectApp(ShopifyShopifyFunctionAppArgumentsObject $argsObject = null)
+    /**
+     * The app that owns the Shopify Function.
+     */
+    public function selectApp(?ShopifyShopifyFunctionAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyShopifyFunctionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppBridge(ShopifyShopifyFunctionAppBridgeArgumentsObject $argsObject = null)
+    /**
+     * The App Bridge information for the Shopify Function.
+     */
+    public function selectAppBridge(?ShopifyShopifyFunctionAppBridgeArgumentsObject $argsObject = null): ShopifyFunctionsAppBridgeQueryObject
     {
         $object = new ShopifyFunctionsAppBridgeQueryObject("appBridge");
         if ($argsObject !== null) {
@@ -44,49 +59,70 @@ class ShopifyShopifyFunctionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppKey()
+    /**
+     * The client ID of the app that owns the Shopify Function.
+     */
+    public function selectAppKey(): static
     {
         $this->selectField("appKey");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the Shopify Function.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectHandle()
+    /**
+     * The handle of the Shopify Function.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * The ID of the Shopify Function.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInputQuery()
+    /**
+     * The input query of the Shopify Function.
+     */
+    public function selectInputQuery(): static
     {
         $this->selectField("inputQuery");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the Shopify Function.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectUseCreationUi()
+    /**
+     * If the Shopify Function uses the creation UI in the Admin.
+     */
+    public function selectUseCreationUi(): static
     {
         $this->selectField("useCreationUi");
 

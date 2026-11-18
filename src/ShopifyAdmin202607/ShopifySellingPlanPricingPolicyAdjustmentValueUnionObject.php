@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Represents a selling plan pricing policy adjustment value type.
+ */
 class ShopifySellingPlanPricingPolicyAdjustmentValueUnionObject extends UnionObject
 {
-    public function onShopifyMoneyV2()
+    public function onShopifyMoneyV2(): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifySellingPlanPricingPolicyAdjustmentValueUnionObject extends UnionObj
         return $object;
     }
 
-    public function onShopifySellingPlanPricingPolicyPercentageValue()
+    public function onShopifySellingPlanPricingPolicyPercentageValue(): ShopifySellingPlanPricingPolicyPercentageValueQueryObject
     {
         $object = new ShopifySellingPlanPricingPolicyPercentageValueQueryObject();
         $this->addPossibleType($object);

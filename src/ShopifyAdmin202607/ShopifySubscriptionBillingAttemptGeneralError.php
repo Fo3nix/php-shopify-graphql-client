@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * An error that occurred during a subscription billing attempt that doesn't fit other categories.
+ */
 class ShopifySubscriptionBillingAttemptGeneralError
 {
     protected $code;
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptGeneralErrorCodeEnumObject
+     * The error code for the failure.
+     *
+     * @return string A ShopifySubscriptionBillingAttemptGeneralErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }

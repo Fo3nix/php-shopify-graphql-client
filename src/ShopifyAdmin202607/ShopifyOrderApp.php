@@ -4,6 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyImage;
 
+/**
+ * Identifies the [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) that created an order. Common sources include "online store" for web purchases, "Point of Sale" for in-person sales, or custom app names for orders created through third-party integrations.
+ *
+ * Use this information to track order attribution, analyze sales channels, and route orders to appropriate fulfillment workflows based on their source.
+ */
 class ShopifyOrderApp
 {
     protected $icon;
@@ -12,27 +17,33 @@ class ShopifyOrderApp
 
     
     /**
+     * The application icon.
+     *
      * @return ShopifyImage
      */
-    public function getIcon()
+    public function getIcon(): ?ShopifyImage
     {
         return $this->icon;
     }
 
     
     /**
+     * The application ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the application.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

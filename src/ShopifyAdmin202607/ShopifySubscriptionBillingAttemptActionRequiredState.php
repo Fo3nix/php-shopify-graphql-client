@@ -2,17 +2,23 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySubscriptionBillingAttemptAction;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySubscriptionBillingAttemptActionHydrator;
 
+/**
+ * The billing attempt state that requires an action to resolve.
+ * Must complete the action required for the billing attempt to continue being processed.
+ */
 class ShopifySubscriptionBillingAttemptActionRequiredState
 {
     protected $action;
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptAction
+     * The action required to resolve the billing attempt.
+     *
+     * @return ShopifySubscriptionBillingAttemptPaymentChallenge
      */
-    public function getAction()
+    public function getAction(): ?ShopifySubscriptionBillingAttemptPaymentChallenge
     {
         return $this->action;
     }
@@ -25,7 +31,7 @@ class ShopifySubscriptionBillingAttemptActionRequiredState
         {
             $instance = new self();
             if (isset($data['action']) && $data['action'] !== null) {
-                $instance->action = ShopifySubscriptionBillingAttemptAction::fromArray($data['action']);
+                $instance->action = ShopifySubscriptionBillingAttemptActionHydrator::fromArray($data['action']);
             }
             return $instance;
         }
@@ -51,7 +57,7 @@ class ShopifySubscriptionBillingAttemptActionRequiredState
         {
             $data = [];
             if ($this->action !== null) {
-                $data['action'] = $this->action->asArray();
+                $data['action'] = ShopifySubscriptionBillingAttemptActionHydrator::toArray($this->action);
             }
             return $data;
         }

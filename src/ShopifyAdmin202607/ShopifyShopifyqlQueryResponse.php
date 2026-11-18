@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyqlTableData;
 
+/**
+ * A response to a ShopifyQL query.
+ */
 class ShopifyShopifyqlQueryResponse
 {
     protected $parseErrors;
@@ -11,18 +14,22 @@ class ShopifyShopifyqlQueryResponse
 
     
     /**
+     * A list of parse errors, if parsing fails.
+     *
      * @return string[]
      */
-    public function getParseErrors()
+    public function getParseErrors(): ?array
     {
         return $this->parseErrors;
     }
 
     
     /**
+     * The result in a tabular format with column and row data.
+     *
      * @return ShopifyShopifyqlTableData
      */
-    public function getTableData()
+    public function getTableData(): ?ShopifyShopifyqlTableData
     {
         return $this->tableData;
     }

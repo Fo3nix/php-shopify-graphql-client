@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The branding configuration for checkout and customer accounts.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBranding";
 
-    public function selectComponents(ShopifyCheckoutAndAccountsConfigurationBrandingComponentsArgumentsObject $argsObject = null)
+    /**
+     * The components that apply to all surfaces.
+     */
+    public function selectComponents(?ShopifyCheckoutAndAccountsConfigurationBrandingComponentsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingComponentsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingComponentsQueryObject("components");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingQueryObject extends QueryOb
         return $object;
     }
 
-    public function selectDesignTokens(ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensArgumentsObject $argsObject = null)
+    /**
+     * The design tokens allow you to set values that represent specific attributes of your brand like color and font. These attributes are used throughout the user interface. This brings consistency and allows you to easily make broad design changes.
+     */
+    public function selectDesignTokens(?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensQueryObject("designTokens");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingQueryObject extends QueryOb
         return $object;
     }
 
-    public function selectSurfaces(ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesArgumentsObject $argsObject = null)
+    /**
+     * The surface-specific customizations.
+     */
+    public function selectSurfaces(?ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSurfacesQueryObject("surfaces");
         if ($argsObject !== null) {

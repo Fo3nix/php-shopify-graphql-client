@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Carbon\Carbon;
 
+/**
+ * A setting for a presentment currency.
+ */
 class ShopifyCurrencySetting
 {
     protected $currencyCode;
@@ -14,45 +17,55 @@ class ShopifyCurrencySetting
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency's ISO code.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * The full name of the currency.
+     *
      * @return string
      */
-    public function getCurrencyName()
+    public function getCurrencyName(): ?string
     {
         return $this->currencyName;
     }
 
     
     /**
+     * Whether the currency is enabled or not. An enabled currency setting is visible to buyers and allows orders to be generated with that currency as presentment.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The manual rate, if enabled, that applies to this currency when converting from shop currency. This rate is specific to the associated market's currency setting.
+     *
      * @return string
      */
-    public function getManualRate()
+    public function getManualRate(): mixed
     {
         return $this->manualRate;
     }
 
     
     /**
+     * The date and time when the active exchange rate for the currency was last modified. It can be the automatic rate's creation date, or the manual rate's last updated at date if active.
+     *
      * @return Carbon
      */
-    public function getRateUpdatedAt()
+    public function getRateUpdatedAt(): ?Carbon
     {
         return $this->rateUpdatedAt;
     }

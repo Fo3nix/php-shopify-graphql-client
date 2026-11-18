@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyInventoryItem;
 
-class ShopifyInventoryShipmentLineItem
+/**
+ * Represents a single line item within an inventory shipment.
+ */
+class ShopifyInventoryShipmentLineItem implements ShopifyNode
 {
     protected $acceptedQuantity;
     protected $createdAt;
@@ -17,63 +20,77 @@ class ShopifyInventoryShipmentLineItem
 
     
     /**
+     * The quantity of items that were accepted in this shipment line item.
+     *
      * @return int
      */
-    public function getAcceptedQuantity()
+    public function getAcceptedQuantity(): ?int
     {
         return $this->acceptedQuantity;
     }
 
     
     /**
+     * The date and time the shipment line item was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The inventory item associated with this line item.
+     *
      * @return ShopifyInventoryItem
      */
-    public function getInventoryItem()
+    public function getInventoryItem(): ?ShopifyInventoryItem
     {
         return $this->inventoryItem;
     }
 
     
     /**
+     * The quantity of items in this shipment line item.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The quantity of items that were rejected in this shipment line item.
+     *
      * @return int
      */
-    public function getRejectedQuantity()
+    public function getRejectedQuantity(): ?int
     {
         return $this->rejectedQuantity;
     }
 
     
     /**
+     * The total quantity of units that haven't been accepted, rejected, or marked as canceled in this shipment line item.
+     *
      * @return int
      */
-    public function getUnreceivedQuantity()
+    public function getUnreceivedQuantity(): ?int
     {
         return $this->unreceivedQuantity;
     }

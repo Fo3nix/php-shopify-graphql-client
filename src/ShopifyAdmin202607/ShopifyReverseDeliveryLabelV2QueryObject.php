@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The return label file information for a reverse delivery.
+ */
 class ShopifyReverseDeliveryLabelV2QueryObject extends QueryObject
 {
     const OBJECT_NAME = "ReverseDeliveryLabelV2";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the reverse delivery label was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectPublicFileUrl()
+    /**
+     * A public link that can be used to download the label image.
+     */
+    public function selectPublicFileUrl(): static
     {
         $this->selectField("publicFileUrl");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the reverse delivery label was updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

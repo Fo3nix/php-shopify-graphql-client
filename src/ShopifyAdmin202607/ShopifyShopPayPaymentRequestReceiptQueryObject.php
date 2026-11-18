@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The receipt of Shop Pay payment request session submission.
+ */
 class ShopifyShopPayPaymentRequestReceiptQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestReceipt";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the payment request receipt was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectOrder(ShopifyShopPayPaymentRequestReceiptOrderArgumentsObject $argsObject = null)
+    /**
+     * The order that's associated with the payment request receipt.
+     */
+    public function selectOrder(?ShopifyShopPayPaymentRequestReceiptOrderArgumentsObject $argsObject = null): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject("order");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyShopPayPaymentRequestReceiptQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPaymentRequest(ShopifyShopPayPaymentRequestReceiptPaymentRequestArgumentsObject $argsObject = null)
+    /**
+     * The shop pay payment request object.
+     */
+    public function selectPaymentRequest(?ShopifyShopPayPaymentRequestReceiptPaymentRequestArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestQueryObject("paymentRequest");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyShopPayPaymentRequestReceiptQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProcessingStatus(ShopifyShopPayPaymentRequestReceiptProcessingStatusArgumentsObject $argsObject = null)
+    /**
+     * The status of the payment request session submission.
+     */
+    public function selectProcessingStatus(?ShopifyShopPayPaymentRequestReceiptProcessingStatusArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestReceiptProcessingStatusQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestReceiptProcessingStatusQueryObject("processingStatus");
         if ($argsObject !== null) {
@@ -48,14 +63,20 @@ class ShopifyShopPayPaymentRequestReceiptQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSourceIdentifier()
+    /**
+     * The source identifier provided in the `ShopPayPaymentRequestSessionCreate` mutation.
+     */
+    public function selectSourceIdentifier(): static
     {
         $this->selectField("sourceIdentifier");
 
         return $this;
     }
 
-    public function selectToken()
+    /**
+     * The token of the receipt, initially returned by an `ShopPayPaymentRequestSessionSubmit` mutation.
+     */
+    public function selectToken(): static
     {
         $this->selectField("token");
 

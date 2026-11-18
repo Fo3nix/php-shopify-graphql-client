@@ -12,7 +12,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyInventoryShipmentConnection;
 
-class ShopifyInventoryTransfer
+/**
+ * Tracks the movement of [`InventoryItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) objects between [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects. A transfer includes origin and destination information, [`InventoryTransferLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryTransferLineItem) objects with quantities, and shipment details.
+ *
+ * Transfers progress through multiple [`statuses`](https://shopify.dev/docs/api/admin-graphql/latest/enums/InventoryTransferStatus). The transfer maintains [`LocationSnapshot`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LocationSnapshot) objects of location details to preserve historical data even if locations change or are deleted later.
+ */
+class ShopifyInventoryTransfer implements ShopifyCommentEventSubject, ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $dateCreated;
     protected $destination;
@@ -36,171 +41,212 @@ class ShopifyInventoryTransfer
 
     
     /**
+     * The date and time the inventory transfer was created in UTC format.
+     *
      * @return Carbon
      */
-    public function getDateCreated()
+    public function getDateCreated(): ?Carbon
     {
         return $this->dateCreated;
     }
 
     
     /**
+     * Snapshot of the destination location (name, address, when snapped) with an optional link to the live Location object. If the original location is deleted, the snapshot data will still be available but the location link will be nil.
+     *
      * @return ShopifyLocationSnapshot
      */
-    public function getDestination()
+    public function getDestination(): ?ShopifyLocationSnapshot
     {
         return $this->destination;
     }
 
     
     /**
+     * The list of events associated with the inventory transfer.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * Whether the merchant has added timeline comments to the inventory transfer.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The line items associated with the inventory transfer.
+     *
      * @return ShopifyInventoryTransferLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyInventoryTransferLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The number of line items associated with the inventory transfer. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getLineItemsCount()
+    public function getLineItemsCount(): ?ShopifyCount
     {
         return $this->lineItemsCount;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The name of the inventory transfer.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * Additional note attached to the inventory transfer.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * Snapshot of the origin location (name, address, when snapped) with an optional link to the live Location object. If the original location is deleted, the snapshot data will still be available but the location link will be nil.
+     *
      * @return ShopifyLocationSnapshot
      */
-    public function getOrigin()
+    public function getOrigin(): ?ShopifyLocationSnapshot
     {
         return $this->origin;
     }
 
     
     /**
+     * The total quantity of items accepted, rejected, or marked as canceled in the transfer.
+     *
      * @return int
      */
-    public function getReceivedQuantity()
+    public function getReceivedQuantity(): ?int
     {
         return $this->receivedQuantity;
     }
 
     
     /**
+     * The reference name of the inventory transfer.
+     *
      * @return string
      */
-    public function getReferenceName()
+    public function getReferenceName(): ?string
     {
         return $this->referenceName;
     }
 
     
     /**
+     * The shipments associated with the inventory transfer.
+     *
      * @return ShopifyInventoryShipmentConnection
      */
-    public function getShipments()
+    public function getShipments(): ?ShopifyInventoryShipmentConnection
     {
         return $this->shipments;
     }
 
     
     /**
-     * @return ShopifyInventoryTransferStatusEnumObject
+     * The current status of the transfer.
+     *
+     * @return string A ShopifyInventoryTransferStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * A list of tags that have been added to the inventory transfer.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The total quantity of items being transferred.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }

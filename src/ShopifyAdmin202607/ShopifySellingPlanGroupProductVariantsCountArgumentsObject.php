@@ -8,7 +8,10 @@ class ShopifySellingPlanGroupProductVariantsCountArgumentsObject extends Argumen
 {
     protected $productId;
 
-    public function setProductId($productId)
+    /**
+     * The ID of the product to scope the count to.
+     */
+    public function setProductId($productId): static
     {
         $this->productId = $productId;
 

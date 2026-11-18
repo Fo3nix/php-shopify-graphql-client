@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootLocationByIdentifierArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["identifier"];
+
     protected $identifier;
 
-    public function setIdentifier(ShopifyLocationIdentifierInputInputObject $shopifyLocationIdentifierInputInputObject)
+    /**
+     * The identifier of the location.
+     */
+    public function setIdentifier(ShopifyLocationIdentifierInputInputObject $shopifyLocationIdentifierInputInputObject): static
     {
         $this->identifier = $shopifyLocationIdentifierInputInputObject;
 

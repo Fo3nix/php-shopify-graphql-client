@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySegmentFilterHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySegmentFilter;
+
+/**
+ * An auto-generated type which holds one SegmentFilter and a cursor during pagination.
+ */
 class ShopifySegmentFilterEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifySegmentFilterEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of SegmentFilterEdge.
+     *
+     * @return ShopifySegmentFilter
      */
-    public function getNode()
+    public function getNode(): ?ShopifySegmentFilter
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifySegmentFilterEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifySegmentFilterHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifySegmentFilterEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifySegmentFilterHydrator::toArray($this->node);
             }
             return $data;
         }

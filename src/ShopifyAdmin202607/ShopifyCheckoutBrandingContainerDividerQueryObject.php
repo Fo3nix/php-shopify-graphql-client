@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The container's divider customizations.
+ */
 class ShopifyCheckoutBrandingContainerDividerQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingContainerDivider";
 
-    public function selectBorderStyle()
+    /**
+     * The divider style.
+     */
+    public function selectBorderStyle(): static
     {
         $this->selectField("borderStyle");
 
         return $this;
     }
 
-    public function selectBorderWidth()
+    /**
+     * The divider width.
+     */
+    public function selectBorderWidth(): static
     {
         $this->selectField("borderWidth");
 
         return $this;
     }
 
-    public function selectVisibility()
+    /**
+     * The divider visibility.
+     */
+    public function selectVisibility(): static
     {
         $this->selectField("visibility");
 

@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyFulfillmentLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCalculatedRestockingFee;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 
+/**
+ * A calculated return line item.
+ */
 class ShopifyCalculatedReturnLineItem
 {
     protected $fulfillmentLineItem;
@@ -18,63 +21,77 @@ class ShopifyCalculatedReturnLineItem
 
     
     /**
+     * The fulfillment line item from which items are returned.
+     *
      * @return ShopifyFulfillmentLineItem
      */
-    public function getFulfillmentLineItem()
+    public function getFulfillmentLineItem(): ?ShopifyFulfillmentLineItem
     {
         return $this->fulfillmentLineItem;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The quantity being returned.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The restocking fee of the return line item.
+     *
      * @return ShopifyCalculatedRestockingFee
      */
-    public function getRestockingFee()
+    public function getRestockingFee(): ?ShopifyCalculatedRestockingFee
     {
         return $this->restockingFee;
     }
 
     
     /**
+     * The subtotal of the return line item before order discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalBeforeOrderDiscountsSet()
+    public function getSubtotalBeforeOrderDiscountsSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalBeforeOrderDiscountsSet;
     }
 
     
     /**
+     * The subtotal of the return line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalSet()
+    public function getSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalSet;
     }
 
     
     /**
+     * The total tax of the return line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyApp;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCollectionConditionsSourceConnection;
 
+/**
+ * An app together with the shareable collection sources it publishes for the shop.
+ */
 class ShopifyCollectionConditionsSourcesByApp
 {
     protected $app;
@@ -12,18 +15,22 @@ class ShopifyCollectionConditionsSourcesByApp
 
     
     /**
+     * The app that publishes the collection sources.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The shareable collection sources owned by this app.
+     *
      * @return ShopifyCollectionConditionsSourceConnection
      */
-    public function getSources()
+    public function getSources(): ?ShopifyCollectionConditionsSourceConnection
     {
         return $this->sources;
     }

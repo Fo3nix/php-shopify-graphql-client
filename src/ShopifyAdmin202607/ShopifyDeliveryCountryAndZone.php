@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryCountry;
 
+/**
+ * The country details and the associated shipping zone.
+ */
 class ShopifyDeliveryCountryAndZone
 {
     protected $country;
@@ -11,18 +14,22 @@ class ShopifyDeliveryCountryAndZone
 
     
     /**
+     * The country details.
+     *
      * @return ShopifyDeliveryCountry
      */
-    public function getCountry()
+    public function getCountry(): ?ShopifyDeliveryCountry
     {
         return $this->country;
     }
 
     
     /**
+     * The name of the shipping zone.
+     *
      * @return string
      */
-    public function getZone()
+    public function getZone(): ?string
     {
         return $this->zone;
     }

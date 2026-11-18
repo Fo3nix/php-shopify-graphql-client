@@ -9,7 +9,10 @@ class ShopifyStaffMemberAvatarArgumentsObject extends ArgumentsObject
 {
     protected $fallback;
 
-    public function setFallback($shopifyStaffMemberDefaultImage)
+    /**
+     * The default image returned if the staff member has no avatar.
+     */
+    public function setFallback($shopifyStaffMemberDefaultImage): static
     {
         $this->fallback = new RawObject($shopifyStaffMemberDefaultImage);
 

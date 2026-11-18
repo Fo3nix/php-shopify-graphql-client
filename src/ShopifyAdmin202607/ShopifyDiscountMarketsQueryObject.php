@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Markets where the discount is available.
+ */
 class ShopifyDiscountMarketsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountMarkets";
 
-    public function selectMarkets(ShopifyDiscountMarketsMarketsArgumentsObject $argsObject = null)
+    /**
+     * The list of markets where the discount is available.
+     */
+    public function selectMarkets(?ShopifyDiscountMarketsMarketsArgumentsObject $argsObject = null): ShopifyMarketConnectionQueryObject
     {
         $object = new ShopifyMarketConnectionQueryObject("markets");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyDiscountMarketsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMarketsCount()
+    /**
+     * The number of markets where the discount is available.
+     */
+    public function selectMarketsCount(): static
     {
         $this->selectField("marketsCount");
 

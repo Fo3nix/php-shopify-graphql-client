@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectCapabilitiesPublis
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectCapabilitiesRenderable;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectCapabilitiesTranslatable;
 
+/**
+ * Provides the capabilities of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilities
 {
     protected $onlineStore;
@@ -16,36 +19,44 @@ class ShopifyMetaobjectCapabilities
 
     
     /**
+     * Indicates whether a metaobject definition can be displayed as a page on the Online Store.
+     *
      * @return ShopifyMetaobjectCapabilitiesOnlineStore
      */
-    public function getOnlineStore()
+    public function getOnlineStore(): ?ShopifyMetaobjectCapabilitiesOnlineStore
     {
         return $this->onlineStore;
     }
 
     
     /**
+     * Indicate whether a metaobject definition is publishable.
+     *
      * @return ShopifyMetaobjectCapabilitiesPublishable
      */
-    public function getPublishable()
+    public function getPublishable(): ?ShopifyMetaobjectCapabilitiesPublishable
     {
         return $this->publishable;
     }
 
     
     /**
+     * Indicate whether a metaobject definition is renderable and exposes SEO data.
+     *
      * @return ShopifyMetaobjectCapabilitiesRenderable
      */
-    public function getRenderable()
+    public function getRenderable(): ?ShopifyMetaobjectCapabilitiesRenderable
     {
         return $this->renderable;
     }
 
     
     /**
+     * Indicate whether a metaobject definition is translatable.
+     *
      * @return ShopifyMetaobjectCapabilitiesTranslatable
      */
-    public function getTranslatable()
+    public function getTranslatable(): ?ShopifyMetaobjectCapabilitiesTranslatable
     {
         return $this->translatable;
     }

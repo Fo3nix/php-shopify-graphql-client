@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The sign-in-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurfaceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingSignInSurface";
 
-    public function selectComponents(ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurfaceComponentsArgumentsObject $argsObject = null)
+    /**
+     * The sign-in components.
+     */
+    public function selectComponents(?ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurfaceComponentsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsQueryObject("components");
         if ($argsObject !== null) {

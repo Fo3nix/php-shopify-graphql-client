@@ -8,7 +8,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsAssociatedOrd
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsBalanceTransactionAssociatedPayout;
 use Carbon\Carbon;
 
-class ShopifyShopifyPaymentsBalanceTransaction
+/**
+ * A transaction that contributes to a Shopify Payments account balance. Records money movement from charges, refunds, payouts, adjustments, or other payment activities. Includes the gross amount, processing fees, and resulting net amount that affects the account balance. Links to the source of the transaction and associated [`ShopifyPaymentsPayout`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsPayout) details, with optional references to [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) objects or adjustment reasons when applicable.
+ */
+class ShopifyShopifyPaymentsBalanceTransaction implements ShopifyNode
 {
     protected $adjustmentReason;
     protected $adjustmentsOrders;
@@ -27,126 +30,158 @@ class ShopifyShopifyPaymentsBalanceTransaction
 
     
     /**
+     * The reason for the adjustment that's associated with the transaction.
+     *             If the source_type isn't an adjustment, the value will be null.
+     *
      * @return string
      */
-    public function getAdjustmentReason()
+    public function getAdjustmentReason(): ?string
     {
         return $this->adjustmentReason;
     }
 
     
     /**
+     * The adjustment orders associated to the transaction.
+     *
      * @return ShopifyShopifyPaymentsAdjustmentOrder[]
      */
-    public function getAdjustmentsOrders()
+    public function getAdjustmentsOrders(): ?array
     {
         return $this->adjustmentsOrders;
     }
 
     
     /**
+     * The amount contributing to the balance transaction.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The associated order for the balance transaction.
+     *
      * @return ShopifyShopifyPaymentsAssociatedOrder
      */
-    public function getAssociatedOrder()
+    public function getAssociatedOrder(): ?ShopifyShopifyPaymentsAssociatedOrder
     {
         return $this->associatedOrder;
     }
 
     
     /**
+     * Payout associated with the transaction.
+     *
      * @return ShopifyShopifyPaymentsBalanceTransactionAssociatedPayout
      */
-    public function getAssociatedPayout()
+    public function getAssociatedPayout(): ?ShopifyShopifyPaymentsBalanceTransactionAssociatedPayout
     {
         return $this->associatedPayout;
     }
 
     
     /**
+     * The fee amount contributing to the balance transaction.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFee()
+    public function getFee(): ?ShopifyMoneyV2
     {
         return $this->fee;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The net amount contributing to the merchant's balance.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNet()
+    public function getNet(): ?ShopifyMoneyV2
     {
         return $this->net;
     }
 
     
     /**
+     * The ID of the resource leading to the transaction.
+     *
      * @return string
      */
-    public function getSourceId()
+    public function getSourceId(): mixed
     {
         return $this->sourceId;
     }
 
     
     /**
+     * The id of the
+     *             [Order Transaction](https://shopify.dev/docs/admin-api/rest/reference/orders/transaction)
+     *
+     *             that resulted in this balance transaction.
+     *
      * @return string
      */
-    public function getSourceOrderTransactionId()
+    public function getSourceOrderTransactionId(): mixed
     {
         return $this->sourceOrderTransactionId;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsSourceTypeEnumObject
+     * The source type of the balance transaction.
+     *
+     * @return string A ShopifyShopifyPaymentsSourceTypeEnumObject value
      */
-    public function getSourceType()
+    public function getSourceType(): ?string
     {
         return $this->sourceType;
     }
 
     
     /**
+     * Whether the transaction was created in test mode.
+     *
      * @return bool
      */
-    public function getTest()
+    public function getTest(): ?bool
     {
         return $this->test;
     }
 
     
     /**
+     * The date and time when the balance transaction was processed.
+     *
      * @return Carbon
      */
-    public function getTransactionDate()
+    public function getTransactionDate(): ?Carbon
     {
         return $this->transactionDate;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsTransactionTypeEnumObject
+     * The type of transaction.
+     *
+     * @return string A ShopifyShopifyPaymentsTransactionTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

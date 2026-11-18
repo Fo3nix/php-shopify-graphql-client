@@ -6,7 +6,14 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentScheduleConnection;
 
-class ShopifyPaymentTerms
+/**
+ * Payment conditions for an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) or [`DraftOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder), including when payment is due and how it's scheduled. Payment terms are created from templates that specify net terms (payment due after a certain number of days) or fixed schedules with specific due dates. You can optionally provide custom payment schedules using [`PaymentScheduleInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/PaymentScheduleInput).
+ *
+ * Each payment term contains one or more [`PaymentSchedule`](https://shopify.dev/docs/api/admin-graphql/latest/objects/PaymentSchedule), which you can access through the [`paymentSchedules`](https://shopify.dev/docs/api/admin-graphql/latest/objects/PaymentTerms#field-PaymentTerms.fields.paymentSchedules) field. Payment schedules contain detailed information for each payment installment.
+ *
+ * Learn more about [payment terms](https://shopify.dev/docs/apps/build/checkout/payments/payment-terms).
+ */
+class ShopifyPaymentTerms implements ShopifyNode
 {
     protected $draftOrder;
     protected $due;
@@ -21,90 +28,110 @@ class ShopifyPaymentTerms
 
     
     /**
+     * The draft order associated with the payment terms.
+     *
      * @return ShopifyDraftOrder
      */
-    public function getDraftOrder()
+    public function getDraftOrder(): ?ShopifyDraftOrder
     {
         return $this->draftOrder;
     }
 
     
     /**
+     * Whether payment terms have a payment schedule that's due.
+     *
      * @return bool
      */
-    public function getDue()
+    public function getDue(): ?bool
     {
         return $this->due;
     }
 
     
     /**
+     * Duration of payment terms in days based on the payment terms template used to create the payment terms.
+     *
      * @return int
      */
-    public function getDueInDays()
+    public function getDueInDays(): ?int
     {
         return $this->dueInDays;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The order associated with the payment terms.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * Whether the payment terms have overdue payment schedules.
+     *
      * @return bool
      */
-    public function getOverdue()
+    public function getOverdue(): ?bool
     {
         return $this->overdue;
     }
 
     
     /**
+     * List of schedules for the payment terms.
+     *
      * @return ShopifyPaymentScheduleConnection
      */
-    public function getPaymentSchedules()
+    public function getPaymentSchedules(): ?ShopifyPaymentScheduleConnection
     {
         return $this->paymentSchedules;
     }
 
     
     /**
+     * The name of the payment terms template used to create the payment terms.
+     *
      * @return string
      */
-    public function getPaymentTermsName()
+    public function getPaymentTermsName(): ?string
     {
         return $this->paymentTermsName;
     }
 
     
     /**
-     * @return ShopifyPaymentTermsTypeEnumObject
+     * The payment terms template type used to create the payment terms.
+     *
+     * @return string A ShopifyPaymentTermsTypeEnumObject value
      */
-    public function getPaymentTermsType()
+    public function getPaymentTermsType(): ?string
     {
         return $this->paymentTermsType;
     }
 
     
     /**
+     * The payment terms name, translated into the shop admin's preferred language.
+     *
      * @return string
      */
-    public function getTranslatedName()
+    public function getTranslatedName(): ?string
     {
         return $this->translatedName;
     }

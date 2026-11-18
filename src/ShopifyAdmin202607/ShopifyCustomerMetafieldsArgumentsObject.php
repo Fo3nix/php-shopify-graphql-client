@@ -14,49 +14,70 @@ class ShopifyCustomerMetafieldsArgumentsObject extends ArgumentsObject
     protected $before;
     protected $reverse;
 
-    public function setNamespace($namespace)
+    /**
+     * The metafield namespace to filter by. If omitted, all metafields are returned.
+     */
+    public function setNamespace($namespace): static
     {
         $this->namespace = $namespace;
 
         return $this;
     }
 
-    public function setKeys(array $keys)
+    /**
+     * A list of metafields to retrieve, in the format `namespace.key`. If the namespace is omitted, then the app-reserved namespace is used. Each returned metafield's `key` field uses the same format as its entry in this list: `custom.material` returns `custom.material`, and `material` returns `material`. App-reserved namespaces are returned in resolved form, such as `app--12345--foo.material` for `$app:foo.material`. Metafields are returned in the order of this list, and keys that don't match a metafield are left out. Can't be used with the `namespace` argument.
+     */
+    public function setKeys(array $keys): static
     {
         $this->keys = $keys;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 

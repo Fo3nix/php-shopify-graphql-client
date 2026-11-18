@@ -11,7 +11,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyAbandonedCheckoutLineItemPar
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProduct;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductVariant;
 
-class ShopifyAbandonedCheckoutLineItem
+/**
+ * A single line item in an abandoned checkout.
+ */
+class ShopifyAbandonedCheckoutLineItem implements ShopifyNode
 {
     protected $components;
     protected $customAttributes;
@@ -34,162 +37,202 @@ class ShopifyAbandonedCheckoutLineItem
 
     
     /**
+     * A list of line item components for this line item.
+     *
      * @return ShopifyAbandonedCheckoutLineItemComponent[]
      */
-    public function getComponents()
+    public function getComponents(): ?array
     {
         return $this->components;
     }
 
     
     /**
+     * A list of extra information that has been added to the line item.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * Discount allocations that have been applied on the line item.
+     *
      * @return ShopifyDiscountAllocationConnection
      */
-    public function getDiscountAllocations()
+    public function getDiscountAllocations(): ?ShopifyDiscountAllocationConnection
     {
         return $this->discountAllocations;
     }
 
     
     /**
+     * Final total price for the entire quantity of this line item, including discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalPriceSet()
+    public function getDiscountedTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalPriceSet;
     }
 
     
     /**
+     * The total price for the entire quantity of this line item, after all discounts are applied, at both the line item and code-based line item level.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalPriceWithCodeDiscount()
+    public function getDiscountedTotalPriceWithCodeDiscount(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalPriceWithCodeDiscount;
     }
 
     
     /**
+     * The price of a single variant unit after discounts are applied at the line item level, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceSet()
+    public function getDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceSet;
     }
 
     
     /**
+     * The price of a single variant unit after all discounts are applied, at both the line item and code-based line item level.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceWithCodeDiscount()
+    public function getDiscountedUnitPriceWithCodeDiscount(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceWithCodeDiscount;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image associated with the line item's variant or product.
+     * NULL if the line item has no product, or if neither the variant nor the product have an image.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * Original total price for the entire quantity of this line item, before discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalTotalPriceSet()
+    public function getOriginalTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalTotalPriceSet;
     }
 
     
     /**
+     * Original price for a single unit of this line item, before discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The parent relationship for this line item.
+     *
      * @return ShopifyAbandonedCheckoutLineItemParentRelationship
      */
-    public function getParentRelationship()
+    public function getParentRelationship(): ?ShopifyAbandonedCheckoutLineItemParentRelationship
     {
         return $this->parentRelationship;
     }
 
     
     /**
+     * Product for this line item.
+     * NULL for custom line items and products that were deleted after checkout began.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The quantity of the line item.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * SKU for the inventory item associated with the variant, if any.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * Title of the line item. Defaults to the product's title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * Product variant for this line item.
+     * NULL for custom line items and variants that were deleted after checkout began.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }
 
     
     /**
+     * Title of the variant for this line item.
+     * NULL for custom line items and products that don't have distinct variants.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The heading level customizations.
+ */
 class ShopifyCheckoutBrandingHeadingLevelQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingHeadingLevel";
 
-    public function selectTypography(ShopifyCheckoutBrandingHeadingLevelTypographyArgumentsObject $argsObject = null)
+    /**
+     * The typography customizations used for headings.
+     */
+    public function selectTypography(?ShopifyCheckoutBrandingHeadingLevelTypographyArgumentsObject $argsObject = null): ShopifyCheckoutBrandingTypographyStyleQueryObject
     {
         $object = new ShopifyCheckoutBrandingTypographyStyleQueryObject("typography");
         if ($argsObject !== null) {

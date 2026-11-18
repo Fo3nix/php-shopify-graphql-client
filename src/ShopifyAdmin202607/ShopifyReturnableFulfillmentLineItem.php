@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyFulfillmentLineItem;
 
+/**
+ * A returnable fulfillment line item.
+ */
 class ShopifyReturnableFulfillmentLineItem
 {
     protected $fulfillmentLineItem;
@@ -11,18 +14,22 @@ class ShopifyReturnableFulfillmentLineItem
 
     
     /**
+     * The fulfillment line item that can be returned.
+     *
      * @return ShopifyFulfillmentLineItem
      */
-    public function getFulfillmentLineItem()
+    public function getFulfillmentLineItem(): ?ShopifyFulfillmentLineItem
     {
         return $this->fulfillmentLineItem;
     }
 
     
     /**
+     * The quantity available to be returned.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }

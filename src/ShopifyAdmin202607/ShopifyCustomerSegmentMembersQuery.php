@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-class ShopifyCustomerSegmentMembersQuery
+/**
+ * A job to determine a list of members, such as customers, that are associated with an individual segment.
+ */
+class ShopifyCustomerSegmentMembersQuery implements ShopifyJobResult, ShopifyNode
 {
     protected $currentCount;
     protected $done;
@@ -10,27 +13,33 @@ class ShopifyCustomerSegmentMembersQuery
 
     
     /**
+     * The current total number of members in a given segment.
+     *
      * @return int
      */
-    public function getCurrentCount()
+    public function getCurrentCount(): ?int
     {
         return $this->currentCount;
     }
 
     
     /**
+     * This indicates if the job is still queued or has been run.
+     *
      * @return bool
      */
-    public function getDone()
+    public function getDone(): ?bool
     {
         return $this->done;
     }
 
     
     /**
+     * A globally-unique ID that's returned when running an asynchronous mutation.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

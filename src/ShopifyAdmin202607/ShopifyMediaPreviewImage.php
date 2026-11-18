@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyImage;
 
+/**
+ * Represents the preview image for a media.
+ */
 class ShopifyMediaPreviewImage
 {
     protected $image;
@@ -11,18 +14,22 @@ class ShopifyMediaPreviewImage
 
     
     /**
+     * The preview image for the media. Returns `null` until `status` is `READY`.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
-     * @return ShopifyMediaPreviewImageStatusEnumObject
+     * Current status of the preview image.
+     *
+     * @return string A ShopifyMediaPreviewImageStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

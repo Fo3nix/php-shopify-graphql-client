@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The footer content customizations.
+ */
 class ShopifyCheckoutBrandingFooterContent
 {
     protected $visibility;
 
     
     /**
-     * @return ShopifyCheckoutBrandingVisibilityEnumObject
+     * The visibility of the footer content. Shopify reserves the right to add required legal notices to the footer and prevent them from being modified or hidden. This setting doesn't control the visibility of those notices.
+     *
+     * @return string A ShopifyCheckoutBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

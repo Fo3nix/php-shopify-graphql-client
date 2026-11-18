@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The buttons customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingButtonQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingButton";
 
-    public function selectBlockPadding()
+    /**
+     * The block padding.
+     */
+    public function selectBlockPadding(): static
     {
         $this->selectField("blockPadding");
 
         return $this;
     }
 
-    public function selectBorder()
+    /**
+     * The border.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectCornerRadius()
+    /**
+     * The corner radius.
+     */
+    public function selectCornerRadius(): static
     {
         $this->selectField("cornerRadius");
 
         return $this;
     }
 
-    public function selectInlinePadding()
+    /**
+     * The inline padding.
+     */
+    public function selectInlinePadding(): static
     {
         $this->selectField("inlinePadding");
 
         return $this;
     }
 
-    public function selectTypography(ShopifyCheckoutAndAccountsConfigurationBrandingButtonTypographyArgumentsObject $argsObject = null)
+    /**
+     * The typography.
+     */
+    public function selectTypography(?ShopifyCheckoutAndAccountsConfigurationBrandingButtonTypographyArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyleQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyleQueryObject("typography");
         if ($argsObject !== null) {

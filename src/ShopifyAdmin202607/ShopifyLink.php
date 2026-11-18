@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTranslation;
 
-class ShopifyLink
+/**
+ * A link to direct users to.
+ */
+class ShopifyLink implements ShopifyHasPublishedTranslations
 {
     protected $label;
     protected $translations;
@@ -12,27 +15,33 @@ class ShopifyLink
 
     
     /**
+     * A context-sensitive label for the link.
+     *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The URL that the link visits.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

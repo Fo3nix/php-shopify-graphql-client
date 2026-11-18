@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyFileError;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMediaPreviewImage;
 
-class ShopifyGenericFile
+/**
+ * Represents any file other than HTML.
+ */
+class ShopifyGenericFile implements ShopifyFile, ShopifyNode
 {
     protected $alt;
     protected $createdAt;
@@ -21,90 +24,110 @@ class ShopifyGenericFile
 
     
     /**
+     * A word or phrase to describe the contents or the function of a file.
+     *
      * @return string
      */
-    public function getAlt()
+    public function getAlt(): ?string
     {
         return $this->alt;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Any errors that have occurred on the file.
+     *
      * @return ShopifyFileError[]
      */
-    public function getFileErrors()
+    public function getFileErrors(): ?array
     {
         return $this->fileErrors;
     }
 
     
     /**
-     * @return ShopifyFileStatusEnumObject
+     * The status of the file.
+     *
+     * @return string A ShopifyFileStatusEnumObject value
      */
-    public function getFileStatus()
+    public function getFileStatus(): ?string
     {
         return $this->fileStatus;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The generic file's MIME type.
+     *
      * @return string
      */
-    public function getMimeType()
+    public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
     
     /**
+     * The generic file's size in bytes.
+     *
      * @return int
      */
-    public function getOriginalFileSize()
+    public function getOriginalFileSize(): ?int
     {
         return $this->originalFileSize;
     }
 
     
     /**
+     * The preview image for the media.
+     *
      * @return ShopifyMediaPreviewImage
      */
-    public function getPreview()
+    public function getPreview(): ?ShopifyMediaPreviewImage
     {
         return $this->preview;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The generic file's URL.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

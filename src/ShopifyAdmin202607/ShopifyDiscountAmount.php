@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * The fixed amount value of a discount, and whether the amount is applied to each entitled item or spread evenly across the entitled items.
+ */
 class ShopifyDiscountAmount
 {
     protected $amount;
@@ -11,18 +14,22 @@ class ShopifyDiscountAmount
 
     
     /**
+     * The value of the discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * If true, then the discount is applied to each of the entitled items. If false, then the amount is split across all of the entitled items.
+     *
      * @return bool
      */
-    public function getAppliesOnEachItem()
+    public function getAppliesOnEachItem(): ?bool
     {
         return $this->appliesOnEachItem;
     }

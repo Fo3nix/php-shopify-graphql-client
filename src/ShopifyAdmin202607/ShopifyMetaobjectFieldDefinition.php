@@ -6,6 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectFieldDefinitionCap
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldDefinitionValidation;
 
+/**
+ * Defines a field for a MetaobjectDefinition with properties
+ * such as the field's data type and validations.
+ */
 class ShopifyMetaobjectFieldDefinition
 {
     protected $capabilities;
@@ -18,63 +22,78 @@ class ShopifyMetaobjectFieldDefinition
 
     
     /**
+     * Capabilities available for this metaobject field definition.
+     *
      * @return ShopifyMetaobjectFieldDefinitionCapabilities
      */
-    public function getCapabilities()
+    public function getCapabilities(): ?ShopifyMetaobjectFieldDefinitionCapabilities
     {
         return $this->capabilities;
     }
 
     
     /**
+     * The administrative description.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A key name used to identify the field within the metaobject composition.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The human-readable name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * Required status of the field within the metaobject composition.
+     *
      * @return bool
      */
-    public function getRequired()
+    public function getRequired(): ?bool
     {
         return $this->required;
     }
 
     
     /**
+     * The type of data that the field stores.
+     *
      * @return ShopifyMetafieldDefinitionType
      */
-    public function getType()
+    public function getType(): ?ShopifyMetafieldDefinitionType
     {
         return $this->type;
     }
 
     
     /**
+     * A list of [validation options](https://shopify.dev/apps/metafields/definitions/validation) for
+     * the field. For example, a field with the type `date` can set a minimum date requirement.
+     *
      * @return ShopifyMetafieldDefinitionValidation[]
      */
-    public function getValidations()
+    public function getValidations(): ?array
     {
         return $this->validations;
     }

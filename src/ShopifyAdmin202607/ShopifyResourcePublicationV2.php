@@ -4,7 +4,15 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPublication;
 use Carbon\Carbon;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPublishableHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPublishable;
 
+/**
+ * A resource publication represents information about the publication of a resource.
+ * Unlike `ResourcePublication`, an instance of `ResourcePublicationV2` can't be unpublished. It must either be published or scheduled to be published.
+ *
+ * See [ResourcePublication](/api/admin-graphql/latest/objects/ResourcePublication) for more context.
+ */
 class ShopifyResourcePublicationV2
 {
     protected $isPublished;
@@ -14,36 +22,45 @@ class ShopifyResourcePublicationV2
 
     
     /**
+     * Whether the resource publication is published. If true, then the resource publication is published to the publication.
+     * If false, then the resource publication is staged to be published to the publication.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The publication the resource publication is published to.
+     *
      * @return ShopifyPublication
      */
-    public function getPublication()
+    public function getPublication(): ?ShopifyPublication
     {
         return $this->publication;
     }
 
     
     /**
+     * The date that the resource publication was or is going to be published to the publication.
+     *
      * @return Carbon
      */
-    public function getPublishDate()
+    public function getPublishDate(): ?Carbon
     {
         return $this->publishDate;
     }
 
     
     /**
-     * @return mixed
+     * The resource published to the publication.
+     *
+     * @return ShopifyPublishable
      */
-    public function getPublishable()
+    public function getPublishable(): ?ShopifyPublishable
     {
         return $this->publishable;
     }
@@ -65,7 +82,7 @@ class ShopifyResourcePublicationV2
                 $instance->publishDate = new Carbon($data['publishDate']);
             }
             if (isset($data['publishable']) && $data['publishable'] !== null) {
-                $instance->publishable = $data['publishable'];
+                $instance->publishable = ShopifyPublishableHydrator::fromArray($data['publishable']);
             }
             return $instance;
         }
@@ -100,7 +117,7 @@ class ShopifyResourcePublicationV2
                 $data['publishDate'] = $this->publishDate->toIso8601String();
             }
             if ($this->publishable !== null) {
-                $data['publishable'] = $this->publishable;
+                $data['publishable'] = ShopifyPublishableHydrator::toArray($this->publishable);
             }
             return $data;
         }

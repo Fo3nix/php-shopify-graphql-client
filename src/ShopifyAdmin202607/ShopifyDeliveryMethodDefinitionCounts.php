@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The number of method definitions for a zone, separated into merchant-owned and participant definitions.
+ */
 class ShopifyDeliveryMethodDefinitionCounts
 {
     protected $participantDefinitionsCount;
@@ -9,18 +12,22 @@ class ShopifyDeliveryMethodDefinitionCounts
 
     
     /**
+     * The number of participant method definitions for the specified zone.
+     *
      * @return int
      */
-    public function getParticipantDefinitionsCount()
+    public function getParticipantDefinitionsCount(): ?int
     {
         return $this->participantDefinitionsCount;
     }
 
     
     /**
+     * The number of merchant-defined method definitions for the specified zone.
+     *
      * @return int
      */
-    public function getRateDefinitionsCount()
+    public function getRateDefinitionsCount(): ?int
     {
         return $this->rateDefinitionsCount;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The checkout-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCheckoutComponents";
 
-    public function selectBuyerJourney(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsBuyerJourneyArgumentsObject $argsObject = null)
+    /**
+     * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+     */
+    public function selectBuyerJourney(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsBuyerJourneyArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingBuyerJourneyQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingBuyerJourneyQueryObject("buyerJourney");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectCartLink(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsCartLinkArgumentsObject $argsObject = null)
+    /**
+     * The checkout cart link customizations. For example, by setting the visibility field to `HIDDEN`, you can hide the cart icon in the header for one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+     */
+    public function selectCartLink(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsCartLinkArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCartLinkQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCartLinkQueryObject("cartLink");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectContent(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsContentArgumentsObject $argsObject = null)
+    /**
+     * The content container customizations.
+     */
+    public function selectContent(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsContentArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingContentQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingContentQueryObject("content");
         if ($argsObject !== null) {
@@ -41,7 +53,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectExpressCheckout(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsExpressCheckoutArgumentsObject $argsObject = null)
+    /**
+     * The express checkout customizations.
+     */
+    public function selectExpressCheckout(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsExpressCheckoutArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingExpressCheckoutQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingExpressCheckoutQueryObject("expressCheckout");
         if ($argsObject !== null) {
@@ -52,7 +67,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectFooter(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsFooterArgumentsObject $argsObject = null)
+    /**
+     * The checkout footer customizations.
+     */
+    public function selectFooter(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsFooterArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutFooterQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutFooterQueryObject("footer");
         if ($argsObject !== null) {
@@ -63,7 +81,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectHeader(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsHeaderArgumentsObject $argsObject = null)
+    /**
+     * The checkout header customizations.
+     */
+    public function selectHeader(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsHeaderArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutHeaderQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutHeaderQueryObject("header");
         if ($argsObject !== null) {
@@ -74,7 +95,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectMain(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsMainArgumentsObject $argsObject = null)
+    /**
+     * The main checkout customizations.
+     */
+    public function selectMain(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsMainArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingMainQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingMainQueryObject("main");
         if ($argsObject !== null) {
@@ -85,7 +109,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsQueryObje
         return $object;
     }
 
-    public function selectOrderSummary(ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsOrderSummaryArgumentsObject $argsObject = null)
+    /**
+     * The order summary customizations.
+     */
+    public function selectOrderSummary(?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponentsOrderSummaryArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject("orderSummary");
         if ($argsObject !== null) {

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentMandate;
 
+/**
+ * The payment collection details for an order that requires additional payment following an edit to the order.
+ */
 class ShopifyOrderPaymentCollectionDetails
 {
     protected $additionalPaymentCollectionUrl;
@@ -11,18 +14,22 @@ class ShopifyOrderPaymentCollectionDetails
 
     
     /**
+     * The URL to use for collecting an additional payment on the order.
+     *
      * @return string
      */
-    public function getAdditionalPaymentCollectionUrl()
+    public function getAdditionalPaymentCollectionUrl(): mixed
     {
         return $this->additionalPaymentCollectionUrl;
     }
 
     
     /**
+     * The list of vaulted payment methods for the order with their permissions.
+     *
      * @return ShopifyPaymentMandate[]
      */
-    public function getVaultedPaymentMethods()
+    public function getVaultedPaymentMethods(): ?array
     {
         return $this->vaultedPaymentMethods;
     }

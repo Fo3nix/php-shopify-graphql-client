@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The entitlements for themes.
+ */
 class ShopifyMarketsThemesEntitlement
 {
     protected $enabled;
 
     
     /**
+     * Whether themes are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

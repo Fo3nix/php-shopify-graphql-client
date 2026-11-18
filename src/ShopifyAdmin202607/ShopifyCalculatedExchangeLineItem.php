@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCalculatedDiscountAllocation
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductVariant;
 
+/**
+ * A calculated exchange line item.
+ */
 class ShopifyCalculatedExchangeLineItem
 {
     protected $calculatedDiscountAllocations;
@@ -19,72 +22,88 @@ class ShopifyCalculatedExchangeLineItem
 
     
     /**
+     * The discounts that have been allocated onto the line item by discount applications.
+     *
      * @return ShopifyCalculatedDiscountAllocation[]
      */
-    public function getCalculatedDiscountAllocations()
+    public function getCalculatedDiscountAllocations(): ?array
     {
         return $this->calculatedDiscountAllocations;
     }
 
     
     /**
+     * The unit price of the exchange line item after discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceSet()
+    public function getDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The original unit price of the exchange line item before discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The quantity being exchanged.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The calculated subtotal set of the exchange line item, including discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalSet()
+    public function getSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalSet;
     }
 
     
     /**
+     * The total tax of the exchange line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }
 
     
     /**
+     * The variant being exchanged.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }

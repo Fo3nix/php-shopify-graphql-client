@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocation;
 
-class ShopifyReverseFulfillmentOrderDisposition
+/**
+ * The details of the arrangement of an item.
+ */
+class ShopifyReverseFulfillmentOrderDisposition implements ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -15,45 +18,55 @@ class ShopifyReverseFulfillmentOrderDisposition
 
     
     /**
+     * The date and time when the disposition was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location where the disposition occurred.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The number of disposed units.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
-     * @return ShopifyReverseFulfillmentOrderDispositionTypeEnumObject
+     * The final arrangement of an item.
+     *
+     * @return string A ShopifyReverseFulfillmentOrderDispositionTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

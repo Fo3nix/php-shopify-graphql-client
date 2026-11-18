@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one MobilePlatformApplication and a cursor during pagination.
+ */
 class ShopifyMobilePlatformApplicationEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MobilePlatformApplicationEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyMobilePlatformApplicationEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of MobilePlatformApplicationEdge.
+     */
+    public function selectNode(?ShopifyMobilePlatformApplicationEdgeNodeArgumentsObject $argsObject = null): ShopifyMobilePlatformApplicationUnionObject
     {
         $object = new ShopifyMobilePlatformApplicationUnionObject("node");
         if ($argsObject !== null) {

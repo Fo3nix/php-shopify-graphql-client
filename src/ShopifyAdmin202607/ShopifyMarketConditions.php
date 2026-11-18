@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyLocationsCondition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocationsCondition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyRegionsCondition;
 
+/**
+ * The conditions that determine whether a visitor is in a market.
+ */
 class ShopifyMarketConditions
 {
     protected $channelsCondition;
@@ -17,45 +20,55 @@ class ShopifyMarketConditions
 
     
     /**
+     * The channel conditions that determine whether a visitor is in the market.
+     *
      * @return ShopifyChannelsCondition
      */
-    public function getChannelsCondition()
+    public function getChannelsCondition(): ?ShopifyChannelsCondition
     {
         return $this->channelsCondition;
     }
 
     
     /**
+     * The company location conditions that determine whether a visitor is in the market.
+     *
      * @return ShopifyCompanyLocationsCondition
      */
-    public function getCompanyLocationsCondition()
+    public function getCompanyLocationsCondition(): ?ShopifyCompanyLocationsCondition
     {
         return $this->companyLocationsCondition;
     }
 
     
     /**
-     * @return ShopifyMarketConditionTypeEnumObject[]
+     * The set of condition types that are defined for the market.
+     *
+     * @return string[] ShopifyMarketConditionTypeEnumObject values
      */
-    public function getConditionTypes()
+    public function getConditionTypes(): ?array
     {
         return $this->conditionTypes;
     }
 
     
     /**
+     * The retail location conditions that determine whether a visitor is in the market.
+     *
      * @return ShopifyLocationsCondition
      */
-    public function getLocationsCondition()
+    public function getLocationsCondition(): ?ShopifyLocationsCondition
     {
         return $this->locationsCondition;
     }
 
     
     /**
+     * The region conditions that determine whether a visitor is in the market.
+     *
      * @return ShopifyRegionsCondition
      */
-    public function getRegionsCondition()
+    public function getRegionsCondition(): ?ShopifyRegionsCondition
     {
         return $this->regionsCondition;
     }

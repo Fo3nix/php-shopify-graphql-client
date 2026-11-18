@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * A product taxonomy attribute interface.
+ */
 class ShopifyTaxonomyCategoryAttributeUnionObject extends UnionObject
 {
-    public function onShopifyTaxonomyAttribute()
+    public function onShopifyTaxonomyAttribute(): ShopifyTaxonomyAttributeQueryObject
     {
         $object = new ShopifyTaxonomyAttributeQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyTaxonomyCategoryAttributeUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyTaxonomyChoiceListAttribute()
+    public function onShopifyTaxonomyChoiceListAttribute(): ShopifyTaxonomyChoiceListAttributeQueryObject
     {
         $object = new ShopifyTaxonomyChoiceListAttributeQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyTaxonomyCategoryAttributeUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyTaxonomyMeasurementAttribute()
+    public function onShopifyTaxonomyMeasurementAttribute(): ShopifyTaxonomyMeasurementAttributeQueryObject
     {
         $object = new ShopifyTaxonomyMeasurementAttributeQueryObject();
         $this->addPossibleType($object);

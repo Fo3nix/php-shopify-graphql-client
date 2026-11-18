@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The image.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingImageQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingImage";
 
-    public function selectImage(ShopifyCheckoutAndAccountsConfigurationBrandingImageImageArgumentsObject $argsObject = null)
+    /**
+     * The image details.
+     */
+    public function selectImage(?ShopifyCheckoutAndAccountsConfigurationBrandingImageImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {

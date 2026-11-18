@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents a set of UTM parameters.
+ */
 class ShopifyUTMParameters
 {
     protected $campaign;
@@ -12,45 +15,55 @@ class ShopifyUTMParameters
 
     
     /**
+     * The name of a marketing campaign.
+     *
      * @return string
      */
-    public function getCampaign()
+    public function getCampaign(): ?string
     {
         return $this->campaign;
     }
 
     
     /**
+     * Identifies specific content in a marketing campaign. Used to differentiate between similar content or links in a marketing campaign to determine which is the most effective.
+     *
      * @return string
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
     
     /**
+     * The medium of a marketing campaign, such as a banner or email newsletter.
+     *
      * @return string
      */
-    public function getMedium()
+    public function getMedium(): ?string
     {
         return $this->medium;
     }
 
     
     /**
+     * The source of traffic to the merchant's store, such as Google or an email newsletter.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * Paid search terms used by a marketing campaign.
+     *
      * @return string
      */
-    public function getTerm()
+    public function getTerm(): ?string
     {
         return $this->term;
     }

@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
-class ShopifyCurrencyExchangeAdjustment
+/**
+ * Represents a currency exchange adjustment applied to an order transaction.
+ */
+class ShopifyCurrencyExchangeAdjustment implements ShopifyNode
 {
     protected $adjustment;
     protected $finalAmountSet;
@@ -13,36 +16,44 @@ class ShopifyCurrencyExchangeAdjustment
 
     
     /**
+     * The adjustment amount in both shop and presentment currencies.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdjustment()
+    public function getAdjustment(): ?ShopifyMoneyV2
     {
         return $this->adjustment;
     }
 
     
     /**
+     * The final amount in both shop and presentment currencies after the adjustment.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFinalAmountSet()
+    public function getFinalAmountSet(): ?ShopifyMoneyV2
     {
         return $this->finalAmountSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The original amount in both shop and presentment currencies before the adjustment.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalAmountSet()
+    public function getOriginalAmountSet(): ?ShopifyMoneyV2
     {
         return $this->originalAmountSet;
     }

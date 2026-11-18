@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingTypographyStyle;
 
+/**
+ * The buttons customizations.
+ */
 class ShopifyCheckoutBrandingButton
 {
     protected $background;
@@ -15,54 +18,66 @@ class ShopifyCheckoutBrandingButton
 
     
     /**
-     * @return ShopifyCheckoutBrandingBackgroundStyleEnumObject
+     * The background style used for buttons.
+     *
+     * @return string A ShopifyCheckoutBrandingBackgroundStyleEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSpacingEnumObject
+     * The block padding used for buttons.
+     *
+     * @return string A ShopifyCheckoutBrandingSpacingEnumObject value
      */
-    public function getBlockPadding()
+    public function getBlockPadding(): ?string
     {
         return $this->blockPadding;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSimpleBorderEnumObject
+     * The border used for buttons.
+     *
+     * @return string A ShopifyCheckoutBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingCornerRadiusEnumObject
+     * The corner radius used for buttons.
+     *
+     * @return string A ShopifyCheckoutBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSpacingEnumObject
+     * The inline padding used for buttons.
+     *
+     * @return string A ShopifyCheckoutBrandingSpacingEnumObject value
      */
-    public function getInlinePadding()
+    public function getInlinePadding(): ?string
     {
         return $this->inlinePadding;
     }
 
     
     /**
+     * The typography used for buttons.
+     *
      * @return ShopifyCheckoutBrandingTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutBrandingTypographyStyle
     {
         return $this->typography;
     }

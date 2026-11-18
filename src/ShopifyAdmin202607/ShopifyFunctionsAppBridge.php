@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The App Bridge information for a Shopify Function.
+ */
 class ShopifyFunctionsAppBridge
 {
     protected $createPath;
@@ -9,18 +12,22 @@ class ShopifyFunctionsAppBridge
 
     
     /**
+     * The relative path for creating a customization.
+     *
      * @return string
      */
-    public function getCreatePath()
+    public function getCreatePath(): ?string
     {
         return $this->createPath;
     }
 
     
     /**
+     * The relative path for viewing a customization.
+     *
      * @return string
      */
-    public function getDetailsPath()
+    public function getDetailsPath(): ?string
     {
         return $this->detailsPath;
     }

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A mail service provided by the participant.
+ */
 class ShopifyDeliveryParticipantServiceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryParticipantService";
 
-    public function selectActive()
+    /**
+     * Whether the service is active.
+     */
+    public function selectActive(): static
     {
         $this->selectField("active");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the service.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

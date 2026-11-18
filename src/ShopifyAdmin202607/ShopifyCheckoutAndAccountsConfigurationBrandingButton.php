@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle;
 
+/**
+ * The buttons customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingButton
 {
     protected $blockPadding;
@@ -14,45 +17,55 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingButton
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingEnumObject
+     * The block padding.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingEnumObject value
      */
-    public function getBlockPadding()
+    public function getBlockPadding(): ?string
     {
         return $this->blockPadding;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject
+     * The border.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject
+     * The corner radius.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingEnumObject
+     * The inline padding.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingEnumObject value
      */
-    public function getInlinePadding()
+    public function getInlinePadding(): ?string
     {
         return $this->inlinePadding;
     }
 
     
     /**
+     * The typography.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
     {
         return $this->typography;
     }

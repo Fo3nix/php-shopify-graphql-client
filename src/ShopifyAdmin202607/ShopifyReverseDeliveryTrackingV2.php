@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents the information used to track a reverse delivery.
+ */
 class ShopifyReverseDeliveryTrackingV2
 {
     protected $carrierName;
@@ -10,27 +13,33 @@ class ShopifyReverseDeliveryTrackingV2
 
     
     /**
+     * The provider of the tracking information, in a human-readable format for display purposes.
+     *
      * @return string
      */
-    public function getCarrierName()
+    public function getCarrierName(): ?string
     {
         return $this->carrierName;
     }
 
     
     /**
+     * The identifier used by the courier to identify the shipment.
+     *
      * @return string
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
     
     /**
+     * The URL to track a shipment.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

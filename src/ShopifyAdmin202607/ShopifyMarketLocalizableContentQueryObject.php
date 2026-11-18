@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The market localizable content of a resource's field.
+ */
 class ShopifyMarketLocalizableContentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketLocalizableContent";
 
-    public function selectDigest()
+    /**
+     * The hash digest representation of the content value.
+     */
+    public function selectDigest(): static
     {
         $this->selectField("digest");
 
         return $this;
     }
 
-    public function selectKey()
+    /**
+     * The resource field that's being localized.
+     */
+    public function selectKey(): static
     {
         $this->selectField("key");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * The content value.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

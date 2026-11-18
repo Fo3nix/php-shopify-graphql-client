@@ -4,14 +4,34 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one StoreCreditAccountTransaction and a cursor during pagination.
+ */
 class ShopifyStoreCreditAccountTransactionEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "StoreCreditAccountTransactionEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
+    }
+
+    /**
+     * The item at the end of StoreCreditAccountTransactionEdge.
+     */
+    public function selectNode(?ShopifyStoreCreditAccountTransactionEdgeNodeArgumentsObject $argsObject = null): ShopifyStoreCreditAccountTransactionInterfaceObject
+    {
+        $object = new ShopifyStoreCreditAccountTransactionInterfaceObject("node");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
     }
 }

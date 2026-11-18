@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The statistics of a given attribute.
+ */
 class ShopifySegmentAttributeStatisticsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SegmentAttributeStatistics";
 
-    public function selectAverage()
+    /**
+     * The average of a given attribute.
+     */
+    public function selectAverage(): static
     {
         $this->selectField("average");
 
         return $this;
     }
 
-    public function selectSum()
+    /**
+     * The sum of a given attribute.
+     */
+    public function selectSum(): static
     {
         $this->selectField("sum");
 

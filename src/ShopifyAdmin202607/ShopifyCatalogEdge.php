@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCatalogHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCatalog;
+
+/**
+ * An auto-generated type which holds one Catalog and a cursor during pagination.
+ */
 class ShopifyCatalogEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyCatalogEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of CatalogEdge.
+     *
+     * @return ShopifyCatalog
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCatalog
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyCatalogEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyCatalogHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyCatalogEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyCatalogHydrator::toArray($this->node);
             }
             return $data;
         }

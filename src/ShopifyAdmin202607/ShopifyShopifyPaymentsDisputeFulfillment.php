@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Carbon\Carbon;
 
-class ShopifyShopifyPaymentsDisputeFulfillment
+/**
+ * The fulfillment associated with dispute evidence.
+ */
+class ShopifyShopifyPaymentsDisputeFulfillment implements ShopifyNode
 {
     protected $id;
     protected $shippingCarrier;
@@ -13,36 +16,44 @@ class ShopifyShopifyPaymentsDisputeFulfillment
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The shipping carrier for this fulfillment.
+     *
      * @return string
      */
-    public function getShippingCarrier()
+    public function getShippingCarrier(): ?string
     {
         return $this->shippingCarrier;
     }
 
     
     /**
+     * The shipping date for this fulfillment.
+     *
      * @return Carbon
      */
-    public function getShippingDate()
+    public function getShippingDate(): ?Carbon
     {
         return $this->shippingDate;
     }
 
     
     /**
+     * The shipping tracking number for this fulfillment.
+     *
      * @return string
      */
-    public function getShippingTrackingNumber()
+    public function getShippingTrackingNumber(): ?string
     {
         return $this->shippingTrackingNumber;
     }

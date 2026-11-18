@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * An unexpected error that occurred during a subscription billing attempt.
+ */
 class ShopifySubscriptionBillingAttemptUnexpectedError
 {
     protected $message;
 
     
     /**
+     * A message describing the unexpected error.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

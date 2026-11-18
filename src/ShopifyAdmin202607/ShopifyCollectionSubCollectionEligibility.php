@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCollectionSubCollectionEligibilityState;
 
+/**
+ * Whether a collection can be referenced as a sub-collection target by another collection's source. Use this to surface ineligible targets up front (with reasons).
+ */
 class ShopifyCollectionSubCollectionEligibility
 {
     protected $exclusion;
@@ -11,18 +14,22 @@ class ShopifyCollectionSubCollectionEligibility
 
     
     /**
+     * Eligibility for use as an exclusion target of a sub-collection source.
+     *
      * @return ShopifyCollectionSubCollectionEligibilityState
      */
-    public function getExclusion()
+    public function getExclusion(): ?ShopifyCollectionSubCollectionEligibilityState
     {
         return $this->exclusion;
     }
 
     
     /**
+     * Eligibility for use as the inclusion target of a sub-collection source.
+     *
      * @return ShopifyCollectionSubCollectionEligibilityState
      */
-    public function getInclusion()
+    public function getInclusion(): ?ShopifyCollectionSubCollectionEligibilityState
     {
         return $this->inclusion;
     }

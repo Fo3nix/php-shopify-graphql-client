@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMailingAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySubscriptionDeliveryMethodShippingOption;
 
+/**
+ * Represents a shipping delivery method: a mailing address and a shipping option.
+ */
 class ShopifySubscriptionDeliveryMethodShipping
 {
     protected $address;
@@ -12,18 +15,22 @@ class ShopifySubscriptionDeliveryMethodShipping
 
     
     /**
+     * The address to ship to.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getAddress()
+    public function getAddress(): ?ShopifyMailingAddress
     {
         return $this->address;
     }
 
     
     /**
+     * The details of the shipping method to use.
+     *
      * @return ShopifySubscriptionDeliveryMethodShippingOption
      */
-    public function getShippingOption()
+    public function getShippingOption(): ?ShopifySubscriptionDeliveryMethodShippingOption
     {
         return $this->shippingOption;
     }

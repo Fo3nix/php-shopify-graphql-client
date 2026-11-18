@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The value of the discount.
+ */
 class ShopifyAppSubscriptionDiscountValueUnionObject extends UnionObject
 {
-    public function onShopifyAppSubscriptionDiscountAmount()
+    public function onShopifyAppSubscriptionDiscountAmount(): ShopifyAppSubscriptionDiscountAmountQueryObject
     {
         $object = new ShopifyAppSubscriptionDiscountAmountQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyAppSubscriptionDiscountValueUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyAppSubscriptionDiscountPercentage()
+    public function onShopifyAppSubscriptionDiscountPercentage(): ShopifyAppSubscriptionDiscountPercentageQueryObject
     {
         $object = new ShopifyAppSubscriptionDiscountPercentageQueryObject();
         $this->addPossibleType($object);

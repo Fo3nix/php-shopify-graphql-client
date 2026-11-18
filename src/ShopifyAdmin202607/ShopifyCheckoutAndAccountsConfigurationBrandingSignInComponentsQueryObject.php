@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The sign-in-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingSignInComponents";
 
-    public function selectHeader(ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsHeaderArgumentsObject $argsObject = null)
+    /**
+     * The header customizations.
+     */
+    public function selectHeader(?ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsHeaderArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeaderQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeaderQueryObject("header");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsQueryObject
         return $object;
     }
 
-    public function selectMain(ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsMainArgumentsObject $argsObject = null)
+    /**
+     * The main customizations.
+     */
+    public function selectMain(?ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponentsMainArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSignInMainQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSignInMainQueryObject("main");
         if ($argsObject !== null) {

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCollectionInclusionProductSelection;
 
+/**
+ * An auto-generated type which holds one CollectionInclusionProductSelection and a cursor during pagination.
+ */
 class ShopifyCollectionInclusionProductSelectionEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyCollectionInclusionProductSelectionEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of CollectionInclusionProductSelectionEdge.
+     *
      * @return ShopifyCollectionInclusionProductSelection
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCollectionInclusionProductSelection
     {
         return $this->node;
     }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDuty;
 
+/**
+ * Represents a refunded duty.
+ */
 class ShopifyRefundDuty
 {
     protected $amountSet;
@@ -12,18 +15,22 @@ class ShopifyRefundDuty
 
     
     /**
+     * The amount of a refunded duty in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The duty associated with this refunded duty.
+     *
      * @return ShopifyDuty
      */
-    public function getOriginalDuty()
+    public function getOriginalDuty(): ?ShopifyDuty
     {
         return $this->originalDuty;
     }

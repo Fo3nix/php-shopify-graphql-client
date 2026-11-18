@@ -5,6 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryCarrierService;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocation;
 
+/**
+ * Links a [`DeliveryCarrierService`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryCarrierService) with the associated shop [locations](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) where it can calculate shipping rates. Each pairing indicates the locations that can use a specific carrier service for real-time rate calculations during checkout.
+ *
+ * The carrier service provides the shipping rate calculation logic, while the locations represent physical or virtual fulfillment points that can ship orders using that service.
+ */
 class ShopifyDeliveryCarrierServiceAndLocations
 {
     protected $carrierService;
@@ -12,18 +17,22 @@ class ShopifyDeliveryCarrierServiceAndLocations
 
     
     /**
+     * The carrier service.
+     *
      * @return ShopifyDeliveryCarrierService
      */
-    public function getCarrierService()
+    public function getCarrierService(): ?ShopifyDeliveryCarrierService
     {
         return $this->carrierService;
     }
 
     
     /**
+     * The list of locations that support this carrier service.
+     *
      * @return ShopifyLocation[]
      */
-    public function getLocations()
+    public function getLocations(): ?array
     {
         return $this->locations;
     }

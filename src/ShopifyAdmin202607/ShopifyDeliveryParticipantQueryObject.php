@@ -4,18 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A participant defines carrier-calculated rates for shipping services
+ * with a possible merchant-defined fixed fee or a percentage-of-rate fee.
+ */
 class ShopifyDeliveryParticipantQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryParticipant";
 
-    public function selectAdaptToNewServicesFlag()
+    /**
+     * Whether to display new shipping services automatically to the customer when the service becomes available.
+     */
+    public function selectAdaptToNewServicesFlag(): static
     {
         $this->selectField("adaptToNewServicesFlag");
 
         return $this;
     }
 
-    public function selectCarrierService(ShopifyDeliveryParticipantCarrierServiceArgumentsObject $argsObject = null)
+    /**
+     * The carrier used for this participant.
+     */
+    public function selectCarrierService(?ShopifyDeliveryParticipantCarrierServiceArgumentsObject $argsObject = null): ShopifyDeliveryCarrierServiceQueryObject
     {
         $object = new ShopifyDeliveryCarrierServiceQueryObject("carrierService");
         if ($argsObject !== null) {
@@ -26,7 +36,10 @@ class ShopifyDeliveryParticipantQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFixedFee(ShopifyDeliveryParticipantFixedFeeArgumentsObject $argsObject = null)
+    /**
+     * The merchant-defined fixed fee for this participant.
+     */
+    public function selectFixedFee(?ShopifyDeliveryParticipantFixedFeeArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("fixedFee");
         if ($argsObject !== null) {
@@ -37,14 +50,20 @@ class ShopifyDeliveryParticipantQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectParticipantServices(ShopifyDeliveryParticipantParticipantServicesArgumentsObject $argsObject = null)
+    /**
+     * The carrier-specific services offered by the participant, and whether each service is active.
+     */
+    public function selectParticipantServices(?ShopifyDeliveryParticipantParticipantServicesArgumentsObject $argsObject = null): ShopifyDeliveryParticipantServiceQueryObject
     {
         $object = new ShopifyDeliveryParticipantServiceQueryObject("participantServices");
         if ($argsObject !== null) {
@@ -55,7 +74,10 @@ class ShopifyDeliveryParticipantQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPercentageOfRateFee()
+    /**
+     * The merchant-defined percentage-of-rate fee for this participant.
+     */
+    public function selectPercentageOfRateFee(): static
     {
         $this->selectField("percentageOfRateFee");
 

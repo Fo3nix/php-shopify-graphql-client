@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Presents all Shopify Payments specific information related to an order refund.
+ */
 class ShopifyShopifyPaymentsRefundSet
 {
     protected $acquirerReferenceNumber;
 
     
     /**
+     * The acquirer reference number (ARN) code generated for Visa/Mastercard transactions.
+     *
      * @return string
      */
-    public function getAcquirerReferenceNumber()
+    public function getAcquirerReferenceNumber(): ?string
     {
         return $this->acquirerReferenceNumber;
     }

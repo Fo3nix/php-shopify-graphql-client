@@ -4,18 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The marketing activity resource represents marketing that a
+ *         merchant created through an app.
+ */
 class ShopifyMarketingActivityQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketingActivity";
 
-    public function selectActivityListUrl()
+    /**
+     * The URL of the marketing activity listing page in the marketing section.
+     */
+    public function selectActivityListUrl(): static
     {
         $this->selectField("activityListUrl");
 
         return $this;
     }
 
-    public function selectAdSpend(ShopifyMarketingActivityAdSpendArgumentsObject $argsObject = null)
+    /**
+     * The amount spent on the marketing activity.
+     */
+    public function selectAdSpend(?ShopifyMarketingActivityAdSpendArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("adSpend");
         if ($argsObject !== null) {
@@ -26,7 +36,10 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectApp(ShopifyMarketingActivityAppArgumentsObject $argsObject = null)
+    /**
+     * The app which created this marketing activity.
+     */
+    public function selectApp(?ShopifyMarketingActivityAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -37,7 +50,10 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppErrors(ShopifyMarketingActivityAppErrorsArgumentsObject $argsObject = null)
+    /**
+     * The errors generated when an app publishes the marketing activity.
+     */
+    public function selectAppErrors(?ShopifyMarketingActivityAppErrorsArgumentsObject $argsObject = null): ShopifyMarketingActivityExtensionAppErrorsQueryObject
     {
         $object = new ShopifyMarketingActivityExtensionAppErrorsQueryObject("appErrors");
         if ($argsObject !== null) {
@@ -48,7 +64,10 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectBudget(ShopifyMarketingActivityBudgetArgumentsObject $argsObject = null)
+    /**
+     * The allocated budget for the marketing activity.
+     */
+    public function selectBudget(?ShopifyMarketingActivityBudgetArgumentsObject $argsObject = null): ShopifyMarketingBudgetQueryObject
     {
         $object = new ShopifyMarketingBudgetQueryObject("budget");
         if ($argsObject !== null) {
@@ -59,42 +78,60 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the marketing activity was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectFormData()
+    /**
+     * The completed content in the marketing activity creation form.
+     */
+    public function selectFormData(): static
     {
         $this->selectField("formData");
 
         return $this;
     }
 
-    public function selectHierarchyLevel()
+    /**
+     * The hierarchy level of the marketing activity.
+     */
+    public function selectHierarchyLevel(): static
     {
         $this->selectField("hierarchyLevel");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInMainWorkflowVersion()
+    /**
+     * Whether the marketing activity is in the main workflow version of the marketing automation.
+     */
+    public function selectInMainWorkflowVersion(): static
     {
         $this->selectField("inMainWorkflowVersion");
 
         return $this;
     }
 
-    public function selectIsExternal()
+    /**
+     * The marketing activity represents an external marketing activity.
+     */
+    public function selectIsExternal(): static
     {
         $this->selectField("isExternal");
 
@@ -102,23 +139,31 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
     }
 
     /**
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
      * @deprecated Use `marketingChannelType` instead.
      */
-    public function selectMarketingChannel()
+    public function selectMarketingChannel(): static
     {
         $this->selectField("marketingChannel");
 
         return $this;
     }
 
-    public function selectMarketingChannelType()
+    /**
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     */
+    public function selectMarketingChannelType(): static
     {
         $this->selectField("marketingChannelType");
 
         return $this;
     }
 
-    public function selectMarketingEvent(ShopifyMarketingActivityMarketingEventArgumentsObject $argsObject = null)
+    /**
+     * Associated marketing event of this marketing activity.
+     */
+    public function selectMarketingEvent(?ShopifyMarketingActivityMarketingEventArgumentsObject $argsObject = null): ShopifyMarketingEventQueryObject
     {
         $object = new ShopifyMarketingEventQueryObject("marketingEvent");
         if ($argsObject !== null) {
@@ -129,28 +174,40 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectParentActivityId()
+    /**
+     * ID of the parent activity of this marketing activity.
+     */
+    public function selectParentActivityId(): static
     {
         $this->selectField("parentActivityId");
 
         return $this;
     }
 
-    public function selectParentRemoteId()
+    /**
+     * ID of the parent activity of this marketing activity.
+     */
+    public function selectParentRemoteId(): static
     {
         $this->selectField("parentRemoteId");
 
         return $this;
     }
 
-    public function selectSourceAndMedium()
+    /**
+     * A contextual description of the marketing activity based on the platform and tactic used.
+     */
+    public function selectSourceAndMedium(): static
     {
         $this->selectField("sourceAndMedium");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The current state of the marketing activity.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
@@ -158,72 +215,105 @@ class ShopifyMarketingActivityQueryObject extends QueryObject
     }
 
     /**
+     * The severity of the marketing activity's status.
+     *
      * @deprecated Use `statusBadgeTypeV2` instead.
      */
-    public function selectStatusBadgeType()
+    public function selectStatusBadgeType(): static
     {
         $this->selectField("statusBadgeType");
 
         return $this;
     }
 
-    public function selectStatusBadgeTypeV2()
+    /**
+     * The severity of the marketing activity's status.
+     */
+    public function selectStatusBadgeTypeV2(): static
     {
         $this->selectField("statusBadgeTypeV2");
 
         return $this;
     }
 
-    public function selectStatusLabel()
+    /**
+     * The rendered status of the marketing activity.
+     */
+    public function selectStatusLabel(): static
     {
         $this->selectField("statusLabel");
 
         return $this;
     }
 
-    public function selectStatusTransitionedAt()
+    /**
+     * The [date and time](
+     *           https://help.shopify.com/https://en.wikipedia.org/wiki/ISO_8601
+     *           ) when the activity's status last changed.
+     */
+    public function selectStatusTransitionedAt(): static
     {
         $this->selectField("statusTransitionedAt");
 
         return $this;
     }
 
-    public function selectTactic()
+    /**
+     * The method of marketing used for this marketing activity.
+     */
+    public function selectTactic(): static
     {
         $this->selectField("tactic");
 
         return $this;
     }
 
-    public function selectTargetStatus()
+    /**
+     * The status to which the marketing activity is currently transitioning.
+     */
+    public function selectTargetStatus(): static
     {
         $this->selectField("targetStatus");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The marketing activity's title, which is rendered on the marketing listing page.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the marketing activity was updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 
         return $this;
     }
 
-    public function selectUrlParameterValue()
+    /**
+     * The value portion of the URL query parameter used in attributing sessions to this activity.
+     */
+    public function selectUrlParameterValue(): static
     {
         $this->selectField("urlParameterValue");
 
         return $this;
     }
 
-    public function selectUtmParameters(ShopifyMarketingActivityUtmParametersArgumentsObject $argsObject = null)
+    /**
+     * The set of [Urchin Tracking Module](
+     *           https://help.shopify.com/https://en.wikipedia.org/wiki/UTM_parameters
+     *           ) used in the URL for tracking this marketing activity.
+     */
+    public function selectUtmParameters(?ShopifyMarketingActivityUtmParametersArgumentsObject $argsObject = null): ShopifyUTMParametersQueryObject
     {
         $object = new ShopifyUTMParametersQueryObject("utmParameters");
         if ($argsObject !== null) {

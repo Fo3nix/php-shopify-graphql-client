@@ -4,21 +4,29 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The order-level discount applied to a draft order.
+ */
 class ShopifyDraftOrderAppliedDiscountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderAppliedDiscount";
 
     /**
+     * Amount of the order-level discount that's applied to the draft order in shop currency.
+     *
      * @deprecated Use `amountSet` instead.
      */
-    public function selectAmount()
+    public function selectAmount(): static
     {
         $this->selectField("amount");
 
         return $this;
     }
 
-    public function selectAmountSet(ShopifyDraftOrderAppliedDiscountAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The amount of money discounted, with values shown in both shop currency and presentment currency.
+     */
+    public function selectAmountSet(?ShopifyDraftOrderAppliedDiscountAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -30,9 +38,11 @@ class ShopifyDraftOrderAppliedDiscountQueryObject extends QueryObject
     }
 
     /**
+     * Amount of money discounted.
+     *
      * @deprecated Use `amountSet` instead.
      */
-    public function selectAmountV2(ShopifyDraftOrderAppliedDiscountAmountV2ArgumentsObject $argsObject = null)
+    public function selectAmountV2(?ShopifyDraftOrderAppliedDiscountAmountV2ArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amountV2");
         if ($argsObject !== null) {
@@ -43,28 +53,41 @@ class ShopifyDraftOrderAppliedDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDescription()
+    /**
+     * Description of the order-level discount.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * Name of the order-level discount.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * The order level discount amount. If `valueType` is `"percentage"`,
+     * then `value` is the percentage discount.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 
         return $this;
     }
 
-    public function selectValueType()
+    /**
+     * Type of the order-level discount.
+     */
+    public function selectValueType(): static
     {
         $this->selectField("valueType");
 

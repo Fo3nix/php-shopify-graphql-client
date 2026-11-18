@@ -4,46 +4,67 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the payment terms template object.
+ */
 class ShopifyPaymentTermsTemplateQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PaymentTermsTemplate";
 
-    public function selectDescription()
+    /**
+     * The description of the payment terms template.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectDueInDays()
+    /**
+     * The number of days between the issued date and due date if this is the net type of payment terms.
+     */
+    public function selectDueInDays(): static
     {
         $this->selectField("dueInDays");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the payment terms template.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectPaymentTermsType()
+    /**
+     * The type of the payment terms template.
+     */
+    public function selectPaymentTermsType(): static
     {
         $this->selectField("paymentTermsType");
 
         return $this;
     }
 
-    public function selectTranslatedName()
+    /**
+     * The translated payment terms template name.
+     */
+    public function selectTranslatedName(): static
     {
         $this->selectField("translatedName");
 

@@ -7,6 +7,26 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCollection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPublication;
 use Carbon\Carbon;
 
+/**
+ * Represents the publication status and settings for a collection across different sales channels. This tracks where collections are published, when they were published, and any channel-specific configuration.
+ *
+ * For example, a "Holiday Gifts" collection might be published to the online store and Facebook Shop but not to the POS channel, with different publication dates for each channel based on marketing strategy.
+ *
+ * Use `CollectionPublication` to:
+ * - Track collection visibility across multiple sales channels
+ * - Manage channel-specific collection settings and availability
+ * - Monitor publication history and timing for collections
+ * - Control where collections appear in customer-facing channels
+ * - Implement channel-specific collection management workflows
+ *
+ * Each publication record includes the channel information, publication status, and timing details. This enables merchants to control collection visibility strategically across their sales channels.
+ *
+ * Collections can have different publication settings per channel, allowing for targeted marketing and inventory management. For instance, wholesale collections might only be published to B2B channels while retail collections appear in consumer-facing channels.
+ *
+ * The publication system integrates with Shopify's broader channel management, ensuring collections appear consistently across the merchant's sales ecosystem while respecting channel-specific rules and permissions.
+ *
+ * Learn more about [sales channel management](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+ */
 class ShopifyCollectionPublication
 {
     protected $channel;
@@ -17,45 +37,55 @@ class ShopifyCollectionPublication
 
     
     /**
+     * The channel where the collection will be published.
+     *
      * @return ShopifyChannel
      */
-    public function getChannel()
+    public function getChannel(): ?ShopifyChannel
     {
         return $this->channel;
     }
 
     
     /**
+     * The collection to be published on the publication.
+     *
      * @return ShopifyCollection
      */
-    public function getCollection()
+    public function getCollection(): ?ShopifyCollection
     {
         return $this->collection;
     }
 
     
     /**
+     * Whether the publication is published or not.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The publication where the collection will be published.
+     *
      * @return ShopifyPublication
      */
-    public function getPublication()
+    public function getPublication(): ?ShopifyPublication
     {
         return $this->publication;
     }
 
     
     /**
+     * The date that the publication was or is going to be published.
+     *
      * @return Carbon
      */
-    public function getPublishDate()
+    public function getPublishDate(): ?Carbon
     {
         return $this->publishDate;
     }

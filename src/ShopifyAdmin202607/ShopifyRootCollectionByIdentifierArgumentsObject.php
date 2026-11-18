@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootCollectionByIdentifierArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["identifier"];
+
     protected $identifier;
 
-    public function setIdentifier(ShopifyCollectionIdentifierInputInputObject $shopifyCollectionIdentifierInputInputObject)
+    /**
+     * The identifier of the collection.
+     */
+    public function setIdentifier(ShopifyCollectionIdentifierInputInputObject $shopifyCollectionIdentifierInputInputObject): static
     {
         $this->identifier = $shopifyCollectionIdentifierInputInputObject;
 

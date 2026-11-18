@@ -2,6 +2,19 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Defines the global color roles for checkout branding. These semantic colors maintain consistency across all checkout elements and provide the foundation for the checkout's visual design system.
+ *
+ * Use global colors to:
+ * - Set brand colors for primary actions and buttons
+ * - Define accent colors for links and interactive elements
+ * - Configure semantic colors for success, warning, and error states
+ * - Apply decorative colors for visual highlights
+ *
+ * For example, a merchant might set their brand blue for primary buttons, green for success messages, amber for warnings, and red for critical errors, creating a consistent color language throughout checkout.
+ *
+ * Learn more about [checkout customization](https://shopify.dev/docs/api/admin-graphql/latest/objects/CheckoutBranding).
+ */
 class ShopifyCheckoutBrandingColorGlobal
 {
     protected $accent;
@@ -14,63 +27,78 @@ class ShopifyCheckoutBrandingColorGlobal
 
     
     /**
+     * A color used for interaction, like links and focus states.
+     *
      * @return string
      */
-    public function getAccent()
+    public function getAccent(): ?string
     {
         return $this->accent;
     }
 
     
     /**
+     * A color that's strongly associated with the merchant. Currently used for
+     * primary buttons, for example **Pay now**, and secondary buttons, for example **Buy again**.
+     *
      * @return string
      */
-    public function getBrand()
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
 
     
     /**
+     * A semantic color used for components that communicate critical content. For example, a blocking error such as the requirement to enter a valid credit card number.
+     *
      * @return string
      */
-    public function getCritical()
+    public function getCritical(): ?string
     {
         return $this->critical;
     }
 
     
     /**
+     * A color used to highlight certain areas of the user interface. For example, the [`Text`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/titles-and-text/text#textprops-propertydetail-appearance) component.
+     *
      * @return string
      */
-    public function getDecorative()
+    public function getDecorative(): ?string
     {
         return $this->decorative;
     }
 
     
     /**
+     * A semantic color used for components that communicate general, informative content.
+     *
      * @return string
      */
-    public function getInfo()
+    public function getInfo(): ?string
     {
         return $this->info;
     }
 
     
     /**
+     * A semantic color used for components that communicate successful actions or a positive state.
+     *
      * @return string
      */
-    public function getSuccess()
+    public function getSuccess(): ?string
     {
         return $this->success;
     }
 
     
     /**
+     * A semantic color used for components that display content that requires attention. For example, something that might be wrong, but not blocking.
+     *
      * @return string
      */
-    public function getWarning()
+    public function getWarning(): ?string
     {
         return $this->warning;
     }

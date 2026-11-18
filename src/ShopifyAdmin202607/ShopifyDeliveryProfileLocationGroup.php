@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryCountryAndZone;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryLocationGroup;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryLocationGroupZoneConnection;
 
+/**
+ * Links a location group with zones. Both are associated to a delivery profile.
+ */
 class ShopifyDeliveryProfileLocationGroup
 {
     protected $countriesInAnyZone;
@@ -14,27 +17,33 @@ class ShopifyDeliveryProfileLocationGroup
 
     
     /**
+     * The countries already selected in any zone for the specified location group.
+     *
      * @return ShopifyDeliveryCountryAndZone[]
      */
-    public function getCountriesInAnyZone()
+    public function getCountriesInAnyZone(): ?array
     {
         return $this->countriesInAnyZone;
     }
 
     
     /**
+     * The collection of locations that make up the specified location group.
+     *
      * @return ShopifyDeliveryLocationGroup
      */
-    public function getLocationGroup()
+    public function getLocationGroup(): ?ShopifyDeliveryLocationGroup
     {
         return $this->locationGroup;
     }
 
     
     /**
+     * The applicable zones associated to the specified location group.
+     *
      * @return ShopifyDeliveryLocationGroupZoneConnection
      */
-    public function getLocationGroupZones()
+    public function getLocationGroupZones(): ?ShopifyDeliveryLocationGroupZoneConnection
     {
         return $this->locationGroupZones;
     }

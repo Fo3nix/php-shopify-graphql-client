@@ -10,7 +10,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectDefinition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectField;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldRelationConnection;
 
-class ShopifyMetaobject
+/**
+ * An instance of custom structured data defined by a [`MetaobjectDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MetaobjectDefinition). [Metaobjects](https://shopify.dev/docs/apps/build/custom-data#what-are-metaobjects) store reusable data that extends beyond Shopify's standard resources, such as product highlights, size charts, or custom content sections.
+ *
+ * Each metaobject includes fields that match the field types and validation rules specified in its definition, which also determines the metaobject's capabilities, such as storefront visibility, publishing and translation support. [`Metafields`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield) can reference metaobjects to connect custom data with [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects, [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) objects, and other Shopify resources.
+ */
+class ShopifyMetaobject implements ShopifyNode
 {
     protected $capabilities;
     protected $createdAt;
@@ -32,153 +37,187 @@ class ShopifyMetaobject
 
     
     /**
+     * Metaobject capabilities for this Metaobject.
+     *
      * @return ShopifyMetaobjectCapabilityData
      */
-    public function getCapabilities()
+    public function getCapabilities(): ?ShopifyMetaobjectCapabilityData
     {
         return $this->capabilities;
     }
 
     
     /**
+     * When the object was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The app used to create the object.
+     *
      * @return ShopifyApp
      */
-    public function getCreatedBy()
+    public function getCreatedBy(): ?ShopifyApp
     {
         return $this->createdBy;
     }
 
     
     /**
+     * The app used to create the object.
+     *
      * @return ShopifyApp
      */
-    public function getCreatedByApp()
+    public function getCreatedByApp(): ?ShopifyApp
     {
         return $this->createdByApp;
     }
 
     
     /**
+     * The staff member who created the metaobject.
+     *
      * @return ShopifyStaffMember
      */
-    public function getCreatedByStaff()
+    public function getCreatedByStaff(): ?ShopifyStaffMember
     {
         return $this->createdByStaff;
     }
 
     
     /**
+     * The MetaobjectDefinition that models this object type.
+     *
      * @return ShopifyMetaobjectDefinition
      */
-    public function getDefinition()
+    public function getDefinition(): ?ShopifyMetaobjectDefinition
     {
         return $this->definition;
     }
 
     
     /**
+     * The preferred display name field value of the metaobject.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * The field for an object key, or null if the key has no field definition.
+     *
      * @return ShopifyMetaobjectField
      */
-    public function getField()
+    public function getField(): ?ShopifyMetaobjectField
     {
         return $this->field;
     }
 
     
     /**
+     * All ordered fields of the metaobject with their definitions and values.
+     *
      * @return ShopifyMetaobjectField[]
      */
-    public function getFields()
+    public function getFields(): ?array
     {
         return $this->fields;
     }
 
     
     /**
+     * The unique handle of the object, useful as a custom ID.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * List of back references metafields that belong to the resource.
+     *
      * @return ShopifyMetafieldRelationConnection
      */
-    public function getReferencedBy()
+    public function getReferencedBy(): ?ShopifyMetafieldRelationConnection
     {
         return $this->referencedBy;
     }
 
     
     /**
+     * The staff member who created the metaobject.
+     *
      * @return ShopifyStaffMember
      */
-    public function getStaffMember()
+    public function getStaffMember(): ?ShopifyStaffMember
     {
         return $this->staffMember;
     }
 
     
     /**
+     * The recommended field to visually represent this metaobject. May be a file reference or color         field.
+     *
      * @return ShopifyMetaobjectField
      */
-    public function getThumbnailField()
+    public function getThumbnailField(): ?ShopifyMetaobjectField
     {
         return $this->thumbnailField;
     }
 
     
     /**
+     * The type of the metaobject.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * When the object was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The values of the metaobject.
+     *
      * @return string
      */
-    public function getValues()
+    public function getValues(): mixed
     {
         return $this->values;
     }

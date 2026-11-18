@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 
+/**
+ * The header cart link customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderCartLink
 {
     protected $contentType;
@@ -11,18 +14,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderCartLink
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCartLinkContentTypeEnumObject
+     * The content type for the header back to cart link in 1-page checkout. Setting this to image will render the custom image provided using the image field on the header cart_link object. If no image is provided, the default cart icon will be used.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCartLinkContentTypeEnumObject value
      */
-    public function getContentType()
+    public function getContentType(): ?string
     {
         return $this->contentType;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The image that's used for the header back to cart link in 1-page checkout when the content type is set to image.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->image;
     }
@@ -38,7 +45,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderCartLink
                 $instance->contentType = $data['contentType'];
             }
             if (isset($data['image']) && $data['image'] !== null) {
-                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['image']);
+                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['image']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderCartLink
                 $data['contentType'] = $this->contentType;
             }
             if ($this->image !== null) {
-                $data['image'] = $this->image->asArray();
+                $data['image'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->image);
             }
             return $data;
         }

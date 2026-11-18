@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fields that will be kept as part of a customer merge preview.
+ */
 class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergePreviewDefaultFields";
 
-    public function selectAddresses(ShopifyCustomerMergePreviewDefaultFieldsAddressesArgumentsObject $argsObject = null)
+    /**
+     * The merged addresses resulting from a customer merge.
+     */
+    public function selectAddresses(?ShopifyCustomerMergePreviewDefaultFieldsAddressesArgumentsObject $argsObject = null): ShopifyMailingAddressConnectionQueryObject
     {
         $object = new ShopifyMailingAddressConnectionQueryObject("addresses");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDefaultAddress(ShopifyCustomerMergePreviewDefaultFieldsDefaultAddressArgumentsObject $argsObject = null)
+    /**
+     * The default address resulting from a customer merge.
+     */
+    public function selectDefaultAddress(?ShopifyCustomerMergePreviewDefaultFieldsDefaultAddressArgumentsObject $argsObject = null): ShopifyMailingAddressQueryObject
     {
         $object = new ShopifyMailingAddressQueryObject("defaultAddress");
         if ($argsObject !== null) {
@@ -30,14 +39,20 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDiscountNodeCount()
+    /**
+     * The total number of customer-specific discounts resulting from a customer merge.
+     */
+    public function selectDiscountNodeCount(): static
     {
         $this->selectField("discountNodeCount");
 
         return $this;
     }
 
-    public function selectDiscountNodes(ShopifyCustomerMergePreviewDefaultFieldsDiscountNodesArgumentsObject $argsObject = null)
+    /**
+     * The merged customer-specific discounts resulting from a customer merge.
+     */
+    public function selectDiscountNodes(?ShopifyCustomerMergePreviewDefaultFieldsDiscountNodesArgumentsObject $argsObject = null): ShopifyDiscountNodeConnectionQueryObject
     {
         $object = new ShopifyDiscountNodeConnectionQueryObject("discountNodes");
         if ($argsObject !== null) {
@@ -48,21 +63,30 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDisplayName()
+    /**
+     * The full name of the customer, based on the values for `first_name` and `last_name`. If `first_name` and `last_name` aren't available, then this field falls back to the customer's email address. If the customer's email isn't available, then this field falls back to the customer's phone number.
+     */
+    public function selectDisplayName(): static
     {
         $this->selectField("displayName");
 
         return $this;
     }
 
-    public function selectDraftOrderCount()
+    /**
+     * The total number of merged draft orders.
+     */
+    public function selectDraftOrderCount(): static
     {
         $this->selectField("draftOrderCount");
 
         return $this;
     }
 
-    public function selectDraftOrders(ShopifyCustomerMergePreviewDefaultFieldsDraftOrdersArgumentsObject $argsObject = null)
+    /**
+     * The merged draft orders resulting from a customer merge.
+     */
+    public function selectDraftOrders(?ShopifyCustomerMergePreviewDefaultFieldsDraftOrdersArgumentsObject $argsObject = null): ShopifyDraftOrderConnectionQueryObject
     {
         $object = new ShopifyDraftOrderConnectionQueryObject("draftOrders");
         if ($argsObject !== null) {
@@ -73,7 +97,10 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEmail(ShopifyCustomerMergePreviewDefaultFieldsEmailArgumentsObject $argsObject = null)
+    /**
+     * The email state of a customer.
+     */
+    public function selectEmail(?ShopifyCustomerMergePreviewDefaultFieldsEmailArgumentsObject $argsObject = null): ShopifyCustomerEmailAddressQueryObject
     {
         $object = new ShopifyCustomerEmailAddressQueryObject("email");
         if ($argsObject !== null) {
@@ -84,21 +111,30 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFirstName()
+    /**
+     * The first name resulting from a customer merge.
+     */
+    public function selectFirstName(): static
     {
         $this->selectField("firstName");
 
         return $this;
     }
 
-    public function selectGiftCardCount()
+    /**
+     * The total number of merged gift cards.
+     */
+    public function selectGiftCardCount(): static
     {
         $this->selectField("giftCardCount");
 
         return $this;
     }
 
-    public function selectGiftCards(ShopifyCustomerMergePreviewDefaultFieldsGiftCardsArgumentsObject $argsObject = null)
+    /**
+     * The merged gift cards resulting from a customer merge.
+     */
+    public function selectGiftCards(?ShopifyCustomerMergePreviewDefaultFieldsGiftCardsArgumentsObject $argsObject = null): ShopifyGiftCardConnectionQueryObject
     {
         $object = new ShopifyGiftCardConnectionQueryObject("giftCards");
         if ($argsObject !== null) {
@@ -109,35 +145,50 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLastName()
+    /**
+     * The last name resulting from a customer merge.
+     */
+    public function selectLastName(): static
     {
         $this->selectField("lastName");
 
         return $this;
     }
 
-    public function selectMetafieldCount()
+    /**
+     * The total number of merged metafields.
+     */
+    public function selectMetafieldCount(): static
     {
         $this->selectField("metafieldCount");
 
         return $this;
     }
 
-    public function selectNote()
+    /**
+     * The merged note resulting from a customer merge.
+     */
+    public function selectNote(): static
     {
         $this->selectField("note");
 
         return $this;
     }
 
-    public function selectOrderCount()
+    /**
+     * The total number of merged orders.
+     */
+    public function selectOrderCount(): static
     {
         $this->selectField("orderCount");
 
         return $this;
     }
 
-    public function selectOrders(ShopifyCustomerMergePreviewDefaultFieldsOrdersArgumentsObject $argsObject = null)
+    /**
+     * The merged orders resulting from a customer merge.
+     */
+    public function selectOrders(?ShopifyCustomerMergePreviewDefaultFieldsOrdersArgumentsObject $argsObject = null): ShopifyOrderConnectionQueryObject
     {
         $object = new ShopifyOrderConnectionQueryObject("orders");
         if ($argsObject !== null) {
@@ -148,7 +199,10 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPhoneNumber(ShopifyCustomerMergePreviewDefaultFieldsPhoneNumberArgumentsObject $argsObject = null)
+    /**
+     * The phone number state of a customer.
+     */
+    public function selectPhoneNumber(?ShopifyCustomerMergePreviewDefaultFieldsPhoneNumberArgumentsObject $argsObject = null): ShopifyCustomerPhoneNumberQueryObject
     {
         $object = new ShopifyCustomerPhoneNumberQueryObject("phoneNumber");
         if ($argsObject !== null) {
@@ -159,7 +213,10 @@ class ShopifyCustomerMergePreviewDefaultFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTags()
+    /**
+     * The merged tags resulting from a customer merge.
+     */
+    public function selectTags(): static
     {
         $this->selectField("tags");
 

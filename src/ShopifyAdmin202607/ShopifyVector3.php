@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Representation of 3d vectors and points. It can represent
+ * either the coordinates of a point in space, a direction, or
+ * size. Presented as an object with three floating-point values.
+ */
 class ShopifyVector3
 {
     protected $x;
@@ -10,27 +15,33 @@ class ShopifyVector3
 
     
     /**
+     * The x coordinate of Vector3.
+     *
      * @return float
      */
-    public function getX()
+    public function getX(): ?float
     {
         return $this->x;
     }
 
     
     /**
+     * The y coordinate of Vector3.
+     *
      * @return float
      */
-    public function getY()
+    public function getY(): ?float
     {
         return $this->y;
     }
 
     
     /**
+     * The z coordinate of Vector3.
+     *
      * @return float
      */
-    public function getZ()
+    public function getZ(): ?float
     {
         return $this->z;
     }

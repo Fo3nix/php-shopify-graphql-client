@@ -3,10 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectFieldDefinition;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldReference;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldReferenceHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldReferenceConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectThumbnail;
 
+/**
+ * Provides a field definition and the data value assigned to it.
+ */
 class ShopifyMetaobjectField
 {
     protected $definition;
@@ -20,72 +23,88 @@ class ShopifyMetaobjectField
 
     
     /**
+     * The field definition for this object key.
+     *
      * @return ShopifyMetaobjectFieldDefinition
      */
-    public function getDefinition()
+    public function getDefinition(): ?ShopifyMetaobjectFieldDefinition
     {
         return $this->definition;
     }
 
     
     /**
+     * The assigned field value in JSON format.
+     *
      * @return string
      */
-    public function getJsonValue()
+    public function getJsonValue(): mixed
     {
         return $this->jsonValue;
     }
 
     
     /**
+     * The object key of this field.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
-     * @return ShopifyMetafieldReference
+     * For resource reference fields, provides the referenced object.
+     *
+     * @return ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo
      */
-    public function getReference()
+    public function getReference(): ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo|null
     {
         return $this->reference;
     }
 
     
     /**
+     * For resource reference list fields, provides the list of referenced objects.
+     *
      * @return ShopifyMetafieldReferenceConnection
      */
-    public function getReferences()
+    public function getReferences(): ?ShopifyMetafieldReferenceConnection
     {
         return $this->references;
     }
 
     
     /**
+     * For file reference or color fields, provides visual attributes for this field.
+     *
      * @return ShopifyMetaobjectThumbnail
      */
-    public function getThumbnail()
+    public function getThumbnail(): ?ShopifyMetaobjectThumbnail
     {
         return $this->thumbnail;
     }
 
     
     /**
+     * The type of the field.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The assigned field value, always stored as a string regardless of the field type.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
@@ -107,7 +126,7 @@ class ShopifyMetaobjectField
                 $instance->key = $data['key'];
             }
             if (isset($data['reference']) && $data['reference'] !== null) {
-                $instance->reference = ShopifyMetafieldReference::fromArray($data['reference']);
+                $instance->reference = ShopifyMetafieldReferenceHydrator::fromArray($data['reference']);
             }
             if (isset($data['references']) && $data['references'] !== null) {
                 $instance->references = ShopifyMetafieldReferenceConnection::fromArray($data['references']);
@@ -154,7 +173,7 @@ class ShopifyMetaobjectField
                 $data['key'] = $this->key;
             }
             if ($this->reference !== null) {
-                $data['reference'] = $this->reference->asArray();
+                $data['reference'] = ShopifyMetafieldReferenceHydrator::toArray($this->reference);
             }
             if ($this->references !== null) {
                 $data['references'] = $this->references->asArray();

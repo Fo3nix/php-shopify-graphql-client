@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A checkout and account configuration override modifies a parent configuration for specific markets.
+ */
 class ShopifyCheckoutAndAccountsConfigurationOverrideQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationOverride";
 
-    public function selectBranding(ShopifyCheckoutAndAccountsConfigurationOverrideBrandingArgumentsObject $argsObject = null)
+    /**
+     * The branding configuration.
+     */
+    public function selectBranding(?ShopifyCheckoutAndAccountsConfigurationOverrideBrandingArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingQueryObject("branding");
         if ($argsObject !== null) {
@@ -19,35 +25,50 @@ class ShopifyCheckoutAndAccountsConfigurationOverrideQueryObject extends QueryOb
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the configuration was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectEditedAt()
+    /**
+     * The date and time when the configuration was last edited.
+     */
+    public function selectEditedAt(): static
     {
         $this->selectField("editedAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The configuration name.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the configuration was last updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

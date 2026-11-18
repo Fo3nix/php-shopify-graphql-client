@@ -3,9 +3,17 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyHasStoreCreditAccountsHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyHasStoreCreditAccounts;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyStoreCreditAccountTransactionConnection;
 
-class ShopifyStoreCreditAccount
+/**
+ * A store credit account contains a monetary balance that can be redeemed at checkout for purchases in the shop.
+ * The account is held in the specified currency and has an owner that cannot be transferred.
+ *
+ * The account balance is redeemable at checkout only when the owner is authenticated via [new customer accounts authentication](https://shopify.dev/docs/api/customer).
+ */
+class ShopifyStoreCreditAccount implements ShopifyNode
 {
     protected $balance;
     protected $id;
@@ -14,36 +22,44 @@ class ShopifyStoreCreditAccount
 
     
     /**
+     * The current balance of the store credit account.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getBalance()
+    public function getBalance(): ?ShopifyMoneyV2
     {
         return $this->balance;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return mixed
+     * The owner of the store credit account.
+     *
+     * @return ShopifyHasStoreCreditAccounts
      */
-    public function getOwner()
+    public function getOwner(): ?ShopifyHasStoreCreditAccounts
     {
         return $this->owner;
     }
 
     
     /**
+     * The transaction history of the store credit account.
+     *
      * @return ShopifyStoreCreditAccountTransactionConnection
      */
-    public function getTransactions()
+    public function getTransactions(): ?ShopifyStoreCreditAccountTransactionConnection
     {
         return $this->transactions;
     }
@@ -62,7 +78,7 @@ class ShopifyStoreCreditAccount
                 $instance->id = $data['id'];
             }
             if (isset($data['owner']) && $data['owner'] !== null) {
-                $instance->owner = $data['owner'];
+                $instance->owner = ShopifyHasStoreCreditAccountsHydrator::fromArray($data['owner']);
             }
             if (isset($data['transactions']) && $data['transactions'] !== null) {
                 $instance->transactions = ShopifyStoreCreditAccountTransactionConnection::fromArray($data['transactions']);
@@ -97,7 +113,7 @@ class ShopifyStoreCreditAccount
                 $data['id'] = $this->id;
             }
             if ($this->owner !== null) {
-                $data['owner'] = $this->owner;
+                $data['owner'] = ShopifyHasStoreCreditAccountsHydrator::toArray($this->owner);
             }
             if ($this->transactions !== null) {
                 $data['transactions'] = $this->transactions->asArray();

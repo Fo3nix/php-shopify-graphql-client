@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one InventoryTransfer and a cursor during pagination.
+ */
 class ShopifyInventoryTransferEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryTransferEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyInventoryTransferEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of InventoryTransferEdge.
+     */
+    public function selectNode(?ShopifyInventoryTransferEdgeNodeArgumentsObject $argsObject = null): ShopifyInventoryTransferQueryObject
     {
         $object = new ShopifyInventoryTransferQueryObject("node");
         if ($argsObject !== null) {

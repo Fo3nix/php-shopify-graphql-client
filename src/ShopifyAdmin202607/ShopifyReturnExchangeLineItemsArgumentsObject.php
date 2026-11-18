@@ -15,49 +15,70 @@ class ShopifyReturnExchangeLineItemsArgumentsObject extends ArgumentsObject
     protected $before;
     protected $reverse;
 
-    public function setIncludeRemovedItems($includeRemovedItems)
+    /**
+     * Include exchange line items that have been removed from the order by an order edit, return, etc. Items that have been removed have a zero ([LineItem.currentQuantity](https://shopify.dev/docs/api/admin-graphql/unstable/objects/LineItem#field-lineitem-currentquantity)).
+     */
+    public function setIncludeRemovedItems($includeRemovedItems): static
     {
         $this->includeRemovedItems = $includeRemovedItems;
 
         return $this;
     }
 
-    public function setProcessingStatus($shopifyReturnProcessingStatusFilterInput)
+    /**
+     * Filter exchange line items by processing status.
+     */
+    public function setProcessingStatus($shopifyReturnProcessingStatusFilterInput): static
     {
         $this->processingStatus = new RawObject($shopifyReturnProcessingStatusFilterInput);
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 

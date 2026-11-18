@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents the shop owner information for financial KYC purposes.
+ */
 class ShopifyFinancialKycShopOwner
 {
     protected $email;
@@ -12,45 +15,55 @@ class ShopifyFinancialKycShopOwner
 
     
     /**
+     * The email of the shop owner.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * The first name of the shop owner.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The last name of the shop owner.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The phone number of the shop owner.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }

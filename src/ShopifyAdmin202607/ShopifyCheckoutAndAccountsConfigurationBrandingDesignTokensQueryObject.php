@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The design token customizations allow you to set values that represent specific attributes of your brand like color and font. These attributes are used throughout the user interface. This brings consistency and allows you to easily make broad design changes.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingDesignTokens";
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors for global colors.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensQueryObject ext
         return $object;
     }
 
-    public function selectCornerRadius(ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensCornerRadiusArgumentsObject $argsObject = null)
+    /**
+     * The corner radius variables.
+     */
+    public function selectCornerRadius(?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensCornerRadiusArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusVariablesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusVariablesQueryObject("cornerRadius");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensQueryObject ext
         return $object;
     }
 
-    public function selectTypography(ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensTypographyArgumentsObject $argsObject = null)
+    /**
+     * The typography.
+     */
+    public function selectTypography(?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokensTypographyArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingTypographyQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingTypographyQueryObject("typography");
         if ($argsObject !== null) {

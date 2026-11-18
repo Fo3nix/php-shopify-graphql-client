@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents the address of a location.
+ */
 class ShopifyLocationAddress
 {
     protected $address1;
@@ -19,108 +22,132 @@ class ShopifyLocationAddress
 
     
     /**
+     * The first line of the address for the location.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address for the location.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city of the location.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The country of the location.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The country code of the location.
+     *
      * @return string
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * A formatted version of the address for the location.
+     *
      * @return string[]
      */
-    public function getFormatted()
+    public function getFormatted(): ?array
     {
         return $this->formatted;
     }
 
     
     /**
+     * The approximate latitude coordinates of the location.
+     *
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
     
     /**
+     * The approximate longitude coordinates of the location.
+     *
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
     
     /**
+     * The phone number of the location.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The province of the location.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The code for the province, state, or district of the address of the location.
+     *
      * @return string
      */
-    public function getProvinceCode()
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }
 
     
     /**
+     * The ZIP code of the location.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

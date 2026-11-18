@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Describes the delivery method to use to get the physical goods to the customer.
+ */
 class ShopifySubscriptionDeliveryMethodUnionObject extends UnionObject
 {
-    public function onShopifySubscriptionDeliveryMethodLocalDelivery()
+    public function onShopifySubscriptionDeliveryMethodLocalDelivery(): ShopifySubscriptionDeliveryMethodLocalDeliveryQueryObject
     {
         $object = new ShopifySubscriptionDeliveryMethodLocalDeliveryQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifySubscriptionDeliveryMethodUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionDeliveryMethodPickup()
+    public function onShopifySubscriptionDeliveryMethodPickup(): ShopifySubscriptionDeliveryMethodPickupQueryObject
     {
         $object = new ShopifySubscriptionDeliveryMethodPickupQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifySubscriptionDeliveryMethodUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionDeliveryMethodShipping()
+    public function onShopifySubscriptionDeliveryMethodShipping(): ShopifySubscriptionDeliveryMethodShippingQueryObject
     {
         $object = new ShopifySubscriptionDeliveryMethodShippingQueryObject();
         $this->addPossibleType($object);

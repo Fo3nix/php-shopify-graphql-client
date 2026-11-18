@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fulfillment associated with dispute evidence.
+ */
 class ShopifyShopifyPaymentsDisputeFulfillmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsDisputeFulfillment";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectShippingCarrier()
+    /**
+     * The shipping carrier for this fulfillment.
+     */
+    public function selectShippingCarrier(): static
     {
         $this->selectField("shippingCarrier");
 
         return $this;
     }
 
-    public function selectShippingDate()
+    /**
+     * The shipping date for this fulfillment.
+     */
+    public function selectShippingDate(): static
     {
         $this->selectField("shippingDate");
 
         return $this;
     }
 
-    public function selectShippingTrackingNumber()
+    /**
+     * The shipping tracking number for this fulfillment.
+     */
+    public function selectShippingTrackingNumber(): static
     {
         $this->selectField("shippingTrackingNumber");
 

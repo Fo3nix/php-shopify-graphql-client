@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle;
 
+/**
+ * The text fields customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingTextField
 {
     protected $border;
@@ -11,18 +14,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTextField
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderEnumObject
+     * The border.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
+     * The typography.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
     {
         return $this->typography;
     }

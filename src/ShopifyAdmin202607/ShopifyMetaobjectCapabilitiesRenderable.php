@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectCapabilityDefinitionDataRenderable;
 
+/**
+ * The renderable capability of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilitiesRenderable
 {
     protected $data;
@@ -11,18 +14,22 @@ class ShopifyMetaobjectCapabilitiesRenderable
 
     
     /**
+     * The data associated with the renderable capability.
+     *
      * @return ShopifyMetaobjectCapabilityDefinitionDataRenderable
      */
-    public function getData()
+    public function getData(): ?ShopifyMetaobjectCapabilityDefinitionDataRenderable
     {
         return $this->data;
     }
 
     
     /**
+     * Indicates if the capability is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

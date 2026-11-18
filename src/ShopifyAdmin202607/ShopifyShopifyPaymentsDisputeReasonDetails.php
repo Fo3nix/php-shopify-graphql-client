@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Details regarding a dispute reason.
+ */
 class ShopifyShopifyPaymentsDisputeReasonDetails
 {
     protected $networkReasonCode;
@@ -9,18 +12,22 @@ class ShopifyShopifyPaymentsDisputeReasonDetails
 
     
     /**
+     * The raw code provided by the payment network.
+     *
      * @return string
      */
-    public function getNetworkReasonCode()
+    public function getNetworkReasonCode(): ?string
     {
         return $this->networkReasonCode;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsDisputeReasonEnumObject
+     * The reason for the dispute provided by the cardholder's banks.
+     *
+     * @return string A ShopifyShopifyPaymentsDisputeReasonEnumObject value
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }

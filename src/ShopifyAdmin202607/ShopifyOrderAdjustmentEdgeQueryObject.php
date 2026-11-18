@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one OrderAdjustment and a cursor during pagination.
+ */
 class ShopifyOrderAdjustmentEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "OrderAdjustmentEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyOrderAdjustmentEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of OrderAdjustmentEdge.
+     */
+    public function selectNode(?ShopifyOrderAdjustmentEdgeNodeArgumentsObject $argsObject = null): ShopifyOrderAdjustmentQueryObject
     {
         $object = new ShopifyOrderAdjustmentQueryObject("node");
         if ($argsObject !== null) {

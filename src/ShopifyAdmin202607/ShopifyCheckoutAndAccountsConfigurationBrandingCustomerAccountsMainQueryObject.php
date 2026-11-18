@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The customer accounts-specific main customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCustomerAccountsMain";
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainQueryOb
         return $object;
     }
 
-    public function selectSection(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSectionArgumentsObject $argsObject = null)
+    /**
+     * The customer accounts main section.
+     */
+    public function selectSection(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSectionArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSectionQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSectionQueryObject("section");
         if ($argsObject !== null) {

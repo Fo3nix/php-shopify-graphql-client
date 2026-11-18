@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The Apple mobile platform application.
+ */
 class ShopifyAppleApplication
 {
     protected $appClipApplicationId;
@@ -13,54 +16,66 @@ class ShopifyAppleApplication
 
     
     /**
+     * The iOS App Clip application ID.
+     *
      * @return string
      */
-    public function getAppClipApplicationId()
+    public function getAppClipApplicationId(): ?string
     {
         return $this->appClipApplicationId;
     }
 
     
     /**
+     * Whether iOS App Clips are enabled for this app.
+     *
      * @return bool
      */
-    public function getAppClipsEnabled()
+    public function getAppClipsEnabled(): ?bool
     {
         return $this->appClipsEnabled;
     }
 
     
     /**
+     * The iOS App ID.
+     *
      * @return string
      */
-    public function getAppId()
+    public function getAppId(): ?string
     {
         return $this->appId;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether iOS shared web credentials are enabled for this app.
+     *
      * @return bool
      */
-    public function getSharedWebCredentialsEnabled()
+    public function getSharedWebCredentialsEnabled(): ?bool
     {
         return $this->sharedWebCredentialsEnabled;
     }
 
     
     /**
+     * Whether iOS Universal Links are supported by this app.
+     *
      * @return bool
      */
-    public function getUniversalLinksEnabled()
+    public function getUniversalLinksEnabled(): ?bool
     {
         return $this->universalLinksEnabled;
     }
