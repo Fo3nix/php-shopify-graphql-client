@@ -5,6 +5,7 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketCatalogConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketConditions;
+use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketCurrencySettings;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldDefinitionConnection;
@@ -21,6 +22,7 @@ class ShopifyMarket
     protected $catalogs;
     protected $catalogsCount;
     protected $conditions;
+    protected $createdAt;
     protected $currencySettings;
     protected $enabled;
     protected $handle;
@@ -72,6 +74,15 @@ class ShopifyMarket
     public function getConditions()
     {
         return $this->conditions;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     
@@ -237,6 +248,9 @@ class ShopifyMarket
             if (isset($data['conditions']) && $data['conditions'] !== null) {
                 $instance->conditions = ShopifyMarketConditions::fromArray($data['conditions']);
             }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
             if (isset($data['currencySettings']) && $data['currencySettings'] !== null) {
                 $instance->currencySettings = ShopifyMarketCurrencySettings::fromArray($data['currencySettings']);
             }
@@ -319,6 +333,9 @@ class ShopifyMarket
             }
             if ($this->conditions !== null) {
                 $data['conditions'] = $this->conditions->asArray();
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->currencySettings !== null) {
                 $data['currencySettings'] = $this->currencySettings->asArray();

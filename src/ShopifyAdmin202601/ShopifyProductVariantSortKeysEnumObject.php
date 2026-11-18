@@ -6,6 +6,7 @@ use GraphQL\SchemaObject\EnumObject;
 
 class ShopifyProductVariantSortKeysEnumObject extends EnumObject
 {
+    const CREATED_AT = "CREATED_AT";
     const FULL_TITLE = "FULL_TITLE";
     const ID = "ID";
     const INVENTORY_LEVELS_AVAILABLE = "INVENTORY_LEVELS_AVAILABLE";
