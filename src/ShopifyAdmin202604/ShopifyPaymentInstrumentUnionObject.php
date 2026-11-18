@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * All possible instrument outputs for Payment Mandates.
+ */
 class ShopifyPaymentInstrumentUnionObject extends UnionObject
 {
-    public function onShopifyBankAccount()
+    public function onShopifyBankAccount(): ShopifyBankAccountQueryObject
     {
         $object = new ShopifyBankAccountQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyPaymentInstrumentUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyVaultCreditCard()
+    public function onShopifyVaultCreditCard(): ShopifyVaultCreditCardQueryObject
     {
         $object = new ShopifyVaultCreditCardQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyPaymentInstrumentUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyVaultPaypalBillingAgreement()
+    public function onShopifyVaultPaypalBillingAgreement(): ShopifyVaultPaypalBillingAgreementQueryObject
     {
         $object = new ShopifyVaultPaypalBillingAgreementQueryObject();
         $this->addPossibleType($object);

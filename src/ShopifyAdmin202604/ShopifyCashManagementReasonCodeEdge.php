@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCashManagementReasonCode;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCashManagementReasonCodeHydrator;
 
+/**
+ * An auto-generated type which holds one CashManagementReasonCode and a cursor during pagination.
+ */
 class ShopifyCashManagementReasonCodeEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyCashManagementReasonCodeEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifyCashManagementReasonCode
+     * The item at the end of CashManagementReasonCodeEdge.
+     *
+     * @return ShopifyCashManagementCustomReasonCode|ShopifyCashManagementDefaultReasonCode|ShopifyCashManagementSystemReasonCode
      */
-    public function getNode()
+    public function getNode(): ShopifyCashManagementCustomReasonCode|ShopifyCashManagementDefaultReasonCode|ShopifyCashManagementSystemReasonCode|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifyCashManagementReasonCodeEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifyCashManagementReasonCode::fromArray($data['node']);
+                $instance->node = ShopifyCashManagementReasonCodeHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyCashManagementReasonCodeEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifyCashManagementReasonCodeHydrator::toArray($this->node);
             }
             return $data;
         }

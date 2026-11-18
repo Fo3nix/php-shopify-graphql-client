@@ -11,7 +11,16 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySellingPlanGroupConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocationConnection;
 
-class ShopifyDeliveryProfile
+/**
+ * A shipping profile that defines shipping rates for specific [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects and [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects. Delivery profiles determine which products can ship from which [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects to which zones, and at what rates.
+ *
+ * Profiles can associate with [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) objects to provide custom shipping rules for subscriptions, such as free shipping or restricted delivery zones. The default profile applies to all products that aren't assigned to other profiles.
+ *
+ * **Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. Shipping options from merchant-managed delivery profiles are still saved on a shop, but these rates may differ from what buyers pay and should not be relied on. Read the current shipping configuration from the [`Market`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Market) object's `delivery.shipping` field instead. The `marketDrivenShipping` check and the `Market.delivery` field require API version 2026-07 or later.
+ *
+ * Learn more about [building delivery profiles](https://shopify.dev/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
+ */
+class ShopifyDeliveryProfile implements ShopifyNode
 {
     protected $activeMethodDefinitionsCount;
     protected $createdAt;
@@ -32,144 +41,176 @@ class ShopifyDeliveryProfile
 
     
     /**
+     * The number of active shipping rates for the profile.
+     *
      * @return int
      */
-    public function getActiveMethodDefinitionsCount()
+    public function getActiveMethodDefinitionsCount(): ?int
     {
         return $this->activeMethodDefinitionsCount;
     }
 
     
     /**
+     * The date and time when the delivery profile was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Whether this is the default profile.
+     *
      * @return bool
      */
-    public function getDefault()
+    public function getDefault(): ?bool
     {
         return $this->default;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The number of locations without rates defined.
+     *
      * @return int
      */
-    public function getLocationsWithoutRatesCount()
+    public function getLocationsWithoutRatesCount(): ?int
     {
         return $this->locationsWithoutRatesCount;
     }
 
     
     /**
+     * The name of the delivery profile.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The number of active origin locations for the profile.
+     *
      * @return int
      */
-    public function getOriginLocationCount()
+    public function getOriginLocationCount(): ?int
     {
         return $this->originLocationCount;
     }
 
     
     /**
+     * How many product variants are in this profile.
+     *
      * @return ShopifyCount
      */
-    public function getProductVariantsCount()
+    public function getProductVariantsCount(): ?ShopifyCount
     {
         return $this->productVariantsCount;
     }
 
     
     /**
+     * How many product variants are in this profile.
+     *
      * @return ShopifyDeliveryProductVariantsCount
      */
-    public function getProductVariantsCountV2()
+    public function getProductVariantsCountV2(): ?ShopifyDeliveryProductVariantsCount
     {
         return $this->productVariantsCountV2;
     }
 
     
     /**
+     * The products and variants associated with this profile.
+     *
      * @return ShopifyDeliveryProfileItemConnection
      */
-    public function getProfileItems()
+    public function getProfileItems(): ?ShopifyDeliveryProfileItemConnection
     {
         return $this->profileItems;
     }
 
     
     /**
+     * The location groups and associated zones using this profile. If the shop uses market-driven shipping and this is a merchant-managed profile, these zones and rates don't affect checkout and can differ from what buyers pay.
+     *
      * @return ShopifyDeliveryProfileLocationGroup[]
      */
-    public function getProfileLocationGroups()
+    public function getProfileLocationGroups(): ?array
     {
         return $this->profileLocationGroups;
     }
 
     
     /**
+     * Selling plan groups associated with the specified delivery profile.
+     *
      * @return ShopifySellingPlanGroupConnection
      */
-    public function getSellingPlanGroups()
+    public function getSellingPlanGroups(): ?ShopifySellingPlanGroupConnection
     {
         return $this->sellingPlanGroups;
     }
 
     
     /**
+     * List of locations that haven't been assigned to a location group for this profile.
+     *
      * @return ShopifyLocation[]
      */
-    public function getUnassignedLocations()
+    public function getUnassignedLocations(): ?array
     {
         return $this->unassignedLocations;
     }
 
     
     /**
+     * List of locations that have not been assigned to a location group for this profile.
+     *
      * @return ShopifyLocationConnection
      */
-    public function getUnassignedLocationsPaginated()
+    public function getUnassignedLocationsPaginated(): ?ShopifyLocationConnection
     {
         return $this->unassignedLocationsPaginated;
     }
 
     
     /**
+     * The version of the delivery profile.
+     *
      * @return int
      */
-    public function getVersion()
+    public function getVersion(): ?int
     {
         return $this->version;
     }
 
     
     /**
+     * The number of countries with active rates to deliver to.
+     *
      * @return int
      */
-    public function getZoneCountryCount()
+    public function getZoneCountryCount(): ?int
     {
         return $this->zoneCountryCount;
     }

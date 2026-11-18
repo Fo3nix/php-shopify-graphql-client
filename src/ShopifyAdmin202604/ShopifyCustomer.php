@@ -25,7 +25,15 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerStatistics;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyStoreCreditAccountConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionContractConnection;
 
-class ShopifyCustomer
+/**
+ * Information about a customer of the shop, such as the customer's contact details, purchase history, and marketing preferences.
+ *
+ * Tracks the customer's total spending through the [`amountSpent`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer#field-amountSpent) field and provides access to associated data such as payment methods and subscription contracts.
+ *
+ * > Caution:
+ * > Only use this data if it's required for your app's functionality. Shopify will restrict [access to scopes](https://shopify.dev/api/usage/access-scopes) for apps that don't have a legitimate use for the associated data.
+ */
+class ShopifyCustomer implements ShopifyCommentEventSubject, ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasStoreCreditAccounts, ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $addresses;
     protected $addressesV2;
@@ -77,423 +85,537 @@ class ShopifyCustomer
 
     
     /**
+     * A list of addresses associated with the customer. Limited to 250 addresses. Use `addressesV2` for paginated access to all addresses.
+     *
      * @return ShopifyMailingAddress[]
      */
-    public function getAddresses()
+    public function getAddresses(): ?array
     {
         return $this->addresses;
     }
 
     
     /**
+     * The addresses associated with the customer.
+     *
      * @return ShopifyMailingAddressConnection
      */
-    public function getAddressesV2()
+    public function getAddressesV2(): ?ShopifyMailingAddressConnection
     {
         return $this->addressesV2;
     }
 
     
     /**
+     * The total amount that the customer has spent on orders in their lifetime.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmountSpent()
+    public function getAmountSpent(): ?ShopifyMoneyV2
     {
         return $this->amountSpent;
     }
 
     
     /**
+     * Whether the merchant can delete the customer from their store.
+     *
+     * A customer can be deleted from a store only if they haven't yet made an order. After a customer makes an
+     * order, they can't be deleted from a store.
+     *
      * @return bool
      */
-    public function getCanDelete()
+    public function getCanDelete(): ?bool
     {
         return $this->canDelete;
     }
 
     
     /**
+     * A list of the customer's company contact profiles.
+     *
      * @return ShopifyCompanyContact[]
      */
-    public function getCompanyContactProfiles()
+    public function getCompanyContactProfiles(): ?array
     {
         return $this->companyContactProfiles;
     }
 
     
     /**
+     * The date and time when the customer was added to the store.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Whether the customer has opted out of having their data sold.
+     *
      * @return bool
      */
-    public function getDataSaleOptOut()
+    public function getDataSaleOptOut(): ?bool
     {
         return $this->dataSaleOptOut;
     }
 
     
     /**
+     * The default address associated with the customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getDefaultAddress()
+    public function getDefaultAddress(): ?ShopifyMailingAddress
     {
         return $this->defaultAddress;
     }
 
     
     /**
+     * The customer's default email address.
+     *
      * @return ShopifyCustomerEmailAddress
      */
-    public function getDefaultEmailAddress()
+    public function getDefaultEmailAddress(): ?ShopifyCustomerEmailAddress
     {
         return $this->defaultEmailAddress;
     }
 
     
     /**
+     * The customer's default phone number.
+     *
      * @return ShopifyCustomerPhoneNumber
      */
-    public function getDefaultPhoneNumber()
+    public function getDefaultPhoneNumber(): ?ShopifyCustomerPhoneNumber
     {
         return $this->defaultPhoneNumber;
     }
 
     
     /**
+     * The full name of the customer, based on the values for first_name and last_name. If the first_name and
+     * last_name are not available, then this falls back to the customer's email address, and if that is not available, the customer's phone number.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * The customer's email address.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * The current email marketing state for the customer.
+     * If the customer doesn't have an email address, then this property is `null`.
+     *
      * @return ShopifyCustomerEmailMarketingConsentState
      */
-    public function getEmailMarketingConsent()
+    public function getEmailMarketingConsent(): ?ShopifyCustomerEmailMarketingConsentState
     {
         return $this->emailMarketingConsent;
     }
 
     
     /**
+     * A list of events associated with the customer.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * The customer's first name.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * Whether the merchant has added timeline comments about the customer on the customer's page.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image associated with the customer.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * The customer's last name.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The customer's last order.
+     *
      * @return ShopifyOrder
      */
-    public function getLastOrder()
+    public function getLastOrder(): ?ShopifyOrder
     {
         return $this->lastOrder;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The amount of time since the customer was first added to the store.
+     *
+     * Example: 'about 12 years'.
+     *
      * @return string
      */
-    public function getLifetimeDuration()
+    public function getLifetimeDuration(): ?string
     {
         return $this->lifetimeDuration;
     }
 
     
     /**
+     * The customer's locale.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The market that applies to the customer’s default address country. In cases where multiple markets match, this returns the most-specific country region market.
+     *
      * @return ShopifyMarket
      */
-    public function getMarket()
+    public function getMarket(): ?ShopifyMarket
     {
         return $this->market;
     }
 
     
     /**
+     * Whether the customer can be merged with another customer.
+     *
      * @return ShopifyCustomerMergeable
      */
-    public function getMergeable()
+    public function getMergeable(): ?ShopifyCustomerMergeable
     {
         return $this->mergeable;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * A unique identifier for the customer that's used with Multipass login.
+     *
      * @return string
      */
-    public function getMultipassIdentifier()
+    public function getMultipassIdentifier(): ?string
     {
         return $this->multipassIdentifier;
     }
 
     
     /**
+     * A note about the customer.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The number of orders that the customer has made at the store in their lifetime.
+     *
      * @return string
      */
-    public function getNumberOfOrders()
+    public function getNumberOfOrders(): mixed
     {
         return $this->numberOfOrders;
     }
 
     
     /**
+     * A list of the customer's orders.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * A list of the customer's payment methods.
+     *
      * @return ShopifyCustomerPaymentMethodConnection
      */
-    public function getPaymentMethods()
+    public function getPaymentMethods(): ?ShopifyCustomerPaymentMethodConnection
     {
         return $this->paymentMethods;
     }
 
     
     /**
+     * The customer's phone number.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
-     * @return ShopifyCustomerProductSubscriberStatusEnumObject
+     * Possible subscriber states of a customer defined by their subscription contracts.
+     *
+     * @return string A ShopifyCustomerProductSubscriberStatusEnumObject value
      */
-    public function getProductSubscriberStatus()
+    public function getProductSubscriberStatus(): ?string
     {
         return $this->productSubscriberStatus;
     }
 
     
     /**
+     * The current SMS marketing state for the customer's phone number.
+     *
+     * If the customer does not have a phone number, then this property is `null`.
+     *
      * @return ShopifyCustomerSmsMarketingConsentState
      */
-    public function getSmsMarketingConsent()
+    public function getSmsMarketingConsent(): ?ShopifyCustomerSmsMarketingConsentState
     {
         return $this->smsMarketingConsent;
     }
 
     
     /**
-     * @return ShopifyCustomerStateEnumObject
+     * The state of the customer's account with the shop.
+     *
+     * With legacy customer accounts, the state follows the account invite and activation. With customer
+     * accounts, signing in changes the state to `ENABLED`.
+     *
+     * @return string A ShopifyCustomerStateEnumObject value
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->state;
     }
 
     
     /**
+     * The statistics for a given customer.
+     *
      * @return ShopifyCustomerStatistics
      */
-    public function getStatistics()
+    public function getStatistics(): ?ShopifyCustomerStatistics
     {
         return $this->statistics;
     }
 
     
     /**
+     * Returns a list of store credit accounts that belong to the owner resource.
+     * A store credit account owner can hold multiple accounts each with a different currency.
+     *
      * @return ShopifyStoreCreditAccountConnection
      */
-    public function getStoreCreditAccounts()
+    public function getStoreCreditAccounts(): ?ShopifyStoreCreditAccountConnection
     {
         return $this->storeCreditAccounts;
     }
 
     
     /**
+     * A list of the customer's subscription contracts.
+     *
      * @return ShopifySubscriptionContractConnection
      */
-    public function getSubscriptionContracts()
+    public function getSubscriptionContracts(): ?ShopifySubscriptionContractConnection
     {
         return $this->subscriptionContracts;
     }
 
     
     /**
+     * A comma separated list of tags that have been added to the customer.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * Whether the customer is exempt from being charged taxes on their orders.
+     *
      * @return bool
      */
-    public function getTaxExempt()
+    public function getTaxExempt(): ?bool
     {
         return $this->taxExempt;
     }
 
     
     /**
-     * @return ShopifyTaxExemptionEnumObject[]
+     * The list of tax exemptions applied to the customer.
+     *
+     * @return string[] ShopifyTaxExemptionEnumObject values
      */
-    public function getTaxExemptions()
+    public function getTaxExemptions(): ?array
     {
         return $this->taxExemptions;
     }
 
     
     /**
+     * The URL to unsubscribe the customer from the mailing list.
+     *
      * @return string
      */
-    public function getUnsubscribeUrl()
+    public function getUnsubscribeUrl(): mixed
     {
         return $this->unsubscribeUrl;
     }
 
     
     /**
+     * The date and time when the customer was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * Whether the email address is formatted correctly.
+     *
+     * Returns `true` when the email is formatted correctly and
+     * belongs to an existing domain. This doesn't guarantee that
+     * the email address actually exists.
+     *
      * @return bool
      */
-    public function getValidEmailAddress()
+    public function getValidEmailAddress(): ?bool
     {
         return $this->validEmailAddress;
     }
 
     
     /**
+     * Whether the customer has verified their email address. Defaults to `true` if the customer is created through the Shopify admin or API.
+     *
      * @return bool
      */
-    public function getVerifiedEmail()
+    public function getVerifiedEmail(): ?bool
     {
         return $this->verifiedEmail;
     }

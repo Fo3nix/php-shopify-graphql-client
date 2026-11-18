@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingHeaderCartLink;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingLogo;
 
+/**
+ * The header customizations.
+ */
 class ShopifyCheckoutBrandingHeader
 {
     protected $alignment;
@@ -19,72 +22,88 @@ class ShopifyCheckoutBrandingHeader
 
     
     /**
-     * @return ShopifyCheckoutBrandingHeaderAlignmentEnumObject
+     * The header alignment.
+     *
+     * @return string A ShopifyCheckoutBrandingHeaderAlignmentEnumObject value
      */
-    public function getAlignment()
+    public function getAlignment(): ?string
     {
         return $this->alignment;
     }
 
     
     /**
+     * The background image of the header.
+     *
      * @return ShopifyCheckoutBrandingImage
      */
-    public function getBanner()
+    public function getBanner(): ?ShopifyCheckoutBrandingImage
     {
         return $this->banner;
     }
 
     
     /**
+     * The cart link customizations for 1-page checkout. This field allows to customize the cart icon that renders by default on 1-page checkout.
+     *
      * @return ShopifyCheckoutBrandingHeaderCartLink
      */
-    public function getCartLink()
+    public function getCartLink(): ?ShopifyCheckoutBrandingHeaderCartLink
     {
         return $this->cartLink;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSchemeSelectionEnumObject
+     * The selected color scheme of the header container.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSchemeSelectionEnumObject value
      */
-    public function getColorScheme()
+    public function getColorScheme(): ?string
     {
         return $this->colorScheme;
     }
 
     
     /**
+     * The divided setting.
+     *
      * @return bool
      */
-    public function getDivided()
+    public function getDivided(): ?bool
     {
         return $this->divided;
     }
 
     
     /**
+     * The store logo.
+     *
      * @return ShopifyCheckoutBrandingLogo
      */
-    public function getLogo()
+    public function getLogo(): ?ShopifyCheckoutBrandingLogo
     {
         return $this->logo;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSpacingKeywordEnumObject
+     * The padding of the header container.
+     *
+     * @return string A ShopifyCheckoutBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingHeaderPositionEnumObject
+     * The header position.
+     *
+     * @return string A ShopifyCheckoutBrandingHeaderPositionEnumObject value
      */
-    public function getPosition()
+    public function getPosition(): ?string
     {
         return $this->position;
     }

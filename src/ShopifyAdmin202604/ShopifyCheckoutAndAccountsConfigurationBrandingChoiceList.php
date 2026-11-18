@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroup;
 
+/**
+ * The choice list customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingChoiceList
 {
     protected $group;
 
     
     /**
+     * The 'group' variant of ChoiceList.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroup
      */
-    public function getGroup()
+    public function getGroup(): ?ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroup
     {
         return $this->group;
     }

@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyRefundDuty;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShippingRefund;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySuggestedOrderTransaction;
 
+/**
+ * Represents a return refund suggested by Shopify based on the items being reimbursed. You can then use the suggested refund object to generate an actual refund for the return.
+ */
 class ShopifySuggestedReturnRefund
 {
     protected $amount;
@@ -22,90 +25,110 @@ class ShopifySuggestedReturnRefund
 
     
     /**
+     * The total monetary value to be refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyBag
     {
         return $this->amount;
     }
 
     
     /**
+     * The sum of all the discounted prices of the line items being refunded.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedSubtotal()
+    public function getDiscountedSubtotal(): ?ShopifyMoneyBag
     {
         return $this->discountedSubtotal;
     }
 
     
     /**
+     * The total monetary value available to refund in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): ?ShopifyMoneyBag
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * A list of duties to be refunded from the order.
+     *
      * @return ShopifyRefundDuty[]
      */
-    public function getRefundDuties()
+    public function getRefundDuties(): ?array
     {
         return $this->refundDuties;
     }
 
     
     /**
+     * The shipping costs to be refunded from the order.
+     *
      * @return ShopifyShippingRefund
      */
-    public function getShipping()
+    public function getShipping(): ?ShopifyShippingRefund
     {
         return $this->shipping;
     }
 
     
     /**
+     * The sum of all the prices of the line items being refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotal()
+    public function getSubtotal(): ?ShopifyMoneyBag
     {
         return $this->subtotal;
     }
 
     
     /**
+     * A list of suggested order transactions.
+     *
      * @return ShopifySuggestedOrderTransaction[]
      */
-    public function getSuggestedTransactions()
+    public function getSuggestedTransactions(): ?array
     {
         return $this->suggestedTransactions;
     }
 
     
     /**
+     * The total cart discount amount that was applied to all line items in this refund.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalCartDiscountAmount()
+    public function getTotalCartDiscountAmount(): ?ShopifyMoneyBag
     {
         return $this->totalCartDiscountAmount;
     }
 
     
     /**
+     * The sum of all the duties being refunded from the order in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDuties()
+    public function getTotalDuties(): ?ShopifyMoneyBag
     {
         return $this->totalDuties;
     }
 
     
     /**
+     * The sum of the taxes being refunded in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTax()
+    public function getTotalTax(): ?ShopifyMoneyBag
     {
         return $this->totalTax;
     }

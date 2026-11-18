@@ -6,6 +6,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 
+/**
+ * A [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) or [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) being refunded from an order. Each refund line item tracks the quantity, pricing, and restocking details for items returned to the merchant.
+ *
+ * The refund line item links to the original [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) from the [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) and includes financial information such as the refunded price, subtotal, and taxes in both shop and presentment currencies. The [`restockType`](https://shopify.dev/docs/api/admin-graphql/latest/objects/RefundLineItem#field-RefundLineItem.fields.restockType) field indicates whether and how the merchant restocks the returned items to inventory, while the [`location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/RefundLineItem#field-RefundLineItem.fields.location) field specifies where restocking occurs.
+ */
 class ShopifyRefundLineItem
 {
     protected $id;
@@ -23,108 +28,132 @@ class ShopifyRefundLineItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The `LineItem` resource associated to the refunded line item.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The inventory restock location.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The price of a refunded line item.
+     *
      * @return string
      */
-    public function getPrice()
+    public function getPrice(): mixed
     {
         return $this->price;
     }
 
     
     /**
+     * The price of a refunded line item in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPriceSet()
+    public function getPriceSet(): ?ShopifyMoneyBag
     {
         return $this->priceSet;
     }
 
     
     /**
+     * The quantity of a refunded line item.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
-     * @return ShopifyRefundLineItemRestockTypeEnumObject
+     * The type of restock for the refunded line item.
+     *
+     * @return string A ShopifyRefundLineItemRestockTypeEnumObject value
      */
-    public function getRestockType()
+    public function getRestockType(): ?string
     {
         return $this->restockType;
     }
 
     
     /**
+     * Whether the refunded line item was restocked. Not applicable in the context of a SuggestedRefund.
+     *
      * @return bool
      */
-    public function getRestocked()
+    public function getRestocked(): ?bool
     {
         return $this->restocked;
     }
 
     
     /**
+     * The subtotal price of a refunded line item.
+     *
      * @return string
      */
-    public function getSubtotal()
+    public function getSubtotal(): mixed
     {
         return $this->subtotal;
     }
 
     
     /**
+     * The subtotal price of a refunded line item in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalSet()
+    public function getSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalSet;
     }
 
     
     /**
+     * The total tax charged on a refunded line item.
+     *
      * @return string
      */
-    public function getTotalTax()
+    public function getTotalTax(): mixed
     {
         return $this->totalTax;
     }
 
     
     /**
+     * The total tax charged on a refunded line item in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }

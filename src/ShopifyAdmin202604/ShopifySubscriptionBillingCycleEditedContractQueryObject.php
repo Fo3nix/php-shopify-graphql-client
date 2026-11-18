@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a subscription contract with billing cycles.
+ */
 class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionBillingCycleEditedContract";
 
-    public function selectApp(ShopifySubscriptionBillingCycleEditedContractAppArgumentsObject $argsObject = null)
+    /**
+     * The subscription app that the subscription contract is registered to.
+     */
+    public function selectApp(?ShopifySubscriptionBillingCycleEditedContractAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectAppAdminUrl()
+    /**
+     * The URL of the subscription contract page on the subscription app.
+     */
+    public function selectAppAdminUrl(): static
     {
         $this->selectField("appAdminUrl");
 
         return $this;
     }
 
-    public function selectBillingCycles(ShopifySubscriptionBillingCycleEditedContractBillingCyclesArgumentsObject $argsObject = null)
+    /**
+     * The billing cycles that the edited contract belongs to.
+     */
+    public function selectBillingCycles(?ShopifySubscriptionBillingCycleEditedContractBillingCyclesArgumentsObject $argsObject = null): ShopifySubscriptionBillingCycleConnectionQueryObject
     {
         $object = new ShopifySubscriptionBillingCycleConnectionQueryObject("billingCycles");
         if ($argsObject !== null) {
@@ -37,21 +49,30 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the subscription contract was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCurrencyCode()
+    /**
+     * The currency that's used for the subscription contract.
+     */
+    public function selectCurrencyCode(): static
     {
         $this->selectField("currencyCode");
 
         return $this;
     }
 
-    public function selectCustomAttributes(ShopifySubscriptionBillingCycleEditedContractCustomAttributesArgumentsObject $argsObject = null)
+    /**
+     * A list of the custom attributes to be added to the generated orders.
+     */
+    public function selectCustomAttributes(?ShopifySubscriptionBillingCycleEditedContractCustomAttributesArgumentsObject $argsObject = null): ShopifyAttributeQueryObject
     {
         $object = new ShopifyAttributeQueryObject("customAttributes");
         if ($argsObject !== null) {
@@ -62,7 +83,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectCustomer(ShopifySubscriptionBillingCycleEditedContractCustomerArgumentsObject $argsObject = null)
+    /**
+     * The customer to whom the subscription contract belongs.
+     */
+    public function selectCustomer(?ShopifySubscriptionBillingCycleEditedContractCustomerArgumentsObject $argsObject = null): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject("customer");
         if ($argsObject !== null) {
@@ -73,7 +97,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectCustomerPaymentMethod(ShopifySubscriptionBillingCycleEditedContractCustomerPaymentMethodArgumentsObject $argsObject = null)
+    /**
+     * The customer payment method that's used for the subscription contract.
+     */
+    public function selectCustomerPaymentMethod(?ShopifySubscriptionBillingCycleEditedContractCustomerPaymentMethodArgumentsObject $argsObject = null): ShopifyCustomerPaymentMethodQueryObject
     {
         $object = new ShopifyCustomerPaymentMethodQueryObject("customerPaymentMethod");
         if ($argsObject !== null) {
@@ -84,7 +111,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectDeliveryMethod(ShopifySubscriptionBillingCycleEditedContractDeliveryMethodArgumentsObject $argsObject = null)
+    /**
+     * The delivery method for each billing of the subscription contract.
+     */
+    public function selectDeliveryMethod(?ShopifySubscriptionBillingCycleEditedContractDeliveryMethodArgumentsObject $argsObject = null): ShopifySubscriptionDeliveryMethodUnionObject
     {
         $object = new ShopifySubscriptionDeliveryMethodUnionObject("deliveryMethod");
         if ($argsObject !== null) {
@@ -95,7 +125,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectDeliveryPrice(ShopifySubscriptionBillingCycleEditedContractDeliveryPriceArgumentsObject $argsObject = null)
+    /**
+     * The delivery price for each billing of the subscription contract.
+     */
+    public function selectDeliveryPrice(?ShopifySubscriptionBillingCycleEditedContractDeliveryPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("deliveryPrice");
         if ($argsObject !== null) {
@@ -106,7 +139,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectDiscounts(ShopifySubscriptionBillingCycleEditedContractDiscountsArgumentsObject $argsObject = null)
+    /**
+     * The list of subscription discounts associated with the subscription contract.
+     */
+    public function selectDiscounts(?ShopifySubscriptionBillingCycleEditedContractDiscountsArgumentsObject $argsObject = null): ShopifySubscriptionManualDiscountConnectionQueryObject
     {
         $object = new ShopifySubscriptionManualDiscountConnectionQueryObject("discounts");
         if ($argsObject !== null) {
@@ -118,16 +154,21 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
     }
 
     /**
+     * The number of lines associated with the subscription contract.
+     *
      * @deprecated Use `linesCount` instead.
      */
-    public function selectLineCount()
+    public function selectLineCount(): static
     {
         $this->selectField("lineCount");
 
         return $this;
     }
 
-    public function selectLines(ShopifySubscriptionBillingCycleEditedContractLinesArgumentsObject $argsObject = null)
+    /**
+     * The list of subscription lines associated with the subscription contract.
+     */
+    public function selectLines(?ShopifySubscriptionBillingCycleEditedContractLinesArgumentsObject $argsObject = null): ShopifySubscriptionLineConnectionQueryObject
     {
         $object = new ShopifySubscriptionLineConnectionQueryObject("lines");
         if ($argsObject !== null) {
@@ -138,7 +179,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectLinesCount(ShopifySubscriptionBillingCycleEditedContractLinesCountArgumentsObject $argsObject = null)
+    /**
+     * The number of lines associated with the subscription contract.
+     */
+    public function selectLinesCount(?ShopifySubscriptionBillingCycleEditedContractLinesCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("linesCount");
         if ($argsObject !== null) {
@@ -149,14 +193,20 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectNote()
+    /**
+     * The note field that will be applied to the generated orders.
+     */
+    public function selectNote(): static
     {
         $this->selectField("note");
 
         return $this;
     }
 
-    public function selectOrders(ShopifySubscriptionBillingCycleEditedContractOrdersArgumentsObject $argsObject = null)
+    /**
+     * A list of the subscription contract's orders.
+     */
+    public function selectOrders(?ShopifySubscriptionBillingCycleEditedContractOrdersArgumentsObject $argsObject = null): ShopifyOrderConnectionQueryObject
     {
         $object = new ShopifyOrderConnectionQueryObject("orders");
         if ($argsObject !== null) {
@@ -167,7 +217,10 @@ class ShopifySubscriptionBillingCycleEditedContractQueryObject extends QueryObje
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the subscription contract was updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

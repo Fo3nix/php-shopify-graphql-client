@@ -4,25 +4,32 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 
-class ShopifyReturnShippingFee
+/**
+ * A return shipping fee is a fee captured as part of a return to cover the costs of shipping the return.
+ */
+class ShopifyReturnShippingFee implements ShopifyFee
 {
     protected $amountSet;
     protected $id;
 
     
     /**
+     * The amount of the return shipping fee, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The unique ID for the Fee.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

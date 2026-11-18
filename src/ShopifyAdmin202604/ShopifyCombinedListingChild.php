@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductVariant;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProduct;
 
+/**
+ * A child of a combined listing.
+ */
 class ShopifyCombinedListingChild
 {
     protected $parentVariant;
@@ -12,18 +15,22 @@ class ShopifyCombinedListingChild
 
     
     /**
+     * The parent variant.
+     *
      * @return ShopifyProductVariant
      */
-    public function getParentVariant()
+    public function getParentVariant(): ?ShopifyProductVariant
     {
         return $this->parentVariant;
     }
 
     
     /**
+     * The child product.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The renderable capability data for the metaobject definition.
+ */
 class ShopifyMetaobjectCapabilityDefinitionDataRenderable
 {
     protected $metaDescriptionKey;
@@ -9,18 +12,22 @@ class ShopifyMetaobjectCapabilityDefinitionDataRenderable
 
     
     /**
+     * The metaobject field used as an alias for the SEO page description.
+     *
      * @return string
      */
-    public function getMetaDescriptionKey()
+    public function getMetaDescriptionKey(): ?string
     {
         return $this->metaDescriptionKey;
     }
 
     
     /**
+     * The metaobject field used as an alias for the SEO page title.
+     *
      * @return string
      */
-    public function getMetaTitleKey()
+    public function getMetaTitleKey(): ?string
     {
         return $this->metaTitleKey;
     }

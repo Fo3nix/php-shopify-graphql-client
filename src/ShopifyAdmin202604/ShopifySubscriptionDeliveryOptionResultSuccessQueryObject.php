@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The delivery option for a subscription contract.
+ */
 class ShopifySubscriptionDeliveryOptionResultSuccessQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionDeliveryOptionResultSuccess";
 
-    public function selectDeliveryOptions(ShopifySubscriptionDeliveryOptionResultSuccessDeliveryOptionsArgumentsObject $argsObject = null)
+    /**
+     * The available delivery options.
+     */
+    public function selectDeliveryOptions(?ShopifySubscriptionDeliveryOptionResultSuccessDeliveryOptionsArgumentsObject $argsObject = null): ShopifySubscriptionDeliveryOptionUnionObject
     {
         $object = new ShopifySubscriptionDeliveryOptionUnionObject("deliveryOptions");
         if ($argsObject !== null) {

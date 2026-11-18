@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 
+/**
+ * The main sections customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
 {
     protected $background;
@@ -17,72 +20,88 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject
+     * The background style of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject
+     * The border for the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject
+     * The border style of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject value
      */
-    public function getBorderStyle()
+    public function getBorderStyle(): ?string
     {
         return $this->borderStyle;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject
+     * The border width of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject value
      */
-    public function getBorderWidth()
+    public function getBorderWidth(): ?string
     {
         return $this->borderWidth;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject
+     * The corner radius of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingShadowEnumObject
+     * The shadow of the main sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingShadowEnumObject value
      */
-    public function getShadow()
+    public function getShadow(): ?string
     {
         return $this->shadow;
     }

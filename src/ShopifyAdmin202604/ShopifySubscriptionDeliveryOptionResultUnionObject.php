@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The result of the query to fetch delivery options for the subscription contract.
+ */
 class ShopifySubscriptionDeliveryOptionResultUnionObject extends UnionObject
 {
-    public function onShopifySubscriptionDeliveryOptionResultFailure()
+    public function onShopifySubscriptionDeliveryOptionResultFailure(): ShopifySubscriptionDeliveryOptionResultFailureQueryObject
     {
         $object = new ShopifySubscriptionDeliveryOptionResultFailureQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifySubscriptionDeliveryOptionResultUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionDeliveryOptionResultSuccess()
+    public function onShopifySubscriptionDeliveryOptionResultSuccess(): ShopifySubscriptionDeliveryOptionResultSuccessQueryObject
     {
         $object = new ShopifySubscriptionDeliveryOptionResultSuccessQueryObject();
         $this->addPossibleType($object);

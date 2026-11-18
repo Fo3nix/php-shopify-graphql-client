@@ -4,46 +4,67 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A Shopify Payments address.
+ */
 class ShopifyShopifyPaymentsAddressBasicQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsAddressBasic";
 
-    public function selectAddressLine1()
+    /**
+     * Line 1 of the address.
+     */
+    public function selectAddressLine1(): static
     {
         $this->selectField("addressLine1");
 
         return $this;
     }
 
-    public function selectAddressLine2()
+    /**
+     * Line 2 of the address.
+     */
+    public function selectAddressLine2(): static
     {
         $this->selectField("addressLine2");
 
         return $this;
     }
 
-    public function selectCity()
+    /**
+     * The address city.
+     */
+    public function selectCity(): static
     {
         $this->selectField("city");
 
         return $this;
     }
 
-    public function selectCountry()
+    /**
+     * The address country.
+     */
+    public function selectCountry(): static
     {
         $this->selectField("country");
 
         return $this;
     }
 
-    public function selectPostalCode()
+    /**
+     * The address postal code.
+     */
+    public function selectPostalCode(): static
     {
         $this->selectField("postalCode");
 
         return $this;
     }
 
-    public function selectZone()
+    /**
+     * The address state/province/zone.
+     */
+    public function selectZone(): static
     {
         $this->selectField("zone");
 

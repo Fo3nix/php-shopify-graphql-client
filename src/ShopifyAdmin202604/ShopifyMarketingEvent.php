@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 use Carbon\Carbon;
 
-class ShopifyMarketingEvent
+/**
+ * Represents actions that market a merchant's store or products.
+ */
+class ShopifyMarketingEvent implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $app;
     protected $channel;
@@ -29,171 +32,213 @@ class ShopifyMarketingEvent
 
     
     /**
+     * The app that the marketing event is attributed to.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
-     * @return ShopifyMarketingChannelEnumObject
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
+     * @return string A ShopifyMarketingChannelEnumObject value
      */
-    public function getChannel()
+    public function getChannel(): ?string
     {
         return $this->channel;
     }
 
     
     /**
+     * The unique string identifier of the channel to which this activity belongs. For the correct handle for your channel, contact your partner manager.
+     *
      * @return string
      */
-    public function getChannelHandle()
+    public function getChannelHandle(): ?string
     {
         return $this->channelHandle;
     }
 
     
     /**
+     * A human-readable description of the marketing event.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The date and time when the marketing event ended.
+     *
      * @return Carbon
      */
-    public function getEndedAt()
+    public function getEndedAt(): ?Carbon
     {
         return $this->endedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The URL where the marketing event can be managed.
+     *
      * @return string
      */
-    public function getManageUrl()
+    public function getManageUrl(): mixed
     {
         return $this->manageUrl;
     }
 
     
     /**
-     * @return ShopifyMarketingChannelEnumObject
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
+     * @return string A ShopifyMarketingChannelEnumObject value
      */
-    public function getMarketingChannelType()
+    public function getMarketingChannelType(): ?string
     {
         return $this->marketingChannelType;
     }
 
     
     /**
+     * The URL where the marketing event can be previewed.
+     *
      * @return string
      */
-    public function getPreviewUrl()
+    public function getPreviewUrl(): mixed
     {
         return $this->previewUrl;
     }
 
     
     /**
+     * An optional ID that helps Shopify validate engagement data.
+     *
      * @return string
      */
-    public function getRemoteId()
+    public function getRemoteId(): ?string
     {
         return $this->remoteId;
     }
 
     
     /**
+     * The date and time when the marketing event is scheduled to end.
+     *
      * @return Carbon
      */
-    public function getScheduledToEndAt()
+    public function getScheduledToEndAt(): ?Carbon
     {
         return $this->scheduledToEndAt;
     }
 
     
     /**
+     * Where the `MarketingEvent` occurred and what kind of content was used.
+     * Because `utmSource` and `utmMedium` are often used interchangeably, this is
+     * based on a combination of `marketingChannel`, `referringDomain`, and `type` to
+     * provide a consistent representation for any given piece of marketing
+     * regardless of the app that created it.
+     *
      * @return string
      */
-    public function getSourceAndMedium()
+    public function getSourceAndMedium(): ?string
     {
         return $this->sourceAndMedium;
     }
 
     
     /**
+     * The date and time when the marketing event started.
+     *
      * @return Carbon
      */
-    public function getStartedAt()
+    public function getStartedAt(): ?Carbon
     {
         return $this->startedAt;
     }
 
     
     /**
+     * The display text for the marketing event type.
+     *
      * @return string
      */
-    public function getTargetTypeDisplayText()
+    public function getTargetTypeDisplayText(): ?string
     {
         return $this->targetTypeDisplayText;
     }
 
     
     /**
-     * @return ShopifyMarketingTacticEnumObject
+     * The marketing event type.
+     *
+     * @return string A ShopifyMarketingTacticEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The name of the marketing campaign.
+     *
      * @return string
      */
-    public function getUtmCampaign()
+    public function getUtmCampaign(): ?string
     {
         return $this->utmCampaign;
     }
 
     
     /**
+     * The medium that the marketing campaign is using. Example values: `cpc`, `banner`.
+     *
      * @return string
      */
-    public function getUtmMedium()
+    public function getUtmMedium(): ?string
     {
         return $this->utmMedium;
     }
 
     
     /**
+     * The referrer of the marketing event. Example values: `google`, `newsletter`.
+     *
      * @return string
      */
-    public function getUtmSource()
+    public function getUtmSource(): ?string
     {
         return $this->utmSource;
     }

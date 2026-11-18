@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponents;
 
+/**
+ * The sign-in-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInSurface
 {
     protected $components;
 
     
     /**
+     * The sign-in components.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponents
      */
-    public function getComponents()
+    public function getComponents(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponents
     {
         return $this->components;
     }

@@ -1,0 +1,81 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCustomizationError;
+
+/**
+ * Return type for `deliveryCustomizationDelete` mutation.
+ */
+class ShopifyDeliveryCustomizationDeletePayload
+{
+    protected $deletedId;
+    protected $userErrors;
+
+    
+    /**
+     * Returns the deleted delivery customization ID.
+     *
+     * @return string
+     */
+    public function getDeletedId(): ?string
+    {
+        return $this->deletedId;
+    }
+
+    
+    /**
+     * The list of errors that occurred from executing the mutation.
+     *
+     * @return ShopifyDeliveryCustomizationError[]
+     */
+    public function getUserErrors(): ?array
+    {
+        return $this->userErrors;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['deletedId']) && $data['deletedId'] !== null) {
+                $instance->deletedId = $data['deletedId'];
+            }
+            if (isset($data['userErrors']) && $data['userErrors'] !== null) {
+                $instance->userErrors = array_map(function($item) { return ShopifyDeliveryCustomizationError::fromArray($item); }, $data['userErrors']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->deletedId !== null) {
+                $data['deletedId'] = $this->deletedId;
+            }
+            if ($this->userErrors !== null) {
+                $data['userErrors'] = array_map(function($item) { return $item->asArray(); }, $this->userErrors);
+            }
+            return $data;
+        }
+}

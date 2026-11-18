@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingContainerDivider;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingOrderSummarySection;
 
+/**
+ * The order summary customizations.
+ */
 class ShopifyCheckoutBrandingOrderSummary
 {
     protected $backgroundImage;
@@ -15,36 +18,44 @@ class ShopifyCheckoutBrandingOrderSummary
 
     
     /**
+     * The background image of the order summary container.
+     *
      * @return ShopifyCheckoutBrandingImage
      */
-    public function getBackgroundImage()
+    public function getBackgroundImage(): ?ShopifyCheckoutBrandingImage
     {
         return $this->backgroundImage;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSchemeSelectionEnumObject
+     * The selected color scheme of the order summary container.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSchemeSelectionEnumObject value
      */
-    public function getColorScheme()
+    public function getColorScheme(): ?string
     {
         return $this->colorScheme;
     }
 
     
     /**
+     * The order summary container's divider style and visibility.
+     *
      * @return ShopifyCheckoutBrandingContainerDivider
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutBrandingContainerDivider
     {
         return $this->divider;
     }
 
     
     /**
+     * The settings for the order summary sections.
+     *
      * @return ShopifyCheckoutBrandingOrderSummarySection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutBrandingOrderSummarySection
     {
         return $this->section;
     }

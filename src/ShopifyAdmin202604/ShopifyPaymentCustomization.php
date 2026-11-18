@@ -8,7 +8,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyFunction;
 
-class ShopifyPaymentCustomization
+/**
+ * A payment customization.
+ */
+class ShopifyPaymentCustomization implements ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $enabled;
     protected $errorHistory;
@@ -22,81 +25,102 @@ class ShopifyPaymentCustomization
 
     
     /**
+     * The enabled status of the payment customization.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The error history on the most recent version of the payment customization.
+     *
      * @return ShopifyFunctionsErrorHistory
      */
-    public function getErrorHistory()
+    public function getErrorHistory(): ?ShopifyFunctionsErrorHistory
     {
         return $this->errorHistory;
     }
 
     
     /**
+     * The ID of the Shopify Function implementing the payment customization.
+     *
      * @return string
      */
-    public function getFunctionId()
+    public function getFunctionId(): ?string
     {
         return $this->functionId;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The Shopify Function implementing the payment customization.
+     *
      * @return ShopifyShopifyFunction
      */
-    public function getShopifyFunction()
+    public function getShopifyFunction(): ?ShopifyShopifyFunction
     {
         return $this->shopifyFunction;
     }
 
     
     /**
+     * The title of the payment customization.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

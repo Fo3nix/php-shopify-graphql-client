@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyDeliveryProvince
+/**
+ * A region that is used to define a shipping zone.
+ */
+class ShopifyDeliveryProvince implements ShopifyNode
 {
     protected $code;
     protected $id;
@@ -11,36 +14,44 @@ class ShopifyDeliveryProvince
 
     
     /**
+     * The code of the region.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The full name of the region.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The translated name of the region. The translation returned is based on the system's locale.
+     *
      * @return string
      */
-    public function getTranslatedName()
+    public function getTranslatedName(): ?string
     {
         return $this->translatedName;
     }

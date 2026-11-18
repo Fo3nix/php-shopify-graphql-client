@@ -1,0 +1,40 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use GraphQL\SchemaObject\EnumObject;
+
+/**
+ * Possible error codes that can be returned by `InventoryShipmentRemoveItemsUserError`.
+ */
+class ShopifyInventoryShipmentRemoveItemsUserErrorCodeEnumObject extends EnumObject
+{
+    /**
+     * The location selected can't be found.
+     */
+    const LOCATION_NOT_FOUND = "LOCATION_NOT_FOUND";
+    /**
+     * Unexpected internal error happened.
+     */
+    const INTERNAL_ERROR = "INTERNAL_ERROR";
+    /**
+     * The shipment was not found.
+     */
+    const SHIPMENT_NOT_FOUND = "SHIPMENT_NOT_FOUND";
+    /**
+     * The item was not found.
+     */
+    const ITEM_NOT_FOUND = "ITEM_NOT_FOUND";
+    /**
+     * Current shipment status does not support this operation.
+     */
+    const INVALID_SHIPMENT_STATUS = "INVALID_SHIPMENT_STATUS";
+    /**
+     * The location selected is not active.
+     */
+    const LOCATION_NOT_ACTIVE = "LOCATION_NOT_ACTIVE";
+    /**
+     * The quantity is invalid.
+     */
+    const INVALID_QUANTITY = "INVALID_QUANTITY";
+}

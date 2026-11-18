@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml).
+ */
 class ShopifyUnitPriceMeasurementQueryObject extends QueryObject
 {
     const OBJECT_NAME = "UnitPriceMeasurement";
 
-    public function selectMeasuredType()
+    /**
+     * The type of unit of measurement for the unit price measurement.
+     */
+    public function selectMeasuredType(): static
     {
         $this->selectField("measuredType");
 
         return $this;
     }
 
-    public function selectQuantityUnit()
+    /**
+     * The quantity unit for the unit price measurement.
+     */
+    public function selectQuantityUnit(): static
     {
         $this->selectField("quantityUnit");
 
         return $this;
     }
 
-    public function selectQuantityValue()
+    /**
+     * The quantity value for the unit price measurement.
+     */
+    public function selectQuantityValue(): static
     {
         $this->selectField("quantityValue");
 
         return $this;
     }
 
-    public function selectReferenceUnit()
+    /**
+     * The reference unit for the unit price measurement.
+     */
+    public function selectReferenceUnit(): static
     {
         $this->selectField("referenceUnit");
 
         return $this;
     }
 
-    public function selectReferenceValue()
+    /**
+     * The reference value for the unit price measurement.
+     */
+    public function selectReferenceValue(): static
     {
         $this->selectField("referenceValue");
 

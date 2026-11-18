@@ -4,7 +4,13 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductVariant;
 
-class ShopifyProductVariantComponent
+/**
+ * A product variant component that is included within a bundle.
+ *
+ * These are the individual product variants that make up a bundle product,
+ * where each component has a specific required quantity.
+ */
+class ShopifyProductVariantComponent implements ShopifyNode
 {
     protected $id;
     protected $productVariant;
@@ -12,27 +18,33 @@ class ShopifyProductVariantComponent
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The product variant associated with the component.
+     *
      * @return ShopifyProductVariant
      */
-    public function getProductVariant()
+    public function getProductVariant(): ?ShopifyProductVariant
     {
         return $this->productVariant;
     }
 
     
     /**
+     * The required quantity of the component.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }

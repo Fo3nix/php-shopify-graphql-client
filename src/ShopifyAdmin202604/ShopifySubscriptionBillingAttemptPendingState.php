@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The billing attempt is currently being processed.
+ */
 class ShopifySubscriptionBillingAttemptPendingState
 {
     protected $processing;
 
     
     /**
+     * Always true when the billing attempt is pending.
+     *
      * @return bool
      */
-    public function getProcessing()
+    public function getProcessing(): ?bool
     {
         return $this->processing;
     }

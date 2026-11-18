@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootChannelByHandleArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["handle"];
+
     protected $handle;
 
-    public function setHandle($handle)
+    /**
+     * The unique handle of the [`Channel`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Channel) to return.
+     */
+    public function setHandle($handle): static
     {
         $this->handle = $handle;
 

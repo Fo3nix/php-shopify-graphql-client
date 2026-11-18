@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents the url of the body of a theme file.
+ */
 class ShopifyOnlineStoreThemeFileBodyUrl
 {
     protected $url;
 
     
     /**
+     * The short lived url for the body of the theme file.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

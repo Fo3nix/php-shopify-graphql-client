@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The sign-in store logo customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogoQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingSignInLogo";
 
-    public function selectImage(ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogoImageArgumentsObject $argsObject = null)
+    /**
+     * The logo image.
+     */
+    public function selectImage(?ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogoImageArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingImageValueUnionObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingImageValueUnionObject("image");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogoQueryObject exten
         return $object;
     }
 
-    public function selectMaxWidth()
+    /**
+     * The maximum width of the logo.
+     */
+    public function selectMaxWidth(): static
     {
         $this->selectField("maxWidth");
 

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 
+/**
+ * A container for the customer accounts footer section customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooter
 {
     protected $alignment;
@@ -12,27 +15,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooter
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingFooterAlignmentEnumObject
+     * The footer alignment.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingFooterAlignmentEnumObject value
      */
-    public function getAlignment()
+    public function getAlignment(): ?string
     {
         return $this->alignment;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the footer container.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }

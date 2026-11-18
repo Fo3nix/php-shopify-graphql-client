@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The inclusive pricing strategy for a market.
+ */
 class ShopifyMarketPriceInclusions
 {
     protected $inclusiveDutiesPricingStrategy;
@@ -9,18 +12,22 @@ class ShopifyMarketPriceInclusions
 
     
     /**
-     * @return ShopifyInclusiveDutiesPricingStrategyEnumObject
+     * The inclusive duties pricing strategy of the market. This determines if prices include duties.
+     *
+     * @return string A ShopifyInclusiveDutiesPricingStrategyEnumObject value
      */
-    public function getInclusiveDutiesPricingStrategy()
+    public function getInclusiveDutiesPricingStrategy(): ?string
     {
         return $this->inclusiveDutiesPricingStrategy;
     }
 
     
     /**
-     * @return ShopifyInclusiveTaxPricingStrategyEnumObject
+     * The inclusive tax pricing strategy of the market. This determines if prices include taxes.
+     *
+     * @return string A ShopifyInclusiveTaxPricingStrategyEnumObject value
      */
-    public function getInclusiveTaxPricingStrategy()
+    public function getInclusiveTaxPricingStrategy(): ?string
     {
         return $this->inclusiveTaxPricingStrategy;
     }

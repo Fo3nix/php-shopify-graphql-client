@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The Online Store capability data for the metaobject definition.
+ */
 class ShopifyMetaobjectCapabilityDefinitionDataOnlineStore
 {
     protected $canCreateRedirects;
@@ -9,18 +12,22 @@ class ShopifyMetaobjectCapabilityDefinitionDataOnlineStore
 
     
     /**
+     * Flag indicating if a sufficient number of redirects are available to redirect all published entries.
+     *
      * @return bool
      */
-    public function getCanCreateRedirects()
+    public function getCanCreateRedirects(): ?bool
     {
         return $this->canCreateRedirects;
     }
 
     
     /**
+     * The URL handle for accessing pages of this metaobject type in the Online Store.
+     *
      * @return string
      */
-    public function getUrlHandle()
+    public function getUrlHandle(): ?string
     {
         return $this->urlHandle;
     }

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Local pickup settings associated with a location.
+ */
 class ShopifyDeliveryLocalPickupSettingsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryLocalPickupSettings";
 
-    public function selectInstructions()
+    /**
+     * Additional instructions or information related to the local pickup.
+     */
+    public function selectInstructions(): static
     {
         $this->selectField("instructions");
 
         return $this;
     }
 
-    public function selectPickupTime()
+    /**
+     * The estimated pickup time to show customers at checkout.
+     */
+    public function selectPickupTime(): static
     {
         $this->selectField("pickupTime");
 

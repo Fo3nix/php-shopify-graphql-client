@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingTypographyStyle;
 
+/**
+ * The selects customizations.
+ */
 class ShopifyCheckoutBrandingSelect
 {
     protected $border;
@@ -11,18 +14,22 @@ class ShopifyCheckoutBrandingSelect
 
     
     /**
-     * @return ShopifyCheckoutBrandingBorderEnumObject
+     * The border used for selects.
+     *
+     * @return string A ShopifyCheckoutBrandingBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
+     * The typography customizations used for selects.
+     *
      * @return ShopifyCheckoutBrandingTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutBrandingTypographyStyle
     {
         return $this->typography;
     }

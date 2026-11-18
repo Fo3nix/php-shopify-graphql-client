@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Discount applications capture the intentions of a discount source at
+ * the time of application on an order's line items or shipping lines.
+ */
 class ShopifyFinancialSummaryDiscountApplication
 {
     protected $allocationMethod;
@@ -10,27 +14,33 @@ class ShopifyFinancialSummaryDiscountApplication
 
     
     /**
-     * @return ShopifyDiscountApplicationAllocationMethodEnumObject
+     * The method by which the discount's value is applied to its entitled items.
+     *
+     * @return string A ShopifyDiscountApplicationAllocationMethodEnumObject value
      */
-    public function getAllocationMethod()
+    public function getAllocationMethod(): ?string
     {
         return $this->allocationMethod;
     }
 
     
     /**
-     * @return ShopifyDiscountApplicationTargetSelectionEnumObject
+     * How the discount amount is distributed on the discounted lines.
+     *
+     * @return string A ShopifyDiscountApplicationTargetSelectionEnumObject value
      */
-    public function getTargetSelection()
+    public function getTargetSelection(): ?string
     {
         return $this->targetSelection;
     }
 
     
     /**
-     * @return ShopifyDiscountApplicationTargetTypeEnumObject
+     * Whether the discount is applied on line items or shipping lines.
+     *
+     * @return string A ShopifyDiscountApplicationTargetTypeEnumObject value
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A customer's computed statistics.
+ */
 class ShopifyCustomerStatistics
 {
     protected $predictedSpendTier;
@@ -9,18 +12,22 @@ class ShopifyCustomerStatistics
 
     
     /**
-     * @return ShopifyCustomerPredictedSpendTierEnumObject
+     * The predicted spend tier of a customer with a shop.
+     *
+     * @return string A ShopifyCustomerPredictedSpendTierEnumObject value
      */
-    public function getPredictedSpendTier()
+    public function getPredictedSpendTier(): ?string
     {
         return $this->predictedSpendTier;
     }
 
     
     /**
-     * @return ShopifyCustomerRfmGroupEnumObject
+     * The RFM (Recency, Frequency, Monetary) group of the customer.
+     *
+     * @return string A ShopifyCustomerRfmGroupEnumObject value
      */
-    public function getRfmGroup()
+    public function getRfmGroup(): ?string
     {
         return $this->rfmGroup;
     }

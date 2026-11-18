@@ -4,9 +4,21 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\EnumObject;
 
+/**
+ * Possible values for the border.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingBorderEnumObject extends EnumObject
 {
+    /**
+     * The None border.
+     */
     const NONE = "NONE";
+    /**
+     * The Block End border.
+     */
     const BLOCK_END = "BLOCK_END";
+    /**
+     * The Full border.
+     */
     const FULL = "FULL";
 }

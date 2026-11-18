@@ -4,88 +4,127 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the address of a location.
+ */
 class ShopifyLocationAddressQueryObject extends QueryObject
 {
     const OBJECT_NAME = "LocationAddress";
 
-    public function selectAddress1()
+    /**
+     * The first line of the address for the location.
+     */
+    public function selectAddress1(): static
     {
         $this->selectField("address1");
 
         return $this;
     }
 
-    public function selectAddress2()
+    /**
+     * The second line of the address for the location.
+     */
+    public function selectAddress2(): static
     {
         $this->selectField("address2");
 
         return $this;
     }
 
-    public function selectCity()
+    /**
+     * The city of the location.
+     */
+    public function selectCity(): static
     {
         $this->selectField("city");
 
         return $this;
     }
 
-    public function selectCountry()
+    /**
+     * The country of the location.
+     */
+    public function selectCountry(): static
     {
         $this->selectField("country");
 
         return $this;
     }
 
-    public function selectCountryCode()
+    /**
+     * The country code of the location.
+     */
+    public function selectCountryCode(): static
     {
         $this->selectField("countryCode");
 
         return $this;
     }
 
-    public function selectFormatted()
+    /**
+     * A formatted version of the address for the location.
+     */
+    public function selectFormatted(): static
     {
         $this->selectField("formatted");
 
         return $this;
     }
 
-    public function selectLatitude()
+    /**
+     * The approximate latitude coordinates of the location.
+     */
+    public function selectLatitude(): static
     {
         $this->selectField("latitude");
 
         return $this;
     }
 
-    public function selectLongitude()
+    /**
+     * The approximate longitude coordinates of the location.
+     */
+    public function selectLongitude(): static
     {
         $this->selectField("longitude");
 
         return $this;
     }
 
-    public function selectPhone()
+    /**
+     * The phone number of the location.
+     */
+    public function selectPhone(): static
     {
         $this->selectField("phone");
 
         return $this;
     }
 
-    public function selectProvince()
+    /**
+     * The province of the location.
+     */
+    public function selectProvince(): static
     {
         $this->selectField("province");
 
         return $this;
     }
 
-    public function selectProvinceCode()
+    /**
+     * The code for the province, state, or district of the address of the location.
+     */
+    public function selectProvinceCode(): static
     {
         $this->selectField("provinceCode");
 
         return $this;
     }
 
-    public function selectZip()
+    /**
+     * The ZIP code of the location.
+     */
+    public function selectZip(): static
     {
         $this->selectField("zip");
 

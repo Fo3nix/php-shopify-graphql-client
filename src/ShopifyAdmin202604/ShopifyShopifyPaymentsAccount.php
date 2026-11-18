@@ -5,11 +5,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsBalanceTransactionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsBankAccountConnection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsChargeStatementDescriptorHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsChargeStatementDescriptor;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsDisputeConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsPayoutSchedule;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsPayoutConnection;
 
-class ShopifyShopifyPaymentsAccount
+/**
+ * Financial account information for merchants using Shopify Payments. Tracks current balances across all supported currencies, payout schedules, and [`ShopifyPaymentsBalanceTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsBalanceTransaction) records.
+ *
+ * The account includes configuration details such as [`ShopifyPaymentsBankAccount`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsBankAccount) objects for receiving [`ShopifyPaymentsPayout`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsPayout) transfers, statement descriptors that appear on customer credit card statements, and the [`ShopifyPaymentsPayoutSchedule`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsPayoutSchedule) that determines when funds transfer to your bank. Access balance transactions to review individual charges, refunds, and adjustments that affect your account balance. Query payouts to track money movement between your Shopify Payments balance and bank accounts.
+ */
+class ShopifyShopifyPaymentsAccount implements ShopifyNode
 {
     protected $accountOpenerName;
     protected $activated;
@@ -29,135 +36,171 @@ class ShopifyShopifyPaymentsAccount
 
     
     /**
+     * The name of the account opener.
+     *
      * @return string
      */
-    public function getAccountOpenerName()
+    public function getAccountOpenerName(): ?string
     {
         return $this->accountOpenerName;
     }
 
     
     /**
+     * Whether the Shopify Payments setup is completed.
+     *
      * @return bool
      */
-    public function getActivated()
+    public function getActivated(): ?bool
     {
         return $this->activated;
     }
 
     
     /**
+     * Current balances in all currencies for the account.
+     *
      * @return ShopifyMoneyV2[]
      */
-    public function getBalance()
+    public function getBalance(): ?array
     {
         return $this->balance;
     }
 
     
     /**
+     * A list of balance transactions associated with the shop.
+     *
      * @return ShopifyShopifyPaymentsBalanceTransactionConnection
      */
-    public function getBalanceTransactions()
+    public function getBalanceTransactions(): ?ShopifyShopifyPaymentsBalanceTransactionConnection
     {
         return $this->balanceTransactions;
     }
 
     
     /**
+     * All bank accounts configured for the Shopify Payments account.
+     *
      * @return ShopifyShopifyPaymentsBankAccountConnection
      */
-    public function getBankAccounts()
+    public function getBankAccounts(): ?ShopifyShopifyPaymentsBankAccountConnection
     {
         return $this->bankAccounts;
     }
 
     
     /**
+     * The statement descriptor used for charges.
+     *
+     * The statement descriptor appears on a customer's credit card or bank statement when they make a purchase.
+     *
      * @return string
      */
-    public function getChargeStatementDescriptor()
+    public function getChargeStatementDescriptor(): ?string
     {
         return $this->chargeStatementDescriptor;
     }
 
     
     /**
-     * @return mixed
+     * The statement descriptors used for charges.
+     *
+     * These descriptors appear on a customer's credit card or bank statement when they make a purchase.
+     *
+     * @return ShopifyShopifyPaymentsChargeStatementDescriptor
      */
-    public function getChargeStatementDescriptors()
+    public function getChargeStatementDescriptors(): ?ShopifyShopifyPaymentsChargeStatementDescriptor
     {
         return $this->chargeStatementDescriptors;
     }
 
     
     /**
+     * The Shopify Payments account country.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The default payout currency for the Shopify Payments account.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getDefaultCurrency()
+    public function getDefaultCurrency(): ?string
     {
         return $this->defaultCurrency;
     }
 
     
     /**
+     * All disputes that originated from a transaction made with the Shopify Payments account.
+     *
      * @return ShopifyShopifyPaymentsDisputeConnection
      */
-    public function getDisputes()
+    public function getDisputes(): ?ShopifyShopifyPaymentsDisputeConnection
     {
         return $this->disputes;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the Shopify Payments account can be onboarded.
+     *
      * @return bool
      */
-    public function getOnboardable()
+    public function getOnboardable(): ?bool
     {
         return $this->onboardable;
     }
 
     
     /**
+     * The payout schedule for the account.
+     *
      * @return ShopifyShopifyPaymentsPayoutSchedule
      */
-    public function getPayoutSchedule()
+    public function getPayoutSchedule(): ?ShopifyShopifyPaymentsPayoutSchedule
     {
         return $this->payoutSchedule;
     }
 
     
     /**
+     * The descriptor used for payouts.
+     *
+     * The descriptor appears on a merchant's bank statement when they receive a payout.
+     *
      * @return string
      */
-    public function getPayoutStatementDescriptor()
+    public function getPayoutStatementDescriptor(): ?string
     {
         return $this->payoutStatementDescriptor;
     }
 
     
     /**
+     * All current and previous payouts made between the account and the bank account.
+     *
      * @return ShopifyShopifyPaymentsPayoutConnection
      */
-    public function getPayouts()
+    public function getPayouts(): ?ShopifyShopifyPaymentsPayoutConnection
     {
         return $this->payouts;
     }
@@ -188,7 +231,7 @@ class ShopifyShopifyPaymentsAccount
                 $instance->chargeStatementDescriptor = $data['chargeStatementDescriptor'];
             }
             if (isset($data['chargeStatementDescriptors']) && $data['chargeStatementDescriptors'] !== null) {
-                $instance->chargeStatementDescriptors = $data['chargeStatementDescriptors'];
+                $instance->chargeStatementDescriptors = ShopifyShopifyPaymentsChargeStatementDescriptorHydrator::fromArray($data['chargeStatementDescriptors']);
             }
             if (isset($data['country']) && $data['country'] !== null) {
                 $instance->country = $data['country'];
@@ -256,7 +299,7 @@ class ShopifyShopifyPaymentsAccount
                 $data['chargeStatementDescriptor'] = $this->chargeStatementDescriptor;
             }
             if ($this->chargeStatementDescriptors !== null) {
-                $data['chargeStatementDescriptors'] = $this->chargeStatementDescriptors;
+                $data['chargeStatementDescriptors'] = ShopifyShopifyPaymentsChargeStatementDescriptorHydrator::toArray($this->chargeStatementDescriptors);
             }
             if ($this->country !== null) {
                 $data['country'] = $this->country;

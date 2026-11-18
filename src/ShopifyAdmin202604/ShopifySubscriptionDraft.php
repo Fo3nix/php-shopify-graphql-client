@@ -8,17 +8,49 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionBillingCycleConn
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyAttribute;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomer;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerPaymentMethod;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDeliveryMethod;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDeliveryOptionResult;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDeliveryMethodHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDeliveryOptionResultHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDeliveryPolicy;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDiscountConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionLineConnection;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionContract;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionShippingOptionResult;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionShippingOptionResultHydrator;
 
-class ShopifySubscriptionDraft
+/**
+ * The `SubscriptionDraft` object represents a draft version of a
+ * [subscription contract](https://shopify.dev/docs/api/admin-graphql/latest/objects/SubscriptionContract)
+ * before it's committed. It serves as a staging area for making changes to an existing subscription or creating
+ * a new one. The draft allows you to preview and modify various aspects of a subscription before applying the changes.
+ * This object is deprecated in favor of the
+ * [SubscriptionContractCalculation API](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/migrate-to-subscription-calculation-api).
+ *
+ * Use the `SubscriptionDraft` object to:
+ *
+ * - Add, remove, or modify subscription lines and their quantities
+ * - Manage discounts (add, remove, or update manual and code-based discounts)
+ * - Configure delivery options and shipping methods
+ * - Set up billing and delivery policies
+ * - Manage customer payment methods
+ * - Add custom attributes and notes to generated orders
+ * - Configure billing cycles and next billing dates
+ * - Preview the projected state of the subscription
+ *
+ * Each `SubscriptionDraft` object maintains a projected state that shows how the subscription will look after the changes
+ * are committed. This allows you to preview the impact of your modifications before applying them. The draft can be
+ * associated with an existing subscription contract (for modifications) or used to create a new subscription.
+ *
+ * The draft remains in a draft state until it's committed, at which point the changes are applied to the subscription
+ * contract and the draft is no longer accessible.
+ *
+ * Learn more about
+ * [how subscription contracts work](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts)
+ * and how to [build](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/build-a-subscription-contract),
+ * [update](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/update-a-subscription-contract), and
+ * [combine](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/combine-subscription-contracts) subscription contracts.
+ */
+class ShopifySubscriptionDraft implements ShopifyNode
 {
     protected $billingCycle;
     protected $billingPolicy;
@@ -47,216 +79,264 @@ class ShopifySubscriptionDraft
 
     
     /**
+     * The billing cycle that the subscription contract will be associated with.
+     *
      * @return ShopifySubscriptionBillingCycle
      */
-    public function getBillingCycle()
+    public function getBillingCycle(): ?ShopifySubscriptionBillingCycle
     {
         return $this->billingCycle;
     }
 
     
     /**
+     * The billing policy for the subscription contract.
+     *
      * @return ShopifySubscriptionBillingPolicy
      */
-    public function getBillingPolicy()
+    public function getBillingPolicy(): ?ShopifySubscriptionBillingPolicy
     {
         return $this->billingPolicy;
     }
 
     
     /**
+     * The billing cycles of the contracts that will be concatenated to the subscription contract.
+     *
      * @return ShopifySubscriptionBillingCycleConnection
      */
-    public function getConcatenatedBillingCycles()
+    public function getConcatenatedBillingCycles(): ?ShopifySubscriptionBillingCycleConnection
     {
         return $this->concatenatedBillingCycles;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency used for the subscription contract.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * A list of the custom attributes to be added to the generated orders.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The customer to whom the subscription contract belongs.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * The customer payment method used for the subscription contract.
+     *
      * @return ShopifyCustomerPaymentMethod
      */
-    public function getCustomerPaymentMethod()
+    public function getCustomerPaymentMethod(): ?ShopifyCustomerPaymentMethod
     {
         return $this->customerPaymentMethod;
     }
 
     
     /**
-     * @return ShopifySubscriptionDeliveryMethod
+     * The delivery method for each billing of the subscription contract.
+     *
+     * @return ShopifySubscriptionDeliveryMethodLocalDelivery|ShopifySubscriptionDeliveryMethodPickup|ShopifySubscriptionDeliveryMethodShipping
      */
-    public function getDeliveryMethod()
+    public function getDeliveryMethod(): ShopifySubscriptionDeliveryMethodLocalDelivery|ShopifySubscriptionDeliveryMethodPickup|ShopifySubscriptionDeliveryMethodShipping|null
     {
         return $this->deliveryMethod;
     }
 
     
     /**
-     * @return ShopifySubscriptionDeliveryOptionResult
+     * The available delivery options for a given delivery address. Returns `null` for pending requests.
+     *
+     * @return ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess
      */
-    public function getDeliveryOptions()
+    public function getDeliveryOptions(): ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess|null
     {
         return $this->deliveryOptions;
     }
 
     
     /**
+     * The delivery policy for the subscription contract.
+     *
      * @return ShopifySubscriptionDeliveryPolicy
      */
-    public function getDeliveryPolicy()
+    public function getDeliveryPolicy(): ?ShopifySubscriptionDeliveryPolicy
     {
         return $this->deliveryPolicy;
     }
 
     
     /**
+     * The delivery price for each billing the subscription contract.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getDeliveryPrice()
+    public function getDeliveryPrice(): ?ShopifyMoneyV2
     {
         return $this->deliveryPrice;
     }
 
     
     /**
+     * The list of subscription discounts which will be associated with the subscription contract.
+     *
      * @return ShopifySubscriptionDiscountConnection
      */
-    public function getDiscounts()
+    public function getDiscounts(): ?ShopifySubscriptionDiscountConnection
     {
         return $this->discounts;
     }
 
     
     /**
+     * The list of subscription discounts to be added to the subscription contract.
+     *
      * @return ShopifySubscriptionDiscountConnection
      */
-    public function getDiscountsAdded()
+    public function getDiscountsAdded(): ?ShopifySubscriptionDiscountConnection
     {
         return $this->discountsAdded;
     }
 
     
     /**
+     * The list of subscription discounts to be removed from the subscription contract.
+     *
      * @return ShopifySubscriptionDiscountConnection
      */
-    public function getDiscountsRemoved()
+    public function getDiscountsRemoved(): ?ShopifySubscriptionDiscountConnection
     {
         return $this->discountsRemoved;
     }
 
     
     /**
+     * The list of subscription discounts to be updated on the subscription contract.
+     *
      * @return ShopifySubscriptionDiscountConnection
      */
-    public function getDiscountsUpdated()
+    public function getDiscountsUpdated(): ?ShopifySubscriptionDiscountConnection
     {
         return $this->discountsUpdated;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The list of subscription lines which will be associated with the subscription contract.
+     *
      * @return ShopifySubscriptionLineConnection
      */
-    public function getLines()
+    public function getLines(): ?ShopifySubscriptionLineConnection
     {
         return $this->lines;
     }
 
     
     /**
+     * The list of subscription lines to be added to the subscription contract.
+     *
      * @return ShopifySubscriptionLineConnection
      */
-    public function getLinesAdded()
+    public function getLinesAdded(): ?ShopifySubscriptionLineConnection
     {
         return $this->linesAdded;
     }
 
     
     /**
+     * The list of subscription lines to be removed from the subscription contract.
+     *
      * @return ShopifySubscriptionLineConnection
      */
-    public function getLinesRemoved()
+    public function getLinesRemoved(): ?ShopifySubscriptionLineConnection
     {
         return $this->linesRemoved;
     }
 
     
     /**
+     * The next billing date for the subscription contract.
+     *
      * @return Carbon
      */
-    public function getNextBillingDate()
+    public function getNextBillingDate(): ?Carbon
     {
         return $this->nextBillingDate;
     }
 
     
     /**
+     * The note field that will be applied to the generated orders.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The original subscription contract.
+     *
      * @return ShopifySubscriptionContract
      */
-    public function getOriginalContract()
+    public function getOriginalContract(): ?ShopifySubscriptionContract
     {
         return $this->originalContract;
     }
 
     
     /**
-     * @return ShopifySubscriptionShippingOptionResult
+     * Available Shipping Options for a given delivery address. Returns NULL for pending requests.
+     *
+     * @return ShopifySubscriptionShippingOptionResultFailure|ShopifySubscriptionShippingOptionResultSuccess
      */
-    public function getShippingOptions()
+    public function getShippingOptions(): ShopifySubscriptionShippingOptionResultFailure|ShopifySubscriptionShippingOptionResultSuccess|null
     {
         return $this->shippingOptions;
     }
 
     
     /**
-     * @return ShopifySubscriptionContractSubscriptionStatusEnumObject
+     * The current status of the subscription contract.
+     *
+     * @return string A ShopifySubscriptionContractSubscriptionStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -290,10 +370,10 @@ class ShopifySubscriptionDraft
                 $instance->customerPaymentMethod = ShopifyCustomerPaymentMethod::fromArray($data['customerPaymentMethod']);
             }
             if (isset($data['deliveryMethod']) && $data['deliveryMethod'] !== null) {
-                $instance->deliveryMethod = ShopifySubscriptionDeliveryMethod::fromArray($data['deliveryMethod']);
+                $instance->deliveryMethod = ShopifySubscriptionDeliveryMethodHydrator::fromArray($data['deliveryMethod']);
             }
             if (isset($data['deliveryOptions']) && $data['deliveryOptions'] !== null) {
-                $instance->deliveryOptions = ShopifySubscriptionDeliveryOptionResult::fromArray($data['deliveryOptions']);
+                $instance->deliveryOptions = ShopifySubscriptionDeliveryOptionResultHydrator::fromArray($data['deliveryOptions']);
             }
             if (isset($data['deliveryPolicy']) && $data['deliveryPolicy'] !== null) {
                 $instance->deliveryPolicy = ShopifySubscriptionDeliveryPolicy::fromArray($data['deliveryPolicy']);
@@ -335,7 +415,7 @@ class ShopifySubscriptionDraft
                 $instance->originalContract = ShopifySubscriptionContract::fromArray($data['originalContract']);
             }
             if (isset($data['shippingOptions']) && $data['shippingOptions'] !== null) {
-                $instance->shippingOptions = ShopifySubscriptionShippingOptionResult::fromArray($data['shippingOptions']);
+                $instance->shippingOptions = ShopifySubscriptionShippingOptionResultHydrator::fromArray($data['shippingOptions']);
             }
             if (isset($data['status']) && $data['status'] !== null) {
                 $instance->status = $data['status'];
@@ -385,10 +465,10 @@ class ShopifySubscriptionDraft
                 $data['customerPaymentMethod'] = $this->customerPaymentMethod->asArray();
             }
             if ($this->deliveryMethod !== null) {
-                $data['deliveryMethod'] = $this->deliveryMethod->asArray();
+                $data['deliveryMethod'] = ShopifySubscriptionDeliveryMethodHydrator::toArray($this->deliveryMethod);
             }
             if ($this->deliveryOptions !== null) {
-                $data['deliveryOptions'] = $this->deliveryOptions->asArray();
+                $data['deliveryOptions'] = ShopifySubscriptionDeliveryOptionResultHydrator::toArray($this->deliveryOptions);
             }
             if ($this->deliveryPolicy !== null) {
                 $data['deliveryPolicy'] = $this->deliveryPolicy->asArray();
@@ -430,7 +510,7 @@ class ShopifySubscriptionDraft
                 $data['originalContract'] = $this->originalContract->asArray();
             }
             if ($this->shippingOptions !== null) {
-                $data['shippingOptions'] = $this->shippingOptions->asArray();
+                $data['shippingOptions'] = ShopifySubscriptionShippingOptionResultHydrator::toArray($this->shippingOptions);
             }
             if ($this->status !== null) {
                 $data['status'] = $this->status;

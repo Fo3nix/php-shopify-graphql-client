@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyGiftCardExpirationConfiguration;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * Represents information about the configuration of gift cards on the shop.
+ */
 class ShopifyGiftCardConfiguration
 {
     protected $expirationConfiguration;
@@ -13,27 +16,33 @@ class ShopifyGiftCardConfiguration
 
     
     /**
+     * The default expiration configuration of gift cards on the shop. This field is null if the shop hasn't set a default expiration for gift cards.
+     *
      * @return ShopifyGiftCardExpirationConfiguration
      */
-    public function getExpirationConfiguration()
+    public function getExpirationConfiguration(): ?ShopifyGiftCardExpirationConfiguration
     {
         return $this->expirationConfiguration;
     }
 
     
     /**
+     * The issue limit for gift cards in the default shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getIssueLimit()
+    public function getIssueLimit(): ?ShopifyMoneyV2
     {
         return $this->issueLimit;
     }
 
     
     /**
+     * The purchase limit for gift cards in the default shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPurchaseLimit()
+    public function getPurchaseLimit(): ?ShopifyMoneyV2
     {
         return $this->purchaseLimit;
     }

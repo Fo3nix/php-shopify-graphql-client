@@ -4,6 +4,42 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 
+/**
+ * The fulfillment order's assigned location. This is the location where the fulfillment is expected to happen.
+ *
+ *  The fulfillment order's assigned location might change in the following cases:
+ *
+ *   - The fulfillment order has been entirely moved to a new location. For example, the [fulfillmentOrderMove](
+ *     https://shopify.dev/api/admin-graphql/latest/mutations/fulfillmentOrderMove
+ *     ) mutation has been called, and you see the original fulfillment order in the [movedFulfillmentOrder](
+ *     https://shopify.dev/api/admin-graphql/latest/mutations/fulfillmentOrderMove#field-fulfillmentordermovepayload-movedfulfillmentorder
+ *     ) field within the mutation's response.
+ *
+ *   - Work on the fulfillment order has not yet begun, which means that the fulfillment order has the
+ *       [OPEN](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-open),
+ *       [SCHEDULED](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-scheduled), or
+ *       [ON_HOLD](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-onhold)
+ *       status, and the shop's location properties might be undergoing edits (for example, in the Shopify admin).
+ *
+ * If the [fulfillmentOrderMove](
+ * https://shopify.dev/api/admin-graphql/latest/mutations/fulfillmentOrderMove
+ * ) mutation has moved the fulfillment order's line items to a new location,
+ * but hasn't moved the fulfillment order instance itself, then the original fulfillment order's assigned location
+ * doesn't change.
+ * This happens if the fulfillment order is being split during the move, or if all line items can be moved
+ * to an existing fulfillment order at a new location.
+ *
+ * Once the fulfillment order has been taken into work or canceled,
+ * which means that the fulfillment order has the
+ * [IN_PROGRESS](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-inprogress),
+ * [CLOSED](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-closed),
+ * [CANCELLED](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-cancelled), or
+ * [INCOMPLETE](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderStatus#value-incomplete)
+ * status, `FulfillmentOrderAssignedLocation` acts as a snapshot of the shop's location content.
+ * Up-to-date shop's location data may be queried through [location](
+ *   https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentOrderAssignedLocation#field-fulfillmentorderassignedlocation-location
+ * ) connection.
+ */
 class ShopifyFulfillmentOrderAssignedLocation
 {
     protected $address1;
@@ -18,81 +54,101 @@ class ShopifyFulfillmentOrderAssignedLocation
 
     
     /**
+     * The first line of the address for the location.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address for the location.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city of the location.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The two-letter country code of the location.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The location where the fulfillment is expected to happen. This value might be different from
+     * `FulfillmentOrderAssignedLocation` if the location's attributes were updated
+     * after the fulfillment order was taken into work of canceled.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The name of the location.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The phone number of the location.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The province of the location.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The ZIP code of the location.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyImage;
 
+/**
+ * The header cart link customizations.
+ */
 class ShopifyCheckoutBrandingHeaderCartLink
 {
     protected $contentType;
@@ -11,18 +14,22 @@ class ShopifyCheckoutBrandingHeaderCartLink
 
     
     /**
-     * @return ShopifyCheckoutBrandingCartLinkContentTypeEnumObject
+     * The content type for the header back to cart link in 1-page checkout. Setting this to image will render the custom image provided using the image field on the header cart_link object. If no image is provided, the default cart icon will be used.
+     *
+     * @return string A ShopifyCheckoutBrandingCartLinkContentTypeEnumObject value
      */
-    public function getContentType()
+    public function getContentType(): ?string
     {
         return $this->contentType;
     }
 
     
     /**
+     * The image that's used for the header back to cart link in 1-page checkout when the content type is set to image.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }

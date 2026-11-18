@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogo;
 
+/**
+ * The sign-in header customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeader
 {
     protected $logo;
@@ -11,18 +14,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeader
 
     
     /**
+     * The store logo.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogo
      */
-    public function getLogo()
+    public function getLogo(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSignInLogo
     {
         return $this->logo;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the header container.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }

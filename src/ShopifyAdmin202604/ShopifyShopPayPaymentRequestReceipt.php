@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopPayPaymentRequest;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopPayPaymentRequestReceiptProcessingStatus;
 
+/**
+ * The receipt of Shop Pay payment request session submission.
+ */
 class ShopifyShopPayPaymentRequestReceipt
 {
     protected $createdAt;
@@ -18,54 +21,66 @@ class ShopifyShopPayPaymentRequestReceipt
 
     
     /**
+     * The date and time when the payment request receipt was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The order that's associated with the payment request receipt.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The shop pay payment request object.
+     *
      * @return ShopifyShopPayPaymentRequest
      */
-    public function getPaymentRequest()
+    public function getPaymentRequest(): ?ShopifyShopPayPaymentRequest
     {
         return $this->paymentRequest;
     }
 
     
     /**
+     * The status of the payment request session submission.
+     *
      * @return ShopifyShopPayPaymentRequestReceiptProcessingStatus
      */
-    public function getProcessingStatus()
+    public function getProcessingStatus(): ?ShopifyShopPayPaymentRequestReceiptProcessingStatus
     {
         return $this->processingStatus;
     }
 
     
     /**
+     * The source identifier provided in the `ShopPayPaymentRequestSessionCreate` mutation.
+     *
      * @return string
      */
-    public function getSourceIdentifier()
+    public function getSourceIdentifier(): ?string
     {
         return $this->sourceIdentifier;
     }
 
     
     /**
+     * The token of the receipt, initially returned by an `ShopPayPaymentRequestSessionSubmit` mutation.
+     *
      * @return string
      */
-    public function getToken()
+    public function getToken(): ?string
     {
         return $this->token;
     }

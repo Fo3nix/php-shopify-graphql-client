@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The response type for the `segmentMembership` object.
+ */
 class ShopifySegmentMembershipQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SegmentMembership";
 
-    public function selectIsMember()
+    /**
+     * A Boolean that indicates whether or not the customer in the query is a member of the segment, which is identified using the `segmentId`.
+     */
+    public function selectIsMember(): static
     {
         $this->selectField("isMember");
 
         return $this;
     }
 
-    public function selectSegmentId()
+    /**
+     * A `segmentId` that's used for testing membership.
+     */
+    public function selectSegmentId(): static
     {
         $this->selectField("segmentId");
 

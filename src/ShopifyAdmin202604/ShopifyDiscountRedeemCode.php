@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 
+/**
+ * A code that a customer can use at checkout to receive a discount. For example, a customer can use the redeem code 'SUMMER20' at checkout to receive a 20% discount on their entire order.
+ */
 class ShopifyDiscountRedeemCode
 {
     protected $asyncUsageCount;
@@ -15,45 +18,55 @@ class ShopifyDiscountRedeemCode
 
     
     /**
+     * The number of times that the discount redeem code has been used. This value is updated asynchronously and can be different than the actual usage count.
+     *
      * @return int
      */
-    public function getAsyncUsageCount()
+    public function getAsyncUsageCount(): ?int
     {
         return $this->asyncUsageCount;
     }
 
     
     /**
+     * The code that a customer can use at checkout to receive a discount.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The date and time when the discount redeem code was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The application that created the discount redeem code.
+     *
      * @return ShopifyApp
      */
-    public function getCreatedBy()
+    public function getCreatedBy(): ?ShopifyApp
     {
         return $this->createdBy;
     }
 
     
     /**
+     * A globally-unique ID of the discount redeem code.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

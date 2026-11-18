@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProduct;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductVariantConnection;
 
-class ShopifyDeliveryProfileItem
+/**
+ * A product and the subset of associated variants that are part of this delivery profile.
+ */
+class ShopifyDeliveryProfileItem implements ShopifyNode
 {
     protected $id;
     protected $product;
@@ -13,27 +16,33 @@ class ShopifyDeliveryProfileItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A product associated with this profile.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The product variants associated with this delivery profile.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getVariants()
+    public function getVariants(): ?ShopifyProductVariantConnection
     {
         return $this->variants;
     }

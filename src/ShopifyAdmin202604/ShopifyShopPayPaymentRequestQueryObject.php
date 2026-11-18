@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequest";
 
-    public function selectDiscounts(ShopifyShopPayPaymentRequestDiscountsArgumentsObject $argsObject = null)
+    /**
+     * The discounts for the payment request order.
+     */
+    public function selectDiscounts(?ShopifyShopPayPaymentRequestDiscountsArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestDiscountQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestDiscountQueryObject("discounts");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLineItems(ShopifyShopPayPaymentRequestLineItemsArgumentsObject $argsObject = null)
+    /**
+     * The line items for the payment request.
+     */
+    public function selectLineItems(?ShopifyShopPayPaymentRequestLineItemsArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestLineItemQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestLineItemQueryObject("lineItems");
         if ($argsObject !== null) {
@@ -30,21 +39,30 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPresentmentCurrency()
+    /**
+     * The presentment currency for the payment request.
+     */
+    public function selectPresentmentCurrency(): static
     {
         $this->selectField("presentmentCurrency");
 
         return $this;
     }
 
-    public function selectSelectedDeliveryMethodType()
+    /**
+     * The delivery method type for the payment request.
+     */
+    public function selectSelectedDeliveryMethodType(): static
     {
         $this->selectField("selectedDeliveryMethodType");
 
         return $this;
     }
 
-    public function selectShippingAddress(ShopifyShopPayPaymentRequestShippingAddressArgumentsObject $argsObject = null)
+    /**
+     * The shipping address for the payment request.
+     */
+    public function selectShippingAddress(?ShopifyShopPayPaymentRequestShippingAddressArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestContactFieldQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestContactFieldQueryObject("shippingAddress");
         if ($argsObject !== null) {
@@ -55,7 +73,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShippingLines(ShopifyShopPayPaymentRequestShippingLinesArgumentsObject $argsObject = null)
+    /**
+     * The shipping lines for the payment request.
+     */
+    public function selectShippingLines(?ShopifyShopPayPaymentRequestShippingLinesArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestShippingLineQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestShippingLineQueryObject("shippingLines");
         if ($argsObject !== null) {
@@ -66,7 +87,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSubtotal(ShopifyShopPayPaymentRequestSubtotalArgumentsObject $argsObject = null)
+    /**
+     * The subtotal amount for the payment request.
+     */
+    public function selectSubtotal(?ShopifyShopPayPaymentRequestSubtotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("subtotal");
         if ($argsObject !== null) {
@@ -77,7 +101,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotal(ShopifyShopPayPaymentRequestTotalArgumentsObject $argsObject = null)
+    /**
+     * The total amount for the payment request.
+     */
+    public function selectTotal(?ShopifyShopPayPaymentRequestTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("total");
         if ($argsObject !== null) {
@@ -88,7 +115,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalShippingPrice(ShopifyShopPayPaymentRequestTotalShippingPriceArgumentsObject $argsObject = null)
+    /**
+     * The total shipping price for the payment request.
+     */
+    public function selectTotalShippingPrice(?ShopifyShopPayPaymentRequestTotalShippingPriceArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestTotalShippingPriceQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestTotalShippingPriceQueryObject("totalShippingPrice");
         if ($argsObject !== null) {
@@ -99,7 +129,10 @@ class ShopifyShopPayPaymentRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalTax(ShopifyShopPayPaymentRequestTotalTaxArgumentsObject $argsObject = null)
+    /**
+     * The total tax for the payment request.
+     */
+    public function selectTotalTax(?ShopifyShopPayPaymentRequestTotalTaxArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalTax");
         if ($argsObject !== null) {

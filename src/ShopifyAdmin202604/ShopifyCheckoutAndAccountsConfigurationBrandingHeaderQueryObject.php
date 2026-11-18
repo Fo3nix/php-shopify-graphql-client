@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The header customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingHeader";
 
-    public function selectAlignment()
+    /**
+     * The header alignment.
+     */
+    public function selectAlignment(): static
     {
         $this->selectField("alignment");
 
         return $this;
     }
 
-    public function selectBackground()
+    /**
+     * The background style of the header container.
+     */
+    public function selectBackground(): static
     {
         $this->selectField("background");
 
         return $this;
     }
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingHeaderColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingHeaderColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -33,14 +45,20 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderQueryObject extends Q
         return $object;
     }
 
-    public function selectDivided()
+    /**
+     * The divided setting.
+     */
+    public function selectDivided(): static
     {
         $this->selectField("divided");
 
         return $this;
     }
 
-    public function selectLogo(ShopifyCheckoutAndAccountsConfigurationBrandingHeaderLogoArgumentsObject $argsObject = null)
+    /**
+     * The store logo.
+     */
+    public function selectLogo(?ShopifyCheckoutAndAccountsConfigurationBrandingHeaderLogoArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingLogoQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingLogoQueryObject("logo");
         if ($argsObject !== null) {
@@ -51,7 +69,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingHeaderQueryObject extends Q
         return $object;
     }
 
-    public function selectPadding()
+    /**
+     * The padding of the header container.
+     */
+    public function selectPadding(): static
     {
         $this->selectField("padding");
 

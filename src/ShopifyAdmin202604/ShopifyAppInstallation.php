@@ -14,7 +14,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyAppPurchaseOneTimeConnection
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPublication;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyAppRevenueAttributionRecordConnection;
 
-class ShopifyAppInstallation
+/**
+ * An app installed on a shop. Each installation tracks the permissions granted to the app through [`AccessScope`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AccessScope) objects, along with billing subscriptions and [`Metafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield) objects.
+ *
+ * The installation provides metafields that only the owning [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) can access. These metafields store app-specific configuration that merchants and other apps can't modify. The installation also provides URLs for launching and uninstalling the app, along with any active [`AppSubscription`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppSubscription) objects or [`AppPurchaseOneTime`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppPurchaseOneTime) purchases.
+ */
+class ShopifyAppInstallation implements ShopifyHasMetafields, ShopifyNode
 {
     protected $accessScopes;
     protected $activeSubscriptions;
@@ -34,135 +39,168 @@ class ShopifyAppInstallation
 
     
     /**
+     * The access scopes granted to the application by a merchant during installation.
+     *
      * @return ShopifyAccessScope[]
      */
-    public function getAccessScopes()
+    public function getAccessScopes(): ?array
     {
         return $this->accessScopes;
     }
 
     
     /**
+     * The active application subscriptions billed to the shop on a recurring basis.
+     *
      * @return ShopifyAppSubscription[]
      */
-    public function getActiveSubscriptions()
+    public function getActiveSubscriptions(): ?array
     {
         return $this->activeSubscriptions;
     }
 
     
     /**
+     * All subscriptions created for a shop.
+     *
      * @return ShopifyAppSubscriptionConnection
      */
-    public function getAllSubscriptions()
+    public function getAllSubscriptions(): ?ShopifyAppSubscriptionConnection
     {
         return $this->allSubscriptions;
     }
 
     
     /**
+     * Application which is installed.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * Channel associated with the installed application.
+     *
      * @return ShopifyChannel
      */
-    public function getChannel()
+    public function getChannel(): ?ShopifyChannel
     {
         return $this->channel;
     }
 
     
     /**
+     * Credits that can be used towards future app purchases.
+     *
      * @return ShopifyAppCreditConnection
      */
-    public function getCredits()
+    public function getCredits(): ?ShopifyAppCreditConnection
     {
         return $this->credits;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The URL to launch the application.
+     *
      * @return string
      */
-    public function getLaunchUrl()
+    public function getLaunchUrl(): mixed
     {
         return $this->launchUrl;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * One-time purchases to a shop.
+     *
      * @return ShopifyAppPurchaseOneTimeConnection
      */
-    public function getOneTimePurchases()
+    public function getOneTimePurchases(): ?ShopifyAppPurchaseOneTimeConnection
     {
         return $this->oneTimePurchases;
     }
 
     
     /**
+     * The publication associated with the installed application.
+     *
      * @return ShopifyPublication
      */
-    public function getPublication()
+    public function getPublication(): ?ShopifyPublication
     {
         return $this->publication;
     }
 
     
     /**
+     * The records that track the externally-captured revenue for the app. The records are used for revenue attribution purposes.
+     *
      * @return ShopifyAppRevenueAttributionRecordConnection
      */
-    public function getRevenueAttributionRecords()
+    public function getRevenueAttributionRecords(): ?ShopifyAppRevenueAttributionRecordConnection
     {
         return $this->revenueAttributionRecords;
     }
 
     
     /**
+     * Subscriptions charge to a shop on a recurring basis.
+     *
      * @return ShopifyAppSubscription[]
      */
-    public function getSubscriptions()
+    public function getSubscriptions(): ?array
     {
         return $this->subscriptions;
     }
 
     
     /**
+     * The URL to uninstall the application.
+     *
      * @return string
      */
-    public function getUninstallUrl()
+    public function getUninstallUrl(): mixed
     {
         return $this->uninstallUrl;
     }

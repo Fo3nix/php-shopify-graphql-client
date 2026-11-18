@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 
-class ShopifyDeliveryPromiseProvider
+/**
+ * A delivery promise provider. Currently restricted to select approved delivery promise partners.
+ */
+class ShopifyDeliveryPromiseProvider implements ShopifyNode
 {
     protected $active;
     protected $fulfillmentDelay;
@@ -14,45 +17,55 @@ class ShopifyDeliveryPromiseProvider
 
     
     /**
+     * Whether the delivery promise provider is active. Defaults to `true` when creating a provider.
+     *
      * @return bool
      */
-    public function getActive()
+    public function getActive(): ?bool
     {
         return $this->active;
     }
 
     
     /**
+     * The number of seconds to add to the current time as a buffer when looking up delivery promises. Represents how long the shop requires before releasing an order to the fulfillment provider.
+     *
      * @return int
      */
-    public function getFulfillmentDelay()
+    public function getFulfillmentDelay(): ?int
     {
         return $this->fulfillmentDelay;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location associated with this delivery promise provider.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The time zone to be used for interpreting day of week and cutoff times in delivery schedules when looking up delivery promises.
+     *
      * @return string
      */
-    public function getTimeZone()
+    public function getTimeZone(): ?string
     {
         return $this->timeZone;
     }

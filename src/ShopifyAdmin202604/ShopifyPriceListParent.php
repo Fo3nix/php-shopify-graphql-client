@@ -5,6 +5,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPriceListAdjustment;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPriceListAdjustmentSettings;
 
+/**
+ * Represents relative adjustments from one price list to other prices.
+ *   You can use a `PriceListParent` to specify an adjusted relative price using a percentage-based
+ *   adjustment. Adjusted prices work in conjunction with exchange rules and rounding.
+ *
+ *   [Adjustment types](https://shopify.dev/api/admin-graphql/latest/enums/pricelistadjustmenttype)
+ *   support both percentage increases and decreases.
+ */
 class ShopifyPriceListParent
 {
     protected $adjustment;
@@ -12,18 +20,22 @@ class ShopifyPriceListParent
 
     
     /**
+     * A price list adjustment.
+     *
      * @return ShopifyPriceListAdjustment
      */
-    public function getAdjustment()
+    public function getAdjustment(): ?ShopifyPriceListAdjustment
     {
         return $this->adjustment;
     }
 
     
     /**
+     * A price list's settings for adjustment.
+     *
      * @return ShopifyPriceListAdjustmentSettings
      */
-    public function getSettings()
+    public function getSettings(): ?ShopifyPriceListAdjustmentSettings
     {
         return $this->settings;
     }

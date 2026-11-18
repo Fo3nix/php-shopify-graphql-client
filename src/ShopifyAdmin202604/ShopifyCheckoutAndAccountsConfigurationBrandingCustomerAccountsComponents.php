@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMain;
 
+/**
+ * The customer accounts-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponents
 {
     protected $footer;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponents
 
     
     /**
+     * The footer customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooter
      */
-    public function getFooter()
+    public function getFooter(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooter
     {
         return $this->footer;
     }
 
     
     /**
+     * The header customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader
      */
-    public function getHeader()
+    public function getHeader(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader
     {
         return $this->header;
     }
 
     
     /**
+     * The main customer accounts customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMain
      */
-    public function getMain()
+    public function getMain(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMain
     {
         return $this->main;
     }

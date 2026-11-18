@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCombinedListingChildConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProduct;
 
+/**
+ * A combined listing of products.
+ */
 class ShopifyCombinedListing
 {
     protected $combinedListingChildren;
@@ -12,18 +15,22 @@ class ShopifyCombinedListing
 
     
     /**
+     * A list of child products in the combined listing.
+     *
      * @return ShopifyCombinedListingChildConnection
      */
-    public function getCombinedListingChildren()
+    public function getCombinedListingChildren(): ?ShopifyCombinedListingChildConnection
     {
         return $this->combinedListingChildren;
     }
 
     
     /**
+     * The parent product.
+     *
      * @return ShopifyProduct
      */
-    public function getParentProduct()
+    public function getParentProduct(): ?ShopifyProduct
     {
         return $this->parentProduct;
     }

@@ -5,6 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyRiskFact;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 
+/**
+ * A risk assessment for an order.
+ *
+ * See the [example query "Retrieve order risk assessments"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=retrieve-order-risk-assessments).
+ */
 class ShopifyOrderRiskAssessment
 {
     protected $facts;
@@ -13,27 +18,34 @@ class ShopifyOrderRiskAssessment
 
     
     /**
+     * Facts included with the risk assessment. Fact values are specific to the provider.
+     * See the [examples for the mutation orderRiskAssessmentCreate](https://shopify.dev/api/admin-graphql/unstable/mutations/orderRiskAssessmentCreate#section-examples).
+     *
      * @return ShopifyRiskFact[]
      */
-    public function getFacts()
+    public function getFacts(): ?array
     {
         return $this->facts;
     }
 
     
     /**
+     * The app that provided the assessment, `null` if the assessment was provided by Shopify.
+     *
      * @return ShopifyApp
      */
-    public function getProvider()
+    public function getProvider(): ?ShopifyApp
     {
         return $this->provider;
     }
 
     
     /**
-     * @return ShopifyRiskAssessmentResultEnumObject
+     * The risk level assigned to the order.
+     *
+     * @return string A ShopifyRiskAssessmentResultEnumObject value
      */
-    public function getRiskLevel()
+    public function getRiskLevel(): ?string
     {
         return $this->riskLevel;
     }

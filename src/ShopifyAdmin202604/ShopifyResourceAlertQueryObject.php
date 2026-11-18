@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An alert message that appears in the Shopify admin about a problem with a store resource, with 1 or more actions to take. For example, you could use an alert to indicate that you're not charging taxes on some product variants.
+ * They can optionally have a specific icon and be dismissed by merchants.
+ */
 class ShopifyResourceAlertQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ResourceAlert";
 
-    public function selectActions(ShopifyResourceAlertActionsArgumentsObject $argsObject = null)
+    /**
+     * Buttons in the alert that link to related information.
+     * For example, _Edit variants_.
+     */
+    public function selectActions(?ShopifyResourceAlertActionsArgumentsObject $argsObject = null): ShopifyResourceAlertActionQueryObject
     {
         $object = new ShopifyResourceAlertActionQueryObject("actions");
         if ($argsObject !== null) {
@@ -19,35 +27,51 @@ class ShopifyResourceAlertQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectContent()
+    /**
+     * The secondary text in the alert that includes further information or instructions about how to solve a problem.
+     */
+    public function selectContent(): static
     {
         $this->selectField("content");
 
         return $this;
     }
 
-    public function selectDismissibleHandle()
+    /**
+     * Unique identifier that appears when an alert is manually closed by the merchant.
+     * Most alerts can't be manually closed.
+     */
+    public function selectDismissibleHandle(): static
     {
         $this->selectField("dismissibleHandle");
 
         return $this;
     }
 
-    public function selectIcon()
+    /**
+     * An icon that's optionally displayed with the alert.
+     */
+    public function selectIcon(): static
     {
         $this->selectField("icon");
 
         return $this;
     }
 
-    public function selectSeverity()
+    /**
+     * Indication of how important the alert is.
+     */
+    public function selectSeverity(): static
     {
         $this->selectField("severity");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The primary text in the alert that includes information or describes the problem.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProduct;
 
+/**
+ * An auto-generated type which holds one Product and a cursor during pagination.
+ */
 class ShopifyProductEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyProductEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ProductEdge.
+     *
      * @return ShopifyProduct
      */
-    public function getNode()
+    public function getNode(): ?ShopifyProduct
     {
         return $this->node;
     }

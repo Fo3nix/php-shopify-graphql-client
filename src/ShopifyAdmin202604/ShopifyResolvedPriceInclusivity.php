@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The resolved price inclusivity attributes.
+ */
 class ShopifyResolvedPriceInclusivity
 {
     protected $dutiesIncluded;
@@ -9,18 +12,22 @@ class ShopifyResolvedPriceInclusivity
 
     
     /**
+     * Whether duties are included in the price.
+     *
      * @return bool
      */
-    public function getDutiesIncluded()
+    public function getDutiesIncluded(): ?bool
     {
         return $this->dutiesIncluded;
     }
 
     
     /**
+     * Whether taxes are included in the price.
+     *
      * @return bool
      */
-    public function getTaxesIncluded()
+    public function getTaxesIncluded(): ?bool
     {
         return $this->taxesIncluded;
     }

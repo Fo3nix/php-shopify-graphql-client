@@ -4,27 +4,42 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields representing the components of a line item.
+ */
 class ShopifyDraftOrderLineItemComponentInputInputObject extends InputObject
 {
+    const REQUIRED = ["quantity"];
+
     protected $variantId;
     protected $quantity;
     protected $uuid;
 
-    public function setVariantId($variantId)
+    /**
+     * The ID of the product variant corresponding to the component.
+     */
+    public function setVariantId($variantId): static
     {
         $this->variantId = $variantId;
 
         return $this;
     }
 
-    public function setQuantity($quantity)
+    /**
+     * The quantity of the component.
+     */
+    public function setQuantity($quantity): static
     {
         $this->quantity = $quantity;
 
         return $this;
     }
 
-    public function setUuid($uuid)
+    /**
+     * The UUID of the component. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with parent line items.
+     */
+    public function setUuid($uuid): static
     {
         $this->uuid = $uuid;
 

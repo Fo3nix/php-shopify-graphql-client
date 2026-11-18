@@ -15,49 +15,70 @@ class ShopifyMarketCatalogMarketsArgumentsObject extends ArgumentsObject
     protected $before;
     protected $reverse;
 
-    public function setType($shopifyMarketType)
+    /**
+     * Filters markets by type.
+     */
+    public function setType($shopifyMarketType): static
     {
         $this->type = new RawObject($shopifyMarketType);
 
         return $this;
     }
 
-    public function setStatus($shopifyMarketStatus)
+    /**
+     * Filters markets by status.
+     */
+    public function setStatus($shopifyMarketStatus): static
     {
         $this->status = new RawObject($shopifyMarketStatus);
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 

@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDiscount;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionDiscountHydrator;
 
+/**
+ * An auto-generated type which holds one SubscriptionDiscount and a cursor during pagination.
+ */
 class ShopifySubscriptionDiscountEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifySubscriptionDiscountEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifySubscriptionDiscount
+     * The item at the end of SubscriptionDiscountEdge.
+     *
+     * @return ShopifySubscriptionAppliedCodeDiscount|ShopifySubscriptionManualDiscount
      */
-    public function getNode()
+    public function getNode(): ShopifySubscriptionAppliedCodeDiscount|ShopifySubscriptionManualDiscount|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifySubscriptionDiscountEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifySubscriptionDiscount::fromArray($data['node']);
+                $instance->node = ShopifySubscriptionDiscountHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifySubscriptionDiscountEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifySubscriptionDiscountHydrator::toArray($this->node);
             }
             return $data;
         }

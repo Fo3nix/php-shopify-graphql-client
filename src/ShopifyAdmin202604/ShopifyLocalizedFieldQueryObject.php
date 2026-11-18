@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the value captured by a localized field. Localized fields are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers.
+ */
 class ShopifyLocalizedFieldQueryObject extends QueryObject
 {
     const OBJECT_NAME = "LocalizedField";
 
-    public function selectCountryCode()
+    /**
+     * Country ISO 3166-1 alpha-2 code.
+     */
+    public function selectCountryCode(): static
     {
         $this->selectField("countryCode");
 
         return $this;
     }
 
-    public function selectKey()
+    /**
+     * The localized field keys that are allowed.
+     */
+    public function selectKey(): static
     {
         $this->selectField("key");
 
         return $this;
     }
 
-    public function selectPurpose()
+    /**
+     * The purpose of this localized field.
+     */
+    public function selectPurpose(): static
     {
         $this->selectField("purpose");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The localized field title.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * The value of the field.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

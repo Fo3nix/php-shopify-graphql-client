@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * The minimum subtotal required for the discount to apply.
+ */
 class ShopifyDiscountMinimumSubtotal
 {
     protected $greaterThanOrEqualToSubtotal;
 
     
     /**
+     * The minimum subtotal that's required for the discount to be applied.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getGreaterThanOrEqualToSubtotal()
+    public function getGreaterThanOrEqualToSubtotal(): ?ShopifyMoneyV2
     {
         return $this->greaterThanOrEqualToSubtotal;
     }

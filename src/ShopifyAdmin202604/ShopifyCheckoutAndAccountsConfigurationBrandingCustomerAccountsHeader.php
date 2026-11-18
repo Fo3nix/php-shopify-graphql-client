@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo;
 
+/**
+ * The checkout header customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader
 {
     protected $alignment;
@@ -14,36 +17,44 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingHeaderAlignmentEnumObject
+     * The header alignment.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingHeaderAlignmentEnumObject value
      */
-    public function getAlignment()
+    public function getAlignment(): ?string
     {
         return $this->alignment;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The store logo.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
      */
-    public function getLogo()
+    public function getLogo(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
     {
         return $this->logo;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the header container.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }

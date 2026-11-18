@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Currency formats configured for the merchant. These formats are available to use within Liquid.
+ */
 class ShopifyCurrencyFormats
 {
     protected $moneyFormat;
@@ -11,36 +14,44 @@ class ShopifyCurrencyFormats
 
     
     /**
+     * Money without currency in HTML.
+     *
      * @return string
      */
-    public function getMoneyFormat()
+    public function getMoneyFormat(): mixed
     {
         return $this->moneyFormat;
     }
 
     
     /**
+     * Money without currency in emails.
+     *
      * @return string
      */
-    public function getMoneyInEmailsFormat()
+    public function getMoneyInEmailsFormat(): ?string
     {
         return $this->moneyInEmailsFormat;
     }
 
     
     /**
+     * Money with currency in HTML.
+     *
      * @return string
      */
-    public function getMoneyWithCurrencyFormat()
+    public function getMoneyWithCurrencyFormat(): mixed
     {
         return $this->moneyWithCurrencyFormat;
     }
 
     
     /**
+     * Money with currency in emails.
+     *
      * @return string
      */
-    public function getMoneyWithCurrencyInEmailsFormat()
+    public function getMoneyWithCurrencyInEmailsFormat(): ?string
     {
         return $this->moneyWithCurrencyInEmailsFormat;
     }

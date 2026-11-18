@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The international duties relevant to a fulfillment order.
+ */
 class ShopifyFulfillmentOrderInternationalDutiesQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FulfillmentOrderInternationalDuties";
 
-    public function selectIncoterm()
+    /**
+     * The method of duties payment. Example values: `DDP`, `DAP`.
+     */
+    public function selectIncoterm(): static
     {
         $this->selectField("incoterm");
 

@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Price reduction allocations across the draft order's lines.
+ */
 class ShopifyDraftOrderPlatformDiscountAllocationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderPlatformDiscountAllocation";
 
-    public function selectId()
+    /**
+     * The ID of the allocation.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the target being discounted.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectReductionAmount(ShopifyDraftOrderPlatformDiscountAllocationReductionAmountArgumentsObject $argsObject = null)
+    /**
+     * Amount of the discount allocated to the target.
+     */
+    public function selectReductionAmount(?ShopifyDraftOrderPlatformDiscountAllocationReductionAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("reductionAmount");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyDraftOrderPlatformDiscountAllocationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectReductionAmountSet(ShopifyDraftOrderPlatformDiscountAllocationReductionAmountSetArgumentsObject $argsObject = null)
+    /**
+     * Amount of the discount allocated to the target in both shop currency and presentment currency.
+     */
+    public function selectReductionAmountSet(?ShopifyDraftOrderPlatformDiscountAllocationReductionAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("reductionAmountSet");
         if ($argsObject !== null) {
@@ -44,7 +59,10 @@ class ShopifyDraftOrderPlatformDiscountAllocationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTarget(ShopifyDraftOrderPlatformDiscountAllocationTargetArgumentsObject $argsObject = null)
+    /**
+     * The element of the draft being discounted.
+     */
+    public function selectTarget(?ShopifyDraftOrderPlatformDiscountAllocationTargetArgumentsObject $argsObject = null): ShopifyDraftOrderPlatformDiscountAllocationTargetUnionObject
     {
         $object = new ShopifyDraftOrderPlatformDiscountAllocationTargetUnionObject("target");
         if ($argsObject !== null) {

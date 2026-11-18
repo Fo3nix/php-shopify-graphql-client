@@ -14,7 +14,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyTranslation;
 
-class ShopifyArticle
+/**
+ * An article that contains content, author information, and metadata. Articles belong to a [`Blog`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Blog) and can include HTML-formatted body text, summary text, and an associated image. Merchants publish articles to share content, drive traffic, and engage customers.
+ *
+ * Articles can be organized with tags and published immediately or scheduled for future publication using the [`publishedAt`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Article#field-Article.fields.publishedAt) timestamp. The API manages comments on articles when the blog's comment policy enables them.
+ */
+class ShopifyArticle implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyNavigable, ShopifyNode
 {
     protected $author;
     protected $blog;
@@ -41,198 +46,250 @@ class ShopifyArticle
 
     
     /**
+     * The name of the author of the article.
+     *
      * @return ShopifyArticleAuthor
      */
-    public function getAuthor()
+    public function getAuthor(): ?ShopifyArticleAuthor
     {
         return $this->author;
     }
 
     
     /**
+     * The blog containing the article.
+     *
      * @return ShopifyBlog
      */
-    public function getBlog()
+    public function getBlog(): ?ShopifyBlog
     {
         return $this->blog;
     }
 
     
     /**
+     * The text of the article's body, complete with HTML markup.
+     *
      * @return string
      */
-    public function getBody()
+    public function getBody(): mixed
     {
         return $this->body;
     }
 
     
     /**
+     * List of the article's comments.
+     *
      * @return ShopifyCommentConnection
      */
-    public function getComments()
+    public function getComments(): ?ShopifyCommentConnection
     {
         return $this->comments;
     }
 
     
     /**
+     * Count of comments. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getCommentsCount()
+    public function getCommentsCount(): ?ShopifyCount
     {
         return $this->commentsCount;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) when the article was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A unique, human-friendly string for the article that's automatically generated from the article's title.
+     * The handle is used in the article's URL.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image associated with the article.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * Whether or not the article is visible.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) when the article became or will become visible.
+     * Returns null when the article isn't visible.
+     *
      * @return Carbon
      */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?Carbon
     {
         return $this->publishedAt;
     }
 
     
     /**
+     * A summary of the article, which can include HTML markup.
+     * The summary is used by the online store theme to display the article on other pages, such as the home page or the main blog page.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): mixed
     {
         return $this->summary;
     }
 
     
     /**
+     * A comma-separated list of tags.
+     * Tags are additional short descriptors formatted as a string of comma-separated values.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The name of the template an article is using if it's using an alternate template.
+     * If an article is using the default `article.liquid` template, then the value returned is `null`.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }
 
     
     /**
+     * The title of the article.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) when the article was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

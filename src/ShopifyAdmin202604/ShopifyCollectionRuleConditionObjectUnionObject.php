@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Specifies object for the condition of the rule.
+ */
 class ShopifyCollectionRuleConditionObjectUnionObject extends UnionObject
 {
-    public function onShopifyCollectionRuleCategoryCondition()
+    public function onShopifyCollectionRuleCategoryCondition(): ShopifyCollectionRuleCategoryConditionQueryObject
     {
         $object = new ShopifyCollectionRuleCategoryConditionQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyCollectionRuleConditionObjectUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCollectionRuleMetafieldCondition()
+    public function onShopifyCollectionRuleMetafieldCondition(): ShopifyCollectionRuleMetafieldConditionQueryObject
     {
         $object = new ShopifyCollectionRuleMetafieldConditionQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyCollectionRuleConditionObjectUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCollectionRuleProductCategoryCondition()
+    public function onShopifyCollectionRuleProductCategoryCondition(): ShopifyCollectionRuleProductCategoryConditionQueryObject
     {
         $object = new ShopifyCollectionRuleProductCategoryConditionQueryObject();
         $this->addPossibleType($object);
@@ -30,7 +33,7 @@ class ShopifyCollectionRuleConditionObjectUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCollectionRuleTextCondition()
+    public function onShopifyCollectionRuleTextCondition(): ShopifyCollectionRuleTextConditionQueryObject
     {
         $object = new ShopifyCollectionRuleTextConditionQueryObject();
         $this->addPossibleType($object);

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The base color role customizations for a surface.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRoles
 {
     protected $accent;
@@ -13,54 +16,66 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRoles
 
     
     /**
+     * The color of accented objects (links and focused state).
+     *
      * @return string
      */
-    public function getAccent()
+    public function getAccent(): ?string
     {
         return $this->accent;
     }
 
     
     /**
+     * The color of the background.
+     *
      * @return string
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
+     * The color of borders.
+     *
      * @return string
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
+     * The decorative color for highlighting specific parts of the user interface.
+     *
      * @return string
      */
-    public function getDecorative()
+    public function getDecorative(): ?string
     {
         return $this->decorative;
     }
 
     
     /**
+     * The color of icons.
+     *
      * @return string
      */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
     
     /**
+     * The color of text.
+     *
      * @return string
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }

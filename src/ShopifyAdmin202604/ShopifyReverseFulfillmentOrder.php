@@ -7,7 +7,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyReverseDeliveryConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyReverseFulfillmentOrderThirdPartyConfirmation;
 
-class ShopifyReverseFulfillmentOrder
+/**
+ * A group of one or more items in a return that will be processed at a fulfillment service.
+ * There can be more than one reverse fulfillment order for a return at a given location.
+ */
+class ShopifyReverseFulfillmentOrder implements ShopifyNode
 {
     protected $id;
     protected $lineItems;
@@ -18,54 +22,67 @@ class ShopifyReverseFulfillmentOrder
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The list of reverse fulfillment order line items for the reverse fulfillment order.
+     *
      * @return ShopifyReverseFulfillmentOrderLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyReverseFulfillmentOrderLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The order associated with the reverse fulfillment order.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The list of reverse deliveries for the reverse fulfillment order.
+     *
      * @return ShopifyReverseDeliveryConnection
      */
-    public function getReverseDeliveries()
+    public function getReverseDeliveries(): ?ShopifyReverseDeliveryConnection
     {
         return $this->reverseDeliveries;
     }
 
     
     /**
-     * @return ShopifyReverseFulfillmentOrderStatusEnumObject
+     * The status of the reverse fulfillment order.
+     *
+     * @return string A ShopifyReverseFulfillmentOrderStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The current confirmation for the reverse fulfillment order from a third-party logistics service.
+     * If no third-party service is involved, then this value is `nil`.
+     *
      * @return ShopifyReverseFulfillmentOrderThirdPartyConfirmation
      */
-    public function getThirdPartyConfirmation()
+    public function getThirdPartyConfirmation(): ?ShopifyReverseFulfillmentOrderThirdPartyConfirmation
     {
         return $this->thirdPartyConfirmation;
     }

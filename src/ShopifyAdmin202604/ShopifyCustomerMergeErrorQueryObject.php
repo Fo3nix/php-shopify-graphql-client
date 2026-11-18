@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The error blocking a customer merge.
+ */
 class ShopifyCustomerMergeErrorQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergeError";
 
-    public function selectErrorFields()
+    /**
+     * The list of fields preventing the customer from being merged.
+     */
+    public function selectErrorFields(): static
     {
         $this->selectField("errorFields");
 
         return $this;
     }
 
-    public function selectMessage()
+    /**
+     * The customer merge error message.
+     */
+    public function selectMessage(): static
     {
         $this->selectField("message");
 

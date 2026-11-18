@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for identifying a customer.
+ */
 class ShopifyCustomerIdentifierInputInputObject extends InputObject
 {
     protected $id;
@@ -11,28 +14,40 @@ class ShopifyCustomerIdentifierInputInputObject extends InputObject
     protected $emailAddress;
     protected $phoneNumber;
 
-    public function setId($id)
+    /**
+     * The ID of the customer.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setCustomId(ShopifyUniqueMetafieldValueInputInputObject $shopifyUniqueMetafieldValueInputInputObject)
+    /**
+     * The [custom ID](https://shopify.dev/docs/apps/build/custom-data/metafields/working-with-custom-ids) of the customer.
+     */
+    public function setCustomId(ShopifyUniqueMetafieldValueInputInputObject $shopifyUniqueMetafieldValueInputInputObject): static
     {
         $this->customId = $shopifyUniqueMetafieldValueInputInputObject;
 
         return $this;
     }
 
-    public function setEmailAddress($emailAddress)
+    /**
+     * The email address of the customer.
+     */
+    public function setEmailAddress($emailAddress): static
     {
         $this->emailAddress = $emailAddress;
 
         return $this;
     }
 
-    public function setPhoneNumber($phoneNumber)
+    /**
+     * The phone number of the customer.
+     */
+    public function setPhoneNumber($phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
 

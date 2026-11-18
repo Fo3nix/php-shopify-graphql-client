@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The color settings for global colors and color schemes.
+ */
 class ShopifyCheckoutBrandingColorsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingColors";
 
-    public function selectGlobal(ShopifyCheckoutBrandingColorsGlobalArgumentsObject $argsObject = null)
+    /**
+     * A group of global colors for customizing the overall look and feel of the user interface.
+     */
+    public function selectGlobal(?ShopifyCheckoutBrandingColorsGlobalArgumentsObject $argsObject = null): ShopifyCheckoutBrandingColorGlobalQueryObject
     {
         $object = new ShopifyCheckoutBrandingColorGlobalQueryObject("global");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutBrandingColorsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSchemes(ShopifyCheckoutBrandingColorsSchemesArgumentsObject $argsObject = null)
+    /**
+     * A set of color schemes which apply to different areas of the user interface.
+     */
+    public function selectSchemes(?ShopifyCheckoutBrandingColorsSchemesArgumentsObject $argsObject = null): ShopifyCheckoutBrandingColorSchemesQueryObject
     {
         $object = new ShopifyCheckoutBrandingColorSchemesQueryObject("schemes");
         if ($argsObject !== null) {

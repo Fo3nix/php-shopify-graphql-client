@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Provides the capabilities of a metaobject.
+ */
 class ShopifyMetaobjectCapabilityDataQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectCapabilityData";
 
-    public function selectOnlineStore(ShopifyMetaobjectCapabilityDataOnlineStoreArgumentsObject $argsObject = null)
+    /**
+     * The Online Store capability for this metaobject.
+     */
+    public function selectOnlineStore(?ShopifyMetaobjectCapabilityDataOnlineStoreArgumentsObject $argsObject = null): ShopifyMetaobjectCapabilityDataOnlineStoreQueryObject
     {
         $object = new ShopifyMetaobjectCapabilityDataOnlineStoreQueryObject("onlineStore");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMetaobjectCapabilityDataQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPublishable(ShopifyMetaobjectCapabilityDataPublishableArgumentsObject $argsObject = null)
+    /**
+     * The publishable capability for this metaobject.
+     */
+    public function selectPublishable(?ShopifyMetaobjectCapabilityDataPublishableArgumentsObject $argsObject = null): ShopifyMetaobjectCapabilityDataPublishableQueryObject
     {
         $object = new ShopifyMetaobjectCapabilityDataPublishableQueryObject("publishable");
         if ($argsObject !== null) {

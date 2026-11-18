@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The country code and whether the country is a part of the 'Rest Of World' shipping zone.
+ */
 class ShopifyDeliveryCountryCodeOrRestOfWorld
 {
     protected $countryCode;
@@ -9,18 +12,22 @@ class ShopifyDeliveryCountryCodeOrRestOfWorld
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The country code in the ISO 3166-1 alpha-2 format.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * Whether the country is a part of the 'Rest of World' shipping zone.
+     *
      * @return bool
      */
-    public function getRestOfWorld()
+    public function getRestOfWorld(): ?bool
     {
         return $this->restOfWorld;
     }

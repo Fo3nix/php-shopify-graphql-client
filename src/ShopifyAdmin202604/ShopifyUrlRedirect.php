@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Carbon\Carbon;
 
-class ShopifyUrlRedirect
+/**
+ * The URL redirect for the online store.
+ */
+class ShopifyUrlRedirect implements ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -13,36 +16,44 @@ class ShopifyUrlRedirect
 
     
     /**
+     * The date and time when the URL redirect was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The ID of the URL redirect.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The old path to be redirected from. When the user visits this path, they will be redirected to the target location.
+     *
      * @return string
      */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
     
     /**
+     * The target location where the user will be redirected to.
+     *
      * @return string
      */
-    public function getTarget()
+    public function getTarget(): ?string
     {
         return $this->target;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The entitlements for catalogs.
+ */
 class ShopifyMarketsCatalogsEntitlement
 {
     protected $enabled;
 
     
     /**
+     * Whether catalogs are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

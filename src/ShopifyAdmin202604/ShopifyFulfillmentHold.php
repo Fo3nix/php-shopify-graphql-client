@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 
-class ShopifyFulfillmentHold
+/**
+ * A fulfillment hold currently applied on a fulfillment order.
+ */
+class ShopifyFulfillmentHold implements ShopifyNode
 {
     protected $displayReason;
     protected $handle;
@@ -16,63 +19,78 @@ class ShopifyFulfillmentHold
 
     
     /**
+     * The localized reason for the fulfillment hold for display purposes.
+     *
      * @return string
      */
-    public function getDisplayReason()
+    public function getDisplayReason(): ?string
     {
         return $this->displayReason;
     }
 
     
     /**
+     * An identifier an app can use to reference one of many holds it applied to a fulfillment order.
+     * This field must be unique among the holds that a single app applies to a single fulfillment order.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * The app that created the fulfillment hold.
+     *
      * @return ShopifyApp
      */
-    public function getHeldByApp()
+    public function getHeldByApp(): ?ShopifyApp
     {
         return $this->heldByApp;
     }
 
     
     /**
+     * A boolean value that indicates whether the requesting app created the fulfillment hold.
+     *
      * @return bool
      */
-    public function getHeldByRequestingApp()
+    public function getHeldByRequestingApp(): ?bool
     {
         return $this->heldByRequestingApp;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyFulfillmentHoldReasonEnumObject
+     * The reason for the fulfillment hold.
+     *
+     * @return string A ShopifyFulfillmentHoldReasonEnumObject value
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
     
     /**
+     * Additional information about the fulfillment hold reason.
+     *
      * @return string
      */
-    public function getReasonNotes()
+    public function getReasonNotes(): ?string
     {
         return $this->reasonNotes;
     }

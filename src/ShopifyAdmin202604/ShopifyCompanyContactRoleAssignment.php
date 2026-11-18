@@ -8,7 +8,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCompanyLocation;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCompanyContactRole;
 
-class ShopifyCompanyContactRoleAssignment
+/**
+ * The CompanyContactRoleAssignment describes the company and location associated to a company contact's role.
+ */
+class ShopifyCompanyContactRoleAssignment implements ShopifyNode
 {
     protected $company;
     protected $companyContact;
@@ -20,63 +23,77 @@ class ShopifyCompanyContactRoleAssignment
 
     
     /**
+     * The company this role assignment belongs to.
+     *
      * @return ShopifyCompany
      */
-    public function getCompany()
+    public function getCompany(): ?ShopifyCompany
     {
         return $this->company;
     }
 
     
     /**
+     * The company contact for whom this role is assigned.
+     *
      * @return ShopifyCompanyContact
      */
-    public function getCompanyContact()
+    public function getCompanyContact(): ?ShopifyCompanyContact
     {
         return $this->companyContact;
     }
 
     
     /**
+     * The company location to which the role is assigned.
+     *
      * @return ShopifyCompanyLocation
      */
-    public function getCompanyLocation()
+    public function getCompanyLocation(): ?ShopifyCompanyLocation
     {
         return $this->companyLocation;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the assignment record was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The role that's assigned to the company contact.
+     *
      * @return ShopifyCompanyContactRole
      */
-    public function getRole()
+    public function getRole(): ?ShopifyCompanyContactRole
     {
         return $this->role;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the assignment record was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

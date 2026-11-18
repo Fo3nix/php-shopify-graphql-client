@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents a media error. This typically occurs when there is an issue with the media itself causing it to fail validation.
+ * Check the media before attempting to upload again.
+ */
 class ShopifyMediaError
 {
     protected $code;
@@ -10,27 +14,33 @@ class ShopifyMediaError
 
     
     /**
-     * @return ShopifyMediaErrorCodeEnumObject
+     * Code representing the type of error.
+     *
+     * @return string A ShopifyMediaErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Additional details regarding the error.
+     *
      * @return string
      */
-    public function getDetails()
+    public function getDetails(): ?string
     {
         return $this->details;
     }
 
     
     /**
+     * Translated error message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

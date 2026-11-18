@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProduct;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductVariant;
 
+/**
+ * This type returns the information about the product and product variant from a customer visit.
+ */
 class ShopifyCustomerVisitProductInfo
 {
     protected $product;
@@ -13,27 +16,33 @@ class ShopifyCustomerVisitProductInfo
 
     
     /**
+     * The product information. If `null`, then the product was deleted from the store.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The quantity of the product that the customer requested.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The product variant information, if the product variant exists.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }

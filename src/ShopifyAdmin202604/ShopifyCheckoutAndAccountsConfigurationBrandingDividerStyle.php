@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The customizations for the page, content, main, and order summary dividers.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle
 {
     protected $borderStyle;
@@ -9,18 +12,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject
+     * The border style for the divider.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject value
      */
-    public function getBorderStyle()
+    public function getBorderStyle(): ?string
     {
         return $this->borderStyle;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject
+     * The border width for the divider.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject value
      */
-    public function getBorderWidth()
+    public function getBorderWidth(): ?string
     {
         return $this->borderWidth;
     }

@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Represents information about the purchasing entity for the order or draft order.
+ */
 class ShopifyPurchasingEntityUnionObject extends UnionObject
 {
-    public function onShopifyCustomer()
+    public function onShopifyCustomer(): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyPurchasingEntityUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPurchasingCompany()
+    public function onShopifyPurchasingCompany(): ShopifyPurchasingCompanyQueryObject
     {
         $object = new ShopifyPurchasingCompanyQueryObject();
         $this->addPossibleType($object);

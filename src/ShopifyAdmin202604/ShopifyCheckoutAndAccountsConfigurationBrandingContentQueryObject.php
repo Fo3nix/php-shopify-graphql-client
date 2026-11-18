@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The content customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingContentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingContent";
 
-    public function selectDivider(ShopifyCheckoutAndAccountsConfigurationBrandingContentDividerArgumentsObject $argsObject = null)
+    /**
+     * The divider style and visibility.
+     */
+    public function selectDivider(?ShopifyCheckoutAndAccountsConfigurationBrandingContentDividerArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject("divider");
         if ($argsObject !== null) {

@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPaymentTerms;
 
-class ShopifyPaymentSchedule
+/**
+ * Represents the payment schedule for a single payment defined in the payment terms.
+ */
+class ShopifyPaymentSchedule implements ShopifyNode
 {
     protected $amount;
     protected $balanceDue;
@@ -20,81 +23,99 @@ class ShopifyPaymentSchedule
 
     
     /**
+     * Amount owed for this payment schedule.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * Remaining balance to be captured for this payment schedule.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getBalanceDue()
+    public function getBalanceDue(): ?ShopifyMoneyV2
     {
         return $this->balanceDue;
     }
 
     
     /**
+     * Date and time when the payment schedule is paid or fulfilled.
+     *
      * @return Carbon
      */
-    public function getCompletedAt()
+    public function getCompletedAt(): ?Carbon
     {
         return $this->completedAt;
     }
 
     
     /**
+     * Whether the payment schedule is due.
+     *
      * @return bool
      */
-    public function getDue()
+    public function getDue(): ?bool
     {
         return $this->due;
     }
 
     
     /**
+     * Date and time when the payment schedule is due.
+     *
      * @return Carbon
      */
-    public function getDueAt()
+    public function getDueAt(): ?Carbon
     {
         return $this->dueAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Date and time when the invoice is sent.
+     *
      * @return Carbon
      */
-    public function getIssuedAt()
+    public function getIssuedAt(): ?Carbon
     {
         return $this->issuedAt;
     }
 
     
     /**
+     * The payment terms the payment schedule belongs to.
+     *
      * @return ShopifyPaymentTerms
      */
-    public function getPaymentTerms()
+    public function getPaymentTerms(): ?ShopifyPaymentTerms
     {
         return $this->paymentTerms;
     }
 
     
     /**
+     * Remaining balance to be paid or authorized by the customer for this payment schedule.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalBalance()
+    public function getTotalBalance(): ?ShopifyMoneyV2
     {
         return $this->totalBalance;
     }

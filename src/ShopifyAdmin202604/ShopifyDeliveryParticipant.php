@@ -6,7 +6,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCarrierService;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryParticipantService;
 
-class ShopifyDeliveryParticipant
+/**
+ * A participant defines carrier-calculated rates for shipping services
+ * with a possible merchant-defined fixed fee or a percentage-of-rate fee.
+ */
+class ShopifyDeliveryParticipant implements ShopifyNode
 {
     protected $adaptToNewServicesFlag;
     protected $carrierService;
@@ -17,54 +21,66 @@ class ShopifyDeliveryParticipant
 
     
     /**
+     * Whether to display new shipping services automatically to the customer when the service becomes available.
+     *
      * @return bool
      */
-    public function getAdaptToNewServicesFlag()
+    public function getAdaptToNewServicesFlag(): ?bool
     {
         return $this->adaptToNewServicesFlag;
     }
 
     
     /**
+     * The carrier used for this participant.
+     *
      * @return ShopifyDeliveryCarrierService
      */
-    public function getCarrierService()
+    public function getCarrierService(): ?ShopifyDeliveryCarrierService
     {
         return $this->carrierService;
     }
 
     
     /**
+     * The merchant-defined fixed fee for this participant.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFixedFee()
+    public function getFixedFee(): ?ShopifyMoneyV2
     {
         return $this->fixedFee;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The carrier-specific services offered by the participant, and whether each service is active.
+     *
      * @return ShopifyDeliveryParticipantService[]
      */
-    public function getParticipantServices()
+    public function getParticipantServices(): ?array
     {
         return $this->participantServices;
     }
 
     
     /**
+     * The merchant-defined percentage-of-rate fee for this participant.
+     *
      * @return float
      */
-    public function getPercentageOfRateFee()
+    public function getPercentageOfRateFee(): ?float
     {
         return $this->percentageOfRateFee;
     }

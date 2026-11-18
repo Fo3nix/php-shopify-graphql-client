@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSection;
 
+/**
+ * The customer accounts-specific main customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMain
 {
     protected $colors;
@@ -12,18 +15,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMain
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The customer accounts main section.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainSection
     {
         return $this->section;
     }

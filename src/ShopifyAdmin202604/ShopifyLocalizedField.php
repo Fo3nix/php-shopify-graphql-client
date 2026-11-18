@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents the value captured by a localized field. Localized fields are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers.
+ */
 class ShopifyLocalizedField
 {
     protected $countryCode;
@@ -12,45 +15,55 @@ class ShopifyLocalizedField
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * Country ISO 3166-1 alpha-2 code.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
-     * @return ShopifyLocalizedFieldKeyEnumObject
+     * The localized field keys that are allowed.
+     *
+     * @return string A ShopifyLocalizedFieldKeyEnumObject value
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
-     * @return ShopifyLocalizedFieldPurposeEnumObject
+     * The purpose of this localized field.
+     *
+     * @return string A ShopifyLocalizedFieldPurposeEnumObject value
      */
-    public function getPurpose()
+    public function getPurpose(): ?string
     {
         return $this->purpose;
     }
 
     
     /**
+     * The localized field title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The value of the field.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

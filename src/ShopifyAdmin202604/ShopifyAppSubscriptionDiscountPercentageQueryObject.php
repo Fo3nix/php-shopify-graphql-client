@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The percentage value of a discount.
+ */
 class ShopifyAppSubscriptionDiscountPercentageQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AppSubscriptionDiscountPercentage";
 
-    public function selectPercentage()
+    /**
+     * The percentage value of a discount.
+     */
+    public function selectPercentage(): static
     {
         $this->selectField("percentage");
 

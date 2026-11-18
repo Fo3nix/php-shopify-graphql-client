@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The font size customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingFontSizeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingFontSize";
 
-    public function selectBase()
+    /**
+     * The base font size.
+     */
+    public function selectBase(): static
     {
         $this->selectField("base");
 
         return $this;
     }
 
-    public function selectRatio()
+    /**
+     * The scale ratio used to derive all font sizes such as small and large.
+     */
+    public function selectRatio(): static
     {
         $this->selectField("ratio");
 

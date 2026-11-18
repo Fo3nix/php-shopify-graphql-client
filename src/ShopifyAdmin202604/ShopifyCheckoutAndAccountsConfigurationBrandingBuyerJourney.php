@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingBuyerJourney
 {
     protected $visibility;
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject
+     * An option to display or hide the breadcrumbs that represent the buyer's journey on 3-page checkout.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

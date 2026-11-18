@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCollectionDuplicateOperation;
 
+/**
+ * Represents operations involving a collection.
+ */
 class ShopifyCollectionOperations
 {
     protected $duplicate;
 
     
     /**
+     * Collection duplicate operations.
+     *
      * @return ShopifyCollectionDuplicateOperation[]
      */
-    public function getDuplicate()
+    public function getDuplicate(): ?array
     {
         return $this->duplicate;
     }

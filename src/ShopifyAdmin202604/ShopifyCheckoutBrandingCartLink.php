@@ -2,15 +2,24 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Controls the visibility of cart links displayed during checkout. These links allow customers to return to their cart or continue shopping.
+ *
+ * For example, an electronics store might hide cart links during final checkout steps to reduce distractions, or show them prominently to encourage customers to add accessories before completing their purchase.
+ *
+ * The `CartLink` object provides visibility settings to control when and how these navigation elements appear based on the merchant's checkout flow strategy.
+ */
 class ShopifyCheckoutBrandingCartLink
 {
     protected $visibility;
 
     
     /**
-     * @return ShopifyCheckoutBrandingVisibilityEnumObject
+     * Whether the cart link is visible at checkout.
+     *
+     * @return string A ShopifyCheckoutBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

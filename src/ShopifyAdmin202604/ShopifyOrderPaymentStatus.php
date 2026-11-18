@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOrderTransaction;
 
+/**
+ * The status of a customer's payment for an order.
+ */
 class ShopifyOrderPaymentStatus
 {
     protected $errorMessage;
@@ -14,45 +17,55 @@ class ShopifyOrderPaymentStatus
 
     
     /**
+     * A message describing an error during the asynchronous processing of a payment.
+     *
      * @return string
      */
-    public function getErrorMessage()
+    public function getErrorMessage(): ?string
     {
         return $this->errorMessage;
     }
 
     
     /**
+     * The ID of the payment, initially returned by an `orderCreateMandatePayment` or `orderCreatePayment` mutation.
+     *
      * @return string
      */
-    public function getPaymentReferenceId()
+    public function getPaymentReferenceId(): ?string
     {
         return $this->paymentReferenceId;
     }
 
     
     /**
-     * @return ShopifyOrderPaymentStatusResultEnumObject
+     * The status of the payment.
+     *
+     * @return string A ShopifyOrderPaymentStatusResultEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The transaction associated with the payment.
+     *
      * @return ShopifyOrderTransaction[]
      */
-    public function getTransactions()
+    public function getTransactions(): ?array
     {
         return $this->transactions;
     }
 
     
     /**
+     * A translated message describing an error during the asynchronous processing of a payment.
+     *
      * @return string
      */
-    public function getTranslatedErrorMessage()
+    public function getTranslatedErrorMessage(): ?string
     {
         return $this->translatedErrorMessage;
     }

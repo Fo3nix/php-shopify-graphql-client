@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A percentage deposit.
+ */
 class ShopifyDepositPercentage
 {
     protected $percentage;
 
     
     /**
+     * The percentage value of the deposit.
+     *
      * @return float
      */
-    public function getPercentage()
+    public function getPercentage(): ?float
     {
         return $this->percentage;
     }

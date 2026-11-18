@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents an individual result returned from a search.
+ */
 class ShopifySearchResultQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SearchResult";
 
-    public function selectDescription()
+    /**
+     * Returns the search result description text.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectImage(ShopifySearchResultImageArgumentsObject $argsObject = null)
+    /**
+     * Returns the Image resource presented to accompany a search result.
+     */
+    public function selectImage(?ShopifySearchResultImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {
@@ -26,14 +35,34 @@ class ShopifySearchResultQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * Returns the resource represented by the search result.
+     */
+    public function selectReference(?ShopifySearchResultReferenceArgumentsObject $argsObject = null): ShopifyNodeInterfaceObject
+    {
+        $object = new ShopifyNodeInterfaceObject("reference");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
+    }
+
+    /**
+     * Returns the resource title.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * Returns the absolute URL to the resource in the search result.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

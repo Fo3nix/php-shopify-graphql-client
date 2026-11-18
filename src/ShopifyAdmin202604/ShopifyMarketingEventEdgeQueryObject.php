@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one MarketingEvent and a cursor during pagination.
+ */
 class ShopifyMarketingEventEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketingEventEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyMarketingEventEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of MarketingEventEdge.
+     */
+    public function selectNode(?ShopifyMarketingEventEdgeNodeArgumentsObject $argsObject = null): ShopifyMarketingEventQueryObject
     {
         $object = new ShopifyMarketingEventQueryObject("node");
         if ($argsObject !== null) {

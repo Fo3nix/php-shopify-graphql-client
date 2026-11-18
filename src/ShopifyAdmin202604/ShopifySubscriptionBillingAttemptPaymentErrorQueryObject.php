@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A payment-related error that occurred during a subscription billing attempt.
+ */
 class ShopifySubscriptionBillingAttemptPaymentErrorQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionBillingAttemptPaymentError";
 
-    public function selectCode()
+    /**
+     * The error code for the payment failure.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 

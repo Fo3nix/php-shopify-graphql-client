@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCalculatedExchangeLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCalculatedReturnLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCalculatedReturnShippingFee;
 
+/**
+ * A calculated return.
+ */
 class ShopifyCalculatedReturn
 {
     protected $exchangeLineItems;
@@ -15,36 +18,44 @@ class ShopifyCalculatedReturn
 
     
     /**
+     * A list of calculated exchange line items.
+     *
      * @return ShopifyCalculatedExchangeLineItem[]
      */
-    public function getExchangeLineItems()
+    public function getExchangeLineItems(): ?array
     {
         return $this->exchangeLineItems;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A list of calculated return line items.
+     *
      * @return ShopifyCalculatedReturnLineItem[]
      */
-    public function getReturnLineItems()
+    public function getReturnLineItems(): ?array
     {
         return $this->returnLineItems;
     }
 
     
     /**
+     * The calculated return shipping fee.
+     *
      * @return ShopifyCalculatedReturnShippingFee
      */
-    public function getReturnShippingFee()
+    public function getReturnShippingFee(): ?ShopifyCalculatedReturnShippingFee
     {
         return $this->returnShippingFee;
     }

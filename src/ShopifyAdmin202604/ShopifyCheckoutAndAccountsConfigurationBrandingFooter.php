@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingFooterContent;
 
+/**
+ * A container for the footer section customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingFooter
 {
     protected $alignment;
@@ -16,54 +19,66 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingFooter
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingFooterAlignmentEnumObject
+     * The footer alignment.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingFooterAlignmentEnumObject value
      */
-    public function getAlignment()
+    public function getAlignment(): ?string
     {
         return $this->alignment;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject
+     * The background style of the footer container.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The footer content settings.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingFooterContent
      */
-    public function getContent()
+    public function getContent(): ?ShopifyCheckoutAndAccountsConfigurationBrandingFooterContent
     {
         return $this->content;
     }
 
     
     /**
+     * The divided setting.
+     *
      * @return bool
      */
-    public function getDivided()
+    public function getDivided(): ?bool
     {
         return $this->divided;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the footer container.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }

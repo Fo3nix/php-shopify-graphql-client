@@ -4,18 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * One of the actions that the fulfillment order supports in its current state.
+ */
 class ShopifyFulfillmentOrderSupportedActionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FulfillmentOrderSupportedAction";
 
-    public function selectAction()
+    /**
+     * The action value.
+     */
+    public function selectAction(): static
     {
         $this->selectField("action");
 
         return $this;
     }
 
-    public function selectExternalUrl()
+    /**
+     * The external URL to be used to initiate the fulfillment process outside Shopify.
+     * Applicable only when the `action` value is `EXTERNAL`.
+     */
+    public function selectExternalUrl(): static
     {
         $this->selectField("externalUrl");
 

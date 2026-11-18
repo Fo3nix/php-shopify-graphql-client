@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFinancialSummaryDiscountAllocation;
 
+/**
+ * The financial details of a fulfillment order line item.
+ */
 class ShopifyFulfillmentOrderLineItemFinancialSummary
 {
     protected $approximateDiscountedUnitPriceSet;
@@ -14,36 +17,44 @@ class ShopifyFulfillmentOrderLineItemFinancialSummary
 
     
     /**
+     * The approximate split price of a line item unit, in shop and presentment currencies. This value doesn't include discounts applied to the entire order.For the full picture of applied discounts, see discountAllocations.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getApproximateDiscountedUnitPriceSet()
+    public function getApproximateDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->approximateDiscountedUnitPriceSet;
     }
 
     
     /**
+     * The discounts that have been allocated onto the line item by discount applications, not including order edits and refunds.
+     *
      * @return ShopifyFinancialSummaryDiscountAllocation[]
      */
-    public function getDiscountAllocations()
+    public function getDiscountAllocations(): ?array
     {
         return $this->discountAllocations;
     }
 
     
     /**
+     * The variant unit price without discounts applied, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * Number of line items that this financial summary applies to.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }

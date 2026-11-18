@@ -1,0 +1,100 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarket;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketUserError;
+
+/**
+ * Return type for `marketWebPresenceDelete` mutation.
+ */
+class ShopifyMarketWebPresenceDeletePayload
+{
+    protected $deletedId;
+    protected $market;
+    protected $userErrors;
+
+    
+    /**
+     * The ID of the deleted web presence.
+     *
+     * @return string
+     */
+    public function getDeletedId(): ?string
+    {
+        return $this->deletedId;
+    }
+
+    
+    /**
+     * The market for which the web presence was deleted.
+     *
+     * @return ShopifyMarket
+     */
+    public function getMarket(): ?ShopifyMarket
+    {
+        return $this->market;
+    }
+
+    
+    /**
+     * The list of errors that occurred from executing the mutation.
+     *
+     * @return ShopifyMarketUserError[]
+     */
+    public function getUserErrors(): ?array
+    {
+        return $this->userErrors;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['deletedId']) && $data['deletedId'] !== null) {
+                $instance->deletedId = $data['deletedId'];
+            }
+            if (isset($data['market']) && $data['market'] !== null) {
+                $instance->market = ShopifyMarket::fromArray($data['market']);
+            }
+            if (isset($data['userErrors']) && $data['userErrors'] !== null) {
+                $instance->userErrors = array_map(function($item) { return ShopifyMarketUserError::fromArray($item); }, $data['userErrors']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->deletedId !== null) {
+                $data['deletedId'] = $this->deletedId;
+            }
+            if ($this->market !== null) {
+                $data['market'] = $this->market->asArray();
+            }
+            if ($this->userErrors !== null) {
+                $data['userErrors'] = array_map(function($item) { return $item->asArray(); }, $this->userErrors);
+            }
+            return $data;
+        }
+}

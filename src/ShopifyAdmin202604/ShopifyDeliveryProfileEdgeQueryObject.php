@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one DeliveryProfile and a cursor during pagination.
+ */
 class ShopifyDeliveryProfileEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryProfileEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyDeliveryProfileEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of DeliveryProfileEdge.
+     */
+    public function selectNode(?ShopifyDeliveryProfileEdgeNodeArgumentsObject $argsObject = null): ShopifyDeliveryProfileQueryObject
     {
         $object = new ShopifyDeliveryProfileQueryObject("node");
         if ($argsObject !== null) {

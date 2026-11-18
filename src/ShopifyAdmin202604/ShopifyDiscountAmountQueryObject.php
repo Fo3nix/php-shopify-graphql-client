@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fixed amount value of a discount, and whether the amount is applied to each entitled item or spread evenly across the entitled items.
+ */
 class ShopifyDiscountAmountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountAmount";
 
-    public function selectAmount(ShopifyDiscountAmountAmountArgumentsObject $argsObject = null)
+    /**
+     * The value of the discount.
+     */
+    public function selectAmount(?ShopifyDiscountAmountAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyDiscountAmountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppliesOnEachItem()
+    /**
+     * If true, then the discount is applied to each of the entitled items. If false, then the amount is split across all of the entitled items.
+     */
+    public function selectAppliesOnEachItem(): static
     {
         $this->selectField("appliesOnEachItem");
 

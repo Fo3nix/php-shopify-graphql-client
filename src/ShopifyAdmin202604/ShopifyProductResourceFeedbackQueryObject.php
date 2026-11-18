@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Reports the status of product for a Sales Channel or Storefront API.
+ * This might include why a product is not available in a Sales Channel
+ * and how a merchant might fix this.
+ */
 class ShopifyProductResourceFeedbackQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductResourceFeedback";
 
-    public function selectChannel(ShopifyProductResourceFeedbackChannelArgumentsObject $argsObject = null)
+    /**
+     * The channel this feedback is for.
+     */
+    public function selectChannel(?ShopifyProductResourceFeedbackChannelArgumentsObject $argsObject = null): ShopifyChannelQueryObject
     {
         $object = new ShopifyChannelQueryObject("channel");
         if ($argsObject !== null) {
@@ -19,35 +27,51 @@ class ShopifyProductResourceFeedbackQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFeedbackGeneratedAt()
+    /**
+     * The time when the feedback was generated. Used to help determine whether
+     * incoming feedback is outdated compared to existing feedback.
+     */
+    public function selectFeedbackGeneratedAt(): static
     {
         $this->selectField("feedbackGeneratedAt");
 
         return $this;
     }
 
-    public function selectMessages()
+    /**
+     * The feedback messages presented to the merchant.
+     */
+    public function selectMessages(): static
     {
         $this->selectField("messages");
 
         return $this;
     }
 
-    public function selectProductId()
+    /**
+     * The ID of the product associated with the feedback.
+     */
+    public function selectProductId(): static
     {
         $this->selectField("productId");
 
         return $this;
     }
 
-    public function selectProductUpdatedAt()
+    /**
+     * The timestamp of the product associated with the feedback.
+     */
+    public function selectProductUpdatedAt(): static
     {
         $this->selectField("productUpdatedAt");
 
         return $this;
     }
 
-    public function selectState()
+    /**
+     * Conveys the state of the feedback and whether it requires merchant action or not.
+     */
+    public function selectState(): static
     {
         $this->selectField("state");
 

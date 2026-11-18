@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketRegionHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketRegion;
+
+/**
+ * An auto-generated type which holds one MarketRegion and a cursor during pagination.
+ */
 class ShopifyMarketRegionEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyMarketRegionEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of MarketRegionEdge.
+     *
+     * @return ShopifyMarketRegion
      */
-    public function getNode()
+    public function getNode(): ?ShopifyMarketRegion
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyMarketRegionEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyMarketRegionHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyMarketRegionEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyMarketRegionHydrator::toArray($this->node);
             }
             return $data;
         }

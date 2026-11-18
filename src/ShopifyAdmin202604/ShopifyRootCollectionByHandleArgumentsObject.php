@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootCollectionByHandleArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["handle"];
+
     protected $handle;
 
-    public function setHandle($handle)
+    /**
+     * The handle of the collection.
+     */
+    public function setHandle($handle): static
     {
         $this->handle = $handle;
 

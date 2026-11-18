@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The checkout header customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCustomerAccountsHeader";
 
-    public function selectAlignment()
+    /**
+     * The header alignment.
+     */
+    public function selectAlignment(): static
     {
         $this->selectField("alignment");
 
         return $this;
     }
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderQuery
         return $object;
     }
 
-    public function selectLogo(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderLogoArgumentsObject $argsObject = null)
+    /**
+     * The store logo.
+     */
+    public function selectLogo(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderLogoArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogoQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogoQueryObject("logo");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderQuery
         return $object;
     }
 
-    public function selectPadding()
+    /**
+     * The padding of the header container.
+     */
+    public function selectPadding(): static
     {
         $this->selectField("padding");
 

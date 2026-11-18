@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyInventoryShipmentLineItemCon
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyInventoryShipmentTracking;
 
-class ShopifyInventoryShipment
+/**
+ * Represents an inventory shipment.
+ */
+class ShopifyInventoryShipment implements ShopifyNode
 {
     protected $barcode;
     protected $dateCreated;
@@ -26,126 +29,154 @@ class ShopifyInventoryShipment
 
     
     /**
+     * A unique barcode for the shipment.
+     *
      * @return string
      */
-    public function getBarcode()
+    public function getBarcode(): ?string
     {
         return $this->barcode;
     }
 
     
     /**
+     * The date the shipment was created in UTC.
+     *
      * @return Carbon
      */
-    public function getDateCreated()
+    public function getDateCreated(): ?Carbon
     {
         return $this->dateCreated;
     }
 
     
     /**
+     * The date the shipment was initially received in UTC.
+     *
      * @return Carbon
      */
-    public function getDateReceived()
+    public function getDateReceived(): ?Carbon
     {
         return $this->dateReceived;
     }
 
     
     /**
+     * The date the shipment was shipped in UTC.
+     *
      * @return Carbon
      */
-    public function getDateShipped()
+    public function getDateShipped(): ?Carbon
     {
         return $this->dateShipped;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The total quantity of all items in the shipment.
+     *
      * @return int
      */
-    public function getLineItemTotalQuantity()
+    public function getLineItemTotalQuantity(): ?int
     {
         return $this->lineItemTotalQuantity;
     }
 
     
     /**
+     * The line items included in this shipment.
+     *
      * @return ShopifyInventoryShipmentLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyInventoryShipmentLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The number of line items associated with the inventory shipment. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getLineItemsCount()
+    public function getLineItemsCount(): ?ShopifyCount
     {
         return $this->lineItemsCount;
     }
 
     
     /**
+     * The name of the inventory shipment.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifyInventoryShipmentStatusEnumObject
+     * The current status of the shipment.
+     *
+     * @return string A ShopifyInventoryShipmentStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The total quantity of items accepted across all line items in this shipment.
+     *
      * @return int
      */
-    public function getTotalAcceptedQuantity()
+    public function getTotalAcceptedQuantity(): ?int
     {
         return $this->totalAcceptedQuantity;
     }
 
     
     /**
+     * The total quantity of items accepted, rejected, or marked as canceled across all line items in this shipment.
+     *
      * @return int
      */
-    public function getTotalReceivedQuantity()
+    public function getTotalReceivedQuantity(): ?int
     {
         return $this->totalReceivedQuantity;
     }
 
     
     /**
+     * The total quantity of items rejected across all line items in this shipment.
+     *
      * @return int
      */
-    public function getTotalRejectedQuantity()
+    public function getTotalRejectedQuantity(): ?int
     {
         return $this->totalRejectedQuantity;
     }
 
     
     /**
+     * The tracking information for the shipment.
+     *
      * @return ShopifyInventoryShipmentTracking
      */
-    public function getTracking()
+    public function getTracking(): ?ShopifyInventoryShipmentTracking
     {
         return $this->tracking;
     }

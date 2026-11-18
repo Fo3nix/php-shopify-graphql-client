@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponents;
 
+/**
+ * The checkout-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutSurface
 {
     protected $components;
 
     
     /**
+     * The checkout components.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponents
      */
-    public function getComponents()
+    public function getComponents(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponents
     {
         return $this->components;
     }

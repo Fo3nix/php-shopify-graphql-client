@@ -6,6 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingColorRoles;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingControlColorRoles;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingButtonColorRoles;
 
+/**
+ * A base set of color customizations that's applied to an area of Checkout, from which every component
+ * pulls its colors.
+ */
 class ShopifyCheckoutBrandingColorScheme
 {
     protected $base;
@@ -15,36 +19,44 @@ class ShopifyCheckoutBrandingColorScheme
 
     
     /**
+     * The main colors of a scheme. Used for the surface background, text, links, and more.
+     *
      * @return ShopifyCheckoutBrandingColorRoles
      */
-    public function getBase()
+    public function getBase(): ?ShopifyCheckoutBrandingColorRoles
     {
         return $this->base;
     }
 
     
     /**
+     * The colors of form controls, such as the [`TextField`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/textfield) and [`ChoiceList`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/choicelist) components.
+     *
      * @return ShopifyCheckoutBrandingControlColorRoles
      */
-    public function getControl()
+    public function getControl(): ?ShopifyCheckoutBrandingControlColorRoles
     {
         return $this->control;
     }
 
     
     /**
+     * The colors of the primary button. For example, the main payment, or **Pay now** button.
+     *
      * @return ShopifyCheckoutBrandingButtonColorRoles
      */
-    public function getPrimaryButton()
+    public function getPrimaryButton(): ?ShopifyCheckoutBrandingButtonColorRoles
     {
         return $this->primaryButton;
     }
 
     
     /**
+     * The colors of the secondary button, which is used for secondary actions. For example, **Buy again**.
+     *
      * @return ShopifyCheckoutBrandingButtonColorRoles
      */
-    public function getSecondaryButton()
+    public function getSecondaryButton(): ?ShopifyCheckoutBrandingButtonColorRoles
     {
         return $this->secondaryButton;
     }

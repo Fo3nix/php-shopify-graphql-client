@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyTaxonomyValue
+/**
+ * Represents a Shopify product taxonomy value.
+ */
+class ShopifyTaxonomyValue implements ShopifyNode
 {
     protected $id;
     protected $name;
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the product taxonomy value. For example, Red.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

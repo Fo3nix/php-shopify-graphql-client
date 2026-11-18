@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A child of a combined listing.
+ */
 class ShopifyCombinedListingChildQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CombinedListingChild";
 
-    public function selectParentVariant(ShopifyCombinedListingChildParentVariantArgumentsObject $argsObject = null)
+    /**
+     * The parent variant.
+     */
+    public function selectParentVariant(?ShopifyCombinedListingChildParentVariantArgumentsObject $argsObject = null): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject("parentVariant");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCombinedListingChildQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProduct(ShopifyCombinedListingChildProductArgumentsObject $argsObject = null)
+    /**
+     * The child product.
+     */
+    public function selectProduct(?ShopifyCombinedListingChildProductArgumentsObject $argsObject = null): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject("product");
         if ($argsObject !== null) {

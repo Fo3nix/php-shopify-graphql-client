@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The custom font customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCustomFont";
 
-    public function selectGenericFileId()
+    /**
+     * Globally unique ID reference to the custom font file.
+     */
+    public function selectGenericFileId(): static
     {
         $this->selectField("genericFileId");
 
         return $this;
     }
 
-    public function selectSources()
+    /**
+     * The font sources.
+     */
+    public function selectSources(): static
     {
         $this->selectField("sources");
 
         return $this;
     }
 
-    public function selectWeight()
+    /**
+     * The font weight.
+     */
+    public function selectWeight(): static
     {
         $this->selectField("weight");
 

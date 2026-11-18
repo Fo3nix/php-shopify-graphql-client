@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyqlTableDataColumn;
 
+/**
+ * The result of a ShopifyQL query.
+ */
 class ShopifyShopifyqlTableData
 {
     protected $columns;
@@ -11,18 +14,22 @@ class ShopifyShopifyqlTableData
 
     
     /**
+     * The columns of the table.
+     *
      * @return ShopifyShopifyqlTableDataColumn[]
      */
-    public function getColumns()
+    public function getColumns(): ?array
     {
         return $this->columns;
     }
 
     
     /**
+     * The rows of the table.
+     *
      * @return string
      */
-    public function getRows()
+    public function getRows(): mixed
     {
         return $this->rows;
     }

@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Possible error types for a subscription billing attempt.
+ */
 class ShopifySubscriptionBillingAttemptErrorUnionObject extends UnionObject
 {
-    public function onShopifySubscriptionBillingAttemptGeneralError()
+    public function onShopifySubscriptionBillingAttemptGeneralError(): ShopifySubscriptionBillingAttemptGeneralErrorQueryObject
     {
         $object = new ShopifySubscriptionBillingAttemptGeneralErrorQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifySubscriptionBillingAttemptErrorUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionBillingAttemptInventoryError()
+    public function onShopifySubscriptionBillingAttemptInventoryError(): ShopifySubscriptionBillingAttemptInventoryErrorQueryObject
     {
         $object = new ShopifySubscriptionBillingAttemptInventoryErrorQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifySubscriptionBillingAttemptErrorUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionBillingAttemptPaymentError()
+    public function onShopifySubscriptionBillingAttemptPaymentError(): ShopifySubscriptionBillingAttemptPaymentErrorQueryObject
     {
         $object = new ShopifySubscriptionBillingAttemptPaymentErrorQueryObject();
         $this->addPossibleType($object);
@@ -30,7 +33,7 @@ class ShopifySubscriptionBillingAttemptErrorUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySubscriptionBillingAttemptUnexpectedError()
+    public function onShopifySubscriptionBillingAttemptUnexpectedError(): ShopifySubscriptionBillingAttemptUnexpectedErrorQueryObject
     {
         $object = new ShopifySubscriptionBillingAttemptUnexpectedErrorQueryObject();
         $this->addPossibleType($object);

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketsCatalogsEntitlement;
 
+/**
+ * The entitlements for B2B markets.
+ */
 class ShopifyMarketsB2BEntitlement
 {
     protected $catalogs;
@@ -11,18 +14,22 @@ class ShopifyMarketsB2BEntitlement
 
     
     /**
+     * The entitlements for B2B market catalogs.
+     *
      * @return ShopifyMarketsCatalogsEntitlement
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyMarketsCatalogsEntitlement
     {
         return $this->catalogs;
     }
 
     
     /**
+     * Whether B2B markets are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

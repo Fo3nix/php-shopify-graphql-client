@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A filter in a search query represented by a key value pair.
+ */
 class ShopifySearchFilter
 {
     protected $key;
@@ -9,18 +12,22 @@ class ShopifySearchFilter
 
     
     /**
+     * The key of the search filter.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The value of the search filter.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootAbandonmentByAbandonedCheckoutIdArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["abandonedCheckoutId"];
+
     protected $abandonedCheckoutId;
 
-    public function setAbandonedCheckoutId($abandonedCheckoutId)
+    /**
+     * The ID of the Abandoned Checkout ID to query by.
+     */
+    public function setAbandonedCheckoutId($abandonedCheckoutId): static
     {
         $this->abandonedCheckoutId = $abandonedCheckoutId;
 

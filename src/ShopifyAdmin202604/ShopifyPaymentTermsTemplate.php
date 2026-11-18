@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyPaymentTermsTemplate
+/**
+ * Represents the payment terms template object.
+ */
+class ShopifyPaymentTermsTemplate implements ShopifyNode
 {
     protected $description;
     protected $dueInDays;
@@ -13,54 +16,66 @@ class ShopifyPaymentTermsTemplate
 
     
     /**
+     * The description of the payment terms template.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The number of days between the issued date and due date if this is the net type of payment terms.
+     *
      * @return int
      */
-    public function getDueInDays()
+    public function getDueInDays(): ?int
     {
         return $this->dueInDays;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the payment terms template.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifyPaymentTermsTypeEnumObject
+     * The type of the payment terms template.
+     *
+     * @return string A ShopifyPaymentTermsTypeEnumObject value
      */
-    public function getPaymentTermsType()
+    public function getPaymentTermsType(): ?string
     {
         return $this->paymentTermsType;
     }
 
     
     /**
+     * The translated payment terms template name.
+     *
      * @return string
      */
-    public function getTranslatedName()
+    public function getTranslatedName(): ?string
     {
         return $this->translatedName;
     }

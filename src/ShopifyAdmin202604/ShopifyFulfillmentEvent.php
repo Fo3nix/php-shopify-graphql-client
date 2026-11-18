@@ -4,7 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Carbon\Carbon;
 
-class ShopifyFulfillmentEvent
+/**
+ * A tracking event that records the status and location of a fulfillment at a specific point in time. Each event captures details such as the [status](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent#field-FulfillmentEvent.fields.status) (for example, in transit, out for delivery, delivered) and any [messages](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent#field-FulfillmentEvent.fields.message) associated with the event.
+ *
+ * Fulfillment events provide a chronological history of a package's journey from shipment to delivery. They include timestamps, geographic coordinates, and estimated delivery dates to track fulfillment progress.
+ */
+class ShopifyFulfillmentEvent implements ShopifyNode
 {
     protected $address1;
     protected $city;
@@ -22,117 +27,143 @@ class ShopifyFulfillmentEvent
 
     
     /**
+     * The street address where this fulfillment event occurred.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The city where this fulfillment event occurred.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The country where this fulfillment event occurred.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The date and time when the fulfillment event was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The estimated delivery date and time of the fulfillment.
+     *
      * @return Carbon
      */
-    public function getEstimatedDeliveryAt()
+    public function getEstimatedDeliveryAt(): ?Carbon
     {
         return $this->estimatedDeliveryAt;
     }
 
     
     /**
+     * The time at which this fulfillment event happened.
+     *
      * @return Carbon
      */
-    public function getHappenedAt()
+    public function getHappenedAt(): ?Carbon
     {
         return $this->happenedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The latitude where this fulfillment event occurred.
+     *
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
     
     /**
+     * The longitude where this fulfillment event occurred.
+     *
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
     
     /**
+     * A message associated with this fulfillment event.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
     
     /**
+     * The province where this fulfillment event occurred.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
-     * @return ShopifyFulfillmentEventStatusEnumObject
+     * The status of this fulfillment event.
+     *
+     * @return string A ShopifyFulfillmentEventStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The zip code of the location where this fulfillment event occurred.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A precise monetary value and its associated currency. Combines a decimal amount with a three-letter currency code to express prices, costs, and other financial values throughout the API. For example, 12.99 USD.
+ */
 class ShopifyMoneyV2
 {
     protected $amount;
@@ -9,18 +12,25 @@ class ShopifyMoneyV2
 
     
     /**
+     * A monetary value in decimal format, allowing for precise representation of cents or fractional
+     * currency. For example, 12.99.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The three-letter currency code that represents a world currency used in a store. Currency codes
+     * include standard [standard ISO 4217 codes](https://en.wikipedia.org/wiki/ISO_4217), legacy codes,
+     * and non-standard codes. For example, USD.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }

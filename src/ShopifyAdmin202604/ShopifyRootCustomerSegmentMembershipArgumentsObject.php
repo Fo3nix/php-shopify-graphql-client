@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootCustomerSegmentMembershipArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["segmentIds", "customerId"];
+
     protected $segmentIds;
     protected $customerId;
 
-    public function setSegmentIds(array $segmentIds)
+    /**
+     * The segments to evaluate for the given customer.
+     */
+    public function setSegmentIds(array $segmentIds): static
     {
         $this->segmentIds = $segmentIds;
 
         return $this;
     }
 
-    public function setCustomerId($customerId)
+    /**
+     * The ID of the customer that has the membership.
+     */
+    public function setCustomerId($customerId): static
     {
         $this->customerId = $customerId;
 

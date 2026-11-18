@@ -6,25 +6,36 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyTranslatableResourceTranslationsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["locale"];
+
     protected $locale;
     protected $outdated;
     protected $marketId;
 
-    public function setLocale($locale)
+    /**
+     * Filters translations by locale.
+     */
+    public function setLocale($locale): static
     {
         $this->locale = $locale;
 
         return $this;
     }
 
-    public function setOutdated($outdated)
+    /**
+     * Filters by outdated translations.
+     */
+    public function setOutdated($outdated): static
     {
         $this->outdated = $outdated;
 
         return $this;
     }
 
-    public function setMarketId($marketId)
+    /**
+     * Filters translations by market ID. Use this argument to retrieve content specific to a market.
+     */
+    public function setMarketId($marketId): static
     {
         $this->marketId = $marketId;
 

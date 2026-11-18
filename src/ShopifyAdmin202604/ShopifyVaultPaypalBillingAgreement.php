@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents a paypal billing agreement payment instrument.
+ */
 class ShopifyVaultPaypalBillingAgreement
 {
     protected $inactive;
@@ -10,27 +13,33 @@ class ShopifyVaultPaypalBillingAgreement
 
     
     /**
+     * Whether the paypal billing agreement is inactive.
+     *
      * @return bool
      */
-    public function getInactive()
+    public function getInactive(): ?bool
     {
         return $this->inactive;
     }
 
     
     /**
+     * The paypal account name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The paypal account email address.
+     *
      * @return string
      */
-    public function getPaypalAccountEmail()
+    public function getPaypalAccountEmail(): ?string
     {
         return $this->paypalAccountEmail;
     }

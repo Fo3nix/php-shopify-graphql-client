@@ -6,6 +6,8 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootSegmentValueSuggestionsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["search"];
+
     protected $search;
     protected $filterQueryName;
     protected $functionParameterQueryName;
@@ -14,49 +16,70 @@ class ShopifyRootSegmentValueSuggestionsArgumentsObject extends ArgumentsObject
     protected $last;
     protected $before;
 
-    public function setSearch($search)
+    /**
+     * Returns the elements of a list by keyword or term.
+     */
+    public function setSearch($search): static
     {
         $this->search = $search;
 
         return $this;
     }
 
-    public function setFilterQueryName($filterQueryName)
+    /**
+     * Returns the elements of a list by filter handle.
+     */
+    public function setFilterQueryName($filterQueryName): static
     {
         $this->filterQueryName = $filterQueryName;
 
         return $this;
     }
 
-    public function setFunctionParameterQueryName($functionParameterQueryName)
+    /**
+     * Returns the elements of a list by filter parameter name.
+     */
+    public function setFunctionParameterQueryName($functionParameterQueryName): static
     {
         $this->functionParameterQueryName = $functionParameterQueryName;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 

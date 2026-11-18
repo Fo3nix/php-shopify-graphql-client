@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shipping service and a list of countries that the service is available for.
+ */
 class ShopifyDeliveryAvailableServiceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryAvailableService";
 
-    public function selectCountries(ShopifyDeliveryAvailableServiceCountriesArgumentsObject $argsObject = null)
+    /**
+     * The countries the service provider ships to.
+     */
+    public function selectCountries(?ShopifyDeliveryAvailableServiceCountriesArgumentsObject $argsObject = null): ShopifyDeliveryCountryCodesOrRestOfWorldQueryObject
     {
         $object = new ShopifyDeliveryCountryCodesOrRestOfWorldQueryObject("countries");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyDeliveryAvailableServiceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectName()
+    /**
+     * The name of the service.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

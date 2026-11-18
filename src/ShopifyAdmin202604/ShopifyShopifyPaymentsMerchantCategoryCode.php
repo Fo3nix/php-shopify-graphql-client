@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A MerchantCategoryCode (MCC) is a four-digit number listed in ISO 18245 for retail financial services and used to classify the business by the type of goods or services it provides.
+ */
 class ShopifyShopifyPaymentsMerchantCategoryCode
 {
     protected $category;
@@ -12,45 +15,55 @@ class ShopifyShopifyPaymentsMerchantCategoryCode
 
     
     /**
+     * The category of the MCC.
+     *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     
     /**
+     * The category label of the MCC.
+     *
      * @return string
      */
-    public function getCategoryLabel()
+    public function getCategoryLabel(): ?string
     {
         return $this->categoryLabel;
     }
 
     
     /**
+     * A four-digit number listed in ISO 18245.
+     *
      * @return int
      */
-    public function getCode()
+    public function getCode(): ?int
     {
         return $this->code;
     }
 
     
     /**
+     * The ID of the MCC.
+     *
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     
     /**
+     * The subcategory label of the MCC.
+     *
      * @return string
      */
-    public function getSubcategoryLabel()
+    public function getSubcategoryLabel(): ?string
     {
         return $this->subcategoryLabel;
     }

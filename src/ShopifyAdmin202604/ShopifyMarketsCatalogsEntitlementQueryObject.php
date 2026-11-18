@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The entitlements for catalogs.
+ */
 class ShopifyMarketsCatalogsEntitlementQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketsCatalogsEntitlement";
 
-    public function selectEnabled()
+    /**
+     * Whether catalogs are enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 

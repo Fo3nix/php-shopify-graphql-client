@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The main container customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingMainQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingMain";
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingMainColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingMainColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingMainQueryObject extends Que
         return $object;
     }
 
-    public function selectDivider(ShopifyCheckoutAndAccountsConfigurationBrandingMainDividerArgumentsObject $argsObject = null)
+    /**
+     * The main container's divider style and visibility.
+     */
+    public function selectDivider(?ShopifyCheckoutAndAccountsConfigurationBrandingMainDividerArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject("divider");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingMainQueryObject extends Que
         return $object;
     }
 
-    public function selectSection(ShopifyCheckoutAndAccountsConfigurationBrandingMainSectionArgumentsObject $argsObject = null)
+    /**
+     * The main sections.
+     */
+    public function selectSection(?ShopifyCheckoutAndAccountsConfigurationBrandingMainSectionArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingMainSectionQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingMainSectionQueryObject("section");
         if ($argsObject !== null) {

@@ -3,12 +3,17 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomer;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerPaymentInstrument;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerPaymentInstrumentHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPaymentMandateResourceConnection;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySubscriptionContractConnection;
 
-class ShopifyCustomerPaymentMethod
+/**
+ * A customer's saved payment method. Stores the payment instrument details and billing information for recurring charges.
+ *
+ * The payment method supports types included in the [`CustomerPaymentInstrument`](https://shopify.dev/docs/api/admin-graphql/latest/unions/CustomerPaymentInstrument) union.
+ */
+class ShopifyCustomerPaymentMethod implements ShopifyNode
 {
     protected $customer;
     protected $id;
@@ -20,63 +25,77 @@ class ShopifyCustomerPaymentMethod
 
     
     /**
+     * The customer to whom the payment method belongs.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * The ID of this payment method.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyCustomerPaymentInstrument
+     * The instrument for this payment method.
+     *
+     * @return ShopifyBankAccount|ShopifyCustomerCreditCard|ShopifyCustomerPaypalBillingAgreement|ShopifyCustomerShopPayAgreement
      */
-    public function getInstrument()
+    public function getInstrument(): ShopifyBankAccount|ShopifyCustomerCreditCard|ShopifyCustomerPaypalBillingAgreement|ShopifyCustomerShopPayAgreement|null
     {
         return $this->instrument;
     }
 
     
     /**
+     * The mandates associated with the payment method.
+     *
      * @return ShopifyPaymentMandateResourceConnection
      */
-    public function getMandates()
+    public function getMandates(): ?ShopifyPaymentMandateResourceConnection
     {
         return $this->mandates;
     }
 
     
     /**
+     * The time that the payment method was revoked.
+     *
      * @return Carbon
      */
-    public function getRevokedAt()
+    public function getRevokedAt(): ?Carbon
     {
         return $this->revokedAt;
     }
 
     
     /**
-     * @return ShopifyCustomerPaymentMethodRevocationReasonEnumObject
+     * The revocation reason for this payment method.
+     *
+     * @return string A ShopifyCustomerPaymentMethodRevocationReasonEnumObject value
      */
-    public function getRevokedReason()
+    public function getRevokedReason(): ?string
     {
         return $this->revokedReason;
     }
 
     
     /**
+     * List Subscription Contracts.
+     *
      * @return ShopifySubscriptionContractConnection
      */
-    public function getSubscriptionContracts()
+    public function getSubscriptionContracts(): ?ShopifySubscriptionContractConnection
     {
         return $this->subscriptionContracts;
     }
@@ -95,7 +114,7 @@ class ShopifyCustomerPaymentMethod
                 $instance->id = $data['id'];
             }
             if (isset($data['instrument']) && $data['instrument'] !== null) {
-                $instance->instrument = ShopifyCustomerPaymentInstrument::fromArray($data['instrument']);
+                $instance->instrument = ShopifyCustomerPaymentInstrumentHydrator::fromArray($data['instrument']);
             }
             if (isset($data['mandates']) && $data['mandates'] !== null) {
                 $instance->mandates = ShopifyPaymentMandateResourceConnection::fromArray($data['mandates']);
@@ -139,7 +158,7 @@ class ShopifyCustomerPaymentMethod
                 $data['id'] = $this->id;
             }
             if ($this->instrument !== null) {
-                $data['instrument'] = $this->instrument->asArray();
+                $data['instrument'] = ShopifyCustomerPaymentInstrumentHydrator::toArray($this->instrument);
             }
             if ($this->mandates !== null) {
                 $data['mandates'] = $this->mandates->asArray();

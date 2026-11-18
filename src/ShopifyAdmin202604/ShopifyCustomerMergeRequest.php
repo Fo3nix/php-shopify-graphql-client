@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerMergeError;
 
+/**
+ * A merge request for merging two customers.
+ */
 class ShopifyCustomerMergeRequest
 {
     protected $customerMergeErrors;
@@ -13,36 +16,44 @@ class ShopifyCustomerMergeRequest
 
     
     /**
+     * The merge errors that occurred during the customer merge request.
+     *
      * @return ShopifyCustomerMergeError[]
      */
-    public function getCustomerMergeErrors()
+    public function getCustomerMergeErrors(): ?array
     {
         return $this->customerMergeErrors;
     }
 
     
     /**
+     * The UUID of the merge job.
+     *
      * @return string
      */
-    public function getJobId()
+    public function getJobId(): ?string
     {
         return $this->jobId;
     }
 
     
     /**
+     * The ID of the customer that was kept after the merge. Treat this ID as authoritative.
+     *
      * @return string
      */
-    public function getResultingCustomerId()
+    public function getResultingCustomerId(): ?string
     {
         return $this->resultingCustomerId;
     }
 
     
     /**
-     * @return ShopifyCustomerMergeRequestStatusEnumObject
+     * The status of the customer merge request.
+     *
+     * @return string A ShopifyCustomerMergeRequestStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

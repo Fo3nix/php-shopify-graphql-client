@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The translatable capability of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilitiesTranslatable
 {
     protected $enabled;
 
     
     /**
+     * Indicates if the capability is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

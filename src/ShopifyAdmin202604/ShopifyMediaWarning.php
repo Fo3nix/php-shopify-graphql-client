@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents a media warning. This occurs when there is a non-blocking concern regarding your media.
+ * Consider reviewing your media to ensure it is correct and its parameters are as expected.
+ */
 class ShopifyMediaWarning
 {
     protected $code;
@@ -9,18 +13,22 @@ class ShopifyMediaWarning
 
     
     /**
-     * @return ShopifyMediaWarningCodeEnumObject
+     * The code representing the type of warning.
+     *
+     * @return string A ShopifyMediaWarningCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Translated warning message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

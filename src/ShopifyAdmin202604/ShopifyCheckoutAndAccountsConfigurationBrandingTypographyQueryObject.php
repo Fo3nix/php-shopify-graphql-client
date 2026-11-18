@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The typography customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingTypographyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingTypography";
 
-    public function selectPrimary(ShopifyCheckoutAndAccountsConfigurationBrandingTypographyPrimaryArgumentsObject $argsObject = null)
+    /**
+     * The font group used for most components such as text, buttons and form controls.
+     */
+    public function selectPrimary(?ShopifyCheckoutAndAccountsConfigurationBrandingTypographyPrimaryArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject("primary");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypographyQueryObject exten
         return $object;
     }
 
-    public function selectSecondary(ShopifyCheckoutAndAccountsConfigurationBrandingTypographySecondaryArgumentsObject $argsObject = null)
+    /**
+     * The font group used for heading components by default.
+     */
+    public function selectSecondary(?ShopifyCheckoutAndAccountsConfigurationBrandingTypographySecondaryArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject("secondary");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypographyQueryObject exten
         return $object;
     }
 
-    public function selectSize(ShopifyCheckoutAndAccountsConfigurationBrandingTypographySizeArgumentsObject $argsObject = null)
+    /**
+     * The font size (base size in pixels and scaling between different sizes).
+     */
+    public function selectSize(?ShopifyCheckoutAndAccountsConfigurationBrandingTypographySizeArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingFontSizeQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingFontSizeQueryObject("size");
         if ($argsObject !== null) {

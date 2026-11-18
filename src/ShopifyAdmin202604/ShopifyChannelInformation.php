@@ -5,7 +5,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyChannelDefinition;
 
-class ShopifyChannelInformation
+/**
+ * Identifies the [sales channel](https://shopify.dev/docs/apps/build/sales-channels) and [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) from which an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) originated. Provides attribution details such as the specific platform (Facebook Marketplace, Instagram Shopping) or marketplace where the order was placed.
+ *
+ * Links to the app that manages the channel and optional [`ChannelDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ChannelDefinition) details that specify the exact sub-channel or selling surface.
+ */
+class ShopifyChannelInformation implements ShopifyNode
 {
     protected $app;
     protected $channelDefinition;
@@ -15,45 +20,55 @@ class ShopifyChannelInformation
 
     
     /**
+     * The app associated with the channel.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The channel definition associated with the channel.
+     *
      * @return ShopifyChannelDefinition
      */
-    public function getChannelDefinition()
+    public function getChannelDefinition(): ?ShopifyChannelDefinition
     {
         return $this->channelDefinition;
     }
 
     
     /**
+     * The unique ID for the channel.
+     *
      * @return string
      */
-    public function getChannelId()
+    public function getChannelId(): ?string
     {
         return $this->channelId;
     }
 
     
     /**
+     * The publishing destination display name or channel name.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

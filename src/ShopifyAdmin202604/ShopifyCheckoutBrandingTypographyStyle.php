@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The typography customizations.
+ */
 class ShopifyCheckoutBrandingTypographyStyle
 {
     protected $font;
@@ -12,45 +15,55 @@ class ShopifyCheckoutBrandingTypographyStyle
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyFontEnumObject
+     * The font.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyFontEnumObject value
      */
-    public function getFont()
+    public function getFont(): ?string
     {
         return $this->font;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyKerningEnumObject
+     * The kerning.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyKerningEnumObject value
      */
-    public function getKerning()
+    public function getKerning(): ?string
     {
         return $this->kerning;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyLetterCaseEnumObject
+     * The letter case.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyLetterCaseEnumObject value
      */
-    public function getLetterCase()
+    public function getLetterCase(): ?string
     {
         return $this->letterCase;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographySizeEnumObject
+     * The font size.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographySizeEnumObject value
      */
-    public function getSize()
+    public function getSize(): ?string
     {
         return $this->size;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyWeightEnumObject
+     * The font weight.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyWeightEnumObject value
      */
-    public function getWeight()
+    public function getWeight(): ?string
     {
         return $this->weight;
     }

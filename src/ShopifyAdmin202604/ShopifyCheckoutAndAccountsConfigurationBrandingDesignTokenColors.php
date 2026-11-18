@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingPalette;
 
+/**
+ * The color customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColors
 {
     protected $palette;
 
     
     /**
+     * A set of colors used together on a surface.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingPalette
      */
-    public function getPalette()
+    public function getPalette(): ?ShopifyCheckoutAndAccountsConfigurationBrandingPalette
     {
         return $this->palette;
     }

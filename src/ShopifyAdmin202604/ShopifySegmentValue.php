@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A list of suggested values associated with an individual segment. A
+ * segment is a group of members, such as customers, that meet specific
+ * criteria.
+ */
 class ShopifySegmentValue
 {
     protected $localizedValue;
@@ -9,18 +14,22 @@ class ShopifySegmentValue
 
     
     /**
+     * The localized version of the value's name. This name is displayed to the merchant.
+     *
      * @return string
      */
-    public function getLocalizedValue()
+    public function getLocalizedValue(): ?string
     {
         return $this->localizedValue;
     }
 
     
     /**
+     * The name of the query associated with the suggestion.
+     *
      * @return string
      */
-    public function getQueryName()
+    public function getQueryName(): ?string
     {
         return $this->queryName;
     }

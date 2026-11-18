@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCashActivityHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCashActivity;
+
+/**
+ * An auto-generated type which holds one CashActivity and a cursor during pagination.
+ */
 class ShopifyCashActivityEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyCashActivityEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of CashActivityEdge.
+     *
+     * @return ShopifyCashActivity
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCashActivity
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyCashActivityEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyCashActivityHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyCashActivityEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyCashActivityHydrator::toArray($this->node);
             }
             return $data;
         }

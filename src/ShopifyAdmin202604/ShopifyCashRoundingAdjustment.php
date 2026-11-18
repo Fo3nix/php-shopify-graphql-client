@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 
+/**
+ * The rounding adjustment applied to total payment or refund received for an Order involving cash payments.
+ */
 class ShopifyCashRoundingAdjustment
 {
     protected $paymentSet;
@@ -11,18 +14,22 @@ class ShopifyCashRoundingAdjustment
 
     
     /**
+     * The rounding adjustment that can be applied to totalReceived for an Order involving cash payments in shop and presentment currencies. Could be a positive or negative value. Value is 0 if there's no rounding, or for non-cash payments.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPaymentSet()
+    public function getPaymentSet(): ?ShopifyMoneyBag
     {
         return $this->paymentSet;
     }
 
     
     /**
+     * The rounding adjustment that can be applied to totalRefunded for an Order involving cash payments in shop and presentment currencies. Could be a positive or negative value. Value is 0 if there's no rounding, or for non-cash refunds.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getRefundSet()
+    public function getRefundSet(): ?ShopifyMoneyBag
     {
         return $this->refundSet;
     }

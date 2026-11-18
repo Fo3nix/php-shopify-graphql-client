@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A condition checking the company location a visitor is purchasing for.
+ */
 class ShopifyCompanyLocationsConditionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CompanyLocationsCondition";
 
-    public function selectApplicationLevel()
+    /**
+     * The application level for the condition.
+     */
+    public function selectApplicationLevel(): static
     {
         $this->selectField("applicationLevel");
 
         return $this;
     }
 
-    public function selectCompanyLocations(ShopifyCompanyLocationsConditionCompanyLocationsArgumentsObject $argsObject = null)
+    /**
+     * The company locations that comprise the market.
+     */
+    public function selectCompanyLocations(?ShopifyCompanyLocationsConditionCompanyLocationsArgumentsObject $argsObject = null): ShopifyCompanyLocationConnectionQueryObject
     {
         $object = new ShopifyCompanyLocationConnectionQueryObject("companyLocations");
         if ($argsObject !== null) {

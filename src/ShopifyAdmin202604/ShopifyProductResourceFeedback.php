@@ -5,6 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyChannel;
 use Carbon\Carbon;
 
+/**
+ * Reports the status of product for a Sales Channel or Storefront API.
+ * This might include why a product is not available in a Sales Channel
+ * and how a merchant might fix this.
+ */
 class ShopifyProductResourceFeedback
 {
     protected $channel;
@@ -16,54 +21,67 @@ class ShopifyProductResourceFeedback
 
     
     /**
+     * The channel this feedback is for.
+     *
      * @return ShopifyChannel
      */
-    public function getChannel()
+    public function getChannel(): ?ShopifyChannel
     {
         return $this->channel;
     }
 
     
     /**
+     * The time when the feedback was generated. Used to help determine whether
+     * incoming feedback is outdated compared to existing feedback.
+     *
      * @return Carbon
      */
-    public function getFeedbackGeneratedAt()
+    public function getFeedbackGeneratedAt(): ?Carbon
     {
         return $this->feedbackGeneratedAt;
     }
 
     
     /**
+     * The feedback messages presented to the merchant.
+     *
      * @return string[]
      */
-    public function getMessages()
+    public function getMessages(): ?array
     {
         return $this->messages;
     }
 
     
     /**
+     * The ID of the product associated with the feedback.
+     *
      * @return string
      */
-    public function getProductId()
+    public function getProductId(): ?string
     {
         return $this->productId;
     }
 
     
     /**
+     * The timestamp of the product associated with the feedback.
+     *
      * @return Carbon
      */
-    public function getProductUpdatedAt()
+    public function getProductUpdatedAt(): ?Carbon
     {
         return $this->productUpdatedAt;
     }
 
     
     /**
-     * @return ShopifyResourceFeedbackStateEnumObject
+     * Conveys the state of the feedback and whether it requires merchant action or not.
+     *
+     * @return string A ShopifyResourceFeedbackStateEnumObject value
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->state;
     }

@@ -2,10 +2,13 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingMainSection;
 
+/**
+ * The sign-in-specific main customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
 {
     protected $backgroundImage;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The background image of the main container.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getBackgroundImage()
+    public function getBackgroundImage(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->backgroundImage;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The main sections.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
     {
         return $this->section;
     }
@@ -47,7 +56,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
         {
             $instance = new self();
             if (isset($data['backgroundImage']) && $data['backgroundImage'] !== null) {
-                $instance->backgroundImage = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['backgroundImage']);
+                $instance->backgroundImage = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['backgroundImage']);
             }
             if (isset($data['colors']) && $data['colors'] !== null) {
                 $instance->colors = ShopifyCheckoutAndAccountsConfigurationBrandingColors::fromArray($data['colors']);
@@ -79,7 +88,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
         {
             $data = [];
             if ($this->backgroundImage !== null) {
-                $data['backgroundImage'] = $this->backgroundImage->asArray();
+                $data['backgroundImage'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->backgroundImage);
             }
             if ($this->colors !== null) {
                 $data['colors'] = $this->colors->asArray();

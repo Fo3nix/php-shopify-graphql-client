@@ -3,7 +3,12 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerVisit;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerMomentHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerMoment;
 
+/**
+ * Tracks a customer's path to purchase through their online store visits. The journey captures key moments like shop sessions that led to the order, helping merchants understand customer behavior and marketing attribution within a 30-day window. Includes the first and last sessions before an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), the time between initial visit and conversion, and the customer's order position in their purchase history.
+ */
 class ShopifyCustomerJourney
 {
     protected $customerOrderIndex;
@@ -14,45 +19,55 @@ class ShopifyCustomerJourney
 
     
     /**
+     * The position of the current order within the customer's order history.
+     *
      * @return int
      */
-    public function getCustomerOrderIndex()
+    public function getCustomerOrderIndex(): ?int
     {
         return $this->customerOrderIndex;
     }
 
     
     /**
+     * The amount of days between first session and order creation date. First session represents first session since the last order, or first session within the 30 day attribution window, if more than 30 days has passed since the last order.
+     *
      * @return int
      */
-    public function getDaysToConversion()
+    public function getDaysToConversion(): ?int
     {
         return $this->daysToConversion;
     }
 
     
     /**
+     * The customer's first session going into the shop.
+     *
      * @return ShopifyCustomerVisit
      */
-    public function getFirstVisit()
+    public function getFirstVisit(): ?ShopifyCustomerVisit
     {
         return $this->firstVisit;
     }
 
     
     /**
+     * The last session before an order is made.
+     *
      * @return ShopifyCustomerVisit
      */
-    public function getLastVisit()
+    public function getLastVisit(): ?ShopifyCustomerVisit
     {
         return $this->lastVisit;
     }
 
     
     /**
-     * @return mixed[]
+     * Events preceding a customer order, such as shop sessions.
+     *
+     * @return ShopifyCustomerMoment[]
      */
-    public function getMoments()
+    public function getMoments(): ?array
     {
         return $this->moments;
     }
@@ -77,7 +92,7 @@ class ShopifyCustomerJourney
                 $instance->lastVisit = ShopifyCustomerVisit::fromArray($data['lastVisit']);
             }
             if (isset($data['moments']) && $data['moments'] !== null) {
-                $instance->moments = $data['moments'];
+                $instance->moments = array_map(function($item) { return ShopifyCustomerMomentHydrator::fromArray($item); }, $data['moments']);
             }
             return $instance;
         }
@@ -115,7 +130,7 @@ class ShopifyCustomerJourney
                 $data['lastVisit'] = $this->lastVisit->asArray();
             }
             if ($this->moments !== null) {
-                $data['moments'] = $this->moments;
+                $data['moments'] = array_map(function($item) { return ShopifyCustomerMomentHydrator::toArray($item); }, $this->moments);
             }
             return $data;
         }

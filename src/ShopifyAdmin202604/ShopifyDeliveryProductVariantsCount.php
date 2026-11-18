@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * How many product variants are in a profile. This count is capped at 500.
+ */
 class ShopifyDeliveryProductVariantsCount
 {
     protected $capped;
@@ -9,18 +12,22 @@ class ShopifyDeliveryProductVariantsCount
 
     
     /**
+     * Whether the count has reached the cap of 500.
+     *
      * @return bool
      */
-    public function getCapped()
+    public function getCapped(): ?bool
     {
         return $this->capped;
     }
 
     
     /**
+     * The product variant count.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }

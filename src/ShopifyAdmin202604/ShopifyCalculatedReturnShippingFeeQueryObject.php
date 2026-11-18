@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The calculated cost of the return shipping.
+ */
 class ShopifyCalculatedReturnShippingFeeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CalculatedReturnShippingFee";
 
-    public function selectAmountSet(ShopifyCalculatedReturnShippingFeeAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The calculated amount of the return fee, in shop and presentment currencies.
+     */
+    public function selectAmountSet(?ShopifyCalculatedReturnShippingFeeAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCalculatedReturnShippingFeeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 

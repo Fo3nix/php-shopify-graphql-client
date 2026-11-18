@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one DeliveryLocationGroupZone and a cursor during pagination.
+ */
 class ShopifyDeliveryLocationGroupZoneEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryLocationGroupZoneEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyDeliveryLocationGroupZoneEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of DeliveryLocationGroupZoneEdge.
+     */
+    public function selectNode(?ShopifyDeliveryLocationGroupZoneEdgeNodeArgumentsObject $argsObject = null): ShopifyDeliveryLocationGroupZoneQueryObject
     {
         $object = new ShopifyDeliveryLocationGroupZoneQueryObject("node");
         if ($argsObject !== null) {

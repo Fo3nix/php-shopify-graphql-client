@@ -6,8 +6,17 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyRefundDuty;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyRefundLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShippingRefund;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySuggestedRefundMethodHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySuggestedRefundMethod;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySuggestedOrderTransaction;
 
+/**
+ * A refund amount that Shopify suggests based on the items, duties, and shipping costs that customers return. Provides a breakdown of all monetary values including subtotals, taxes, discounts, and the maximum refundable amount.
+ *
+ * The suggested refund includes [`RefundLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/RefundLineItem) objects to refund with their quantities and restock instructions, [`RefundDuty`](https://shopify.dev/docs/api/admin-graphql/latest/objects/RefundDuty) objects for duty reimbursements, and [`ShippingRefund`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShippingRefund) for shipping cost refunds. Provides [`SuggestedOrderTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SuggestedOrderTransaction) objects and the [`SuggestedRefundMethod`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/SuggestedRefundMethod) interface to process the refund through the appropriate gateways.
+ *
+ * Learn more about [previewing and refunding duties](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/view-and-refund-duties#step-3-preview-a-refund-that-includes-duties).
+ */
 class ShopifySuggestedRefund
 {
     protected $amount;
@@ -29,144 +38,176 @@ class ShopifySuggestedRefund
 
     
     /**
+     * The total monetary value to be refunded.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
+     * The total monetary value to be refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The sum of all the discounted prices of the line items being refunded.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedSubtotalSet()
+    public function getDiscountedSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->discountedSubtotalSet;
     }
 
     
     /**
+     * The total monetary value available to refund.
+     *
      * @return string
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): mixed
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * The total monetary value available to refund in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getMaximumRefundableSet()
+    public function getMaximumRefundableSet(): ?ShopifyMoneyBag
     {
         return $this->maximumRefundableSet;
     }
 
     
     /**
+     * A list of duties to be refunded from the order.
+     *
      * @return ShopifyRefundDuty[]
      */
-    public function getRefundDuties()
+    public function getRefundDuties(): ?array
     {
         return $this->refundDuties;
     }
 
     
     /**
+     * A list of line items to be refunded, along with restock instructions.
+     *
      * @return ShopifyRefundLineItem[]
      */
-    public function getRefundLineItems()
+    public function getRefundLineItems(): ?array
     {
         return $this->refundLineItems;
     }
 
     
     /**
+     * The shipping costs to be refunded from the order.
+     *
      * @return ShopifyShippingRefund
      */
-    public function getShipping()
+    public function getShipping(): ?ShopifyShippingRefund
     {
         return $this->shipping;
     }
 
     
     /**
+     * The sum of all the prices of the line items being refunded.
+     *
      * @return string
      */
-    public function getSubtotal()
+    public function getSubtotal(): mixed
     {
         return $this->subtotal;
     }
 
     
     /**
+     * The sum of all the prices of the line items being refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalSet()
+    public function getSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalSet;
     }
 
     
     /**
-     * @return mixed[]
+     * A list of suggested refund methods.
+     *
+     * @return ShopifySuggestedRefundMethod[]
      */
-    public function getSuggestedRefundMethods()
+    public function getSuggestedRefundMethods(): ?array
     {
         return $this->suggestedRefundMethods;
     }
 
     
     /**
+     * A list of suggested order transactions.
+     *
      * @return ShopifySuggestedOrderTransaction[]
      */
-    public function getSuggestedTransactions()
+    public function getSuggestedTransactions(): ?array
     {
         return $this->suggestedTransactions;
     }
 
     
     /**
+     * The total cart discount amount that was applied to all line items in this refund.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalCartDiscountAmountSet()
+    public function getTotalCartDiscountAmountSet(): ?ShopifyMoneyBag
     {
         return $this->totalCartDiscountAmountSet;
     }
 
     
     /**
+     * The sum of all the duties being refunded from the order in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDutiesSet()
+    public function getTotalDutiesSet(): ?ShopifyMoneyBag
     {
         return $this->totalDutiesSet;
     }
 
     
     /**
+     * The sum of the taxes being refunded from the order in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }
 
     
     /**
+     * The sum of the taxes being refunded from the order. The value must be positive.
+     *
      * @return string
      */
-    public function getTotalTaxes()
+    public function getTotalTaxes(): mixed
     {
         return $this->totalTaxes;
     }
@@ -209,7 +250,7 @@ class ShopifySuggestedRefund
                 $instance->subtotalSet = ShopifyMoneyBag::fromArray($data['subtotalSet']);
             }
             if (isset($data['suggestedRefundMethods']) && $data['suggestedRefundMethods'] !== null) {
-                $instance->suggestedRefundMethods = $data['suggestedRefundMethods'];
+                $instance->suggestedRefundMethods = array_map(function($item) { return ShopifySuggestedRefundMethodHydrator::fromArray($item); }, $data['suggestedRefundMethods']);
             }
             if (isset($data['suggestedTransactions']) && $data['suggestedTransactions'] !== null) {
                 $instance->suggestedTransactions = array_map(function($item) { return ShopifySuggestedOrderTransaction::fromArray($item); }, $data['suggestedTransactions']);
@@ -280,7 +321,7 @@ class ShopifySuggestedRefund
                 $data['subtotalSet'] = $this->subtotalSet->asArray();
             }
             if ($this->suggestedRefundMethods !== null) {
-                $data['suggestedRefundMethods'] = $this->suggestedRefundMethods;
+                $data['suggestedRefundMethods'] = array_map(function($item) { return ShopifySuggestedRefundMethodHydrator::toArray($item); }, $this->suggestedRefundMethods);
             }
             if ($this->suggestedTransactions !== null) {
                 $data['suggestedTransactions'] = array_map(function($item) { return $item->asArray(); }, $this->suggestedTransactions);

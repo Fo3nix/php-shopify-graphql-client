@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents the tax settings for a company location.
+ */
 class ShopifyCompanyLocationTaxSettings
 {
     protected $taxExempt;
@@ -10,27 +13,33 @@ class ShopifyCompanyLocationTaxSettings
 
     
     /**
+     * Whether the location is exempt from taxes.
+     *
      * @return bool
      */
-    public function getTaxExempt()
+    public function getTaxExempt(): ?bool
     {
         return $this->taxExempt;
     }
 
     
     /**
-     * @return ShopifyTaxExemptionEnumObject[]
+     * The list of tax exemptions applied to the location.
+     *
+     * @return string[] ShopifyTaxExemptionEnumObject values
      */
-    public function getTaxExemptions()
+    public function getTaxExemptions(): ?array
     {
         return $this->taxExemptions;
     }
 
     
     /**
+     * The tax registration ID for the company location.
+     *
      * @return string
      */
-    public function getTaxRegistrationId()
+    public function getTaxRegistrationId(): ?string
     {
         return $this->taxRegistrationId;
     }

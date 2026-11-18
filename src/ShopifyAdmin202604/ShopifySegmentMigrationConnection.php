@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySegmentMigrationEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifySegmentMigration;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple SegmentMigrations.
+ */
 class ShopifySegmentMigrationConnection
 {
     protected $edges;
@@ -14,27 +17,33 @@ class ShopifySegmentMigrationConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifySegmentMigrationEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * A list of nodes that are contained in SegmentMigrationEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
      * @return ShopifySegmentMigration[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingSharedColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingSharedTypographyStyle;
 
+/**
+ * The shared customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingShared
 {
     protected $colors;
@@ -13,27 +16,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingShared
 
     
     /**
+     * The shared color customizations for semantic and functional colors.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSharedColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSharedColors
     {
         return $this->colors;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSharedCornerRadiusEnumObject
+     * The shared corner radius setting that overrides all other [corner radius](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutAndAccountsConfigurationBrandingCornerRadius) customizations.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSharedCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
+     * The shared typography customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSharedTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSharedTypographyStyle
     {
         return $this->typography;
     }

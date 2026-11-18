@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyResourcePublicationV2;
 
+/**
+ * An auto-generated type which holds one ResourcePublicationV2 and a cursor during pagination.
+ */
 class ShopifyResourcePublicationV2Edge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyResourcePublicationV2Edge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ResourcePublicationV2Edge.
+     *
      * @return ShopifyResourcePublicationV2
      */
-    public function getNode()
+    public function getNode(): ?ShopifyResourcePublicationV2
     {
         return $this->node;
     }
