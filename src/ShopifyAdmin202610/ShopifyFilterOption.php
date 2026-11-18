@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A filter option is one possible value in a search filter.
+ */
 class ShopifyFilterOption
 {
     protected $label;
@@ -9,18 +12,22 @@ class ShopifyFilterOption
 
     
     /**
+     * The filter option's label for display purposes.
+     *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
     
     /**
+     * The filter option's value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

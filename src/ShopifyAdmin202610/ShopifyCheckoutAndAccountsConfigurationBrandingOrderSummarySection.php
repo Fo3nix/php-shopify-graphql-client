@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 
+/**
+ * The order summary sections customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySection
 {
     protected $background;
@@ -17,72 +20,88 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySection
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject
+     * The background style of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBackgroundEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject
+     * The border for the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject
+     * The border style of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject value
      */
-    public function getBorderStyle()
+    public function getBorderStyle(): ?string
     {
         return $this->borderStyle;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject
+     * The border width of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject value
      */
-    public function getBorderWidth()
+    public function getBorderWidth(): ?string
     {
         return $this->borderWidth;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject
+     * The corner radius of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The padding of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingShadowEnumObject
+     * The shadow of the order summary sections.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingShadowEnumObject value
      */
-    public function getShadow()
+    public function getShadow(): ?string
     {
         return $this->shadow;
     }

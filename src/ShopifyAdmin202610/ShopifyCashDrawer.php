@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCashActivityConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPointOfSaleDeviceConnection;
 
-class ShopifyCashDrawer
+/**
+ * A cash drawer for cash management.
+ */
+class ShopifyCashDrawer implements ShopifyNode
 {
     protected $balance;
     protected $cashActivities;
@@ -23,99 +26,121 @@ class ShopifyCashDrawer
 
     
     /**
+     * The current balance in the cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getBalance()
+    public function getBalance(): ?ShopifyMoneyV2
     {
         return $this->balance;
     }
 
     
     /**
+     * The activities on the cash drawer.
+     *
      * @return ShopifyCashActivityConnection
      */
-    public function getCashActivities()
+    public function getCashActivities(): ?ShopifyCashActivityConnection
     {
         return $this->cashActivities;
     }
 
     
     /**
+     * A unique ID for the cash drawer.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location of the cash drawer.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The name of the cash drawer.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The net sales for this cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNetSales()
+    public function getNetSales(): ?ShopifyMoneyV2
     {
         return $this->netSales;
     }
 
     
     /**
+     * The Point of Sale devices assigned to this cash drawer.
+     *
      * @return ShopifyPointOfSaleDeviceConnection
      */
-    public function getPointOfSaleDevices()
+    public function getPointOfSaleDevices(): ?ShopifyPointOfSaleDeviceConnection
     {
         return $this->pointOfSaleDevices;
     }
 
     
     /**
+     * The total adjustments for this cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalAdjustments()
+    public function getTotalAdjustments(): ?ShopifyMoneyV2
     {
         return $this->totalAdjustments;
     }
 
     
     /**
+     * The total discrepancies for this cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDiscrepancies()
+    public function getTotalDiscrepancies(): ?ShopifyMoneyV2
     {
         return $this->totalDiscrepancies;
     }
 
     
     /**
+     * The total refunds for this cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalRefunds()
+    public function getTotalRefunds(): ?ShopifyMoneyV2
     {
         return $this->totalRefunds;
     }
 
     
     /**
+     * The total sales for this cash drawer.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSales()
+    public function getTotalSales(): ?ShopifyMoneyV2
     {
         return $this->totalSales;
     }

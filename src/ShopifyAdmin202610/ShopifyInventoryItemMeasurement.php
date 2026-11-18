@@ -4,25 +4,32 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyWeight;
 
-class ShopifyInventoryItemMeasurement
+/**
+ * Weight information for an [`InventoryItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) when packaged. Provides the weight specification used for inventory management and shipping calculations. Learn more about [managing inventory](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps).
+ */
+class ShopifyInventoryItemMeasurement implements ShopifyNode
 {
     protected $id;
     protected $weight;
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The weight of the inventory item.
+     *
      * @return ShopifyWeight
      */
-    public function getWeight()
+    public function getWeight(): ?ShopifyWeight
     {
         return $this->weight;
     }

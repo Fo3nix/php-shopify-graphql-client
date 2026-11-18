@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * Represents a discount for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestDiscount
 {
     protected $amount;
@@ -11,18 +14,22 @@ class ShopifyShopPayPaymentRequestDiscount
 
     
     /**
+     * The amount of the discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The label of the discount.
+     *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }

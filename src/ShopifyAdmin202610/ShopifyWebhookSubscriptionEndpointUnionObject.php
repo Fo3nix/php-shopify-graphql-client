@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * An endpoint to which webhook subscriptions send webhooks events.
+ */
 class ShopifyWebhookSubscriptionEndpointUnionObject extends UnionObject
 {
-    public function onShopifyWebhookEventBridgeEndpoint()
+    public function onShopifyWebhookEventBridgeEndpoint(): ShopifyWebhookEventBridgeEndpointQueryObject
     {
         $object = new ShopifyWebhookEventBridgeEndpointQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyWebhookSubscriptionEndpointUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyWebhookHttpEndpoint()
+    public function onShopifyWebhookHttpEndpoint(): ShopifyWebhookHttpEndpointQueryObject
     {
         $object = new ShopifyWebhookHttpEndpointQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyWebhookSubscriptionEndpointUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyWebhookPubSubEndpoint()
+    public function onShopifyWebhookPubSubEndpoint(): ShopifyWebhookPubSubEndpointQueryObject
     {
         $object = new ShopifyWebhookPubSubEndpointQueryObject();
         $this->addPossibleType($object);

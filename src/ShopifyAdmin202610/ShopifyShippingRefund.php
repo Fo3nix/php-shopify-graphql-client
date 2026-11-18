@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
+/**
+ * Represents the shipping costs refunded on the Refund.
+ */
 class ShopifyShippingRefund
 {
     protected $amount;
@@ -15,54 +18,66 @@ class ShopifyShippingRefund
 
     
     /**
+     * The monetary value of the shipping fees to be refunded.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
+     * The monetary value of the shipping fees to be refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The maximum amount of shipping fees currently refundable.
+     *
      * @return string
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): mixed
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * The maximum amount of shipping fees currently refundable in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getMaximumRefundableSet()
+    public function getMaximumRefundableSet(): ?ShopifyMoneyBag
     {
         return $this->maximumRefundableSet;
     }
 
     
     /**
+     * The monetary value of the tax allocated to shipping fees to be refunded.
+     *
      * @return string
      */
-    public function getTax()
+    public function getTax(): mixed
     {
         return $this->tax;
     }
 
     
     /**
+     * The monetary value of the tax allocated to shipping fees to be refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTaxSet()
+    public function getTaxSet(): ?ShopifyMoneyBag
     {
         return $this->taxSet;
     }

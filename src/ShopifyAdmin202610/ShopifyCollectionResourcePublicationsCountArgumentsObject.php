@@ -8,7 +8,10 @@ class ShopifyCollectionResourcePublicationsCountArgumentsObject extends Argument
 {
     protected $onlyPublished;
 
-    public function setOnlyPublished($onlyPublished)
+    /**
+     * Include only the resource's publications that are published. If false, then return all the resource's publications including future publications.
+     */
+    public function setOnlyPublished($onlyPublished): static
     {
         $this->onlyPublished = $onlyPublished;
 

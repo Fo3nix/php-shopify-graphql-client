@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMailingAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerEmailAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerPhoneNumber;
 
+/**
+ * The fields that can be used to override the default fields.
+ */
 class ShopifyCustomerMergePreviewAlternateFields
 {
     protected $defaultAddress;
@@ -16,45 +19,55 @@ class ShopifyCustomerMergePreviewAlternateFields
 
     
     /**
+     * The default address of a customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getDefaultAddress()
+    public function getDefaultAddress(): ?ShopifyMailingAddress
     {
         return $this->defaultAddress;
     }
 
     
     /**
+     * The email state of a customer.
+     *
      * @return ShopifyCustomerEmailAddress
      */
-    public function getEmail()
+    public function getEmail(): ?ShopifyCustomerEmailAddress
     {
         return $this->email;
     }
 
     
     /**
+     * The first name of a customer.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * The last name of a customer.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The phone number state of a customer.
+     *
      * @return ShopifyCustomerPhoneNumber
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?ShopifyCustomerPhoneNumber
     {
         return $this->phoneNumber;
     }

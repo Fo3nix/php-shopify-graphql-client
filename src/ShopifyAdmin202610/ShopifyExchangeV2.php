@@ -11,7 +11,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStaffMember;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyOrderTransaction;
 
-class ShopifyExchangeV2
+/**
+ * An exchange where existing items on an order are returned and new items are added to the order.
+ */
+class ShopifyExchangeV2 implements ShopifyNode
 {
     protected $additions;
     protected $completedAt;
@@ -29,117 +32,143 @@ class ShopifyExchangeV2
 
     
     /**
+     * The details of the new items in the exchange.
+     *
      * @return ShopifyExchangeV2Additions
      */
-    public function getAdditions()
+    public function getAdditions(): ?ShopifyExchangeV2Additions
     {
         return $this->additions;
     }
 
     
     /**
+     * The date and time when the exchange was completed.
+     *
      * @return Carbon
      */
-    public function getCompletedAt()
+    public function getCompletedAt(): ?Carbon
     {
         return $this->completedAt;
     }
 
     
     /**
+     * The date and time when the exchange was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location where the exchange happened.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Mirrored from Admin Exchanges.
+     *
      * @return bool
      */
-    public function getMirrored()
+    public function getMirrored(): ?bool
     {
         return $this->mirrored;
     }
 
     
     /**
+     * The text of an optional note that a shop owner can attach to the exchange.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The refunds processed during the exchange.
+     *
      * @return ShopifyRefund[]
      */
-    public function getRefunds()
+    public function getRefunds(): ?array
     {
         return $this->refunds;
     }
 
     
     /**
+     * The details of the returned items in the exchange.
+     *
      * @return ShopifyExchangeV2Returns
      */
-    public function getReturns()
+    public function getReturns(): ?ShopifyExchangeV2Returns
     {
         return $this->returns;
     }
 
     
     /**
+     * The staff member associated with the exchange.
+     *
      * @return ShopifyStaffMember
      */
-    public function getStaffMember()
+    public function getStaffMember(): ?ShopifyStaffMember
     {
         return $this->staffMember;
     }
 
     
     /**
+     * The amount of money that was paid or refunded as part of the exchange.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalAmountProcessedSet()
+    public function getTotalAmountProcessedSet(): ?ShopifyMoneyBag
     {
         return $this->totalAmountProcessedSet;
     }
 
     
     /**
+     * The difference in values of the items that were exchanged.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalPriceSet()
+    public function getTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalPriceSet;
     }
 
     
     /**
+     * The order transactions related to the exchange.
+     *
      * @return ShopifyOrderTransaction[]
      */
-    public function getTransactions()
+    public function getTransactions(): ?array
     {
         return $this->transactions;
     }

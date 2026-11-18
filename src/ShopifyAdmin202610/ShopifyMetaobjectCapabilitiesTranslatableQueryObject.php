@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The translatable capability of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilitiesTranslatableQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectCapabilitiesTranslatable";
 
-    public function selectEnabled()
+    /**
+     * Indicates if the capability is enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 

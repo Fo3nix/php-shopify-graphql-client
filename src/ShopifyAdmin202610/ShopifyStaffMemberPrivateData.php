@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * Represents the data used to customize the Shopify admin experience for a logged-in staff member.
+ */
 class ShopifyStaffMemberPrivateData
 {
     protected $accountSettingsUrl;
@@ -12,27 +15,33 @@ class ShopifyStaffMemberPrivateData
 
     
     /**
+     * The URL to the staff member's account settings page.
+     *
      * @return string
      */
-    public function getAccountSettingsUrl()
+    public function getAccountSettingsUrl(): mixed
     {
         return $this->accountSettingsUrl;
     }
 
     
     /**
+     * The date and time when the staff member was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyStaffMemberPermissionEnumObject[]
+     * Access permissions for the staff member.
+     *
+     * @return string[] ShopifyStaffMemberPermissionEnumObject values
      */
-    public function getPermissions()
+    public function getPermissions(): ?array
     {
         return $this->permissions;
     }

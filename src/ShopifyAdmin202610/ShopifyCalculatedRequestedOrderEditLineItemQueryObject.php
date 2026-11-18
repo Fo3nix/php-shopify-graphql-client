@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The line item being processed for a requested order edit and its calculated monetary values.
+ */
 class ShopifyCalculatedRequestedOrderEditLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CalculatedRequestedOrderEditLineItem";
 
-    public function selectLineItem(ShopifyCalculatedRequestedOrderEditLineItemLineItemArgumentsObject $argsObject = null)
+    /**
+     * The line item being processed for a requested order edit.
+     */
+    public function selectLineItem(?ShopifyCalculatedRequestedOrderEditLineItemLineItemArgumentsObject $argsObject = null): ShopifyLineItemQueryObject
     {
         $object = new ShopifyLineItemQueryObject("lineItem");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyCalculatedRequestedOrderEditLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity being edited.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectSubtotalSet(ShopifyCalculatedRequestedOrderEditLineItemSubtotalSetArgumentsObject $argsObject = null)
+    /**
+     * The subtotal of the edit line item.
+     */
+    public function selectSubtotalSet(?ShopifyCalculatedRequestedOrderEditLineItemSubtotalSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("subtotalSet");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyCalculatedRequestedOrderEditLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalTaxSet(ShopifyCalculatedRequestedOrderEditLineItemTotalTaxSetArgumentsObject $argsObject = null)
+    /**
+     * The total tax of the edit line item.
+     */
+    public function selectTotalTaxSet(?ShopifyCalculatedRequestedOrderEditLineItemTotalTaxSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("totalTaxSet");
         if ($argsObject !== null) {

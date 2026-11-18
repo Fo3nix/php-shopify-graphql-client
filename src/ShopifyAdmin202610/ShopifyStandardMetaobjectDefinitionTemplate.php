@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetaobjectAccess;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStandardMetaobjectCapabilityTemplate;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStandardMetaobjectDefinitionFieldTemplate;
 
+/**
+ * Standard metaobject definition templates provide preset configurations to create metaobject definitions.
+ */
 class ShopifyStandardMetaobjectDefinitionTemplate
 {
     protected $access;
@@ -18,63 +21,77 @@ class ShopifyStandardMetaobjectDefinitionTemplate
 
     
     /**
+     * Access configuration for the standard metaobject definition template.
+     *
      * @return ShopifyMetaobjectAccess
      */
-    public function getAccess()
+    public function getAccess(): ?ShopifyMetaobjectAccess
     {
         return $this->access;
     }
 
     
     /**
+     * The administrative description.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The key of a field to reference as the display name for each object.
+     *
      * @return string
      */
-    public function getDisplayNameKey()
+    public function getDisplayNameKey(): ?string
     {
         return $this->displayNameKey;
     }
 
     
     /**
+     * The capabilities of the metaobject definition.
+     *
      * @return ShopifyStandardMetaobjectCapabilityTemplate[]
      */
-    public function getEnabledCapabilities()
+    public function getEnabledCapabilities(): ?array
     {
         return $this->enabledCapabilities;
     }
 
     
     /**
+     * Templates for the associated field definitions.
+     *
      * @return ShopifyStandardMetaobjectDefinitionFieldTemplate[]
      */
-    public function getFieldDefinitions()
+    public function getFieldDefinitions(): ?array
     {
         return $this->fieldDefinitions;
     }
 
     
     /**
+     * The human-readable name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The namespace owned by the definition after the definition has been enabled.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

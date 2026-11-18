@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokens;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingSurfaces;
 
+/**
+ * The branding configuration for checkout and customer accounts.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBranding
 {
     protected $components;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBranding
 
     
     /**
+     * The components that apply to all surfaces.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingComponents
      */
-    public function getComponents()
+    public function getComponents(): ?ShopifyCheckoutAndAccountsConfigurationBrandingComponents
     {
         return $this->components;
     }
 
     
     /**
+     * The design tokens allow you to set values that represent specific attributes of your brand like color and font. These attributes are used throughout the user interface. This brings consistency and allows you to easily make broad design changes.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokens
      */
-    public function getDesignTokens()
+    public function getDesignTokens(): ?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokens
     {
         return $this->designTokens;
     }
 
     
     /**
+     * The surface-specific customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSurfaces
      */
-    public function getSurfaces()
+    public function getSurfaces(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSurfaces
     {
         return $this->surfaces;
     }

@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldReference;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldReferenceHydrator;
 
+/**
+ * An auto-generated type which holds one MetafieldReference and a cursor during pagination.
+ */
 class ShopifyMetafieldReferenceEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyMetafieldReferenceEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifyMetafieldReference
+     * The item at the end of MetafieldReferenceEdge.
+     *
+     * @return ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo
      */
-    public function getNode()
+    public function getNode(): ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifyMetafieldReferenceEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifyMetafieldReference::fromArray($data['node']);
+                $instance->node = ShopifyMetafieldReferenceHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyMetafieldReferenceEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifyMetafieldReferenceHydrator::toArray($this->node);
             }
             return $data;
         }

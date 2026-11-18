@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Whether a collection is eligible for one role (inclusion or exclusion) in a sub-collection relationship, plus the reason it isn't if applicable.
+ */
 class ShopifyCollectionSubCollectionEligibilityState
 {
     protected $eligible;
@@ -9,18 +12,22 @@ class ShopifyCollectionSubCollectionEligibilityState
 
     
     /**
+     * Whether the collection can be used in this sub-collection role.
+     *
      * @return bool
      */
-    public function getEligible()
+    public function getEligible(): ?bool
     {
         return $this->eligible;
     }
 
     
     /**
-     * @return ShopifySubCollectionIneligibleReasonEnumObject
+     * Stable identifier describing why the collection is ineligible. Null when `eligible` is true. Clients can map this to user-facing copy or use it as a feature flag.
+     *
+     * @return string A ShopifySubCollectionIneligibleReasonEnumObject value
      */
-    public function getIneligibleReason()
+    public function getIneligibleReason(): ?string
     {
         return $this->ineligibleReason;
     }

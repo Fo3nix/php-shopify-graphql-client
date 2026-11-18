@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyVector3;
 
+/**
+ * Bounding box information of a 3d model.
+ */
 class ShopifyModel3dBoundingBox
 {
     protected $size;
 
     
     /**
+     * Size in meters of the smallest volume which contains the 3d model.
+     *
      * @return ShopifyVector3
      */
-    public function getSize()
+    public function getSize(): ?ShopifyVector3
     {
         return $this->size;
     }

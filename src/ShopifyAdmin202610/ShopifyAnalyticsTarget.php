@@ -5,7 +5,21 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
-class ShopifyAnalyticsTarget
+/**
+ * Represents a merchant-defined goal for a specific analytics metric over a date range.
+ * Merchants use analytics targets to track progress toward business objectives, such as reaching
+ * a total sales amount or a number of orders within a given period.
+ *
+ * Each target is associated with a single metric and can optionally include filter expressions to
+ * narrow the evaluated data. Use the
+ * [`analyticsTargets`](https://shopify.dev/docs/api/admin-graphql/latest/queries/analyticsTargets) query
+ * to retrieve targets, and the
+ * [`analyticsTargetCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/analyticsTargetCreate),
+ * [`analyticsTargetUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/analyticsTargetUpdate),
+ * and [`analyticsTargetsDelete`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/analyticsTargetsDelete)
+ * mutations to manage them.
+ */
+class ShopifyAnalyticsTarget implements ShopifyNode
 {
     protected $createdAt;
     protected $currencyCode;
@@ -22,108 +36,132 @@ class ShopifyAnalyticsTarget
 
     
     /**
+     * The date and time when the analytics target was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency code stored on the target's expected value. Defaults to the shop currency when the target is created.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * The end date of the period over which progress toward the target is measured.
+     *
      * @return Carbon
      */
-    public function getEndDate()
+    public function getEndDate(): ?Carbon
     {
         return $this->endDate;
     }
 
     
     /**
+     * The goal value that the merchant aims to reach for the tracked metric within the target period. Must be greater than 0.
+     *
      * @return string
      */
-    public function getExpectedValue()
+    public function getExpectedValue(): mixed
     {
         return $this->expectedValue;
     }
 
     
     /**
+     * An optional filter expression to narrow the data evaluated against this target. For example, `shipping_country = 'US'`.
+     *
      * @return string
      */
-    public function getFilters()
+    public function getFilters(): ?string
     {
         return $this->filters;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The identifier of the analytics metric that this target tracks, such as `total_sales` or `orders`.
+     *
      * @return string
      */
-    public function getMetric()
+    public function getMetric(): ?string
     {
         return $this->metric;
     }
 
     
     /**
+     * A human-readable label for the target, such as `Q1 Sales Target`.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The target's expected value converted to a specified presentment currency. Returns `null` when the target metric isn't a money metric or the conversion rate is unavailable.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPresentmentExpectedValue()
+    public function getPresentmentExpectedValue(): ?ShopifyMoneyV2
     {
         return $this->presentmentExpectedValue;
     }
 
     
     /**
+     * A generated [ShopifyQL](https://shopify.dev/docs/api/shopifyql) query string that fetches the current value of the tracked metric for this target's date range and filters.
+     *
      * @return string
      */
-    public function getShopifyqlQuery()
+    public function getShopifyqlQuery(): ?string
     {
         return $this->shopifyqlQuery;
     }
 
     
     /**
+     * The start date of the period over which progress toward the target is measured.
+     *
      * @return Carbon
      */
-    public function getStartDate()
+    public function getStartDate(): ?Carbon
     {
         return $this->startDate;
     }
 
     
     /**
+     * The date and time when the analytics target was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

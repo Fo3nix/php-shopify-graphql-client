@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple AbandonedCheckoutLineItems.
+ */
 class ShopifyAbandonedCheckoutLineItemConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AbandonedCheckoutLineItemConnection";
 
-    public function selectEdges(ShopifyAbandonedCheckoutLineItemConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyAbandonedCheckoutLineItemConnectionEdgesArgumentsObject $argsObject = null): ShopifyAbandonedCheckoutLineItemEdgeQueryObject
     {
         $object = new ShopifyAbandonedCheckoutLineItemEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyAbandonedCheckoutLineItemConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectNodes(ShopifyAbandonedCheckoutLineItemConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in AbandonedCheckoutLineItemEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyAbandonedCheckoutLineItemConnectionNodesArgumentsObject $argsObject = null): ShopifyAbandonedCheckoutLineItemQueryObject
     {
         $object = new ShopifyAbandonedCheckoutLineItemQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyAbandonedCheckoutLineItemConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPageInfo(ShopifyAbandonedCheckoutLineItemConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyAbandonedCheckoutLineItemConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

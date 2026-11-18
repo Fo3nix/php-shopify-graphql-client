@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
-class ShopifyOrderAdjustment
+/**
+ * An order adjustment accounts for the difference between a calculated and actual refund amount.
+ */
+class ShopifyOrderAdjustment implements ShopifyNode
 {
     protected $amountSet;
     protected $id;
@@ -13,36 +16,44 @@ class ShopifyOrderAdjustment
 
     
     /**
+     * The amount of the order adjustment in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyOrderAdjustmentDiscrepancyReasonEnumObject
+     * An optional reason that explains a discrepancy between calculated and actual refund amounts.
+     *
+     * @return string A ShopifyOrderAdjustmentDiscrepancyReasonEnumObject value
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
     
     /**
+     * The tax amount of the order adjustment in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTaxAmountSet()
+    public function getTaxAmountSet(): ?ShopifyMoneyBag
     {
         return $this->taxAmountSet;
     }

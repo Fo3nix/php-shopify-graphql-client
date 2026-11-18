@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootAppDiscountTypeArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["functionId"];
+
     protected $functionId;
 
-    public function setFunctionId($functionId)
+    /**
+     * The ID for the function providing the app discount type.
+     */
+    public function setFunctionId($functionId): static
     {
         $this->functionId = $functionId;
 

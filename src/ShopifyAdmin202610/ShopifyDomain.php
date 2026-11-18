@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDomainLocalization;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketWebPresence;
 
-class ShopifyDomain
+/**
+ * A unique string that represents the address of a Shopify store on the Internet.
+ */
+class ShopifyDomain implements ShopifyNode
 {
     protected $createdAt;
     protected $host;
@@ -18,63 +21,77 @@ class ShopifyDomain
 
     
     /**
+     * The date and time when the domain was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The host name of the domain. For example, `example.com`.
+     *
      * @return string
      */
-    public function getHost()
+    public function getHost(): ?string
     {
         return $this->host;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The localization of the domain, if the domain doesn't redirect.
+     *
      * @return ShopifyDomainLocalization
      */
-    public function getLocalization()
+    public function getLocalization(): ?ShopifyDomainLocalization
     {
         return $this->localization;
     }
 
     
     /**
+     * The web presence of the domain.
+     *
      * @return ShopifyMarketWebPresence
      */
-    public function getMarketWebPresence()
+    public function getMarketWebPresence(): ?ShopifyMarketWebPresence
     {
         return $this->marketWebPresence;
     }
 
     
     /**
+     * Whether SSL is enabled.
+     *
      * @return bool
      */
-    public function getSslEnabled()
+    public function getSslEnabled(): ?bool
     {
         return $this->sslEnabled;
     }
 
     
     /**
+     * The URL of the domain (for example, `https://example.com`).
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

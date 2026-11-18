@@ -2,6 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A barcode associated with a product variant.
+ *
+ * A variant supports up to 20 barcodes, each of
+ * which can have a
+ * [type](https://shopify.dev/docs/api/admin-graphql/latest/enums/BarcodeType).
+ * Barcode types are validated against their respective format standards.
+ */
 class ShopifyProductVariantBarcode
 {
     protected $type;
@@ -9,18 +17,24 @@ class ShopifyProductVariantBarcode
 
     
     /**
-     * @return ShopifyBarcodeTypeEnumObject
+     * The associated standard that the barcode conforms to. Barcode types are validated against their
+     * respective format standards. A `null` format denotes no type provided on write and the value is
+     * stored as entered.
+     *
+     * @return string A ShopifyBarcodeTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The value of the barcode. For example, `9780262033848`. Maximum length: 255 characters.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

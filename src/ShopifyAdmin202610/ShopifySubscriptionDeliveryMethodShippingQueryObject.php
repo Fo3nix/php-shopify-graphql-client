@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a shipping delivery method: a mailing address and a shipping option.
+ */
 class ShopifySubscriptionDeliveryMethodShippingQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionDeliveryMethodShipping";
 
-    public function selectAddress(ShopifySubscriptionDeliveryMethodShippingAddressArgumentsObject $argsObject = null)
+    /**
+     * The address to ship to.
+     */
+    public function selectAddress(?ShopifySubscriptionDeliveryMethodShippingAddressArgumentsObject $argsObject = null): ShopifyMailingAddressQueryObject
     {
         $object = new ShopifyMailingAddressQueryObject("address");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifySubscriptionDeliveryMethodShippingQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShippingOption(ShopifySubscriptionDeliveryMethodShippingShippingOptionArgumentsObject $argsObject = null)
+    /**
+     * The details of the shipping method to use.
+     */
+    public function selectShippingOption(?ShopifySubscriptionDeliveryMethodShippingShippingOptionArgumentsObject $argsObject = null): ShopifySubscriptionDeliveryMethodShippingOptionQueryObject
     {
         $object = new ShopifySubscriptionDeliveryMethodShippingOptionQueryObject("shippingOption");
         if ($argsObject !== null) {

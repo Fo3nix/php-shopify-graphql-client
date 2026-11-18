@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The delivery promise settings.
+ */
 class ShopifyDeliveryPromiseSetting
 {
     protected $deliveryDatesEnabled;
@@ -9,18 +12,22 @@ class ShopifyDeliveryPromiseSetting
 
     
     /**
+     * Whether delivery dates is enabled.
+     *
      * @return bool
      */
-    public function getDeliveryDatesEnabled()
+    public function getDeliveryDatesEnabled(): ?bool
     {
         return $this->deliveryDatesEnabled;
     }
 
     
     /**
+     * The number of business days required for processing the order before the package is handed off to the carrier. Expressed as an ISO8601 duration.
+     *
      * @return string
      */
-    public function getProcessingTime()
+    public function getProcessingTime(): ?string
     {
         return $this->processingTime;
     }

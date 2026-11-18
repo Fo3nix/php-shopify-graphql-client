@@ -9,7 +9,10 @@ class ShopifyRootCurrentBulkOperationArgumentsObject extends ArgumentsObject
 {
     protected $type;
 
-    public function setType($shopifyBulkOperationType)
+    /**
+     * The current bulk operation's type.
+     */
+    public function setType($shopifyBulkOperationType): static
     {
         $this->type = new RawObject($shopifyBulkOperationType);
 

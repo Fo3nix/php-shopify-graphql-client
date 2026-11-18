@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAttribute;
 
-class ShopifyTaxonomyMeasurementAttribute
+/**
+ * A Shopify product taxonomy measurement attribute.
+ */
+class ShopifyTaxonomyMeasurementAttribute implements ShopifyNode
 {
     protected $id;
     protected $name;
@@ -12,27 +15,33 @@ class ShopifyTaxonomyMeasurementAttribute
 
     
     /**
+     * The unique ID of the TaxonomyAttribute.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the product taxonomy attribute. For example, Color.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The product taxonomy attribute options.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getOptions()
+    public function getOptions(): ?array
     {
         return $this->options;
     }

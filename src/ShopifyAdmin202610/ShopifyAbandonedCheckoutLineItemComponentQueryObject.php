@@ -4,18 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The list of line item components that belong to a line item.
+ */
 class ShopifyAbandonedCheckoutLineItemComponentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AbandonedCheckoutLineItemComponent";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectImage(ShopifyAbandonedCheckoutLineItemComponentImageArgumentsObject $argsObject = null)
+    /**
+     * The variant image associated with the line item component.
+     * NULL if the variant associated doesn't have an image.
+     */
+    public function selectImage(?ShopifyAbandonedCheckoutLineItemComponentImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {
@@ -26,21 +36,30 @@ class ShopifyAbandonedCheckoutLineItemComponentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the line item component.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * Title of the line item component.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectVariantTitle()
+    /**
+     * The name of the variant.
+     */
+    public function selectVariantTitle(): static
     {
         $this->selectField("variantTitle");
 

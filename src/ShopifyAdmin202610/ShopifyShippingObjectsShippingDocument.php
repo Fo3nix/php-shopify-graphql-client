@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * Represents a shipping document.
+ */
 class ShopifyShippingObjectsShippingDocument
 {
     protected $documentType;
@@ -14,45 +17,55 @@ class ShopifyShippingObjectsShippingDocument
 
     
     /**
-     * @return ShopifyShippingDocumentTypeEnumObject
+     * The type of the shipping document.
+     *
+     * @return string A ShopifyShippingDocumentTypeEnumObject value
      */
-    public function getDocumentType()
+    public function getDocumentType(): ?string
     {
         return $this->documentType;
     }
 
     
     /**
-     * @return ShopifyShippingEnumsFileFormatEnumObject
+     * File format of the shipping document.
+     *
+     * @return string A ShopifyShippingEnumsFileFormatEnumObject value
      */
-    public function getFormat()
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
     
     /**
+     * The last time the document was printed.
+     *
      * @return Carbon
      */
-    public function getPrintedAt()
+    public function getPrintedAt(): ?Carbon
     {
         return $this->printedAt;
     }
 
     
     /**
+     * The shipping label associated with the shipping document.
+     *
      * @return string
      */
-    public function getShippingLabelId()
+    public function getShippingLabelId(): ?string
     {
         return $this->shippingLabelId;
     }
 
     
     /**
+     * URL of the shipping document.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

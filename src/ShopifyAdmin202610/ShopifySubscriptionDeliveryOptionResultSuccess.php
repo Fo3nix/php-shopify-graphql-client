@@ -2,17 +2,22 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionDeliveryOption;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionDeliveryOptionHydrator;
 
+/**
+ * The delivery option for a subscription contract.
+ */
 class ShopifySubscriptionDeliveryOptionResultSuccess
 {
     protected $deliveryOptions;
 
     
     /**
-     * @return ShopifySubscriptionDeliveryOption[]
+     * The available delivery options.
+     *
+     * @return (ShopifySubscriptionLocalDeliveryOption|ShopifySubscriptionPickupOption|ShopifySubscriptionShippingOption)[]
      */
-    public function getDeliveryOptions()
+    public function getDeliveryOptions(): ?array
     {
         return $this->deliveryOptions;
     }
@@ -25,7 +30,7 @@ class ShopifySubscriptionDeliveryOptionResultSuccess
         {
             $instance = new self();
             if (isset($data['deliveryOptions']) && $data['deliveryOptions'] !== null) {
-                $instance->deliveryOptions = array_map(function($item) { return ShopifySubscriptionDeliveryOption::fromArray($item); }, $data['deliveryOptions']);
+                $instance->deliveryOptions = array_map(function($item) { return ShopifySubscriptionDeliveryOptionHydrator::fromArray($item); }, $data['deliveryOptions']);
             }
             return $instance;
         }
@@ -51,7 +56,7 @@ class ShopifySubscriptionDeliveryOptionResultSuccess
         {
             $data = [];
             if ($this->deliveryOptions !== null) {
-                $data['deliveryOptions'] = array_map(function($item) { return $item->asArray(); }, $this->deliveryOptions);
+                $data['deliveryOptions'] = array_map(function($item) { return ShopifySubscriptionDeliveryOptionHydrator::toArray($item); }, $this->deliveryOptions);
             }
             return $data;
         }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The customizations that apply to the 'group' variant of ChoiceList.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroup
 {
     protected $spacing;
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject
+     * The spacing between UI elements in the list.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSpacingKeywordEnumObject value
      */
-    public function getSpacing()
+    public function getSpacing(): ?string
     {
         return $this->spacing;
     }

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariantConnection;
 
+/**
+ * An inventory-related error that occurred during a subscription billing attempt.
+ */
 class ShopifySubscriptionBillingAttemptInventoryError
 {
     protected $code;
@@ -11,18 +14,22 @@ class ShopifySubscriptionBillingAttemptInventoryError
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptInventoryErrorCodeEnumObject
+     * The error code for the inventory-related failure.
+     *
+     * @return string A ShopifySubscriptionBillingAttemptInventoryErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * A list of product variants that caused the insufficient inventory error.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getInsufficientStockProductVariants()
+    public function getInsufficientStockProductVariants(): ?ShopifyProductVariantConnection
     {
         return $this->insufficientStockProductVariants;
     }

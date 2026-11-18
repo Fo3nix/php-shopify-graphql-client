@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An available pickup option for a subscription contract calculation.
+ */
 class ShopifySubscriptionContractCalculationPickupOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionContractCalculationPickupOption";
 
-    public function selectCode()
+    /**
+     * The code of the delivery option.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the delivery option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectLocation(ShopifySubscriptionContractCalculationPickupOptionLocationArgumentsObject $argsObject = null)
+    /**
+     * The location where the customer will pick up the merchandise.
+     */
+    public function selectLocation(?ShopifySubscriptionContractCalculationPickupOptionLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -33,28 +45,40 @@ class ShopifySubscriptionContractCalculationPickupOptionQueryObject extends Quer
         return $object;
     }
 
-    public function selectPhoneRequired()
+    /**
+     * Whether a phone number is required for the delivery option.
+     */
+    public function selectPhoneRequired(): static
     {
         $this->selectField("phoneRequired");
 
         return $this;
     }
 
-    public function selectPickupTime()
+    /**
+     * The estimated amount of time it takes for the pickup to be ready (e.g., "Usually ready in 24 hours").
+     */
+    public function selectPickupTime(): static
     {
         $this->selectField("pickupTime");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the delivery option. This is the customer-facing title displayed at checkout.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifySubscriptionContractCalculationPickupOptionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of the delivery option.
+     */
+    public function selectPrice(?ShopifySubscriptionContractCalculationPickupOptionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -65,7 +89,10 @@ class ShopifySubscriptionContractCalculationPickupOptionQueryObject extends Quer
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the delivery option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

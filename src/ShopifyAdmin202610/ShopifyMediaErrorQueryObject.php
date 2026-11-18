@@ -4,25 +4,38 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a media error. This typically occurs when there is an issue with the media itself causing it to fail validation.
+ * Check the media before attempting to upload again.
+ */
 class ShopifyMediaErrorQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MediaError";
 
-    public function selectCode()
+    /**
+     * Code representing the type of error.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDetails()
+    /**
+     * Additional details regarding the error.
+     */
+    public function selectDetails(): static
     {
         $this->selectField("details");
 
         return $this;
     }
 
-    public function selectMessage()
+    /**
+     * Translated error message.
+     */
+    public function selectMessage(): static
     {
         $this->selectField("message");
 

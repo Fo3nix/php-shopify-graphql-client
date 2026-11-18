@@ -9,7 +9,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTranslation;
 
-class ShopifyPage
+/**
+ * A standalone content page in the online store. Pages display HTML-formatted content for informational pages like "About Us", contact information, or shipping policies.
+ *
+ * Each page has a unique handle for URL routing and supports custom template suffixes for specialized layouts. Pages can be published or hidden, and include creation and update timestamps.
+ */
+class ShopifyPage implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyNavigable, ShopifyNode
 {
     protected $body;
     protected $bodySummary;
@@ -30,144 +35,181 @@ class ShopifyPage
 
     
     /**
+     * The text content of the page, complete with HTML markup.
+     *
      * @return string
      */
-    public function getBody()
+    public function getBody(): mixed
     {
         return $this->body;
     }
 
     
     /**
+     * The first 150 characters of the page body. If the page body contains more than 150 characters, additional characters are truncated by ellipses.
+     *
      * @return string
      */
-    public function getBodySummary()
+    public function getBodySummary(): ?string
     {
         return $this->bodySummary;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) of the page creation.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A unique, human-friendly string for the page.
+     * In themes, the Liquid templating language refers to a page by its handle.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether or not the page is visible.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) when the page became or will become visible.
+     * Returns null when the page isn't visible.
+     *
      * @return Carbon
      */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?Carbon
     {
         return $this->publishedAt;
     }
 
     
     /**
+     * The suffix of the template that's used to render the page.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }
 
     
     /**
+     * Title of the page.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The date and time (ISO 8601 format) of the latest page update.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

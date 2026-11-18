@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDeliveryCarrierService;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * A shipping option to deliver a subscription contract.
+ */
 class ShopifySubscriptionShippingOption
 {
     protected $carrierService;
@@ -17,63 +20,78 @@ class ShopifySubscriptionShippingOption
 
     
     /**
+     * The carrier service that's providing this shipping option.
+     * This field isn't currently supported and returns null.
+     *
      * @return ShopifyDeliveryCarrierService
      */
-    public function getCarrierService()
+    public function getCarrierService(): ?ShopifyDeliveryCarrierService
     {
         return $this->carrierService;
     }
 
     
     /**
+     * The code of the shipping option.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The description of the shipping option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * If a phone number is required for the shipping option.
+     *
      * @return bool
      */
-    public function getPhoneRequired()
+    public function getPhoneRequired(): ?bool
     {
         return $this->phoneRequired;
     }
 
     
     /**
+     * The presentment title of the shipping option.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The price of the shipping option.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The title of the shipping option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

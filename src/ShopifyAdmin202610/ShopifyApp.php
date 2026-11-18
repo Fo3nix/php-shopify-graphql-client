@@ -10,7 +10,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppFeedback;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppInstallation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyNavigationItem;
 
-class ShopifyApp
+/**
+ * A Shopify application that extends store functionality. Apps integrate with Shopify through APIs to add features, automate workflows, or connect external services.
+ *
+ * Provides metadata about the app including its developer information and listing details in the Shopify App Store. Use the [`installation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App#field-App.fields.installation) field to determine if the app is currently installed on the shop and access installation-specific details like granted [`AccessScope`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AccessScope) objects. Check [`failedRequirements`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App#field-App.fields.failedRequirements) before installation to identify any prerequisites that must be met.
+ */
+class ShopifyApp implements ShopifyNode
 {
     protected $apiKey;
     protected $appStoreAppUrl;
@@ -51,324 +56,398 @@ class ShopifyApp
 
     
     /**
+     * A unique application API identifier.
+     *
      * @return string
      */
-    public function getApiKey()
+    public function getApiKey(): ?string
     {
         return $this->apiKey;
     }
 
     
     /**
+     * App store page URL of the app.
+     *
      * @return string
      */
-    public function getAppStoreAppUrl()
+    public function getAppStoreAppUrl(): mixed
     {
         return $this->appStoreAppUrl;
     }
 
     
     /**
+     * App store page URL of the developer who created the app.
+     *
      * @return string
      */
-    public function getAppStoreDeveloperUrl()
+    public function getAppStoreDeveloperUrl(): mixed
     {
         return $this->appStoreDeveloperUrl;
     }
 
     
     /**
+     * All requestable access scopes available to the app.
+     *
      * @return ShopifyAccessScope[]
      */
-    public function getAvailableAccessScopes()
+    public function getAvailableAccessScopes(): ?array
     {
         return $this->availableAccessScopes;
     }
 
     
     /**
+     * Banner image for the app.
+     *
      * @return ShopifyImage
      */
-    public function getBanner()
+    public function getBanner(): ?ShopifyImage
     {
         return $this->banner;
     }
 
     
     /**
+     * The sales channels associated with this app.
+     *
      * @return ShopifyChannelConnection
      */
-    public function getChannels()
+    public function getChannels(): ?ShopifyChannelConnection
     {
         return $this->channels;
     }
 
     
     /**
+     * Description of the app.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The name of the app developer.
+     *
      * @return string
      */
-    public function getDeveloperName()
+    public function getDeveloperName(): ?string
     {
         return $this->developerName;
     }
 
     
     /**
-     * @return ShopifyAppDeveloperTypeEnumObject
+     * The type of app developer.
+     *
+     * @return string A ShopifyAppDeveloperTypeEnumObject value
      */
-    public function getDeveloperType()
+    public function getDeveloperType(): ?string
     {
         return $this->developerType;
     }
 
     
     /**
+     * Website of the developer who created the app.
+     *
      * @return string
      */
-    public function getDeveloperUrl()
+    public function getDeveloperUrl(): mixed
     {
         return $this->developerUrl;
     }
 
     
     /**
+     * Whether the app uses the Embedded App SDK.
+     *
      * @return bool
      */
-    public function getEmbedded()
+    public function getEmbedded(): ?bool
     {
         return $this->embedded;
     }
 
     
     /**
+     * Requirements that must be met before the app can be installed.
+     *
      * @return ShopifyFailedRequirement[]
      */
-    public function getFailedRequirements()
+    public function getFailedRequirements(): ?array
     {
         return $this->failedRequirements;
     }
 
     
     /**
+     * A list of app features that are shown in the Shopify App Store listing.
+     *
      * @return string[]
      */
-    public function getFeatures()
+    public function getFeatures(): ?array
     {
         return $this->features;
     }
 
     
     /**
+     * Feedback from this app about the store.
+     *
      * @return ShopifyAppFeedback
      */
-    public function getFeedback()
+    public function getFeedback(): ?ShopifyAppFeedback
     {
         return $this->feedback;
     }
 
     
     /**
+     * Handle of the app.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * Icon that represents the app.
+     *
      * @return ShopifyImage
      */
-    public function getIcon()
+    public function getIcon(): ?ShopifyImage
     {
         return $this->icon;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Webpage where you can install the app, if app requires explicit user permission.
+     *
      * @return string
      */
-    public function getInstallUrl()
+    public function getInstallUrl(): mixed
     {
         return $this->installUrl;
     }
 
     
     /**
+     * Corresponding AppInstallation for this shop and App.
+     * Returns null if the App isn't installed.
+     *
      * @return ShopifyAppInstallation
      */
-    public function getInstallation()
+    public function getInstallation(): ?ShopifyAppInstallation
     {
         return $this->installation;
     }
 
     
     /**
+     * Whether the app is the [post purchase](https://shopify.dev/apps/checkout/post-purchase) app in use.
+     *
      * @return bool
      */
-    public function getIsPostPurchaseAppInUse()
+    public function getIsPostPurchaseAppInUse(): ?bool
     {
         return $this->isPostPurchaseAppInUse;
     }
 
     
     /**
+     * Webpage that the app starts in.
+     *
      * @return string
      */
-    public function getLaunchUrl()
+    public function getLaunchUrl(): mixed
     {
         return $this->launchUrl;
     }
 
     
     /**
+     * Menu items for the app, which also appear as submenu items in left navigation sidebar in the Shopify admin.
+     *
      * @return ShopifyNavigationItem[]
      */
-    public function getNavigationItems()
+    public function getNavigationItems(): ?array
     {
         return $this->navigationItems;
     }
 
     
     /**
+     * The optional scopes requested by the app. Lists the optional access scopes the app has declared in its configuration. These scopes are optionally requested by the app after installation.
+     *
      * @return ShopifyAccessScope[]
      */
-    public function getOptionalAccessScopes()
+    public function getOptionalAccessScopes(): ?array
     {
         return $this->optionalAccessScopes;
     }
 
     
     /**
+     * Whether the app was previously installed on the current shop.
+     *
      * @return bool
      */
-    public function getPreviouslyInstalled()
+    public function getPreviouslyInstalled(): ?bool
     {
         return $this->previouslyInstalled;
     }
 
     
     /**
+     * Detailed information about the app pricing.
+     *
      * @return string
      */
-    public function getPricingDetails()
+    public function getPricingDetails(): ?string
     {
         return $this->pricingDetails;
     }
 
     
     /**
+     * Summary of the app pricing details.
+     *
      * @return string
      */
-    public function getPricingDetailsSummary()
+    public function getPricingDetailsSummary(): ?string
     {
         return $this->pricingDetailsSummary;
     }
 
     
     /**
+     * Link to app privacy policy.
+     *
      * @return string
      */
-    public function getPrivacyPolicyUrl()
+    public function getPrivacyPolicyUrl(): mixed
     {
         return $this->privacyPolicyUrl;
     }
 
     
     /**
-     * @return ShopifyAppPublicCategoryEnumObject
+     * The public category for the app.
+     *
+     * @return string A ShopifyAppPublicCategoryEnumObject value
      */
-    public function getPublicCategory()
+    public function getPublicCategory(): ?string
     {
         return $this->publicCategory;
     }
 
     
     /**
+     * Whether the app is published to the Shopify App Store.
+     *
      * @return bool
      */
-    public function getPublished()
+    public function getPublished(): ?bool
     {
         return $this->published;
     }
 
     
     /**
+     * The access scopes requested by the app. Lists the access scopes the app has declared in its configuration. Merchant must grant approval to these scopes for the app to be installed.
+     *
      * @return ShopifyAccessScope[]
      */
-    public function getRequestedAccessScopes()
+    public function getRequestedAccessScopes(): ?array
     {
         return $this->requestedAccessScopes;
     }
 
     
     /**
+     * Screenshots of the app.
+     *
      * @return ShopifyImage[]
      */
-    public function getScreenshots()
+    public function getScreenshots(): ?array
     {
         return $this->screenshots;
     }
 
     
     /**
+     * Whether the app was developed by Shopify.
+     *
      * @return bool
      */
-    public function getShopifyDeveloped()
+    public function getShopifyDeveloped(): ?bool
     {
         return $this->shopifyDeveloped;
     }
 
     
     /**
+     * Name of the app.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * Message that appears when the app is uninstalled. For example:
+     * By removing this app, you will no longer be able to publish products to MySocialSite or view this app in your Shopify admin. You can re-enable this channel at any time.
+     *
      * @return string
      */
-    public function getUninstallMessage()
+    public function getUninstallMessage(): ?string
     {
         return $this->uninstallMessage;
     }
 
     
     /**
+     * Webpage where you can uninstall the app.
+     *
      * @return string
      */
-    public function getUninstallUrl()
+    public function getUninstallUrl(): mixed
     {
         return $this->uninstallUrl;
     }
 
     
     /**
+     * The webhook API version for the app.
+     *
      * @return string
      */
-    public function getWebhookApiVersion()
+    public function getWebhookApiVersion(): ?string
     {
         return $this->webhookApiVersion;
     }

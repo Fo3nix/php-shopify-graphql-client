@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The form controls customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingControl
 {
     protected $border;
@@ -10,27 +13,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingControl
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject
+     * The border.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject
+     * The corner radius.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingLabelPositionEnumObject
+     * The label position.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingLabelPositionEnumObject value
      */
-    public function getLabelPosition()
+    public function getLabelPosition(): ?string
     {
         return $this->labelPosition;
     }

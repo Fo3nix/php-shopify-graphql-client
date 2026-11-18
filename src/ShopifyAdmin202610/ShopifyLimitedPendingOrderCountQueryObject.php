@@ -4,18 +4,29 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The total number of pending orders on a shop if less then a maximum, or that maximum.
+ * The atMax field indicates when this maximum has been reached.
+ */
 class ShopifyLimitedPendingOrderCountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "LimitedPendingOrderCount";
 
-    public function selectAtMax()
+    /**
+     * This is set when the number of pending orders has reached the maximum.
+     */
+    public function selectAtMax(): static
     {
         $this->selectField("atMax");
 
         return $this;
     }
 
-    public function selectCount()
+    /**
+     * The number of pending orders on the shop.
+     * Limited to a maximum of 10000.
+     */
+    public function selectCount(): static
     {
         $this->selectField("count");
 

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * Represents the tracking information for an inventory shipment.
+ */
 class ShopifyInventoryShipmentTracking
 {
     protected $arrivesAt;
@@ -13,36 +16,48 @@ class ShopifyInventoryShipmentTracking
 
     
     /**
+     * The estimated date and time that the shipment will arrive.
+     *
      * @return Carbon
      */
-    public function getArrivesAt()
+    public function getArrivesAt(): ?Carbon
     {
         return $this->arrivesAt;
     }
 
     
     /**
+     * The name of the shipping carrier company.
+     *
      * @return string
      */
-    public function getCompany()
+    public function getCompany(): ?string
     {
         return $this->company;
     }
 
     
     /**
+     * The tracking number used by the carrier to identify the shipment.
+     *
      * @return string
      */
-    public function getTrackingNumber()
+    public function getTrackingNumber(): ?string
     {
         return $this->trackingNumber;
     }
 
     
     /**
+     * The URL to track the shipment.
+     *
+     * Given a tracking number and a shipping carrier company name from
+     * [the list](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#field-company),
+     * Shopify will return a generated tracking URL if no tracking URL was set manually.
+     *
      * @return string
      */
-    public function getTrackingUrl()
+    public function getTrackingUrl(): mixed
     {
         return $this->trackingUrl;
     }

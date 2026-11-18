@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountNode;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
+/**
+ * The platform discounts applied to the draft order.
+ */
 class ShopifyDraftOrderPlatformDiscount
 {
     protected $allocations;
@@ -26,126 +29,154 @@ class ShopifyDraftOrderPlatformDiscount
 
     
     /**
+     * Price reduction allocations across the draft order's lines.
+     *
      * @return ShopifyDraftOrderPlatformDiscountAllocation[]
      */
-    public function getAllocations()
+    public function getAllocations(): ?array
     {
         return $this->allocations;
     }
 
     
     /**
+     * Whether the discount is an automatic discount.
+     *
      * @return bool
      */
-    public function getAutomaticDiscount()
+    public function getAutomaticDiscount(): ?bool
     {
         return $this->automaticDiscount;
     }
 
     
     /**
+     * Whether the discount is a buy x get y discount.
+     *
      * @return bool
      */
-    public function getBxgyDiscount()
+    public function getBxgyDiscount(): ?bool
     {
         return $this->bxgyDiscount;
     }
 
     
     /**
+     * If a code-based discount, the code used to add the discount.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject
+     * The discount class.
+     *
+     * @return string A ShopifyDiscountClassEnumObject value
      */
-    public function getDiscountClass()
+    public function getDiscountClass(): ?string
     {
         return $this->discountClass;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject[]
+     * The discount classes.
+     *
+     * @return string[] ShopifyDiscountClassEnumObject values
      */
-    public function getDiscountClasses()
+    public function getDiscountClasses(): ?array
     {
         return $this->discountClasses;
     }
 
     
     /**
+     * The discount node for the platform discount.
+     *
      * @return ShopifyDiscountNode
      */
-    public function getDiscountNode()
+    public function getDiscountNode(): ?ShopifyDiscountNode
     {
         return $this->discountNode;
     }
 
     
     /**
+     * The ID of the discount.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the discount is line, order or shipping level.
+     *
      * @return string
      */
-    public function getPresentationLevel()
+    public function getPresentationLevel(): ?string
     {
         return $this->presentationLevel;
     }
 
     
     /**
+     * The short summary of the discount.
+     *
      * @return string
      */
-    public function getShortSummary()
+    public function getShortSummary(): ?string
     {
         return $this->shortSummary;
     }
 
     
     /**
+     * The summary of the discount.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
     
     /**
+     * The name of the discount.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The discount total amount in shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalAmount()
+    public function getTotalAmount(): ?ShopifyMoneyV2
     {
         return $this->totalAmount;
     }
 
     
     /**
+     * The amount of money discounted, with values shown in both shop currency and presentment currency.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalAmountPriceSet()
+    public function getTotalAmountPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalAmountPriceSet;
     }

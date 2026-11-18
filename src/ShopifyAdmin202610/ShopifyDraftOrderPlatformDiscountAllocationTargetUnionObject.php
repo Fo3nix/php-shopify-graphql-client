@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The element of the draft being discounted.
+ */
 class ShopifyDraftOrderPlatformDiscountAllocationTargetUnionObject extends UnionObject
 {
-    public function onShopifyCalculatedDraftOrderLineItem()
+    public function onShopifyCalculatedDraftOrderLineItem(): ShopifyCalculatedDraftOrderLineItemQueryObject
     {
         $object = new ShopifyCalculatedDraftOrderLineItemQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyDraftOrderPlatformDiscountAllocationTargetUnionObject extends Union
         return $object;
     }
 
-    public function onShopifyDraftOrderLineItem()
+    public function onShopifyDraftOrderLineItem(): ShopifyDraftOrderLineItemQueryObject
     {
         $object = new ShopifyDraftOrderLineItemQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyDraftOrderPlatformDiscountAllocationTargetUnionObject extends Union
         return $object;
     }
 
-    public function onShopifyShippingLine()
+    public function onShopifyShippingLine(): ShopifyShippingLineQueryObject
     {
         $object = new ShopifyShippingLineQueryObject();
         $this->addPossibleType($object);

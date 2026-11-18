@@ -11,6 +11,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingMain;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary;
 
+/**
+ * The checkout-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponents
 {
     protected $buyerJourney;
@@ -24,72 +27,88 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutComponents
 
     
     /**
+     * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingBuyerJourney
      */
-    public function getBuyerJourney()
+    public function getBuyerJourney(): ?ShopifyCheckoutAndAccountsConfigurationBrandingBuyerJourney
     {
         return $this->buyerJourney;
     }
 
     
     /**
+     * The checkout cart link customizations. For example, by setting the visibility field to `HIDDEN`, you can hide the cart icon in the header for one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCartLink
      */
-    public function getCartLink()
+    public function getCartLink(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCartLink
     {
         return $this->cartLink;
     }
 
     
     /**
+     * The content container customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingContent
      */
-    public function getContent()
+    public function getContent(): ?ShopifyCheckoutAndAccountsConfigurationBrandingContent
     {
         return $this->content;
     }
 
     
     /**
+     * The express checkout customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingExpressCheckout
      */
-    public function getExpressCheckout()
+    public function getExpressCheckout(): ?ShopifyCheckoutAndAccountsConfigurationBrandingExpressCheckout
     {
         return $this->expressCheckout;
     }
 
     
     /**
+     * The checkout footer customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutFooter
      */
-    public function getFooter()
+    public function getFooter(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutFooter
     {
         return $this->footer;
     }
 
     
     /**
+     * The checkout header customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutHeader
      */
-    public function getHeader()
+    public function getHeader(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCheckoutHeader
     {
         return $this->header;
     }
 
     
     /**
+     * The main checkout customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingMain
      */
-    public function getMain()
+    public function getMain(): ?ShopifyCheckoutAndAccountsConfigurationBrandingMain
     {
         return $this->main;
     }
 
     
     /**
+     * The order summary customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
      */
-    public function getOrderSummary()
+    public function getOrderSummary(): ?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
     {
         return $this->orderSummary;
     }

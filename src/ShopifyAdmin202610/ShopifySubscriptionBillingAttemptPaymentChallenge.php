@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A payment challenge that the customer must complete.
+ */
 class ShopifySubscriptionBillingAttemptPaymentChallenge
 {
     protected $nextActionUrl;
@@ -9,18 +12,22 @@ class ShopifySubscriptionBillingAttemptPaymentChallenge
 
     
     /**
+     * URL to redirect the customer for authentication.
+     *
      * @return string
      */
-    public function getNextActionUrl()
+    public function getNextActionUrl(): mixed
     {
         return $this->nextActionUrl;
     }
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptPaymentChallengeStatusEnumObject
+     * The status of the payment challenge.
+     *
+     * @return string A ShopifySubscriptionBillingAttemptPaymentChallengeStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

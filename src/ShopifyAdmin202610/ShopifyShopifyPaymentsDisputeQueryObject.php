@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A dispute occurs when a buyer questions the legitimacy of a charge with their financial institution.
+ */
 class ShopifyShopifyPaymentsDisputeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsDispute";
 
-    public function selectAmount(ShopifyShopifyPaymentsDisputeAmountArgumentsObject $argsObject = null)
+    /**
+     * The total amount disputed by the cardholder.
+     */
+    public function selectAmount(?ShopifyShopifyPaymentsDisputeAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopifyPaymentsDisputeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDisputeEvidence(ShopifyShopifyPaymentsDisputeDisputeEvidenceArgumentsObject $argsObject = null)
+    /**
+     * The evidence associated with the dispute.
+     */
+    public function selectDisputeEvidence(?ShopifyShopifyPaymentsDisputeDisputeEvidenceArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeEvidenceQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeEvidenceQueryObject("disputeEvidence");
         if ($argsObject !== null) {
@@ -30,49 +39,70 @@ class ShopifyShopifyPaymentsDisputeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEvidenceDueBy()
+    /**
+     * The deadline for evidence submission.
+     */
+    public function selectEvidenceDueBy(): static
     {
         $this->selectField("evidenceDueBy");
 
         return $this;
     }
 
-    public function selectEvidenceSentOn()
+    /**
+     * The date when evidence was sent. Returns null if evidence hasn't yet been sent.
+     */
+    public function selectEvidenceSentOn(): static
     {
         $this->selectField("evidenceSentOn");
 
         return $this;
     }
 
-    public function selectFinalizedOn()
+    /**
+     * The date when this dispute was resolved. Returns null if the dispute isn't yet resolved.
+     */
+    public function selectFinalizedOn(): static
     {
         $this->selectField("finalizedOn");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInitiatedAt()
+    /**
+     * The date when this dispute was initiated.
+     */
+    public function selectInitiatedAt(): static
     {
         $this->selectField("initiatedAt");
 
         return $this;
     }
 
-    public function selectLegacyResourceId()
+    /**
+     * The ID of the corresponding resource in the REST Admin API.
+     */
+    public function selectLegacyResourceId(): static
     {
         $this->selectField("legacyResourceId");
 
         return $this;
     }
 
-    public function selectOrder(ShopifyShopifyPaymentsDisputeOrderArgumentsObject $argsObject = null)
+    /**
+     * The order that contains the charge that's under dispute.
+     */
+    public function selectOrder(?ShopifyShopifyPaymentsDisputeOrderArgumentsObject $argsObject = null): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject("order");
         if ($argsObject !== null) {
@@ -83,7 +113,10 @@ class ShopifyShopifyPaymentsDisputeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectReasonDetails(ShopifyShopifyPaymentsDisputeReasonDetailsArgumentsObject $argsObject = null)
+    /**
+     * The reason of the dispute.
+     */
+    public function selectReasonDetails(?ShopifyShopifyPaymentsDisputeReasonDetailsArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeReasonDetailsQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeReasonDetailsQueryObject("reasonDetails");
         if ($argsObject !== null) {
@@ -94,14 +127,20 @@ class ShopifyShopifyPaymentsDisputeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * The current state of the dispute.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * Indicates if this dispute is still in the inquiry phase or has turned into a chargeback.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 

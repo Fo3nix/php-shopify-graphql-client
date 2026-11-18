@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyScriptTag;
 
+/**
+ * An auto-generated type which holds one ScriptTag and a cursor during pagination.
+ */
 class ShopifyScriptTagEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyScriptTagEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ScriptTagEdge.
+     *
      * @return ShopifyScriptTag
      */
-    public function getNode()
+    public function getNode(): ?ShopifyScriptTag
     {
         return $this->node;
     }

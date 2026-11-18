@@ -4,11 +4,25 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The details about the app extension that's providing the
+ * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+ * This information includes the app extension's name and
+ * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+ * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+ * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+ * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+ * and other metadata about the discount type, including the discount type's name and description.
+ */
 class ShopifyAppDiscountTypeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AppDiscountType";
 
-    public function selectApp(ShopifyAppDiscountTypeAppArgumentsObject $argsObject = null)
+    /**
+     * The name of the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     */
+    public function selectApp(?ShopifyAppDiscountTypeAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -19,7 +33,11 @@ class ShopifyAppDiscountTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppBridge(ShopifyAppDiscountTypeAppBridgeArgumentsObject $argsObject = null)
+    /**
+     * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+     * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     */
+    public function selectAppBridge(?ShopifyAppDiscountTypeAppBridgeArgumentsObject $argsObject = null): ShopifyFunctionsAppBridgeQueryObject
     {
         $object = new ShopifyFunctionsAppBridgeQueryObject("appBridge");
         if ($argsObject !== null) {
@@ -30,14 +48,23 @@ class ShopifyAppDiscountTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAppKey()
+    /**
+     * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+     * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     */
+    public function selectAppKey(): static
     {
         $this->selectField("appKey");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * A description of the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * provided by the app extension.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
@@ -45,23 +72,36 @@ class ShopifyAppDiscountTypeQueryObject extends QueryObject
     }
 
     /**
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
+     *
      * @deprecated Use `discountClasses` instead.
      */
-    public function selectDiscountClass()
+    public function selectDiscountClass(): static
     {
         $this->selectField("discountClass");
 
         return $this;
     }
 
-    public function selectDiscountClasses()
+    /**
+     * The list of [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that this app extension supports.
+     */
+    public function selectDiscountClasses(): static
     {
         $this->selectField("discountClasses");
 
         return $this;
     }
 
-    public function selectFunctionId()
+    /**
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     */
+    public function selectFunctionId(): static
     {
         $this->selectField("functionId");
 
@@ -69,16 +109,24 @@ class ShopifyAppDiscountTypeQueryObject extends QueryObject
     }
 
     /**
+     * The type of line item on an order that the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+     * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
+     *
      * @deprecated Use `discountClasses` instead.
      */
-    public function selectTargetType()
+    public function selectTargetType(): static
     {
         $this->selectField("targetType");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * that the app extension is providing.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

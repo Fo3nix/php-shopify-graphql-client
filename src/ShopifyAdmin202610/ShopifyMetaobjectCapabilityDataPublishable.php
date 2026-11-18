@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The publishable capability for the parent metaobject.
+ */
 class ShopifyMetaobjectCapabilityDataPublishable
 {
     protected $status;
 
     
     /**
-     * @return ShopifyMetaobjectStatusEnumObject
+     * The visibility status of this metaobject across all channels.
+     *
+     * @return string A ShopifyMetaobjectStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

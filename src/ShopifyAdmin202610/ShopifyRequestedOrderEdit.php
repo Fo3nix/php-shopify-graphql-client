@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRequestedOrderEditLineItems;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyOrder;
 
-class ShopifyRequestedOrderEdit
+/**
+ * A buyer-initiated request to edit unfulfilled line items on an order.
+ */
+class ShopifyRequestedOrderEdit implements ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -20,81 +23,99 @@ class ShopifyRequestedOrderEdit
 
     
     /**
+     * The date and time when the requested order edit was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The line item changes included in this requested order edit, grouped by the type of change.
+     *
      * @return ShopifyRequestedOrderEditLineItems
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyRequestedOrderEditLineItems
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The order associated with this requested order edit.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The date and time when the requested order edit was declined.
+     *
      * @return Carbon
      */
-    public function getRequestDeclinedAt()
+    public function getRequestDeclinedAt(): ?Carbon
     {
         return $this->requestDeclinedAt;
     }
 
     
     /**
+     * The date and time when the requested order edit was resolved.
+     *
      * @return Carbon
      */
-    public function getRequestResolvedAt()
+    public function getRequestResolvedAt(): ?Carbon
     {
         return $this->requestResolvedAt;
     }
 
     
     /**
+     * The date and time when the edit was requested by the buyer.
+     *
      * @return Carbon
      */
-    public function getRequestedAt()
+    public function getRequestedAt(): ?Carbon
     {
         return $this->requestedAt;
     }
 
     
     /**
-     * @return ShopifyRequestedOrderEditStatusEnumObject
+     * The status of this requested order edit.
+     *
+     * @return string A ShopifyRequestedOrderEditStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The date and time when the requested order edit was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

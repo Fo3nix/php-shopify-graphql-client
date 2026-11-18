@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A component option value related to a bundle line.
+ */
 class ShopifyProductBundleComponentOptionSelectionValueQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductBundleComponentOptionSelectionValue";
 
-    public function selectSelectionStatus()
+    /**
+     * Selection status of the option.
+     */
+    public function selectSelectionStatus(): static
     {
         $this->selectField("selectionStatus");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * The value of the option.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

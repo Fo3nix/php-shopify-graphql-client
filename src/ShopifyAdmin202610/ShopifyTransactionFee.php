@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 use Carbon\Carbon;
 
-class ShopifyTransactionFee
+/**
+ * Transaction fee related to an order transaction.
+ */
+class ShopifyTransactionFee implements ShopifyNode
 {
     protected $amount;
     protected $createdAt;
@@ -19,81 +22,99 @@ class ShopifyTransactionFee
 
     
     /**
+     * Amount of the fee.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The date and time when the transaction fee was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Flat rate charge for a transaction.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFlatFee()
+    public function getFlatFee(): ?ShopifyMoneyV2
     {
         return $this->flatFee;
     }
 
     
     /**
+     * Name of the credit card flat fee.
+     *
      * @return string
      */
-    public function getFlatFeeName()
+    public function getFlatFeeName(): ?string
     {
         return $this->flatFeeName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Percentage charge.
+     *
      * @return string
      */
-    public function getRate()
+    public function getRate(): mixed
     {
         return $this->rate;
     }
 
     
     /**
+     * Name of the credit card rate.
+     *
      * @return string
      */
-    public function getRateName()
+    public function getRateName(): ?string
     {
         return $this->rateName;
     }
 
     
     /**
+     * Tax amount charged on the fee.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTaxAmount()
+    public function getTaxAmount(): ?ShopifyMoneyV2
     {
         return $this->taxAmount;
     }
 
     
     /**
+     * Name of the type of fee.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The international duties relevant to a fulfillment order.
+ */
 class ShopifyFulfillmentOrderInternationalDuties
 {
     protected $incoterm;
 
     
     /**
+     * The method of duties payment. Example values: `DDP`, `DAP`.
+     *
      * @return string
      */
-    public function getIncoterm()
+    public function getIncoterm(): ?string
     {
         return $this->incoterm;
     }

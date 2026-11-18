@@ -3,28 +3,42 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\ArgumentsObject;
+use GraphQL\RawObject;
 
 class ShopifyDeliveryCarrierServiceAvailableServicesForCountriesArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["restOfWorld"];
+
     protected $origins;
     protected $countryCodes;
     protected $restOfWorld;
 
-    public function setOrigins(array $origins)
+    /**
+     * The locations of the possible origins.
+     */
+    public function setOrigins(array $origins): static
     {
         $this->origins = $origins;
 
         return $this;
     }
 
-    public function setCountryCodes(array $countryCodes)
+    /**
+     * The country codes of the destinations.
+     */
+    public function setCountryCodes(array $countryCodes): static
     {
-        $this->countryCodes = $countryCodes;
+        $this->countryCodes = array_map(function ($value) {
+            return new RawObject($value);
+        }, $countryCodes);
 
         return $this;
     }
 
-    public function setRestOfWorld($restOfWorld)
+    /**
+     * Whether to use 'Rest of World' as the destination.
+     */
+    public function setRestOfWorld($restOfWorld): static
     {
         $this->restOfWorld = $restOfWorld;
 

@@ -6,7 +6,22 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMenuItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTranslation;
 
-class ShopifyMenu
+/**
+ * Navigation menus that organize links into logical structures to guide customers through a store. Menus serve as the backbone of store navigation, making it easy for customers to find products, pages, and other content through organized hierarchical links.
+ *
+ * For example, a merchant might create a main navigation menu with top-level categories like "Products," "About Us," and "Contact," where each category can contain nested menu items linking to specific collections, pages, or external resources.
+ *
+ * Use the `Menu` object to:
+ * - Build and customize store navigation structures
+ * - Organize hierarchical menu systems with nested items
+ * - Work with default menus that can't be deleted
+ * - Access menu items for building navigation
+ *
+ * Menus can be designated as default navigation elements (like main menu or footer), which can't be deleted and have restricted handle updates. The handle provides a unique identifier that themes can reference, while the items collection enables nested navigation structures.
+ *
+ * Each menu contains menu items that can link to various resource types. This flexibility lets merchants create navigation experiences that guide customers through their store.
+ */
+class ShopifyMenu implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $createdAt;
     protected $handle;
@@ -18,63 +33,77 @@ class ShopifyMenu
 
     
     /**
+     * The date and time when the menu was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The menu's handle.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the menu is a default. The handle for default menus can't be updated and default menus can't be deleted.
+     *
      * @return bool
      */
-    public function getIsDefault()
+    public function getIsDefault(): ?bool
     {
         return $this->isDefault;
     }
 
     
     /**
+     * A list of items on the menu sorted by position.
+     *
      * @return ShopifyMenuItem[]
      */
-    public function getItems()
+    public function getItems(): ?array
     {
         return $this->items;
     }
 
     
     /**
+     * The menu's title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }

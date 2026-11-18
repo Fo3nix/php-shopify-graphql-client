@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Translatable content of a resource's field.
+ */
 class ShopifyTranslatableContent
 {
     protected $digest;
@@ -12,45 +15,55 @@ class ShopifyTranslatableContent
 
     
     /**
+     * Hash digest representation of the content value.
+     *
      * @return string
      */
-    public function getDigest()
+    public function getDigest(): ?string
     {
         return $this->digest;
     }
 
     
     /**
+     * The resource field that's being translated.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * Locale of the content.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
-     * @return ShopifyLocalizableContentTypeEnumObject
+     * Type of the translatable content.
+     *
+     * @return string A ShopifyLocalizableContentTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * Content value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

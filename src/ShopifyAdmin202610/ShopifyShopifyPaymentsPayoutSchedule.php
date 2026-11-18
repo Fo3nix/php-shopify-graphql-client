@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The payment schedule for a payments account.
+ */
 class ShopifyShopifyPaymentsPayoutSchedule
 {
     protected $interval;
@@ -10,27 +13,40 @@ class ShopifyShopifyPaymentsPayoutSchedule
 
     
     /**
-     * @return ShopifyShopifyPaymentsPayoutIntervalEnumObject
+     * The interval at which payouts are sent to the connected bank account.
+     *
+     * @return string A ShopifyShopifyPaymentsPayoutIntervalEnumObject value
      */
-    public function getInterval()
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
 
     
     /**
+     * The day of the month funds will be paid out.
+     *
+     * The value can be any day of the month from the 1st to the 31st.
+     * If the payment interval is set to monthly, this value will be used.
+     * Payouts scheduled between 29-31st of the month are sent on the last day of shorter months.
+     *
      * @return int
      */
-    public function getMonthlyAnchor()
+    public function getMonthlyAnchor(): ?int
     {
         return $this->monthlyAnchor;
     }
 
     
     /**
-     * @return ShopifyDayOfTheWeekEnumObject
+     * The day of the week funds will be paid out.
+     *
+     * The value can be any weekday from Monday to Friday.
+     * If the payment interval is set to weekly, this value will be used.
+     *
+     * @return string A ShopifyDayOfTheWeekEnumObject value
      */
-    public function getWeeklyAnchor()
+    public function getWeeklyAnchor(): ?string
     {
         return $this->weeklyAnchor;
     }

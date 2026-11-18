@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShippingConfiguration;
 
+/**
+ * Delivery configurations for a market. Container type for shipping configuration.
+ */
 class ShopifyMarketDeliveryConfigurations
 {
     protected $shipping;
 
     
     /**
+     * The shipping configuration for this market. Null means the market inherits shipping from its parent.
+     *
      * @return ShopifyShippingConfiguration
      */
-    public function getShipping()
+    public function getShipping(): ?ShopifyShippingConfiguration
     {
         return $this->shipping;
     }

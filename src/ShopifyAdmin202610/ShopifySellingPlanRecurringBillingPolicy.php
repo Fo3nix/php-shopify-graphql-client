@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySellingPlanAnchor;
 use Carbon\Carbon;
 
+/**
+ * Represents a recurring selling plan billing policy.
+ */
 class ShopifySellingPlanRecurringBillingPolicy
 {
     protected $anchors;
@@ -16,54 +19,66 @@ class ShopifySellingPlanRecurringBillingPolicy
 
     
     /**
+     * Specific anchor dates upon which the billing interval calculations should be made.
+     *
      * @return ShopifySellingPlanAnchor[]
      */
-    public function getAnchors()
+    public function getAnchors(): ?array
     {
         return $this->anchors;
     }
 
     
     /**
+     * The date and time when the selling plan billing policy was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifySellingPlanIntervalEnumObject
+     * The billing frequency, it can be either: day, week, month or year.
+     *
+     * @return string A ShopifySellingPlanIntervalEnumObject value
      */
-    public function getInterval()
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
 
     
     /**
+     * The number of intervals between billings.
+     *
      * @return int
      */
-    public function getIntervalCount()
+    public function getIntervalCount(): ?int
     {
         return $this->intervalCount;
     }
 
     
     /**
+     * Maximum number of billing iterations.
+     *
      * @return int
      */
-    public function getMaxCycles()
+    public function getMaxCycles(): ?int
     {
         return $this->maxCycles;
     }
 
     
     /**
+     * Minimum number of billing iterations.
+     *
      * @return int
      */
-    public function getMinCycles()
+    public function getMinCycles(): ?int
     {
         return $this->minCycles;
     }

@@ -16,56 +16,91 @@ class ShopifyRootMarketsArgumentsObject extends ArgumentsObject
     protected $sortKey;
     protected $query;
 
-    public function setType($shopifyMarketType)
+    /**
+     * Filters markets by type.
+     */
+    public function setType($shopifyMarketType): static
     {
         $this->type = new RawObject($shopifyMarketType);
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 
         return $this;
     }
 
-    public function setSortKey($shopifyMarketsSortKeys)
+    /**
+     * Sort the underlying list using a key. If your query is slow or returns an error, then [try specifying a sort key that matches the field used in the search](https://shopify.dev/api/usage/pagination-graphql#search-performance-considerations).
+     */
+    public function setSortKey($shopifyMarketsSortKeys): static
     {
         $this->sortKey = new RawObject($shopifyMarketsSortKeys);
 
         return $this;
     }
 
-    public function setQuery($query)
+    /**
+     * A filter made up of terms, connectives, modifiers, and comparators.
+     * | name | type | description | acceptable_values | default_value | example_use |
+     * | ---- | ---- | ---- | ---- | ---- | ---- |
+     * | default | string | Filter by a case-insensitive search of multiple fields in a document. | | | - `query=Bob Norman`<br/> - `query=title:green hoodie` |
+     * | created_at | time | Filter by creation date and time. | | | - `created_at:>'2020-10-21T23:39:20Z'`<br/> - `created_at:<now`<br/> - `created_at:<='2024'` |
+     * | id | id | Filter by `id` range. | | | - `id:1234`<br/> - `id:>=1234`<br/> - `id:<=1234` |
+     * | market_condition_types | string | A comma-separated list of condition types. |
+     * | market_type | string |
+     * | name | string |
+     * | status | string | | - `ACTIVE`<br/> - `DRAFT` |
+     * | wildcard_company_location_with_country_code | string |
+     * You can apply one or more filters to a query. Learn more about [Shopify API search syntax](https://shopify.dev/api/usage/search-syntax).
+     */
+    public function setQuery($query): static
     {
         $this->query = $query;
 

@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootPointOfSaleDevicePaymentSessionArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["id"];
+
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the point of sale device payment session.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

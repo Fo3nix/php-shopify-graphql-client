@@ -10,7 +10,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaWarning;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyModel3dSource;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaPreviewImage;
 
-class ShopifyModel3d
+/**
+ * Represents a Shopify hosted 3D model.
+ */
+class ShopifyModel3d implements ShopifyFile, ShopifyMedia, ShopifyNode
 {
     protected $alt;
     protected $boundingBox;
@@ -30,135 +33,165 @@ class ShopifyModel3d
 
     
     /**
+     * A word or phrase to describe the contents or the function of a file.
+     *
      * @return string
      */
-    public function getAlt()
+    public function getAlt(): ?string
     {
         return $this->alt;
     }
 
     
     /**
+     * The 3d model's bounding box information.
+     *
      * @return ShopifyModel3dBoundingBox
      */
-    public function getBoundingBox()
+    public function getBoundingBox(): ?ShopifyModel3dBoundingBox
     {
         return $this->boundingBox;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Any errors that have occurred on the file.
+     *
      * @return ShopifyFileError[]
      */
-    public function getFileErrors()
+    public function getFileErrors(): ?array
     {
         return $this->fileErrors;
     }
 
     
     /**
-     * @return ShopifyFileStatusEnumObject
+     * The status of the file.
+     *
+     * @return string A ShopifyFileStatusEnumObject value
      */
-    public function getFileStatus()
+    public function getFileStatus(): ?string
     {
         return $this->fileStatus;
     }
 
     
     /**
+     * The 3d model's filename.
+     *
      * @return string
      */
-    public function getFilename()
+    public function getFilename(): ?string
     {
         return $this->filename;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyMediaContentTypeEnumObject
+     * The media content type.
+     *
+     * @return string A ShopifyMediaContentTypeEnumObject value
      */
-    public function getMediaContentType()
+    public function getMediaContentType(): ?string
     {
         return $this->mediaContentType;
     }
 
     
     /**
+     * Any errors which have occurred on the media.
+     *
      * @return ShopifyMediaError[]
      */
-    public function getMediaErrors()
+    public function getMediaErrors(): ?array
     {
         return $this->mediaErrors;
     }
 
     
     /**
+     * The warnings attached to the media.
+     *
      * @return ShopifyMediaWarning[]
      */
-    public function getMediaWarnings()
+    public function getMediaWarnings(): ?array
     {
         return $this->mediaWarnings;
     }
 
     
     /**
+     * The 3d model's original source.
+     *
      * @return ShopifyModel3dSource
      */
-    public function getOriginalSource()
+    public function getOriginalSource(): ?ShopifyModel3dSource
     {
         return $this->originalSource;
     }
 
     
     /**
+     * The preview image for the media.
+     *
      * @return ShopifyMediaPreviewImage
      */
-    public function getPreview()
+    public function getPreview(): ?ShopifyMediaPreviewImage
     {
         return $this->preview;
     }
 
     
     /**
+     * The 3d model's sources.
+     *
      * @return ShopifyModel3dSource[]
      */
-    public function getSources()
+    public function getSources(): ?array
     {
         return $this->sources;
     }
 
     
     /**
-     * @return ShopifyMediaStatusEnumObject
+     * Current status of the media.
+     *
+     * @return string A ShopifyMediaStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

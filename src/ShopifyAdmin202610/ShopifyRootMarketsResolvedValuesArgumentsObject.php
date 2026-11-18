@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootMarketsResolvedValuesArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["buyerSignal"];
+
     protected $buyerSignal;
 
-    public function setBuyerSignal(ShopifyBuyerSignalInputInputObject $shopifyBuyerSignalInputInputObject)
+    /**
+     * The buyer signal.
+     */
+    public function setBuyerSignal(ShopifyBuyerSignalInputInputObject $shopifyBuyerSignalInputInputObject): static
     {
         $this->buyerSignal = $shopifyBuyerSignalInputInputObject;
 

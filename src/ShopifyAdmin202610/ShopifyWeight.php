@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A weight measurement with its numeric value and unit. Used throughout the API, for example in shipping calculations, delivery conditions, order line items, and inventory measurements.
+ *
+ * The weight combines a decimal value with a standard unit of measurement to ensure consistent weight handling across different regional systems.
+ */
 class ShopifyWeight
 {
     protected $unit;
@@ -9,18 +14,22 @@ class ShopifyWeight
 
     
     /**
-     * @return ShopifyWeightUnitEnumObject
+     * The unit of measurement for `value`.
+     *
+     * @return string A ShopifyWeightUnitEnumObject value
      */
-    public function getUnit()
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
 
     
     /**
+     * The weight value using the unit system specified with `unit`.
+     *
      * @return float
      */
-    public function getValue()
+    public function getValue(): ?float
     {
         return $this->value;
     }

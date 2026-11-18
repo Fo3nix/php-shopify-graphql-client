@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaImage;
 
+/**
+ * A swatch associated with a product option value.
+ */
 class ShopifyProductOptionValueSwatch
 {
     protected $color;
@@ -11,18 +14,22 @@ class ShopifyProductOptionValueSwatch
 
     
     /**
+     * The color representation of the swatch.
+     *
      * @return string
      */
-    public function getColor()
+    public function getColor(): mixed
     {
         return $this->color;
     }
 
     
     /**
+     * An image representation of the swatch.
+     *
      * @return ShopifyMediaImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyMediaImage
     {
         return $this->image;
     }

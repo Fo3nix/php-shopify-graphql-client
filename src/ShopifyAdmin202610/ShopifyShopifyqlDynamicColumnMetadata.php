@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Describes how a dynamically generated column relates to the query.
+ */
 class ShopifyShopifyqlDynamicColumnMetadata
 {
     protected $aggregatedBy;
@@ -11,36 +14,44 @@ class ShopifyShopifyqlDynamicColumnMetadata
 
     
     /**
+     * The names of the dimension columns this column is aggregated (grouped) by.
+     *
      * @return string[]
      */
-    public function getAggregatedBy()
+    public function getAggregatedBy(): ?array
     {
         return $this->aggregatedBy;
     }
 
     
     /**
+     * What the column is compared against. For benchmark columns, the percentile (e.g. `p50`); for comparison columns, the comparison period or date offset. Interpret based on `type`.
+     *
      * @return string
      */
-    public function getComparisonReference()
+    public function getComparisonReference(): ?string
     {
         return $this->comparisonReference;
     }
 
     
     /**
+     * The query column this dynamic column was derived from (e.g. `total_sales`).
+     *
      * @return string
      */
-    public function getOriginalColumnName()
+    public function getOriginalColumnName(): ?string
     {
         return $this->originalColumnName;
     }
 
     
     /**
-     * @return ShopifyShopifyqlDynamicColumnTypeEnumObject
+     * The kind of dynamic column.
+     *
+     * @return string A ShopifyShopifyqlDynamicColumnTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

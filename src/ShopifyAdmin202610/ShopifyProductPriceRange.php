@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * The price range of the product.
+ */
 class ShopifyProductPriceRange
 {
     protected $maxVariantPrice;
@@ -11,18 +14,22 @@ class ShopifyProductPriceRange
 
     
     /**
+     * The highest variant's price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMaxVariantPrice()
+    public function getMaxVariantPrice(): ?ShopifyMoneyV2
     {
         return $this->maxVariantPrice;
     }
 
     
     /**
+     * The lowest variant's price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMinVariantPrice()
+    public function getMinVariantPrice(): ?ShopifyMoneyV2
     {
         return $this->minVariantPrice;
     }

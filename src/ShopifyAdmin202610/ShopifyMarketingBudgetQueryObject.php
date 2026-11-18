@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * This type combines budget amount and its marketing budget type.
+ */
 class ShopifyMarketingBudgetQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketingBudget";
 
-    public function selectBudgetType()
+    /**
+     * The budget type for a marketing activity.
+     */
+    public function selectBudgetType(): static
     {
         $this->selectField("budgetType");
 
         return $this;
     }
 
-    public function selectTotal(ShopifyMarketingBudgetTotalArgumentsObject $argsObject = null)
+    /**
+     * The amount of budget for marketing activity.
+     */
+    public function selectTotal(?ShopifyMarketingBudgetTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("total");
         if ($argsObject !== null) {

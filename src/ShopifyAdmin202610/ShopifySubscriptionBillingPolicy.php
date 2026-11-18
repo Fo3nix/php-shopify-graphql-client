@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySellingPlanAnchor;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionContractCalculationCadence;
 
+/**
+ * Represents a Subscription Billing Policy.
+ */
 class ShopifySubscriptionBillingPolicy
 {
     protected $anchors;
@@ -16,54 +19,66 @@ class ShopifySubscriptionBillingPolicy
 
     
     /**
+     * Specific anchor dates upon which the billing interval calculations should be made.
+     *
      * @return ShopifySellingPlanAnchor[]
      */
-    public function getAnchors()
+    public function getAnchors(): ?array
     {
         return $this->anchors;
     }
 
     
     /**
+     * The billing cadence associated with the subscription contract.
+     *
      * @return ShopifySubscriptionContractCalculationCadence
      */
-    public function getCadence()
+    public function getCadence(): ?ShopifySubscriptionContractCalculationCadence
     {
         return $this->cadence;
     }
 
     
     /**
-     * @return ShopifySellingPlanIntervalEnumObject
+     * The kind of interval that's associated with this schedule (e.g. Monthly, Weekly, etc).
+     *
+     * @return string A ShopifySellingPlanIntervalEnumObject value
      */
-    public function getInterval()
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
 
     
     /**
+     * The number of billing intervals between invoices.
+     *
      * @return int
      */
-    public function getIntervalCount()
+    public function getIntervalCount(): ?int
     {
         return $this->intervalCount;
     }
 
     
     /**
+     * Maximum amount of cycles after which the subscription ends.
+     *
      * @return int
      */
-    public function getMaxCycles()
+    public function getMaxCycles(): ?int
     {
         return $this->maxCycles;
     }
 
     
     /**
+     * Minimum amount of cycles required in the subscription.
+     *
      * @return int
      */
-    public function getMinCycles()
+    public function getMinCycles(): ?int
     {
         return $this->minCycles;
     }

@@ -8,7 +8,10 @@ class ShopifyTranslatableResourceTranslatableContentArgumentsObject extends Argu
 {
     protected $marketId;
 
-    public function setMarketId($marketId)
+    /**
+     * Filters translatable content by market ID. Use this argument to retrieve translatable content specific to a market.
+     */
+    public function setMarketId($marketId): static
     {
         $this->marketId = $marketId;
 

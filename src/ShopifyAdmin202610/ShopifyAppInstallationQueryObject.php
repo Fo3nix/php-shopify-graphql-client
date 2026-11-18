@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An app installed on a shop. Each installation tracks the permissions granted to the app through [`AccessScope`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AccessScope) objects, along with billing subscriptions and [`Metafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield) objects.
+ *
+ * The installation provides metafields that only the owning [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) can access. These metafields store app-specific configuration that merchants and other apps can't modify. The installation also provides URLs for launching and uninstalling the app, along with any active [`AppSubscription`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppSubscription) objects or [`AppPurchaseOneTime`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppPurchaseOneTime) purchases.
+ */
 class ShopifyAppInstallationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AppInstallation";
 
-    public function selectAccessScopes(ShopifyAppInstallationAccessScopesArgumentsObject $argsObject = null)
+    /**
+     * The access scopes granted to the application by a merchant during installation.
+     */
+    public function selectAccessScopes(?ShopifyAppInstallationAccessScopesArgumentsObject $argsObject = null): ShopifyAccessScopeQueryObject
     {
         $object = new ShopifyAccessScopeQueryObject("accessScopes");
         if ($argsObject !== null) {
@@ -19,7 +27,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectActiveSubscriptions(ShopifyAppInstallationActiveSubscriptionsArgumentsObject $argsObject = null)
+    /**
+     * The active application subscriptions billed to the shop on a recurring basis.
+     */
+    public function selectActiveSubscriptions(?ShopifyAppInstallationActiveSubscriptionsArgumentsObject $argsObject = null): ShopifyAppSubscriptionQueryObject
     {
         $object = new ShopifyAppSubscriptionQueryObject("activeSubscriptions");
         if ($argsObject !== null) {
@@ -30,7 +41,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAllSubscriptions(ShopifyAppInstallationAllSubscriptionsArgumentsObject $argsObject = null)
+    /**
+     * All subscriptions created for a shop.
+     */
+    public function selectAllSubscriptions(?ShopifyAppInstallationAllSubscriptionsArgumentsObject $argsObject = null): ShopifyAppSubscriptionConnectionQueryObject
     {
         $object = new ShopifyAppSubscriptionConnectionQueryObject("allSubscriptions");
         if ($argsObject !== null) {
@@ -41,7 +55,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectApp(ShopifyAppInstallationAppArgumentsObject $argsObject = null)
+    /**
+     * Application which is installed.
+     */
+    public function selectApp(?ShopifyAppInstallationAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -53,9 +70,11 @@ class ShopifyAppInstallationQueryObject extends QueryObject
     }
 
     /**
+     * Channel associated with the installed application.
+     *
      * @deprecated Use the root-level `channels` query instead.
      */
-    public function selectChannel(ShopifyAppInstallationChannelArgumentsObject $argsObject = null)
+    public function selectChannel(?ShopifyAppInstallationChannelArgumentsObject $argsObject = null): ShopifyChannelQueryObject
     {
         $object = new ShopifyChannelQueryObject("channel");
         if ($argsObject !== null) {
@@ -66,7 +85,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCredits(ShopifyAppInstallationCreditsArgumentsObject $argsObject = null)
+    /**
+     * Credits that can be used towards future app purchases.
+     */
+    public function selectCredits(?ShopifyAppInstallationCreditsArgumentsObject $argsObject = null): ShopifyAppCreditConnectionQueryObject
     {
         $object = new ShopifyAppCreditConnectionQueryObject("credits");
         if ($argsObject !== null) {
@@ -77,32 +99,45 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLaunchUrl()
+    /**
+     * The URL to launch the application.
+     */
+    public function selectLaunchUrl(): static
     {
         $this->selectField("launchUrl");
 
         return $this;
     }
 
-    public function selectMetafield(ShopifyAppInstallationMetafieldArgumentsObject $argsObject = null)
+    /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    public function selectMetafield(ShopifyAppInstallationMetafieldArgumentsObject $argsObject): ShopifyMetafieldQueryObject
     {
         $object = new ShopifyMetafieldQueryObject("metafield");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectMetafields(ShopifyAppInstallationMetafieldsArgumentsObject $argsObject = null)
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    public function selectMetafields(?ShopifyAppInstallationMetafieldsArgumentsObject $argsObject = null): ShopifyMetafieldConnectionQueryObject
     {
         $object = new ShopifyMetafieldConnectionQueryObject("metafields");
         if ($argsObject !== null) {
@@ -113,7 +148,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOneTimePurchases(ShopifyAppInstallationOneTimePurchasesArgumentsObject $argsObject = null)
+    /**
+     * One-time purchases to a shop.
+     */
+    public function selectOneTimePurchases(?ShopifyAppInstallationOneTimePurchasesArgumentsObject $argsObject = null): ShopifyAppPurchaseOneTimeConnectionQueryObject
     {
         $object = new ShopifyAppPurchaseOneTimeConnectionQueryObject("oneTimePurchases");
         if ($argsObject !== null) {
@@ -125,9 +163,11 @@ class ShopifyAppInstallationQueryObject extends QueryObject
     }
 
     /**
+     * The publication associated with the installed application.
+     *
      * @deprecated Use the root-level `publications` query instead.
      */
-    public function selectPublication(ShopifyAppInstallationPublicationArgumentsObject $argsObject = null)
+    public function selectPublication(?ShopifyAppInstallationPublicationArgumentsObject $argsObject = null): ShopifyPublicationQueryObject
     {
         $object = new ShopifyPublicationQueryObject("publication");
         if ($argsObject !== null) {
@@ -138,7 +178,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRevenueAttributionRecords(ShopifyAppInstallationRevenueAttributionRecordsArgumentsObject $argsObject = null)
+    /**
+     * The records that track the externally-captured revenue for the app. The records are used for revenue attribution purposes.
+     */
+    public function selectRevenueAttributionRecords(?ShopifyAppInstallationRevenueAttributionRecordsArgumentsObject $argsObject = null): ShopifyAppRevenueAttributionRecordConnectionQueryObject
     {
         $object = new ShopifyAppRevenueAttributionRecordConnectionQueryObject("revenueAttributionRecords");
         if ($argsObject !== null) {
@@ -150,9 +193,11 @@ class ShopifyAppInstallationQueryObject extends QueryObject
     }
 
     /**
+     * Subscriptions charge to a shop on a recurring basis.
+     *
      * @deprecated Use `activeSubscriptions` instead.
      */
-    public function selectSubscriptions(ShopifyAppInstallationSubscriptionsArgumentsObject $argsObject = null)
+    public function selectSubscriptions(?ShopifyAppInstallationSubscriptionsArgumentsObject $argsObject = null): ShopifyAppSubscriptionQueryObject
     {
         $object = new ShopifyAppSubscriptionQueryObject("subscriptions");
         if ($argsObject !== null) {
@@ -163,7 +208,10 @@ class ShopifyAppInstallationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUninstallUrl()
+    /**
+     * The URL to uninstall the application.
+     */
+    public function selectUninstallUrl(): static
     {
         $this->selectField("uninstallUrl");
 

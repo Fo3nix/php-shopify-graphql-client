@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnableFulfillment;
 
+/**
+ * An auto-generated type which holds one ReturnableFulfillment and a cursor during pagination.
+ */
 class ShopifyReturnableFulfillmentEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyReturnableFulfillmentEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ReturnableFulfillmentEdge.
+     *
      * @return ShopifyReturnableFulfillment
      */
-    public function getNode()
+    public function getNode(): ?ShopifyReturnableFulfillment
     {
         return $this->node;
     }

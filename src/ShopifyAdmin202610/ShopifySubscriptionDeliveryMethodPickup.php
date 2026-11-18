@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionDeliveryMethodPickupOption;
 
+/**
+ * A delivery method with a pickup option.
+ */
 class ShopifySubscriptionDeliveryMethodPickup
 {
     protected $pickupOption;
 
     
     /**
+     * The details of the pickup delivery method to use.
+     *
      * @return ShopifySubscriptionDeliveryMethodPickupOption
      */
-    public function getPickupOption()
+    public function getPickupOption(): ?ShopifySubscriptionDeliveryMethodPickupOption
     {
         return $this->pickupOption;
     }

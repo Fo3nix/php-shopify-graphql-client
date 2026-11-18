@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
+/**
+ * The line item being processed for a requested order edit and its calculated monetary values.
+ */
 class ShopifyCalculatedRequestedOrderEditLineItem
 {
     protected $lineItem;
@@ -14,36 +17,44 @@ class ShopifyCalculatedRequestedOrderEditLineItem
 
     
     /**
+     * The line item being processed for a requested order edit.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The quantity being edited.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The subtotal of the edit line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalSet()
+    public function getSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalSet;
     }
 
     
     /**
+     * The total tax of the edit line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }

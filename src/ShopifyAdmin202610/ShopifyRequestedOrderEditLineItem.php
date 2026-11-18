@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLineItem;
 
-class ShopifyRequestedOrderEditLineItem
+/**
+ * A line item included in a buyer-initiated requested order edit.
+ */
+class ShopifyRequestedOrderEditLineItem implements ShopifyNode
 {
     protected $id;
     protected $lineItem;
@@ -13,36 +16,44 @@ class ShopifyRequestedOrderEditLineItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The order line item associated with this requested order edit line item.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The quantity requested for this line item in the requested order edit.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The quantity of the requested line item that has been resolved.
+     *
      * @return int
      */
-    public function getResolvedQuantity()
+    public function getResolvedQuantity(): ?int
     {
         return $this->resolvedQuantity;
     }

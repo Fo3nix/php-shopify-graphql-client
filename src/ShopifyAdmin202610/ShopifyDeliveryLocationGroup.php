@@ -5,7 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocationConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCount;
 
-class ShopifyDeliveryLocationGroup
+/**
+ * A location group is a collection of locations. They share zones and delivery methods across delivery
+ * profiles.
+ */
+class ShopifyDeliveryLocationGroup implements ShopifyNode
 {
     protected $id;
     protected $locations;
@@ -13,27 +17,33 @@ class ShopifyDeliveryLocationGroup
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A list of all locations that are part of this location group.
+     *
      * @return ShopifyLocationConnection
      */
-    public function getLocations()
+    public function getLocations(): ?ShopifyLocationConnection
     {
         return $this->locations;
     }
 
     
     /**
+     * A count of all locations that are part of this location group.
+     *
      * @return ShopifyCount
      */
-    public function getLocationsCount()
+    public function getLocationsCount(): ?ShopifyCount
     {
         return $this->locationsCount;
     }

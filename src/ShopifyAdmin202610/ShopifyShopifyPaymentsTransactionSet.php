@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyPaymentsExtendedAuthorization;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyPaymentsRefundSet;
 
+/**
+ * Presents all Shopify Payments specific information related to an order transaction.
+ */
 class ShopifyShopifyPaymentsTransactionSet
 {
     protected $extendedAuthorizationSet;
@@ -12,18 +15,22 @@ class ShopifyShopifyPaymentsTransactionSet
 
     
     /**
+     * Contains all fields related to an extended authorization.
+     *
      * @return ShopifyShopifyPaymentsExtendedAuthorization
      */
-    public function getExtendedAuthorizationSet()
+    public function getExtendedAuthorizationSet(): ?ShopifyShopifyPaymentsExtendedAuthorization
     {
         return $this->extendedAuthorizationSet;
     }
 
     
     /**
+     * Contains all fields related to a refund.
+     *
      * @return ShopifyShopifyPaymentsRefundSet
      */
-    public function getRefundSet()
+    public function getRefundSet(): ?ShopifyShopifyPaymentsRefundSet
     {
         return $this->refundSet;
     }

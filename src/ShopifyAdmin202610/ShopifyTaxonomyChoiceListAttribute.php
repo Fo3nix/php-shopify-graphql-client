@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxonomyValueConnection;
 
-class ShopifyTaxonomyChoiceListAttribute
+/**
+ * A Shopify product taxonomy choice list attribute.
+ */
+class ShopifyTaxonomyChoiceListAttribute implements ShopifyNode
 {
     protected $id;
     protected $name;
@@ -12,27 +15,33 @@ class ShopifyTaxonomyChoiceListAttribute
 
     
     /**
+     * The unique ID of the TaxonomyAttribute.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the product taxonomy attribute. For example, Color.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A list of values on the choice list attribute.
+     *
      * @return ShopifyTaxonomyValueConnection
      */
-    public function getValues()
+    public function getValues(): ?ShopifyTaxonomyValueConnection
     {
         return $this->values;
     }

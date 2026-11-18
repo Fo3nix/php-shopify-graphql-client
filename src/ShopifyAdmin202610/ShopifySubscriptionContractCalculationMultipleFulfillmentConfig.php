@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionContractCalculationCadence;
 
+/**
+ * The multiple fulfillment configuration of a subscription delivery policy: how many fulfillments occur in each billing cycle, and the cadence between them.
+ */
 class ShopifySubscriptionContractCalculationMultipleFulfillmentConfig
 {
     protected $cadence;
@@ -11,18 +14,22 @@ class ShopifySubscriptionContractCalculationMultipleFulfillmentConfig
 
     
     /**
+     * The cadence for calculating fulfillment dates within each billing cycle.
+     *
      * @return ShopifySubscriptionContractCalculationCadence
      */
-    public function getCadence()
+    public function getCadence(): ?ShopifySubscriptionContractCalculationCadence
     {
         return $this->cadence;
     }
 
     
     /**
+     * The number of fulfillments per billing cycle.
+     *
      * @return int
      */
-    public function getNumberOfFulfillments()
+    public function getNumberOfFulfillments(): ?int
     {
         return $this->numberOfFulfillments;
     }

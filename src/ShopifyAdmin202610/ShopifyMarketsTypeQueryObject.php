@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Markets entitlement information.
+ */
 class ShopifyMarketsTypeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketsType";
 
-    public function selectB2b(ShopifyMarketsTypeB2bArgumentsObject $argsObject = null)
+    /**
+     * The entitlements for B2B markets.
+     */
+    public function selectB2b(?ShopifyMarketsTypeB2bArgumentsObject $argsObject = null): ShopifyMarketsB2BEntitlementQueryObject
     {
         $object = new ShopifyMarketsB2BEntitlementQueryObject("b2b");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMarketsTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRegions(ShopifyMarketsTypeRegionsArgumentsObject $argsObject = null)
+    /**
+     * The entitlements for region markets.
+     */
+    public function selectRegions(?ShopifyMarketsTypeRegionsArgumentsObject $argsObject = null): ShopifyMarketsRegionsEntitlementQueryObject
     {
         $object = new ShopifyMarketsRegionsEntitlementQueryObject("regions");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyMarketsTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRetail(ShopifyMarketsTypeRetailArgumentsObject $argsObject = null)
+    /**
+     * The entitlements for retail markets.
+     */
+    public function selectRetail(?ShopifyMarketsTypeRetailArgumentsObject $argsObject = null): ShopifyMarketsRetailEntitlementQueryObject
     {
         $object = new ShopifyMarketsRetailEntitlementQueryObject("retail");
         if ($argsObject !== null) {
@@ -41,7 +53,10 @@ class ShopifyMarketsTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectThemes(ShopifyMarketsTypeThemesArgumentsObject $argsObject = null)
+    /**
+     * The entitlements for themes.
+     */
+    public function selectThemes(?ShopifyMarketsTypeThemesArgumentsObject $argsObject = null): ShopifyMarketsThemesEntitlementQueryObject
     {
         $object = new ShopifyMarketsThemesEntitlementQueryObject("themes");
         if ($argsObject !== null) {

@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Tracks a [customer](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer)'s incomplete shopping journey, whether they abandoned while browsing [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), adding items to cart, or during checkout. Provides data about the customer's behavior and products they interacted with.
+ *
+ * The abandonment includes fields that indicate whether the customer has completed any [orders](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) or [draft orders](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder) after the abandonment occurred. It also tracks when emails were sent and how long since the customer's last activity across different abandonment types.
+ */
 class ShopifyAbandonmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Abandonment";
 
-    public function selectAbandonedCheckoutPayload(ShopifyAbandonmentAbandonedCheckoutPayloadArgumentsObject $argsObject = null)
+    /**
+     * The abandonment payload for the abandoned checkout.
+     */
+    public function selectAbandonedCheckoutPayload(?ShopifyAbandonmentAbandonedCheckoutPayloadArgumentsObject $argsObject = null): ShopifyAbandonedCheckoutQueryObject
     {
         $object = new ShopifyAbandonedCheckoutQueryObject("abandonedCheckoutPayload");
         if ($argsObject !== null) {
@@ -19,14 +27,20 @@ class ShopifyAbandonmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAbandonmentType()
+    /**
+     * The abandonment type.
+     */
+    public function selectAbandonmentType(): static
     {
         $this->selectField("abandonmentType");
 
         return $this;
     }
 
-    public function selectApp(ShopifyAbandonmentAppArgumentsObject $argsObject = null)
+    /**
+     * The app associated with an abandoned checkout.
+     */
+    public function selectApp(?ShopifyAbandonmentAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -37,21 +51,30 @@ class ShopifyAbandonmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCartUrl()
+    /**
+     * Permalink to the cart page.
+     */
+    public function selectCartUrl(): static
     {
         $this->selectField("cartUrl");
 
         return $this;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the abandonment was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCustomer(ShopifyAbandonmentCustomerArgumentsObject $argsObject = null)
+    /**
+     * The customer who abandoned this event.
+     */
+    public function selectCustomer(?ShopifyAbandonmentCustomerArgumentsObject $argsObject = null): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject("customer");
         if ($argsObject !== null) {
@@ -62,126 +85,180 @@ class ShopifyAbandonmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustomerHasNoDraftOrderSinceAbandonment()
+    /**
+     * Whether the customer has a draft order since this abandonment has been abandoned.
+     */
+    public function selectCustomerHasNoDraftOrderSinceAbandonment(): static
     {
         $this->selectField("customerHasNoDraftOrderSinceAbandonment");
 
         return $this;
     }
 
-    public function selectCustomerHasNoOrderSinceAbandonment()
+    /**
+     * Whether the customer has completed an order since this checkout has been abandoned.
+     */
+    public function selectCustomerHasNoOrderSinceAbandonment(): static
     {
         $this->selectField("customerHasNoOrderSinceAbandonment");
 
         return $this;
     }
 
-    public function selectDaysSinceLastAbandonmentEmail()
+    /**
+     * The number of days since the last abandonment email was sent to the customer.
+     */
+    public function selectDaysSinceLastAbandonmentEmail(): static
     {
         $this->selectField("daysSinceLastAbandonmentEmail");
 
         return $this;
     }
 
-    public function selectEmailSentAt()
+    /**
+     * When the email was sent, if that's the case.
+     */
+    public function selectEmailSentAt(): static
     {
         $this->selectField("emailSentAt");
 
         return $this;
     }
 
-    public function selectEmailState()
+    /**
+     * The email state (e.g., sent or not sent).
+     */
+    public function selectEmailState(): static
     {
         $this->selectField("emailState");
 
         return $this;
     }
 
-    public function selectHoursSinceLastAbandonedCheckout()
+    /**
+     * The number of hours since the customer has last abandoned a checkout.
+     */
+    public function selectHoursSinceLastAbandonedCheckout(): static
     {
         $this->selectField("hoursSinceLastAbandonedCheckout");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInventoryAvailable()
+    /**
+     * Whether the products in abandonment are available.
+     */
+    public function selectInventoryAvailable(): static
     {
         $this->selectField("inventoryAvailable");
 
         return $this;
     }
 
-    public function selectIsFromCustomStorefront()
+    /**
+     * Whether the abandonment event comes from a custom storefront channel.
+     */
+    public function selectIsFromCustomStorefront(): static
     {
         $this->selectField("isFromCustomStorefront");
 
         return $this;
     }
 
-    public function selectIsFromOnlineStore()
+    /**
+     * Whether the abandonment event comes from the Online Store sales channel.
+     */
+    public function selectIsFromOnlineStore(): static
     {
         $this->selectField("isFromOnlineStore");
 
         return $this;
     }
 
-    public function selectIsFromShopApp()
+    /**
+     * Whether the abandonment event comes from the Shop app sales channel.
+     */
+    public function selectIsFromShopApp(): static
     {
         $this->selectField("isFromShopApp");
 
         return $this;
     }
 
-    public function selectIsFromShopPay()
+    /**
+     * Whether the abandonment event comes from Shop Pay.
+     */
+    public function selectIsFromShopPay(): static
     {
         $this->selectField("isFromShopPay");
 
         return $this;
     }
 
-    public function selectIsMostSignificantAbandonment()
+    /**
+     * Whether the customer didn't complete another most significant step since this abandonment.
+     */
+    public function selectIsMostSignificantAbandonment(): static
     {
         $this->selectField("isMostSignificantAbandonment");
 
         return $this;
     }
 
-    public function selectLastBrowseAbandonmentDate()
+    /**
+     * The date for the latest browse abandonment.
+     */
+    public function selectLastBrowseAbandonmentDate(): static
     {
         $this->selectField("lastBrowseAbandonmentDate");
 
         return $this;
     }
 
-    public function selectLastCartAbandonmentDate()
+    /**
+     * The date for the latest cart abandonment.
+     */
+    public function selectLastCartAbandonmentDate(): static
     {
         $this->selectField("lastCartAbandonmentDate");
 
         return $this;
     }
 
-    public function selectLastCheckoutAbandonmentDate()
+    /**
+     * The date for the latest checkout abandonment.
+     */
+    public function selectLastCheckoutAbandonmentDate(): static
     {
         $this->selectField("lastCheckoutAbandonmentDate");
 
         return $this;
     }
 
-    public function selectMostRecentStep()
+    /**
+     * The most recent step type.
+     */
+    public function selectMostRecentStep(): static
     {
         $this->selectField("mostRecentStep");
 
         return $this;
     }
 
-    public function selectProductsAddedToCart(ShopifyAbandonmentProductsAddedToCartArgumentsObject $argsObject = null)
+    /**
+     * The products added to the cart during the customer abandoned visit.
+     */
+    public function selectProductsAddedToCart(?ShopifyAbandonmentProductsAddedToCartArgumentsObject $argsObject = null): ShopifyCustomerVisitProductInfoConnectionQueryObject
     {
         $object = new ShopifyCustomerVisitProductInfoConnectionQueryObject("productsAddedToCart");
         if ($argsObject !== null) {
@@ -192,7 +269,10 @@ class ShopifyAbandonmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProductsViewed(ShopifyAbandonmentProductsViewedArgumentsObject $argsObject = null)
+    /**
+     * The products viewed during the customer abandoned visit.
+     */
+    public function selectProductsViewed(?ShopifyAbandonmentProductsViewedArgumentsObject $argsObject = null): ShopifyCustomerVisitProductInfoConnectionQueryObject
     {
         $object = new ShopifyCustomerVisitProductInfoConnectionQueryObject("productsViewed");
         if ($argsObject !== null) {
@@ -203,7 +283,10 @@ class ShopifyAbandonmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectVisitStartedAt()
+    /**
+     * The date and time when the visit started.
+     */
+    public function selectVisitStartedAt(): static
     {
         $this->selectField("visitStartedAt");
 

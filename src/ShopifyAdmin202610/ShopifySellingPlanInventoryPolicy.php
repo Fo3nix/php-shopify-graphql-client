@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The selling plan inventory policy.
+ */
 class ShopifySellingPlanInventoryPolicy
 {
     protected $reserve;
 
     
     /**
-     * @return ShopifySellingPlanReserveEnumObject
+     * When to reserve inventory for the order.
+     *
+     * @return string A ShopifySellingPlanReserveEnumObject value
      */
-    public function getReserve()
+    public function getReserve(): ?string
     {
         return $this->reserve;
     }

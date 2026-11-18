@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a Subscription Delivery Policy.
+ */
 class ShopifySubscriptionDeliveryPolicyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionDeliveryPolicy";
 
-    public function selectAnchors(ShopifySubscriptionDeliveryPolicyAnchorsArgumentsObject $argsObject = null)
+    /**
+     * The specific anchor dates upon which the delivery interval calculations should be made.
+     */
+    public function selectAnchors(?ShopifySubscriptionDeliveryPolicyAnchorsArgumentsObject $argsObject = null): ShopifySellingPlanAnchorQueryObject
     {
         $object = new ShopifySellingPlanAnchorQueryObject("anchors");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifySubscriptionDeliveryPolicyQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectInterval()
+    /**
+     * The kind of interval that's associated with this schedule (e.g. Monthly, Weekly, etc).
+     */
+    public function selectInterval(): static
     {
         $this->selectField("interval");
 
         return $this;
     }
 
-    public function selectIntervalCount()
+    /**
+     * The number of delivery intervals between deliveries.
+     */
+    public function selectIntervalCount(): static
     {
         $this->selectField("intervalCount");
 
         return $this;
     }
 
-    public function selectMultiFulfillment(ShopifySubscriptionDeliveryPolicyMultiFulfillmentArgumentsObject $argsObject = null)
+    /**
+     * The multiple fulfillment configuration when the contract delivers more than once per billing cycle, as derived from the billing and delivery cadences. Null when each billing cycle has a single fulfillment.
+     */
+    public function selectMultiFulfillment(?ShopifySubscriptionDeliveryPolicyMultiFulfillmentArgumentsObject $argsObject = null): ShopifySubscriptionContractCalculationMultipleFulfillmentConfigQueryObject
     {
         $object = new ShopifySubscriptionContractCalculationMultipleFulfillmentConfigQueryObject("multiFulfillment");
         if ($argsObject !== null) {

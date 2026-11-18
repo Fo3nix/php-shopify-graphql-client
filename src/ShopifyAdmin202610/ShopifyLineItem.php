@@ -19,7 +19,28 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariant;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyWeight;
 
-class ShopifyLineItem
+/**
+ * The `LineItem` object represents a single product or service that a customer purchased in an
+ * [order](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order).
+ * Each line item is associated with a
+ * [product variant](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+ * and can have multiple [discount allocations](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAllocation).
+ * Line items contain details about what was purchased, including the product variant, quantity, pricing,
+ * and fulfillment status.
+ *
+ * Use the `LineItem` object to manage the following processes:
+ *
+ * - [Track the quantity of items](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/build-fulfillment-solutions) ordered, fulfilled, and unfulfilled.
+ * - [Calculate prices](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders), including discounts and taxes.
+ * - Manage fulfillment through [fulfillment services](https://shopify.dev/docs/apps/build/orders-fulfillment/fulfillment-service-apps).
+ * - Manage [returns](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/build-return-management) and [exchanges](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-exchanges).
+ * - Handle [subscriptions](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) and recurring orders.
+ *
+ * Line items can also include custom attributes and properties, allowing merchants to add specific details
+ * about each item in an order. Learn more about
+ * [managing orders and fulfillment](https://shopify.dev/docs/apps/build/orders-fulfillment).
+ */
+class ShopifyLineItem implements ShopifyNode
 {
     protected $canRestock;
     protected $contract;
@@ -74,450 +95,567 @@ class ShopifyLineItem
 
     
     /**
+     * Whether the line item can be restocked.
+     *
      * @return bool
      */
-    public function getCanRestock()
+    public function getCanRestock(): ?bool
     {
         return $this->canRestock;
     }
 
     
     /**
+     * The subscription contract associated with this line item.
+     *
      * @return ShopifySubscriptionContract
      */
-    public function getContract()
+    public function getContract(): ?ShopifySubscriptionContract
     {
         return $this->contract;
     }
 
     
     /**
+     * The date and time when the line item was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The number of units ordered, excluding refunded and removed units.
+     *
      * @return int
      */
-    public function getCurrentQuantity()
+    public function getCurrentQuantity(): ?int
     {
         return $this->currentQuantity;
     }
 
     
     /**
+     * A list of attributes that represent custom features or special requests.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The discounts that have been allocated to the line item by discount applications, including discounts allocated to refunded and removed quantities.
+     *
      * @return ShopifyDiscountAllocation[]
      */
-    public function getDiscountAllocations()
+    public function getDiscountAllocations(): ?array
     {
         return $this->discountAllocations;
     }
 
     
     /**
+     * The total discounted price of the line item in shop currency, including refunded and removed quantities. This value doesn't include order-level discounts.
+     *
      * @return string
      */
-    public function getDiscountedTotal()
+    public function getDiscountedTotal(): mixed
     {
         return $this->discountedTotal;
     }
 
     
     /**
+     * The total discounted price of the line item in shop and presentment currencies, including refunded and removed quantities. This value doesn't include order-level discounts. Code-based discounts aren't included by default.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalSet()
+    public function getDiscountedTotalSet(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalSet;
     }
 
     
     /**
+     * The approximate unit price of the line item in shop currency. This value includes line-level discounts and discounts applied to refunded and removed quantities. It doesn't include order-level or code-based discounts.
+     *
      * @return string
      */
-    public function getDiscountedUnitPrice()
+    public function getDiscountedUnitPrice(): mixed
     {
         return $this->discountedUnitPrice;
     }
 
     
     /**
+     * The approximate unit price of the line item in shop and presentment currencies. This value includes discounts applied to refunded and removed quantities.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceAfterAllDiscountsSet()
+    public function getDiscountedUnitPriceAfterAllDiscountsSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceAfterAllDiscountsSet;
     }
 
     
     /**
+     * The approximate unit price of the line item in shop and presentment currencies. This value includes line-level discounts and discounts applied to refunded and removed quantities. It doesn't include order-level or code-based discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceSet()
+    public function getDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceSet;
     }
 
     
     /**
+     * The duties associated with the line item.
+     *
      * @return ShopifyDuty[]
      */
-    public function getDuties()
+    public function getDuties(): ?array
     {
         return $this->duties;
     }
 
     
     /**
+     * The total number of units to fulfill.
+     *
      * @return int
      */
-    public function getFulfillableQuantity()
+    public function getFulfillableQuantity(): ?int
     {
         return $this->fulfillableQuantity;
     }
 
     
     /**
+     * The fulfillment service that stocks the product variant belonging to a line item.
+     *
+     * This is a third-party fulfillment service in the following scenarios:
+     *
+     * **Scenario 1**
+     * - The product variant is stocked by a single fulfillment service.
+     * - The [FulfillmentService](/api/admin-graphql/latest/objects/FulfillmentService) is a third-party fulfillment service. Third-party fulfillment services don't have a handle with the value `manual`.
+     *
+     * **Scenario 2**
+     * - Multiple fulfillment services stock the product variant.
+     * - The last time that the line item was unfulfilled, it was awaiting fulfillment by a third-party fulfillment service. Third-party fulfillment services don't have a handle with the value `manual`.
+     *
+     * If none of the above conditions are met, then the fulfillment service has the `manual` handle.
+     *
      * @return ShopifyFulfillmentService
      */
-    public function getFulfillmentService()
+    public function getFulfillmentService(): ?ShopifyFulfillmentService
     {
         return $this->fulfillmentService;
     }
 
     
     /**
+     * The line item's fulfillment status. Returns 'fulfilled' if fulfillableQuantity >= quantity,
+     * 'partial' if  fulfillableQuantity > 0, and 'unfulfilled' otherwise.
+     *
      * @return string
      */
-    public function getFulfillmentStatus()
+    public function getFulfillmentStatus(): ?string
     {
         return $this->fulfillmentStatus;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image associated to the line item's variant.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * Whether the line item represents the purchase of a gift card.
+     *
      * @return bool
      */
-    public function getIsGiftCard()
+    public function getIsGiftCard(): ?bool
     {
         return $this->isGiftCard;
     }
 
     
     /**
+     * The line item group associated to the line item.
+     *
      * @return ShopifyLineItemGroup
      */
-    public function getLineItemGroup()
+    public function getLineItemGroup(): ?ShopifyLineItemGroup
     {
         return $this->lineItemGroup;
     }
 
     
     /**
+     * Whether the line item can be edited or not.
+     *
      * @return bool
      */
-    public function getMerchantEditable()
+    public function getMerchantEditable(): ?bool
     {
         return $this->merchantEditable;
     }
 
     
     /**
+     * The title of the product, optionally appended with the title of the variant (if applicable).
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The total number of units that can't be fulfilled. For example, if items have been refunded, or the item is not something that can be fulfilled, like a tip. Please see the [FulfillmentOrder](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentOrder) object for more fulfillment details.
+     *
      * @return int
      */
-    public function getNonFulfillableQuantity()
+    public function getNonFulfillableQuantity(): ?int
     {
         return $this->nonFulfillableQuantity;
     }
 
     
     /**
+     * In shop currency, the total price of the line item when the order was created.
+     * This value doesn't include discounts.
+     *
      * @return string
      */
-    public function getOriginalTotal()
+    public function getOriginalTotal(): mixed
     {
         return $this->originalTotal;
     }
 
     
     /**
+     * In shop and presentment currencies, the total price of the line item when the order was created.
+     * This value doesn't include discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalTotalSet()
+    public function getOriginalTotalSet(): ?ShopifyMoneyBag
     {
         return $this->originalTotalSet;
     }
 
     
     /**
+     * In shop currency, the unit price of the line item when the order was created. This value doesn't include discounts.
+     *
      * @return string
      */
-    public function getOriginalUnitPrice()
+    public function getOriginalUnitPrice(): mixed
     {
         return $this->originalUnitPrice;
     }
 
     
     /**
+     * In shop and presentment currencies, the unit price of the line item when the order was created. This value doesn't include discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The total price of the line item in shop and presentment currencies,
+     * after all discounts are applied and excluding refunded and removed quantities.
+     * This value doesn't include taxes.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPriceAfterAllDiscountsBeforeTaxesSet()
+    public function getPriceAfterAllDiscountsBeforeTaxesSet(): ?ShopifyMoneyBag
     {
         return $this->priceAfterAllDiscountsBeforeTaxesSet;
     }
 
     
     /**
+     * The Product object associated with this line item's variant.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The number of units ordered, including refunded and removed units.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The number of units ordered, excluding refunded units and removed units.
+     *
      * @return int
      */
-    public function getRefundableQuantity()
+    public function getRefundableQuantity(): ?int
     {
         return $this->refundableQuantity;
     }
 
     
     /**
+     * Whether physical shipping is required for the variant.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * Whether the line item can be restocked.
+     *
      * @return bool
      */
-    public function getRestockable()
+    public function getRestockable(): ?bool
     {
         return $this->restockable;
     }
 
     
     /**
+     * The selling plan details associated with the line item.
+     *
      * @return ShopifyLineItemSellingPlan
      */
-    public function getSellingPlan()
+    public function getSellingPlan(): ?ShopifyLineItemSellingPlan
     {
         return $this->sellingPlan;
     }
 
     
     /**
+     * The variant SKU number.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * Staff attributed to the line item.
+     *
      * @return ShopifyStaffMember
      */
-    public function getStaffMember()
+    public function getStaffMember(): ?ShopifyStaffMember
     {
         return $this->staffMember;
     }
 
     
     /**
+     * Return reasons suggested based on the line item's product category in Shopify's product taxonomy. Use [`returnReasonDefinitions`](https://shopify.dev/docs/api/admin-graphql/latest/queries/returnReasonDefinitions) to access the full library of available reasons.
+     *
      * @return ShopifyReturnReasonDefinitionConnection
      */
-    public function getSuggestedReturnReasonDefinitions()
+    public function getSuggestedReturnReasonDefinitions(): ?ShopifyReturnReasonDefinitionConnection
     {
         return $this->suggestedReturnReasonDefinitions;
     }
 
     
     /**
+     * The taxes charged for the line item, including taxes charged for refunded and removed quantities.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Whether the variant is taxable.
+     *
      * @return bool
      */
-    public function getTaxable()
+    public function getTaxable(): ?bool
     {
         return $this->taxable;
     }
 
     
     /**
+     * The title of the product at time of order creation.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total discount allocated to the line item in shop currency, including the total allocated to refunded and removed quantities. This value doesn't include order-level discounts.
+     *
      * @return string
      */
-    public function getTotalDiscount()
+    public function getTotalDiscount(): mixed
     {
         return $this->totalDiscount;
     }
 
     
     /**
+     * The total discount allocated to the line item in shop and presentment currencies, including the total allocated to refunded and removed quantities. This value doesn't include order-level discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDiscountSet()
+    public function getTotalDiscountSet(): ?ShopifyMoneyBag
     {
         return $this->totalDiscountSet;
     }
 
     
     /**
+     * In shop currency, the total discounted price of the unfulfilled quantity for the line item.
+     *
      * @return string
      */
-    public function getUnfulfilledDiscountedTotal()
+    public function getUnfulfilledDiscountedTotal(): mixed
     {
         return $this->unfulfilledDiscountedTotal;
     }
 
     
     /**
+     * In shop and presentment currencies, the total discounted price of the unfulfilled quantity for the line item.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getUnfulfilledDiscountedTotalSet()
+    public function getUnfulfilledDiscountedTotalSet(): ?ShopifyMoneyBag
     {
         return $this->unfulfilledDiscountedTotalSet;
     }
 
     
     /**
+     * In shop currency, the total price of the unfulfilled quantity for the line item. This value doesn't include discounts.
+     *
      * @return string
      */
-    public function getUnfulfilledOriginalTotal()
+    public function getUnfulfilledOriginalTotal(): mixed
     {
         return $this->unfulfilledOriginalTotal;
     }
 
     
     /**
+     * In shop and presentment currencies, the total price of the unfulfilled quantity for the line item. This value doesn't include discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getUnfulfilledOriginalTotalSet()
+    public function getUnfulfilledOriginalTotalSet(): ?ShopifyMoneyBag
     {
         return $this->unfulfilledOriginalTotalSet;
     }
 
     
     /**
+     * The number of units not yet fulfilled.
+     *
      * @return int
      */
-    public function getUnfulfilledQuantity()
+    public function getUnfulfilledQuantity(): ?int
     {
         return $this->unfulfilledQuantity;
     }
 
     
     /**
+     * The Variant object associated with this line item.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }
 
     
     /**
+     * The title of the variant at time of order creation.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }
 
     
     /**
+     * The name of the vendor who made the variant.
+     *
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }
 
     
     /**
+     * The weight of a line item unit.
+     *
      * @return ShopifyWeight
      */
-    public function getWeight()
+    public function getWeight(): ?ShopifyWeight
     {
         return $this->weight;
     }

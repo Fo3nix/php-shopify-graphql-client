@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * A shipping rate is an additional cost added to the cost of the products that were ordered.
+ */
 class ShopifyDraftOrderShippingRate
 {
     protected $code;
@@ -14,45 +17,55 @@ class ShopifyDraftOrderShippingRate
 
     
     /**
+     * The code of the shipping rate.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Unique identifier for this shipping rate.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * The cost associated with the shipping rate.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The source of the shipping rate.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * The name of the shipping rate.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

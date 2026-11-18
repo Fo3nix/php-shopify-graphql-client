@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An option on the bundle parent product that is consolidated from multiple different components.
+ */
 class ShopifyComponentizedProductsBundleConsolidatedOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ComponentizedProductsBundleConsolidatedOption";
 
-    public function selectName()
+    /**
+     * The name of the consolidated option.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectSelections(ShopifyComponentizedProductsBundleConsolidatedOptionSelectionsArgumentsObject $argsObject = null)
+    /**
+     * The selections of the consolidated option.
+     */
+    public function selectSelections(?ShopifyComponentizedProductsBundleConsolidatedOptionSelectionsArgumentsObject $argsObject = null): ShopifyComponentizedProductsBundleConsolidatedOptionSelectionQueryObject
     {
         $object = new ShopifyComponentizedProductsBundleConsolidatedOptionSelectionQueryObject("selections");
         if ($argsObject !== null) {

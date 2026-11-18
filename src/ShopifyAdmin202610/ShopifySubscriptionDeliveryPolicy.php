@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySellingPlanAnchor;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionContractCalculationMultipleFulfillmentConfig;
 
+/**
+ * Represents a Subscription Delivery Policy.
+ */
 class ShopifySubscriptionDeliveryPolicy
 {
     protected $anchors;
@@ -14,36 +17,44 @@ class ShopifySubscriptionDeliveryPolicy
 
     
     /**
+     * The specific anchor dates upon which the delivery interval calculations should be made.
+     *
      * @return ShopifySellingPlanAnchor[]
      */
-    public function getAnchors()
+    public function getAnchors(): ?array
     {
         return $this->anchors;
     }
 
     
     /**
-     * @return ShopifySellingPlanIntervalEnumObject
+     * The kind of interval that's associated with this schedule (e.g. Monthly, Weekly, etc).
+     *
+     * @return string A ShopifySellingPlanIntervalEnumObject value
      */
-    public function getInterval()
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
 
     
     /**
+     * The number of delivery intervals between deliveries.
+     *
      * @return int
      */
-    public function getIntervalCount()
+    public function getIntervalCount(): ?int
     {
         return $this->intervalCount;
     }
 
     
     /**
+     * The multiple fulfillment configuration when the contract delivers more than once per billing cycle, as derived from the billing and delivery cadences. Null when each billing cycle has a single fulfillment.
+     *
      * @return ShopifySubscriptionContractCalculationMultipleFulfillmentConfig
      */
-    public function getMultiFulfillment()
+    public function getMultiFulfillment(): ?ShopifySubscriptionContractCalculationMultipleFulfillmentConfig
     {
         return $this->multiFulfillment;
     }

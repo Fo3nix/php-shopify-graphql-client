@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyFunction;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldConnection;
 
-class ShopifyFulfillmentConstraintRule
+/**
+ * A fulfillment constraint rule.
+ */
+class ShopifyFulfillmentConstraintRule implements ShopifyHasMetafields, ShopifyNode
 {
     protected $deliveryMethodTypes;
     protected $function;
@@ -16,45 +19,58 @@ class ShopifyFulfillmentConstraintRule
 
     
     /**
-     * @return ShopifyDeliveryMethodTypeEnumObject[]
+     * Delivery method types that the function is associated with.
+     *
+     * @return string[] ShopifyDeliveryMethodTypeEnumObject values
      */
-    public function getDeliveryMethodTypes()
+    public function getDeliveryMethodTypes(): ?array
     {
         return $this->deliveryMethodTypes;
     }
 
     
     /**
+     * The ID for the fulfillment constraint function.
+     *
      * @return ShopifyShopifyFunction
      */
-    public function getFunction()
+    public function getFunction(): ?ShopifyShopifyFunction
     {
         return $this->function;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }

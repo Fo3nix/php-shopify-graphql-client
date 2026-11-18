@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An annotation for a notable event on a shop's analytics timeline.
+ */
 class ShopifyAnalyticsAnnotationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AnalyticsAnnotation";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the annotation was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCreatedByApp(ShopifyAnalyticsAnnotationCreatedByAppArgumentsObject $argsObject = null)
+    /**
+     * The app that created the annotation. Returns `null` if the annotation wasn't created by an app.
+     */
+    public function selectCreatedByApp(?ShopifyAnalyticsAnnotationCreatedByAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("createdByApp");
         if ($argsObject !== null) {
@@ -26,56 +35,80 @@ class ShopifyAnalyticsAnnotationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDescription()
+    /**
+     * A plain-text description that provides additional context about the annotation. The maximum length is 150 characters for app-created annotations.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectEndedAt()
+    /**
+     * The date and time when the annotation ended. Returns `null` if the annotation is open-ended.
+     */
+    public function selectEndedAt(): static
     {
         $this->selectField("endedAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectSource()
+    /**
+     * Identifies who or what created this annotation.
+     */
+    public function selectSource(): static
     {
         $this->selectField("source");
 
         return $this;
     }
 
-    public function selectStartedAt()
+    /**
+     * The date and time when the annotation started.
+     */
+    public function selectStartedAt(): static
     {
         $this->selectField("startedAt");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the annotation. The maximum length is 75 characters for app-created annotations.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * The type of event represented by the annotation. Refer to the list of [supported types](https://shopify.dev/docs/api/shopifyql/latest/syntax/annotate#annotation-categories-and-types).
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the annotation was last updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

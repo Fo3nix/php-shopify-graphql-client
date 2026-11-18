@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A country or region code.
+ */
 class ShopifyConsentPolicyRegion
 {
     protected $countryCode;
@@ -9,18 +12,22 @@ class ShopifyConsentPolicyRegion
 
     
     /**
-     * @return ShopifyPrivacyCountryCodeEnumObject
+     * The `ISO 3166` country code for which the policy applies.
+     *
+     * @return string A ShopifyPrivacyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The `ISO 3166` region code for which the policy applies.
+     *
      * @return string
      */
-    public function getRegionCode()
+    public function getRegionCode(): ?string
     {
         return $this->regionCode;
     }

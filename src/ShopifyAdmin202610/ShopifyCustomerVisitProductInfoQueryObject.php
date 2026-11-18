@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * This type returns the information about the product and product variant from a customer visit.
+ */
 class ShopifyCustomerVisitProductInfoQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerVisitProductInfo";
 
-    public function selectProduct(ShopifyCustomerVisitProductInfoProductArgumentsObject $argsObject = null)
+    /**
+     * The product information. If `null`, then the product was deleted from the store.
+     */
+    public function selectProduct(?ShopifyCustomerVisitProductInfoProductArgumentsObject $argsObject = null): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject("product");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyCustomerVisitProductInfoQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the product that the customer requested.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectVariant(ShopifyCustomerVisitProductInfoVariantArgumentsObject $argsObject = null)
+    /**
+     * The product variant information, if the product variant exists.
+     */
+    public function selectVariant(?ShopifyCustomerVisitProductInfoVariantArgumentsObject $argsObject = null): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject("variant");
         if ($argsObject !== null) {

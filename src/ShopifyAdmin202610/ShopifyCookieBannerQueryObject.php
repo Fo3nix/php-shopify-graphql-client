@@ -4,30 +4,40 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shop's banner settings.
+ */
 class ShopifyCookieBannerQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CookieBanner";
 
-    public function selectAutoManaged()
+    /**
+     * Indicates if the banner is auto managed.
+     */
+    public function selectAutoManaged(): static
     {
         $this->selectField("autoManaged");
 
         return $this;
     }
 
-    public function selectEnabled()
+    /**
+     * Indicates if the banner is enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 
         return $this;
     }
 
-    public function selectTranslations(ShopifyCookieBannerTranslationsArgumentsObject $argsObject = null)
+    /**
+     * The published translations associated with the resource.
+     */
+    public function selectTranslations(ShopifyCookieBannerTranslationsArgumentsObject $argsObject): ShopifyTranslationQueryObject
     {
         $object = new ShopifyTranslationQueryObject("translations");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;

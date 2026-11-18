@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The color customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColorsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingDesignTokenColors";
 
-    public function selectPalette(ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColorsPaletteArgumentsObject $argsObject = null)
+    /**
+     * A set of colors used together on a surface.
+     */
+    public function selectPalette(?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColorsPaletteArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingPaletteQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingPaletteQueryObject("palette");
         if ($argsObject !== null) {

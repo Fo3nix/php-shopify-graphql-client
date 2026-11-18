@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The original source for an image.
+ */
 class ShopifyMediaImageOriginalSource
 {
     protected $fileSize;
@@ -9,18 +12,22 @@ class ShopifyMediaImageOriginalSource
 
     
     /**
+     * The size of the original file in bytes.
+     *
      * @return int
      */
-    public function getFileSize()
+    public function getFileSize(): ?int
     {
         return $this->fileSize;
     }
 
     
     /**
+     * The URL of the original image, valid only for a short period.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

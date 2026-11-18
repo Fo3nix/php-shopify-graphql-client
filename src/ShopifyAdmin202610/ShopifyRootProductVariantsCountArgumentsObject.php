@@ -9,14 +9,24 @@ class ShopifyRootProductVariantsCountArgumentsObject extends ArgumentsObject
     protected $query;
     protected $limit;
 
-    public function setQuery($query)
+    /**
+     * A filter made up of terms, connectives, modifiers, and comparators.
+     * | name | type | description | acceptable_values | default_value | example_use |
+     * | ---- | ---- | ---- | ---- | ---- | ---- |
+     * | created_at | time | Filter by creation date and time. | | | - `created_at:>'2020-10-21T23:39:20Z'`<br/> - `created_at:<now`<br/> - `created_at:<='2024'` |
+     * You can apply one or more filters to a query. Learn more about [Shopify API search syntax](https://shopify.dev/api/usage/search-syntax).
+     */
+    public function setQuery($query): static
     {
         $this->query = $query;
 
         return $this;
     }
 
-    public function setLimit($limit)
+    /**
+     * The upper bound on count value before returning a result. Use `null` to have no limit.
+     */
+    public function setLimit($limit): static
     {
         $this->limit = $limit;
 

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Information about the credit card used for this transaction.
+ */
 class ShopifyTenderTransactionCreditCardDetails
 {
     protected $creditCardCompany;
@@ -9,18 +12,22 @@ class ShopifyTenderTransactionCreditCardDetails
 
     
     /**
+     * The name of the company that issued the customer's credit card. Example: `Visa`.
+     *
      * @return string
      */
-    public function getCreditCardCompany()
+    public function getCreditCardCompany(): ?string
     {
         return $this->creditCardCompany;
     }
 
     
     /**
+     * The customer's credit card number, with all digits except the last 4 redacted. Example: `•••• •••• •••• 1234`
+     *
      * @return string
      */
-    public function getCreditCardNumber()
+    public function getCreditCardNumber(): ?string
     {
         return $this->creditCardNumber;
     }

@@ -8,7 +8,10 @@ class ShopifyRootCompaniesCountArgumentsObject extends ArgumentsObject
 {
     protected $limit;
 
-    public function setLimit($limit)
+    /**
+     * The upper bound on count value before returning a result. Use `null` to have no limit.
+     */
+    public function setLimit($limit): static
     {
         $this->limit = $limit;
 

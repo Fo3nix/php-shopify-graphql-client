@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The multiple fulfillment configuration of a subscription delivery policy: how many fulfillments occur in each billing cycle, and the cadence between them.
+ */
 class ShopifySubscriptionContractCalculationMultipleFulfillmentConfigQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionContractCalculationMultipleFulfillmentConfig";
 
-    public function selectCadence(ShopifySubscriptionContractCalculationMultipleFulfillmentConfigCadenceArgumentsObject $argsObject = null)
+    /**
+     * The cadence for calculating fulfillment dates within each billing cycle.
+     */
+    public function selectCadence(?ShopifySubscriptionContractCalculationMultipleFulfillmentConfigCadenceArgumentsObject $argsObject = null): ShopifySubscriptionContractCalculationCadenceQueryObject
     {
         $object = new ShopifySubscriptionContractCalculationCadenceQueryObject("cadence");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifySubscriptionContractCalculationMultipleFulfillmentConfigQueryObject
         return $object;
     }
 
-    public function selectNumberOfFulfillments()
+    /**
+     * The number of fulfillments per billing cycle.
+     */
+    public function selectNumberOfFulfillments(): static
     {
         $this->selectField("numberOfFulfillments");
 

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketLocalizableContent;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketLocalization;
 
+/**
+ * A resource that has market localizable fields.
+ */
 class ShopifyMarketLocalizableResource
 {
     protected $marketLocalizableContent;
@@ -13,27 +16,33 @@ class ShopifyMarketLocalizableResource
 
     
     /**
+     * The market localizable content.
+     *
      * @return ShopifyMarketLocalizableContent[]
      */
-    public function getMarketLocalizableContent()
+    public function getMarketLocalizableContent(): ?array
     {
         return $this->marketLocalizableContent;
     }
 
     
     /**
+     * Market localizations for the market localizable content.
+     *
      * @return ShopifyMarketLocalization[]
      */
-    public function getMarketLocalizations()
+    public function getMarketLocalizations(): ?array
     {
         return $this->marketLocalizations;
     }
 
     
     /**
+     * The GID of the resource.
+     *
      * @return string
      */
-    public function getResourceId()
+    public function getResourceId(): ?string
     {
         return $this->resourceId;
     }

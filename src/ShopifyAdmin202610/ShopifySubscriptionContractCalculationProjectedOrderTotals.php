@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * Projected order totals for a successfully calculated subscription contract. The figures are derived from the calculation's cost breakdown; taxes are estimated.
+ */
 class ShopifySubscriptionContractCalculationProjectedOrderTotals
 {
     protected $subtotal;
@@ -15,54 +18,66 @@ class ShopifySubscriptionContractCalculationProjectedOrderTotals
 
     
     /**
+     * The merchandise line total after line item discounts and before order-level discounts and delivery. For tax-inclusive carts, this amount includes taxes.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getSubtotal()
+    public function getSubtotal(): ?ShopifyMoneyV2
     {
         return $this->subtotal;
     }
 
     
     /**
+     * The grand total of the projected order.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotal()
+    public function getTotal(): ?ShopifyMoneyV2
     {
         return $this->total;
     }
 
     
     /**
+     * The total delivery cost.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDelivery()
+    public function getTotalDelivery(): ?ShopifyMoneyV2
     {
         return $this->totalDelivery;
     }
 
     
     /**
+     * The total of discounts applied to delivery.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDeliveryDiscounts()
+    public function getTotalDeliveryDiscounts(): ?ShopifyMoneyV2
     {
         return $this->totalDeliveryDiscounts;
     }
 
     
     /**
+     * The total of discounts applied to the merchandise lines.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalMerchandiseDiscounts()
+    public function getTotalMerchandiseDiscounts(): ?ShopifyMoneyV2
     {
         return $this->totalMerchandiseDiscounts;
     }
 
     
     /**
+     * The total estimated tax.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalTax()
+    public function getTotalTax(): ?ShopifyMoneyV2
     {
         return $this->totalTax;
     }

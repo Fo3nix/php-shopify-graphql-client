@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCookieBanner;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDataSaleOptOutPage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPrivacyPolicy;
 
+/**
+ * A shop's privacy settings.
+ */
 class ShopifyPrivacySettings
 {
     protected $banner;
@@ -14,27 +17,33 @@ class ShopifyPrivacySettings
 
     
     /**
+     * Banner customizations for the 'cookie banner'.
+     *
      * @return ShopifyCookieBanner
      */
-    public function getBanner()
+    public function getBanner(): ?ShopifyCookieBanner
     {
         return $this->banner;
     }
 
     
     /**
+     * A shop's data sale opt out page (e.g. CCPA).
+     *
      * @return ShopifyDataSaleOptOutPage
      */
-    public function getDataSaleOptOutPage()
+    public function getDataSaleOptOutPage(): ?ShopifyDataSaleOptOutPage
     {
         return $this->dataSaleOptOutPage;
     }
 
     
     /**
+     * A shop's privacy policy settings.
+     *
      * @return ShopifyPrivacyPolicy
      */
-    public function getPrivacyPolicy()
+    public function getPrivacyPolicy(): ?ShopifyPrivacyPolicy
     {
         return $this->privacyPolicy;
     }

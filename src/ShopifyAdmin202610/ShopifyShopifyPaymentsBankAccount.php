@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyPaymentsPayoutConnection;
 
-class ShopifyShopifyPaymentsBankAccount
+/**
+ * A bank account that can receive payouts.
+ */
+class ShopifyShopifyPaymentsBankAccount implements ShopifyNode
 {
     protected $accountNumberLastDigits;
     protected $bankName;
@@ -18,72 +21,88 @@ class ShopifyShopifyPaymentsBankAccount
 
     
     /**
+     * The last digits of the account number (the rest is redacted).
+     *
      * @return string
      */
-    public function getAccountNumberLastDigits()
+    public function getAccountNumberLastDigits(): ?string
     {
         return $this->accountNumberLastDigits;
     }
 
     
     /**
+     * The name of the bank.
+     *
      * @return string
      */
-    public function getBankName()
+    public function getBankName(): ?string
     {
         return $this->bankName;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The country of the bank.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The date that the bank account was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency of the bank account.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * All current and previous payouts made between the account and the bank account.
+     *
      * @return ShopifyShopifyPaymentsPayoutConnection
      */
-    public function getPayouts()
+    public function getPayouts(): ?ShopifyShopifyPaymentsPayoutConnection
     {
         return $this->payouts;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsBankAccountStatusEnumObject
+     * The status of the bank account.
+     *
+     * @return string A ShopifyShopifyPaymentsBankAccountStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

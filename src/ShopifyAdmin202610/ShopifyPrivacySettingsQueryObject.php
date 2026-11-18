@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shop's privacy settings.
+ */
 class ShopifyPrivacySettingsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PrivacySettings";
 
-    public function selectBanner(ShopifyPrivacySettingsBannerArgumentsObject $argsObject = null)
+    /**
+     * Banner customizations for the 'cookie banner'.
+     */
+    public function selectBanner(?ShopifyPrivacySettingsBannerArgumentsObject $argsObject = null): ShopifyCookieBannerQueryObject
     {
         $object = new ShopifyCookieBannerQueryObject("banner");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyPrivacySettingsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDataSaleOptOutPage(ShopifyPrivacySettingsDataSaleOptOutPageArgumentsObject $argsObject = null)
+    /**
+     * A shop's data sale opt out page (e.g. CCPA).
+     */
+    public function selectDataSaleOptOutPage(?ShopifyPrivacySettingsDataSaleOptOutPageArgumentsObject $argsObject = null): ShopifyDataSaleOptOutPageQueryObject
     {
         $object = new ShopifyDataSaleOptOutPageQueryObject("dataSaleOptOutPage");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyPrivacySettingsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPrivacyPolicy(ShopifyPrivacySettingsPrivacyPolicyArgumentsObject $argsObject = null)
+    /**
+     * A shop's privacy policy settings.
+     */
+    public function selectPrivacyPolicy(?ShopifyPrivacySettingsPrivacyPolicyArgumentsObject $argsObject = null): ShopifyPrivacyPolicyQueryObject
     {
         $object = new ShopifyPrivacyPolicyQueryObject("privacyPolicy");
         if ($argsObject !== null) {

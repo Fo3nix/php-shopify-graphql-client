@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProduct;
 
+/**
+ * Represents a product that has been manually selected for exclusion from a collection.
+ */
 class ShopifyCollectionExclusionProductSelection
 {
     protected $product;
 
     
     /**
+     * The product that's manually excluded from the collection.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }

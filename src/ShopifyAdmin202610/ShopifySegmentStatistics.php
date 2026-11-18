@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySegmentAttributeStatistics;
 
+/**
+ * The statistics of a given segment.
+ */
 class ShopifySegmentStatistics
 {
     protected $attributeStatistics;
 
     
     /**
+     * The statistics of a given attribute.
+     *
      * @return ShopifySegmentAttributeStatistics
      */
-    public function getAttributeStatistics()
+    public function getAttributeStatistics(): ?ShopifySegmentAttributeStatistics
     {
         return $this->attributeStatistics;
     }

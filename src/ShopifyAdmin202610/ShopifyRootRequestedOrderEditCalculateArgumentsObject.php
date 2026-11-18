@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootRequestedOrderEditCalculateArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["input"];
+
     protected $input;
 
-    public function setInput(ShopifyCalculateRequestedOrderEditInputInputObject $shopifyCalculateRequestedOrderEditInputInputObject)
+    /**
+     * The input fields for calculating a requested order edit.
+     */
+    public function setInput(ShopifyCalculateRequestedOrderEditInputInputObject $shopifyCalculateRequestedOrderEditInputInputObject): static
     {
         $this->input = $shopifyCalculateRequestedOrderEditInputInputObject;
 

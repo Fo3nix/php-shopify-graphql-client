@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The WhatsApp marketing consent information for a [customer's phone number](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerPhoneNumber). Implements the [`CustomerMarketingConsent`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/CustomerMarketingConsent) interface. Use the [`customerWhatsAppMarketingConsentUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/customerWhatsAppMarketingConsentUpdate) mutation to update it.
+ */
 class ShopifyCustomerWhatsAppMarketingConsentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerWhatsAppMarketingConsent";
 
-    public function selectCollectedFrom()
+    /**
+     * The [source](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerConsentCollectedFrom) from which the marketing consent was collected.
+     */
+    public function selectCollectedFrom(): static
     {
         $this->selectField("collectedFrom");
 
         return $this;
     }
 
-    public function selectOptInLevel()
+    /**
+     * The [marketing subscription opt-in level](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerMarketingOptInLevel) that was set when the customer's marketing consent was last updated. Follows M3AAWG best practices guidelines.
+     */
+    public function selectOptInLevel(): static
     {
         $this->selectField("optInLevel");
 
         return $this;
     }
 
-    public function selectSourceLocation(ShopifyCustomerWhatsAppMarketingConsentSourceLocationArgumentsObject $argsObject = null)
+    /**
+     * The [location](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) where the customer consented to receive marketing material.
+     */
+    public function selectSourceLocation(?ShopifyCustomerWhatsAppMarketingConsentSourceLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("sourceLocation");
         if ($argsObject !== null) {
@@ -33,14 +45,22 @@ class ShopifyCustomerWhatsAppMarketingConsentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectState()
+    /**
+     * The customer's current [marketing consent state](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerMarketingConsentState) for this channel.
+     */
+    public function selectState(): static
     {
         $this->selectField("state");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the marketing consent was updated.
+     *
+     * No date is provided if the customer has never updated their marketing consent for this channel.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

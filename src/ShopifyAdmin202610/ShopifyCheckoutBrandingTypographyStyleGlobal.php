@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The global typography customizations.
+ */
 class ShopifyCheckoutBrandingTypographyStyleGlobal
 {
     protected $kerning;
@@ -9,18 +12,22 @@ class ShopifyCheckoutBrandingTypographyStyleGlobal
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyKerningEnumObject
+     * The kerning.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyKerningEnumObject value
      */
-    public function getKerning()
+    public function getKerning(): ?string
     {
         return $this->kerning;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingTypographyLetterCaseEnumObject
+     * The letter case.
+     *
+     * @return string A ShopifyCheckoutBrandingTypographyLetterCaseEnumObject value
      */
-    public function getLetterCase()
+    public function getLetterCase(): ?string
     {
         return $this->letterCase;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A subscription contract calculation that is still processing asynchronously.
+ */
 class ShopifySubscriptionContractCalculationPending
 {
     protected $id;
 
     
     /**
+     * The ID of the calculated contract.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

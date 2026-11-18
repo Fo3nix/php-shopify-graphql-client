@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A payment-related error that occurred during a subscription billing attempt.
+ */
 class ShopifySubscriptionBillingAttemptPaymentError
 {
     protected $code;
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptPaymentErrorCodeEnumObject
+     * The error code for the payment failure.
+     *
+     * @return string A ShopifySubscriptionBillingAttemptPaymentErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }

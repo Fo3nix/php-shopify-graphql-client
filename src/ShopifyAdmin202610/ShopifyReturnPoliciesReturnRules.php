@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Return Rules that apply to returns under a return policy profile.
+ */
 class ShopifyReturnPoliciesReturnRules
 {
     protected $canAcceptReturns;
@@ -11,36 +14,44 @@ class ShopifyReturnPoliciesReturnRules
 
     
     /**
+     * Whether the policy accepts returns. When false, the customer can't request returns for items under this policy.
+     *
      * @return bool
      */
-    public function getCanAcceptReturns()
+    public function getCanAcceptReturns(): ?bool
     {
         return $this->canAcceptReturns;
     }
 
     
     /**
+     * The return window is extended to the next business day when it falls on a weekend or holiday.
+     *
      * @return bool
      */
-    public function getExtendWindowToBusinessDay()
+    public function getExtendWindowToBusinessDay(): ?bool
     {
         return $this->extendWindowToBusinessDay;
     }
 
     
     /**
+     * The return window by number of days. Set to -1 to indicate an infinite return window. When `canAcceptReturns` is false, this value is ignored as returns aren't accepted.
+     *
      * @return int
      */
-    public function getReturnWindowDays()
+    public function getReturnWindowDays(): ?int
     {
         return $this->returnWindowDays;
     }
 
     
     /**
-     * @return ShopifyReturnPoliciesReturnWindowStartingFromEnumObject
+     * The starting point for calculating the return window.
+     *
+     * @return string A ShopifyReturnPoliciesReturnWindowStartingFromEnumObject value
      */
-    public function getReturnWindowStartingFrom()
+    public function getReturnWindowStartingFrom(): ?string
     {
         return $this->returnWindowStartingFrom;
     }

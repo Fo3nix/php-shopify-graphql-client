@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The market localizable content of a resource's field.
+ */
 class ShopifyMarketLocalizableContent
 {
     protected $digest;
@@ -10,27 +13,33 @@ class ShopifyMarketLocalizableContent
 
     
     /**
+     * The hash digest representation of the content value.
+     *
      * @return string
      */
-    public function getDigest()
+    public function getDigest(): ?string
     {
         return $this->digest;
     }
 
     
     /**
+     * The resource field that's being localized.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The content value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

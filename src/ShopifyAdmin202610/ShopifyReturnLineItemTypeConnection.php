@@ -3,8 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnLineItemTypeEdge;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnLineItemTypeHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnLineItemType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple ReturnLineItemTypes.
+ */
 class ShopifyReturnLineItemTypeConnection
 {
     protected $edges;
@@ -13,27 +18,33 @@ class ShopifyReturnLineItemTypeConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyReturnLineItemTypeEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
-     * @return mixed[]
+     * A list of nodes that are contained in ReturnLineItemTypeEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
+     * @return ShopifyReturnLineItemType[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }
@@ -49,7 +60,7 @@ class ShopifyReturnLineItemTypeConnection
                 $instance->edges = array_map(function($item) { return ShopifyReturnLineItemTypeEdge::fromArray($item); }, $data['edges']);
             }
             if (isset($data['nodes']) && $data['nodes'] !== null) {
-                $instance->nodes = $data['nodes'];
+                $instance->nodes = array_map(function($item) { return ShopifyReturnLineItemTypeHydrator::fromArray($item); }, $data['nodes']);
             }
             if (isset($data['pageInfo']) && $data['pageInfo'] !== null) {
                 $instance->pageInfo = ShopifyPageInfo::fromArray($data['pageInfo']);
@@ -81,7 +92,7 @@ class ShopifyReturnLineItemTypeConnection
                 $data['edges'] = array_map(function($item) { return $item->asArray(); }, $this->edges);
             }
             if ($this->nodes !== null) {
-                $data['nodes'] = $this->nodes;
+                $data['nodes'] = array_map(function($item) { return ShopifyReturnLineItemTypeHydrator::toArray($item); }, $this->nodes);
             }
             if ($this->pageInfo !== null) {
                 $data['pageInfo'] = $this->pageInfo->asArray();

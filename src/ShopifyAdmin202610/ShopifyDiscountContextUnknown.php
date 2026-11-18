@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The discount's eligibility is affected by something that can't be represented in this API version.
+ */
 class ShopifyDiscountContextUnknown
 {
     protected $contextType;
 
     
     /**
+     * The underlying discount context type.
+     *
      * @return string
      */
-    public function getContextType()
+    public function getContextType(): ?string
     {
         return $this->contextType;
     }

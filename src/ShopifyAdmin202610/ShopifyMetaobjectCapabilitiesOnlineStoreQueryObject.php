@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The Online Store capability of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilitiesOnlineStoreQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectCapabilitiesOnlineStore";
 
-    public function selectData(ShopifyMetaobjectCapabilitiesOnlineStoreDataArgumentsObject $argsObject = null)
+    /**
+     * The data associated with the Online Store capability.
+     */
+    public function selectData(?ShopifyMetaobjectCapabilitiesOnlineStoreDataArgumentsObject $argsObject = null): ShopifyMetaobjectCapabilityDefinitionDataOnlineStoreQueryObject
     {
         $object = new ShopifyMetaobjectCapabilityDefinitionDataOnlineStoreQueryObject("data");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMetaobjectCapabilitiesOnlineStoreQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEnabled()
+    /**
+     * Indicates if the capability is enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 

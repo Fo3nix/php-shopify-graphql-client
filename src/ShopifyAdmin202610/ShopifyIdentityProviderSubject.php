@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
-class ShopifyIdentityProviderSubject
+/**
+ * Represents a customer's identity provider subject identifier.
+ */
+class ShopifyIdentityProviderSubject implements ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -14,45 +17,55 @@ class ShopifyIdentityProviderSubject
 
     
     /**
+     * The date and time when the provider subject was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID for the provider subject.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The merchant-configured name of the third-party identity provider.
+     *
      * @return string
      */
-    public function getProviderName()
+    public function getProviderName(): ?string
     {
         return $this->providerName;
     }
 
     
     /**
+     * The unique subject identifier assigned to the customer by the authentication provider.
+     *
      * @return string
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     
     /**
+     * The date and time when the provider subject was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

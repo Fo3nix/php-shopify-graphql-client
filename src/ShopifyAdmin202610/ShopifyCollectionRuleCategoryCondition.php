@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxonomyCategory;
 
+/**
+ * Specifies the taxonomy category to used for the condition.
+ */
 class ShopifyCollectionRuleCategoryCondition
 {
     protected $value;
 
     
     /**
+     * The taxonomy category used as condition.
+     *
      * @return ShopifyTaxonomyCategory
      */
-    public function getValue()
+    public function getValue(): ?ShopifyTaxonomyCategory
     {
         return $this->value;
     }

@@ -13,6 +13,8 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductContextualPricing;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyEventConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyImage;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMedia;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyResourceFeedback;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyGiftCardProductSettings;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyImageConnection;
@@ -39,7 +41,18 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyChannelConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPublicationConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariantConnection;
 
-class ShopifyProduct
+/**
+ * The `Product` object lets you manage products in a merchant’s store.
+ *
+ * Products are the goods and services that merchants offer to customers. They can include various details such as title, description, price, images, and options such as size or color.
+ * You can use [product variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/productvariant) to create or update different versions of the same product.
+ * You can also add or update product [media](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/media).
+ * Products can be organized by grouping them into a [collection](https://shopify.dev/docs/api/admin-graphql/latest/objects/collection).
+ *
+ * Learn more about working with [Shopify's product model](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model/product-model-components),
+ * including limitations and considerations.
+ */
+class ShopifyProduct implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyLegacyInteroperability, ShopifyNavigable, ShopifyNode, ShopifyOnlineStorePreviewable, ShopifyPublishable
 {
     protected $availablePublicationsCount;
     protected $bodyHtml;
@@ -127,747 +140,1010 @@ class ShopifyProduct
 
     
     /**
+     * The number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, without
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     *
      * @return ShopifyCount
      */
-    public function getAvailablePublicationsCount()
+    public function getAvailablePublicationsCount(): ?ShopifyCount
     {
         return $this->availablePublicationsCount;
     }
 
     
     /**
+     * The description of the product, with
+     * HTML tags. For example, the description might include
+     * bold `<strong></strong>` and italic `<i></i>` text.
+     *
      * @return string
      */
-    public function getBodyHtml()
+    public function getBodyHtml(): ?string
     {
         return $this->bodyHtml;
     }
 
     
     /**
+     * A list of [components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle)
+     * that are associated with a product in a bundle.
+     *
      * @return ShopifyProductBundleComponentConnection
      */
-    public function getBundleComponents()
+    public function getBundleComponents(): ?ShopifyProductBundleComponentConnection
     {
         return $this->bundleComponents;
     }
 
     
     /**
+     * A list of consolidated options for a product in a bundle.
+     *
      * @return ShopifyComponentizedProductsBundleConsolidatedOption[]
      */
-    public function getBundleConsolidatedOptions()
+    public function getBundleConsolidatedOptions(): ?array
     {
         return $this->bundleConsolidatedOptions;
     }
 
     
     /**
+     * The category of a product
+     * from [Shopify's Standard Product Taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+     *
      * @return ShopifyTaxonomyCategory
      */
-    public function getCategory()
+    public function getCategory(): ?ShopifyTaxonomyCategory
     {
         return $this->category;
     }
 
     
     /**
+     * A list of [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
+     * that include the product.
+     *
      * @return ShopifyCollectionConnection
      */
-    public function getCollections()
+    public function getCollections(): ?ShopifyCollectionConnection
     {
         return $this->collections;
     }
 
     
     /**
+     * A special product type that combines separate products from a store into a single product listing.
+     * [Combined listings](https://shopify.dev/apps/build/product-merchandising/combined-listings) are connected
+     * by a shared option, such as color, model, or dimension.
+     *
      * @return ShopifyCombinedListing
      */
-    public function getCombinedListing()
+    public function getCombinedListing(): ?ShopifyCombinedListing
     {
         return $this->combinedListing;
     }
 
     
     /**
-     * @return ShopifyCombinedListingsRoleEnumObject
+     * The [role of the product](https://shopify.dev/docs/apps/build/product-merchandising/combined-listings/build-for-combined-listings)
+     * in a combined listing.
+     *
+     * If `null`, then the product isn't part of any combined listing.
+     *
+     * @return string A ShopifyCombinedListingsRoleEnumObject value
      */
-    public function getCombinedListingRole()
+    public function getCombinedListingRole(): ?string
     {
         return $this->combinedListingRole;
     }
 
     
     /**
+     * The [compare-at price range](https://help.shopify.com/manual/products/details/product-pricing/sale-pricing)
+     * of the product in the shop's default currency.
+     *
      * @return ShopifyProductCompareAtPriceRange
      */
-    public function getCompareAtPriceRange()
+    public function getCompareAtPriceRange(): ?ShopifyProductCompareAtPriceRange
     {
         return $this->compareAtPriceRange;
     }
 
     
     /**
+     * The pricing that applies to a customer in a specific context. For example, a price might vary depending on the customer's location. Only active markets are considered in the price resolution.
+     *
      * @return ShopifyProductContextualPricing
      */
-    public function getContextualPricing()
+    public function getContextualPricing(): ?ShopifyProductContextualPricing
     {
         return $this->contextualPricing;
     }
 
     
     /**
+     * The date and time when the product was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The custom product type specified by the merchant.
+     *
      * @return string
      */
-    public function getCustomProductType()
+    public function getCustomProductType(): ?string
     {
         return $this->customProductType;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * A single-line description of the product,
+     * with [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML) removed.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The description of the product, with
+     * HTML tags. For example, the description might include
+     * bold `<strong></strong>` and italic `<i></i>` text.
+     *
      * @return string
      */
-    public function getDescriptionHtml()
+    public function getDescriptionHtml(): mixed
     {
         return $this->descriptionHtml;
     }
 
     
     /**
+     * Stripped description of the product, single line with HTML tags removed.
+     * Truncated to 60 characters.
+     *
      * @return string
      */
-    public function getDescriptionPlainSummary()
+    public function getDescriptionPlainSummary(): ?string
     {
         return $this->descriptionPlainSummary;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * The featured image for the product.
+     *
      * @return ShopifyImage
      */
-    public function getFeaturedImage()
+    public function getFeaturedImage(): ?ShopifyImage
     {
         return $this->featuredImage;
     }
 
     
     /**
-     * @return mixed
+     * The featured [media](https://shopify.dev/docs/apps/build/online-store/product-media)
+     * associated with the product.
+     *
+     * @return ShopifyMedia
      */
-    public function getFeaturedMedia()
+    public function getFeaturedMedia(): ?ShopifyMedia
     {
         return $this->featuredMedia;
     }
 
     
     /**
+     * The information that lets merchants know what steps they need to take
+     * to make sure that the app is set up correctly.
+     *
+     * For example, if a merchant hasn't set up a product correctly in the app,
+     * then the feedback might include a message that says "You need to add a price
+     * to this product".
+     *
      * @return ShopifyResourceFeedback
      */
-    public function getFeedback()
+    public function getFeedback(): ?ShopifyResourceFeedback
     {
         return $this->feedback;
     }
 
     
     /**
+     * The gift card settings for this product. Only available on gift card products.
+     *
      * @return ShopifyGiftCardProductSettings
      */
-    public function getGiftCardSettings()
+    public function getGiftCardSettings(): ?ShopifyGiftCardProductSettings
     {
         return $this->giftCardSettings;
     }
 
     
     /**
+     * The [theme template](https://shopify.dev/docs/storefronts/themes/architecture/templates) that's used when customers view the gift card in a store.
+     *
      * @return string
      */
-    public function getGiftCardTemplateSuffix()
+    public function getGiftCardTemplateSuffix(): ?string
     {
         return $this->giftCardTemplateSuffix;
     }
 
     
     /**
+     * A unique, human-readable string of the product's title. A handle can contain letters, hyphens (`-`), and numbers, but no spaces.
+     * The handle is used in the online store URL for the product.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * Whether the product has only a single variant with the default option and value.
+     *
      * @return bool
      */
-    public function getHasOnlyDefaultVariant()
+    public function getHasOnlyDefaultVariant(): ?bool
     {
         return $this->hasOnlyDefaultVariant;
     }
 
     
     /**
+     * Whether the product has variants that are out of stock.
+     *
      * @return bool
      */
-    public function getHasOutOfStockVariants()
+    public function getHasOutOfStockVariants(): ?bool
     {
         return $this->hasOutOfStockVariants;
     }
 
     
     /**
+     * Whether at least one of the product variants requires
+     * [bundle components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle).
+     *
+     * Learn more about
+     * [store eligibility for bundles](https://shopify.dev/docs/apps/build/product-merchandising/bundles#store-eligibility).
+     *
      * @return bool
      */
-    public function getHasVariantsThatRequiresComponents()
+    public function getHasVariantsThatRequiresComponents(): ?bool
     {
         return $this->hasVariantsThatRequiresComponents;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The images associated with the product.
+     *
      * @return ShopifyImageConnection
      */
-    public function getImages()
+    public function getImages(): ?ShopifyImageConnection
     {
         return $this->images;
     }
 
     
     /**
+     * Whether the product
+     * is in a specified
+     * [collection](https://shopify.dev/docs/api/admin-graphql/latest/objects/collection).
+     *
      * @return bool
      */
-    public function getInCollection()
+    public function getInCollection(): ?bool
     {
         return $this->inCollection;
     }
 
     
     /**
+     * Whether the product is a gift card.
+     *
      * @return bool
      */
-    public function getIsGiftCard()
+    public function getIsGiftCard(): ?bool
     {
         return $this->isGiftCard;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The [media](https://shopify.dev/docs/apps/build/online-store/product-media) associated with the product. Valid media are images, 3D models, videos.
+     *
      * @return ShopifyMediaConnection
      */
-    public function getMedia()
+    public function getMedia(): ?ShopifyMediaConnection
     {
         return $this->media;
     }
 
     
     /**
+     * The total count of [media](https://shopify.dev/docs/apps/build/online-store/product-media)
+     * that's associated with a product.
+     *
      * @return ShopifyCount
      */
-    public function getMediaCount()
+    public function getMediaCount(): ?ShopifyCount
     {
         return $this->mediaCount;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The [preview URL](https://help.shopify.com/manual/online-store/setting-up#preview-your-store) for the online store.
+     *
      * @return string
      */
-    public function getOnlineStorePreviewUrl()
+    public function getOnlineStorePreviewUrl(): mixed
     {
         return $this->onlineStorePreviewUrl;
     }
 
     
     /**
+     * The product's URL on the online store.
+     * If `null`, then the product isn't published to the online store sales channel.
+     *
      * @return string
      */
-    public function getOnlineStoreUrl()
+    public function getOnlineStoreUrl(): mixed
     {
         return $this->onlineStoreUrl;
     }
 
     
     /**
+     * A list of product options. The limit is defined by the
+     * [shop's resource limits for product options](https://shopify.dev/docs/api/admin-graphql/latest/objects/Shop#field-resourcelimits) (`Shop.resourceLimits.maxProductOptions`).
+     *
      * @return ShopifyProductOption[]
      */
-    public function getOptions()
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     
     /**
+     * The price range of the product.
+     *
      * @return ShopifyProductPriceRange
      */
-    public function getPriceRange()
+    public function getPriceRange(): ?ShopifyProductPriceRange
     {
         return $this->priceRange;
     }
 
     
     /**
+     * The minimum and maximum prices of a product, expressed in decimal numbers.
+     * For example, if the product is priced between $10.00 and $50.00,
+     * then the price range is $10.00 - $50.00.
+     *
      * @return ShopifyProductPriceRangeV2
      */
-    public function getPriceRangeV2()
+    public function getPriceRangeV2(): ?ShopifyProductPriceRangeV2
     {
         return $this->priceRangeV2;
     }
 
     
     /**
+     * The product category specified by the merchant.
+     *
      * @return ShopifyProductCategory
      */
-    public function getProductCategory()
+    public function getProductCategory(): ?ShopifyProductCategory
     {
         return $this->productCategory;
     }
 
     
     /**
+     * A list of products that contain at least one variant associated with
+     * at least one of the current products' variants via group relationship.
+     *
      * @return ShopifyProductComponentTypeConnection
      */
-    public function getProductComponents()
+    public function getProductComponents(): ?ShopifyProductComponentTypeConnection
     {
         return $this->productComponents;
     }
 
     
     /**
+     * A count of unique products that contain at least one variant associated with
+     * at least one of the current products' variants via group relationship.
+     *
      * @return ShopifyCount
      */
-    public function getProductComponentsCount()
+    public function getProductComponentsCount(): ?ShopifyCount
     {
         return $this->productComponentsCount;
     }
 
     
     /**
+     * A list of products that has a variant that contains any of this product's variants as a component.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProductParents()
+    public function getProductParents(): ?ShopifyProductConnection
     {
         return $this->productParents;
     }
 
     
     /**
+     * A list of the channels where the product is published.
+     *
      * @return ShopifyProductPublicationConnection
      */
-    public function getProductPublications()
+    public function getProductPublications(): ?ShopifyProductPublicationConnection
     {
         return $this->productPublications;
     }
 
     
     /**
+     * The [product type](https://help.shopify.com/manual/products/details/product-type)
+     * that merchants define.
+     *
      * @return string
      */
-    public function getProductType()
+    public function getProductType(): ?string
     {
         return $this->productType;
     }
 
     
     /**
+     * The total number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, including publications with
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     * To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
+     *
      * @return int
      */
-    public function getPublicationCount()
+    public function getPublicationCount(): ?int
     {
         return $this->publicationCount;
     }
 
     
     /**
+     * A list of the channels where the product is published.
+     *
      * @return ShopifyProductPublicationConnection
      */
-    public function getPublications()
+    public function getPublications(): ?ShopifyProductPublicationConnection
     {
         return $this->publications;
     }
 
     
     /**
+     * The date and time when the product was published to the online store.
+     *
      * @return Carbon
      */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?Carbon
     {
         return $this->publishedAt;
     }
 
     
     /**
+     * Whether the product is published for a customer only in a specified context. For example, a product might be published for a customer only in a specific location.
+     *
      * @return bool
      */
-    public function getPublishedInContext()
+    public function getPublishedInContext(): ?bool
     {
         return $this->publishedInContext;
     }
 
     
     /**
+     * Whether the resource is published to a specific channel.
+     *
      * @return bool
      */
-    public function getPublishedOnChannel()
+    public function getPublishedOnChannel(): ?bool
     {
         return $this->publishedOnChannel;
     }
 
     
     /**
+     * Whether the resource is published to a
+     * [channel](https://shopify.dev/docs/api/admin-graphql/latest/objects/Channel).
+     * For example, the resource might be published to the online store channel.
+     *
      * @return bool
      */
-    public function getPublishedOnCurrentChannel()
+    public function getPublishedOnCurrentChannel(): ?bool
     {
         return $this->publishedOnCurrentChannel;
     }
 
     
     /**
+     * Whether the resource is published to the app's
+     * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+     * For example, the resource might be published to the app's online store channel.
+     *
      * @return bool
      */
-    public function getPublishedOnCurrentPublication()
+    public function getPublishedOnCurrentPublication(): ?bool
     {
         return $this->publishedOnCurrentPublication;
     }
 
     
     /**
+     * Whether the resource is published to a specified
+     * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+     *
      * @return bool
      */
-    public function getPublishedOnPublication()
+    public function getPublishedOnPublication(): ?bool
     {
         return $this->publishedOnPublication;
     }
 
     
     /**
+     * Whether the product can only be purchased with
+     * a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans).
+     * Products that are sold on subscription (`requiresSellingPlan: true`) can be updated only for online stores.
+     * If you update a product to be subscription-only (`requiresSellingPlan: true`), then the product is unpublished from all channels, except the online store.
+     *
      * @return bool
      */
-    public function getRequiresSellingPlan()
+    public function getRequiresSellingPlan(): ?bool
     {
         return $this->requiresSellingPlan;
     }
 
     
     /**
+     * The resource that's either published or staged to be published to
+     * the [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+     *
      * @return ShopifyResourcePublicationV2
      */
-    public function getResourcePublicationOnCurrentPublication()
+    public function getResourcePublicationOnCurrentPublication(): ?ShopifyResourcePublicationV2
     {
         return $this->resourcePublicationOnCurrentPublication;
     }
 
     
     /**
+     * The list of resources that are published to a
+     * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+     *
      * @return ShopifyResourcePublicationConnection
      */
-    public function getResourcePublications()
+    public function getResourcePublications(): ?ShopifyResourcePublicationConnection
     {
         return $this->resourcePublications;
     }
 
     
     /**
+     * The total number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, including publications with
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     * To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
+     *
      * @return ShopifyCount
      */
-    public function getResourcePublicationsCount()
+    public function getResourcePublicationsCount(): ?ShopifyCount
     {
         return $this->resourcePublicationsCount;
     }
 
     
     /**
+     * The list of resources that are either published or staged to be published to a
+     * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+     * By default, only publications to `APP` catalog types are returned.
+     * For `Product` and `ProductVariant`, use the `catalogType` argument to retrieve
+     * publications for other catalog types, such as `COMPANY_LOCATION` (B2B) or `MARKET`.
+     * `Collection` only supports publications to `APP` catalog types.
+     *
      * @return ShopifyResourcePublicationV2Connection
      */
-    public function getResourcePublicationsV2()
+    public function getResourcePublicationsV2(): ?ShopifyResourcePublicationV2Connection
     {
         return $this->resourcePublicationsV2;
     }
 
     
     /**
+     * Whether the merchant can make changes to the product when they
+     * [edit the order](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders)
+     * associated with the product. For example, a merchant might be restricted from changing product details when they
+     * edit an order.
+     *
      * @return ShopifyRestrictedForResource
      */
-    public function getRestrictedForResource()
+    public function getRestrictedForResource(): ?ShopifyRestrictedForResource
     {
         return $this->restrictedForResource;
     }
 
     
     /**
+     * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+     * that are associated with the product.
+     *
      * @return int
      */
-    public function getSellingPlanGroupCount()
+    public function getSellingPlanGroupCount(): ?int
     {
         return $this->sellingPlanGroupCount;
     }
 
     
     /**
+     * A list of all [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+     * that are associated with the product either directly, or through the product's variants.
+     *
      * @return ShopifySellingPlanGroupConnection
      */
-    public function getSellingPlanGroups()
+    public function getSellingPlanGroups(): ?ShopifySellingPlanGroupConnection
     {
         return $this->sellingPlanGroups;
     }
 
     
     /**
+     * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+     * that are associated with the product.
+     *
      * @return ShopifyCount
      */
-    public function getSellingPlanGroupsCount()
+    public function getSellingPlanGroupsCount(): ?ShopifyCount
     {
         return $this->sellingPlanGroupsCount;
     }
 
     
     /**
+     * The [SEO title and description](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords)
+     * that are associated with a product.
+     *
      * @return ShopifySEO
      */
-    public function getSeo()
+    public function getSeo(): ?ShopifySEO
     {
         return $this->seo;
     }
 
     
     /**
+     * The standardized product type in the Shopify product taxonomy.
+     *
      * @return ShopifyStandardizedProductType
      */
-    public function getStandardizedProductType()
+    public function getStandardizedProductType(): ?ShopifyStandardizedProductType
     {
         return $this->standardizedProductType;
     }
 
     
     /**
-     * @return ShopifyProductStatusEnumObject
+     * The [product status](https://help.shopify.com/manual/products/details/product-details-page#product-status),
+     * which controls visibility across all sales channels.
+     *
+     * @return string A ShopifyProductStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The Storefront GraphQL API ID of the `Product`.
+     *
+     * The Storefront GraphQL API will no longer return Base64 encoded IDs to match the behavior of the Admin GraphQL API. Therefore, you can safely use the `id` field's value instead.
+     *
      * @return string
      */
-    public function getStorefrontId()
+    public function getStorefrontId(): mixed
     {
         return $this->storefrontId;
     }
 
     
     /**
+     * A comma-separated list of searchable keywords that are
+     * associated with the product. For example, a merchant might apply the `sports`
+     * and `summer` tags to products that are associated with sportwear for summer.
+     *
+     * Updating `tags` overwrites
+     * any existing tags that were previously added to the product. To add new tags without overwriting
+     * existing tags, use the [`tagsAdd`](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd)
+     * mutation.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The [theme template](https://shopify.dev/docs/storefronts/themes/architecture/templates) that's used when customers view the product in a store.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }
 
     
     /**
+     * The name for the product that displays to customers. The title is used to construct the product's handle.
+     * For example, if a product is titled "Black Sunglasses", then the handle is `black-sunglasses`.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The quantity of inventory that's in stock.
+     *
      * @return int
      */
-    public function getTotalInventory()
+    public function getTotalInventory(): ?int
     {
         return $this->totalInventory;
     }
 
     
     /**
+     * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * that are associated with the product.
+     *
      * @return int
      */
-    public function getTotalVariants()
+    public function getTotalVariants(): ?int
     {
         return $this->totalVariants;
     }
 
     
     /**
+     * Whether [inventory tracking](https://help.shopify.com/manual/products/inventory/getting-started-with-inventory/set-up-inventory-tracking)
+     * has been enabled for the product.
+     *
      * @return bool
      */
-    public function getTracksInventory()
+    public function getTracksInventory(): ?bool
     {
         return $this->tracksInventory;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The list of channels that the resource is not published to.
+     *
      * @return ShopifyChannelConnection
      */
-    public function getUnpublishedChannels()
+    public function getUnpublishedChannels(): ?ShopifyChannelConnection
     {
         return $this->unpublishedChannels;
     }
 
     
     /**
+     * The list of [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that the resource isn't published to.
+     *
      * @return ShopifyPublicationConnection
      */
-    public function getUnpublishedPublications()
+    public function getUnpublishedPublications(): ?ShopifyPublicationConnection
     {
         return $this->unpublishedPublications;
     }
 
     
     /**
+     * The date and time when the product was last modified.
+     * A product's `updatedAt` value can change for different reasons. For example, if an order
+     * is placed for a product that has inventory tracking set up, then the inventory adjustment
+     * is counted as an update.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * A list of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) associated with the product.
+     * If querying a single product at the root, you can fetch up to 2048 variants.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getVariants()
+    public function getVariants(): ?ShopifyProductVariantConnection
     {
         return $this->variants;
     }
 
     
     /**
+     * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * that are associated with the product.
+     *
      * @return ShopifyCount
      */
-    public function getVariantsCount()
+    public function getVariantsCount(): ?ShopifyCount
     {
         return $this->variantsCount;
     }
 
     
     /**
+     * A list of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * associated with the product that are members of the specified
+     * [collection](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
+     *
+     * Returns null for products whose collection membership is product-scoped rather than variant-scoped.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getVariantsInCollection()
+    public function getVariantsInCollection(): ?ShopifyProductVariantConnection
     {
         return $this->variantsInCollection;
     }
 
     
     /**
+     * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * associated with the product that are members of the specified
+     * [collection](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
+     *
      * @return ShopifyCount
      */
-    public function getVariantsInCollectionCount()
+    public function getVariantsInCollectionCount(): ?ShopifyCount
     {
         return $this->variantsInCollectionCount;
     }
 
     
     /**
+     * The name of the product's vendor.
+     *
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }
@@ -934,7 +1210,7 @@ class ShopifyProduct
                 $instance->featuredImage = ShopifyImage::fromArray($data['featuredImage']);
             }
             if (isset($data['featuredMedia']) && $data['featuredMedia'] !== null) {
-                $instance->featuredMedia = $data['featuredMedia'];
+                $instance->featuredMedia = ShopifyMediaHydrator::fromArray($data['featuredMedia']);
             }
             if (isset($data['feedback']) && $data['feedback'] !== null) {
                 $instance->feedback = ShopifyResourceFeedback::fromArray($data['feedback']);
@@ -1206,7 +1482,7 @@ class ShopifyProduct
                 $data['featuredImage'] = $this->featuredImage->asArray();
             }
             if ($this->featuredMedia !== null) {
-                $data['featuredMedia'] = $this->featuredMedia;
+                $data['featuredMedia'] = ShopifyMediaHydrator::toArray($this->featuredMedia);
             }
             if ($this->feedback !== null) {
                 $data['feedback'] = $this->feedback->asArray();

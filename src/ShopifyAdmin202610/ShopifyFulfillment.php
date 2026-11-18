@@ -13,7 +13,14 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillmentService;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShippingLabel;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillmentTrackingInfo;
 
-class ShopifyFulfillment
+/**
+ * A shipment of one or more items from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order). Tracks which [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) objects ship, their quantities, and the shipment's tracking information.
+ *
+ * Includes tracking details such as the carrier, tracking numbers, and URLs. The fulfillment connects to both the original order and any associated [`FulfillmentOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentOrder) objects. [`FulfillmentEvent`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent) objects record milestones throughout the shipment lifecycle, from creation through delivery.
+ *
+ * Multiple fulfillments can exist for a single order when items either ship separately or from different locations.
+ */
+class ShopifyFulfillment implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $createdAt;
     protected $deliveredAt;
@@ -39,189 +46,232 @@ class ShopifyFulfillment
 
     
     /**
+     * The date and time when the fulfillment was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date that this fulfillment was delivered.
+     *
      * @return Carbon
      */
-    public function getDeliveredAt()
+    public function getDeliveredAt(): ?Carbon
     {
         return $this->deliveredAt;
     }
 
     
     /**
-     * @return ShopifyFulfillmentDisplayStatusEnumObject
+     * Human readable display status for this fulfillment.
+     *
+     * @return string A ShopifyFulfillmentDisplayStatusEnumObject value
      */
-    public function getDisplayStatus()
+    public function getDisplayStatus(): ?string
     {
         return $this->displayStatus;
     }
 
     
     /**
+     * The estimated date that this fulfillment will arrive.
+     *
      * @return Carbon
      */
-    public function getEstimatedDeliveryAt()
+    public function getEstimatedDeliveryAt(): ?Carbon
     {
         return $this->estimatedDeliveryAt;
     }
 
     
     /**
+     * The history of events associated with this fulfillment.
+     *
      * @return ShopifyFulfillmentEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyFulfillmentEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * List of the fulfillment's line items.
+     *
      * @return ShopifyFulfillmentLineItemConnection
      */
-    public function getFulfillmentLineItems()
+    public function getFulfillmentLineItems(): ?ShopifyFulfillmentLineItemConnection
     {
         return $this->fulfillmentLineItems;
     }
 
     
     /**
+     * A paginated list of fulfillment orders for the fulfillment.
+     *
      * @return ShopifyFulfillmentOrderConnection
      */
-    public function getFulfillmentOrders()
+    public function getFulfillmentOrders(): ?ShopifyFulfillmentOrderConnection
     {
         return $this->fulfillmentOrders;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The date and time when the fulfillment went into transit.
+     *
      * @return Carbon
      */
-    public function getInTransitAt()
+    public function getInTransitAt(): ?Carbon
     {
         return $this->inTransitAt;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The location that the fulfillment was processed at.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Human readable reference identifier for this fulfillment.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The order for which the fulfillment was created.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The address at which the fulfillment occurred. This field is intended for tax purposes, as a full address is required for tax providers to accurately calculate taxes. Typically this is the address of the warehouse or fulfillment center. To retrieve a fulfillment location's address, use the `assignedLocation` field on the [`FulfillmentOrder`](/docs/api/admin-graphql/latest/objects/FulfillmentOrder) object instead.
+     *
      * @return ShopifyFulfillmentOriginAddress
      */
-    public function getOriginAddress()
+    public function getOriginAddress(): ?ShopifyFulfillmentOriginAddress
     {
         return $this->originAddress;
     }
 
     
     /**
+     * Whether any of the line items in the fulfillment require shipping.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * Fulfillment service associated with the fulfillment.
+     *
      * @return ShopifyFulfillmentService
      */
-    public function getService()
+    public function getService(): ?ShopifyFulfillmentService
     {
         return $this->service;
     }
 
     
     /**
+     * The optional shipping label for this fulfillment.
+     *
      * @return ShopifyShippingLabel
      */
-    public function getShippingLabel()
+    public function getShippingLabel(): ?ShopifyShippingLabel
     {
         return $this->shippingLabel;
     }
 
     
     /**
-     * @return ShopifyFulfillmentStatusEnumObject
+     * The status of the fulfillment.
+     *
+     * @return string A ShopifyFulfillmentStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * Sum of all line item quantities for the fulfillment.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }
 
     
     /**
+     * Tracking information associated with the fulfillment,
+     * such as the tracking company, tracking number, and tracking URL.
+     *
      * @return ShopifyFulfillmentTrackingInfo[]
      */
-    public function getTrackingInfo()
+    public function getTrackingInfo(): ?array
     {
         return $this->trackingInfo;
     }
 
     
     /**
+     * The date and time when the fulfillment was last modified.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

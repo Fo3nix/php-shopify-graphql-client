@@ -4,11 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A suggested transaction. Suggested transaction are usually used in the context of refunds
+ * and exchanges.
+ */
 class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SuggestedOrderTransaction";
 
-    public function selectAccountNumber()
+    /**
+     * The masked account number associated with the payment method.
+     */
+    public function selectAccountNumber(): static
     {
         $this->selectField("accountNumber");
 
@@ -16,16 +23,21 @@ class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
     }
 
     /**
+     * The amount of the transaction.
+     *
      * @deprecated Use `amountSet` instead.
      */
-    public function selectAmount()
+    public function selectAmount(): static
     {
         $this->selectField("amount");
 
         return $this;
     }
 
-    public function selectAmountSet(ShopifySuggestedOrderTransactionAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The amount and currency of the suggested order transaction in shop and presentment currencies.
+     */
+    public function selectAmountSet(?ShopifySuggestedOrderTransactionAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -36,21 +48,30 @@ class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFormattedGateway()
+    /**
+     * The human-readable payment gateway name suggested to process the transaction.
+     */
+    public function selectFormattedGateway(): static
     {
         $this->selectField("formattedGateway");
 
         return $this;
     }
 
-    public function selectGateway()
+    /**
+     * The suggested payment gateway used to process the transaction.
+     */
+    public function selectGateway(): static
     {
         $this->selectField("gateway");
 
         return $this;
     }
 
-    public function selectKind()
+    /**
+     * Specifies the kind of the suggested order transaction.
+     */
+    public function selectKind(): static
     {
         $this->selectField("kind");
 
@@ -58,16 +79,21 @@ class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
     }
 
     /**
+     * Specifies the available amount to refund on the gateway. Only available within SuggestedRefund.
+     *
      * @deprecated Use `maximumRefundableSet` instead.
      */
-    public function selectMaximumRefundable()
+    public function selectMaximumRefundable(): static
     {
         $this->selectField("maximumRefundable");
 
         return $this;
     }
 
-    public function selectMaximumRefundableSet(ShopifySuggestedOrderTransactionMaximumRefundableSetArgumentsObject $argsObject = null)
+    /**
+     * Specifies the available amount to refund on the gateway in shop and presentment currencies. Only available within SuggestedRefund.
+     */
+    public function selectMaximumRefundableSet(?ShopifySuggestedOrderTransactionMaximumRefundableSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("maximumRefundableSet");
         if ($argsObject !== null) {
@@ -78,7 +104,10 @@ class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectParentTransaction(ShopifySuggestedOrderTransactionParentTransactionArgumentsObject $argsObject = null)
+    /**
+     * The associated parent transaction, for example the authorization of a capture.
+     */
+    public function selectParentTransaction(?ShopifySuggestedOrderTransactionParentTransactionArgumentsObject $argsObject = null): ShopifyOrderTransactionQueryObject
     {
         $object = new ShopifyOrderTransactionQueryObject("parentTransaction");
         if ($argsObject !== null) {
@@ -89,7 +118,10 @@ class ShopifySuggestedOrderTransactionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPaymentDetails(ShopifySuggestedOrderTransactionPaymentDetailsArgumentsObject $argsObject = null)
+    /**
+     * The associated payment details related to the transaction.
+     */
+    public function selectPaymentDetails(?ShopifySuggestedOrderTransactionPaymentDetailsArgumentsObject $argsObject = null): ShopifyPaymentDetailsUnionObject
     {
         $object = new ShopifyPaymentDetailsUnionObject("paymentDetails");
         if ($argsObject !== null) {

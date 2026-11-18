@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 
+/**
+ * The store logo customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingLogo
 {
     protected $image;
@@ -12,27 +15,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingLogo
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The logo image.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->image;
     }
 
     
     /**
+     * The maximum width of the logo.
+     *
      * @return int
      */
-    public function getMaxWidth()
+    public function getMaxWidth(): ?int
     {
         return $this->maxWidth;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject
+     * The visibility of the logo.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }
@@ -45,7 +54,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingLogo
         {
             $instance = new self();
             if (isset($data['image']) && $data['image'] !== null) {
-                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['image']);
+                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['image']);
             }
             if (isset($data['maxWidth']) && $data['maxWidth'] !== null) {
                 $instance->maxWidth = $data['maxWidth'];
@@ -77,7 +86,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingLogo
         {
             $data = [];
             if ($this->image !== null) {
-                $data['image'] = $this->image->asArray();
+                $data['image'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->image);
             }
             if ($this->maxWidth !== null) {
                 $data['maxWidth'] = $this->maxWidth;

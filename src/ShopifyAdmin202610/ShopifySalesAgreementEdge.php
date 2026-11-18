@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySalesAgreementHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySalesAgreement;
+
+/**
+ * An auto-generated type which holds one SalesAgreement and a cursor during pagination.
+ */
 class ShopifySalesAgreementEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifySalesAgreementEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of SalesAgreementEdge.
+     *
+     * @return ShopifySalesAgreement
      */
-    public function getNode()
+    public function getNode(): ?ShopifySalesAgreement
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifySalesAgreementEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifySalesAgreementHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifySalesAgreementEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifySalesAgreementHydrator::toArray($this->node);
             }
             return $data;
         }

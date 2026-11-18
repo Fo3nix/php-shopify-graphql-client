@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountAutomatic;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountAutomaticHydrator;
 
+/**
+ * An auto-generated type which holds one DiscountAutomatic and a cursor during pagination.
+ */
 class ShopifyDiscountAutomaticEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyDiscountAutomaticEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifyDiscountAutomatic
+     * The item at the end of DiscountAutomaticEdge.
+     *
+     * @return ShopifyDiscountAutomaticApp|ShopifyDiscountAutomaticBasic|ShopifyDiscountAutomaticBxgy|ShopifyDiscountAutomaticFreeShipping
      */
-    public function getNode()
+    public function getNode(): ShopifyDiscountAutomaticApp|ShopifyDiscountAutomaticBasic|ShopifyDiscountAutomaticBxgy|ShopifyDiscountAutomaticFreeShipping|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifyDiscountAutomaticEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifyDiscountAutomatic::fromArray($data['node']);
+                $instance->node = ShopifyDiscountAutomaticHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyDiscountAutomaticEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifyDiscountAutomaticHydrator::toArray($this->node);
             }
             return $data;
         }

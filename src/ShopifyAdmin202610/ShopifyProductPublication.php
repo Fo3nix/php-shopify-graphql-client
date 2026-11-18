@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyChannel;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProduct;
 use Carbon\Carbon;
 
+/**
+ * Represents the channels where a product is published.
+ */
 class ShopifyProductPublication
 {
     protected $channel;
@@ -15,36 +18,44 @@ class ShopifyProductPublication
 
     
     /**
+     * The channel where the product was or is published.
+     *
      * @return ShopifyChannel
      */
-    public function getChannel()
+    public function getChannel(): ?ShopifyChannel
     {
         return $this->channel;
     }
 
     
     /**
+     * Whether the publication is published or not.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The product that was or is going to be published on the channel.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The date that the product was or is going to be published on the channel.
+     *
      * @return Carbon
      */
-    public function getPublishDate()
+    public function getPublishDate(): ?Carbon
     {
         return $this->publishDate;
     }

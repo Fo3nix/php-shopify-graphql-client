@@ -5,6 +5,16 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyApp;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFunctionsAppBridge;
 
+/**
+ * The details about the app extension that's providing the
+ * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+ * This information includes the app extension's name and
+ * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+ * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+ * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+ * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+ * and other metadata about the discount type, including the discount type's name and description.
+ */
 class ShopifyAppDiscountType
 {
     protected $app;
@@ -19,81 +29,112 @@ class ShopifyAppDiscountType
 
     
     /**
+     * The name of the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+     * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return ShopifyFunctionsAppBridge
      */
-    public function getAppBridge()
+    public function getAppBridge(): ?ShopifyFunctionsAppBridge
     {
         return $this->appBridge;
     }
 
     
     /**
+     * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+     * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return string
      */
-    public function getAppKey()
+    public function getAppKey(): ?string
     {
         return $this->appKey;
     }
 
     
     /**
+     * A description of the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * provided by the app extension.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
+     *
+     * @return string A ShopifyDiscountClassEnumObject value
      */
-    public function getDiscountClass()
+    public function getDiscountClass(): ?string
     {
         return $this->discountClass;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject[]
+     * The list of [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that this app extension supports.
+     *
+     * @return string[] ShopifyDiscountClassEnumObject values
      */
-    public function getDiscountClasses()
+    public function getDiscountClasses(): ?array
     {
         return $this->discountClasses;
     }
 
     
     /**
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return string
      */
-    public function getFunctionId()
+    public function getFunctionId(): ?string
     {
         return $this->functionId;
     }
 
     
     /**
-     * @return ShopifyDiscountApplicationTargetTypeEnumObject
+     * The type of line item on an order that the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+     * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
+     *
+     * @return string A ShopifyDiscountApplicationTargetTypeEnumObject value
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
     
     /**
+     * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * that the app extension is providing.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

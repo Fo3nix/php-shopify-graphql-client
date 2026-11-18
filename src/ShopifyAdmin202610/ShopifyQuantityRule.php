@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariant;
 
+/**
+ * The quantity rule for the product variant in a given context.
+ */
 class ShopifyQuantityRule
 {
     protected $increment;
@@ -15,54 +18,72 @@ class ShopifyQuantityRule
 
     
     /**
+     * The value that specifies the quantity increment between minimum and maximum of the rule.
+     * Only quantities divisible by this value will be considered valid.
+     *
+     * The increment must be lower than or equal to the minimum and the maximum, and both minimum and maximum
+     * must be divisible by this value.
+     *
      * @return int
      */
-    public function getIncrement()
+    public function getIncrement(): ?int
     {
         return $this->increment;
     }
 
     
     /**
+     * Whether the quantity rule fields match one increment, one minimum and no maximum.
+     *
      * @return bool
      */
-    public function getIsDefault()
+    public function getIsDefault(): ?bool
     {
         return $this->isDefault;
     }
 
     
     /**
+     * An optional value that defines the highest allowed quantity purchased by the customer.
+     * If defined, maximum must be lower than or equal to the minimum and must be a multiple of the increment.
+     *
      * @return int
      */
-    public function getMaximum()
+    public function getMaximum(): ?int
     {
         return $this->maximum;
     }
 
     
     /**
+     * The value that defines the lowest allowed quantity purchased by the customer.
+     * The minimum must be a multiple of the quantity rule's increment.
+     *
      * @return int
      */
-    public function getMinimum()
+    public function getMinimum(): ?int
     {
         return $this->minimum;
     }
 
     
     /**
-     * @return ShopifyQuantityRuleOriginTypeEnumObject
+     * Whether the values of the quantity rule were explicitly set.
+     *
+     * @return string A ShopifyQuantityRuleOriginTypeEnumObject value
      */
-    public function getOriginType()
+    public function getOriginType(): ?string
     {
         return $this->originType;
     }
 
     
     /**
+     * The product variant for which the quantity rule is applied.
+     *
      * @return ShopifyProductVariant
      */
-    public function getProductVariant()
+    public function getProductVariant(): ?ShopifyProductVariant
     {
         return $this->productVariant;
     }

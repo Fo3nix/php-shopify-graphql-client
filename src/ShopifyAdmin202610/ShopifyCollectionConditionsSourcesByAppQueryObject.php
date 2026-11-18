@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An app together with the shareable collection sources it publishes for the shop.
+ */
 class ShopifyCollectionConditionsSourcesByAppQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CollectionConditionsSourcesByApp";
 
-    public function selectApp(ShopifyCollectionConditionsSourcesByAppAppArgumentsObject $argsObject = null)
+    /**
+     * The app that publishes the collection sources.
+     */
+    public function selectApp(?ShopifyCollectionConditionsSourcesByAppAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCollectionConditionsSourcesByAppQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSources(ShopifyCollectionConditionsSourcesByAppSourcesArgumentsObject $argsObject = null)
+    /**
+     * The shareable collection sources owned by this app.
+     */
+    public function selectSources(?ShopifyCollectionConditionsSourcesByAppSourcesArgumentsObject $argsObject = null): ShopifyCollectionConditionsSourceConnectionQueryObject
     {
         $object = new ShopifyCollectionConditionsSourceConnectionQueryObject("sources");
         if ($argsObject !== null) {

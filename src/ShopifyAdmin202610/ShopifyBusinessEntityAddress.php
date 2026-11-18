@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents the address of a merchant's Business Entity.
+ */
 class ShopifyBusinessEntityAddress
 {
     protected $address1;
@@ -13,54 +16,66 @@ class ShopifyBusinessEntityAddress
 
     
     /**
+     * The first line of the address. Typically the street address or PO Box number.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address. Typically the number of the apartment, suite, or unit.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The name of the city, district, village, or town.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The country code of the merchant's Business Entity.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The region of the address, such as the province, state, or district.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The zip or postal code of the address.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

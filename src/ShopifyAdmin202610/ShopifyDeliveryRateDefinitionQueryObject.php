@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The merchant-defined rate of the [DeliveryMethodDefinition](https://shopify.dev/api/admin-graphql/latest/objects/DeliveryMethodDefinition).
+ */
 class ShopifyDeliveryRateDefinitionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryRateDefinition";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectPrice(ShopifyDeliveryRateDefinitionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of this rate.
+     */
+    public function selectPrice(?ShopifyDeliveryRateDefinitionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {

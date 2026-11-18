@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerPaymentInstrumentBillingAddress;
 
+/**
+ * Represents a PayPal instrument for customer payment method.
+ */
 class ShopifyCustomerPaypalBillingAgreement
 {
     protected $billingAddress;
@@ -13,36 +16,44 @@ class ShopifyCustomerPaypalBillingAgreement
 
     
     /**
+     * The billing address of this payment method.
+     *
      * @return ShopifyCustomerPaymentInstrumentBillingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCustomerPaymentInstrumentBillingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * Whether the PayPal billing agreement is inactive.
+     *
      * @return bool
      */
-    public function getInactive()
+    public function getInactive(): ?bool
     {
         return $this->inactive;
     }
 
     
     /**
+     * Whether the payment method can be revoked.The payment method can be revoked if there are no active subscription contracts.
+     *
      * @return bool
      */
-    public function getIsRevocable()
+    public function getIsRevocable(): ?bool
     {
         return $this->isRevocable;
     }
 
     
     /**
+     * The customers's PayPal account email address.
+     *
      * @return string
      */
-    public function getPaypalAccountEmail()
+    public function getPaypalAccountEmail(): ?string
     {
         return $this->paypalAccountEmail;
     }

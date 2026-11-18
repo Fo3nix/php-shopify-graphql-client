@@ -4,15 +4,22 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingChoiceListGroup;
 
+/**
+ * Controls spacing customization for the grouped variant of choice list components in checkout forms.
+ *
+ * The `ChoiceList` object contains settings specifically for the 'group' variant styling through the [`ChoiceListGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CheckoutBrandingChoiceListGroup) field, which determines the spacing between choice options.
+ */
 class ShopifyCheckoutBrandingChoiceList
 {
     protected $group;
 
     
     /**
+     * The settings that apply to the 'group' variant of ChoiceList.
+     *
      * @return ShopifyCheckoutBrandingChoiceListGroup
      */
-    public function getGroup()
+    public function getGroup(): ?ShopifyCheckoutBrandingChoiceListGroup
     {
         return $this->group;
     }

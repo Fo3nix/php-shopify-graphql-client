@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDepositConfiguration;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDepositConfigurationHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPaymentTermsTemplate;
 
+/**
+ * Settings describing the behavior of checkout for a B2B buyer.
+ */
 class ShopifyBuyerExperienceConfiguration
 {
     protected $checkoutToDraft;
@@ -15,45 +18,56 @@ class ShopifyBuyerExperienceConfiguration
 
     
     /**
+     * Whether to checkout to draft order for merchant review.
+     *
      * @return bool
      */
-    public function getCheckoutToDraft()
+    public function getCheckoutToDraft(): ?bool
     {
         return $this->checkoutToDraft;
     }
 
     
     /**
-     * @return ShopifyDepositConfiguration
+     * The portion required to be paid at checkout.
+     *
+     * @return ShopifyDepositPercentage
      */
-    public function getDeposit()
+    public function getDeposit(): ?ShopifyDepositPercentage
     {
         return $this->deposit;
     }
 
     
     /**
+     * Whether to allow customers to use editable shipping addresses.
+     *
      * @return bool
      */
-    public function getEditableShippingAddress()
+    public function getEditableShippingAddress(): ?bool
     {
         return $this->editableShippingAddress;
     }
 
     
     /**
+     * Whether a buyer must pay at checkout or they can also choose to pay
+     * later using net terms.
+     *
      * @return bool
      */
-    public function getPayNowOnly()
+    public function getPayNowOnly(): ?bool
     {
         return $this->payNowOnly;
     }
 
     
     /**
+     * Represents the merchant configured payment terms.
+     *
      * @return ShopifyPaymentTermsTemplate
      */
-    public function getPaymentTermsTemplate()
+    public function getPaymentTermsTemplate(): ?ShopifyPaymentTermsTemplate
     {
         return $this->paymentTermsTemplate;
     }
@@ -69,7 +83,7 @@ class ShopifyBuyerExperienceConfiguration
                 $instance->checkoutToDraft = $data['checkoutToDraft'];
             }
             if (isset($data['deposit']) && $data['deposit'] !== null) {
-                $instance->deposit = ShopifyDepositConfiguration::fromArray($data['deposit']);
+                $instance->deposit = ShopifyDepositConfigurationHydrator::fromArray($data['deposit']);
             }
             if (isset($data['editableShippingAddress']) && $data['editableShippingAddress'] !== null) {
                 $instance->editableShippingAddress = $data['editableShippingAddress'];
@@ -107,7 +121,7 @@ class ShopifyBuyerExperienceConfiguration
                 $data['checkoutToDraft'] = $this->checkoutToDraft;
             }
             if ($this->deposit !== null) {
-                $data['deposit'] = $this->deposit->asArray();
+                $data['deposit'] = ShopifyDepositConfigurationHydrator::toArray($this->deposit);
             }
             if ($this->editableShippingAddress !== null) {
                 $data['editableShippingAddress'] = $this->editableShippingAddress;

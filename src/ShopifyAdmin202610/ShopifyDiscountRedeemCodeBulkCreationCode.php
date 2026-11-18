@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountRedeemCode;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountUserError;
 
+/**
+ * A result of a discount redeem code creation operation created by a bulk creation.
+ */
 class ShopifyDiscountRedeemCodeBulkCreationCode
 {
     protected $code;
@@ -13,27 +16,35 @@ class ShopifyDiscountRedeemCodeBulkCreationCode
 
     
     /**
+     * The code to use in the discount redeem code creation operation.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The successfully created discount redeem code.
+     *
+     * If the discount redeem code couldn't be created, then this field is `null``.
+     *
      * @return ShopifyDiscountRedeemCode
      */
-    public function getDiscountRedeemCode()
+    public function getDiscountRedeemCode(): ?ShopifyDiscountRedeemCode
     {
         return $this->discountRedeemCode;
     }
 
     
     /**
+     * A list of errors that occurred during the creation operation of the discount redeem code.
+     *
      * @return ShopifyDiscountUserError[]
      */
-    public function getErrors()
+    public function getErrors(): ?array
     {
         return $this->errors;
     }

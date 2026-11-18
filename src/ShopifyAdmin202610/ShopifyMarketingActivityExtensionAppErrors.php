@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyUserError;
 
+/**
+ * Represents errors returned from apps when using the marketing activity extension.
+ */
 class ShopifyMarketingActivityExtensionAppErrors
 {
     protected $code;
@@ -11,18 +14,22 @@ class ShopifyMarketingActivityExtensionAppErrors
 
     
     /**
-     * @return ShopifyMarketingActivityExtensionAppErrorCodeEnumObject
+     * The app error type.
+     *
+     * @return string A ShopifyMarketingActivityExtensionAppErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The list of errors returned by the app.
+     *
      * @return ShopifyUserError[]
      */
-    public function getUserErrors()
+    public function getUserErrors(): ?array
     {
         return $this->userErrors;
     }

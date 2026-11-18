@@ -7,6 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerMergePreviewBlocking
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerMergeError;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerMergePreviewDefaultFields;
 
+/**
+ * A preview of the results of a customer merge request. Use `resultingCustomerId` to check which customer
+ * would be kept before running `customerMerge`.
+ */
 class ShopifyCustomerMergePreview
 {
     protected $alternateFields;
@@ -17,45 +21,55 @@ class ShopifyCustomerMergePreview
 
     
     /**
+     * The fields that can be used to override the default fields.
+     *
      * @return ShopifyCustomerMergePreviewAlternateFields
      */
-    public function getAlternateFields()
+    public function getAlternateFields(): ?ShopifyCustomerMergePreviewAlternateFields
     {
         return $this->alternateFields;
     }
 
     
     /**
+     * The fields that will block the merge if the two customers are merged.
+     *
      * @return ShopifyCustomerMergePreviewBlockingFields
      */
-    public function getBlockingFields()
+    public function getBlockingFields(): ?ShopifyCustomerMergePreviewBlockingFields
     {
         return $this->blockingFields;
     }
 
     
     /**
+     * The errors blocking the customer merge.
+     *
      * @return ShopifyCustomerMergeError[]
      */
-    public function getCustomerMergeErrors()
+    public function getCustomerMergeErrors(): ?array
     {
         return $this->customerMergeErrors;
     }
 
     
     /**
+     * The fields that will be kept if the two customers are merged.
+     *
      * @return ShopifyCustomerMergePreviewDefaultFields
      */
-    public function getDefaultFields()
+    public function getDefaultFields(): ?ShopifyCustomerMergePreviewDefaultFields
     {
         return $this->defaultFields;
     }
 
     
     /**
+     * The ID of the customer that would be kept if the two customers were merged.
+     *
      * @return string
      */
-    public function getResultingCustomerId()
+    public function getResultingCustomerId(): ?string
     {
         return $this->resultingCustomerId;
     }

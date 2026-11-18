@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingColorRoles;
 
+/**
+ * The primary button color customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRoles
 {
     protected $accent;
@@ -16,63 +19,77 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRoles
 
     
     /**
+     * The color of accented objects (links and focused state).
+     *
      * @return string
      */
-    public function getAccent()
+    public function getAccent(): ?string
     {
         return $this->accent;
     }
 
     
     /**
+     * The color of the background.
+     *
      * @return string
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
+     * The color of borders.
+     *
      * @return string
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
+     * The decorative color for highlighting specific parts of the user interface.
+     *
      * @return string
      */
-    public function getDecorative()
+    public function getDecorative(): ?string
     {
         return $this->decorative;
     }
 
     
     /**
+     * The colors of the button on hover.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColorRoles
      */
-    public function getHover()
+    public function getHover(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColorRoles
     {
         return $this->hover;
     }
 
     
     /**
+     * The color of icons.
+     *
      * @return string
      */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
     
     /**
+     * The color of text.
+     *
      * @return string
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }

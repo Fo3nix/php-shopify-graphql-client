@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A calculated return.
+ */
 class ShopifyCalculatedReturnQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CalculatedReturn";
 
-    public function selectExchangeLineItems(ShopifyCalculatedReturnExchangeLineItemsArgumentsObject $argsObject = null)
+    /**
+     * A list of calculated exchange line items.
+     */
+    public function selectExchangeLineItems(?ShopifyCalculatedReturnExchangeLineItemsArgumentsObject $argsObject = null): ShopifyCalculatedExchangeLineItemQueryObject
     {
         $object = new ShopifyCalculatedExchangeLineItemQueryObject("exchangeLineItems");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyCalculatedReturnQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectReturnLineItems(ShopifyCalculatedReturnReturnLineItemsArgumentsObject $argsObject = null)
+    /**
+     * A list of calculated return line items.
+     */
+    public function selectReturnLineItems(?ShopifyCalculatedReturnReturnLineItemsArgumentsObject $argsObject = null): ShopifyCalculatedReturnLineItemQueryObject
     {
         $object = new ShopifyCalculatedReturnLineItemQueryObject("returnLineItems");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyCalculatedReturnQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectReturnShippingFee(ShopifyCalculatedReturnReturnShippingFeeArgumentsObject $argsObject = null)
+    /**
+     * The calculated return shipping fee.
+     */
+    public function selectReturnShippingFee(?ShopifyCalculatedReturnReturnShippingFeeArgumentsObject $argsObject = null): ShopifyCalculatedReturnShippingFeeQueryObject
     {
         $object = new ShopifyCalculatedReturnShippingFeeQueryObject("returnShippingFee");
         if ($argsObject !== null) {

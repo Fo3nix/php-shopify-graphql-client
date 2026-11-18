@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyB2BType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketsType;
 
+/**
+ * The shop's entitlements.
+ */
 class ShopifyEntitlementsType
 {
     protected $b2b;
@@ -12,18 +15,22 @@ class ShopifyEntitlementsType
 
     
     /**
+     * The shop's B2B entitlements.
+     *
      * @return ShopifyB2BType
      */
-    public function getB2b()
+    public function getB2b(): ?ShopifyB2BType
     {
         return $this->b2b;
     }
 
     
     /**
+     * Represents the markets for the shop.
+     *
      * @return ShopifyMarketsType
      */
-    public function getMarkets()
+    public function getMarkets(): ?ShopifyMarketsType
     {
         return $this->markets;
     }

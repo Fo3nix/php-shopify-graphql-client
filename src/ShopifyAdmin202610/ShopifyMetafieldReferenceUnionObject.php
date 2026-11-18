@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The resource referenced by the metafield value.
+ */
 class ShopifyMetafieldReferenceUnionObject extends UnionObject
 {
-    public function onShopifyArticle()
+    public function onShopifyArticle(): ShopifyArticleQueryObject
     {
         $object = new ShopifyArticleQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCollection()
+    public function onShopifyCollection(): ShopifyCollectionQueryObject
     {
         $object = new ShopifyCollectionQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCompany()
+    public function onShopifyCompany(): ShopifyCompanyQueryObject
     {
         $object = new ShopifyCompanyQueryObject();
         $this->addPossibleType($object);
@@ -30,7 +33,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCustomer()
+    public function onShopifyCustomer(): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject();
         $this->addPossibleType($object);
@@ -38,7 +41,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyGenericFile()
+    public function onShopifyGenericFile(): ShopifyGenericFileQueryObject
     {
         $object = new ShopifyGenericFileQueryObject();
         $this->addPossibleType($object);
@@ -46,7 +49,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyMediaImage()
+    public function onShopifyMediaImage(): ShopifyMediaImageQueryObject
     {
         $object = new ShopifyMediaImageQueryObject();
         $this->addPossibleType($object);
@@ -54,7 +57,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyMetaobject()
+    public function onShopifyMetaobject(): ShopifyMetaobjectQueryObject
     {
         $object = new ShopifyMetaobjectQueryObject();
         $this->addPossibleType($object);
@@ -62,7 +65,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyModel3d()
+    public function onShopifyModel3d(): ShopifyModel3dQueryObject
     {
         $object = new ShopifyModel3dQueryObject();
         $this->addPossibleType($object);
@@ -70,7 +73,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyOrder()
+    public function onShopifyOrder(): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject();
         $this->addPossibleType($object);
@@ -78,7 +81,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPage()
+    public function onShopifyPage(): ShopifyPageQueryObject
     {
         $object = new ShopifyPageQueryObject();
         $this->addPossibleType($object);
@@ -86,7 +89,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyProduct()
+    public function onShopifyProduct(): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject();
         $this->addPossibleType($object);
@@ -94,7 +97,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyProductVariant()
+    public function onShopifyProductVariant(): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject();
         $this->addPossibleType($object);
@@ -102,7 +105,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyTaxonomyValue()
+    public function onShopifyTaxonomyValue(): ShopifyTaxonomyValueQueryObject
     {
         $object = new ShopifyTaxonomyValueQueryObject();
         $this->addPossibleType($object);
@@ -110,7 +113,7 @@ class ShopifyMetafieldReferenceUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyVideo()
+    public function onShopifyVideo(): ShopifyVideoQueryObject
     {
         $object = new ShopifyVideoQueryObject();
         $this->addPossibleType($object);

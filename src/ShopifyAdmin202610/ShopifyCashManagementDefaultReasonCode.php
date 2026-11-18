@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyCashManagementDefaultReasonCode
+/**
+ * Default reason code.
+ */
+class ShopifyCashManagementDefaultReasonCode implements ShopifyNode
 {
     protected $code;
     protected $id;
 
     
     /**
-     * @return ShopifyCashManagementDefaultReasonCodeEnumEnumObject
+     * The code for the default reason code.
+     *
+     * @return string A ShopifyCashManagementDefaultReasonCodeEnumEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

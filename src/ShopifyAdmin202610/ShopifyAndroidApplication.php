@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The Android mobile platform application.
+ */
 class ShopifyAndroidApplication
 {
     protected $appLinksEnabled;
@@ -11,36 +14,44 @@ class ShopifyAndroidApplication
 
     
     /**
+     * Whether Android App Links are supported by this app.
+     *
      * @return bool
      */
-    public function getAppLinksEnabled()
+    public function getAppLinksEnabled(): ?bool
     {
         return $this->appLinksEnabled;
     }
 
     
     /**
+     * The Android application ID.
+     *
      * @return string
      */
-    public function getApplicationId()
+    public function getApplicationId(): ?string
     {
         return $this->applicationId;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The SHA256 fingerprints of the app's signing certificate.
+     *
      * @return string[]
      */
-    public function getSha256CertFingerprints()
+    public function getSha256CertFingerprints(): ?array
     {
         return $this->sha256CertFingerprints;
     }

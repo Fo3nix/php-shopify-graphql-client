@@ -5,6 +5,13 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarket;
 use Carbon\Carbon;
 
+/**
+ * A localized version of a field on a resource. Translations enable merchants to provide content in multiple languages for [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects, [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) objects, and other store resources.
+ *
+ * Each translation specifies the locale, the field being translated (identified by its key), and the translated value. Translations can be market-specific, allowing different content for the same language across different markets, or available globally when no [`Market`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Market) is specified. The `outdated` flag indicates whether the original content has changed since this translation was last updated.
+ *
+ * Learn more about [managing translated content](https://shopify.dev/docs/apps/build/markets/manage-translated-content).
+ */
 class ShopifyTranslation
 {
     protected $key;
@@ -16,54 +23,66 @@ class ShopifyTranslation
 
     
     /**
+     * On the resource that this translation belongs to, the reference to the value being translated.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * ISO code of the translation locale.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The market that the translation is specific to. Null value means the translation is available in all markets.
+     *
      * @return ShopifyMarket
      */
-    public function getMarket()
+    public function getMarket(): ?ShopifyMarket
     {
         return $this->market;
     }
 
     
     /**
+     * Whether the original content has changed since this translation was updated.
+     *
      * @return bool
      */
-    public function getOutdated()
+    public function getOutdated(): ?bool
     {
         return $this->outdated;
     }
 
     
     /**
+     * The date and time when the translation was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * Translation value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

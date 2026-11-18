@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMedia;
+
+/**
+ * An auto-generated type which holds one Media and a cursor during pagination.
+ */
 class ShopifyMediaEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyMediaEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of MediaEdge.
+     *
+     * @return ShopifyMedia
      */
-    public function getNode()
+    public function getNode(): ?ShopifyMedia
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyMediaEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyMediaHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyMediaEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyMediaHydrator::toArray($this->node);
             }
             return $data;
         }

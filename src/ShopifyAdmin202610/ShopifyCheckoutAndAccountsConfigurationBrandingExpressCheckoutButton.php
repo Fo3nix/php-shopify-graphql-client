@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The Express Checkout button customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingExpressCheckoutButton
 {
     protected $cornerRadius;
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject
+     * The corner radius.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }

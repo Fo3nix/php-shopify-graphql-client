@@ -9,7 +9,10 @@ class ShopifyRootPaymentTermsTemplatesArgumentsObject extends ArgumentsObject
 {
     protected $paymentTermsType;
 
-    public function setPaymentTermsType($shopifyPaymentTermsType)
+    /**
+     * The payment terms type to filter the payment terms templates list.
+     */
+    public function setPaymentTermsType($shopifyPaymentTermsType): static
     {
         $this->paymentTermsType = new RawObject($shopifyPaymentTermsType);
 

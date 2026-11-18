@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Rules that apply to buyer-initiated edit and cancellation requests under a return policy profile.
+ */
 class ShopifyReturnPoliciesEditRules
 {
     protected $canAcceptEdits;
@@ -9,18 +12,22 @@ class ShopifyReturnPoliciesEditRules
 
     
     /**
+     * Whether the policy accepts buyer-initiated edit requests. When false, the customer can't request edits or cancellations for items under this policy.
+     *
      * @return bool
      */
-    public function getCanAcceptEdits()
+    public function getCanAcceptEdits(): ?bool
     {
         return $this->canAcceptEdits;
     }
 
     
     /**
+     * The cancellation window in minutes. Set to -1 to indicate a window until fulfillment. When `canAcceptEdits` is false, this value is ignored as edit requests aren't accepted.
+     *
      * @return int
      */
-    public function getEditWindowMinutes()
+    public function getEditWindowMinutes(): ?int
     {
         return $this->editWindowMinutes;
     }

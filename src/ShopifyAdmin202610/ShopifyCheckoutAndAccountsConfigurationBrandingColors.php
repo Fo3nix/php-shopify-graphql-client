@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRoles;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingSecondaryButtonColorRoles;
 
+/**
+ * The color settings used to customize the user interface.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingColors
 {
     protected $base;
@@ -16,36 +19,44 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingColors
 
     
     /**
+     * The main colors, used for the surface background, text, links, and more.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRoles
      */
-    public function getBase()
+    public function getBase(): ?ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRoles
     {
         return $this->base;
     }
 
     
     /**
+     * The colors of form controls, such as the [`TextField`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/textfield) and [`ChoiceList`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/choicelist) components.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingControlColorRoles
      */
-    public function getControl()
+    public function getControl(): ?ShopifyCheckoutAndAccountsConfigurationBrandingControlColorRoles
     {
         return $this->control;
     }
 
     
     /**
+     * The colors of the primary button. For example, the main payment, or **Pay now** button.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRoles
      */
-    public function getPrimaryButton()
+    public function getPrimaryButton(): ?ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRoles
     {
         return $this->primaryButton;
     }
 
     
     /**
+     * The colors of the secondary button, which is used for secondary actions. For example, **Buy again**.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSecondaryButtonColorRoles
      */
-    public function getSecondaryButton()
+    public function getSecondaryButton(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSecondaryButtonColorRoles
     {
         return $this->secondaryButton;
     }

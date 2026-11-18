@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
-class ShopifyCheckoutProfile
+/**
+ * A checkout profile defines the branding settings and the UI extensions for a store's checkout. A checkout profile could be published or draft. A store might have at most one published checkout profile, which is used to render their live checkout. The store could also have multiple draft profiles that were created, previewed, and published using the admin checkout editor.
+ */
+class ShopifyCheckoutProfile implements ShopifyNode
 {
     protected $createdAt;
     protected $editedAt;
@@ -16,63 +19,77 @@ class ShopifyCheckoutProfile
 
     
     /**
+     * The date and time when the checkout profile was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date and time when the checkout profile was last edited.
+     *
      * @return Carbon
      */
-    public function getEditedAt()
+    public function getEditedAt(): ?Carbon
     {
         return $this->editedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the checkout profile is published or not.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The profile name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * Whether the checkout profile Thank You Page and Order Status Page are actively using extensibility or not.
+     *
      * @return bool
      */
-    public function getTypOspPagesActive()
+    public function getTypOspPagesActive(): ?bool
     {
         return $this->typOspPagesActive;
     }
 
     
     /**
+     * The date and time when the checkout profile was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

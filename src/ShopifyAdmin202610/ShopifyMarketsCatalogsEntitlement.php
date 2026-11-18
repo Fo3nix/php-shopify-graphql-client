@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The entitlements for catalogs.
+ */
 class ShopifyMarketsCatalogsEntitlement
 {
     protected $enabled;
@@ -9,18 +12,22 @@ class ShopifyMarketsCatalogsEntitlement
 
     
     /**
+     * Whether catalogs are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The maximum number of catalogs allowed.
+     *
      * @return int
      */
-    public function getLimit()
+    public function getLimit(): ?int
     {
         return $this->limit;
     }

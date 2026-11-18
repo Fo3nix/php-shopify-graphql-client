@@ -46,7 +46,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStaffMemberConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStorefrontAccessTokenConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTranslation;
 
-class ShopifyShop
+/**
+ * The central configuration and settings hub for a Shopify store. Access business information, operational preferences, feature availability, and store-wide settings that control how the shop operates.
+ *
+ * Includes core business details like the shop name, contact emails, billing address, and currency settings. The shop configuration determines customer account requirements, available sales channels, enabled features, payment settings, and policy documents. Also provides access to shop-level resources such as staff members, fulfillment services, navigation settings, and storefront access tokens.
+ */
+class ShopifyShop implements ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $accountOwner;
     protected $alerts;
@@ -133,738 +138,934 @@ class ShopifyShop
 
     
     /**
+     * Account owner information.
+     *
      * @return ShopifyStaffMember
      */
-    public function getAccountOwner()
+    public function getAccountOwner(): ?ShopifyStaffMember
     {
         return $this->accountOwner;
     }
 
     
     /**
+     * A list of the shop's active alert messages that appear in the Shopify admin.
+     *
      * @return ShopifyShopAlert[]
      */
-    public function getAlerts()
+    public function getAlerts(): ?array
     {
         return $this->alerts;
     }
 
     
     /**
+     * A list of the shop's product categories. Limit: 500 product categories.
+     *
      * @return ShopifyProductCategory[]
      */
-    public function getAllProductCategories()
+    public function getAllProductCategories(): ?array
     {
         return $this->allProductCategories;
     }
 
     
     /**
+     * A list of the shop's product categories. Limit: 500 product categories.
+     *
      * @return ShopifyTaxonomyCategory[]
      */
-    public function getAllProductCategoriesList()
+    public function getAllProductCategoriesList(): ?array
     {
         return $this->allProductCategoriesList;
     }
 
     
     /**
+     * Returns a paginated list of [analytics annotations](https://shopify.dev/docs/api/admin-graphql/latest/objects/AnalyticsAnnotation)
+     * for the shop, including Shopify-generated annotations and annotations created by staff members or apps.
+     * Annotations are markers that can be overlaid on analytics charts to give merchants context for changes in
+     * their metrics.
+     *
+     * Supports filtering by title, type, source, start date and time, end date and time, creation date and time, and
+     * update date and time. Results can be sorted by ID or by any of the supported date and time fields. Use the
+     * [`analyticsAnnotationCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/analyticsAnnotationCreate)
+     * mutation to add new app-created annotations.
+     *
      * @return ShopifyAnalyticsAnnotationConnection
      */
-    public function getAnalyticsAnnotations()
+    public function getAnalyticsAnnotations(): ?ShopifyAnalyticsAnnotationConnection
     {
         return $this->analyticsAnnotations;
     }
 
     
     /**
+     * The token required to query the shop's reports or dashboards.
+     *
      * @return string
      */
-    public function getAnalyticsToken()
+    public function getAnalyticsToken(): ?string
     {
         return $this->analyticsToken;
     }
 
     
     /**
+     * The paginated list of fulfillment orders assigned to the shop locations owned by the app.
+     *
+     * Assigned fulfillment orders are fulfillment orders that are set to be fulfilled from locations
+     * managed by
+     * [fulfillment services](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentService)
+     * that are registered by the app.
+     * One app (api_client) can host multiple fulfillment services on a shop.
+     * Each fulfillment service manages a dedicated location on a shop.
+     * Assigned fulfillment orders can have associated
+     * [fulfillment requests](https://shopify.dev/api/admin-graphql/latest/enums/FulfillmentOrderRequestStatus),
+     * or might currently not be requested to be fulfilled.
+     *
+     * The app must have `read_assigned_fulfillment_orders`
+     * [access scope](https://shopify.dev/docs/api/usage/access-scopes)
+     * to be able to retrieve fulfillment orders assigned to its locations.
+     *
+     * All assigned fulfillment orders (except those with the `CLOSED` status) will be returned by default.
+     * Perform filtering with the `assignmentStatus` argument
+     * to receive only fulfillment orders that have been requested to be fulfilled.
+     *
      * @return ShopifyFulfillmentOrderConnection
      */
-    public function getAssignedFulfillmentOrders()
+    public function getAssignedFulfillmentOrders(): ?ShopifyFulfillmentOrderConnection
     {
         return $this->assignedFulfillmentOrders;
     }
 
     
     /**
+     * The list of sales channels not currently installed on the shop.
+     *
      * @return ShopifyAppConnection
      */
-    public function getAvailableChannelApps()
+    public function getAvailableChannelApps(): ?ShopifyAppConnection
     {
         return $this->availableChannelApps;
     }
 
     
     /**
+     * The shop's billing address information.
+     *
      * @return ShopifyShopAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyShopAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * List of all channel definitions associated with a shop.
+     *
      * @return ShopifyAvailableChannelDefinitionsByChannel[]
      */
-    public function getChannelDefinitionsForInstalledChannels()
+    public function getChannelDefinitionsForInstalledChannels(): ?array
     {
         return $this->channelDefinitionsForInstalledChannels;
     }
 
     
     /**
+     * List of the shop's active sales channels.
+     *
      * @return ShopifyChannelConnection
      */
-    public function getChannels()
+    public function getChannels(): ?ShopifyChannelConnection
     {
         return $this->channels;
     }
 
     
     /**
+     * Specifies whether the shop supports checkouts via Checkout API.
+     *
      * @return bool
      */
-    public function getCheckoutApiSupported()
+    public function getCheckoutApiSupported(): ?bool
     {
         return $this->checkoutApiSupported;
     }
 
     
     /**
+     * List of the shop's collections.
+     *
      * @return ShopifyCollectionConnection
      */
-    public function getCollections()
+    public function getCollections(): ?ShopifyCollectionConnection
     {
         return $this->collections;
     }
 
     
     /**
+     * The public-facing contact email address for the shop.
+     * Customers will use this email to communicate with the shop owner.
+     *
      * @return string
      */
-    public function getContactEmail()
+    public function getContactEmail(): ?string
     {
         return $this->contactEmail;
     }
 
     
     /**
+     * Countries that have been defined in shipping zones for the shop.
+     *
      * @return ShopifyCountriesInShippingZones
      */
-    public function getCountriesInShippingZones()
+    public function getCountriesInShippingZones(): ?ShopifyCountriesInShippingZones
     {
         return $this->countriesInShippingZones;
     }
 
     
     /**
+     * The date and time when the shop was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The three letter code for the currency that the shop sells in.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * How currencies are displayed on your store.
+     *
      * @return ShopifyCurrencyFormats
      */
-    public function getCurrencyFormats()
+    public function getCurrencyFormats(): ?ShopifyCurrencyFormats
     {
         return $this->currencyFormats;
     }
 
     
     /**
+     * The presentment currency settings for the shop excluding the shop's own currency.
+     *
      * @return ShopifyCurrencySettingConnection
      */
-    public function getCurrencySettings()
+    public function getCurrencySettings(): ?ShopifyCurrencySettingConnection
     {
         return $this->currencySettings;
     }
 
     
     /**
-     * @return ShopifyShopCustomerAccountsSettingEnumObject
+     * Whether customer accounts are required, optional, or disabled for the shop.
+     *
+     * @return string A ShopifyShopCustomerAccountsSettingEnumObject value
      */
-    public function getCustomerAccounts()
+    public function getCustomerAccounts(): ?string
     {
         return $this->customerAccounts;
     }
 
     
     /**
+     * Information about the shop's customer accounts.
+     *
      * @return ShopifyCustomerAccountsV2
      */
-    public function getCustomerAccountsV2()
+    public function getCustomerAccountsV2(): ?ShopifyCustomerAccountsV2
     {
         return $this->customerAccountsV2;
     }
 
     
     /**
+     * A list of tags that have been added to customer accounts.
+     *
      * @return ShopifyStringConnection
      */
-    public function getCustomerTags()
+    public function getCustomerTags(): ?ShopifyStringConnection
     {
         return $this->customerTags;
     }
 
     
     /**
+     * Customer accounts associated to the shop.
+     *
      * @return ShopifyCustomerConnection
      */
-    public function getCustomers()
+    public function getCustomers(): ?ShopifyCustomerConnection
     {
         return $this->customers;
     }
 
     
     /**
+     * The shop's meta description used in search engine results.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The domains configured for the shop.
+     *
      * @return ShopifyDomain[]
      */
-    public function getDomains()
+    public function getDomains(): ?array
     {
         return $this->domains;
     }
 
     
     /**
+     * A list of tags that have been added to draft orders.
+     *
      * @return ShopifyStringConnection
      */
-    public function getDraftOrderTags()
+    public function getDraftOrderTags(): ?ShopifyStringConnection
     {
         return $this->draftOrderTags;
     }
 
     
     /**
+     * The shop owner's email address.
+     * Shopify will use this email address to communicate with the shop owner.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject[]
+     * The presentment currencies enabled for the shop.
+     *
+     * @return string[] ShopifyCurrencyCodeEnumObject values
      */
-    public function getEnabledPresentmentCurrencies()
+    public function getEnabledPresentmentCurrencies(): ?array
     {
         return $this->enabledPresentmentCurrencies;
     }
 
     
     /**
+     * The entitlements for a shop.
+     *
      * @return ShopifyEntitlementsType
      */
-    public function getEntitlements()
+    public function getEntitlements(): ?ShopifyEntitlementsType
     {
         return $this->entitlements;
     }
 
     
     /**
+     * The set of features enabled for the shop.
+     *
      * @return ShopifyShopFeatures
      */
-    public function getFeatures()
+    public function getFeatures(): ?ShopifyShopFeatures
     {
         return $this->features;
     }
 
     
     /**
+     * The paginated list of merchant-managed and third-party fulfillment orders.
+     *
      * @return ShopifyFulfillmentOrderConnection
      */
-    public function getFulfillmentOrders()
+    public function getFulfillmentOrders(): ?ShopifyFulfillmentOrderConnection
     {
         return $this->fulfillmentOrders;
     }
 
     
     /**
+     * List of the shop's installed fulfillment services.
+     *
      * @return ShopifyFulfillmentService[]
      */
-    public function getFulfillmentServices()
+    public function getFulfillmentServices(): ?array
     {
         return $this->fulfillmentServices;
     }
 
     
     /**
+     * The shop's time zone as defined by the IANA.
+     *
      * @return string
      */
-    public function getIanaTimezone()
+    public function getIanaTimezone(): ?string
     {
         return $this->ianaTimezone;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * List of the shop's inventory items.
+     *
      * @return ShopifyInventoryItemConnection
      */
-    public function getInventoryItems()
+    public function getInventoryItems(): ?ShopifyInventoryItemConnection
     {
         return $this->inventoryItems;
     }
 
     
     /**
+     * The number of pending orders on the shop.
+     * Limited to a maximum of 10000.
+     *
      * @return ShopifyLimitedPendingOrderCount
      */
-    public function getLimitedPendingOrderCount()
+    public function getLimitedPendingOrderCount(): ?ShopifyLimitedPendingOrderCount
     {
         return $this->limitedPendingOrderCount;
     }
 
     
     /**
+     * List of active locations of the shop.
+     *
      * @return ShopifyLocationConnection
      */
-    public function getLocations()
+    public function getLocations(): ?ShopifyLocationConnection
     {
         return $this->locations;
     }
 
     
     /**
+     * Whether SMS marketing has been enabled on the shop's checkout configuration settings.
+     *
      * @return bool
      */
-    public function getMarketingSmsConsentEnabledAtCheckout()
+    public function getMarketingSmsConsentEnabledAtCheckout(): ?bool
     {
         return $this->marketingSmsConsentEnabledAtCheckout;
     }
 
     
     /**
+     * The approval signals for a shop to support onboarding to channel apps.
+     *
      * @return ShopifyMerchantApprovalSignals
      */
-    public function getMerchantApprovalSignals()
+    public function getMerchantApprovalSignals(): ?ShopifyMerchantApprovalSignals
     {
         return $this->merchantApprovalSignals;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The shop's .myshopify.com domain name.
+     *
      * @return string
      */
-    public function getMyshopifyDomain()
+    public function getMyshopifyDomain(): ?string
     {
         return $this->myshopifyDomain;
     }
 
     
     /**
+     * The shop's name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The shop's settings related to navigation.
+     *
      * @return ShopifyNavigationItem[]
      */
-    public function getNavigationSettings()
+    public function getNavigationSettings(): ?array
     {
         return $this->navigationSettings;
     }
 
     
     /**
+     * The prefix that appears before order numbers.
+     *
      * @return string
      */
-    public function getOrderNumberFormatPrefix()
+    public function getOrderNumberFormatPrefix(): ?string
     {
         return $this->orderNumberFormatPrefix;
     }
 
     
     /**
+     * The suffix that appears after order numbers.
+     *
      * @return string
      */
-    public function getOrderNumberFormatSuffix()
+    public function getOrderNumberFormatSuffix(): ?string
     {
         return $this->orderNumberFormatSuffix;
     }
 
     
     /**
+     * A list of tags that have been added to orders.
+     *
      * @return ShopifyStringConnection
      */
-    public function getOrderTags()
+    public function getOrderTags(): ?ShopifyStringConnection
     {
         return $this->orderTags;
     }
 
     
     /**
+     * A list of the shop's orders.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * The shop's settings related to payments.
+     *
      * @return ShopifyPaymentSettings
      */
-    public function getPaymentSettings()
+    public function getPaymentSettings(): ?ShopifyPaymentSettings
     {
         return $this->paymentSettings;
     }
 
     
     /**
+     * The shop's billing plan.
+     *
      * @return ShopifyShopPlan
      */
-    public function getPlan()
+    public function getPlan(): ?ShopifyShopPlan
     {
         return $this->plan;
     }
 
     
     /**
+     * The primary domain of the shop's online store.
+     *
      * @return ShopifyDomain
      */
-    public function getPrimaryDomain()
+    public function getPrimaryDomain(): ?ShopifyDomain
     {
         return $this->primaryDomain;
     }
 
     
     /**
+     * The list of all images of all products for the shop.
+     *
      * @return ShopifyImageConnection
      */
-    public function getProductImages()
+    public function getProductImages(): ?ShopifyImageConnection
     {
         return $this->productImages;
     }
 
     
     /**
+     * A list of tags that have been added to products.
+     *
      * @return ShopifyStringConnection
      */
-    public function getProductTags()
+    public function getProductTags(): ?ShopifyStringConnection
     {
         return $this->productTags;
     }
 
     
     /**
+     * The list of types added to products.
+     *
      * @return ShopifyStringConnection
      */
-    public function getProductTypes()
+    public function getProductTypes(): ?ShopifyStringConnection
     {
         return $this->productTypes;
     }
 
     
     /**
+     * List of the shop's product variants.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getProductVariants()
+    public function getProductVariants(): ?ShopifyProductVariantConnection
     {
         return $this->productVariants;
     }
 
     
     /**
+     * The list of vendors added to products.
+     *
      * @return ShopifyStringConnection
      */
-    public function getProductVendors()
+    public function getProductVendors(): ?ShopifyStringConnection
     {
         return $this->productVendors;
     }
 
     
     /**
+     * List of the shop's products.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProducts()
+    public function getProducts(): ?ShopifyProductConnection
     {
         return $this->products;
     }
 
     
     /**
+     * The number of publications for the shop.
+     *
      * @return int
      */
-    public function getPublicationCount()
+    public function getPublicationCount(): ?int
     {
         return $this->publicationCount;
     }
 
     
     /**
+     * The shop's limits for specific resources. For example, the maximum number of variants allowed per product, or the maximum number of locations allowed.
+     *
      * @return ShopifyShopResourceLimits
      */
-    public function getResourceLimits()
+    public function getResourceLimits(): ?ShopifyShopResourceLimits
     {
         return $this->resourceLimits;
     }
 
     
     /**
+     * The URL of the rich text editor that can be used for mobile devices.
+     *
      * @return string
      */
-    public function getRichTextEditorUrl()
+    public function getRichTextEditorUrl(): mixed
     {
         return $this->richTextEditorUrl;
     }
 
     
     /**
+     * Fetches a list of admin search results by a specified query.
+     *
      * @return ShopifySearchResultConnection
      */
-    public function getSearch()
+    public function getSearch(): ?ShopifySearchResultConnection
     {
         return $this->search;
     }
 
     
     /**
+     * The list of search filter options for the shop. These can be used to filter product visibility for the shop.
+     *
      * @return ShopifySearchFilterOptions
      */
-    public function getSearchFilters()
+    public function getSearchFilters(): ?ShopifySearchFilterOptions
     {
         return $this->searchFilters;
     }
 
     
     /**
+     * Whether the shop has outstanding setup steps.
+     *
      * @return bool
      */
-    public function getSetupRequired()
+    public function getSetupRequired(): ?bool
     {
         return $this->setupRequired;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject[]
+     * The list of countries that the shop ships to.
+     *
+     * @return string[] ShopifyCountryCodeEnumObject values
      */
-    public function getShipsToCountries()
+    public function getShipsToCountries(): ?array
     {
         return $this->shipsToCountries;
     }
 
     
     /**
+     * The shop's address information as it will appear to buyers.
+     *
      * @return ShopifyShopAddress
      */
-    public function getShopAddress()
+    public function getShopAddress(): ?ShopifyShopAddress
     {
         return $this->shopAddress;
     }
 
     
     /**
+     * The name of the shop owner.
+     *
      * @return string
      */
-    public function getShopOwnerName()
+    public function getShopOwnerName(): ?string
     {
         return $this->shopOwnerName;
     }
 
     
     /**
+     * The list of all legal policies associated with a shop.
+     *
      * @return ShopifyShopPolicy[]
      */
-    public function getShopPolicies()
+    public function getShopPolicies(): ?array
     {
         return $this->shopPolicies;
     }
 
     
     /**
+     * The paginated list of the shop's staff members.
+     *
      * @return ShopifyStaffMemberConnection
      */
-    public function getStaffMembers()
+    public function getStaffMembers(): ?ShopifyStaffMemberConnection
     {
         return $this->staffMembers;
     }
 
     
     /**
+     * The storefront access token of a private application. These are scoped per-application.
+     *
      * @return ShopifyStorefrontAccessTokenConnection
      */
-    public function getStorefrontAccessTokens()
+    public function getStorefrontAccessTokens(): ?ShopifyStorefrontAccessTokenConnection
     {
         return $this->storefrontAccessTokens;
     }
 
     
     /**
+     * The URL of the shop's storefront.
+     *
      * @return string
      */
-    public function getStorefrontUrl()
+    public function getStorefrontUrl(): mixed
     {
         return $this->storefrontUrl;
     }
 
     
     /**
+     * Whether the shop charges taxes for shipping.
+     *
      * @return bool
      */
-    public function getTaxShipping()
+    public function getTaxShipping(): ?bool
     {
         return $this->taxShipping;
     }
 
     
     /**
+     * Whether applicable taxes are included in the shop's product prices.
+     *
      * @return bool
      */
-    public function getTaxesIncluded()
+    public function getTaxesIncluded(): ?bool
     {
         return $this->taxesIncluded;
     }
 
     
     /**
+     * The shop's time zone abbreviation.
+     *
      * @return string
      */
-    public function getTimezoneAbbreviation()
+    public function getTimezoneAbbreviation(): ?string
     {
         return $this->timezoneAbbreviation;
     }
 
     
     /**
+     * The shop's time zone offset.
+     *
      * @return string
      */
-    public function getTimezoneOffset()
+    public function getTimezoneOffset(): ?string
     {
         return $this->timezoneOffset;
     }
 
     
     /**
+     * The shop's time zone offset expressed as a number of minutes.
+     *
      * @return int
      */
-    public function getTimezoneOffsetMinutes()
+    public function getTimezoneOffsetMinutes(): ?int
     {
         return $this->timezoneOffsetMinutes;
     }
 
     
     /**
+     * Whether transactional SMS sent by Shopify have been disabled for a shop.
+     *
      * @return bool
      */
-    public function getTransactionalSmsDisabled()
+    public function getTransactionalSmsDisabled(): ?bool
     {
         return $this->transactionalSmsDisabled;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
-     * @return ShopifyUnitSystemEnumObject
+     * The shop's unit system for weights and measures.
+     *
+     * @return string A ShopifyUnitSystemEnumObject value
      */
-    public function getUnitSystem()
+    public function getUnitSystem(): ?string
     {
         return $this->unitSystem;
     }
 
     
     /**
+     * The date and time when the shop was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The URL of the shop's online store.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }
 
     
     /**
-     * @return ShopifyWeightUnitEnumObject
+     * The shop's primary unit of weight for products and shipping.
+     *
+     * @return string A ShopifyWeightUnitEnumObject value
      */
-    public function getWeightUnit()
+    public function getWeightUnit(): ?string
     {
         return $this->weightUnit;
     }

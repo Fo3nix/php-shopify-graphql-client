@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Shared color customizations for semantic and functional colors.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSharedColors
 {
     protected $accent;
@@ -15,72 +18,88 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSharedColors
 
     
     /**
+     * The accent color for interactive elements.
+     *
      * @return string
      */
-    public function getAccent()
+    public function getAccent(): ?string
     {
         return $this->accent;
     }
 
     
     /**
+     * The button color.
+     *
      * @return string
      */
-    public function getButton()
+    public function getButton(): ?string
     {
         return $this->button;
     }
 
     
     /**
+     * The form control color.
+     *
      * @return string
      */
-    public function getControl()
+    public function getControl(): ?string
     {
         return $this->control;
     }
 
     
     /**
+     * The critical/error color.
+     *
      * @return string
      */
-    public function getCritical()
+    public function getCritical(): ?string
     {
         return $this->critical;
     }
 
     
     /**
+     * The decorative color.
+     *
      * @return string
      */
-    public function getDecorative()
+    public function getDecorative(): ?string
     {
         return $this->decorative;
     }
 
     
     /**
+     * The informational color.
+     *
      * @return string
      */
-    public function getInfo()
+    public function getInfo(): ?string
     {
         return $this->info;
     }
 
     
     /**
+     * The success color.
+     *
      * @return string
      */
-    public function getSuccess()
+    public function getSuccess(): ?string
     {
         return $this->success;
     }
 
     
     /**
+     * The warning color.
+     *
      * @return string
      */
-    public function getWarning()
+    public function getWarning(): ?string
     {
         return $this->warning;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents a snapshot of the supplier where a purchase order originates from.
+ */
 class ShopifyInventorySupplierSnapshot
 {
     protected $supplierName;
 
     
     /**
+     * The name of the supplier as it was when the purchase order was created.
+     *
      * @return string
      */
-    public function getSupplierName()
+    public function getSupplierName(): ?string
     {
         return $this->supplierName;
     }

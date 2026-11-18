@@ -21,7 +21,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyStoreCreditAccountConnection
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCompanyLocationTaxSettings;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
-class ShopifyCompanyLocation
+/**
+ * A location or branch of a [`Company`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Company) that's a customer of the shop. Company locations enable B2B customers to manage multiple branches with distinct billing and shipping addresses, tax settings, and checkout configurations.
+ *
+ * Each location can have its own [`Catalog`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/Catalog) objects that determine which products are published and their pricing. The [`BuyerExperienceConfiguration`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BuyerExperienceConfiguration) determines checkout behavior including [`PaymentTerms`](https://shopify.dev/docs/api/admin-graphql/latest/objects/PaymentTerms), and whether orders require merchant review. B2B customers select which location they're purchasing for, which determines the applicable catalogs, pricing, [`TaxExemption`](https://shopify.dev/docs/api/admin-graphql/latest/enums/TaxExemption) values, and checkout settings for their [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) objects.
+ */
+class ShopifyCompanyLocation implements ShopifyCommentEventSubject, ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyHasStoreCreditAccounts, ShopifyNavigable, ShopifyNode
 {
     protected $billingAddress;
     protected $buyerExperienceConfiguration;
@@ -60,306 +65,378 @@ class ShopifyCompanyLocation
 
     
     /**
+     * The address used as billing address for the location.
+     *
      * @return ShopifyCompanyAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCompanyAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The configuration for the buyer's B2B checkout.
+     *
      * @return ShopifyBuyerExperienceConfiguration
      */
-    public function getBuyerExperienceConfiguration()
+    public function getBuyerExperienceConfiguration(): ?ShopifyBuyerExperienceConfiguration
     {
         return $this->buyerExperienceConfiguration;
     }
 
     
     /**
+     * The list of catalogs associated with the company location.
+     *
      * @return ShopifyCatalogConnection
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyCatalogConnection
     {
         return $this->catalogs;
     }
 
     
     /**
+     * The number of catalogs associated with the company location. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getCatalogsCount()
+    public function getCatalogsCount(): ?ShopifyCount
     {
         return $this->catalogsCount;
     }
 
     
     /**
+     * The company that the company location belongs to.
+     *
      * @return ShopifyCompany
      */
-    public function getCompany()
+    public function getCompany(): ?ShopifyCompany
     {
         return $this->company;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company location was created in Shopify.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The location's currency based on the shipping address. If the shipping address is empty, then the value is the shop's primary market.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * The list of draft orders for the company location.
+     *
      * @return ShopifyDraftOrderConnection
      */
-    public function getDraftOrders()
+    public function getDraftOrders(): ?ShopifyDraftOrderConnection
     {
         return $this->draftOrders;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A unique externally-supplied ID for the company location.
+     *
      * @return string
      */
-    public function getExternalId()
+    public function getExternalId(): ?string
     {
         return $this->externalId;
     }
 
     
     /**
+     * Whether the merchant added a timeline comment to the company location.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the company location is assigned a specific catalog.
+     *
      * @return bool
      */
-    public function getInCatalog()
+    public function getInCatalog(): ?bool
     {
         return $this->inCatalog;
     }
 
     
     /**
+     * The preferred locale of the company location.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The market that applies to the location's shipping address country. In cases where multiple markets match, this returns the most-specific country region market. If the shipping address is empty, then the value is the shop's backup region market.
+     *
      * @return ShopifyMarket
      */
-    public function getMarket()
+    public function getMarket(): ?ShopifyMarket
     {
         return $this->market;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The name of the company location.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A note about the company location.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The total number of orders placed for the location.
+     *
      * @return int
      */
-    public function getOrderCount()
+    public function getOrderCount(): ?int
     {
         return $this->orderCount;
     }
 
     
     /**
+     * The list of orders for the company location.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * The total number of orders placed for the location.
+     *
      * @return ShopifyCount
      */
-    public function getOrdersCount()
+    public function getOrdersCount(): ?ShopifyCount
     {
         return $this->ordersCount;
     }
 
     
     /**
+     * The phone number of the company location.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The list of roles assigned to the company location.
+     *
      * @return ShopifyCompanyContactRoleAssignmentConnection
      */
-    public function getRoleAssignments()
+    public function getRoleAssignments(): ?ShopifyCompanyContactRoleAssignmentConnection
     {
         return $this->roleAssignments;
     }
 
     
     /**
+     * The address used as shipping address for the location.
+     *
      * @return ShopifyCompanyAddress
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShopifyCompanyAddress
     {
         return $this->shippingAddress;
     }
 
     
     /**
+     * The list of staff members assigned to the company location.
+     *
      * @return ShopifyCompanyLocationStaffMemberAssignmentConnection
      */
-    public function getStaffMemberAssignments()
+    public function getStaffMemberAssignments(): ?ShopifyCompanyLocationStaffMemberAssignmentConnection
     {
         return $this->staffMemberAssignments;
     }
 
     
     /**
+     * Returns a list of store credit accounts that belong to the owner resource.
+     * A store credit account owner can hold multiple accounts each with a different currency.
+     *
      * @return ShopifyStoreCreditAccountConnection
      */
-    public function getStoreCreditAccounts()
+    public function getStoreCreditAccounts(): ?ShopifyStoreCreditAccountConnection
     {
         return $this->storeCreditAccounts;
     }
 
     
     /**
-     * @return ShopifyTaxExemptionEnumObject[]
+     * The list of tax exemptions applied to the location.
+     *
+     * @return string[] ShopifyTaxExemptionEnumObject values
      */
-    public function getTaxExemptions()
+    public function getTaxExemptions(): ?array
     {
         return $this->taxExemptions;
     }
 
     
     /**
+     * The tax registration ID for the company location.
+     *
      * @return string
      */
-    public function getTaxRegistrationId()
+    public function getTaxRegistrationId(): ?string
     {
         return $this->taxRegistrationId;
     }
 
     
     /**
+     * The tax settings for the company location.
+     *
      * @return ShopifyCompanyLocationTaxSettings
      */
-    public function getTaxSettings()
+    public function getTaxSettings(): ?ShopifyCompanyLocationTaxSettings
     {
         return $this->taxSettings;
     }
 
     
     /**
+     * The total amount spent by the location.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSpent()
+    public function getTotalSpent(): ?ShopifyMoneyV2
     {
         return $this->totalSpent;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company location was last modified.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

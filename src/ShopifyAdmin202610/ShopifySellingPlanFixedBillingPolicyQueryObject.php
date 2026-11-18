@@ -4,11 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fixed selling plan billing policy defines how much of the price of the product will be billed to customer
+ * at checkout. If there is an outstanding balance, it determines when it will be paid.
+ */
 class ShopifySellingPlanFixedBillingPolicyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SellingPlanFixedBillingPolicy";
 
-    public function selectCheckoutCharge(ShopifySellingPlanFixedBillingPolicyCheckoutChargeArgumentsObject $argsObject = null)
+    /**
+     * The checkout charge when the full amount isn't charged at checkout.
+     */
+    public function selectCheckoutCharge(?ShopifySellingPlanFixedBillingPolicyCheckoutChargeArgumentsObject $argsObject = null): ShopifySellingPlanCheckoutChargeQueryObject
     {
         $object = new ShopifySellingPlanCheckoutChargeQueryObject("checkoutCharge");
         if ($argsObject !== null) {
@@ -19,21 +26,30 @@ class ShopifySellingPlanFixedBillingPolicyQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRemainingBalanceChargeExactTime()
+    /**
+     * The exact time when to capture the full payment.
+     */
+    public function selectRemainingBalanceChargeExactTime(): static
     {
         $this->selectField("remainingBalanceChargeExactTime");
 
         return $this;
     }
 
-    public function selectRemainingBalanceChargeTimeAfterCheckout()
+    /**
+     * The period after remaining_balance_charge_trigger, before capturing the full payment. Expressed as an ISO8601 duration.
+     */
+    public function selectRemainingBalanceChargeTimeAfterCheckout(): static
     {
         $this->selectField("remainingBalanceChargeTimeAfterCheckout");
 
         return $this;
     }
 
-    public function selectRemainingBalanceChargeTrigger()
+    /**
+     * When to capture payment for amount due.
+     */
+    public function selectRemainingBalanceChargeTrigger(): static
     {
         $this->selectField("remainingBalanceChargeTrigger");
 

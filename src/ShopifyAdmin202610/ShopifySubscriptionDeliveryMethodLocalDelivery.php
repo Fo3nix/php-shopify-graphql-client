@@ -5,6 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMailingAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionDeliveryMethodLocalDeliveryOption;
 
+/**
+ * A subscription delivery method for local delivery.
+ * The other subscription delivery methods can be found in the `SubscriptionDeliveryMethod` union type.
+ */
 class ShopifySubscriptionDeliveryMethodLocalDelivery
 {
     protected $address;
@@ -12,18 +16,22 @@ class ShopifySubscriptionDeliveryMethodLocalDelivery
 
     
     /**
+     * The address to deliver to.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getAddress()
+    public function getAddress(): ?ShopifyMailingAddress
     {
         return $this->address;
     }
 
     
     /**
+     * The details of the local delivery method to use.
+     *
      * @return ShopifySubscriptionDeliveryMethodLocalDeliveryOption
      */
-    public function getLocalDeliveryOption()
+    public function getLocalDeliveryOption(): ?ShopifySubscriptionDeliveryMethodLocalDeliveryOption
     {
         return $this->localDeliveryOption;
     }

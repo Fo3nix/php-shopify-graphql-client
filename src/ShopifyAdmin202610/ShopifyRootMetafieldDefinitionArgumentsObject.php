@@ -8,7 +8,10 @@ class ShopifyRootMetafieldDefinitionArgumentsObject extends ArgumentsObject
 {
     protected $identifier;
 
-    public function setIdentifier(ShopifyMetafieldDefinitionIdentifierInputInputObject $shopifyMetafieldDefinitionIdentifierInputInputObject)
+    /**
+     * The identifier of the MetafieldDefinition to return.
+     */
+    public function setIdentifier(ShopifyMetafieldDefinitionIdentifierInputInputObject $shopifyMetafieldDefinitionIdentifierInputInputObject): static
     {
         $this->identifier = $shopifyMetafieldDefinitionIdentifierInputInputObject;
 

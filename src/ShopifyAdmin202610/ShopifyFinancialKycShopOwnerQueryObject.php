@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the shop owner information for financial KYC purposes.
+ */
 class ShopifyFinancialKycShopOwnerQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FinancialKycShopOwner";
 
-    public function selectEmail()
+    /**
+     * The email of the shop owner.
+     */
+    public function selectEmail(): static
     {
         $this->selectField("email");
 
         return $this;
     }
 
-    public function selectFirstName()
+    /**
+     * The first name of the shop owner.
+     */
+    public function selectFirstName(): static
     {
         $this->selectField("firstName");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLastName()
+    /**
+     * The last name of the shop owner.
+     */
+    public function selectLastName(): static
     {
         $this->selectField("lastName");
 
         return $this;
     }
 
-    public function selectPhone()
+    /**
+     * The phone number of the shop owner.
+     */
+    public function selectPhone(): static
     {
         $this->selectField("phone");
 

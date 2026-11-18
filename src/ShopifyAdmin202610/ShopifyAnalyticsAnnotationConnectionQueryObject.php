@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple AnalyticsAnnotations.
+ */
 class ShopifyAnalyticsAnnotationConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AnalyticsAnnotationConnection";
 
-    public function selectEdges(ShopifyAnalyticsAnnotationConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyAnalyticsAnnotationConnectionEdgesArgumentsObject $argsObject = null): ShopifyAnalyticsAnnotationEdgeQueryObject
     {
         $object = new ShopifyAnalyticsAnnotationEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyAnalyticsAnnotationConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectNodes(ShopifyAnalyticsAnnotationConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in AnalyticsAnnotationEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyAnalyticsAnnotationConnectionNodesArgumentsObject $argsObject = null): ShopifyAnalyticsAnnotationQueryObject
     {
         $object = new ShopifyAnalyticsAnnotationQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyAnalyticsAnnotationConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPageInfo(ShopifyAnalyticsAnnotationConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyAnalyticsAnnotationConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

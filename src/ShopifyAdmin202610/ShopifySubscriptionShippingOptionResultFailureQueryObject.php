@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Failure determining available shipping options for delivery of a subscription contract.
+ */
 class ShopifySubscriptionShippingOptionResultFailureQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionShippingOptionResultFailure";
 
-    public function selectMessage()
+    /**
+     * Failure reason.
+     */
+    public function selectMessage(): static
     {
         $this->selectField("message");
 

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A preview of a URL redirect import row.
+ */
 class ShopifyUrlRedirectImportPreview
 {
     protected $path;
@@ -9,18 +12,22 @@ class ShopifyUrlRedirectImportPreview
 
     
     /**
+     * The old path to be redirected from. When the user visits this path, they will be redirected to the target location.
+     *
      * @return string
      */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
     
     /**
+     * The target location where the user will be redirected to.
+     *
      * @return string
      */
-    public function getTarget()
+    public function getTarget(): ?string
     {
         return $this->target;
     }

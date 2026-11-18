@@ -4,25 +4,38 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a line item belonging to an inventory purchase order.
+ * This is a simplified view of the purchase order line item for inventory management purposes.
+ */
 class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryPurchaseOrderLineItem";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time the purchase order line item was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally unique identifier.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInventoryItem(ShopifyInventoryPurchaseOrderLineItemInventoryItemArgumentsObject $argsObject = null)
+    /**
+     * The inventory item associated with this line item.
+     */
+    public function selectInventoryItem(?ShopifyInventoryPurchaseOrderLineItemInventoryItemArgumentsObject $argsObject = null): ShopifyInventoryItemQueryObject
     {
         $object = new ShopifyInventoryItemQueryObject("inventoryItem");
         if ($argsObject !== null) {
@@ -33,7 +46,10 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPurchaseOrder(ShopifyInventoryPurchaseOrderLineItemPurchaseOrderArgumentsObject $argsObject = null)
+    /**
+     * The purchase order this line item belongs to.
+     */
+    public function selectPurchaseOrder(?ShopifyInventoryPurchaseOrderLineItemPurchaseOrderArgumentsObject $argsObject = null): ShopifyInventoryPurchaseOrderQueryObject
     {
         $object = new ShopifyInventoryPurchaseOrderQueryObject("purchaseOrder");
         if ($argsObject !== null) {
@@ -44,7 +60,10 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSubtotal(ShopifyInventoryPurchaseOrderLineItemSubtotalArgumentsObject $argsObject = null)
+    /**
+     * The unit cost multiplied by the total quantity for the line item.
+     */
+    public function selectSubtotal(?ShopifyInventoryPurchaseOrderLineItemSubtotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("subtotal");
         if ($argsObject !== null) {
@@ -55,28 +74,40 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSupplierSku()
+    /**
+     * The SKU for the item.
+     */
+    public function selectSupplierSku(): static
     {
         $this->selectField("supplierSku");
 
         return $this;
     }
 
-    public function selectTaxPercent()
+    /**
+     * The tax rate percentage for the line item.
+     */
+    public function selectTaxPercent(): static
     {
         $this->selectField("taxPercent");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the product associated with this line item.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTotalCost(ShopifyInventoryPurchaseOrderLineItemTotalCostArgumentsObject $argsObject = null)
+    /**
+     * The total cost of the line item, including taxes.
+     */
+    public function selectTotalCost(?ShopifyInventoryPurchaseOrderLineItemTotalCostArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalCost");
         if ($argsObject !== null) {
@@ -87,14 +118,20 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalQuantity()
+    /**
+     * The total number of units ordered for the line item.
+     */
+    public function selectTotalQuantity(): static
     {
         $this->selectField("totalQuantity");
 
         return $this;
     }
 
-    public function selectUnitCost(ShopifyInventoryPurchaseOrderLineItemUnitCostArgumentsObject $argsObject = null)
+    /**
+     * The unit cost of the item paid to the supplier.
+     */
+    public function selectUnitCost(?ShopifyInventoryPurchaseOrderLineItemUnitCostArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("unitCost");
         if ($argsObject !== null) {
@@ -105,7 +142,10 @@ class ShopifyInventoryPurchaseOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectVariantTitle()
+    /**
+     * The title of the variant associated with this line item.
+     */
+    public function selectVariantTitle(): static
     {
         $this->selectField("variantTitle");
 

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the preview image for a media.
+ */
 class ShopifyMediaPreviewImageQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MediaPreviewImage";
 
-    public function selectImage(ShopifyMediaPreviewImageImageArgumentsObject $argsObject = null)
+    /**
+     * The preview image for the media. Returns `null` until `status` is `READY`.
+     */
+    public function selectImage(?ShopifyMediaPreviewImageImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMediaPreviewImageQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * Current status of the preview image.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

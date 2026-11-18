@@ -5,7 +5,16 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppSubscriptionLineItem;
 
-class ShopifyAppSubscription
+/**
+ * A recurring billing agreement that associates an [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) with a merchant's shop. Each subscription contains one or more [`AppSubscriptionLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AppSubscriptionLineItem) objects that define the pricing structure. The pricing structure can include recurring charges, usage-based pricing, or both.
+ *
+ * The subscription tracks billing details including the current period end date, trial days, and [`AppSubscriptionStatus`](https://shopify.dev/docs/api/admin-graphql/latest/enums/AppSubscriptionStatus).
+ *
+ * Merchants must approve subscriptions through a [confirmation URL](https://shopify.dev/docs/api/admin-graphql/latest/mutations/appSubscriptionCreate#returns-confirmationUrl) before billing begins. Test subscriptions allow developers to verify billing flows without actual charges.
+ *
+ * Learn more about [subscription billing](https://shopify.dev/docs/apps/launch/billing/subscription-billing) and [testing charges](https://shopify.dev/docs/apps/launch/billing/managed-pricing#test-charges).
+ */
+class ShopifyAppSubscription implements ShopifyNode
 {
     protected $createdAt;
     protected $currentPeriodEnd;
@@ -19,81 +28,99 @@ class ShopifyAppSubscription
 
     
     /**
+     * The date and time when the app subscription was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date and time when the current app subscription period ends. Returns `null` if the subscription isn't active.
+     *
      * @return Carbon
      */
-    public function getCurrentPeriodEnd()
+    public function getCurrentPeriodEnd(): ?Carbon
     {
         return $this->currentPeriodEnd;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The plans attached to the app subscription.
+     *
      * @return ShopifyAppSubscriptionLineItem[]
      */
-    public function getLineItems()
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The name of the app subscription.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The URL that the merchant is redirected to after approving the app subscription.
+     *
      * @return string
      */
-    public function getReturnUrl()
+    public function getReturnUrl(): mixed
     {
         return $this->returnUrl;
     }
 
     
     /**
-     * @return ShopifyAppSubscriptionStatusEnumObject
+     * The status of the app subscription.
+     *
+     * @return string A ShopifyAppSubscriptionStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * Specifies whether the app subscription is a test transaction.
+     *
      * @return bool
      */
-    public function getTest()
+    public function getTest(): ?bool
     {
         return $this->test;
     }
 
     
     /**
+     * The number of free trial days, starting at the subscription's creation date, by which billing is delayed.
+     *
      * @return int
      */
-    public function getTrialDays()
+    public function getTrialDays(): ?int
     {
         return $this->trialDays;
     }

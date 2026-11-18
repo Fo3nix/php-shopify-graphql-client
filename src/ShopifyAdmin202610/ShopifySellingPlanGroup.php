@@ -9,7 +9,15 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySellingPlanConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTranslation;
 
-class ShopifySellingPlanGroup
+/**
+ * A selling method that defines how products can be sold through purchase options like subscriptions, pre-orders, or try-before-you-buy. Groups one or more [`SellingPlan`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan) objects that share the same selling method and options.
+ *
+ * The group provides buyer-facing labels and merchant-facing descriptions for the selling method. Associates [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) and [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects with selling plan groups to offer them through these purchase options.
+ *
+ * > Caution:
+ * > Selling plan groups and their associated records are automatically deleted 48 hours after a merchant uninstalls the [`App`](https://shopify.dev/docs/api/admin-graphql/latest/objects/App) that created them. Back up these records if you need to restore them later.
+ */
+class ShopifySellingPlanGroup implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $appId;
     protected $appliesToProduct;
@@ -32,162 +40,198 @@ class ShopifySellingPlanGroup
 
     
     /**
+     * The ID for app, exposed in Liquid and product JSON.
+     *
      * @return string
      */
-    public function getAppId()
+    public function getAppId(): ?string
     {
         return $this->appId;
     }
 
     
     /**
+     * Whether the given product is directly associated to the selling plan group.
+     *
      * @return bool
      */
-    public function getAppliesToProduct()
+    public function getAppliesToProduct(): ?bool
     {
         return $this->appliesToProduct;
     }
 
     
     /**
+     * Whether the given product variant is directly associated to the selling plan group.
+     *
      * @return bool
      */
-    public function getAppliesToProductVariant()
+    public function getAppliesToProductVariant(): ?bool
     {
         return $this->appliesToProductVariant;
     }
 
     
     /**
+     * Whether any of the product variants of the given product are associated to the selling plan group.
+     *
      * @return bool
      */
-    public function getAppliesToProductVariants()
+    public function getAppliesToProductVariants(): ?bool
     {
         return $this->appliesToProductVariants;
     }
 
     
     /**
+     * The date and time when the selling plan group was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The merchant-facing description of the selling plan group.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The merchant-facing label of the selling plan group.
+     *
      * @return string
      */
-    public function getMerchantCode()
+    public function getMerchantCode(): ?string
     {
         return $this->merchantCode;
     }
 
     
     /**
+     * The buyer-facing label of the selling plan group.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The values of all options available on the selling plan group. Selling plans are grouped together in Liquid when they're created by the same app, and have the same `selling_plan_group.name` and `selling_plan_group.options` values.
+     *
      * @return string[]
      */
-    public function getOptions()
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     
     /**
+     * The relative position of the selling plan group for display.
+     *
      * @return int
      */
-    public function getPosition()
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
     
     /**
+     * Product variants associated to the selling plan group.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getProductVariants()
+    public function getProductVariants(): ?ShopifyProductVariantConnection
     {
         return $this->productVariants;
     }
 
     
     /**
+     * A count of product variants associated to the selling plan group.
+     *
      * @return ShopifyCount
      */
-    public function getProductVariantsCount()
+    public function getProductVariantsCount(): ?ShopifyCount
     {
         return $this->productVariantsCount;
     }
 
     
     /**
+     * Products associated to the selling plan group.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProducts()
+    public function getProducts(): ?ShopifyProductConnection
     {
         return $this->products;
     }
 
     
     /**
+     * A count of products associated to the selling plan group.
+     *
      * @return ShopifyCount
      */
-    public function getProductsCount()
+    public function getProductsCount(): ?ShopifyCount
     {
         return $this->productsCount;
     }
 
     
     /**
+     * Selling plans associated to the selling plan group.
+     *
      * @return ShopifySellingPlanConnection
      */
-    public function getSellingPlans()
+    public function getSellingPlans(): ?ShopifySellingPlanConnection
     {
         return $this->sellingPlans;
     }
 
     
     /**
+     * A summary of the policies associated to the selling plan group.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }

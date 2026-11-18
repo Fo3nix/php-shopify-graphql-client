@@ -5,6 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySellingPlanCheckoutCharge;
 use Carbon\Carbon;
 
+/**
+ * The fixed selling plan billing policy defines how much of the price of the product will be billed to customer
+ * at checkout. If there is an outstanding balance, it determines when it will be paid.
+ */
 class ShopifySellingPlanFixedBillingPolicy
 {
     protected $checkoutCharge;
@@ -14,36 +18,44 @@ class ShopifySellingPlanFixedBillingPolicy
 
     
     /**
+     * The checkout charge when the full amount isn't charged at checkout.
+     *
      * @return ShopifySellingPlanCheckoutCharge
      */
-    public function getCheckoutCharge()
+    public function getCheckoutCharge(): ?ShopifySellingPlanCheckoutCharge
     {
         return $this->checkoutCharge;
     }
 
     
     /**
+     * The exact time when to capture the full payment.
+     *
      * @return Carbon
      */
-    public function getRemainingBalanceChargeExactTime()
+    public function getRemainingBalanceChargeExactTime(): ?Carbon
     {
         return $this->remainingBalanceChargeExactTime;
     }
 
     
     /**
+     * The period after remaining_balance_charge_trigger, before capturing the full payment. Expressed as an ISO8601 duration.
+     *
      * @return string
      */
-    public function getRemainingBalanceChargeTimeAfterCheckout()
+    public function getRemainingBalanceChargeTimeAfterCheckout(): ?string
     {
         return $this->remainingBalanceChargeTimeAfterCheckout;
     }
 
     
     /**
-     * @return ShopifySellingPlanRemainingBalanceChargeTriggerEnumObject
+     * When to capture payment for amount due.
+     *
+     * @return string A ShopifySellingPlanRemainingBalanceChargeTriggerEnumObject value
      */
-    public function getRemainingBalanceChargeTrigger()
+    public function getRemainingBalanceChargeTrigger(): ?string
     {
         return $this->remainingBalanceChargeTrigger;
     }

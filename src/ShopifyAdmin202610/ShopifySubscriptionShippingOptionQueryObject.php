@@ -4,14 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shipping option to deliver a subscription contract.
+ */
 class ShopifySubscriptionShippingOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionShippingOption";
 
     /**
+     * The carrier service that's providing this shipping option.
+     * This field isn't currently supported and returns null.
+     *
      * @deprecated This field has never been implemented.
      */
-    public function selectCarrierService(ShopifySubscriptionShippingOptionCarrierServiceArgumentsObject $argsObject = null)
+    public function selectCarrierService(?ShopifySubscriptionShippingOptionCarrierServiceArgumentsObject $argsObject = null): ShopifyDeliveryCarrierServiceQueryObject
     {
         $object = new ShopifyDeliveryCarrierServiceQueryObject("carrierService");
         if ($argsObject !== null) {
@@ -22,35 +28,50 @@ class ShopifySubscriptionShippingOptionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCode()
+    /**
+     * The code of the shipping option.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the shipping option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectPhoneRequired()
+    /**
+     * If a phone number is required for the shipping option.
+     */
+    public function selectPhoneRequired(): static
     {
         $this->selectField("phoneRequired");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the shipping option.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifySubscriptionShippingOptionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of the shipping option.
+     */
+    public function selectPrice(?ShopifySubscriptionShippingOptionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -61,7 +82,10 @@ class ShopifySubscriptionShippingOptionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the shipping option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

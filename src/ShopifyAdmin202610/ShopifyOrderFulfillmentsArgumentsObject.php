@@ -9,14 +9,22 @@ class ShopifyOrderFulfillmentsArgumentsObject extends ArgumentsObject
     protected $first;
     protected $query;
 
-    public function setFirst($first)
+    /**
+     * Truncate the array result to this size.
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setQuery($query)
+    /**
+     * Optional query string to filter fulfillments by timestamps. Examples:
+     * `created_at:>='2024-05-07T08:37:00Z' updated_at:<'2025-05-07T08:37:00Z'`,
+     * `created_at:'2024-05-07T08:37:00Z'`
+     */
+    public function setQuery($query): static
     {
         $this->query = $query;
 
