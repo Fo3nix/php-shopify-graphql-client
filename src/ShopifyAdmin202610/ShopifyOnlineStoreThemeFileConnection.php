@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyOnlineStoreThemeFile;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPageInfo;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyOnlineStoreThemeFileReadResult;
 
+/**
+ * An auto-generated type for paginating through multiple OnlineStoreThemeFiles.
+ */
 class ShopifyOnlineStoreThemeFileConnection
 {
     protected $edges;
@@ -16,36 +19,44 @@ class ShopifyOnlineStoreThemeFileConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyOnlineStoreThemeFileEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * A list of nodes that are contained in OnlineStoreThemeFileEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
      * @return ShopifyOnlineStoreThemeFile[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }
 
     
     /**
+     * List of errors that occurred during the request.
+     *
      * @return ShopifyOnlineStoreThemeFileReadResult[]
      */
-    public function getUserErrors()
+    public function getUserErrors(): ?array
     {
         return $this->userErrors;
     }

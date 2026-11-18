@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A filter in a search query represented by a key value pair.
+ */
 class ShopifySearchFilterQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SearchFilter";
 
-    public function selectKey()
+    /**
+     * The key of the search filter.
+     */
+    public function selectKey(): static
     {
         $this->selectField("key");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * The value of the search filter.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

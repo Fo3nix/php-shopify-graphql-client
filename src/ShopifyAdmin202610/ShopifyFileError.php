@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A file error. This typically occurs when there is an issue with the file itself causing it to fail validation.
+ * Check the file before attempting to upload again.
+ */
 class ShopifyFileError
 {
     protected $code;
@@ -10,27 +14,33 @@ class ShopifyFileError
 
     
     /**
-     * @return ShopifyFileErrorCodeEnumObject
+     * Code representing the type of error.
+     *
+     * @return string A ShopifyFileErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Additional details regarding the error.
+     *
      * @return string
      */
-    public function getDetails()
+    public function getDetails(): ?string
     {
         return $this->details;
     }
 
     
     /**
+     * Translated error message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

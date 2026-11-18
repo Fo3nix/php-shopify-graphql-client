@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * An action associated to a shop alert, such as adding a credit card.
+ */
 class ShopifyShopAlertAction
 {
     protected $title;
@@ -9,18 +12,22 @@ class ShopifyShopAlertAction
 
     
     /**
+     * The text for the button in the alert. For example, _Add credit card_.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The target URL that the button links to.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

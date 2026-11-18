@@ -5,7 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillmentOrder;
 use Carbon\Carbon;
 
-class ShopifyFulfillmentOrderMerchantRequest
+/**
+ * A request made by the merchant or an order management app to a fulfillment service
+ * for a fulfillment order.
+ */
+class ShopifyFulfillmentOrderMerchantRequest implements ShopifyNode
 {
     protected $fulfillmentOrder;
     protected $id;
@@ -17,63 +21,80 @@ class ShopifyFulfillmentOrderMerchantRequest
 
     
     /**
+     * The fulfillment order associated with the merchant request.
+     *
      * @return ShopifyFulfillmentOrder
      */
-    public function getFulfillmentOrder()
+    public function getFulfillmentOrder(): ?ShopifyFulfillmentOrder
     {
         return $this->fulfillmentOrder;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyFulfillmentOrderMerchantRequestKindEnumObject
+     * The kind of request made.
+     *
+     * @return string A ShopifyFulfillmentOrderMerchantRequestKindEnumObject value
      */
-    public function getKind()
+    public function getKind(): ?string
     {
         return $this->kind;
     }
 
     
     /**
+     * The optional message that the merchant included in the request.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
     
     /**
+     * Additional options requested by the merchant. These depend on the `kind` of the request.
+     * For example, for a `FULFILLMENT_REQUEST`, one option is `notify_customer`, which indicates whether the
+     * merchant intends to notify the customer upon fulfillment. The fulfillment service can then set
+     * `notifyCustomer` when making calls to `FulfillmentCreate`.
+     *
      * @return string
      */
-    public function getRequestOptions()
+    public function getRequestOptions(): mixed
     {
         return $this->requestOptions;
     }
 
     
     /**
+     * The response from the fulfillment service.
+     *
      * @return string
      */
-    public function getResponseData()
+    public function getResponseData(): mixed
     {
         return $this->responseData;
     }
 
     
     /**
+     * The timestamp when the request was made.
+     *
      * @return Carbon
      */
-    public function getSentAt()
+    public function getSentAt(): ?Carbon
     {
         return $this->sentAt;
     }

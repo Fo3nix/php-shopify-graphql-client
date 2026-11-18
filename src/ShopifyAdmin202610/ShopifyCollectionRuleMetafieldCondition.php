@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldDefinition;
 
+/**
+ * Identifies a metafield definition used as a rule for the collection.
+ */
 class ShopifyCollectionRuleMetafieldCondition
 {
     protected $metafieldDefinition;
 
     
     /**
+     * The metafield definition associated with the condition.
+     *
      * @return ShopifyMetafieldDefinition
      */
-    public function getMetafieldDefinition()
+    public function getMetafieldDefinition(): ?ShopifyMetafieldDefinition
     {
         return $this->metafieldDefinition;
     }

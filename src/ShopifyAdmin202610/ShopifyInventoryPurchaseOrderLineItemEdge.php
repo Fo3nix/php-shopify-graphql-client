@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryPurchaseOrderLineItem;
 
+/**
+ * An auto-generated type which holds one InventoryPurchaseOrderLineItem and a cursor during pagination.
+ */
 class ShopifyInventoryPurchaseOrderLineItemEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyInventoryPurchaseOrderLineItemEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of InventoryPurchaseOrderLineItemEdge.
+     *
      * @return ShopifyInventoryPurchaseOrderLineItem
      */
-    public function getNode()
+    public function getNode(): ?ShopifyInventoryPurchaseOrderLineItem
     {
         return $this->node;
     }

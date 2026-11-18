@@ -4,7 +4,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountApplicationHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountApplication;
 
+/**
+ * The actual amount discounted on a line item or shipping line. While [`DiscountApplication`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/DiscountApplication) captures the discount's intentions and rules, The `DiscountAllocation` object shows the final calculated discount amount applied to each line.
+ *
+ * The allocation includes the discounted amount in both shop and presentment currencies, with a reference to the originating discount application.
+ */
 class ShopifyDiscountAllocation
 {
     protected $allocatedAmount;
@@ -13,27 +20,33 @@ class ShopifyDiscountAllocation
 
     
     /**
+     * The money amount that's allocated to a line based on the associated discount application.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAllocatedAmount()
+    public function getAllocatedAmount(): ?ShopifyMoneyV2
     {
         return $this->allocatedAmount;
     }
 
     
     /**
+     * The money amount that's allocated to a line based on the associated discount application in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAllocatedAmountSet()
+    public function getAllocatedAmountSet(): ?ShopifyMoneyBag
     {
         return $this->allocatedAmountSet;
     }
 
     
     /**
-     * @return mixed
+     * The discount application that the allocated amount originated from.
+     *
+     * @return ShopifyDiscountApplication
      */
-    public function getDiscountApplication()
+    public function getDiscountApplication(): ?ShopifyDiscountApplication
     {
         return $this->discountApplication;
     }
@@ -52,7 +65,7 @@ class ShopifyDiscountAllocation
                 $instance->allocatedAmountSet = ShopifyMoneyBag::fromArray($data['allocatedAmountSet']);
             }
             if (isset($data['discountApplication']) && $data['discountApplication'] !== null) {
-                $instance->discountApplication = $data['discountApplication'];
+                $instance->discountApplication = ShopifyDiscountApplicationHydrator::fromArray($data['discountApplication']);
             }
             return $instance;
         }
@@ -84,7 +97,7 @@ class ShopifyDiscountAllocation
                 $data['allocatedAmountSet'] = $this->allocatedAmountSet->asArray();
             }
             if ($this->discountApplication !== null) {
-                $data['discountApplication'] = $this->discountApplication;
+                $data['discountApplication'] = ShopifyDiscountApplicationHydrator::toArray($this->discountApplication);
             }
             return $data;
         }

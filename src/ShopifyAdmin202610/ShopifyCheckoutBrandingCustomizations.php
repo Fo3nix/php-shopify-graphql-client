@@ -22,6 +22,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingButton;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingSelect;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingTextField;
 
+/**
+ * The customizations that apply to specific components or areas of the user interface.
+ */
 class ShopifyCheckoutBrandingCustomizations
 {
     protected $buyerJourney;
@@ -49,198 +52,242 @@ class ShopifyCheckoutBrandingCustomizations
 
     
     /**
+     * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+     *
      * @return ShopifyCheckoutBrandingBuyerJourney
      */
-    public function getBuyerJourney()
+    public function getBuyerJourney(): ?ShopifyCheckoutBrandingBuyerJourney
     {
         return $this->buyerJourney;
     }
 
     
     /**
+     * The checkout cart link customizations. For example, by setting the visibility field to `HIDDEN`, you can hide the cart icon in the header for one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+     *
      * @return ShopifyCheckoutBrandingCartLink
      */
-    public function getCartLink()
+    public function getCartLink(): ?ShopifyCheckoutBrandingCartLink
     {
         return $this->cartLink;
     }
 
     
     /**
+     * The checkboxes customizations.
+     *
      * @return ShopifyCheckoutBrandingCheckbox
      */
-    public function getCheckbox()
+    public function getCheckbox(): ?ShopifyCheckoutBrandingCheckbox
     {
         return $this->checkbox;
     }
 
     
     /**
+     * The choice list customizations.
+     *
      * @return ShopifyCheckoutBrandingChoiceList
      */
-    public function getChoiceList()
+    public function getChoiceList(): ?ShopifyCheckoutBrandingChoiceList
     {
         return $this->choiceList;
     }
 
     
     /**
+     * The content container customizations.
+     *
      * @return ShopifyCheckoutBrandingContent
      */
-    public function getContent()
+    public function getContent(): ?ShopifyCheckoutBrandingContent
     {
         return $this->content;
     }
 
     
     /**
+     * The form controls customizations.
+     *
      * @return ShopifyCheckoutBrandingControl
      */
-    public function getControl()
+    public function getControl(): ?ShopifyCheckoutBrandingControl
     {
         return $this->control;
     }
 
     
     /**
+     * The customizations for the page, content, main, and order summary dividers. For example, by setting the borderStyle to `DOTTED`, you can make these dividers render as dotted lines.
+     *
      * @return ShopifyCheckoutBrandingDividerStyle
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutBrandingDividerStyle
     {
         return $this->divider;
     }
 
     
     /**
+     * The express checkout customizations.
+     *
      * @return ShopifyCheckoutBrandingExpressCheckout
      */
-    public function getExpressCheckout()
+    public function getExpressCheckout(): ?ShopifyCheckoutBrandingExpressCheckout
     {
         return $this->expressCheckout;
     }
 
     
     /**
+     * The favicon image.
+     *
      * @return ShopifyCheckoutBrandingImage
      */
-    public function getFavicon()
+    public function getFavicon(): ?ShopifyCheckoutBrandingImage
     {
         return $this->favicon;
     }
 
     
     /**
+     * The footer customizations.
+     *
      * @return ShopifyCheckoutBrandingFooter
      */
-    public function getFooter()
+    public function getFooter(): ?ShopifyCheckoutBrandingFooter
     {
         return $this->footer;
     }
 
     
     /**
+     * The global customizations.
+     *
      * @return ShopifyCheckoutBrandingGlobal
      */
-    public function getGlobal()
+    public function getGlobal(): ?ShopifyCheckoutBrandingGlobal
     {
         return $this->global;
     }
 
     
     /**
+     * The header customizations.
+     *
      * @return ShopifyCheckoutBrandingHeader
      */
-    public function getHeader()
+    public function getHeader(): ?ShopifyCheckoutBrandingHeader
     {
         return $this->header;
     }
 
     
     /**
+     * The Heading Level 1 customizations.
+     *
      * @return ShopifyCheckoutBrandingHeadingLevel
      */
-    public function getHeadingLevel1()
+    public function getHeadingLevel1(): ?ShopifyCheckoutBrandingHeadingLevel
     {
         return $this->headingLevel1;
     }
 
     
     /**
+     * The Heading Level 2 customizations.
+     *
      * @return ShopifyCheckoutBrandingHeadingLevel
      */
-    public function getHeadingLevel2()
+    public function getHeadingLevel2(): ?ShopifyCheckoutBrandingHeadingLevel
     {
         return $this->headingLevel2;
     }
 
     
     /**
+     * The Heading Level 3 customizations.
+     *
      * @return ShopifyCheckoutBrandingHeadingLevel
      */
-    public function getHeadingLevel3()
+    public function getHeadingLevel3(): ?ShopifyCheckoutBrandingHeadingLevel
     {
         return $this->headingLevel3;
     }
 
     
     /**
+     * The main area customizations.
+     *
      * @return ShopifyCheckoutBrandingMain
      */
-    public function getMain()
+    public function getMain(): ?ShopifyCheckoutBrandingMain
     {
         return $this->main;
     }
 
     
     /**
+     * The merchandise thumbnails customizations.
+     *
      * @return ShopifyCheckoutBrandingMerchandiseThumbnail
      */
-    public function getMerchandiseThumbnail()
+    public function getMerchandiseThumbnail(): ?ShopifyCheckoutBrandingMerchandiseThumbnail
     {
         return $this->merchandiseThumbnail;
     }
 
     
     /**
+     * The order summary customizations.
+     *
      * @return ShopifyCheckoutBrandingOrderSummary
      */
-    public function getOrderSummary()
+    public function getOrderSummary(): ?ShopifyCheckoutBrandingOrderSummary
     {
         return $this->orderSummary;
     }
 
     
     /**
+     * The primary buttons customizations.
+     *
      * @return ShopifyCheckoutBrandingButton
      */
-    public function getPrimaryButton()
+    public function getPrimaryButton(): ?ShopifyCheckoutBrandingButton
     {
         return $this->primaryButton;
     }
 
     
     /**
+     * The secondary buttons customizations.
+     *
      * @return ShopifyCheckoutBrandingButton
      */
-    public function getSecondaryButton()
+    public function getSecondaryButton(): ?ShopifyCheckoutBrandingButton
     {
         return $this->secondaryButton;
     }
 
     
     /**
+     * The selects customizations.
+     *
      * @return ShopifyCheckoutBrandingSelect
      */
-    public function getSelect()
+    public function getSelect(): ?ShopifyCheckoutBrandingSelect
     {
         return $this->select;
     }
 
     
     /**
+     * The text fields customizations.
+     *
      * @return ShopifyCheckoutBrandingTextField
      */
-    public function getTextField()
+    public function getTextField(): ?ShopifyCheckoutBrandingTextField
     {
         return $this->textField;
     }

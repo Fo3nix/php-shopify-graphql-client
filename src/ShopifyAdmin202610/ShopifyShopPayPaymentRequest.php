@@ -9,6 +9,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopPayPaymentRequestShippin
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopPayPaymentRequestTotalShippingPrice;
 
+/**
+ * Represents a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequest
 {
     protected $discounts;
@@ -24,90 +27,110 @@ class ShopifyShopPayPaymentRequest
 
     
     /**
+     * The discounts for the payment request order.
+     *
      * @return ShopifyShopPayPaymentRequestDiscount[]
      */
-    public function getDiscounts()
+    public function getDiscounts(): ?array
     {
         return $this->discounts;
     }
 
     
     /**
+     * The line items for the payment request.
+     *
      * @return ShopifyShopPayPaymentRequestLineItem[]
      */
-    public function getLineItems()
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The presentment currency for the payment request.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getPresentmentCurrency()
+    public function getPresentmentCurrency(): ?string
     {
         return $this->presentmentCurrency;
     }
 
     
     /**
-     * @return ShopifyShopPayPaymentRequestDeliveryMethodTypeEnumObject
+     * The delivery method type for the payment request.
+     *
+     * @return string A ShopifyShopPayPaymentRequestDeliveryMethodTypeEnumObject value
      */
-    public function getSelectedDeliveryMethodType()
+    public function getSelectedDeliveryMethodType(): ?string
     {
         return $this->selectedDeliveryMethodType;
     }
 
     
     /**
+     * The shipping address for the payment request.
+     *
      * @return ShopifyShopPayPaymentRequestContactField
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShopifyShopPayPaymentRequestContactField
     {
         return $this->shippingAddress;
     }
 
     
     /**
+     * The shipping lines for the payment request.
+     *
      * @return ShopifyShopPayPaymentRequestShippingLine[]
      */
-    public function getShippingLines()
+    public function getShippingLines(): ?array
     {
         return $this->shippingLines;
     }
 
     
     /**
+     * The subtotal amount for the payment request.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getSubtotal()
+    public function getSubtotal(): ?ShopifyMoneyV2
     {
         return $this->subtotal;
     }
 
     
     /**
+     * The total amount for the payment request.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotal()
+    public function getTotal(): ?ShopifyMoneyV2
     {
         return $this->total;
     }
 
     
     /**
+     * The total shipping price for the payment request.
+     *
      * @return ShopifyShopPayPaymentRequestTotalShippingPrice
      */
-    public function getTotalShippingPrice()
+    public function getTotalShippingPrice(): ?ShopifyShopPayPaymentRequestTotalShippingPrice
     {
         return $this->totalShippingPrice;
     }
 
     
     /**
+     * The total tax for the payment request.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalTax()
+    public function getTotalTax(): ?ShopifyMoneyV2
     {
         return $this->totalTax;
     }

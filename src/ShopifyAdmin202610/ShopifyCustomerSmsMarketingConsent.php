@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Carbon\Carbon;
 
-class ShopifyCustomerSmsMarketingConsent
+/**
+ * The SMS marketing consent information for a [customer's phone number](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerPhoneNumber). Implements the [`CustomerMarketingConsent`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/CustomerMarketingConsent) interface. Use the [`customerSmsMarketingConsentUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/customerSmsMarketingConsentUpdate) mutation to change it.
+ */
+class ShopifyCustomerSmsMarketingConsent implements ShopifyCustomerMarketingConsent
 {
     protected $collectedFrom;
     protected $optInLevel;
@@ -15,45 +18,57 @@ class ShopifyCustomerSmsMarketingConsent
 
     
     /**
-     * @return ShopifyCustomerConsentCollectedFromEnumObject
+     * The [source](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerConsentCollectedFrom) from which the marketing consent was collected.
+     *
+     * @return string A ShopifyCustomerConsentCollectedFromEnumObject value
      */
-    public function getCollectedFrom()
+    public function getCollectedFrom(): ?string
     {
         return $this->collectedFrom;
     }
 
     
     /**
-     * @return ShopifyCustomerMarketingOptInLevelEnumObject
+     * The [marketing subscription opt-in level](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerMarketingOptInLevel) that was set when the customer's marketing consent was last updated. Follows M3AAWG best practices guidelines.
+     *
+     * @return string A ShopifyCustomerMarketingOptInLevelEnumObject value
      */
-    public function getOptInLevel()
+    public function getOptInLevel(): ?string
     {
         return $this->optInLevel;
     }
 
     
     /**
+     * The [location](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) where the customer consented to receive marketing material.
+     *
      * @return ShopifyLocation
      */
-    public function getSourceLocation()
+    public function getSourceLocation(): ?ShopifyLocation
     {
         return $this->sourceLocation;
     }
 
     
     /**
-     * @return ShopifyCustomerMarketingConsentStateEnumObject
+     * The customer's current [marketing consent state](https://shopify.dev/docs/api/admin-graphql/latest/enums/CustomerMarketingConsentState) for this channel.
+     *
+     * @return string A ShopifyCustomerMarketingConsentStateEnumObject value
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->state;
     }
 
     
     /**
+     * The date and time when the marketing consent was updated.
+     *
+     * No date is provided if the customer has never updated their marketing consent for this channel.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

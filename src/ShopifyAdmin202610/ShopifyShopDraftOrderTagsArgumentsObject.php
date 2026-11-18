@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyShopDraftOrderTagsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["first"];
+
     protected $first;
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 

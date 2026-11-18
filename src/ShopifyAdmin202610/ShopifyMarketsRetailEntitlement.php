@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketsCatalogsEntitlement;
 
+/**
+ * The entitlements for retail markets.
+ */
 class ShopifyMarketsRetailEntitlement
 {
     protected $catalogs;
@@ -11,18 +14,22 @@ class ShopifyMarketsRetailEntitlement
 
     
     /**
+     * The entitlements for retail market catalogs.
+     *
      * @return ShopifyMarketsCatalogsEntitlement
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyMarketsCatalogsEntitlement
     {
         return $this->catalogs;
     }
 
     
     /**
+     * Whether retail markets are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

@@ -15,7 +15,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariant;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyWeight;
 
-class ShopifyDraftOrderLineItem
+/**
+ * A line item in a draft order. Line items are either [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects or custom items created manually with specific pricing and attributes.
+ *
+ * Each line item includes [quantity](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrderLineItem#field-DraftOrderLineItem.fields.quantity), [pricing](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrderLineItem#field-DraftOrderLineItem.fields.originalUnitPrice), [discounts](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrderLineItem#field-DraftOrderLineItem.fields.discountedTotal), [tax information](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrderLineItem#field-DraftOrderLineItem.fields.taxLines), and [custom attributes](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrderLineItem#field-DraftOrderLineItem.fields.customAttributes). For [bundle products](https://shopify.dev/docs/apps/build/products/bundles), the line item includes components that define the individual products within the bundle.
+ */
+class ShopifyDraftOrderLineItem implements ShopifyNode
 {
     protected $appliedDiscount;
     protected $approximateDiscountedUnitPriceSet;
@@ -57,333 +62,416 @@ class ShopifyDraftOrderLineItem
 
     
     /**
+     * The custom applied discount.
+     *
      * @return ShopifyDraftOrderAppliedDiscount
      */
-    public function getAppliedDiscount()
+    public function getAppliedDiscount(): ?ShopifyDraftOrderAppliedDiscount
     {
         return $this->appliedDiscount;
     }
 
     
     /**
+     * The `discountedTotal` divided by `quantity`,
+     * equal to the average value of the line item price per unit after discounts are applied.
+     * This value doesn't include discounts applied to the entire draft order.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getApproximateDiscountedUnitPriceSet()
+    public function getApproximateDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->approximateDiscountedUnitPriceSet;
     }
 
     
     /**
+     * The list of bundle components if applicable.
+     *
      * @return ShopifyDraftOrderLineItem[]
      */
-    public function getBundleComponents()
+    public function getBundleComponents(): ?array
     {
         return $this->bundleComponents;
     }
 
     
     /**
+     * The components of the draft order line item.
+     *
      * @return ShopifyDraftOrderLineItem[]
      */
-    public function getComponents()
+    public function getComponents(): ?array
     {
         return $this->components;
     }
 
     
     /**
+     * Whether the line item is custom (`true`) or contains a product variant (`false`).
+     *
      * @return bool
      */
-    public function getCustom()
+    public function getCustom(): ?bool
     {
         return $this->custom;
     }
 
     
     /**
+     * A list of attributes that represent custom features or special requests.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The list of additional information (metafields) with the associated types.
+     *
      * @return ShopifyTypedAttribute[]
      */
-    public function getCustomAttributesV2()
+    public function getCustomAttributesV2(): ?array
     {
         return $this->customAttributesV2;
     }
 
     
     /**
+     * The line item price, in shop currency, after discounts are applied.
+     *
      * @return string
      */
-    public function getDiscountedTotal()
+    public function getDiscountedTotal(): mixed
     {
         return $this->discountedTotal;
     }
 
     
     /**
+     * The total price with discounts applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalSet()
+    public function getDiscountedTotalSet(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalSet;
     }
 
     
     /**
+     * The `discountedTotal` divided by `quantity`, equal to the value of the discount per unit in the shop currency.
+     *
      * @return string
      */
-    public function getDiscountedUnitPrice()
+    public function getDiscountedUnitPrice(): mixed
     {
         return $this->discountedUnitPrice;
     }
 
     
     /**
+     * The unit price with discounts applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceSet()
+    public function getDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceSet;
     }
 
     
     /**
+     * Name of the service provider who fulfilled the order.
+     *
+     * Valid values are either **manual** or the name of the provider.
+     * For example, **amazon**, **shipwire**.
+     *
+     * Deleted fulfillment services will return null.
+     *
      * @return ShopifyFulfillmentService
      */
-    public function getFulfillmentService()
+    public function getFulfillmentService(): ?ShopifyFulfillmentService
     {
         return $this->fulfillmentService;
     }
 
     
     /**
+     * The weight of the line item in grams.
+     *
      * @return int
      */
-    public function getGrams()
+    public function getGrams(): ?int
     {
         return $this->grams;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image of the product variant.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * Whether the line item represents the purchase of a gift card.
+     *
      * @return bool
      */
-    public function getIsGiftCard()
+    public function getIsGiftCard(): ?bool
     {
         return $this->isGiftCard;
     }
 
     
     /**
+     * The name of the product.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The total price, in shop currency, excluding discounts, equal to the original unit price multiplied by quantity.
+     *
      * @return string
      */
-    public function getOriginalTotal()
+    public function getOriginalTotal(): mixed
     {
         return $this->originalTotal;
     }
 
     
     /**
+     * The total price excluding discounts, equal to the original unit price multiplied by quantity.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalTotalSet()
+    public function getOriginalTotalSet(): ?ShopifyMoneyBag
     {
         return $this->originalTotalSet;
     }
 
     
     /**
+     * The price, in shop currency, without any discounts applied.
+     *
      * @return string
      */
-    public function getOriginalUnitPrice()
+    public function getOriginalUnitPrice(): mixed
     {
         return $this->originalUnitPrice;
     }
 
     
     /**
+     * The price without any discounts applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The original custom line item input price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalUnitPriceWithCurrency()
+    public function getOriginalUnitPriceWithCurrency(): ?ShopifyMoneyV2
     {
         return $this->originalUnitPriceWithCurrency;
     }
 
     
     /**
+     * The price override for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPriceOverride()
+    public function getPriceOverride(): ?ShopifyMoneyV2
     {
         return $this->priceOverride;
     }
 
     
     /**
+     * The product for the line item.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The quantity of items. For a bundle item, this is the quantity of bundles,
+     * not the quantity of items contained in the bundles themselves.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Whether physical shipping is required for the variant.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * The SKU number of the product variant.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * A list of tax lines.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Whether the variant is taxable.
+     *
      * @return bool
      */
-    public function getTaxable()
+    public function getTaxable(): ?bool
     {
         return $this->taxable;
     }
 
     
     /**
+     * The title of the product or variant. This field only applies to custom line items.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total discount applied in shop currency.
+     *
      * @return string
      */
-    public function getTotalDiscount()
+    public function getTotalDiscount(): mixed
     {
         return $this->totalDiscount;
     }
 
     
     /**
+     * The total discount amount.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDiscountSet()
+    public function getTotalDiscountSet(): ?ShopifyMoneyBag
     {
         return $this->totalDiscountSet;
     }
 
     
     /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     *
      * @return string
      */
-    public function getUuid()
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
     
     /**
+     * The product variant for the line item.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }
 
     
     /**
+     * The name of the variant.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }
 
     
     /**
+     * The name of the vendor who created the product variant.
+     *
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }
 
     
     /**
+     * The weight unit and value.
+     *
      * @return ShopifyWeight
      */
-    public function getWeight()
+    public function getWeight(): ?ShopifyWeight
     {
         return $this->weight;
     }

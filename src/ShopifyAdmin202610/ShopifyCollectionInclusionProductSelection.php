@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProduct;
 
+/**
+ * Represents a product that has been manually selected for inclusion in a collection.
+ */
 class ShopifyCollectionInclusionProductSelection
 {
     protected $product;
@@ -11,18 +14,25 @@ class ShopifyCollectionInclusionProductSelection
 
     
     /**
+     * The product that's manually included in the collection.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }
 
     
     /**
+     * The IDs of variants of this product that have been manually included
+     * in the collection. Null when no variant-level manual selections exist
+     * for this product; non-empty when one or more variants have been
+     * manually included.
+     *
      * @return string[]
      */
-    public function getVariantIds()
+    public function getVariantIds(): ?array
     {
         return $this->variantIds;
     }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * A pickup option to deliver a subscription contract.
+ */
 class ShopifySubscriptionPickupOption
 {
     protected $code;
@@ -18,72 +21,88 @@ class ShopifySubscriptionPickupOption
 
     
     /**
+     * The code of the pickup option.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The description of the pickup option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The pickup location.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Whether a phone number is required for the pickup option.
+     *
      * @return bool
      */
-    public function getPhoneRequired()
+    public function getPhoneRequired(): ?bool
     {
         return $this->phoneRequired;
     }
 
     
     /**
+     * The estimated amount of time it takes for the pickup to be ready. For example, "Usually ready in 24 hours".).
+     *
      * @return string
      */
-    public function getPickupTime()
+    public function getPickupTime(): ?string
     {
         return $this->pickupTime;
     }
 
     
     /**
+     * The presentment title of the pickup option.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The price of the pickup option.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The title of the pickup option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

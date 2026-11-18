@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarket;
 
-class ShopifyMarketRelationship
+/**
+ * Represents a parent/child relationship between two markets.
+ */
+class ShopifyMarketRelationship implements ShopifyNode
 {
     protected $childMarket;
     protected $id;
@@ -12,27 +15,33 @@ class ShopifyMarketRelationship
 
     
     /**
+     * The child market in the relationship.
+     *
      * @return ShopifyMarket
      */
-    public function getChildMarket()
+    public function getChildMarket(): ?ShopifyMarket
     {
         return $this->childMarket;
     }
 
     
     /**
+     * The unique identifier for the market relationship.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The parent market in the relationship.
+     *
      * @return ShopifyMarket
      */
-    public function getParentMarket()
+    public function getParentMarket(): ?ShopifyMarket
     {
         return $this->parentMarket;
     }

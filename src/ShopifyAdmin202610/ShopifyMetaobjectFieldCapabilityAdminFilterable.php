@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Information about the admin filterable capability.
+ */
 class ShopifyMetaobjectFieldCapabilityAdminFilterable
 {
     protected $eligible;
@@ -9,18 +12,22 @@ class ShopifyMetaobjectFieldCapabilityAdminFilterable
 
     
     /**
+     * Indicates if the definition is eligible to have the capability.
+     *
      * @return bool
      */
-    public function getEligible()
+    public function getEligible(): ?bool
     {
         return $this->eligible;
     }
 
     
     /**
+     * Indicates if the capability is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

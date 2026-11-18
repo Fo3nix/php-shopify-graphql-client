@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The customer accounts-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCustomerAccountsComponents";
 
-    public function selectFooter(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsFooterArgumentsObject $argsObject = null)
+    /**
+     * The footer customizations.
+     */
+    public function selectFooter(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsFooterArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooterQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsFooterQueryObject("footer");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsQ
         return $object;
     }
 
-    public function selectHeader(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsHeaderArgumentsObject $argsObject = null)
+    /**
+     * The header customizations.
+     */
+    public function selectHeader(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsHeaderArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsHeaderQueryObject("header");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsQ
         return $object;
     }
 
-    public function selectMain(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsMainArgumentsObject $argsObject = null)
+    /**
+     * The main customer accounts customizations.
+     */
+    public function selectMain(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsMainArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsMainQueryObject("main");
         if ($argsObject !== null) {

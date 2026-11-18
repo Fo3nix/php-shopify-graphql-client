@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The total number of pending orders on a shop if less then a maximum, or that maximum.
+ * The atMax field indicates when this maximum has been reached.
+ */
 class ShopifyLimitedPendingOrderCount
 {
     protected $atMax;
@@ -9,18 +13,23 @@ class ShopifyLimitedPendingOrderCount
 
     
     /**
+     * This is set when the number of pending orders has reached the maximum.
+     *
      * @return bool
      */
-    public function getAtMax()
+    public function getAtMax(): ?bool
     {
         return $this->atMax;
     }
 
     
     /**
+     * The number of pending orders on the shop.
+     * Limited to a maximum of 10000.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }

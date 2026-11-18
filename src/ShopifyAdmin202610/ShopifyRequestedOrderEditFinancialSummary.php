@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
+/**
+ * The financial breakdown of the requested order edit.
+ */
 class ShopifyRequestedOrderEditFinancialSummary
 {
     protected $editOrderLevelDiscountSubtotalSet;
@@ -15,54 +18,66 @@ class ShopifyRequestedOrderEditFinancialSummary
 
     
     /**
+     * The sum of all order level discounts that are target_all.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditOrderLevelDiscountSubtotalSet()
+    public function getEditOrderLevelDiscountSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->editOrderLevelDiscountSubtotalSet;
     }
 
     
     /**
+     * The subtotal of all edit line items excluding target_all discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditSubtotalBeforeTargetAllDiscountsSet()
+    public function getEditSubtotalBeforeTargetAllDiscountsSet(): ?ShopifyMoneyBag
     {
         return $this->editSubtotalBeforeTargetAllDiscountsSet;
     }
 
     
     /**
+     * The subtotal of all edit line items.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditSubtotalSet()
+    public function getEditSubtotalSet(): ?ShopifyMoneyBag
     {
         return $this->editSubtotalSet;
     }
 
     
     /**
+     * The subtotal of all edit line items with order level discounts applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditSubtotalWithCartDiscountSet()
+    public function getEditSubtotalWithCartDiscountSet(): ?ShopifyMoneyBag
     {
         return $this->editSubtotalWithCartDiscountSet;
     }
 
     
     /**
+     * The total sum of all edit line items, including subtotals and taxes.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditTotalSet()
+    public function getEditTotalSet(): ?ShopifyMoneyBag
     {
         return $this->editTotalSet;
     }
 
     
     /**
+     * The total tax sum of all edit line items.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getEditTotalTaxSet()
+    public function getEditTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->editTotalTaxSet;
     }

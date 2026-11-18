@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusVariables;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingTypography;
 
+/**
+ * The design token customizations allow you to set values that represent specific attributes of your brand like color and font. These attributes are used throughout the user interface. This brings consistency and allows you to easily make broad design changes.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokens
 {
     protected $colors;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokens
 
     
     /**
+     * The colors for global colors.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingDesignTokenColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The corner radius variables.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusVariables
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCornerRadiusVariables
     {
         return $this->cornerRadius;
     }
 
     
     /**
+     * The typography.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypography
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutAndAccountsConfigurationBrandingTypography
     {
         return $this->typography;
     }

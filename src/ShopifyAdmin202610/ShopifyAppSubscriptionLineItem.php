@@ -5,6 +5,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppPlanV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppUsageRecordConnection;
 
+/**
+ * Represents a component of an app subscription that contains pricing details for either recurring fees or usage-based charges. Each subscription has exactly 1 or 2 line items - one for recurring fees and/or one for usage fees.
+ *
+ * If a subscription has both recurring and usage pricing, there will be 2 line items. If it only has one type of pricing, the subscription will have a single line item for that pricing model.
+ *
+ * Use the `AppSubscriptionLineItem` object to:
+ * - View the pricing terms a merchant has agreed to
+ * - Distinguish between recurring and usage fee components
+ * - Access detailed billing information for each pricing component
+ *
+ * This read-only object provides visibility into the subscription's pricing structure without allowing modifications.
+ *
+ * Read about subscription pricing models in the [billing architecture guide](https://shopify.dev/docs/apps/launch/billing/subscription-billing).
+ */
 class ShopifyAppSubscriptionLineItem
 {
     protected $id;
@@ -13,27 +27,33 @@ class ShopifyAppSubscriptionLineItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The pricing model for the app subscription.
+     *
      * @return ShopifyAppPlanV2
      */
-    public function getPlan()
+    public function getPlan(): ?ShopifyAppPlanV2
     {
         return $this->plan;
     }
 
     
     /**
+     * A list of the store's usage records for a usage pricing plan.
+     *
      * @return ShopifyAppUsageRecordConnection
      */
-    public function getUsageRecords()
+    public function getUsageRecords(): ?ShopifyAppUsageRecordConnection
     {
         return $this->usageRecords;
     }

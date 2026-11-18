@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The amount charged at checkout when the full amount isn't charged at checkout.
+ */
 class ShopifySellingPlanCheckoutChargeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SellingPlanCheckoutCharge";
 
-    public function selectType()
+    /**
+     * The charge type for the checkout charge.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectValue(ShopifySellingPlanCheckoutChargeValueArgumentsObject $argsObject = null)
+    /**
+     * The charge value for the checkout charge.
+     */
+    public function selectValue(?ShopifySellingPlanCheckoutChargeValueArgumentsObject $argsObject = null): ShopifySellingPlanCheckoutChargeValueUnionObject
     {
         $object = new ShopifySellingPlanCheckoutChargeValueUnionObject("value");
         if ($argsObject !== null) {

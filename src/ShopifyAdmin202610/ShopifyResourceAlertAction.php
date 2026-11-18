@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * An action associated to a resource alert, such as editing variants.
+ */
 class ShopifyResourceAlertAction
 {
     protected $primary;
@@ -11,36 +14,44 @@ class ShopifyResourceAlertAction
 
     
     /**
+     * Whether the action appears as a button or as a link.
+     *
      * @return bool
      */
-    public function getPrimary()
+    public function getPrimary(): ?bool
     {
         return $this->primary;
     }
 
     
     /**
+     * Resource for the action to show.
+     *
      * @return string
      */
-    public function getShow()
+    public function getShow(): ?string
     {
         return $this->show;
     }
 
     
     /**
+     * The text for the button in the alert. For example, _Edit variants_.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The target URL that the button links to.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

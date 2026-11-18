@@ -4,6 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyResourceAlertAction;
 
+/**
+ * An alert message that appears in the Shopify admin about a problem with a store resource, with 1 or more actions to take. For example, you could use an alert to indicate that you're not charging taxes on some product variants.
+ * They can optionally have a specific icon and be dismissed by merchants.
+ */
 class ShopifyResourceAlert
 {
     protected $actions;
@@ -15,54 +19,68 @@ class ShopifyResourceAlert
 
     
     /**
+     * Buttons in the alert that link to related information.
+     * For example, _Edit variants_.
+     *
      * @return ShopifyResourceAlertAction[]
      */
-    public function getActions()
+    public function getActions(): ?array
     {
         return $this->actions;
     }
 
     
     /**
+     * The secondary text in the alert that includes further information or instructions about how to solve a problem.
+     *
      * @return string
      */
-    public function getContent()
+    public function getContent(): mixed
     {
         return $this->content;
     }
 
     
     /**
+     * Unique identifier that appears when an alert is manually closed by the merchant.
+     * Most alerts can't be manually closed.
+     *
      * @return string
      */
-    public function getDismissibleHandle()
+    public function getDismissibleHandle(): ?string
     {
         return $this->dismissibleHandle;
     }
 
     
     /**
-     * @return ShopifyResourceAlertIconEnumObject
+     * An icon that's optionally displayed with the alert.
+     *
+     * @return string A ShopifyResourceAlertIconEnumObject value
      */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
     
     /**
-     * @return ShopifyResourceAlertSeverityEnumObject
+     * Indication of how important the alert is.
+     *
+     * @return string A ShopifyResourceAlertSeverityEnumObject value
      */
-    public function getSeverity()
+    public function getSeverity(): ?string
     {
         return $this->severity;
     }
 
     
     /**
+     * The primary text in the alert that includes information or describes the problem.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

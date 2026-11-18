@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMobilePlatformApplication;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMobilePlatformApplicationHydrator;
 
+/**
+ * An auto-generated type which holds one MobilePlatformApplication and a cursor during pagination.
+ */
 class ShopifyMobilePlatformApplicationEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyMobilePlatformApplicationEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return ShopifyMobilePlatformApplication
+     * The item at the end of MobilePlatformApplicationEdge.
+     *
+     * @return ShopifyAndroidApplication|ShopifyAppleApplication
      */
-    public function getNode()
+    public function getNode(): ShopifyAndroidApplication|ShopifyAppleApplication|null
     {
         return $this->node;
     }
@@ -38,7 +45,7 @@ class ShopifyMobilePlatformApplicationEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = ShopifyMobilePlatformApplication::fromArray($data['node']);
+                $instance->node = ShopifyMobilePlatformApplicationHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifyMobilePlatformApplicationEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node->asArray();
+                $data['node'] = ShopifyMobilePlatformApplicationHydrator::toArray($this->node);
             }
             return $data;
         }

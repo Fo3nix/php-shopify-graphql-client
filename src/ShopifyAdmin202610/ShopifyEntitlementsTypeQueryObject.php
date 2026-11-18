@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The shop's entitlements.
+ */
 class ShopifyEntitlementsTypeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "EntitlementsType";
 
-    public function selectB2b(ShopifyEntitlementsTypeB2bArgumentsObject $argsObject = null)
+    /**
+     * The shop's B2B entitlements.
+     */
+    public function selectB2b(?ShopifyEntitlementsTypeB2bArgumentsObject $argsObject = null): ShopifyB2BTypeQueryObject
     {
         $object = new ShopifyB2BTypeQueryObject("b2b");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyEntitlementsTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMarkets(ShopifyEntitlementsTypeMarketsArgumentsObject $argsObject = null)
+    /**
+     * Represents the markets for the shop.
+     */
+    public function selectMarkets(?ShopifyEntitlementsTypeMarketsArgumentsObject $argsObject = null): ShopifyMarketsTypeQueryObject
     {
         $object = new ShopifyMarketsTypeQueryObject("markets");
         if ($argsObject !== null) {

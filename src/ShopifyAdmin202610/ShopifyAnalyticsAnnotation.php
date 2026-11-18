@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyApp;
 
-class ShopifyAnalyticsAnnotation
+/**
+ * An annotation for a notable event on a shop's analytics timeline.
+ */
+class ShopifyAnalyticsAnnotation implements ShopifyNode
 {
     protected $createdAt;
     protected $createdByApp;
@@ -20,90 +23,110 @@ class ShopifyAnalyticsAnnotation
 
     
     /**
+     * The date and time when the annotation was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The app that created the annotation. Returns `null` if the annotation wasn't created by an app.
+     *
      * @return ShopifyApp
      */
-    public function getCreatedByApp()
+    public function getCreatedByApp(): ?ShopifyApp
     {
         return $this->createdByApp;
     }
 
     
     /**
+     * A plain-text description that provides additional context about the annotation. The maximum length is 150 characters for app-created annotations.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The date and time when the annotation ended. Returns `null` if the annotation is open-ended.
+     *
      * @return Carbon
      */
-    public function getEndedAt()
+    public function getEndedAt(): ?Carbon
     {
         return $this->endedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyAnalyticsAnnotationSourceEnumObject
+     * Identifies who or what created this annotation.
+     *
+     * @return string A ShopifyAnalyticsAnnotationSourceEnumObject value
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * The date and time when the annotation started.
+     *
      * @return Carbon
      */
-    public function getStartedAt()
+    public function getStartedAt(): ?Carbon
     {
         return $this->startedAt;
     }
 
     
     /**
+     * The title of the annotation. The maximum length is 75 characters for app-created annotations.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The type of event represented by the annotation. Refer to the list of [supported types](https://shopify.dev/docs/api/shopifyql/latest/syntax/annotate#annotation-categories-and-types).
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The date and time when the annotation was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

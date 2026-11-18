@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An available local delivery option for a subscription contract calculation.
+ */
 class ShopifySubscriptionContractCalculationLocalDeliveryOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionContractCalculationLocalDeliveryOption";
 
-    public function selectCode()
+    /**
+     * The code of the delivery option.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the delivery option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectPhoneRequired()
+    /**
+     * Whether a phone number is required for the delivery option.
+     */
+    public function selectPhoneRequired(): static
     {
         $this->selectField("phoneRequired");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the delivery option. This is the customer-facing title displayed at checkout.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifySubscriptionContractCalculationLocalDeliveryOptionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of the delivery option.
+     */
+    public function selectPrice(?ShopifySubscriptionContractCalculationLocalDeliveryOptionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -47,7 +65,10 @@ class ShopifySubscriptionContractCalculationLocalDeliveryOptionQueryObject exten
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the delivery option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

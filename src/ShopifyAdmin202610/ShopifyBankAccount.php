@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerPaymentInstrumentBillingAddress;
 
+/**
+ * Represents a bank account payment instrument.
+ */
 class ShopifyBankAccount
 {
     protected $accountHolderType;
@@ -14,45 +17,55 @@ class ShopifyBankAccount
 
     
     /**
-     * @return ShopifyBankAccountHolderTypeEnumObject
+     * The type of account holder.
+     *
+     * @return string A ShopifyBankAccountHolderTypeEnumObject value
      */
-    public function getAccountHolderType()
+    public function getAccountHolderType(): ?string
     {
         return $this->accountHolderType;
     }
 
     
     /**
-     * @return ShopifyBankAccountTypeEnumObject
+     * The type of bank account.
+     *
+     * @return string A ShopifyBankAccountTypeEnumObject value
      */
-    public function getAccountType()
+    public function getAccountType(): ?string
     {
         return $this->accountType;
     }
 
     
     /**
+     * The name of the bank.
+     *
      * @return string
      */
-    public function getBankName()
+    public function getBankName(): ?string
     {
         return $this->bankName;
     }
 
     
     /**
+     * The billing address associated with the bank account.
+     *
      * @return ShopifyCustomerPaymentInstrumentBillingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCustomerPaymentInstrumentBillingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The last four digits of the account number.
+     *
      * @return string
      */
-    public function getLastDigits()
+    public function getLastDigits(): ?string
     {
         return $this->lastDigits;
     }

@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShippingObjectsShippingDocument;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillmentTrackingInfo;
 
-class ShopifyShippingLabel
+/**
+ * The optional shipping label for this fulfillment.
+ */
+class ShopifyShippingLabel implements ShopifyNode
 {
     protected $cancellable;
     protected $id;
@@ -17,54 +20,66 @@ class ShopifyShippingLabel
 
     
     /**
+     * Indicates whether the label is cancellable or not.
+     *
      * @return bool
      */
-    public function getCancellable()
+    public function getCancellable(): ?bool
     {
         return $this->cancellable;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location of the shipping origin. This will be null when the shipping origin is unknown.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Indicates whether the label was printed or not.
+     *
      * @return bool
      */
-    public function getPrinted()
+    public function getPrinted(): ?bool
     {
         return $this->printed;
     }
 
     
     /**
+     * The documents for a shipping label.
+     *
      * @return ShopifyShippingObjectsShippingDocument[]
      */
-    public function getShippingDocuments()
+    public function getShippingDocuments(): ?array
     {
         return $this->shippingDocuments;
     }
 
     
     /**
+     * Tracking information for the shipping label.
+     *
      * @return ShopifyFulfillmentTrackingInfo
      */
-    public function getTrackingInfo()
+    public function getTrackingInfo(): ?ShopifyFulfillmentTrackingInfo
     {
         return $this->trackingInfo;
     }

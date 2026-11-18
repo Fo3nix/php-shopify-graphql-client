@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shipping line item that's included in a refund.
+ */
 class ShopifyRefundShippingLineQueryObject extends QueryObject
 {
     const OBJECT_NAME = "RefundShippingLine";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectShippingLine(ShopifyRefundShippingLineShippingLineArgumentsObject $argsObject = null)
+    /**
+     * The `ShippingLine` resource associated to the refunded shipping line item.
+     */
+    public function selectShippingLine(?ShopifyRefundShippingLineShippingLineArgumentsObject $argsObject = null): ShopifyShippingLineQueryObject
     {
         $object = new ShopifyShippingLineQueryObject("shippingLine");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyRefundShippingLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSubtotalAmountSet(ShopifyRefundShippingLineSubtotalAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The subtotal amount of the refund shipping line in shop and presentment currencies.
+     */
+    public function selectSubtotalAmountSet(?ShopifyRefundShippingLineSubtotalAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("subtotalAmountSet");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyRefundShippingLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTaxAmountSet(ShopifyRefundShippingLineTaxAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The tax amount of the refund shipping line in shop and presentment currencies.
+     */
+    public function selectTaxAmountSet(?ShopifyRefundShippingLineTaxAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("taxAmountSet");
         if ($argsObject !== null) {

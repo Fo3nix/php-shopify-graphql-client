@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A collection of monetary values in their respective currencies. Used throughout the API for multi-currency pricing and transactions, when an amount in the shop's currency is converted to the customer's currency of choice. The `presentmentMoney` field contains the amount in the customer's selected currency. The `shopMoney` field contains the equivalent in the shop's base currency.
+ */
 class ShopifyMoneyBagQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MoneyBag";
 
-    public function selectPresentmentMoney(ShopifyMoneyBagPresentmentMoneyArgumentsObject $argsObject = null)
+    /**
+     * Amount in presentment currency.
+     */
+    public function selectPresentmentMoney(?ShopifyMoneyBagPresentmentMoneyArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("presentmentMoney");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMoneyBagQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShopMoney(ShopifyMoneyBagShopMoneyArgumentsObject $argsObject = null)
+    /**
+     * Amount in shop currency.
+     */
+    public function selectShopMoney(?ShopifyMoneyBagShopMoneyArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("shopMoney");
         if ($argsObject !== null) {

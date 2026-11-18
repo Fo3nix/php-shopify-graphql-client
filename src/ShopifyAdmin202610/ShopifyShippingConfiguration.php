@@ -5,6 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDeliveryOptionDefinitionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCount;
 
+/**
+ * The shipping configuration attached to a market. Defines the shipping
+ * options available when a buyer is resolved to that market.
+ */
 class ShopifyShippingConfiguration
 {
     protected $isEnabled;
@@ -13,27 +17,33 @@ class ShopifyShippingConfiguration
 
     
     /**
+     * Whether shipping is enabled for this market. When false, customers in this market won't see any shipping options.
+     *
      * @return bool
      */
-    public function getIsEnabled()
+    public function getIsEnabled(): ?bool
     {
         return $this->isEnabled;
     }
 
     
     /**
+     * The shipping options configured for this market.
+     *
      * @return ShopifyDeliveryOptionDefinitionConnection
      */
-    public function getOptionDefinitions()
+    public function getOptionDefinitions(): ?ShopifyDeliveryOptionDefinitionConnection
     {
         return $this->optionDefinitions;
     }
 
     
     /**
+     * The number of shipping options in this configuration.
+     *
      * @return ShopifyCount
      */
-    public function getOptionDefinitionsCount()
+    public function getOptionDefinitionsCount(): ?ShopifyCount
     {
         return $this->optionDefinitionsCount;
     }

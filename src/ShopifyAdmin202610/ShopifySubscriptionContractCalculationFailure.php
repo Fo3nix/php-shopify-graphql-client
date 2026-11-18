@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionContractCalculationDiagnostic;
 
+/**
+ * A subscription contract calculation that has failed.
+ */
 class ShopifySubscriptionContractCalculationFailure
 {
     protected $errors;
@@ -11,18 +14,22 @@ class ShopifySubscriptionContractCalculationFailure
 
     
     /**
+     * The errors that caused the calculation to fail.
+     *
      * @return ShopifySubscriptionContractCalculationDiagnostic[]
      */
-    public function getErrors()
+    public function getErrors(): ?array
     {
         return $this->errors;
     }
 
     
     /**
+     * The ID of the contract calculation.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

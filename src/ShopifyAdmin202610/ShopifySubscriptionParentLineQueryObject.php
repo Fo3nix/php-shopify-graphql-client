@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a Subscription Parent Line.
+ */
 class ShopifySubscriptionParentLineQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionParentLine";
 
-    public function selectBundledBy(ShopifySubscriptionParentLineBundledByArgumentsObject $argsObject = null)
+    /**
+     * The app that bundled this parent line.
+     */
+    public function selectBundledBy(?ShopifySubscriptionParentLineBundledByArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("bundledBy");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifySubscriptionParentLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectComponents(ShopifySubscriptionParentLineComponentsArgumentsObject $argsObject = null)
+    /**
+     * The direct component lines of the bundle parent line.
+     */
+    public function selectComponents(?ShopifySubscriptionParentLineComponentsArgumentsObject $argsObject = null): ShopifySubscriptionLineQueryObject
     {
         $object = new ShopifySubscriptionLineQueryObject("components");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifySubscriptionParentLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustomAttributes(ShopifySubscriptionParentLineCustomAttributesArgumentsObject $argsObject = null)
+    /**
+     * List of custom attributes associated to the parent line item.
+     */
+    public function selectCustomAttributes(?ShopifySubscriptionParentLineCustomAttributesArgumentsObject $argsObject = null): ShopifyAttributeQueryObject
     {
         $object = new ShopifyAttributeQueryObject("customAttributes");
         if ($argsObject !== null) {
@@ -41,49 +53,70 @@ class ShopifySubscriptionParentLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * The unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * Presentment title of the item associated with the subscription parent line.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectProductId()
+    /**
+     * The product ID associated with the subscription parent line.
+     */
+    public function selectProductId(): static
     {
         $this->selectField("productId");
 
         return $this;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the unit selected for the subscription parent line.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectSourceType()
+    /**
+     * The source type of the subscription parent line.
+     */
+    public function selectSourceType(): static
     {
         $this->selectField("sourceType");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * Product title of the item associated with the subscription parent line.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectVariantId()
+    /**
+     * The product variant ID associated with the subscription parent line.
+     */
+    public function selectVariantId(): static
     {
         $this->selectField("variantId");
 

@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The URL for the homepage of the online store in the context of a particular market and a
+ * particular locale.
+ */
 class ShopifyMarketWebPresenceRootUrl
 {
     protected $locale;
@@ -9,18 +13,22 @@ class ShopifyMarketWebPresenceRootUrl
 
     
     /**
+     * The locale that the storefront loads in.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The URL.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

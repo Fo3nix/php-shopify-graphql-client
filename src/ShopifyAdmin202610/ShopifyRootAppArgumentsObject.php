@@ -8,7 +8,10 @@ class ShopifyRootAppArgumentsObject extends ArgumentsObject
 {
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID to lookup the App by.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

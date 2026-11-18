@@ -7,9 +7,14 @@ use GraphQL\RawObject;
 
 class ShopifyAnalyticsTargetPresentmentExpectedValueArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["currencyCode"];
+
     protected $currencyCode;
 
-    public function setCurrencyCode($shopifyCurrencyCode)
+    /**
+     * The currency code to convert the expected value into.
+     */
+    public function setCurrencyCode($shopifyCurrencyCode): static
     {
         $this->currencyCode = new RawObject($shopifyCurrencyCode);
 

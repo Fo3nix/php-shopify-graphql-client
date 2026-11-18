@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A server pixel stores configuration for streaming customer interactions to an EventBridge or PubSub endpoint.
+ */
 class ShopifyServerPixelQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ServerPixel";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The current state of this server pixel.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectWebhookEndpointAddress()
+    /**
+     * Address of the EventBridge or PubSub endpoint.
+     */
+    public function selectWebhookEndpointAddress(): static
     {
         $this->selectField("webhookEndpointAddress");
 

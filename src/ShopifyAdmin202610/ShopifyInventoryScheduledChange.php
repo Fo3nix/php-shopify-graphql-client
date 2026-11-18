@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryLevel;
 
+/**
+ * Returns the scheduled changes to inventory states related to the ledger document.
+ */
 class ShopifyInventoryScheduledChange
 {
     protected $expectedAt;
@@ -16,54 +19,70 @@ class ShopifyInventoryScheduledChange
 
     
     /**
+     * The date and time that the scheduled change is expected to happen.
+     *
      * @return Carbon
      */
-    public function getExpectedAt()
+    public function getExpectedAt(): ?Carbon
     {
         return $this->expectedAt;
     }
 
     
     /**
+     * The quantity
+     * [name](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps/quantities-states#move-inventory-quantities-between-states)
+     * to transition from.
+     *
      * @return string
      */
-    public function getFromName()
+    public function getFromName(): ?string
     {
         return $this->fromName;
     }
 
     
     /**
+     * The quantities of an inventory item that are related to a specific location.
+     *
      * @return ShopifyInventoryLevel
      */
-    public function getInventoryLevel()
+    public function getInventoryLevel(): ?ShopifyInventoryLevel
     {
         return $this->inventoryLevel;
     }
 
     
     /**
+     * A freeform URI that represents what changed the inventory quantities.
+     *
      * @return string
      */
-    public function getLedgerDocumentUri()
+    public function getLedgerDocumentUri(): mixed
     {
         return $this->ledgerDocumentUri;
     }
 
     
     /**
+     * The quantity of the scheduled change associated with the ledger document in the `fromName` state.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The quantity
+     * [name](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps/quantities-states#move-inventory-quantities-between-states)
+     * to transition to.
+     *
      * @return string
      */
-    public function getToName()
+    public function getToName(): ?string
     {
         return $this->toName;
     }

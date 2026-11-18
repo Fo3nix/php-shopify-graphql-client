@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * A group of fonts.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject extends UnionObject
 {
-    public function onShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup()
+    public function onShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup(): ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroupQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroupQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupUnionObject extend
         return $object;
     }
 
-    public function onShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup()
+    public function onShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup(): ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupQueryObject();
         $this->addPossibleType($object);

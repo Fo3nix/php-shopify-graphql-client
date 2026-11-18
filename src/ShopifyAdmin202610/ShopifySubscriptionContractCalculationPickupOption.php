@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
+/**
+ * An available pickup option for a subscription contract calculation.
+ */
 class ShopifySubscriptionContractCalculationPickupOption
 {
     protected $code;
@@ -18,72 +21,88 @@ class ShopifySubscriptionContractCalculationPickupOption
 
     
     /**
+     * The code of the delivery option.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The description of the delivery option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The location where the customer will pick up the merchandise.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Whether a phone number is required for the delivery option.
+     *
      * @return bool
      */
-    public function getPhoneRequired()
+    public function getPhoneRequired(): ?bool
     {
         return $this->phoneRequired;
     }
 
     
     /**
+     * The estimated amount of time it takes for the pickup to be ready (e.g., "Usually ready in 24 hours").
+     *
      * @return string
      */
-    public function getPickupTime()
+    public function getPickupTime(): ?string
     {
         return $this->pickupTime;
     }
 
     
     /**
+     * The presentment title of the delivery option. This is the customer-facing title displayed at checkout.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The price of the delivery option.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The title of the delivery option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

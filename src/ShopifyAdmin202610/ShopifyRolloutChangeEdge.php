@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRolloutChangeHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRolloutChange;
+
+/**
+ * An auto-generated type which holds one RolloutChange and a cursor during pagination.
+ */
 class ShopifyRolloutChangeEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyRolloutChangeEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of RolloutChangeEdge.
+     *
+     * @return ShopifyRolloutChange
      */
-    public function getNode()
+    public function getNode(): ?ShopifyRolloutChange
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyRolloutChangeEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyRolloutChangeHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyRolloutChangeEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyRolloutChangeHydrator::toArray($this->node);
             }
             return $data;
         }

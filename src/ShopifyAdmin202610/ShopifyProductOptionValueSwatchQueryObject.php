@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A swatch associated with a product option value.
+ */
 class ShopifyProductOptionValueSwatchQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductOptionValueSwatch";
 
-    public function selectColor()
+    /**
+     * The color representation of the swatch.
+     */
+    public function selectColor(): static
     {
         $this->selectField("color");
 
         return $this;
     }
 
-    public function selectImage(ShopifyProductOptionValueSwatchImageArgumentsObject $argsObject = null)
+    /**
+     * An image representation of the swatch.
+     */
+    public function selectImage(?ShopifyProductOptionValueSwatchImageArgumentsObject $argsObject = null): ShopifyMediaImageQueryObject
     {
         $object = new ShopifyMediaImageQueryObject("image");
         if ($argsObject !== null) {

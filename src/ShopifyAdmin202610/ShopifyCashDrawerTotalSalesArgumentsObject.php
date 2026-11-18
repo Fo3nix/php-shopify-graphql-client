@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyCashDrawerTotalSalesArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["dateRange"];
+
     protected $dateRange;
 
-    public function setDateRange(ShopifyCashDrawerDateRangeInputInputObject $shopifyCashDrawerDateRangeInputInputObject)
+    /**
+     * The date and time range for filtering sales.
+     */
+    public function setDateRange(ShopifyCashDrawerDateRangeInputInputObject $shopifyCashDrawerDateRangeInputInputObject): static
     {
         $this->dateRange = $shopifyCashDrawerDateRangeInputInputObject;
 

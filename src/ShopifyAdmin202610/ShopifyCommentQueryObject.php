@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A comment on an article.
+ */
 class ShopifyCommentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Comment";
 
-    public function selectArticle(ShopifyCommentArticleArgumentsObject $argsObject = null)
+    /**
+     * The article associated with the comment.
+     */
+    public function selectArticle(?ShopifyCommentArticleArgumentsObject $argsObject = null): ShopifyArticleQueryObject
     {
         $object = new ShopifyArticleQueryObject("article");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCommentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAuthor(ShopifyCommentAuthorArgumentsObject $argsObject = null)
+    /**
+     * The comment’s author.
+     */
+    public function selectAuthor(?ShopifyCommentAuthorArgumentsObject $argsObject = null): ShopifyCommentAuthorQueryObject
     {
         $object = new ShopifyCommentAuthorQueryObject("author");
         if ($argsObject !== null) {
@@ -30,28 +39,40 @@ class ShopifyCommentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectBody()
+    /**
+     * The content of the comment.
+     */
+    public function selectBody(): static
     {
         $this->selectField("body");
 
         return $this;
     }
 
-    public function selectBodyHtml()
+    /**
+     * The content of the comment, complete with HTML formatting.
+     */
+    public function selectBodyHtml(): static
     {
         $this->selectField("bodyHtml");
 
         return $this;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the comment was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectEvents(ShopifyCommentEventsArgumentsObject $argsObject = null)
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    public function selectEvents(?ShopifyCommentEventsArgumentsObject $argsObject = null): ShopifyEventConnectionQueryObject
     {
         $object = new ShopifyEventConnectionQueryObject("events");
         if ($argsObject !== null) {
@@ -62,49 +83,70 @@ class ShopifyCommentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectIp()
+    /**
+     * The IP address of the commenter.
+     */
+    public function selectIp(): static
     {
         $this->selectField("ip");
 
         return $this;
     }
 
-    public function selectIsPublished()
+    /**
+     * Whether or not the comment is published.
+     */
+    public function selectIsPublished(): static
     {
         $this->selectField("isPublished");
 
         return $this;
     }
 
-    public function selectPublishedAt()
+    /**
+     * The date and time when the comment was published.
+     */
+    public function selectPublishedAt(): static
     {
         $this->selectField("publishedAt");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the comment.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the comment was last updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 
         return $this;
     }
 
-    public function selectUserAgent()
+    /**
+     * The user agent of the commenter.
+     */
+    public function selectUserAgent(): static
     {
         $this->selectField("userAgent");
 

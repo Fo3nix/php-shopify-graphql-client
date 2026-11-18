@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one CalculatedRequestedOrderEditLineItem and a cursor during pagination.
+ */
 class ShopifyCalculatedRequestedOrderEditLineItemEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CalculatedRequestedOrderEditLineItemEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyCalculatedRequestedOrderEditLineItemEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of CalculatedRequestedOrderEditLineItemEdge.
+     */
+    public function selectNode(?ShopifyCalculatedRequestedOrderEditLineItemEdgeNodeArgumentsObject $argsObject = null): ShopifyCalculatedRequestedOrderEditLineItemQueryObject
     {
         $object = new ShopifyCalculatedRequestedOrderEditLineItemQueryObject("node");
         if ($argsObject !== null) {

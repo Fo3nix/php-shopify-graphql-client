@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCodeNodeEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCodeNode;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple DiscountCodeNodes.
+ */
 class ShopifyDiscountCodeNodeConnection
 {
     protected $edges;
@@ -14,27 +17,33 @@ class ShopifyDiscountCodeNodeConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyDiscountCodeNodeEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * A list of nodes that are contained in DiscountCodeNodeEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
      * @return ShopifyDiscountCodeNode[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }

@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionSourceExclusion;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionSourceInclusion;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductConnection;
 
-class ShopifyCollectionConditionsSource
+/**
+ * A collection source that uses conditions and selections to determine which products are included.
+ */
+class ShopifyCollectionConditionsSource implements ShopifyCollectionSource, ShopifyNode
 {
     protected $app;
     protected $description;
@@ -21,81 +24,101 @@ class ShopifyCollectionConditionsSource
 
     
     /**
+     * The app that created this source, if applicable. In the case of shareable sources, this app manages this source's conditions and selections exclusively.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * An optional description of the source.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The rules and selections for excluding products from the collection.
+     *
      * @return ShopifyCollectionSourceExclusion
      */
-    public function getExclusion()
+    public function getExclusion(): ?ShopifyCollectionSourceExclusion
     {
         return $this->exclusion;
     }
 
     
     /**
+     * The unique identifier for this source.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The rules and selections for including products in the collection.
+     *
      * @return ShopifyCollectionSourceInclusion
      */
-    public function getInclusion()
+    public function getInclusion(): ?ShopifyCollectionSourceInclusion
     {
         return $this->inclusion;
     }
 
     
     /**
+     * The products that are members of this source: products matched by the source's inclusion
+     * conditions and manual selections, with the source's exclusion conditions, excluded
+     * collections, and manual exclusions removed.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProducts()
+    public function getProducts(): ?ShopifyProductConnection
     {
         return $this->products;
     }
 
     
     /**
+     * Whether this source can be shared across multiple collections.
+     *
      * @return bool
      */
-    public function getShareable()
+    public function getShareable(): ?bool
     {
         return $this->shareable;
     }
 
     
     /**
-     * @return ShopifyCollectionSourceTargetTypeEnumObject
+     * Whether conditions match products or individual variants.
+     *
+     * @return string A ShopifyCollectionSourceTargetTypeEnumObject value
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
     
     /**
+     * The title of the source.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

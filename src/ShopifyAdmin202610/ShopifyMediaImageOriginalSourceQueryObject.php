@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The original source for an image.
+ */
 class ShopifyMediaImageOriginalSourceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MediaImageOriginalSource";
 
-    public function selectFileSize()
+    /**
+     * The size of the original file in bytes.
+     */
+    public function selectFileSize(): static
     {
         $this->selectField("fileSize");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * The URL of the original image, valid only for a short period.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

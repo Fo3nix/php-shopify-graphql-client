@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A diagnostic (error or warning) emitted during a subscription contract calculation.
+ */
 class ShopifySubscriptionContractCalculationDiagnostic
 {
     protected $code;
@@ -10,27 +13,33 @@ class ShopifySubscriptionContractCalculationDiagnostic
 
     
     /**
-     * @return ShopifySubscriptionContractCalculationDiagnosticCodeEnumObject
+     * The diagnostic code.
+     *
+     * @return string A ShopifySubscriptionContractCalculationDiagnosticCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The path to the field on the calculation result that the diagnostic refers to, if any. Fields of the calculated contract start at `calculatedContract`, and line paths are keyed by the line's `id` on the calculated contract.
+     *
      * @return string[]
      */
-    public function getField()
+    public function getField(): ?array
     {
         return $this->field;
     }
 
     
     /**
+     * A human-readable message describing the diagnostic.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

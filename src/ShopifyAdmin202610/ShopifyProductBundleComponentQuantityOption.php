@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductOption;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductBundleComponentQuantityOptionValue;
 
+/**
+ * A quantity option related to a bundle.
+ */
 class ShopifyProductBundleComponentQuantityOption
 {
     protected $name;
@@ -13,27 +16,33 @@ class ShopifyProductBundleComponentQuantityOption
 
     
     /**
+     * The name of the option value.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The option that was created on the parent product.
+     *
      * @return ShopifyProductOption
      */
-    public function getParentOption()
+    public function getParentOption(): ?ShopifyProductOption
     {
         return $this->parentOption;
     }
 
     
     /**
+     * The quantity values of the option.
+     *
      * @return ShopifyProductBundleComponentQuantityOptionValue[]
      */
-    public function getValues()
+    public function getValues(): ?array
     {
         return $this->values;
     }

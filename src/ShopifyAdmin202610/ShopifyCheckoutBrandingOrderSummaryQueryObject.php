@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The order summary customizations.
+ */
 class ShopifyCheckoutBrandingOrderSummaryQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingOrderSummary";
 
-    public function selectBackgroundImage(ShopifyCheckoutBrandingOrderSummaryBackgroundImageArgumentsObject $argsObject = null)
+    /**
+     * The background image of the order summary container.
+     */
+    public function selectBackgroundImage(?ShopifyCheckoutBrandingOrderSummaryBackgroundImageArgumentsObject $argsObject = null): ShopifyCheckoutBrandingImageQueryObject
     {
         $object = new ShopifyCheckoutBrandingImageQueryObject("backgroundImage");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyCheckoutBrandingOrderSummaryQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectColorScheme()
+    /**
+     * The selected color scheme of the order summary container.
+     */
+    public function selectColorScheme(): static
     {
         $this->selectField("colorScheme");
 
         return $this;
     }
 
-    public function selectDivider(ShopifyCheckoutBrandingOrderSummaryDividerArgumentsObject $argsObject = null)
+    /**
+     * The order summary container's divider style and visibility.
+     */
+    public function selectDivider(?ShopifyCheckoutBrandingOrderSummaryDividerArgumentsObject $argsObject = null): ShopifyCheckoutBrandingContainerDividerQueryObject
     {
         $object = new ShopifyCheckoutBrandingContainerDividerQueryObject("divider");
         if ($argsObject !== null) {
@@ -37,7 +49,10 @@ class ShopifyCheckoutBrandingOrderSummaryQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSection(ShopifyCheckoutBrandingOrderSummarySectionArgumentsObject $argsObject = null)
+    /**
+     * The settings for the order summary sections.
+     */
+    public function selectSection(?ShopifyCheckoutBrandingOrderSummarySectionArgumentsObject $argsObject = null): ShopifyCheckoutBrandingOrderSummarySectionQueryObject
     {
         $object = new ShopifyCheckoutBrandingOrderSummarySectionQueryObject("section");
         if ($argsObject !== null) {

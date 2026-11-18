@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The details of the arrangement of an item.
+ */
 class ShopifyReverseFulfillmentOrderDispositionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ReverseFulfillmentOrderDisposition";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the disposition was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLocation(ShopifyReverseFulfillmentOrderDispositionLocationArgumentsObject $argsObject = null)
+    /**
+     * The location where the disposition occurred.
+     */
+    public function selectLocation(?ShopifyReverseFulfillmentOrderDispositionLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -33,14 +45,20 @@ class ShopifyReverseFulfillmentOrderDispositionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The number of disposed units.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * The final arrangement of an item.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents a contact field for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestContactField
 {
     protected $address1;
@@ -18,99 +21,121 @@ class ShopifyShopPayPaymentRequestContactField
 
     
     /**
+     * The first address line of the contact field.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second address line of the contact field.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city of the contact field.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The company name of the contact field.
+     *
      * @return string
      */
-    public function getCompanyName()
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
 
     
     /**
+     * The country of the contact field.
+     *
      * @return string
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The email of the contact field.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * The first name of the contact field.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * The last name of the contact field.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The phone number of the contact field.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The postal code of the contact field.
+     *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
     
     /**
+     * The province of the contact field.
+     *
      * @return string
      */
-    public function getProvinceCode()
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }

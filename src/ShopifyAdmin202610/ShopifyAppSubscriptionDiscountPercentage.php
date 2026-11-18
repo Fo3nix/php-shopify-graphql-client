@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The percentage value of a discount.
+ */
 class ShopifyAppSubscriptionDiscountPercentage
 {
     protected $percentage;
 
     
     /**
+     * The percentage value of a discount.
+     *
      * @return float
      */
-    public function getPercentage()
+    public function getPercentage(): ?float
     {
         return $this->percentage;
     }

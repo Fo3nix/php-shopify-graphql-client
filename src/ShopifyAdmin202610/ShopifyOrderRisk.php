@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents a fraud check on an order. This object is deprecated in favor of [OrderRiskAssessment](https://shopify.dev/api/admin-graphql/latest/objects/OrderRiskAssessment) and its enhanced capabilities.
+ */
 class ShopifyOrderRisk
 {
     protected $display;
@@ -10,27 +13,33 @@ class ShopifyOrderRisk
 
     
     /**
+     * Whether the risk level is shown in the Shopify admin. If false, then this order risk is ignored when Shopify determines the overall risk level for the order.
+     *
      * @return bool
      */
-    public function getDisplay()
+    public function getDisplay(): ?bool
     {
         return $this->display;
     }
 
     
     /**
-     * @return ShopifyOrderRiskLevelEnumObject
+     * The likelihood that an order is fraudulent, based on this order risk. The level can be set by Shopify risk analysis or by an app.
+     *
+     * @return string A ShopifyOrderRiskLevelEnumObject value
      */
-    public function getLevel()
+    public function getLevel(): ?string
     {
         return $this->level;
     }
 
     
     /**
+     * The risk message that's shown to the merchant in the Shopify admin.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

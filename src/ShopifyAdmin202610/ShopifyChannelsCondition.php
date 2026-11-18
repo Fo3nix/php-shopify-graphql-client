@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyChannelConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCount;
 
+/**
+ * A condition checking the channel that the visitor is shopping from.
+ */
 class ShopifyChannelsCondition
 {
     protected $applicationLevel;
@@ -13,27 +16,33 @@ class ShopifyChannelsCondition
 
     
     /**
-     * @return ShopifyMarketConditionApplicationTypeEnumObject
+     * The application level for the condition.
+     *
+     * @return string A ShopifyMarketConditionApplicationTypeEnumObject value
      */
-    public function getApplicationLevel()
+    public function getApplicationLevel(): ?string
     {
         return $this->applicationLevel;
     }
 
     
     /**
+     * The channels that comprise the market.
+     *
      * @return ShopifyChannelConnection
      */
-    public function getChannels()
+    public function getChannels(): ?ShopifyChannelConnection
     {
         return $this->channels;
     }
 
     
     /**
+     * The total number of channels condition.
+     *
      * @return ShopifyCount
      */
-    public function getChannelsCount()
+    public function getChannelsCount(): ?ShopifyCount
     {
         return $this->channelsCount;
     }

@@ -2,17 +2,22 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionBillingAttemptError;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionBillingAttemptErrorHydrator;
 
+/**
+ * The billing attempt failed due to an error.
+ */
 class ShopifySubscriptionBillingAttemptFailedState
 {
     protected $error;
 
     
     /**
-     * @return ShopifySubscriptionBillingAttemptError
+     * The error that caused the billing attempt to fail.
+     *
+     * @return ShopifySubscriptionBillingAttemptGeneralError|ShopifySubscriptionBillingAttemptInventoryError|ShopifySubscriptionBillingAttemptPaymentError|ShopifySubscriptionBillingAttemptUnexpectedError
      */
-    public function getError()
+    public function getError(): ShopifySubscriptionBillingAttemptGeneralError|ShopifySubscriptionBillingAttemptInventoryError|ShopifySubscriptionBillingAttemptPaymentError|ShopifySubscriptionBillingAttemptUnexpectedError|null
     {
         return $this->error;
     }
@@ -25,7 +30,7 @@ class ShopifySubscriptionBillingAttemptFailedState
         {
             $instance = new self();
             if (isset($data['error']) && $data['error'] !== null) {
-                $instance->error = ShopifySubscriptionBillingAttemptError::fromArray($data['error']);
+                $instance->error = ShopifySubscriptionBillingAttemptErrorHydrator::fromArray($data['error']);
             }
             return $instance;
         }
@@ -51,7 +56,7 @@ class ShopifySubscriptionBillingAttemptFailedState
         {
             $data = [];
             if ($this->error !== null) {
-                $data['error'] = $this->error->asArray();
+                $data['error'] = ShopifySubscriptionBillingAttemptErrorHydrator::toArray($this->error);
             }
             return $data;
         }

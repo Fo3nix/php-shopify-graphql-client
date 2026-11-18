@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAnalyticsTarget;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyqlTableData;
 
+/**
+ * A response to a ShopifyQL query.
+ */
 class ShopifyShopifyqlQueryResponse
 {
     protected $analyticsTargets;
@@ -14,36 +17,48 @@ class ShopifyShopifyqlQueryResponse
 
     
     /**
+     * A list of analytics targets that match the ShopifyQL query.
+     * For target gauge queries, returns the matching target if one exists.
+     * For `COMPARE TO targets` queries, returns matching targets for visualized metrics in `VISUALIZE` order.
+     * Returns an empty list when no targets match or the ShopifyQL query cannot be matched.
+     * Query `parseErrors` to detect invalid ShopifyQL.
+     *
      * @return ShopifyAnalyticsTarget[]
      */
-    public function getAnalyticsTargets()
+    public function getAnalyticsTargets(): ?array
     {
         return $this->analyticsTargets;
     }
 
     
     /**
+     * A list of parse errors, if parsing fails.
+     *
      * @return string[]
      */
-    public function getParseErrors()
+    public function getParseErrors(): ?array
     {
         return $this->parseErrors;
     }
 
     
     /**
+     * A list of non-fatal parse warnings, such as use of a deprecated field. Unlike `parseErrors`, warnings are returned alongside results.
+     *
      * @return string[]
      */
-    public function getParseWarnings()
+    public function getParseWarnings(): ?array
     {
         return $this->parseWarnings;
     }
 
     
     /**
+     * The result in a tabular format with column and row data.
+     *
      * @return ShopifyShopifyqlTableData
      */
-    public function getTableData()
+    public function getTableData(): ?ShopifyShopifyqlTableData
     {
         return $this->tableData;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Additional information about why a merchant declined the customer's return request.
+ */
 class ShopifyReturnDecline
 {
     protected $note;
@@ -9,18 +12,23 @@ class ShopifyReturnDecline
 
     
     /**
+     * The notification message sent to the customer about their declined return request.
+     * Maximum length: 500 characters.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
-     * @return ShopifyReturnDeclineReasonEnumObject
+     * The reason the customer's return request was declined.
+     *
+     * @return string A ShopifyReturnDeclineReasonEnumObject value
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }

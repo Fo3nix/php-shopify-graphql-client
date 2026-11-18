@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The type and name for the optional validation configuration of a metafield.
+ *
+ * For example, a supported validation might consist of a `max` name and a `number_integer` type.
+ * This validation can then be used to enforce a maximum character length for a `single_line_text_field` metafield.
+ */
 class ShopifyMetafieldDefinitionSupportedValidation
 {
     protected $name;
@@ -9,18 +15,22 @@ class ShopifyMetafieldDefinitionSupportedValidation
 
     
     /**
+     * The name of the metafield definition validation.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The type of input for the validation.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

@@ -2,6 +2,15 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A custom property. Attributes are used to store additional information about a Shopify resource, such as
+ * products, customers, or orders. Attributes are stored as key-value pairs.
+ *
+ * For example, a list of attributes might include whether a customer is a first-time buyer (`"customer_first_order": "true"`),
+ * whether an order is gift-wrapped (`"gift_wrapped": "true"`), a preferred delivery date
+ * (`"preferred_delivery_date": "2025-10-01"`), the discount applied (`"loyalty_discount_applied": "10%"`), and any
+ * notes provided by the customer (`"customer_notes": "Please leave at the front door"`).
+ */
 class ShopifyAttribute
 {
     protected $key;
@@ -9,18 +18,22 @@ class ShopifyAttribute
 
     
     /**
+     * The key or name of the attribute. For example, `"customer_first_order"`.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The value of the attribute. For example, `"true"`.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

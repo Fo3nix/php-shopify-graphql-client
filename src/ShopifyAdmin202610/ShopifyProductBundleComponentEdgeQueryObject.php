@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one ProductBundleComponent and a cursor during pagination.
+ */
 class ShopifyProductBundleComponentEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductBundleComponentEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyProductBundleComponentEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of ProductBundleComponentEdge.
+     */
+    public function selectNode(?ShopifyProductBundleComponentEdgeNodeArgumentsObject $argsObject = null): ShopifyProductBundleComponentQueryObject
     {
         $object = new ShopifyProductBundleComponentQueryObject("node");
         if ($argsObject !== null) {

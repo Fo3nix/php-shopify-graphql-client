@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a line item belonging to an inventory transfer.
+ */
 class ShopifyInventoryTransferLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryTransferLineItem";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInventoryItem(ShopifyInventoryTransferLineItemInventoryItemArgumentsObject $argsObject = null)
+    /**
+     * The inventory item associated with this line item.
+     */
+    public function selectInventoryItem(?ShopifyInventoryTransferLineItemInventoryItemArgumentsObject $argsObject = null): ShopifyInventoryItemQueryObject
     {
         $object = new ShopifyInventoryItemQueryObject("inventoryItem");
         if ($argsObject !== null) {
@@ -26,42 +35,60 @@ class ShopifyInventoryTransferLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPickedForShipmentQuantity()
+    /**
+     * The quantity of the item that has been picked for a draft shipment but not yet shipped.
+     */
+    public function selectPickedForShipmentQuantity(): static
     {
         $this->selectField("pickedForShipmentQuantity");
 
         return $this;
     }
 
-    public function selectProcessableQuantity()
+    /**
+     * The quantity of the item that can be actioned upon, such as editing the item quantity on the transfer or adding to a shipment.
+     */
+    public function selectProcessableQuantity(): static
     {
         $this->selectField("processableQuantity");
 
         return $this;
     }
 
-    public function selectShippableQuantity()
+    /**
+     * The quantity of the item that can be shipped.
+     */
+    public function selectShippableQuantity(): static
     {
         $this->selectField("shippableQuantity");
 
         return $this;
     }
 
-    public function selectShippedQuantity()
+    /**
+     * The quantity of the item that has been shipped.
+     */
+    public function selectShippedQuantity(): static
     {
         $this->selectField("shippedQuantity");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the product associated with this line item.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTotalQuantity()
+    /**
+     * The total quantity of items being transferred.
+     */
+    public function selectTotalQuantity(): static
     {
         $this->selectField("totalQuantity");
 

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRequestedOrderEditLineItemConnection;
 
+/**
+ * The line item changes on a requested order edit, grouped by the type of change.
+ */
 class ShopifyRequestedOrderEditLineItems
 {
     protected $removals;
 
     
     /**
+     * The line items requested for removal from the order.
+     *
      * @return ShopifyRequestedOrderEditLineItemConnection
      */
-    public function getRemovals()
+    public function getRemovals(): ?ShopifyRequestedOrderEditLineItemConnection
     {
         return $this->removals;
     }

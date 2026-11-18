@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents the base64 encoded body of a theme file.
+ */
 class ShopifyOnlineStoreThemeFileBodyBase64
 {
     protected $contentBase64;
 
     
     /**
+     * The body of the theme file, base64 encoded.
+     *
      * @return string
      */
-    public function getContentBase64()
+    public function getContentBase64(): ?string
     {
         return $this->contentBase64;
     }

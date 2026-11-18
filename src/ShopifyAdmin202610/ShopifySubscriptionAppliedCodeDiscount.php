@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents an applied code discount.
+ */
 class ShopifySubscriptionAppliedCodeDiscount
 {
     protected $id;
@@ -10,27 +13,33 @@ class ShopifySubscriptionAppliedCodeDiscount
 
     
     /**
+     * The unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The redeem code of the discount that applies on the subscription.
+     *
      * @return string
      */
-    public function getRedeemCode()
+    public function getRedeemCode(): ?string
     {
         return $this->redeemCode;
     }
 
     
     /**
-     * @return ShopifySubscriptionDiscountRejectionReasonEnumObject
+     * The reason that the discount on the subscription draft is rejected.
+     *
+     * @return string A ShopifySubscriptionDiscountRejectionReasonEnumObject value
      */
-    public function getRejectionReason()
+    public function getRejectionReason(): ?string
     {
         return $this->rejectionReason;
     }

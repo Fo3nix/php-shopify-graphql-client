@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionExclusionProductSelection;
 
+/**
+ * An auto-generated type which holds one CollectionExclusionProductSelection and a cursor during pagination.
+ */
 class ShopifyCollectionExclusionProductSelectionEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyCollectionExclusionProductSelectionEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of CollectionExclusionProductSelectionEdge.
+     *
      * @return ShopifyCollectionExclusionProductSelection
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCollectionExclusionProductSelection
     {
         return $this->node;
     }

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductTaxonomyNode;
 
+/**
+ * Specifies the condition for a Product Category field.
+ */
 class ShopifyCollectionRuleProductCategoryCondition
 {
     protected $value;
 
     
     /**
+     * The value of the condition.
+     *
      * @return ShopifyProductTaxonomyNode
      */
-    public function getValue()
+    public function getValue(): ?ShopifyProductTaxonomyNode
     {
         return $this->value;
     }

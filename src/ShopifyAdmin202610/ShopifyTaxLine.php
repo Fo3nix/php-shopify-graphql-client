@@ -4,6 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
+/**
+ * A tax applied to a [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) or [`ShippingLine`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShippingLine). Includes the tax amount, rate, title, and whether the channel that submitted the tax is liable for remitting it.
+ *
+ * The tax amount in both shop and presentment currencies after applying discounts. Includes information about the tax rate, whether the channel is liable for remitting the tax, and other tax-related details.
+ */
 class ShopifyTaxLine
 {
     protected $channelLiable;
@@ -16,63 +21,77 @@ class ShopifyTaxLine
 
     
     /**
+     * Whether the channel that submitted the tax line is liable for remitting. A value of null indicates unknown liability for this tax line.
+     *
      * @return bool
      */
-    public function getChannelLiable()
+    public function getChannelLiable(): ?bool
     {
         return $this->channelLiable;
     }
 
     
     /**
+     * The amount of tax, in shop currency, after discounts and before returns.
+     *
      * @return string
      */
-    public function getPrice()
+    public function getPrice(): mixed
     {
         return $this->price;
     }
 
     
     /**
+     * The amount of tax, in shop and presentment currencies, after discounts and before returns.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPriceSet()
+    public function getPriceSet(): ?ShopifyMoneyBag
     {
         return $this->priceSet;
     }
 
     
     /**
+     * The proportion of the line item price that the tax represents as a decimal.
+     *
      * @return float
      */
-    public function getRate()
+    public function getRate(): ?float
     {
         return $this->rate;
     }
 
     
     /**
+     * The proportion of the line item price that the tax represents as a percentage.
+     *
      * @return float
      */
-    public function getRatePercentage()
+    public function getRatePercentage(): ?float
     {
         return $this->ratePercentage;
     }
 
     
     /**
+     * The source of the tax.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * The name of the tax.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

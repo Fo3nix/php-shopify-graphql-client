@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A container for the footer section customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingFooterQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingFooter";
 
-    public function selectAlignment()
+    /**
+     * The footer alignment.
+     */
+    public function selectAlignment(): static
     {
         $this->selectField("alignment");
 
         return $this;
     }
 
-    public function selectBackground()
+    /**
+     * The background style of the footer container.
+     */
+    public function selectBackground(): static
     {
         $this->selectField("background");
 
         return $this;
     }
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingFooterColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingFooterColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingFooterQueryObject extends Q
         return $object;
     }
 
-    public function selectContent(ShopifyCheckoutAndAccountsConfigurationBrandingFooterContentArgumentsObject $argsObject = null)
+    /**
+     * The footer content settings.
+     */
+    public function selectContent(?ShopifyCheckoutAndAccountsConfigurationBrandingFooterContentArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingFooterContentQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingFooterContentQueryObject("content");
         if ($argsObject !== null) {
@@ -44,14 +59,20 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingFooterQueryObject extends Q
         return $object;
     }
 
-    public function selectDivided()
+    /**
+     * The divided setting.
+     */
+    public function selectDivided(): static
     {
         $this->selectField("divided");
 
         return $this;
     }
 
-    public function selectPadding()
+    /**
+     * The padding of the footer container.
+     */
+    public function selectPadding(): static
     {
         $this->selectField("padding");
 

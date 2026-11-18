@@ -10,6 +10,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyProductVariant;
 
+/**
+ * Contains information about an item in the exchange.
+ */
 class ShopifyExchangeV2LineItem
 {
     protected $customAttributes;
@@ -35,180 +38,227 @@ class ShopifyExchangeV2LineItem
 
     
     /**
+     * A list of attributes that represent custom features or special requests.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The total line price, in shop and presentment currencies, after discounts are applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalSet()
+    public function getDiscountedTotalSet(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalSet;
     }
 
     
     /**
+     * The price, in shop and presentment currencies,
+     * of a single variant unit after line item discounts are applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedUnitPriceSet()
+    public function getDiscountedUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedUnitPriceSet;
     }
 
     
     /**
+     * Name of the service provider who fulfilled the order.
+     *
+     * Valid values are either **manual** or the name of the provider.
+     * For example, **amazon**, **shipwire**.
+     *
+     * Deleted fulfillment services will return null.
+     *
      * @return ShopifyFulfillmentService
      */
-    public function getFulfillmentService()
+    public function getFulfillmentService(): ?ShopifyFulfillmentService
     {
         return $this->fulfillmentService;
     }
 
     
     /**
+     * Indicates if this line item is a gift card.
+     *
      * @return bool
      */
-    public function getGiftCard()
+    public function getGiftCard(): ?bool
     {
         return $this->giftCard;
     }
 
     
     /**
+     * The gift cards associated with the line item.
+     *
      * @return ShopifyGiftCard[]
      */
-    public function getGiftCards()
+    public function getGiftCards(): ?array
     {
         return $this->giftCards;
     }
 
     
     /**
+     * Whether the line item represents the purchase of a gift card.
+     *
      * @return bool
      */
-    public function getIsGiftCard()
+    public function getIsGiftCard(): ?bool
     {
         return $this->isGiftCard;
     }
 
     
     /**
+     * The line item associated with this object.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The name of the product.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The total price, in shop and presentment currencies, before discounts are applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalTotalSet()
+    public function getOriginalTotalSet(): ?ShopifyMoneyBag
     {
         return $this->originalTotalSet;
     }
 
     
     /**
+     * The price, in shop and presentment currencies,
+     * of a single variant unit before line item discounts are applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The number of products that were purchased.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Whether physical shipping is required for the variant.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * The SKU number of the product variant.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * The TaxLine object connected to this line item.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Whether the variant is taxable.
+     *
      * @return bool
      */
-    public function getTaxable()
+    public function getTaxable(): ?bool
     {
         return $this->taxable;
     }
 
     
     /**
+     * The title of the product or variant. This field only applies to custom line items.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The product variant of the line item.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }
 
     
     /**
+     * The name of the variant.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }
 
     
     /**
+     * The name of the vendor who created the product variant.
+     *
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }

@@ -7,25 +7,36 @@ use GraphQL\RawObject;
 
 class ShopifyRootCashManagementShopSummaryArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["currencyCode", "startDate", "endDate"];
+
     protected $currencyCode;
     protected $startDate;
     protected $endDate;
 
-    public function setCurrencyCode($shopifyCurrencyCode)
+    /**
+     * The currency code to filter by.
+     */
+    public function setCurrencyCode($shopifyCurrencyCode): static
     {
         $this->currencyCode = new RawObject($shopifyCurrencyCode);
 
         return $this;
     }
 
-    public function setStartDate($startDate)
+    /**
+     * The start date to summarize from.
+     */
+    public function setStartDate($startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function setEndDate($endDate)
+    /**
+     * The end date to summarize to.
+     */
+    public function setEndDate($endDate): static
     {
         $this->endDate = $endDate;
 

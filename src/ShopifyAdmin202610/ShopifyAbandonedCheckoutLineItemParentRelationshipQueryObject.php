@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The line relationship between two line items in an abandoned checkout.
+ */
 class ShopifyAbandonedCheckoutLineItemParentRelationshipQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AbandonedCheckoutLineItemParentRelationship";
 
-    public function selectParent(ShopifyAbandonedCheckoutLineItemParentRelationshipParentArgumentsObject $argsObject = null)
+    /**
+     * The parent line item of the current line item.
+     */
+    public function selectParent(?ShopifyAbandonedCheckoutLineItemParentRelationshipParentArgumentsObject $argsObject = null): ShopifyAbandonedCheckoutLineItemQueryObject
     {
         $object = new ShopifyAbandonedCheckoutLineItemQueryObject("parent");
         if ($argsObject !== null) {

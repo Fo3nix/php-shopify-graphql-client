@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRolloutSchedule;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRolloutTreatment;
 
-class ShopifyRollout
+/**
+ * A rollout on a shop. Merchants use rollouts to run sales events, permanent launches, and A/B tests by serving treatments to a configured share of buyers.
+ */
+class ShopifyRollout implements ShopifyNode
 {
     protected $archivedAt;
     protected $concludedAt;
@@ -23,108 +26,132 @@ class ShopifyRollout
 
     
     /**
+     * The date and time at which the rollout was archived.
+     *
      * @return Carbon
      */
-    public function getArchivedAt()
+    public function getArchivedAt(): ?Carbon
     {
         return $this->archivedAt;
     }
 
     
     /**
+     * The actual conclusion date and time of the rollout for public API requests. Use `schedule.concludeAt` for the planned conclusion date.
+     *
      * @return Carbon
      */
-    public function getConcludedAt()
+    public function getConcludedAt(): ?Carbon
     {
         return $this->concludedAt;
     }
 
     
     /**
+     * The date and time at which the rollout was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The calculated percentage of new buyer traffic allocated to this rollout after accounting for other active rollouts competing for the same traffic.
+     *
      * @return float
      */
-    public function getEffectiveTrafficAllocation()
+    public function getEffectiveTrafficAllocation(): ?float
     {
         return $this->effectiveTrafficAllocation;
     }
 
     
     /**
+     * The ID of the rollout.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the rollout.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The rollout's planned activation and conclusion dates. Returns null when neither date is set.
+     *
      * @return ShopifyRolloutSchedule
      */
-    public function getSchedule()
+    public function getSchedule(): ?ShopifyRolloutSchedule
     {
         return $this->schedule;
     }
 
     
     /**
+     * The actual start date and time of the rollout for public API requests. Use `schedule.activateAt` for the planned activation date.
+     *
      * @return Carbon
      */
-    public function getStartedAt()
+    public function getStartedAt(): ?Carbon
     {
         return $this->startedAt;
     }
 
     
     /**
-     * @return ShopifyRolloutStatusEnumObject
+     * The status of the rollout.
+     *
+     * @return string A ShopifyRolloutStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The percentage of buyer traffic that the rollout is configured to receive, as an integer from 0 to 100. This is the configured allocation before other active rollouts competing for the same traffic are taken into account, so it isn't the share of buyers that a treatment reaches.
+     *
      * @return int
      */
-    public function getTrafficAllocation()
+    public function getTrafficAllocation(): ?int
     {
         return $this->trafficAllocation;
     }
 
     
     /**
+     * The treatments of the rollout. Control treatments are included even when they have no changes.
+     *
      * @return ShopifyRolloutTreatment[]
      */
-    public function getTreatments()
+    public function getTreatments(): ?array
     {
         return $this->treatments;
     }
 
     
     /**
+     * The date and time at which the rollout was last edited. This timestamp doesn't necessarily change when another rollout changes this rollout's effective traffic allocation.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

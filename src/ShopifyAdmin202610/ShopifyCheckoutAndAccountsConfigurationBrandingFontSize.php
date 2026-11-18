@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The font size customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingFontSize
 {
     protected $base;
@@ -9,18 +12,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingFontSize
 
     
     /**
+     * The base font size.
+     *
      * @return float
      */
-    public function getBase()
+    public function getBase(): ?float
     {
         return $this->base;
     }
 
     
     /**
+     * The scale ratio used to derive all font sizes such as small and large.
+     *
      * @return float
      */
-    public function getRatio()
+    public function getRatio(): ?float
     {
         return $this->ratio;
     }

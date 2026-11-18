@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyServerPixel
+/**
+ * A server pixel stores configuration for streaming customer interactions to an EventBridge or PubSub endpoint.
+ */
+class ShopifyServerPixel implements ShopifyNode
 {
     protected $id;
     protected $status;
@@ -10,27 +13,33 @@ class ShopifyServerPixel
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyServerPixelStatusEnumObject
+     * The current state of this server pixel.
+     *
+     * @return string A ShopifyServerPixelStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * Address of the EventBridge or PubSub endpoint.
+     *
      * @return string
      */
-    public function getWebhookEndpointAddress()
+    public function getWebhookEndpointAddress(): ?string
     {
         return $this->webhookEndpointAddress;
     }

@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyApp;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySubscriptionLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAttribute;
 
+/**
+ * Represents a Subscription Parent Line.
+ */
 class ShopifySubscriptionParentLine
 {
     protected $bundledBy;
@@ -21,90 +24,110 @@ class ShopifySubscriptionParentLine
 
     
     /**
+     * The app that bundled this parent line.
+     *
      * @return ShopifyApp
      */
-    public function getBundledBy()
+    public function getBundledBy(): ?ShopifyApp
     {
         return $this->bundledBy;
     }
 
     
     /**
+     * The direct component lines of the bundle parent line.
+     *
      * @return ShopifySubscriptionLine[]
      */
-    public function getComponents()
+    public function getComponents(): ?array
     {
         return $this->components;
     }
 
     
     /**
+     * List of custom attributes associated to the parent line item.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Presentment title of the item associated with the subscription parent line.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The product ID associated with the subscription parent line.
+     *
      * @return string
      */
-    public function getProductId()
+    public function getProductId(): ?string
     {
         return $this->productId;
     }
 
     
     /**
+     * The quantity of the unit selected for the subscription parent line.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The source type of the subscription parent line.
+     *
      * @return string
      */
-    public function getSourceType()
+    public function getSourceType(): ?string
     {
         return $this->sourceType;
     }
 
     
     /**
+     * Product title of the item associated with the subscription parent line.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The product variant ID associated with the subscription parent line.
+     *
      * @return string
      */
-    public function getVariantId()
+    public function getVariantId(): ?string
     {
         return $this->variantId;
     }

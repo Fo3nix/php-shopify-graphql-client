@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyExchangeV2LineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxLine;
 
+/**
+ * Return items associated to the exchange.
+ */
 class ShopifyExchangeV2Returns
 {
     protected $lineItems;
@@ -18,63 +21,77 @@ class ShopifyExchangeV2Returns
 
     
     /**
+     * The list of return items for the exchange.
+     *
      * @return ShopifyExchangeV2LineItem[]
      */
-    public function getLineItems()
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The amount of the order-level discount for the items and shipping being returned, which doesn't contain any line item discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOrderDiscountAmountSet()
+    public function getOrderDiscountAmountSet(): ?ShopifyMoneyBag
     {
         return $this->orderDiscountAmountSet;
     }
 
     
     /**
+     * The amount of money to be refunded for shipping.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getShippingRefundAmountSet()
+    public function getShippingRefundAmountSet(): ?ShopifyMoneyBag
     {
         return $this->shippingRefundAmountSet;
     }
 
     
     /**
+     * The subtotal of the items being returned.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalPriceSet()
+    public function getSubtotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalPriceSet;
     }
 
     
     /**
+     * The summary of all taxes of the items being returned.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * The amount of money to be refunded for tip.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTipRefundAmountSet()
+    public function getTipRefundAmountSet(): ?ShopifyMoneyBag
     {
         return $this->tipRefundAmountSet;
     }
 
     
     /**
+     * The total value of the items being returned.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalPriceSet()
+    public function getTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalPriceSet;
     }

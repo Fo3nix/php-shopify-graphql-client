@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyEventHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyEvent;
+
+/**
+ * An auto-generated type which holds one Event and a cursor during pagination.
+ */
 class ShopifyEventEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyEventEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of EventEdge.
+     *
+     * @return ShopifyEvent
      */
-    public function getNode()
+    public function getNode(): ?ShopifyEvent
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyEventEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyEventHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyEventEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyEventHydrator::toArray($this->node);
             }
             return $data;
         }

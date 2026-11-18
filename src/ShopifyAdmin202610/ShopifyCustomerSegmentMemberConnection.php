@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCustomerSegmentMemberEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPageInfo;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifySegmentStatistics;
 
+/**
+ * The connection type for the `CustomerSegmentMembers` object.
+ */
 class ShopifyCustomerSegmentMemberConnection
 {
     protected $edges;
@@ -15,36 +18,44 @@ class ShopifyCustomerSegmentMemberConnection
 
     
     /**
+     * A list of edges.
+     *
      * @return ShopifyCustomerSegmentMemberEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }
 
     
     /**
+     * The statistics for a given segment.
+     *
      * @return ShopifySegmentStatistics
      */
-    public function getStatistics()
+    public function getStatistics(): ?ShopifySegmentStatistics
     {
         return $this->statistics;
     }
 
     
     /**
+     * The total number of members in a given segment.
+     *
      * @return int
      */
-    public function getTotalCount()
+    public function getTotalCount(): ?int
     {
         return $this->totalCount;
     }

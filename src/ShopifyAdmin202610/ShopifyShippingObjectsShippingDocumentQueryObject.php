@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a shipping document.
+ */
 class ShopifyShippingObjectsShippingDocumentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShippingObjectsShippingDocument";
 
-    public function selectDocumentType()
+    /**
+     * The type of the shipping document.
+     */
+    public function selectDocumentType(): static
     {
         $this->selectField("documentType");
 
         return $this;
     }
 
-    public function selectFormat()
+    /**
+     * File format of the shipping document.
+     */
+    public function selectFormat(): static
     {
         $this->selectField("format");
 
         return $this;
     }
 
-    public function selectPrintedAt()
+    /**
+     * The last time the document was printed.
+     */
+    public function selectPrintedAt(): static
     {
         $this->selectField("printedAt");
 
         return $this;
     }
 
-    public function selectShippingLabelId()
+    /**
+     * The shipping label associated with the shipping document.
+     */
+    public function selectShippingLabelId(): static
     {
         $this->selectField("shippingLabelId");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * URL of the shipping document.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

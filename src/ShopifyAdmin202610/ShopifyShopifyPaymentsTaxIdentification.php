@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A typed identifier that represents an individual within a tax jurisdiction.
+ */
 class ShopifyShopifyPaymentsTaxIdentification
 {
     protected $taxIdentificationType;
@@ -9,18 +12,22 @@ class ShopifyShopifyPaymentsTaxIdentification
 
     
     /**
-     * @return ShopifyShopifyPaymentsTaxIdentificationTypeEnumObject
+     * The type of the identification.
+     *
+     * @return string A ShopifyShopifyPaymentsTaxIdentificationTypeEnumObject value
      */
-    public function getTaxIdentificationType()
+    public function getTaxIdentificationType(): ?string
     {
         return $this->taxIdentificationType;
     }
 
     
     /**
+     * The value of the identification.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

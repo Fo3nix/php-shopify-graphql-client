@@ -5,7 +5,13 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldDefinitionType;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMetafieldDefinitionValidation;
 
-class ShopifyStandardMetafieldDefinitionTemplate
+/**
+ * Standard metafield definition templates provide preset configurations to create metafield definitions.
+ * Each template has a specific namespace and key that we've reserved to have specific meanings for common use cases.
+ *
+ * Refer to the [list of standard metafield definitions](https://shopify.dev/apps/metafields/definitions/standard-definitions).
+ */
+class ShopifyStandardMetafieldDefinitionTemplate implements ShopifyNode
 {
     protected $description;
     protected $id;
@@ -19,81 +25,99 @@ class ShopifyStandardMetafieldDefinitionTemplate
 
     
     /**
+     * The description of the standard metafield definition.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The key owned by the definition after the definition has been activated.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The human-readable name for the standard metafield definition.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The namespace owned by the definition after the definition has been activated.
+     *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
     
     /**
-     * @return ShopifyMetafieldOwnerTypeEnumObject[]
+     * The list of resource types that the standard metafield definition can be applied to.
+     *
+     * @return string[] ShopifyMetafieldOwnerTypeEnumObject values
      */
-    public function getOwnerTypes()
+    public function getOwnerTypes(): ?array
     {
         return $this->ownerTypes;
     }
 
     
     /**
+     * The associated [metafield definition type](https://shopify.dev/apps/metafields/definitions/types) that the metafield stores.
+     *
      * @return ShopifyMetafieldDefinitionType
      */
-    public function getType()
+    public function getType(): ?ShopifyMetafieldDefinitionType
     {
         return $this->type;
     }
 
     
     /**
+     * The configured validations for the standard metafield definition.
+     *
      * @return ShopifyMetafieldDefinitionValidation[]
      */
-    public function getValidations()
+    public function getValidations(): ?array
     {
         return $this->validations;
     }
 
     
     /**
+     * Whether metafields for the definition are by default visible using the Storefront API.
+     *
      * @return bool
      */
-    public function getVisibleToStorefrontApi()
+    public function getVisibleToStorefrontApi(): ?bool
     {
         return $this->visibleToStorefrontApi;
     }

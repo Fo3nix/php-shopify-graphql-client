@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A subscription cadence: a unit of time and the number of units between occurrences.
+ */
 class ShopifySubscriptionContractCalculationCadence
 {
     protected $count;
@@ -9,18 +12,22 @@ class ShopifySubscriptionContractCalculationCadence
 
     
     /**
+     * The number of intervals between occurrences.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
     
     /**
-     * @return ShopifySubscriptionContractCalculationCadenceUnitEnumObject
+     * The unit of time for the interval.
+     *
+     * @return string A ShopifySubscriptionContractCalculationCadenceUnitEnumObject value
      */
-    public function getUnit()
+    public function getUnit(): ?string
     {
         return $this->unit;
     }

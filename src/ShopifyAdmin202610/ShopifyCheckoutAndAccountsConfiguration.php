@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigura
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationOverride;
 
-class ShopifyCheckoutAndAccountsConfiguration
+/**
+ * A checkout and account configuration packages branding settings, UI extensions, and overrides for a shop's checkout.
+ */
+class ShopifyCheckoutAndAccountsConfiguration implements ShopifyCheckoutAndAccountsConfigurationInterface, ShopifyNode
 {
     protected $branding;
     protected $createdAt;
@@ -19,72 +22,88 @@ class ShopifyCheckoutAndAccountsConfiguration
 
     
     /**
+     * The branding configuration.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBranding
      */
-    public function getBranding()
+    public function getBranding(): ?ShopifyCheckoutAndAccountsConfigurationBranding
     {
         return $this->branding;
     }
 
     
     /**
+     * The date and time when the configuration was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date and time when the configuration was last edited.
+     *
      * @return Carbon
      */
-    public function getEditedAt()
+    public function getEditedAt(): ?Carbon
     {
         return $this->editedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the configuration is published or not.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The configuration name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The list of overrides for the configuration.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationOverride[]
      */
-    public function getOverrides()
+    public function getOverrides(): ?array
     {
         return $this->overrides;
     }
 
     
     /**
+     * The date and time when the configuration was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

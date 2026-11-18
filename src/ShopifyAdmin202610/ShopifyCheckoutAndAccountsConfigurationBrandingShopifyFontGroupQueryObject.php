@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The Shopify font group customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingShopifyFontGroup";
 
-    public function selectBase(ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupBaseArgumentsObject $argsObject = null)
+    /**
+     * The base Shopify font.
+     */
+    public function selectBase(?ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupBaseArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontQueryObject("base");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupQueryObject
         return $object;
     }
 
-    public function selectBold(ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupBoldArgumentsObject $argsObject = null)
+    /**
+     * The bold Shopify font.
+     */
+    public function selectBold(?ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupBoldArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontQueryObject("bold");
         if ($argsObject !== null) {
@@ -30,14 +39,20 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroupQueryObject
         return $object;
     }
 
-    public function selectLoadingStrategy()
+    /**
+     * The font loading strategy.
+     */
+    public function selectLoadingStrategy(): static
     {
         $this->selectField("loadingStrategy");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The font group name.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

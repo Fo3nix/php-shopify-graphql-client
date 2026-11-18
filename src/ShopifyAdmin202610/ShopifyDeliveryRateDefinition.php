@@ -4,25 +4,32 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
-class ShopifyDeliveryRateDefinition
+/**
+ * The merchant-defined rate of the [DeliveryMethodDefinition](https://shopify.dev/api/admin-graphql/latest/objects/DeliveryMethodDefinition).
+ */
+class ShopifyDeliveryRateDefinition implements ShopifyNode
 {
     protected $id;
     protected $price;
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The price of this rate.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }

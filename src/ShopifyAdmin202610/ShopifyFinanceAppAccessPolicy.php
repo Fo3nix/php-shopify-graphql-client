@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Current user's access policy for a finance app.
+ */
 class ShopifyFinanceAppAccessPolicy
 {
     protected $access;
 
     
     /**
-     * @return ShopifyBankingFinanceAppAccessEnumObject[]
+     * Current shop staff's access within the app.
+     *
+     * @return string[] ShopifyBankingFinanceAppAccessEnumObject values
      */
-    public function getAccess()
+    public function getAccess(): ?array
     {
         return $this->access;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents the Bundles feature configuration for the shop.
+ */
 class ShopifyBundlesFeature
 {
     protected $eligibleForBundles;
@@ -10,27 +13,33 @@ class ShopifyBundlesFeature
 
     
     /**
+     * Whether a shop is configured properly to sell bundles.
+     *
      * @return bool
      */
-    public function getEligibleForBundles()
+    public function getEligibleForBundles(): ?bool
     {
         return $this->eligibleForBundles;
     }
 
     
     /**
+     * The reason why a shop is not eligible for bundles.
+     *
      * @return string
      */
-    public function getIneligibilityReason()
+    public function getIneligibilityReason(): ?string
     {
         return $this->ineligibilityReason;
     }
 
     
     /**
+     * Whether a shop has any fixed bundle products or has a cartTransform function installed.
+     *
      * @return bool
      */
-    public function getSellsBundles()
+    public function getSellsBundles(): ?bool
     {
         return $this->sellsBundles;
     }

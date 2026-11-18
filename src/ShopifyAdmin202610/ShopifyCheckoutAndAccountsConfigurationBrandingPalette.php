@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A set of colors used together on a surface.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingPalette
 {
     protected $color1;
@@ -27,180 +30,220 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingPalette
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor1()
+    public function getColor1(): ?string
     {
         return $this->color1;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor10()
+    public function getColor10(): ?string
     {
         return $this->color10;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor11()
+    public function getColor11(): ?string
     {
         return $this->color11;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor12()
+    public function getColor12(): ?string
     {
         return $this->color12;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor13()
+    public function getColor13(): ?string
     {
         return $this->color13;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor14()
+    public function getColor14(): ?string
     {
         return $this->color14;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor15()
+    public function getColor15(): ?string
     {
         return $this->color15;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor16()
+    public function getColor16(): ?string
     {
         return $this->color16;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor17()
+    public function getColor17(): ?string
     {
         return $this->color17;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor18()
+    public function getColor18(): ?string
     {
         return $this->color18;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor19()
+    public function getColor19(): ?string
     {
         return $this->color19;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor2()
+    public function getColor2(): ?string
     {
         return $this->color2;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor20()
+    public function getColor20(): ?string
     {
         return $this->color20;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor3()
+    public function getColor3(): ?string
     {
         return $this->color3;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor4()
+    public function getColor4(): ?string
     {
         return $this->color4;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor5()
+    public function getColor5(): ?string
     {
         return $this->color5;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor6()
+    public function getColor6(): ?string
     {
         return $this->color6;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor7()
+    public function getColor7(): ?string
     {
         return $this->color7;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor8()
+    public function getColor8(): ?string
     {
         return $this->color8;
     }
 
     
     /**
+     * A color in the palette (hex value).
+     *
      * @return string
      */
-    public function getColor9()
+    public function getColor9(): ?string
     {
         return $this->color9;
     }

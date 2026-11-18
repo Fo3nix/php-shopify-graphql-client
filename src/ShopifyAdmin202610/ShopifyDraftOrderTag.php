@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyDraftOrderTag
+/**
+ * Represents a draft order tag.
+ */
+class ShopifyDraftOrderTag implements ShopifyNode
 {
     protected $handle;
     protected $id;
@@ -10,27 +13,33 @@ class ShopifyDraftOrderTag
 
     
     /**
+     * Handle of draft order tag.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * ID of draft order tag.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Title of draft order tag.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

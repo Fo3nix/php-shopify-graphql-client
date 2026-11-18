@@ -1,0 +1,25 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use GraphQL\SchemaObject\InputObject;
+
+/**
+ * The input fields for an exclusion condition based on collections.
+ */
+class ShopifyCollectionSourceExclusionConditionCollectionInputInputObject extends InputObject
+{
+    const REQUIRED = ["values"];
+
+    protected $values;
+
+    /**
+     * The collection IDs whose products are excluded.
+     */
+    public function setValues(array $values): static
+    {
+        $this->values = $values;
+
+        return $this;
+    }
+}

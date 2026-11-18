@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The form controls customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingControlQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingControl";
 
-    public function selectBorder()
+    /**
+     * The border.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectCornerRadius()
+    /**
+     * The corner radius.
+     */
+    public function selectCornerRadius(): static
     {
         $this->selectField("cornerRadius");
 
         return $this;
     }
 
-    public function selectLabelPosition()
+    /**
+     * The label position.
+     */
+    public function selectLabelPosition(): static
     {
         $this->selectField("labelPosition");
 

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyqlNullCellTranslation;
 
+/**
+ * Per-row metadata for a ShopifyQL result, aligned by index with the table's rows.
+ */
 class ShopifyShopifyqlRowMetadata
 {
     protected $nullCellTranslations;
@@ -12,27 +15,33 @@ class ShopifyShopifyqlRowMetadata
 
     
     /**
+     * Localized display text for null cells in this row, by column.
+     *
      * @return ShopifyShopifyqlNullCellTranslation[]
      */
-    public function getNullCellTranslations()
+    public function getNullCellTranslations(): ?array
     {
         return $this->nullCellTranslations;
     }
 
     
     /**
+     * Raw resource IDs associated with the row, aligned by column index. Each entry is the list of IDs for that column (empty when the cell has none). These are raw ShopifyQL identifiers (numeric IDs, or image URLs for some schemas), not GIDs.
+     *
      * @return string[]
      */
-    public function getRawResourceIds()
+    public function getRawResourceIds(): ?array
     {
         return $this->rawResourceIds;
     }
 
     
     /**
+     * Names of the columns whose values were rolled into the top-N "Other" remainder bucket.
+     *
      * @return string[]
      */
-    public function getTopNRemainderColumnNames()
+    public function getTopNRemainderColumnNames(): ?array
     {
         return $this->topNRemainderColumnNames;
     }

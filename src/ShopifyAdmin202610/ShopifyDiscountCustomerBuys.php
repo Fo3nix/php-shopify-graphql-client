@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountItems;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerBuysValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountItemsHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerBuysValueHydrator;
 
+/**
+ * The prerequisite items and prerequisite value that a customer must have on the order for the discount to be applicable.
+ */
 class ShopifyDiscountCustomerBuys
 {
     protected $isOneTimePurchase;
@@ -14,36 +17,44 @@ class ShopifyDiscountCustomerBuys
 
     
     /**
+     * If the discount is applicable when a customer buys a one-time purchase.
+     *
      * @return bool
      */
-    public function getIsOneTimePurchase()
+    public function getIsOneTimePurchase(): ?bool
     {
         return $this->isOneTimePurchase;
     }
 
     
     /**
+     * If the discount is applicable when a customer buys a subscription purchase.
+     *
      * @return bool
      */
-    public function getIsSubscription()
+    public function getIsSubscription(): ?bool
     {
         return $this->isSubscription;
     }
 
     
     /**
-     * @return ShopifyDiscountItems
+     * The items required for the discount to be applicable.
+     *
+     * @return ShopifyAllDiscountItems|ShopifyDiscountCollections|ShopifyDiscountProducts
      */
-    public function getItems()
+    public function getItems(): ShopifyAllDiscountItems|ShopifyDiscountCollections|ShopifyDiscountProducts|null
     {
         return $this->items;
     }
 
     
     /**
-     * @return ShopifyDiscountCustomerBuysValue
+     * The prerequisite value.
+     *
+     * @return ShopifyDiscountPurchaseAmount|ShopifyDiscountQuantity
      */
-    public function getValue()
+    public function getValue(): ShopifyDiscountPurchaseAmount|ShopifyDiscountQuantity|null
     {
         return $this->value;
     }
@@ -62,10 +73,10 @@ class ShopifyDiscountCustomerBuys
                 $instance->isSubscription = $data['isSubscription'];
             }
             if (isset($data['items']) && $data['items'] !== null) {
-                $instance->items = ShopifyDiscountItems::fromArray($data['items']);
+                $instance->items = ShopifyDiscountItemsHydrator::fromArray($data['items']);
             }
             if (isset($data['value']) && $data['value'] !== null) {
-                $instance->value = ShopifyDiscountCustomerBuysValue::fromArray($data['value']);
+                $instance->value = ShopifyDiscountCustomerBuysValueHydrator::fromArray($data['value']);
             }
             return $instance;
         }
@@ -97,10 +108,10 @@ class ShopifyDiscountCustomerBuys
                 $data['isSubscription'] = $this->isSubscription;
             }
             if ($this->items !== null) {
-                $data['items'] = $this->items->asArray();
+                $data['items'] = ShopifyDiscountItemsHydrator::toArray($this->items);
             }
             if ($this->value !== null) {
-                $data['value'] = $this->value->asArray();
+                $data['value'] = ShopifyDiscountCustomerBuysValueHydrator::toArray($this->value);
             }
             return $data;
         }

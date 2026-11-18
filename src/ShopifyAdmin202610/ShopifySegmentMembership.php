@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The response type for the `segmentMembership` object.
+ */
 class ShopifySegmentMembership
 {
     protected $isMember;
@@ -9,18 +12,22 @@ class ShopifySegmentMembership
 
     
     /**
+     * A Boolean that indicates whether or not the customer in the query is a member of the segment, which is identified using the `segmentId`.
+     *
      * @return bool
      */
-    public function getIsMember()
+    public function getIsMember(): ?bool
     {
         return $this->isMember;
     }
 
     
     /**
+     * A `segmentId` that's used for testing membership.
+     *
      * @return string
      */
-    public function getSegmentId()
+    public function getSegmentId(): ?string
     {
         return $this->segmentId;
     }

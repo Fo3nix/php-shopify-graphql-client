@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A Shopify Payments address.
+ */
 class ShopifyShopifyPaymentsAddressBasic
 {
     protected $addressLine1;
@@ -13,54 +16,66 @@ class ShopifyShopifyPaymentsAddressBasic
 
     
     /**
+     * Line 1 of the address.
+     *
      * @return string
      */
-    public function getAddressLine1()
+    public function getAddressLine1(): ?string
     {
         return $this->addressLine1;
     }
 
     
     /**
+     * Line 2 of the address.
+     *
      * @return string
      */
-    public function getAddressLine2()
+    public function getAddressLine2(): ?string
     {
         return $this->addressLine2;
     }
 
     
     /**
+     * The address city.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The address country.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The address postal code.
+     *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
     
     /**
+     * The address state/province/zone.
+     *
      * @return string
      */
-    public function getZone()
+    public function getZone(): ?string
     {
         return $this->zone;
     }

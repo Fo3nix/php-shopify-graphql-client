@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarket;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnPoliciesReturnRules;
 use Carbon\Carbon;
 
-class ShopifyReturnPolicyProfile
+/**
+ * A return policy profile.
+ */
+class ShopifyReturnPolicyProfile implements ShopifyNode
 {
     protected $default;
     protected $editRules;
@@ -19,63 +22,77 @@ class ShopifyReturnPolicyProfile
 
     
     /**
+     * Whether this return policy profile is the default profile for the shop.
+     *
      * @return bool
      */
-    public function getDefault()
+    public function getDefault(): ?bool
     {
         return $this->default;
     }
 
     
     /**
+     * The rules that apply to buyer-initiated edit and cancellation requests under this policy. When null, edit rules are disabled and customers can request cancellations without restrictions.
+     *
      * @return ShopifyReturnPoliciesEditRules
      */
-    public function getEditRules()
+    public function getEditRules(): ?ShopifyReturnPoliciesEditRules
     {
         return $this->editRules;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The markets that this return policy profile applies to.
+     *
      * @return ShopifyMarket[]
      */
-    public function getMarkets()
+    public function getMarkets(): ?array
     {
         return $this->markets;
     }
 
     
     /**
+     * The name of the return policy profile. This is a merchant-defined value that identifies the profile. The default profile has a null name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The rules that apply to returns under this policy. When null, return rules are disabled and customers can return items without restrictions.
+     *
      * @return ShopifyReturnPoliciesReturnRules
      */
-    public function getReturnRules()
+    public function getReturnRules(): ?ShopifyReturnPoliciesReturnRules
     {
         return $this->returnRules;
     }
 
     
     /**
+     * The time when the return policy profile was last updated. This is an aggregated value based on the profile, its default promise, and all overrides.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

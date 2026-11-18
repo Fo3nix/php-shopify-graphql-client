@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The customer accounts-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurfaceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCustomerAccountsSurface";
 
-    public function selectComponents(ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurfaceComponentsArgumentsObject $argsObject = null)
+    /**
+     * The customer accounts components.
+     */
+    public function selectComponents(?ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsSurfaceComponentsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsComponentsQueryObject("components");
         if ($argsObject !== null) {

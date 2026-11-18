@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyqlTableDataColumn;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyShopifyqlRowMetadata;
 
+/**
+ * The result of a ShopifyQL query.
+ */
 class ShopifyShopifyqlTableData
 {
     protected $columns;
@@ -13,27 +16,33 @@ class ShopifyShopifyqlTableData
 
     
     /**
+     * The columns of the table.
+     *
      * @return ShopifyShopifyqlTableDataColumn[]
      */
-    public function getColumns()
+    public function getColumns(): ?array
     {
         return $this->columns;
     }
 
     
     /**
+     * Per-row metadata, aligned by index with `rows`.
+     *
      * @return ShopifyShopifyqlRowMetadata[]
      */
-    public function getRowMetadata()
+    public function getRowMetadata(): ?array
     {
         return $this->rowMetadata;
     }
 
     
     /**
+     * The rows of the table.
+     *
      * @return string
      */
-    public function getRows()
+    public function getRows(): mixed
     {
         return $this->rows;
     }

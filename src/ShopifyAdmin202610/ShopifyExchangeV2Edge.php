@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyExchangeV2;
 
+/**
+ * An auto-generated type which holds one ExchangeV2 and a cursor during pagination.
+ */
 class ShopifyExchangeV2Edge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyExchangeV2Edge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ExchangeV2Edge.
+     *
      * @return ShopifyExchangeV2
      */
-    public function getNode()
+    public function getNode(): ?ShopifyExchangeV2
     {
         return $this->node;
     }

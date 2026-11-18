@@ -4,67 +4,99 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The billing address of a credit card payment instrument.
+ */
 class ShopifyCustomerCreditCardBillingAddressQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerCreditCardBillingAddress";
 
-    public function selectAddress1()
+    /**
+     * The first line of the address. Typically the street address or PO Box number.
+     */
+    public function selectAddress1(): static
     {
         $this->selectField("address1");
 
         return $this;
     }
 
-    public function selectCity()
+    /**
+     * The name of the city, district, village, or town.
+     */
+    public function selectCity(): static
     {
         $this->selectField("city");
 
         return $this;
     }
 
-    public function selectCountry()
+    /**
+     * The name of the country.
+     */
+    public function selectCountry(): static
     {
         $this->selectField("country");
 
         return $this;
     }
 
-    public function selectCountryCode()
+    /**
+     * The two-letter code for the country of the address.
+     * For example, US.
+     */
+    public function selectCountryCode(): static
     {
         $this->selectField("countryCode");
 
         return $this;
     }
 
-    public function selectFirstName()
+    /**
+     * The first name in the billing address.
+     */
+    public function selectFirstName(): static
     {
         $this->selectField("firstName");
 
         return $this;
     }
 
-    public function selectLastName()
+    /**
+     * The last name in the billing address.
+     */
+    public function selectLastName(): static
     {
         $this->selectField("lastName");
 
         return $this;
     }
 
-    public function selectProvince()
+    /**
+     * The region of the address, such as the province, state, or district.
+     */
+    public function selectProvince(): static
     {
         $this->selectField("province");
 
         return $this;
     }
 
-    public function selectProvinceCode()
+    /**
+     * The alphanumeric code for the region.
+     * For example, ON.
+     */
+    public function selectProvinceCode(): static
     {
         $this->selectField("provinceCode");
 
         return $this;
     }
 
-    public function selectZip()
+    /**
+     * The zip or postal code of the address.
+     */
+    public function selectZip(): static
     {
         $this->selectField("zip");
 

@@ -4,25 +4,38 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A segment and its corresponding saved search.
+ * For example, you can use `SegmentMigration` to retrieve the segment ID that corresponds to a saved search ID.
+ */
 class ShopifySegmentMigrationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SegmentMigration";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectSavedSearchId()
+    /**
+     * The ID of the saved search.
+     */
+    public function selectSavedSearchId(): static
     {
         $this->selectField("savedSearchId");
 
         return $this;
     }
 
-    public function selectSegmentId()
+    /**
+     * The ID of the segment.
+     */
+    public function selectSegmentId(): static
     {
         $this->selectField("segmentId");
 

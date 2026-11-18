@@ -4,6 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * Deletion events chronicle the destruction of resources (e.g. products and collections).
+ * Once deleted, the deletion event is the only trace of the original's existence,
+ * as the resource itself has been removed and can no longer be accessed.
+ */
 class ShopifyDeletionEvent
 {
     protected $occurredAt;
@@ -12,27 +17,33 @@ class ShopifyDeletionEvent
 
     
     /**
+     * The date and time when the deletion event for the related resource was generated.
+     *
      * @return Carbon
      */
-    public function getOccurredAt()
+    public function getOccurredAt(): ?Carbon
     {
         return $this->occurredAt;
     }
 
     
     /**
+     * The ID of the resource that was deleted.
+     *
      * @return string
      */
-    public function getSubjectId()
+    public function getSubjectId(): ?string
     {
         return $this->subjectId;
     }
 
     
     /**
-     * @return ShopifyDeletionEventSubjectTypeEnumObject
+     * The type of resource that was deleted.
+     *
+     * @return string A ShopifyDeletionEventSubjectTypeEnumObject value
      */
-    public function getSubjectType()
+    public function getSubjectType(): ?string
     {
         return $this->subjectType;
     }

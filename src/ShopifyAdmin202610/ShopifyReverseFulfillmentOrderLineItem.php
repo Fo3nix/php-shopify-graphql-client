@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReverseFulfillmentOrderDisposition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillmentLineItem;
 
-class ShopifyReverseFulfillmentOrderLineItem
+/**
+ * The details about a reverse fulfillment order line item.
+ */
+class ShopifyReverseFulfillmentOrderLineItem implements ShopifyNode
 {
     protected $dispositions;
     protected $fulfillmentLineItem;
@@ -14,36 +17,44 @@ class ShopifyReverseFulfillmentOrderLineItem
 
     
     /**
+     * The dispositions of the item.
+     *
      * @return ShopifyReverseFulfillmentOrderDisposition[]
      */
-    public function getDispositions()
+    public function getDispositions(): ?array
     {
         return $this->dispositions;
     }
 
     
     /**
+     * The corresponding fulfillment line item for a reverse fulfillment order line item.
+     *
      * @return ShopifyFulfillmentLineItem
      */
-    public function getFulfillmentLineItem()
+    public function getFulfillmentLineItem(): ?ShopifyFulfillmentLineItem
     {
         return $this->fulfillmentLineItem;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The total number of units to be processed.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents a branded promise presented to buyers.
+ */
 class ShopifyDeliveryBrandedPromise
 {
     protected $handle;
@@ -9,18 +12,22 @@ class ShopifyDeliveryBrandedPromise
 
     
     /**
+     * The handle of the branded promise.  For example: `shop_promise`.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * The name of the branded promise.  For example: `Shop Promise`.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

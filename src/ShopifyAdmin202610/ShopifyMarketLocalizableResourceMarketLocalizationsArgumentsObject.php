@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyMarketLocalizableResourceMarketLocalizationsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["marketId"];
+
     protected $marketId;
 
-    public function setMarketId($marketId)
+    /**
+     * Filters market localizations by market ID.
+     */
+    public function setMarketId($marketId): static
     {
         $this->marketId = $marketId;
 

@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The type used to target the eligible countries of an order's shipping destination for which the discount applies. For example, the discount might be applicable when shipping to all countries, or only to a set of countries.
+ */
 class ShopifyDiscountShippingDestinationSelectionUnionObject extends UnionObject
 {
-    public function onShopifyDiscountCountries()
+    public function onShopifyDiscountCountries(): ShopifyDiscountCountriesQueryObject
     {
         $object = new ShopifyDiscountCountriesQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyDiscountShippingDestinationSelectionUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountCountryAll()
+    public function onShopifyDiscountCountryAll(): ShopifyDiscountCountryAllQueryObject
     {
         $object = new ShopifyDiscountCountryAllQueryObject();
         $this->addPossibleType($object);

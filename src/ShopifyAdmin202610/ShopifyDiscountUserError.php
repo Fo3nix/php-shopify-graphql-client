@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyDiscountUserError
+/**
+ * An error that occurs during the execution of a discount mutation.
+ */
+class ShopifyDiscountUserError implements ShopifyDisplayableError
 {
     protected $code;
     protected $extraInfo;
@@ -11,36 +14,44 @@ class ShopifyDiscountUserError
 
     
     /**
-     * @return ShopifyDiscountErrorCodeEnumObject
+     * The error code.
+     *
+     * @return string A ShopifyDiscountErrorCodeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Extra information about this error.
+     *
      * @return string
      */
-    public function getExtraInfo()
+    public function getExtraInfo(): ?string
     {
         return $this->extraInfo;
     }
 
     
     /**
+     * The path to the input field that caused the error.
+     *
      * @return string[]
      */
-    public function getField()
+    public function getField(): ?array
     {
         return $this->field;
     }
 
     
     /**
+     * The error message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

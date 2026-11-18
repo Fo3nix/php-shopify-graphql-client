@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * The selected delivery option on a subscription contract.
+ */
 class ShopifySubscriptionDeliveryMethodLocalDeliveryOption
 {
     protected $code;
@@ -13,54 +16,67 @@ class ShopifySubscriptionDeliveryMethodLocalDeliveryOption
 
     
     /**
+     * A custom reference to the delivery method for use with automations.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The details displayed to the customer to describe the local delivery option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The delivery instructions that the customer can provide to the merchant.
+     *
      * @return string
      */
-    public function getInstructions()
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
 
     
     /**
+     * The phone number that the customer provided to the merchant.
+     * Formatted using E.164 standard. For example, `+16135551111`.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The presentment title of the local delivery option.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The title of the local delivery option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

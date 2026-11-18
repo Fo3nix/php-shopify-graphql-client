@@ -14,42 +14,61 @@ class ShopifyOrderSuggestedRefundArgumentsObject extends ArgumentsObject
     protected $suggestFullRefund;
     protected $refundMethodAllocation;
 
-    public function setShippingAmount($shippingAmount)
+    /**
+     * The amount to refund for shipping. Overrides the `refundShipping` argument.
+     */
+    public function setShippingAmount($shippingAmount): static
     {
         $this->shippingAmount = $shippingAmount;
 
         return $this;
     }
 
-    public function setRefundShipping($refundShipping)
+    /**
+     * Whether to refund the full shipping amount.
+     */
+    public function setRefundShipping($refundShipping): static
     {
         $this->refundShipping = $refundShipping;
 
         return $this;
     }
 
-    public function setRefundLineItems(array $refundLineItems)
+    /**
+     * The line items from the order to include in the refund.
+     */
+    public function setRefundLineItems(array $refundLineItems): static
     {
         $this->refundLineItems = $refundLineItems;
 
         return $this;
     }
 
-    public function setRefundDuties(array $refundDuties)
+    /**
+     * The duties from the order to include in the refund.
+     */
+    public function setRefundDuties(array $refundDuties): static
     {
         $this->refundDuties = $refundDuties;
 
         return $this;
     }
 
-    public function setSuggestFullRefund($suggestFullRefund)
+    /**
+     * Whether the suggested refund should be created from all refundable line items on the order.
+     * If `true`, the `refundLineItems` argument will be ignored.
+     */
+    public function setSuggestFullRefund($suggestFullRefund): static
     {
         $this->suggestFullRefund = $suggestFullRefund;
 
         return $this;
     }
 
-    public function setRefundMethodAllocation($shopifyRefundMethodAllocation)
+    /**
+     * Specifies which refund methods to allocate the suggested refund amount to.
+     */
+    public function setRefundMethodAllocation($shopifyRefundMethodAllocation): static
     {
         $this->refundMethodAllocation = new RawObject($shopifyRefundMethodAllocation);
 

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Localized display text shown in place of a null cell in a ShopifyQL result row.
+ */
 class ShopifyShopifyqlNullCellTranslation
 {
     protected $columnName;
@@ -9,18 +12,22 @@ class ShopifyShopifyqlNullCellTranslation
 
     
     /**
+     * The name of the column the translation applies to.
+     *
      * @return string
      */
-    public function getColumnName()
+    public function getColumnName(): ?string
     {
         return $this->columnName;
     }
 
     
     /**
+     * The localized text to display in place of the null value.
+     *
      * @return string
      */
-    public function getDisplayText()
+    public function getDisplayText(): ?string
     {
         return $this->displayText;
     }

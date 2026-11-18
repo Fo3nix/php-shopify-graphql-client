@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * Presents all Shopify Payments information related to an extended authorization.
+ */
 class ShopifyShopifyPaymentsExtendedAuthorization
 {
     protected $extendedAuthorizationExpiresAt;
@@ -11,18 +14,22 @@ class ShopifyShopifyPaymentsExtendedAuthorization
 
     
     /**
+     * The time after which the extended authorization expires. After the expiry, the merchant is unable to capture the payment.
+     *
      * @return Carbon
      */
-    public function getExtendedAuthorizationExpiresAt()
+    public function getExtendedAuthorizationExpiresAt(): ?Carbon
     {
         return $this->extendedAuthorizationExpiresAt;
     }
 
     
     /**
+     * The time after which capture will incur an additional fee.
+     *
      * @return Carbon
      */
-    public function getStandardAuthorizationExpiresAt()
+    public function getStandardAuthorizationExpiresAt(): ?Carbon
     {
         return $this->standardAuthorizationExpiresAt;
     }

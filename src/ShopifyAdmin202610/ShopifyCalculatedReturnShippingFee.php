@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 
-class ShopifyCalculatedReturnShippingFee
+/**
+ * The calculated cost of the return shipping.
+ */
+class ShopifyCalculatedReturnShippingFee implements ShopifyCalculatedReturnFee
 {
     protected $amountSet;
     protected $id;
@@ -12,27 +15,33 @@ class ShopifyCalculatedReturnShippingFee
 
     
     /**
+     * The calculated amount of the return fee, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The estimated tax amount on the return shipping fee, in shop and presentment currencies. Estimated when the return is calculated or created, and zero when no tax applies to the fee. For the tax actually charged, use `ReturnShippingFee.finalizedTaxAmountSet` once the return is processed.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTaxAmountSet()
+    public function getTaxAmountSet(): ?ShopifyMoneyBag
     {
         return $this->taxAmountSet;
     }

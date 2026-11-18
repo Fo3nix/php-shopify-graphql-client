@@ -10,7 +10,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyPointOfSaleDevice;
 
-class ShopifyPointOfSaleDevicePaymentSession
+/**
+ * Tracks the payment activity for a point of sale device.
+ */
+class ShopifyPointOfSaleDevicePaymentSession implements ShopifyNode
 {
     protected $cashActivities;
     protected $cashCountedAtClose;
@@ -43,252 +46,308 @@ class ShopifyPointOfSaleDevicePaymentSession
 
     
     /**
+     * The activities on the point of sale device payment session.
+     *
      * @return ShopifyCashActivityConnection
      */
-    public function getCashActivities()
+    public function getCashActivities(): ?ShopifyCashActivityConnection
     {
         return $this->cashActivities;
     }
 
     
     /**
+     * The cash that was physically counted when the point of sale device payment session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCashCountedAtClose()
+    public function getCashCountedAtClose(): ?ShopifyMoneyV2
     {
         return $this->cashCountedAtClose;
     }
 
     
     /**
+     * The cash that was physically counted when the point of sale device payment session was opened.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCashCountedAtOpen()
+    public function getCashCountedAtOpen(): ?ShopifyMoneyV2
     {
         return $this->cashCountedAtOpen;
     }
 
     
     /**
+     * The cash drawer associated with the point of sale device payment session. The session's sales and cash tracking activity will affect the cash drawer's balance.
+     *
      * @return ShopifyCashDrawer
      */
-    public function getCashDrawer()
+    public function getCashDrawer(): ?ShopifyCashDrawer
     {
         return $this->cashDrawer;
     }
 
     
     /**
+     * The amount that the cash drawer balance was adjusted when the session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getClosingAdjustment()
+    public function getClosingAdjustment(): ?ShopifyMoneyV2
     {
         return $this->closingAdjustment;
     }
 
     
     /**
+     * The counted balance of the cash drawer when the point of sale device payment session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getClosingBalance()
+    public function getClosingBalance(): ?ShopifyMoneyV2
     {
         return $this->closingBalance;
     }
 
     
     /**
+     * The note associated with the point of sale device payment session closing.
+     *
      * @return string
      */
-    public function getClosingNote()
+    public function getClosingNote(): ?string
     {
         return $this->closingNote;
     }
 
     
     /**
+     * The staff member who closed the point of sale device payment session.
+     *
      * @return ShopifyStaffMember
      */
-    public function getClosingStaffMember()
+    public function getClosingStaffMember(): ?ShopifyStaffMember
     {
         return $this->closingStaffMember;
     }
 
     
     /**
+     * The time the point of sale device payment session was closed.
+     *
      * @return Carbon
      */
-    public function getClosingTime()
+    public function getClosingTime(): ?Carbon
     {
         return $this->closingTime;
     }
 
     
     /**
+     * The currency of the point of sale device payment session.
+     *
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
 
     
     /**
+     * The expected cash when the point of sale device payment session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getExpectedCashAtClose()
+    public function getExpectedCashAtClose(): ?ShopifyMoneyV2
     {
         return $this->expectedCashAtClose;
     }
 
     
     /**
+     * The expected balance of the cash drawer when the point of sale device payment session was opened.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getExpectedCashAtOpen()
+    public function getExpectedCashAtOpen(): ?ShopifyMoneyV2
     {
         return $this->expectedCashAtOpen;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location associated with the point of sale device payment session. The session's sales and cash tracking activity will contribute to the location's totals.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The net cash sales for the point of sale device payment session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNetCashSales()
+    public function getNetCashSales(): ?ShopifyMoneyV2
     {
         return $this->netCashSales;
     }
 
     
     /**
+     * The net sales for the duration of this session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNetSales()
+    public function getNetSales(): ?ShopifyMoneyV2
     {
         return $this->netSales;
     }
 
     
     /**
+     * The note associated with the point of sale device payment session opening.
+     *
      * @return string
      */
-    public function getOpeningNote()
+    public function getOpeningNote(): ?string
     {
         return $this->openingNote;
     }
 
     
     /**
+     * The staff member who opened the point of sale device payment session.
+     *
      * @return ShopifyStaffMember
      */
-    public function getOpeningStaffMember()
+    public function getOpeningStaffMember(): ?ShopifyStaffMember
     {
         return $this->openingStaffMember;
     }
 
     
     /**
+     * The time the point of sale device payment session was opened.
+     *
      * @return Carbon
      */
-    public function getOpeningTime()
+    public function getOpeningTime(): ?Carbon
     {
         return $this->openingTime;
     }
 
     
     /**
+     * The point of sale device.
+     *
      * @return ShopifyPointOfSaleDevice
      */
-    public function getPointOfSaleDevice()
+    public function getPointOfSaleDevice(): ?ShopifyPointOfSaleDevice
     {
         return $this->pointOfSaleDevice;
     }
 
     
     /**
-     * @return ShopifyPointOfSaleDevicePaymentSessionStatusEnumObject
+     * Whether the point of sale device payment session is open. Payments can't be processed or refunded during a closed session, and the cash drawer balance can't be adjusted or corrected.
+     *
+     * @return string A ShopifyPointOfSaleDevicePaymentSessionStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The total adjustments for the point of sale device payment session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalAdjustments()
+    public function getTotalAdjustments(): ?ShopifyMoneyV2
     {
         return $this->totalAdjustments;
     }
 
     
     /**
+     * The total cash refunds for the point of sale device payment session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalCashRefunds()
+    public function getTotalCashRefunds(): ?ShopifyMoneyV2
     {
         return $this->totalCashRefunds;
     }
 
     
     /**
+     * The total cash sales for the point of sale device payment session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalCashSales()
+    public function getTotalCashSales(): ?ShopifyMoneyV2
     {
         return $this->totalCashSales;
     }
 
     
     /**
+     * The total discrepancy for the point of sale device payment session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDiscrepancy()
+    public function getTotalDiscrepancy(): ?ShopifyMoneyV2
     {
         return $this->totalDiscrepancy;
     }
 
     
     /**
+     * The sum of all refunds for the duration of this session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalRefunds()
+    public function getTotalRefunds(): ?ShopifyMoneyV2
     {
         return $this->totalRefunds;
     }
 
     
     /**
+     * The sum of all sales for the duration of this session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSales()
+    public function getTotalSales(): ?ShopifyMoneyV2
     {
         return $this->totalSales;
     }
 
     
     /**
+     * Whether the point of sale device payment session totals are ready.
+     *
      * @return bool
      */
-    public function getTotalsReady()
+    public function getTotalsReady(): ?bool
     {
         return $this->totalsReady;
     }

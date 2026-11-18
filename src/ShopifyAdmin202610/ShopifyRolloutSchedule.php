@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Carbon\Carbon;
 
+/**
+ * The planned activation and optional conclusion dates of a rollout, not its actual lifecycle timestamps.
+ */
 class ShopifyRolloutSchedule
 {
     protected $activateAt;
@@ -11,18 +14,22 @@ class ShopifyRolloutSchedule
 
     
     /**
+     * The date and time at which the rollout is scheduled to activate.
+     *
      * @return Carbon
      */
-    public function getActivateAt()
+    public function getActivateAt(): ?Carbon
     {
         return $this->activateAt;
     }
 
     
     /**
+     * The date and time at which the rollout is scheduled to conclude, or null when no conclusion date is set.
+     *
      * @return Carbon
      */
-    public function getConcludeAt()
+    public function getConcludeAt(): ?Carbon
     {
         return $this->concludeAt;
     }

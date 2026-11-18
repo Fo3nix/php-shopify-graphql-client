@@ -2,7 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyChannelDefinition
+/**
+ * A specific selling surface within a [sales channel](https://shopify.dev/docs/apps/build/sales-channels) platform. A channel definition identifies where products can be sold. Definitions can represent entire platforms (like Facebook or TikTok) or specific sales channels within those platforms, such as Instagram Shops, Instagram Shopping, or TikTok Live.
+ *
+ * Each definition includes the parent [`Channel`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Channel) name and subchannel name to indicate the selling surface hierarchy.
+ */
+class ShopifyChannelDefinition implements ShopifyNode
 {
     protected $channelName;
     protected $handle;
@@ -13,54 +18,66 @@ class ShopifyChannelDefinition
 
     
     /**
+     * Name of the channel that this sub channel belongs to.
+     *
      * @return string
      */
-    public function getChannelName()
+    public function getChannelName(): ?string
     {
         return $this->channelName;
     }
 
     
     /**
+     * Unique string used as a public identifier for the channel definition.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * The unique ID for the channel definition.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether this channel definition represents a marketplace.
+     *
      * @return bool
      */
-    public function getIsMarketplace()
+    public function getIsMarketplace(): ?bool
     {
         return $this->isMarketplace;
     }
 
     
     /**
+     * Name of the sub channel (e.g. Online Store, Instagram Shopping, TikTok Live).
+     *
      * @return string
      */
-    public function getSubChannelName()
+    public function getSubChannelName(): ?string
     {
         return $this->subChannelName;
     }
 
     
     /**
+     * Icon displayed when showing the channel in admin.
+     *
      * @return string
      */
-    public function getSvgIcon()
+    public function getSvgIcon(): ?string
     {
         return $this->svgIcon;
     }

@@ -5,7 +5,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFulfillment;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReturnableFulfillmentLineItemConnection;
 
-class ShopifyReturnableFulfillment
+/**
+ * A delivered order that's eligible to be returned to the merchant. Provides the items from completed fulfillments that customers can select when initiating a return.
+ *
+ * Use returnable fulfillments to determine which items are eligible for return before creating a [`Return`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Return) with the [`returnCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/returnCreate) mutation. The line items show quantities that are available for return.
+ *
+ * Learn more about [building return management workflows](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/build-return-management).
+ */
+class ShopifyReturnableFulfillment implements ShopifyNode
 {
     protected $fulfillment;
     protected $id;
@@ -13,27 +20,33 @@ class ShopifyReturnableFulfillment
 
     
     /**
+     * The fulfillment that the returnable fulfillment refers to.
+     *
      * @return ShopifyFulfillment
      */
-    public function getFulfillment()
+    public function getFulfillment(): ?ShopifyFulfillment
     {
         return $this->fulfillment;
     }
 
     
     /**
+     * The unique ID of the Returnable Fulfillment.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The list of returnable fulfillment line items.
+     *
      * @return ShopifyReturnableFulfillmentLineItemConnection
      */
-    public function getReturnableFulfillmentLineItems()
+    public function getReturnableFulfillmentLineItems(): ?ShopifyReturnableFulfillmentLineItemConnection
     {
         return $this->returnableFulfillmentLineItems;
     }

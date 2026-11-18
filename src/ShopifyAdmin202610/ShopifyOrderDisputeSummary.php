@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyOrderDisputeSummary
+/**
+ * A summary of the important details for a dispute on an order.
+ */
+class ShopifyOrderDisputeSummary implements ShopifyNode
 {
     protected $id;
     protected $initiatedAs;
@@ -10,27 +13,33 @@ class ShopifyOrderDisputeSummary
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyDisputeTypeEnumObject
+     * The type that the dispute was initiated as.
+     *
+     * @return string A ShopifyDisputeTypeEnumObject value
      */
-    public function getInitiatedAs()
+    public function getInitiatedAs(): ?string
     {
         return $this->initiatedAs;
     }
 
     
     /**
-     * @return ShopifyDisputeStatusEnumObject
+     * The current status of the dispute.
+     *
+     * @return string A ShopifyDisputeStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

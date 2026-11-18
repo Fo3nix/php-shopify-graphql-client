@@ -1,0 +1,319 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
+
+use Carbon\Carbon;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFileError;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaError;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaWarning;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMediaPreviewImage;
+
+/**
+ * Represents a video hosted outside of Shopify.
+ */
+class ShopifyExternalVideo implements ShopifyFile, ShopifyMedia, ShopifyNode
+{
+    protected $alt;
+    protected $createdAt;
+    protected $embedUrl;
+    protected $embeddedUrl;
+    protected $fileErrors;
+    protected $fileStatus;
+    protected $host;
+    protected $id;
+    protected $mediaContentType;
+    protected $mediaErrors;
+    protected $mediaWarnings;
+    protected $originUrl;
+    protected $preview;
+    protected $status;
+    protected $updatedAt;
+
+    
+    /**
+     * A word or phrase to describe the contents or the function of a file.
+     *
+     * @return string
+     */
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     *
+     * @return Carbon
+     */
+    public function getCreatedAt(): ?Carbon
+    {
+        return $this->createdAt;
+    }
+
+    
+    /**
+     * The embed URL of the video for the respective host.
+     *
+     * @return string
+     */
+    public function getEmbedUrl(): mixed
+    {
+        return $this->embedUrl;
+    }
+
+    
+    /**
+     * The URL.
+     *
+     * @return string
+     */
+    public function getEmbeddedUrl(): mixed
+    {
+        return $this->embeddedUrl;
+    }
+
+    
+    /**
+     * Any errors that have occurred on the file.
+     *
+     * @return ShopifyFileError[]
+     */
+    public function getFileErrors(): ?array
+    {
+        return $this->fileErrors;
+    }
+
+    
+    /**
+     * The status of the file.
+     *
+     * @return string A ShopifyFileStatusEnumObject value
+     */
+    public function getFileStatus(): ?string
+    {
+        return $this->fileStatus;
+    }
+
+    
+    /**
+     * The host of the external video.
+     *
+     * @return string A ShopifyMediaHostEnumObject value
+     */
+    public function getHost(): ?string
+    {
+        return $this->host;
+    }
+
+    
+    /**
+     * A globally-unique ID.
+     *
+     * @return string
+     */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    
+    /**
+     * The media content type.
+     *
+     * @return string A ShopifyMediaContentTypeEnumObject value
+     */
+    public function getMediaContentType(): ?string
+    {
+        return $this->mediaContentType;
+    }
+
+    
+    /**
+     * Any errors which have occurred on the media.
+     *
+     * @return ShopifyMediaError[]
+     */
+    public function getMediaErrors(): ?array
+    {
+        return $this->mediaErrors;
+    }
+
+    
+    /**
+     * The warnings attached to the media.
+     *
+     * @return ShopifyMediaWarning[]
+     */
+    public function getMediaWarnings(): ?array
+    {
+        return $this->mediaWarnings;
+    }
+
+    
+    /**
+     * The origin URL of the video on the respective host.
+     *
+     * @return string
+     */
+    public function getOriginUrl(): mixed
+    {
+        return $this->originUrl;
+    }
+
+    
+    /**
+     * The preview image for the media.
+     *
+     * @return ShopifyMediaPreviewImage
+     */
+    public function getPreview(): ?ShopifyMediaPreviewImage
+    {
+        return $this->preview;
+    }
+
+    
+    /**
+     * Current status of the media.
+     *
+     * @return string A ShopifyMediaStatusEnumObject value
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     *
+     * @return Carbon
+     */
+    public function getUpdatedAt(): ?Carbon
+    {
+        return $this->updatedAt;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['alt']) && $data['alt'] !== null) {
+                $instance->alt = $data['alt'];
+            }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
+            if (isset($data['embedUrl']) && $data['embedUrl'] !== null) {
+                $instance->embedUrl = $data['embedUrl'];
+            }
+            if (isset($data['embeddedUrl']) && $data['embeddedUrl'] !== null) {
+                $instance->embeddedUrl = $data['embeddedUrl'];
+            }
+            if (isset($data['fileErrors']) && $data['fileErrors'] !== null) {
+                $instance->fileErrors = array_map(function($item) { return ShopifyFileError::fromArray($item); }, $data['fileErrors']);
+            }
+            if (isset($data['fileStatus']) && $data['fileStatus'] !== null) {
+                $instance->fileStatus = $data['fileStatus'];
+            }
+            if (isset($data['host']) && $data['host'] !== null) {
+                $instance->host = $data['host'];
+            }
+            if (isset($data['id']) && $data['id'] !== null) {
+                $instance->id = $data['id'];
+            }
+            if (isset($data['mediaContentType']) && $data['mediaContentType'] !== null) {
+                $instance->mediaContentType = $data['mediaContentType'];
+            }
+            if (isset($data['mediaErrors']) && $data['mediaErrors'] !== null) {
+                $instance->mediaErrors = array_map(function($item) { return ShopifyMediaError::fromArray($item); }, $data['mediaErrors']);
+            }
+            if (isset($data['mediaWarnings']) && $data['mediaWarnings'] !== null) {
+                $instance->mediaWarnings = array_map(function($item) { return ShopifyMediaWarning::fromArray($item); }, $data['mediaWarnings']);
+            }
+            if (isset($data['originUrl']) && $data['originUrl'] !== null) {
+                $instance->originUrl = $data['originUrl'];
+            }
+            if (isset($data['preview']) && $data['preview'] !== null) {
+                $instance->preview = ShopifyMediaPreviewImage::fromArray($data['preview']);
+            }
+            if (isset($data['status']) && $data['status'] !== null) {
+                $instance->status = $data['status'];
+            }
+            if (isset($data['updatedAt']) && $data['updatedAt'] !== null) {
+                $instance->updatedAt = new Carbon($data['updatedAt']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->alt !== null) {
+                $data['alt'] = $this->alt;
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
+            }
+            if ($this->embedUrl !== null) {
+                $data['embedUrl'] = $this->embedUrl;
+            }
+            if ($this->embeddedUrl !== null) {
+                $data['embeddedUrl'] = $this->embeddedUrl;
+            }
+            if ($this->fileErrors !== null) {
+                $data['fileErrors'] = array_map(function($item) { return $item->asArray(); }, $this->fileErrors);
+            }
+            if ($this->fileStatus !== null) {
+                $data['fileStatus'] = $this->fileStatus;
+            }
+            if ($this->host !== null) {
+                $data['host'] = $this->host;
+            }
+            if ($this->id !== null) {
+                $data['id'] = $this->id;
+            }
+            if ($this->mediaContentType !== null) {
+                $data['mediaContentType'] = $this->mediaContentType;
+            }
+            if ($this->mediaErrors !== null) {
+                $data['mediaErrors'] = array_map(function($item) { return $item->asArray(); }, $this->mediaErrors);
+            }
+            if ($this->mediaWarnings !== null) {
+                $data['mediaWarnings'] = array_map(function($item) { return $item->asArray(); }, $this->mediaWarnings);
+            }
+            if ($this->originUrl !== null) {
+                $data['originUrl'] = $this->originUrl;
+            }
+            if ($this->preview !== null) {
+                $data['preview'] = $this->preview->asArray();
+            }
+            if ($this->status !== null) {
+                $data['status'] = $this->status;
+            }
+            if ($this->updatedAt !== null) {
+                $data['updatedAt'] = $this->updatedAt->toIso8601String();
+            }
+            return $data;
+        }
+}

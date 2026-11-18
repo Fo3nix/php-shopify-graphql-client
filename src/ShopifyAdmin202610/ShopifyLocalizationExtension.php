@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Represents the value captured by a localization extension. Localization extensions are additional fields required by certain countries on international orders. For example, some countries require additional fields for customs information or tax identification numbers.
+ */
 class ShopifyLocalizationExtension
 {
     protected $countryCode;
@@ -12,45 +15,55 @@ class ShopifyLocalizationExtension
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * Country ISO 3166-1 alpha-2 code.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
-     * @return ShopifyLocalizationExtensionKeyEnumObject
+     * The localized extension keys that are allowed.
+     *
+     * @return string A ShopifyLocalizationExtensionKeyEnumObject value
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
-     * @return ShopifyLocalizationExtensionPurposeEnumObject
+     * The purpose of this localization extension.
+     *
+     * @return string A ShopifyLocalizationExtensionPurposeEnumObject value
      */
-    public function getPurpose()
+    public function getPurpose(): ?string
     {
         return $this->purpose;
     }
 
     
     /**
+     * The localized extension title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The value of the field.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

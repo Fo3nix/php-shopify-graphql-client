@@ -7,7 +7,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryPurchaseOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
-class ShopifyInventoryPurchaseOrderLineItem
+/**
+ * Represents a line item belonging to an inventory purchase order.
+ * This is a simplified view of the purchase order line item for inventory management purposes.
+ */
+class ShopifyInventoryPurchaseOrderLineItem implements ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -24,108 +28,132 @@ class ShopifyInventoryPurchaseOrderLineItem
 
     
     /**
+     * The date and time the purchase order line item was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally unique identifier.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The inventory item associated with this line item.
+     *
      * @return ShopifyInventoryItem
      */
-    public function getInventoryItem()
+    public function getInventoryItem(): ?ShopifyInventoryItem
     {
         return $this->inventoryItem;
     }
 
     
     /**
+     * The purchase order this line item belongs to.
+     *
      * @return ShopifyInventoryPurchaseOrder
      */
-    public function getPurchaseOrder()
+    public function getPurchaseOrder(): ?ShopifyInventoryPurchaseOrder
     {
         return $this->purchaseOrder;
     }
 
     
     /**
+     * The unit cost multiplied by the total quantity for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getSubtotal()
+    public function getSubtotal(): ?ShopifyMoneyV2
     {
         return $this->subtotal;
     }
 
     
     /**
+     * The SKU for the item.
+     *
      * @return string
      */
-    public function getSupplierSku()
+    public function getSupplierSku(): ?string
     {
         return $this->supplierSku;
     }
 
     
     /**
+     * The tax rate percentage for the line item.
+     *
      * @return string
      */
-    public function getTaxPercent()
+    public function getTaxPercent(): mixed
     {
         return $this->taxPercent;
     }
 
     
     /**
+     * The title of the product associated with this line item.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total cost of the line item, including taxes.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalCost()
+    public function getTotalCost(): ?ShopifyMoneyV2
     {
         return $this->totalCost;
     }
 
     
     /**
+     * The total number of units ordered for the line item.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }
 
     
     /**
+     * The unit cost of the item paid to the supplier.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getUnitCost()
+    public function getUnitCost(): ?ShopifyMoneyV2
     {
         return $this->unitCost;
     }
 
     
     /**
+     * The title of the variant associated with this line item.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }

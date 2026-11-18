@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-class ShopifyLocalPaymentMethodsPaymentDetails
+/**
+ * Local payment methods payment details related to a transaction.
+ */
+class ShopifyLocalPaymentMethodsPaymentDetails implements ShopifyBasePaymentDetails
 {
     protected $paymentDescriptor;
     protected $paymentMethodName;
 
     
     /**
+     * The descriptor by the payment provider. Only available for Amazon Pay and Buy with Prime.
+     *
      * @return string
      */
-    public function getPaymentDescriptor()
+    public function getPaymentDescriptor(): ?string
     {
         return $this->paymentDescriptor;
     }
 
     
     /**
+     * The name of payment method used by the buyer.
+     *
      * @return string
      */
-    public function getPaymentMethodName()
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }

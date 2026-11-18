@@ -8,7 +8,10 @@ class ShopifyRootWebPixelArgumentsObject extends ArgumentsObject
 {
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the `WebPixel` object to return.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The resolved price inclusivity attributes.
+ */
 class ShopifyResolvedPriceInclusivityQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ResolvedPriceInclusivity";
 
-    public function selectDutiesIncluded()
+    /**
+     * Whether duties are included in the price.
+     */
+    public function selectDutiesIncluded(): static
     {
         $this->selectField("dutiesIncluded");
 
         return $this;
     }
 
-    public function selectTaxesIncluded()
+    /**
+     * Whether taxes are included in the price.
+     */
+    public function selectTaxesIncluded(): static
     {
         $this->selectField("taxesIncluded");
 

@@ -4,46 +4,67 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Colors for form controls.
+ */
 class ShopifyCheckoutBrandingControlColorRolesQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingControlColorRoles";
 
-    public function selectAccent()
+    /**
+     * The color of accented objects (links and focused state).
+     */
+    public function selectAccent(): static
     {
         $this->selectField("accent");
 
         return $this;
     }
 
-    public function selectBackground()
+    /**
+     * The color of the background.
+     */
+    public function selectBackground(): static
     {
         $this->selectField("background");
 
         return $this;
     }
 
-    public function selectBorder()
+    /**
+     * The color of borders.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectDecorative()
+    /**
+     * The decorative color for highlighting specific parts of the user interface.
+     */
+    public function selectDecorative(): static
     {
         $this->selectField("decorative");
 
         return $this;
     }
 
-    public function selectIcon()
+    /**
+     * The color of icons.
+     */
+    public function selectIcon(): static
     {
         $this->selectField("icon");
 
         return $this;
     }
 
-    public function selectSelected(ShopifyCheckoutBrandingControlColorRolesSelectedArgumentsObject $argsObject = null)
+    /**
+     * The colors of selected controls.
+     */
+    public function selectSelected(?ShopifyCheckoutBrandingControlColorRolesSelectedArgumentsObject $argsObject = null): ShopifyCheckoutBrandingColorRolesQueryObject
     {
         $object = new ShopifyCheckoutBrandingColorRolesQueryObject("selected");
         if ($argsObject !== null) {
@@ -54,7 +75,10 @@ class ShopifyCheckoutBrandingControlColorRolesQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectText()
+    /**
+     * The color of text.
+     */
+    public function selectText(): static
     {
         $this->selectField("text");
 

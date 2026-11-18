@@ -5,7 +5,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyTaxLine;
 
-class ShopifyAdditionalFee
+/**
+ * Additional fees applied to an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) beyond the standard product and shipping costs. Additional fees typically include duties, import fees, or other special handling charges that need separate tracking from regular [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) objects.
+ *
+ * Each fee includes its name, price in both shop and presentment currencies, and any applicable taxes broken down by [`TaxLine`](https://shopify.dev/docs/api/admin-graphql/latest/objects/TaxLine).
+ */
+class ShopifyAdditionalFee implements ShopifyNode
 {
     protected $id;
     protected $name;
@@ -14,36 +19,44 @@ class ShopifyAdditionalFee
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the additional fee.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The price of the additional fee.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyBag
     {
         return $this->price;
     }
 
     
     /**
+     * A list of taxes charged on the additional fee.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }

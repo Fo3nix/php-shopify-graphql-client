@@ -5,16 +5,36 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountRedeemCodeConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCombinesWith;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountContext;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountContextHydrator;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerBuys;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerGets;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerSelection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountCustomerSelectionHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRolloutConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyDiscountShareableUrl;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
 
-class ShopifyDiscountCodeBxgy
+/**
+ * The `DiscountCodeBxgy` object lets you manage
+ * [buy X get Y discounts (BXGY)](https://help.shopify.com/manual/discounts/discount-types/buy-x-get-y)
+ * that are applied on a cart and at checkout when a customer enters a code. BXGY discounts incentivize customers
+ * by offering them additional items at a discounted price or for free when they purchase a specified quantity
+ * of items.
+ *
+ * The `DiscountCodeBxgy` object stores information about BXGY code discounts that apply to
+ * specific [products and variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountProducts),
+ * [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCollections),
+ * or [all items in a cart](https://shopify.dev/docs/api/admin-graphql/latest/objects/AllDiscountItems).
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including limitations and considerations.
+ *
+ * > Note:
+ * > The [`DiscountAutomaticBxgy`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticBxgy)
+ * object has similar functionality to the `DiscountCodeBxgy` object, but discounts are automatically applied,
+ * without the need for customers to enter a code.
+ */
+class ShopifyDiscountCodeBxgy implements ShopifyHasRollouts
 {
     protected $appliesOncePerCustomer;
     protected $asyncUsageCount;
@@ -44,225 +64,298 @@ class ShopifyDiscountCodeBxgy
 
     
     /**
+     * Whether a customer can only use the discount once.
+     *
      * @return bool
      */
-    public function getAppliesOncePerCustomer()
+    public function getAppliesOncePerCustomer(): ?bool
     {
         return $this->appliesOncePerCustomer;
     }
 
     
     /**
+     * The number of times that the discount has been used.
+     * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+     * is automatically applied in 200 transactions, then the
+     * discount has been used 200 times.
+     * This value is updated asynchronously. As a result,
+     * it might be lower than the actual usage count until the
+     * asynchronous process is completed.
+     *
      * @return int
      */
-    public function getAsyncUsageCount()
+    public function getAsyncUsageCount(): ?int
     {
         return $this->asyncUsageCount;
     }
 
     
     /**
+     * A list codes that customers can use to redeem the discount.
+     *
      * @return ShopifyDiscountRedeemCodeConnection
      */
-    public function getCodes()
+    public function getCodes(): ?ShopifyDiscountRedeemCodeConnection
     {
         return $this->codes;
     }
 
     
     /**
+     * The number of codes that a customer can use to redeem the discount.
+     *
      * @return ShopifyCount
      */
-    public function getCodesCount()
+    public function getCodesCount(): ?ShopifyCount
     {
         return $this->codesCount;
     }
 
     
     /**
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return ShopifyDiscountCombinesWith
      */
-    public function getCombinesWith()
+    public function getCombinesWith(): ?ShopifyDiscountCombinesWith
     {
         return $this->combinesWith;
     }
 
     
     /**
-     * @return ShopifyDiscountContext
+     * The context defining which buyers can use the discount.
+     *
+     * @return ShopifyDiscountBuyerSelectionAll|ShopifyDiscountContextUnknown|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomers|ShopifyDiscountMarkets
      */
-    public function getContext()
+    public function getContext(): ShopifyDiscountBuyerSelectionAll|ShopifyDiscountContextUnknown|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomers|ShopifyDiscountMarkets|null
     {
         return $this->context;
     }
 
     
     /**
+     * The date and time when the discount was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The items eligible for the discount and the required quantity of each to receive the discount.
+     *
      * @return ShopifyDiscountCustomerBuys
      */
-    public function getCustomerBuys()
+    public function getCustomerBuys(): ?ShopifyDiscountCustomerBuys
     {
         return $this->customerBuys;
     }
 
     
     /**
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
+     *
      * @return ShopifyDiscountCustomerGets
      */
-    public function getCustomerGets()
+    public function getCustomerGets(): ?ShopifyDiscountCustomerGets
     {
         return $this->customerGets;
     }
 
     
     /**
-     * @return ShopifyDiscountCustomerSelection
+     * The customers that can use the discount.
+     *
+     * @return ShopifyDiscountCustomerAll|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomerSelectionUnknown|ShopifyDiscountCustomers
      */
-    public function getCustomerSelection()
+    public function getCustomerSelection(): ShopifyDiscountCustomerAll|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomerSelectionUnknown|ShopifyDiscountCustomers|null
     {
         return $this->customerSelection;
     }
 
     
     /**
-     * @return ShopifyMerchandiseDiscountClassEnumObject
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
+     *
+     * @return string A ShopifyMerchandiseDiscountClassEnumObject value
      */
-    public function getDiscountClass()
+    public function getDiscountClass(): ?string
     {
         return $this->discountClass;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject[]
+     * The classes of the discount.
+     *
+     * @return string[] ShopifyDiscountClassEnumObject values
      */
-    public function getDiscountClasses()
+    public function getDiscountClasses(): ?array
     {
         return $this->discountClasses;
     }
 
     
     /**
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
+     *
      * @return Carbon
      */
-    public function getEndsAt()
+    public function getEndsAt(): ?Carbon
     {
         return $this->endsAt;
     }
 
     
     /**
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * The rollouts that include this discount. A rollout includes a discount when
+     * one of its treatments adds or removes the discount. Walk
+     * `treatments.changes` to see what each treatment does to the discount.
+     * A rollout's schedule is separate from the discount's own `startsAt` and `endsAt`.
+     * Use `query` to filter by rollout `status`.
+     *
      * @return ShopifyRolloutConnection
      */
-    public function getRollouts()
+    public function getRollouts(): ?ShopifyRolloutConnection
     {
         return $this->rollouts;
     }
 
     
     /**
+     * A list of URLs that the app can use to share the discount.
+     *
      * @return ShopifyDiscountShareableUrl[]
      */
-    public function getShareableUrls()
+    public function getShareableUrls(): ?array
     {
         return $this->shareableUrls;
     }
 
     
     /**
+     * The date and time when the discount becomes active and is available to customers.
+     *
      * @return Carbon
      */
-    public function getStartsAt()
+    public function getStartsAt(): ?Carbon
     {
         return $this->startsAt;
     }
 
     
     /**
-     * @return ShopifyDiscountStatusEnumObject
+     * The status of the discount that describes its availability,
+     * expiration, or pending activation.
+     *
+     * @return string A ShopifyDiscountStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * A detailed explanation of what the discount is,
+     * who can use it, when and where it applies, and any associated
+     * rules or limitations.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
     
     /**
+     * A list of searchable keywords that are associated with the discount.
+     * For example, a merchant might apply the `loyalty` tag to discounts
+     * that are associated with their loyalty program.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total sales from orders where the discount was used.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSales()
+    public function getTotalSales(): ?ShopifyMoneyV2
     {
         return $this->totalSales;
     }
 
     
     /**
+     * The date and time when the discount was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The maximum number of times the discount can be redeemed.
+     * For unlimited usage, specify `null`.
+     *
      * @return int
      */
-    public function getUsageLimit()
+    public function getUsageLimit(): ?int
     {
         return $this->usageLimit;
     }
 
     
     /**
+     * The maximum number of times that the discount can be applied to an order.
+     *
      * @return int
      */
-    public function getUsesPerOrderLimit()
+    public function getUsesPerOrderLimit(): ?int
     {
         return $this->usesPerOrderLimit;
     }
@@ -290,7 +383,7 @@ class ShopifyDiscountCodeBxgy
                 $instance->combinesWith = ShopifyDiscountCombinesWith::fromArray($data['combinesWith']);
             }
             if (isset($data['context']) && $data['context'] !== null) {
-                $instance->context = ShopifyDiscountContext::fromArray($data['context']);
+                $instance->context = ShopifyDiscountContextHydrator::fromArray($data['context']);
             }
             if (isset($data['createdAt']) && $data['createdAt'] !== null) {
                 $instance->createdAt = new Carbon($data['createdAt']);
@@ -302,7 +395,7 @@ class ShopifyDiscountCodeBxgy
                 $instance->customerGets = ShopifyDiscountCustomerGets::fromArray($data['customerGets']);
             }
             if (isset($data['customerSelection']) && $data['customerSelection'] !== null) {
-                $instance->customerSelection = ShopifyDiscountCustomerSelection::fromArray($data['customerSelection']);
+                $instance->customerSelection = ShopifyDiscountCustomerSelectionHydrator::fromArray($data['customerSelection']);
             }
             if (isset($data['discountClass']) && $data['discountClass'] !== null) {
                 $instance->discountClass = $data['discountClass'];
@@ -388,7 +481,7 @@ class ShopifyDiscountCodeBxgy
                 $data['combinesWith'] = $this->combinesWith->asArray();
             }
             if ($this->context !== null) {
-                $data['context'] = $this->context->asArray();
+                $data['context'] = ShopifyDiscountContextHydrator::toArray($this->context);
             }
             if ($this->createdAt !== null) {
                 $data['createdAt'] = $this->createdAt->toIso8601String();
@@ -400,7 +493,7 @@ class ShopifyDiscountCodeBxgy
                 $data['customerGets'] = $this->customerGets->asArray();
             }
             if ($this->customerSelection !== null) {
-                $data['customerSelection'] = $this->customerSelection->asArray();
+                $data['customerSelection'] = ShopifyDiscountCustomerSelectionHydrator::toArray($this->customerSelection);
             }
             if ($this->discountClass !== null) {
                 $data['discountClass'] = $this->discountClass;

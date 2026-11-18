@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Billing preferences for the shop.
+ */
 class ShopifyShopBillingPreferences
 {
     protected $currency;
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency the shop uses to pay for apps and services.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }

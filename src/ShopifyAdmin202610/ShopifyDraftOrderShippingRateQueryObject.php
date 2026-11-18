@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shipping rate is an additional cost added to the cost of the products that were ordered.
+ */
 class ShopifyDraftOrderShippingRateQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderShippingRate";
 
-    public function selectCode()
+    /**
+     * The code of the shipping rate.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectHandle()
+    /**
+     * Unique identifier for this shipping rate.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifyDraftOrderShippingRatePriceArgumentsObject $argsObject = null)
+    /**
+     * The cost associated with the shipping rate.
+     */
+    public function selectPrice(?ShopifyDraftOrderShippingRatePriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -33,14 +45,20 @@ class ShopifyDraftOrderShippingRateQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSource()
+    /**
+     * The source of the shipping rate.
+     */
+    public function selectSource(): static
     {
         $this->selectField("source");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The name of the shipping rate.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

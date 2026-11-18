@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAuditTrailAdjustment;
 
+/**
+ * A record of how a particular price was determined.
+ */
 class ShopifyPricingAuditTrail
 {
     protected $priceAdjustments;
 
     
     /**
+     * The adjustments used to determine the final price, in order of their application.
+     *
      * @return ShopifyAuditTrailAdjustment[]
      */
-    public function getPriceAdjustments()
+    public function getPriceAdjustments(): ?array
     {
         return $this->priceAdjustments;
     }

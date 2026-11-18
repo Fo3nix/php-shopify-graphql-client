@@ -8,7 +8,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryPurchaseOrderLineIt
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventorySupplierSnapshot;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryTransferConnection;
 
-class ShopifyInventoryPurchaseOrder
+/**
+ * A purchase order represents an agreement from a merchant to buy goods or services from a supplier.
+ * While the agreement is captured on the merchant's side as a purchase order, it’s recorded as a sales order
+ * on the supplier side.
+ */
+class ShopifyInventoryPurchaseOrder implements ShopifyNode
 {
     protected $archivedAt;
     protected $currency;
@@ -24,99 +29,122 @@ class ShopifyInventoryPurchaseOrder
 
     
     /**
+     * The date and time the purchase order was archived.
+     *
      * @return Carbon
      */
-    public function getArchivedAt()
+    public function getArchivedAt(): ?Carbon
     {
         return $this->archivedAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The currency for the purchase order's cost values.
+     * The shop's currency will be used if one isn't provided during creation.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
 
     
     /**
+     * The date and time the purchase order was placed.
+     *
      * @return Carbon
      */
-    public function getDateCreated()
+    public function getDateCreated(): ?Carbon
     {
         return $this->dateCreated;
     }
 
     
     /**
+     * The target containing the destination location of the purchase order.
+     *
      * @return ShopifyLocationSnapshot
      */
-    public function getDestination()
+    public function getDestination(): ?ShopifyLocationSnapshot
     {
         return $this->destination;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A list of the purchase order's line items.
+     *
      * @return ShopifyInventoryPurchaseOrderLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyInventoryPurchaseOrderLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The name of the purchase order.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The date and time the purchase order was confirmed with the supplier.
+     *
      * @return Carbon
      */
-    public function getOrderedAt()
+    public function getOrderedAt(): ?Carbon
     {
         return $this->orderedAt;
     }
 
     
     /**
+     * The supplier snapshot where the purchase order originates from.
+     *
      * @return ShopifyInventorySupplierSnapshot
      */
-    public function getOrigin()
+    public function getOrigin(): ?ShopifyInventorySupplierSnapshot
     {
         return $this->origin;
     }
 
     
     /**
-     * @return ShopifyInventoryPurchaseOrderStatusEnumObject
+     * The current status of the inventory purchase order.
+     *
+     * @return string A ShopifyInventoryPurchaseOrderStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The inventory transfers linked to this purchase order.
+     *
      * @return ShopifyInventoryTransferConnection
      */
-    public function getTransfers()
+    public function getTransfers(): ?ShopifyInventoryTransferConnection
     {
         return $this->transfers;
     }

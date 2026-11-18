@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * A locale.
+ */
 class ShopifyLocale
 {
     protected $isoCode;
@@ -9,18 +12,22 @@ class ShopifyLocale
 
     
     /**
+     * Locale ISO code.
+     *
      * @return string
      */
-    public function getIsoCode()
+    public function getIsoCode(): ?string
     {
         return $this->isoCode;
     }
 
     
     /**
+     * Human-readable locale name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

@@ -8,7 +8,10 @@ class ShopifyOrderRisksArgumentsObject extends ArgumentsObject
 {
     protected $first;
 
-    public function setFirst($first)
+    /**
+     * Truncate the array result to this size.
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 

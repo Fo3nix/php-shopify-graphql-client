@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyInventoryItemInventoryLevelArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["locationId"];
+
     protected $locationId;
     protected $includeInactive;
 
-    public function setLocationId($locationId)
+    /**
+     * ID of the location for which the inventory level is requested.
+     */
+    public function setLocationId($locationId): static
     {
         $this->locationId = $locationId;
 
         return $this;
     }
 
-    public function setIncludeInactive($includeInactive)
+    /**
+     * Whether to return the inventory level if it is inactive.
+     */
+    public function setIncludeInactive($includeInactive): static
     {
         $this->includeInactive = $includeInactive;
 

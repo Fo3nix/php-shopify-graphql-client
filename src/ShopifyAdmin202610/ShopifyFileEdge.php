@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFileHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyFile;
+
+/**
+ * An auto-generated type which holds one File and a cursor during pagination.
+ */
 class ShopifyFileEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyFileEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of FileEdge.
+     *
+     * @return ShopifyFile
      */
-    public function getNode()
+    public function getNode(): ?ShopifyFile
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyFileEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyFileHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyFileEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyFileHydrator::toArray($this->node);
             }
             return $data;
         }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyRequestedOrderEditFinancialSummary;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCalculatedRequestedOrderEditLineItems;
 
+/**
+ * The calculated financial outcome of a requested order edit based on the line items requested for editing.
+ */
 class ShopifyCalculatedRequestedOrderEdit
 {
     protected $financialSummary;
@@ -12,18 +15,22 @@ class ShopifyCalculatedRequestedOrderEdit
 
     
     /**
+     * A breakdown of the monetary values for the calculated edit.
+     *
      * @return ShopifyRequestedOrderEditFinancialSummary
      */
-    public function getFinancialSummary()
+    public function getFinancialSummary(): ?ShopifyRequestedOrderEditFinancialSummary
     {
         return $this->financialSummary;
     }
 
     
     /**
+     * The line item changes being processed for a requested order edit, grouped by the type of change.
+     *
      * @return ShopifyCalculatedRequestedOrderEditLineItems
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyCalculatedRequestedOrderEditLineItems
     {
         return $this->lineItems;
     }

@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents an operation publishing all products to a publication.
+ */
 class ShopifyAddAllProductsOperationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "AddAllProductsOperation";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectProcessedRowCount()
+    /**
+     * The count of processed rows, summing imported, failed, and skipped rows.
+     */
+    public function selectProcessedRowCount(): static
     {
         $this->selectField("processedRowCount");
 
         return $this;
     }
 
-    public function selectRowCount(ShopifyAddAllProductsOperationRowCountArgumentsObject $argsObject = null)
+    /**
+     * Represents a rows objects within this background operation.
+     */
+    public function selectRowCount(?ShopifyAddAllProductsOperationRowCountArgumentsObject $argsObject = null): ShopifyRowCountQueryObject
     {
         $object = new ShopifyRowCountQueryObject("rowCount");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyAddAllProductsOperationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * The status of this operation.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

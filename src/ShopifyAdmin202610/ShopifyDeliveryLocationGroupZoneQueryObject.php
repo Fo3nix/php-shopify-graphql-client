@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Links a location group with a zone and the associated method definitions.
+ */
 class ShopifyDeliveryLocationGroupZoneQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryLocationGroupZone";
 
-    public function selectMethodDefinitionCounts(ShopifyDeliveryLocationGroupZoneMethodDefinitionCountsArgumentsObject $argsObject = null)
+    /**
+     * The number of method definitions for the zone.
+     */
+    public function selectMethodDefinitionCounts(?ShopifyDeliveryLocationGroupZoneMethodDefinitionCountsArgumentsObject $argsObject = null): ShopifyDeliveryMethodDefinitionCountsQueryObject
     {
         $object = new ShopifyDeliveryMethodDefinitionCountsQueryObject("methodDefinitionCounts");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyDeliveryLocationGroupZoneQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMethodDefinitions(ShopifyDeliveryLocationGroupZoneMethodDefinitionsArgumentsObject $argsObject = null)
+    /**
+     * The method definitions associated to a zone and location group.
+     */
+    public function selectMethodDefinitions(?ShopifyDeliveryLocationGroupZoneMethodDefinitionsArgumentsObject $argsObject = null): ShopifyDeliveryMethodDefinitionConnectionQueryObject
     {
         $object = new ShopifyDeliveryMethodDefinitionConnectionQueryObject("methodDefinitions");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyDeliveryLocationGroupZoneQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectZone(ShopifyDeliveryLocationGroupZoneZoneArgumentsObject $argsObject = null)
+    /**
+     * The zone associated to a location group.
+     */
+    public function selectZone(?ShopifyDeliveryLocationGroupZoneZoneArgumentsObject $argsObject = null): ShopifyDeliveryZoneQueryObject
     {
         $object = new ShopifyDeliveryZoneQueryObject("zone");
         if ($argsObject !== null) {

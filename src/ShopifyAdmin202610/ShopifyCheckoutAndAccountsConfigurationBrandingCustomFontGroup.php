@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont;
 
+/**
+ * The custom font group customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup
 {
     protected $base;
@@ -13,36 +16,44 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup
 
     
     /**
+     * The base custom font.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
      */
-    public function getBase()
+    public function getBase(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
     {
         return $this->base;
     }
 
     
     /**
+     * The bold custom font.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
      */
-    public function getBold()
+    public function getBold(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCustomFont
     {
         return $this->bold;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingFontLoadingStrategyEnumObject
+     * The font loading strategy.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingFontLoadingStrategyEnumObject value
      */
-    public function getLoadingStrategy()
+    public function getLoadingStrategy(): ?string
     {
         return $this->loadingStrategy;
     }
 
     
     /**
+     * The font group name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

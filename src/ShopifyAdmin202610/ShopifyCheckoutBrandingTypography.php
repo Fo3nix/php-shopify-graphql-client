@@ -5,6 +5,13 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingFontGroup;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingFontSize;
 
+/**
+ * The typography settings used for checkout-related text. Use these settings to customize the
+ * font family and size for primary and secondary text elements.
+ *
+ * Refer to the [typography tutorial](https://shopify.dev/docs/apps/checkout/styling/customize-typography)
+ * for further information on typography customization.
+ */
 class ShopifyCheckoutBrandingTypography
 {
     protected $primary;
@@ -13,27 +20,33 @@ class ShopifyCheckoutBrandingTypography
 
     
     /**
+     * A font group used for most components such as text, buttons and form controls.
+     *
      * @return ShopifyCheckoutBrandingFontGroup
      */
-    public function getPrimary()
+    public function getPrimary(): ?ShopifyCheckoutBrandingFontGroup
     {
         return $this->primary;
     }
 
     
     /**
+     * A font group used for heading components by default.
+     *
      * @return ShopifyCheckoutBrandingFontGroup
      */
-    public function getSecondary()
+    public function getSecondary(): ?ShopifyCheckoutBrandingFontGroup
     {
         return $this->secondary;
     }
 
     
     /**
+     * The font size design system (base size in pixels and scaling between different sizes).
+     *
      * @return ShopifyCheckoutBrandingFontSize
      */
-    public function getSize()
+    public function getSize(): ?ShopifyCheckoutBrandingFontSize
     {
         return $this->size;
     }

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCheckoutBrandingTypographyStyleGlobal;
 
+/**
+ * The global customizations.
+ */
 class ShopifyCheckoutBrandingGlobal
 {
     protected $cornerRadius;
@@ -11,18 +14,23 @@ class ShopifyCheckoutBrandingGlobal
 
     
     /**
-     * @return ShopifyCheckoutBrandingGlobalCornerRadiusEnumObject
+     * The global corner radius setting that overrides all other [corner radius](https://shopify.dev/docs/api/admin-graphql/latest/enums/CheckoutBrandingCornerRadius)
+     * customizations.
+     *
+     * @return string A ShopifyCheckoutBrandingGlobalCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
+     * The global typography customizations.
+     *
      * @return ShopifyCheckoutBrandingTypographyStyleGlobal
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutBrandingTypographyStyleGlobal
     {
         return $this->typography;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+/**
+ * Tax settings for a customer.
+ */
 class ShopifyTaxSettings
 {
     protected $taxId;
 
     
     /**
+     * The customer's tax ID.
+     *
      * @return string
      */
-    public function getTaxId()
+    public function getTaxId(): ?string
     {
         return $this->taxId;
     }

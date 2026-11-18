@@ -3,8 +3,11 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMoneyV2;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppSubscriptionDiscountValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyAppSubscriptionDiscountValueHydrator;
 
+/**
+ * Discount applied to the recurring pricing portion of a subscription.
+ */
 class ShopifyAppSubscriptionDiscount
 {
     protected $durationLimitInIntervals;
@@ -14,36 +17,45 @@ class ShopifyAppSubscriptionDiscount
 
     
     /**
+     * The total number of billing intervals to which the discount will be applied.
+     * The discount will be applied to an indefinite number of billing intervals if this value is blank.
+     *
      * @return int
      */
-    public function getDurationLimitInIntervals()
+    public function getDurationLimitInIntervals(): ?int
     {
         return $this->durationLimitInIntervals;
     }
 
     
     /**
+     * The price of the subscription after the discount is applied.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPriceAfterDiscount()
+    public function getPriceAfterDiscount(): ?ShopifyMoneyV2
     {
         return $this->priceAfterDiscount;
     }
 
     
     /**
+     * The remaining number of billing intervals to which the discount will be applied.
+     *
      * @return int
      */
-    public function getRemainingDurationInIntervals()
+    public function getRemainingDurationInIntervals(): ?int
     {
         return $this->remainingDurationInIntervals;
     }
 
     
     /**
-     * @return ShopifyAppSubscriptionDiscountValue
+     * The value of the discount applied every billing interval.
+     *
+     * @return ShopifyAppSubscriptionDiscountAmount|ShopifyAppSubscriptionDiscountPercentage
      */
-    public function getValue()
+    public function getValue(): ShopifyAppSubscriptionDiscountAmount|ShopifyAppSubscriptionDiscountPercentage|null
     {
         return $this->value;
     }
@@ -65,7 +77,7 @@ class ShopifyAppSubscriptionDiscount
                 $instance->remainingDurationInIntervals = $data['remainingDurationInIntervals'];
             }
             if (isset($data['value']) && $data['value'] !== null) {
-                $instance->value = ShopifyAppSubscriptionDiscountValue::fromArray($data['value']);
+                $instance->value = ShopifyAppSubscriptionDiscountValueHydrator::fromArray($data['value']);
             }
             return $instance;
         }
@@ -100,7 +112,7 @@ class ShopifyAppSubscriptionDiscount
                 $data['remainingDurationInIntervals'] = $this->remainingDurationInIntervals;
             }
             if ($this->value !== null) {
-                $data['value'] = $this->value->asArray();
+                $data['value'] = ShopifyAppSubscriptionDiscountValueHydrator::toArray($this->value);
             }
             return $data;
         }

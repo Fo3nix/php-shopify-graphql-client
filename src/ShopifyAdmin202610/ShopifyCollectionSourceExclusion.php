@@ -2,8 +2,13 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionSourceExclusionConditionHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionSourceExclusionCondition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyCollectionExclusionProductSelectionConnection;
 
+/**
+ * Defines the rules and selections for excluding products from a collection.
+ */
 class ShopifyCollectionSourceExclusion
 {
     protected $conditions;
@@ -12,27 +17,35 @@ class ShopifyCollectionSourceExclusion
 
     
     /**
-     * @return mixed[]
+     * The conditions that determine which products are excluded from the collection.
+     *
+     * @return ShopifyCollectionSourceExclusionCondition[]
      */
-    public function getConditions()
+    public function getConditions(): ?array
     {
         return $this->conditions;
     }
 
     
     /**
-     * @return ShopifyCollectionConditionMatchTypeEnumObject
+     * Specifies whether products must match any or all non-collection exclusion conditions. Collection exclusion
+     * conditions are always applied independently with ANY semantics, so this field returns ANY for
+     * collection-only exclusions and null when collection and non-collection exclusion conditions are mixed.
+     *
+     * @return string A ShopifyCollectionConditionMatchTypeEnumObject value
      */
-    public function getMatchType()
+    public function getMatchType(): ?string
     {
         return $this->matchType;
     }
 
     
     /**
+     * The products that have been manually selected for exclusion from the collection.
+     *
      * @return ShopifyCollectionExclusionProductSelectionConnection
      */
-    public function getSelections()
+    public function getSelections(): ?ShopifyCollectionExclusionProductSelectionConnection
     {
         return $this->selections;
     }
@@ -45,7 +58,7 @@ class ShopifyCollectionSourceExclusion
         {
             $instance = new self();
             if (isset($data['conditions']) && $data['conditions'] !== null) {
-                $instance->conditions = $data['conditions'];
+                $instance->conditions = array_map(function($item) { return ShopifyCollectionSourceExclusionConditionHydrator::fromArray($item); }, $data['conditions']);
             }
             if (isset($data['matchType']) && $data['matchType'] !== null) {
                 $instance->matchType = $data['matchType'];
@@ -77,7 +90,7 @@ class ShopifyCollectionSourceExclusion
         {
             $data = [];
             if ($this->conditions !== null) {
-                $data['conditions'] = $this->conditions;
+                $data['conditions'] = array_map(function($item) { return ShopifyCollectionSourceExclusionConditionHydrator::toArray($item); }, $this->conditions);
             }
             if ($this->matchType !== null) {
                 $data['matchType'] = $this->matchType;

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyMarketWebPresence;
 
+/**
+ * A locale that's been enabled on a shop.
+ */
 class ShopifyShopLocale
 {
     protected $locale;
@@ -14,45 +17,55 @@ class ShopifyShopLocale
 
     
     /**
+     * The locale ISO code.
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The market web presences that use the locale.
+     *
      * @return ShopifyMarketWebPresence[]
      */
-    public function getMarketWebPresences()
+    public function getMarketWebPresences(): ?array
     {
         return $this->marketWebPresences;
     }
 
     
     /**
+     * The human-readable locale name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * Whether the locale is the default locale for the shop.
+     *
      * @return bool
      */
-    public function getPrimary()
+    public function getPrimary(): ?bool
     {
         return $this->primary;
     }
 
     
     /**
+     * Whether the locale is visible to buyers.
+     *
      * @return bool
      */
-    public function getPublished()
+    public function getPublished(): ?bool
     {
         return $this->published;
     }

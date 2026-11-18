@@ -2,11 +2,17 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReverseDeliveryDeliverable;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReverseDeliveryDeliverableHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReverseDeliveryLineItemConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyReverseFulfillmentOrder;
 
-class ShopifyReverseDelivery
+/**
+ * A reverse delivery is a post-fulfillment object that represents a buyer sending a package to a merchant.
+ * For example, a buyer requests a return, and a merchant sends the buyer a shipping label.
+ * The reverse delivery contains the context of the items sent back, how they're being sent back
+ * (for example, a shipping label), and the current state of the delivery (tracking information).
+ */
+class ShopifyReverseDelivery implements ShopifyNode
 {
     protected $deliverable;
     protected $id;
@@ -15,36 +21,44 @@ class ShopifyReverseDelivery
 
     
     /**
-     * @return ShopifyReverseDeliveryDeliverable
+     * The deliverable associated with the reverse delivery.
+     *
+     * @return ShopifyReverseDeliveryShippingDeliverable
      */
-    public function getDeliverable()
+    public function getDeliverable(): ?ShopifyReverseDeliveryShippingDeliverable
     {
         return $this->deliverable;
     }
 
     
     /**
+     * The ID of the reverse delivery.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The reverse delivery line items attached to the reverse delivery.
+     *
      * @return ShopifyReverseDeliveryLineItemConnection
      */
-    public function getReverseDeliveryLineItems()
+    public function getReverseDeliveryLineItems(): ?ShopifyReverseDeliveryLineItemConnection
     {
         return $this->reverseDeliveryLineItems;
     }
 
     
     /**
+     * The `ReverseFulfillmentOrder` associated with the reverse delivery.
+     *
      * @return ShopifyReverseFulfillmentOrder
      */
-    public function getReverseFulfillmentOrder()
+    public function getReverseFulfillmentOrder(): ?ShopifyReverseFulfillmentOrder
     {
         return $this->reverseFulfillmentOrder;
     }
@@ -57,7 +71,7 @@ class ShopifyReverseDelivery
         {
             $instance = new self();
             if (isset($data['deliverable']) && $data['deliverable'] !== null) {
-                $instance->deliverable = ShopifyReverseDeliveryDeliverable::fromArray($data['deliverable']);
+                $instance->deliverable = ShopifyReverseDeliveryDeliverableHydrator::fromArray($data['deliverable']);
             }
             if (isset($data['id']) && $data['id'] !== null) {
                 $instance->id = $data['id'];
@@ -92,7 +106,7 @@ class ShopifyReverseDelivery
         {
             $data = [];
             if ($this->deliverable !== null) {
-                $data['deliverable'] = $this->deliverable->asArray();
+                $data['deliverable'] = ShopifyReverseDeliveryDeliverableHydrator::toArray($this->deliverable);
             }
             if ($this->id !== null) {
                 $data['id'] = $this->id;

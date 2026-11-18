@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyProductRestrictedForResourceArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["calculatedOrderId"];
+
     protected $calculatedOrderId;
 
-    public function setCalculatedOrderId($calculatedOrderId)
+    /**
+     * The resource Id of the order with edits applied but not saved.
+     */
+    public function setCalculatedOrderId($calculatedOrderId): static
     {
         $this->calculatedOrderId = $calculatedOrderId;
 
