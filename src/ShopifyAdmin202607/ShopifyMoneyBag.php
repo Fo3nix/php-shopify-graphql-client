@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * A collection of monetary values in their respective currencies. Used throughout the API for multi-currency pricing and transactions, when an amount in the shop's currency is converted to the customer's currency of choice. The `presentmentMoney` field contains the amount in the customer's selected currency. The `shopMoney` field contains the equivalent in the shop's base currency.
+ */
 class ShopifyMoneyBag
 {
     protected $presentmentMoney;
@@ -11,18 +14,22 @@ class ShopifyMoneyBag
 
     
     /**
+     * Amount in presentment currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPresentmentMoney()
+    public function getPresentmentMoney(): ?ShopifyMoneyV2
     {
         return $this->presentmentMoney;
     }
 
     
     /**
+     * Amount in shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getShopMoney()
+    public function getShopMoney(): ?ShopifyMoneyV2
     {
         return $this->shopMoney;
     }

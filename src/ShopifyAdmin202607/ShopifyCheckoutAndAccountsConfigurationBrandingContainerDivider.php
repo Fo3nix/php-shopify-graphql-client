@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The container's divider customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
 {
     protected $borderStyle;
@@ -10,27 +13,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject
+     * The divider style.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderStyleEnumObject value
      */
-    public function getBorderStyle()
+    public function getBorderStyle(): ?string
     {
         return $this->borderStyle;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject
+     * The divider width.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingBorderWidthEnumObject value
      */
-    public function getBorderWidth()
+    public function getBorderWidth(): ?string
     {
         return $this->borderWidth;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject
+     * The divider visibility.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

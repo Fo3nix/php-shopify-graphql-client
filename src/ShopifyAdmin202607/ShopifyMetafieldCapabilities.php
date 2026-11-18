@@ -8,6 +8,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldCapabilityCartToOrd
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldCapabilitySmartCollectionCondition;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldCapabilityUniqueValues;
 
+/**
+ * Provides the capabilities of a metafield definition.
+ */
 class ShopifyMetafieldCapabilities
 {
     protected $adminFilterable;
@@ -18,45 +21,55 @@ class ShopifyMetafieldCapabilities
 
     
     /**
+     * Indicate whether a metafield definition is configured for filtering.
+     *
      * @return ShopifyMetafieldCapabilityAdminFilterable
      */
-    public function getAdminFilterable()
+    public function getAdminFilterable(): ?ShopifyMetafieldCapabilityAdminFilterable
     {
         return $this->adminFilterable;
     }
 
     
     /**
+     * Indicate whether a metafield definition can be queried in analytics.
+     *
      * @return ShopifyMetafieldCapabilityAnalyticsQueryable
      */
-    public function getAnalyticsQueryable()
+    public function getAnalyticsQueryable(): ?ShopifyMetafieldCapabilityAnalyticsQueryable
     {
         return $this->analyticsQueryable;
     }
 
     
     /**
+     * The capability configuration for automatically copying values from a cart metafield to the corresponding order metafield when an order is created.
+     *
      * @return ShopifyMetafieldCapabilityCartToOrderCopyable
      */
-    public function getCartToOrderCopyable()
+    public function getCartToOrderCopyable(): ?ShopifyMetafieldCapabilityCartToOrderCopyable
     {
         return $this->cartToOrderCopyable;
     }
 
     
     /**
+     * Indicate whether a metafield definition can be used as a smart collection condition.
+     *
      * @return ShopifyMetafieldCapabilitySmartCollectionCondition
      */
-    public function getSmartCollectionCondition()
+    public function getSmartCollectionCondition(): ?ShopifyMetafieldCapabilitySmartCollectionCondition
     {
         return $this->smartCollectionCondition;
     }
 
     
     /**
+     * Indicate whether the metafield values for a metafield definition are required to be unique.
+     *
      * @return ShopifyMetafieldCapabilityUniqueValues
      */
-    public function getUniqueValues()
+    public function getUniqueValues(): ?ShopifyMetafieldCapabilityUniqueValues
     {
         return $this->uniqueValues;
     }

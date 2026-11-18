@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyStoreCreditAccount;
 
+/**
+ * An auto-generated type which holds one StoreCreditAccount and a cursor during pagination.
+ */
 class ShopifyStoreCreditAccountEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyStoreCreditAccountEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of StoreCreditAccountEdge.
+     *
      * @return ShopifyStoreCreditAccount
      */
-    public function getNode()
+    public function getNode(): ?ShopifyStoreCreditAccount
     {
         return $this->node;
     }

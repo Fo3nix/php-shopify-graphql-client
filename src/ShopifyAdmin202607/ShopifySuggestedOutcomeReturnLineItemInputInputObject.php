@@ -4,19 +4,30 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for a return line item.
+ */
 class ShopifySuggestedOutcomeReturnLineItemInputInputObject extends InputObject
 {
+    const REQUIRED = ["id", "quantity"];
+
     protected $id;
     protected $quantity;
 
-    public function setId($id)
+    /**
+     * The ID of the return line item.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setQuantity($quantity)
+    /**
+     * The quantity of the return line item.
+     */
+    public function setQuantity($quantity): static
     {
         $this->quantity = $quantity;
 

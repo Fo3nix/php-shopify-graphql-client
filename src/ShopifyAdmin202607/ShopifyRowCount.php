@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * A row count represents rows on background operation.
+ */
 class ShopifyRowCount
 {
     protected $count;
@@ -9,18 +12,22 @@ class ShopifyRowCount
 
     
     /**
+     * Estimated number of rows contained within this background operation.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
     
     /**
+     * Whether the operation exceeds max number of reportable rows.
+     *
      * @return bool
      */
-    public function getExceedsMax()
+    public function getExceedsMax(): ?bool
     {
         return $this->exceedsMax;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The main sections customizations.
+ */
 class ShopifyCheckoutBrandingMainSection
 {
     protected $background;
@@ -15,72 +18,88 @@ class ShopifyCheckoutBrandingMainSection
 
     
     /**
-     * @return ShopifyCheckoutBrandingBackgroundEnumObject
+     * The background style of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingBackgroundEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSimpleBorderEnumObject
+     * The border for the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingBorderStyleEnumObject
+     * The border style of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingBorderStyleEnumObject value
      */
-    public function getBorderStyle()
+    public function getBorderStyle(): ?string
     {
         return $this->borderStyle;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingBorderWidthEnumObject
+     * The border width of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingBorderWidthEnumObject value
      */
-    public function getBorderWidth()
+    public function getBorderWidth(): ?string
     {
         return $this->borderWidth;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSchemeSelectionEnumObject
+     * The selected color scheme of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSchemeSelectionEnumObject value
      */
-    public function getColorScheme()
+    public function getColorScheme(): ?string
     {
         return $this->colorScheme;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingCornerRadiusEnumObject
+     * The corner radius of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSpacingKeywordEnumObject
+     * The padding of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingShadowEnumObject
+     * The shadow of the main sections.
+     *
+     * @return string A ShopifyCheckoutBrandingShadowEnumObject value
      */
-    public function getShadow()
+    public function getShadow(): ?string
     {
         return $this->shadow;
     }

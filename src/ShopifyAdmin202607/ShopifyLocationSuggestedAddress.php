@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents a suggested address for a location.
+ */
 class ShopifyLocationSuggestedAddress
 {
     protected $address1;
@@ -16,81 +19,99 @@ class ShopifyLocationSuggestedAddress
 
     
     /**
+     * The first line of the suggested address.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the suggested address.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city of the suggested address.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The country of the suggested address.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The country code of the suggested address.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * A formatted version of the suggested address.
+     *
      * @return string[]
      */
-    public function getFormatted()
+    public function getFormatted(): ?array
     {
         return $this->formatted;
     }
 
     
     /**
+     * The province of the suggested address.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The code for the province, state, or district of the suggested address.
+     *
      * @return string
      */
-    public function getProvinceCode()
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }
 
     
     /**
+     * The ZIP code of the suggested address.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

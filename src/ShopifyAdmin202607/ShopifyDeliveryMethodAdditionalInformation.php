@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Additional information included on a delivery method that will help during the delivery process.
+ */
 class ShopifyDeliveryMethodAdditionalInformation
 {
     protected $instructions;
@@ -9,18 +12,22 @@ class ShopifyDeliveryMethodAdditionalInformation
 
     
     /**
+     * The delivery instructions to follow when performing the delivery.
+     *
      * @return string
      */
-    public function getInstructions()
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
 
     
     /**
+     * The phone number to contact when performing the delivery.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }

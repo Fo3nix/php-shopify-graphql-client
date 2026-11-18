@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Details regarding a dispute reason.
+ */
 class ShopifyShopifyPaymentsDisputeReasonDetailsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsDisputeReasonDetails";
 
-    public function selectNetworkReasonCode()
+    /**
+     * The raw code provided by the payment network.
+     */
+    public function selectNetworkReasonCode(): static
     {
         $this->selectField("networkReasonCode");
 
         return $this;
     }
 
-    public function selectReason()
+    /**
+     * The reason for the dispute provided by the cardholder's banks.
+     */
+    public function selectReason(): static
     {
         $this->selectField("reason");
 

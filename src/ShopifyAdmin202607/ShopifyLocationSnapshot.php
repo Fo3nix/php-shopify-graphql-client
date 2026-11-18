@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocationAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocation;
 use Carbon\Carbon;
 
+/**
+ * A snapshot of location details including name and address captured at a specific point in time. Refer to the parent model to know the lifecycle.
+ */
 class ShopifyLocationSnapshot
 {
     protected $address;
@@ -15,36 +18,44 @@ class ShopifyLocationSnapshot
 
     
     /**
+     * The address details of the location as they were when the snapshot was recorded.
+     *
      * @return ShopifyLocationAddress
      */
-    public function getAddress()
+    public function getAddress(): ?ShopifyLocationAddress
     {
         return $this->address;
     }
 
     
     /**
+     * A reference to the live Location object, if it still exists and is accessible. This provides current details of the location, which may differ from the snapshotted name and address.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The name of the location as it was when the snapshot was recorded.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The date and time when these snapshot details (name and address) were recorded.
+     *
      * @return Carbon
      */
-    public function getSnapshottedAt()
+    public function getSnapshottedAt(): ?Carbon
     {
         return $this->snapshottedAt;
     }

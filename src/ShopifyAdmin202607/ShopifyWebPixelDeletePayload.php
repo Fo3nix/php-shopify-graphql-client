@@ -1,0 +1,81 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyErrorsWebPixelUserError;
+
+/**
+ * Return type for `webPixelDelete` mutation.
+ */
+class ShopifyWebPixelDeletePayload
+{
+    protected $deletedWebPixelId;
+    protected $userErrors;
+
+    
+    /**
+     * The ID of the web pixel settings that was deleted.
+     *
+     * @return string
+     */
+    public function getDeletedWebPixelId(): ?string
+    {
+        return $this->deletedWebPixelId;
+    }
+
+    
+    /**
+     * The list of errors that occurred from executing the mutation.
+     *
+     * @return ShopifyErrorsWebPixelUserError[]
+     */
+    public function getUserErrors(): ?array
+    {
+        return $this->userErrors;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['deletedWebPixelId']) && $data['deletedWebPixelId'] !== null) {
+                $instance->deletedWebPixelId = $data['deletedWebPixelId'];
+            }
+            if (isset($data['userErrors']) && $data['userErrors'] !== null) {
+                $instance->userErrors = array_map(function($item) { return ShopifyErrorsWebPixelUserError::fromArray($item); }, $data['userErrors']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->deletedWebPixelId !== null) {
+                $data['deletedWebPixelId'] = $this->deletedWebPixelId;
+            }
+            if ($this->userErrors !== null) {
+                $data['userErrors'] = array_map(function($item) { return $item->asArray(); }, $this->userErrors);
+            }
+            return $data;
+        }
+}

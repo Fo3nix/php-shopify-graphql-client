@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The attribute editable information.
+ */
 class ShopifyEditablePropertyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "EditableProperty";
 
-    public function selectLocked()
+    /**
+     * Whether the attribute is locked for editing.
+     */
+    public function selectLocked(): static
     {
         $this->selectField("locked");
 
         return $this;
     }
 
-    public function selectReason()
+    /**
+     * The reason the attribute is locked for editing.
+     */
+    public function selectReason(): static
     {
         $this->selectField("reason");
 

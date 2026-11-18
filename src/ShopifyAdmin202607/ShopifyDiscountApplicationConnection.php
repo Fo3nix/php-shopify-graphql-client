@@ -3,8 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountApplicationEdge;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountApplicationHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountApplication;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple DiscountApplications.
+ */
 class ShopifyDiscountApplicationConnection
 {
     protected $edges;
@@ -13,27 +18,33 @@ class ShopifyDiscountApplicationConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyDiscountApplicationEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
-     * @return mixed[]
+     * A list of nodes that are contained in DiscountApplicationEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
+     * @return ShopifyDiscountApplication[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }
@@ -49,7 +60,7 @@ class ShopifyDiscountApplicationConnection
                 $instance->edges = array_map(function($item) { return ShopifyDiscountApplicationEdge::fromArray($item); }, $data['edges']);
             }
             if (isset($data['nodes']) && $data['nodes'] !== null) {
-                $instance->nodes = $data['nodes'];
+                $instance->nodes = array_map(function($item) { return ShopifyDiscountApplicationHydrator::fromArray($item); }, $data['nodes']);
             }
             if (isset($data['pageInfo']) && $data['pageInfo'] !== null) {
                 $instance->pageInfo = ShopifyPageInfo::fromArray($data['pageInfo']);
@@ -81,7 +92,7 @@ class ShopifyDiscountApplicationConnection
                 $data['edges'] = array_map(function($item) { return $item->asArray(); }, $this->edges);
             }
             if ($this->nodes !== null) {
-                $data['nodes'] = $this->nodes;
+                $data['nodes'] = array_map(function($item) { return ShopifyDiscountApplicationHydrator::toArray($item); }, $this->nodes);
             }
             if ($this->pageInfo !== null) {
                 $data['pageInfo'] = $this->pageInfo->asArray();

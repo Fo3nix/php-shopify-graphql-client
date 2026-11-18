@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a discount for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestDiscountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestDiscount";
 
-    public function selectAmount(ShopifyShopPayPaymentRequestDiscountAmountArgumentsObject $argsObject = null)
+    /**
+     * The amount of the discount.
+     */
+    public function selectAmount(?ShopifyShopPayPaymentRequestDiscountAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopPayPaymentRequestDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLabel()
+    /**
+     * The label of the discount.
+     */
+    public function selectLabel(): static
     {
         $this->selectField("label");
 

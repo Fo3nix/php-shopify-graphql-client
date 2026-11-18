@@ -3,7 +3,12 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCalculatedDiscountApplicationHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCalculatedDiscountApplication;
 
+/**
+ * An amount discounting the line that has been allocated by an associated discount application.
+ */
 class ShopifyCalculatedDiscountAllocation
 {
     protected $allocatedAmountSet;
@@ -11,18 +16,22 @@ class ShopifyCalculatedDiscountAllocation
 
     
     /**
+     * The money amount that's allocated by the discount application in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAllocatedAmountSet()
+    public function getAllocatedAmountSet(): ?ShopifyMoneyBag
     {
         return $this->allocatedAmountSet;
     }
 
     
     /**
-     * @return mixed
+     * The discount that the allocated amount originated from.
+     *
+     * @return ShopifyCalculatedDiscountApplication
      */
-    public function getDiscountApplication()
+    public function getDiscountApplication(): ?ShopifyCalculatedDiscountApplication
     {
         return $this->discountApplication;
     }
@@ -38,7 +47,7 @@ class ShopifyCalculatedDiscountAllocation
                 $instance->allocatedAmountSet = ShopifyMoneyBag::fromArray($data['allocatedAmountSet']);
             }
             if (isset($data['discountApplication']) && $data['discountApplication'] !== null) {
-                $instance->discountApplication = $data['discountApplication'];
+                $instance->discountApplication = ShopifyCalculatedDiscountApplicationHydrator::fromArray($data['discountApplication']);
             }
             return $instance;
         }
@@ -67,7 +76,7 @@ class ShopifyCalculatedDiscountAllocation
                 $data['allocatedAmountSet'] = $this->allocatedAmountSet->asArray();
             }
             if ($this->discountApplication !== null) {
-                $data['discountApplication'] = $this->discountApplication;
+                $data['discountApplication'] = ShopifyCalculatedDiscountApplicationHydrator::toArray($this->discountApplication);
             }
             return $data;
         }

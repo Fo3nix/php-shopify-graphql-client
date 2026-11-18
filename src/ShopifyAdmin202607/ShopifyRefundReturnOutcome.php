@@ -3,8 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySuggestedRefundMethodHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySuggestedRefundMethod;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySuggestedOrderTransaction;
 
+/**
+ * The financial transfer details for a return outcome that results in a refund.
+ */
 class ShopifyRefundReturnOutcome
 {
     protected $amount;
@@ -13,27 +18,33 @@ class ShopifyRefundReturnOutcome
 
     
     /**
+     * The total monetary value to be refunded in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyBag
     {
         return $this->amount;
     }
 
     
     /**
-     * @return mixed[]
+     * A list of suggested refund methods.
+     *
+     * @return ShopifySuggestedRefundMethod[]
      */
-    public function getSuggestedRefundMethods()
+    public function getSuggestedRefundMethods(): ?array
     {
         return $this->suggestedRefundMethods;
     }
 
     
     /**
+     * A list of suggested order transactions.
+     *
      * @return ShopifySuggestedOrderTransaction[]
      */
-    public function getSuggestedTransactions()
+    public function getSuggestedTransactions(): ?array
     {
         return $this->suggestedTransactions;
     }
@@ -49,7 +60,7 @@ class ShopifyRefundReturnOutcome
                 $instance->amount = ShopifyMoneyBag::fromArray($data['amount']);
             }
             if (isset($data['suggestedRefundMethods']) && $data['suggestedRefundMethods'] !== null) {
-                $instance->suggestedRefundMethods = $data['suggestedRefundMethods'];
+                $instance->suggestedRefundMethods = array_map(function($item) { return ShopifySuggestedRefundMethodHydrator::fromArray($item); }, $data['suggestedRefundMethods']);
             }
             if (isset($data['suggestedTransactions']) && $data['suggestedTransactions'] !== null) {
                 $instance->suggestedTransactions = array_map(function($item) { return ShopifySuggestedOrderTransaction::fromArray($item); }, $data['suggestedTransactions']);
@@ -81,7 +92,7 @@ class ShopifyRefundReturnOutcome
                 $data['amount'] = $this->amount->asArray();
             }
             if ($this->suggestedRefundMethods !== null) {
-                $data['suggestedRefundMethods'] = $this->suggestedRefundMethods;
+                $data['suggestedRefundMethods'] = array_map(function($item) { return ShopifySuggestedRefundMethodHydrator::toArray($item); }, $this->suggestedRefundMethods);
             }
             if ($this->suggestedTransactions !== null) {
                 $data['suggestedTransactions'] = array_map(function($item) { return $item->asArray(); }, $this->suggestedTransactions);

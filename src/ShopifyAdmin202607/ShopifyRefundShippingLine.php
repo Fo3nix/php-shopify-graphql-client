@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShippingLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 
-class ShopifyRefundShippingLine
+/**
+ * A shipping line item that's included in a refund.
+ */
+class ShopifyRefundShippingLine implements ShopifyNode
 {
     protected $id;
     protected $shippingLine;
@@ -14,36 +17,44 @@ class ShopifyRefundShippingLine
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The `ShippingLine` resource associated to the refunded shipping line item.
+     *
      * @return ShopifyShippingLine
      */
-    public function getShippingLine()
+    public function getShippingLine(): ?ShopifyShippingLine
     {
         return $this->shippingLine;
     }
 
     
     /**
+     * The subtotal amount of the refund shipping line in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalAmountSet()
+    public function getSubtotalAmountSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalAmountSet;
     }
 
     
     /**
+     * The tax amount of the refund shipping line in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTaxAmountSet()
+    public function getTaxAmountSet(): ?ShopifyMoneyBag
     {
         return $this->taxAmountSet;
     }

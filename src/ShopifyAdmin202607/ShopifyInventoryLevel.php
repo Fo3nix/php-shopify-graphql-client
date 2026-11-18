@@ -8,7 +8,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyInventoryQuantity;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyInventoryScheduledChangeConnection;
 
-class ShopifyInventoryLevel
+/**
+ * The quantities of an inventory item at a specific location. Each inventory level connects one [`InventoryItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) to one [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location), tracking multiple quantity states like available, on-hand, incoming, and committed.
+ *
+ * The [`quantities`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel#field-InventoryLevel.fields.quantities) field provides access to different inventory states. Learn [more about inventory states and relationships](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#inventory-object-relationships).
+ */
+class ShopifyInventoryLevel implements ShopifyNode
 {
     protected $canDeactivate;
     protected $createdAt;
@@ -23,90 +28,111 @@ class ShopifyInventoryLevel
 
     
     /**
+     * Whether the inventory items associated with the inventory level can be deactivated.
+     *
      * @return bool
      */
-    public function getCanDeactivate()
+    public function getCanDeactivate(): ?bool
     {
         return $this->canDeactivate;
     }
 
     
     /**
+     * The date and time when the inventory level was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Describes either the impact of deactivating the inventory level, or why the inventory level can't be deactivated.
+     *
      * @return string
      */
-    public function getDeactivationAlert()
+    public function getDeactivationAlert(): ?string
     {
         return $this->deactivationAlert;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the inventory level is active.
+     *
      * @return bool
      */
-    public function getIsActive()
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
 
     
     /**
+     * Inventory item associated with the inventory level.
+     *
      * @return ShopifyInventoryItem
      */
-    public function getItem()
+    public function getItem(): ?ShopifyInventoryItem
     {
         return $this->item;
     }
 
     
     /**
+     * The location associated with the inventory level.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The quantity of an inventory item at a specific location, for a quantity
+     * [name](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps#inventory-states).
+     *
      * @return ShopifyInventoryQuantity[]
      */
-    public function getQuantities()
+    public function getQuantities(): ?array
     {
         return $this->quantities;
     }
 
     
     /**
+     * Scheduled changes for the requested quantity names.
+     *
      * @return ShopifyInventoryScheduledChangeConnection
      */
-    public function getScheduledChanges()
+    public function getScheduledChanges(): ?ShopifyInventoryScheduledChangeConnection
     {
         return $this->scheduledChanges;
     }
 
     
     /**
+     * The date and time when the inventory level was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

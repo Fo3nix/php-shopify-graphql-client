@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Storefront password information.
+ */
 class ShopifyOnlineStorePasswordProtection
 {
     protected $enabled;
 
     
     /**
+     * Whether the storefront password is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

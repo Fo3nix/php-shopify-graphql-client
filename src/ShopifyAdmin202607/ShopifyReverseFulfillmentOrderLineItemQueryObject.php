@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The details about a reverse fulfillment order line item.
+ */
 class ShopifyReverseFulfillmentOrderLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ReverseFulfillmentOrderLineItem";
 
-    public function selectDispositions(ShopifyReverseFulfillmentOrderLineItemDispositionsArgumentsObject $argsObject = null)
+    /**
+     * The dispositions of the item.
+     */
+    public function selectDispositions(?ShopifyReverseFulfillmentOrderLineItemDispositionsArgumentsObject $argsObject = null): ShopifyReverseFulfillmentOrderDispositionQueryObject
     {
         $object = new ShopifyReverseFulfillmentOrderDispositionQueryObject("dispositions");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyReverseFulfillmentOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFulfillmentLineItem(ShopifyReverseFulfillmentOrderLineItemFulfillmentLineItemArgumentsObject $argsObject = null)
+    /**
+     * The corresponding fulfillment line item for a reverse fulfillment order line item.
+     */
+    public function selectFulfillmentLineItem(?ShopifyReverseFulfillmentOrderLineItemFulfillmentLineItemArgumentsObject $argsObject = null): ShopifyFulfillmentLineItemQueryObject
     {
         $object = new ShopifyFulfillmentLineItemQueryObject("fulfillmentLineItem");
         if ($argsObject !== null) {
@@ -30,14 +39,20 @@ class ShopifyReverseFulfillmentOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectTotalQuantity()
+    /**
+     * The total number of units to be processed.
+     */
+    public function selectTotalQuantity(): static
     {
         $this->selectField("totalQuantity");
 

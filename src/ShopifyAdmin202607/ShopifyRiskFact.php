@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Additional context provided with an order risk assessment. Facts may not affect the order's risk recommendation.
+ */
 class ShopifyRiskFact
 {
     protected $description;
@@ -9,18 +12,22 @@ class ShopifyRiskFact
 
     
     /**
+     * Descriptions longer than 256 characters are truncated.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
-     * @return ShopifyRiskFactSentimentEnumObject
+     * Indicates whether the fact contributes negatively, neutrally, or positively to risk.
+     *
+     * @return string A ShopifyRiskFactSentimentEnumObject value
      */
-    public function getSentiment()
+    public function getSentiment(): ?string
     {
         return $this->sentiment;
     }

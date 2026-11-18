@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Translatable content of a resource's field.
+ */
 class ShopifyTranslatableContentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "TranslatableContent";
 
-    public function selectDigest()
+    /**
+     * Hash digest representation of the content value.
+     */
+    public function selectDigest(): static
     {
         $this->selectField("digest");
 
         return $this;
     }
 
-    public function selectKey()
+    /**
+     * The resource field that's being translated.
+     */
+    public function selectKey(): static
     {
         $this->selectField("key");
 
         return $this;
     }
 
-    public function selectLocale()
+    /**
+     * Locale of the content.
+     */
+    public function selectLocale(): static
     {
         $this->selectField("locale");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * Type of the translatable content.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectValue()
+    /**
+     * Content value.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

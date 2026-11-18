@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingColorScheme;
 
+/**
+ * The color schemes.
+ */
 class ShopifyCheckoutBrandingColorSchemes
 {
     protected $scheme1;
@@ -15,54 +18,66 @@ class ShopifyCheckoutBrandingColorSchemes
 
     
     /**
+     * The primary scheme. By default, it’s used for the main area of the interface.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme1()
+    public function getScheme1(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme1;
     }
 
     
     /**
+     * The secondary scheme. By default, it’s used for secondary areas, like Checkout’s Order Summary.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme2()
+    public function getScheme2(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme2;
     }
 
     
     /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme3()
+    public function getScheme3(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme3;
     }
 
     
     /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme4()
+    public function getScheme4(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme4;
     }
 
     
     /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme5()
+    public function getScheme5(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme5;
     }
 
     
     /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorScheme
      */
-    public function getScheme6()
+    public function getScheme6(): ?ShopifyCheckoutBrandingColorScheme
     {
         return $this->scheme6;
     }

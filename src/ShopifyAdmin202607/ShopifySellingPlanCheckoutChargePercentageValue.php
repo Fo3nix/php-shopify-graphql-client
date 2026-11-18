@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The percentage value of the price used for checkout charge.
+ */
 class ShopifySellingPlanCheckoutChargePercentageValue
 {
     protected $percentage;
 
     
     /**
+     * The percentage value of the price used for checkout charge.
+     *
      * @return float
      */
-    public function getPercentage()
+    public function getPercentage(): ?float
     {
         return $this->percentage;
     }

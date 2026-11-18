@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple CollectionInclusionProductSelections.
+ */
 class ShopifyCollectionInclusionProductSelectionConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CollectionInclusionProductSelectionConnection";
 
-    public function selectEdges(ShopifyCollectionInclusionProductSelectionConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyCollectionInclusionProductSelectionConnectionEdgesArgumentsObject $argsObject = null): ShopifyCollectionInclusionProductSelectionEdgeQueryObject
     {
         $object = new ShopifyCollectionInclusionProductSelectionEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCollectionInclusionProductSelectionConnectionQueryObject extends Qu
         return $object;
     }
 
-    public function selectNodes(ShopifyCollectionInclusionProductSelectionConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in CollectionInclusionProductSelectionEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyCollectionInclusionProductSelectionConnectionNodesArgumentsObject $argsObject = null): ShopifyCollectionInclusionProductSelectionQueryObject
     {
         $object = new ShopifyCollectionInclusionProductSelectionQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCollectionInclusionProductSelectionConnectionQueryObject extends Qu
         return $object;
     }
 
-    public function selectPageInfo(ShopifyCollectionInclusionProductSelectionConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyCollectionInclusionProductSelectionConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

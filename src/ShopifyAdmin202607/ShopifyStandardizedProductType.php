@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductTaxonomyNode;
 
+/**
+ * Represents the details of a specific type of product within the [Shopify product taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+ */
 class ShopifyStandardizedProductType
 {
     protected $productTaxonomyNode;
 
     
     /**
+     * The product taxonomy node associated with the standardized product type.
+     *
      * @return ShopifyProductTaxonomyNode
      */
-    public function getProductTaxonomyNode()
+    public function getProductTaxonomyNode(): ?ShopifyProductTaxonomyNode
     {
         return $this->productTaxonomyNode;
     }

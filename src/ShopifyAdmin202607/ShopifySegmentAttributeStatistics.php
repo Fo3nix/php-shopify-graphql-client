@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The statistics of a given attribute.
+ */
 class ShopifySegmentAttributeStatistics
 {
     protected $average;
@@ -9,18 +12,22 @@ class ShopifySegmentAttributeStatistics
 
     
     /**
+     * The average of a given attribute.
+     *
      * @return float
      */
-    public function getAverage()
+    public function getAverage(): ?float
     {
         return $this->average;
     }
 
     
     /**
+     * The sum of a given attribute.
+     *
      * @return float
      */
-    public function getSum()
+    public function getSum(): ?float
     {
         return $this->sum;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The entitlements for retail markets.
+ */
 class ShopifyMarketsRetailEntitlementQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketsRetailEntitlement";
 
-    public function selectCatalogs(ShopifyMarketsRetailEntitlementCatalogsArgumentsObject $argsObject = null)
+    /**
+     * The entitlements for retail market catalogs.
+     */
+    public function selectCatalogs(?ShopifyMarketsRetailEntitlementCatalogsArgumentsObject $argsObject = null): ShopifyMarketsCatalogsEntitlementQueryObject
     {
         $object = new ShopifyMarketsCatalogsEntitlementQueryObject("catalogs");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyMarketsRetailEntitlementQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEnabled()
+    /**
+     * Whether retail markets are enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 

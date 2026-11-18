@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The duty details for a line item.
+ */
 class ShopifyDutyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Duty";
 
-    public function selectCountryCodeOfOrigin()
+    /**
+     * The ISO 3166-1 alpha-2 country code of the country of origin used in calculating the duty.
+     */
+    public function selectCountryCodeOfOrigin(): static
     {
         $this->selectField("countryCodeOfOrigin");
 
         return $this;
     }
 
-    public function selectHarmonizedSystemCode()
+    /**
+     * The harmonized system code of the item used in calculating the duty.
+     */
+    public function selectHarmonizedSystemCode(): static
     {
         $this->selectField("harmonizedSystemCode");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectPrice(ShopifyDutyPriceArgumentsObject $argsObject = null)
+    /**
+     * The amount of the duty.
+     */
+    public function selectPrice(?ShopifyDutyPriceArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("price");
         if ($argsObject !== null) {
@@ -40,7 +55,10 @@ class ShopifyDutyQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTaxLines(ShopifyDutyTaxLinesArgumentsObject $argsObject = null)
+    /**
+     * A list of taxes charged on the duty.
+     */
+    public function selectTaxLines(?ShopifyDutyTaxLinesArgumentsObject $argsObject = null): ShopifyTaxLineQueryObject
     {
         $object = new ShopifyTaxLineQueryObject("taxLines");
         if ($argsObject !== null) {

@@ -15,7 +15,25 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySuggestedReturnFinancialOutc
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySuggestedReturnRefund;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrderTransactionConnection;
 
-class ShopifyReturn
+/**
+ * The `Return` object represents the intent of a buyer to ship one or more items from an order back to a merchant
+ * or a third-party fulfillment location. A return is associated with an [order](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order)
+ * and can include multiple return [line items](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem).
+ * Each return has a [status](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps#return-statuses),
+ * which indicates the state of the return.
+ *
+ * Use the `Return` object to capture the financial, logistical,
+ * and business intent of a return. For example, you can identify eligible items for a return and issue customers
+ * a refund for returned items on behalf of the merchant.
+ *
+ * Learn more about providing a
+ * [return management workflow](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/build-return-management)
+ * for merchants. You can also manage [exchanges](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-exchanges),
+ * [reverse fulfillment orders](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-fulfillment-orders),
+ * and [reverse deliveries](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-deliveries)
+ * on behalf of merchants.
+ */
+class ShopifyReturn implements ShopifyNode
 {
     protected $closedAt;
     protected $createdAt;
@@ -38,162 +56,198 @@ class ShopifyReturn
 
     
     /**
+     * The date and time when the return was closed.
+     *
      * @return Carbon
      */
-    public function getClosedAt()
+    public function getClosedAt(): ?Carbon
     {
         return $this->closedAt;
     }
 
     
     /**
+     * The date and time when the return was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * Additional information about the declined return.
+     *
      * @return ShopifyReturnDecline
      */
-    public function getDecline()
+    public function getDecline(): ?ShopifyReturnDecline
     {
         return $this->decline;
     }
 
     
     /**
+     * The exchange line items attached to the return.
+     *
      * @return ShopifyExchangeLineItemConnection
      */
-    public function getExchangeLineItems()
+    public function getExchangeLineItems(): ?ShopifyExchangeLineItemConnection
     {
         return $this->exchangeLineItems;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the return.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The order that the return belongs to.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The list of refunds associated with the return.
+     *
      * @return ShopifyRefundConnection
      */
-    public function getRefunds()
+    public function getRefunds(): ?ShopifyRefundConnection
     {
         return $this->refunds;
     }
 
     
     /**
+     * The date and time when the return was approved.
+     *
      * @return Carbon
      */
-    public function getRequestApprovedAt()
+    public function getRequestApprovedAt(): ?Carbon
     {
         return $this->requestApprovedAt;
     }
 
     
     /**
+     * The return line items attached to the return.
+     *
      * @return ShopifyReturnLineItemTypeConnection
      */
-    public function getReturnLineItems()
+    public function getReturnLineItems(): ?ShopifyReturnLineItemTypeConnection
     {
         return $this->returnLineItems;
     }
 
     
     /**
+     * The return shipping fees for the return.
+     *
      * @return ShopifyReturnShippingFee[]
      */
-    public function getReturnShippingFees()
+    public function getReturnShippingFees(): ?array
     {
         return $this->returnShippingFees;
     }
 
     
     /**
+     * The list of reverse fulfillment orders for the return.
+     *
      * @return ShopifyReverseFulfillmentOrderConnection
      */
-    public function getReverseFulfillmentOrders()
+    public function getReverseFulfillmentOrders(): ?ShopifyReverseFulfillmentOrderConnection
     {
         return $this->reverseFulfillmentOrders;
     }
 
     
     /**
+     * The staff member that created the return.
+     *
      * @return ShopifyStaffMember
      */
-    public function getStaffMember()
+    public function getStaffMember(): ?ShopifyStaffMember
     {
         return $this->staffMember;
     }
 
     
     /**
-     * @return ShopifyReturnStatusEnumObject
+     * The status of the return.
+     *
+     * @return string A ShopifyReturnStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * A suggested financial outcome for the return.
+     *
      * @return ShopifySuggestedReturnFinancialOutcome
      */
-    public function getSuggestedFinancialOutcome()
+    public function getSuggestedFinancialOutcome(): ?ShopifySuggestedReturnFinancialOutcome
     {
         return $this->suggestedFinancialOutcome;
     }
 
     
     /**
+     * A suggested refund for the return.
+     *
      * @return ShopifySuggestedReturnRefund
      */
-    public function getSuggestedRefund()
+    public function getSuggestedRefund(): ?ShopifySuggestedReturnRefund
     {
         return $this->suggestedRefund;
     }
 
     
     /**
+     * The sum of all return line item quantities for the return.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }
 
     
     /**
+     * The order transactions created from the return.
+     *
      * @return ShopifyOrderTransactionConnection
      */
-    public function getTransactions()
+    public function getTransactions(): ?ShopifyOrderTransactionConnection
     {
         return $this->transactions;
     }

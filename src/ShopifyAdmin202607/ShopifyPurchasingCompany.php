@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompany;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyContact;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyLocation;
 
+/**
+ * Represents information about the purchasing company for the order or draft order.
+ */
 class ShopifyPurchasingCompany
 {
     protected $company;
@@ -14,27 +17,33 @@ class ShopifyPurchasingCompany
 
     
     /**
+     * The company associated to the order or draft order.
+     *
      * @return ShopifyCompany
      */
-    public function getCompany()
+    public function getCompany(): ?ShopifyCompany
     {
         return $this->company;
     }
 
     
     /**
+     * The company contact associated to the order or draft order.
+     *
      * @return ShopifyCompanyContact
      */
-    public function getContact()
+    public function getContact(): ?ShopifyCompanyContact
     {
         return $this->contact;
     }
 
     
     /**
+     * The company location associated to the order or draft order.
+     *
      * @return ShopifyCompanyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyCompanyLocation
     {
         return $this->location;
     }

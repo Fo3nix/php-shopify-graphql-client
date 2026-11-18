@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Capabilities available for a metaobject field definition.
+ */
 class ShopifyMetaobjectFieldDefinitionCapabilitiesQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectFieldDefinitionCapabilities";
 
-    public function selectAdminFilterable(ShopifyMetaobjectFieldDefinitionCapabilitiesAdminFilterableArgumentsObject $argsObject = null)
+    /**
+     * Indicate whether a metaobject field definition is configured for filtering.
+     */
+    public function selectAdminFilterable(?ShopifyMetaobjectFieldDefinitionCapabilitiesAdminFilterableArgumentsObject $argsObject = null): ShopifyMetaobjectFieldCapabilityAdminFilterableQueryObject
     {
         $object = new ShopifyMetaobjectFieldCapabilityAdminFilterableQueryObject("adminFilterable");
         if ($argsObject !== null) {

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A response to a ShopifyQL query.
+ */
 class ShopifyShopifyqlQueryResponseQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyqlQueryResponse";
 
-    public function selectParseErrors()
+    /**
+     * A list of parse errors, if parsing fails.
+     */
+    public function selectParseErrors(): static
     {
         $this->selectField("parseErrors");
 
         return $this;
     }
 
-    public function selectTableData(ShopifyShopifyqlQueryResponseTableDataArgumentsObject $argsObject = null)
+    /**
+     * The result in a tabular format with column and row data.
+     */
+    public function selectTableData(?ShopifyShopifyqlQueryResponseTableDataArgumentsObject $argsObject = null): ShopifyShopifyqlTableDataQueryObject
     {
         $object = new ShopifyShopifyqlTableDataQueryObject("tableData");
         if ($argsObject !== null) {

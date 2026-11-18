@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A condition that must pass for a delivery method definition to be applied to an order.
+ */
 class ShopifyDeliveryConditionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryCondition";
 
-    public function selectConditionCriteria(ShopifyDeliveryConditionConditionCriteriaArgumentsObject $argsObject = null)
+    /**
+     * The value (weight or price) that the condition field is compared to.
+     */
+    public function selectConditionCriteria(?ShopifyDeliveryConditionConditionCriteriaArgumentsObject $argsObject = null): ShopifyDeliveryConditionCriteriaUnionObject
     {
         $object = new ShopifyDeliveryConditionCriteriaUnionObject("conditionCriteria");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyDeliveryConditionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectField_()
+    /**
+     * The field to compare the criterion value against, using the operator.
+     */
+    public function selectField_(): static
     {
         $this->selectField("field");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectOperator()
+    /**
+     * The operator to compare the field and criterion value.
+     */
+    public function selectOperator(): static
     {
         $this->selectField("operator");
 

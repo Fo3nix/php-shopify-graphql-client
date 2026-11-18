@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyDiscountCodeNodeMetafieldArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["key"];
+
     protected $namespace;
     protected $key;
 
-    public function setNamespace($namespace)
+    /**
+     * The container the metafield belongs to. If omitted, the app-reserved namespace will be used.
+     */
+    public function setNamespace($namespace): static
     {
         $this->namespace = $namespace;
 
         return $this;
     }
 
-    public function setKey($key)
+    /**
+     * The key for the metafield.
+     */
+    public function setKey($key): static
     {
         $this->key = $key;
 

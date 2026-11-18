@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The result of a ShopifyQL query.
+ */
 class ShopifyShopifyqlTableDataQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyqlTableData";
 
-    public function selectColumns(ShopifyShopifyqlTableDataColumnsArgumentsObject $argsObject = null)
+    /**
+     * The columns of the table.
+     */
+    public function selectColumns(?ShopifyShopifyqlTableDataColumnsArgumentsObject $argsObject = null): ShopifyShopifyqlTableDataColumnQueryObject
     {
         $object = new ShopifyShopifyqlTableDataColumnQueryObject("columns");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopifyqlTableDataQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRowMetadata(ShopifyShopifyqlTableDataRowMetadataArgumentsObject $argsObject = null)
+    /**
+     * Per-row metadata, aligned by index with `rows`.
+     */
+    public function selectRowMetadata(?ShopifyShopifyqlTableDataRowMetadataArgumentsObject $argsObject = null): ShopifyShopifyqlRowMetadataQueryObject
     {
         $object = new ShopifyShopifyqlRowMetadataQueryObject("rowMetadata");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyShopifyqlTableDataQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRows()
+    /**
+     * The rows of the table.
+     */
+    public function selectRows(): static
     {
         $this->selectField("rows");
 

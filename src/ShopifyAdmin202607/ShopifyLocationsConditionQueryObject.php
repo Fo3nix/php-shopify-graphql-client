@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A condition checking the location that the visitor is shopping from.
+ */
 class ShopifyLocationsConditionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "LocationsCondition";
 
-    public function selectApplicationLevel()
+    /**
+     * The application level for the condition.
+     */
+    public function selectApplicationLevel(): static
     {
         $this->selectField("applicationLevel");
 
         return $this;
     }
 
-    public function selectLocations(ShopifyLocationsConditionLocationsArgumentsObject $argsObject = null)
+    /**
+     * The locations that comprise the market.
+     */
+    public function selectLocations(?ShopifyLocationsConditionLocationsArgumentsObject $argsObject = null): ShopifyLocationConnectionQueryObject
     {
         $object = new ShopifyLocationConnectionQueryObject("locations");
         if ($argsObject !== null) {

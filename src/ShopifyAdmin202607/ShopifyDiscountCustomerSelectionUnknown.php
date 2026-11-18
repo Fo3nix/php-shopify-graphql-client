@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * An unrecognized customer selection type. Use the `context` field on the parent discount type instead.
+ */
 class ShopifyDiscountCustomerSelectionUnknown
 {
     protected $customerSelectionType;
 
     
     /**
+     * The underlying customer selection type.
+     *
      * @return string
      */
-    public function getCustomerSelectionType()
+    public function getCustomerSelectionType(): ?string
     {
         return $this->customerSelectionType;
     }

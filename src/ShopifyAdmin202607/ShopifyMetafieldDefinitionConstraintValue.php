@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * A constraint subtype value that the metafield definition applies to.
+ */
 class ShopifyMetafieldDefinitionConstraintValue
 {
     protected $value;
 
     
     /**
+     * The subtype value of the constraint.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider;
 
+/**
+ * The content customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingContent
 {
     protected $divider;
 
     
     /**
+     * The divider style and visibility.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
     {
         return $this->divider;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * A shop's data sale opt out page.
+ */
 class ShopifyDataSaleOptOutPage
 {
     protected $autoManaged;
 
     
     /**
+     * If the data sale opt out page is auto managed.
+     *
      * @return bool
      */
-    public function getAutoManaged()
+    public function getAutoManaged(): ?bool
     {
         return $this->autoManaged;
     }

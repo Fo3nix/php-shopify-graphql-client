@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyqlDynamicColumnMetadata;
 
+/**
+ * Represents a column in a ShopifyQL query response.
+ */
 class ShopifyShopifyqlTableDataColumn
 {
     protected $columnOrigin;
@@ -16,63 +19,77 @@ class ShopifyShopifyqlTableDataColumn
 
     
     /**
-     * @return ShopifyShopifyqlColumnOriginEnumObject
+     * Whether the column was explicitly requested in the query or dynamically generated.
+     *
+     * @return string A ShopifyShopifyqlColumnOriginEnumObject value
      */
-    public function getColumnOrigin()
+    public function getColumnOrigin(): ?string
     {
         return $this->columnOrigin;
     }
 
     
     /**
-     * @return ShopifyColumnDataTypeEnumObject
+     * The data type of the column.
+     *
+     * @return string A ShopifyColumnDataTypeEnumObject value
      */
-    public function getDataType()
+    public function getDataType(): ?string
     {
         return $this->dataType;
     }
 
     
     /**
+     * The human-readable display name of the column.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * Metadata describing how a dynamic column was generated (comparison, totals, benchmark, attribution, etc.). Null for non-dynamic columns.
+     *
      * @return ShopifyShopifyqlDynamicColumnMetadata
      */
-    public function getDynamicColumnMetadata()
+    public function getDynamicColumnMetadata(): ?ShopifyShopifyqlDynamicColumnMetadata
     {
         return $this->dynamicColumnMetadata;
     }
 
     
     /**
+     * The name of the column.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A shortened display name for the column, suitable for compact UI such as metric tiles.
+     *
      * @return string
      */
-    public function getShortDisplayName()
+    public function getShortDisplayName(): ?string
     {
         return $this->shortDisplayName;
     }
 
     
     /**
-     * @return ShopifyColumnDataTypeEnumObject
+     * The element type of an array column or DAY_DURATION for a range column.
+     *
+     * @return string A ShopifyColumnDataTypeEnumObject value
      */
-    public function getSubType()
+    public function getSubType(): ?string
     {
         return $this->subType;
     }

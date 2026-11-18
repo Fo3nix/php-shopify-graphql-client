@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryCarrierService;
 
+/**
+ * An auto-generated type which holds one DeliveryCarrierService and a cursor during pagination.
+ */
 class ShopifyDeliveryCarrierServiceEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyDeliveryCarrierServiceEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of DeliveryCarrierServiceEdge.
+     *
      * @return ShopifyDeliveryCarrierService
      */
-    public function getNode()
+    public function getNode(): ?ShopifyDeliveryCarrierService
     {
         return $this->node;
     }

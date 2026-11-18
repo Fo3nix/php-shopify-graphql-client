@@ -2,27 +2,35 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentInstrument;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentInstrumentHydrator;
 
-class ShopifyPaymentMandate
+/**
+ * A payment instrument and the permission
+ * the owner of the instrument gives to the merchant to debit it.
+ */
+class ShopifyPaymentMandate implements ShopifyNode
 {
     protected $id;
     protected $paymentInstrument;
 
     
     /**
+     * The unique ID of a payment mandate.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyPaymentInstrument
+     * The outputs details of the payment instrument.
+     *
+     * @return ShopifyBankAccount|ShopifyVaultCreditCard|ShopifyVaultPaypalBillingAgreement
      */
-    public function getPaymentInstrument()
+    public function getPaymentInstrument(): ShopifyBankAccount|ShopifyVaultCreditCard|ShopifyVaultPaypalBillingAgreement|null
     {
         return $this->paymentInstrument;
     }
@@ -38,7 +46,7 @@ class ShopifyPaymentMandate
                 $instance->id = $data['id'];
             }
             if (isset($data['paymentInstrument']) && $data['paymentInstrument'] !== null) {
-                $instance->paymentInstrument = ShopifyPaymentInstrument::fromArray($data['paymentInstrument']);
+                $instance->paymentInstrument = ShopifyPaymentInstrumentHydrator::fromArray($data['paymentInstrument']);
             }
             return $instance;
         }
@@ -67,7 +75,7 @@ class ShopifyPaymentMandate
                 $data['id'] = $this->id;
             }
             if ($this->paymentInstrument !== null) {
-                $data['paymentInstrument'] = $this->paymentInstrument->asArray();
+                $data['paymentInstrument'] = ShopifyPaymentInstrumentHydrator::toArray($this->paymentInstrument);
             }
             return $data;
         }

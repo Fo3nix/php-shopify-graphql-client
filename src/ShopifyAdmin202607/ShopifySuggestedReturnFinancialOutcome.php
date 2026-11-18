@@ -3,10 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyReturnOutcomeFinancialTransfer;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyReturnOutcomeFinancialTransferHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyRefundDuty;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShippingRefund;
 
+/**
+ * Represents a return financial outcome suggested by Shopify based on the items being reimbursed. You can then use the suggested outcome object to generate an actual refund or invoice for the return.
+ */
 class ShopifySuggestedReturnFinancialOutcome
 {
     protected $discountedSubtotal;
@@ -21,81 +24,99 @@ class ShopifySuggestedReturnFinancialOutcome
 
     
     /**
+     * The sum of all the discounted prices of the line items being refunded.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedSubtotal()
+    public function getDiscountedSubtotal(): ?ShopifyMoneyBag
     {
         return $this->discountedSubtotal;
     }
 
     
     /**
-     * @return ShopifyReturnOutcomeFinancialTransfer
+     * The financial transfer details for the return outcome.
+     *
+     * @return ShopifyInvoiceReturnOutcome|ShopifyRefundReturnOutcome
      */
-    public function getFinancialTransfer()
+    public function getFinancialTransfer(): ShopifyInvoiceReturnOutcome|ShopifyRefundReturnOutcome|null
     {
         return $this->financialTransfer;
     }
 
     
     /**
+     * The total monetary value available to refund in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): ?ShopifyMoneyBag
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * A list of duties to be refunded from the order.
+     *
      * @return ShopifyRefundDuty[]
      */
-    public function getRefundDuties()
+    public function getRefundDuties(): ?array
     {
         return $this->refundDuties;
     }
 
     
     /**
+     * The shipping costs to be refunded from the order.
+     *
      * @return ShopifyShippingRefund
      */
-    public function getShipping()
+    public function getShipping(): ?ShopifyShippingRefund
     {
         return $this->shipping;
     }
 
     
     /**
+     * The sum of all the additional fees being refunded in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalAdditionalFees()
+    public function getTotalAdditionalFees(): ?ShopifyMoneyBag
     {
         return $this->totalAdditionalFees;
     }
 
     
     /**
+     * The total cart discount amount that was applied to all line items in this refund.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalCartDiscountAmount()
+    public function getTotalCartDiscountAmount(): ?ShopifyMoneyBag
     {
         return $this->totalCartDiscountAmount;
     }
 
     
     /**
+     * The sum of all the duties being refunded from the order in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDuties()
+    public function getTotalDuties(): ?ShopifyMoneyBag
     {
         return $this->totalDuties;
     }
 
     
     /**
+     * The sum of the taxes being refunded in shop and presentment currencies. The value must be positive.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTax()
+    public function getTotalTax(): ?ShopifyMoneyBag
     {
         return $this->totalTax;
     }
@@ -111,7 +132,7 @@ class ShopifySuggestedReturnFinancialOutcome
                 $instance->discountedSubtotal = ShopifyMoneyBag::fromArray($data['discountedSubtotal']);
             }
             if (isset($data['financialTransfer']) && $data['financialTransfer'] !== null) {
-                $instance->financialTransfer = ShopifyReturnOutcomeFinancialTransfer::fromArray($data['financialTransfer']);
+                $instance->financialTransfer = ShopifyReturnOutcomeFinancialTransferHydrator::fromArray($data['financialTransfer']);
             }
             if (isset($data['maximumRefundable']) && $data['maximumRefundable'] !== null) {
                 $instance->maximumRefundable = ShopifyMoneyBag::fromArray($data['maximumRefundable']);
@@ -161,7 +182,7 @@ class ShopifySuggestedReturnFinancialOutcome
                 $data['discountedSubtotal'] = $this->discountedSubtotal->asArray();
             }
             if ($this->financialTransfer !== null) {
-                $data['financialTransfer'] = $this->financialTransfer->asArray();
+                $data['financialTransfer'] = ShopifyReturnOutcomeFinancialTransferHydrator::toArray($this->financialTransfer);
             }
             if ($this->maximumRefundable !== null) {
                 $data['maximumRefundable'] = $this->maximumRefundable->asArray();

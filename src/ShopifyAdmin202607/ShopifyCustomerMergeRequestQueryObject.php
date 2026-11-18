@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A merge request for merging two customers.
+ */
 class ShopifyCustomerMergeRequestQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergeRequest";
 
-    public function selectCustomerMergeErrors(ShopifyCustomerMergeRequestCustomerMergeErrorsArgumentsObject $argsObject = null)
+    /**
+     * The merge errors that occurred during the customer merge request.
+     */
+    public function selectCustomerMergeErrors(?ShopifyCustomerMergeRequestCustomerMergeErrorsArgumentsObject $argsObject = null): ShopifyCustomerMergeErrorQueryObject
     {
         $object = new ShopifyCustomerMergeErrorQueryObject("customerMergeErrors");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyCustomerMergeRequestQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectJobId()
+    /**
+     * The UUID of the merge job.
+     */
+    public function selectJobId(): static
     {
         $this->selectField("jobId");
 
         return $this;
     }
 
-    public function selectResultingCustomerId()
+    /**
+     * The ID of the customer that was kept after the merge. Treat this ID as authoritative.
+     */
+    public function selectResultingCustomerId(): static
     {
         $this->selectField("resultingCustomerId");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the customer merge request.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

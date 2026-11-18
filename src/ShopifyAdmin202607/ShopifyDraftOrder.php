@@ -8,7 +8,7 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMailingAddress;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyAttribute;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomer;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDepositConfiguration;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDepositConfigurationHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyEventConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderLineItemConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocalizationExtensionConnection;
@@ -18,11 +18,29 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentTerms;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderPlatformDiscount;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPurchasingEntity;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPurchasingEntityHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShippingLine;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTaxLine;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderWarningHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderWarning;
 
-class ShopifyDraftOrder
+/**
+ * An order that a merchant creates on behalf of a customer. Draft orders are useful for merchants that need to do the following tasks:
+ *
+ * - Create new orders for sales made by phone, in person, by chat, or elsewhere. When a merchant accepts payment for a draft order, an order is created.
+ * - Send invoices to customers to pay with a secure checkout link.
+ * - Use custom items to represent additional costs or products that aren't displayed in a shop's inventory.
+ * - Re-create orders manually from active sales channels.
+ * - Sell products at discount or wholesale rates.
+ * - Take pre-orders.
+ *
+ * For draft orders in multiple currencies `presentment_money` is the source of truth for what a customer is going to be charged and `shop_money` is an estimate of what the merchant might receive in their shop currency.
+ *
+ * **Caution:** Only use this data if it's required for your app's functionality. Shopify will restrict [access to scopes](https://shopify.dev/api/usage/access-scopes) for apps that don't have a legitimate use for the associated data.
+ *
+ * Draft orders created on or after April 1, 2025 will be automatically purged after one year of inactivity.
+ */
+class ShopifyDraftOrder implements ShopifyCommentEventSubject, ShopifyHasEvents, ShopifyHasLocalizationExtensions, ShopifyHasLocalizedFields, ShopifyHasMetafields, ShopifyLegacyInteroperability, ShopifyNavigable, ShopifyNode
 {
     protected $acceptAutomaticDiscounts;
     protected $allVariantPricesOverridden;
@@ -94,603 +112,755 @@ class ShopifyDraftOrder
 
     
     /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     *
      * @return bool
      */
-    public function getAcceptAutomaticDiscounts()
+    public function getAcceptAutomaticDiscounts(): ?bool
     {
         return $this->acceptAutomaticDiscounts;
     }
 
     
     /**
+     * Whether all variant prices have been overridden.
+     *
      * @return bool
      */
-    public function getAllVariantPricesOverridden()
+    public function getAllVariantPricesOverridden(): ?bool
     {
         return $this->allVariantPricesOverridden;
     }
 
     
     /**
+     * Whether discount codes are allowed during checkout of this draft order.
+     *
      * @return bool
      */
-    public function getAllowDiscountCodesInCheckout()
+    public function getAllowDiscountCodesInCheckout(): ?bool
     {
         return $this->allowDiscountCodesInCheckout;
     }
 
     
     /**
+     * The amount due later.
+     * When there are payment terms, this is the total price minus the deposit amount (if any).
+     * When there are no payment terms, this is 0.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountDueLaterSet()
+    public function getAmountDueLaterSet(): ?ShopifyMoneyBag
     {
         return $this->amountDueLaterSet;
     }
 
     
     /**
+     * The amount due now.
+     * When there are payment terms this is the value of the deposit (0 by default).
+     * When there are no payment terms, this is the total price.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountDueNowSet()
+    public function getAmountDueNowSet(): ?ShopifyMoneyBag
     {
         return $this->amountDueNowSet;
     }
 
     
     /**
+     * Whether any variant prices have been overridden.
+     *
      * @return bool
      */
-    public function getAnyVariantPricesOverridden()
+    public function getAnyVariantPricesOverridden(): ?bool
     {
         return $this->anyVariantPricesOverridden;
     }
 
     
     /**
+     * The custom order-level discount applied.
+     *
      * @return ShopifyDraftOrderAppliedDiscount
      */
-    public function getAppliedDiscount()
+    public function getAppliedDiscount(): ?ShopifyDraftOrderAppliedDiscount
     {
         return $this->appliedDiscount;
     }
 
     
     /**
+     * The billing address of the customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyMailingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * Whether the billing address matches the shipping address.
+     *
      * @return bool
      */
-    public function getBillingAddressMatchesShippingAddress()
+    public function getBillingAddressMatchesShippingAddress(): ?bool
     {
         return $this->billingAddressMatchesShippingAddress;
     }
 
     
     /**
+     * The date and time when the draft order was converted to a new order,
+     * and had it's status changed to **Completed**.
+     *
      * @return Carbon
      */
-    public function getCompletedAt()
+    public function getCompletedAt(): ?Carbon
     {
         return $this->completedAt;
     }
 
     
     /**
+     * The date and time when the draft order was created in Shopify.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The shop currency used for calculation.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * The custom information added to the draft order on behalf of the customer.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The customer who will be sent an invoice.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
-     * @return ShopifyDepositConfiguration
+     * The portion required to be paid at checkout.
+     *
+     * @return ShopifyDepositPercentage
      */
-    public function getDeposit()
+    public function getDeposit(): ?ShopifyDepositPercentage
     {
         return $this->deposit;
     }
 
     
     /**
+     * All discount codes applied.
+     *
      * @return string[]
      */
-    public function getDiscountCodes()
+    public function getDiscountCodes(): ?array
     {
         return $this->discountCodes;
     }
 
     
     /**
+     * The email address of the customer, which is used to send notifications.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * The list of events associated with the draft order.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * Whether the merchant has added timeline comments to the draft order.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The subject defined for the draft invoice email template.
+     *
      * @return string
      */
-    public function getInvoiceEmailTemplateSubject()
+    public function getInvoiceEmailTemplateSubject(): ?string
     {
         return $this->invoiceEmailTemplateSubject;
     }
 
     
     /**
+     * The date and time when the invoice was last emailed to the customer.
+     *
      * @return Carbon
      */
-    public function getInvoiceSentAt()
+    public function getInvoiceSentAt(): ?Carbon
     {
         return $this->invoiceSentAt;
     }
 
     
     /**
+     * The link to the checkout, which is sent to the customer in the invoice email.
+     *
      * @return string
      */
-    public function getInvoiceUrl()
+    public function getInvoiceUrl(): mixed
     {
         return $this->invoiceUrl;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The list of the line items in the draft order.
+     *
      * @return ShopifyDraftOrderLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyDraftOrderLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * A subtotal of the line items and corresponding discounts,
+     * excluding shipping charges, shipping discounts, taxes, or order discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getLineItemsSubtotalPrice()
+    public function getLineItemsSubtotalPrice(): ?ShopifyMoneyBag
     {
         return $this->lineItemsSubtotalPrice;
     }
 
     
     /**
+     * List of localization extensions for the resource.
+     *
      * @return ShopifyLocalizationExtensionConnection
      */
-    public function getLocalizationExtensions()
+    public function getLocalizationExtensions(): ?ShopifyLocalizationExtensionConnection
     {
         return $this->localizationExtensions;
     }
 
     
     /**
+     * List of localized fields for the resource.
+     *
      * @return ShopifyLocalizedFieldConnection
      */
-    public function getLocalizedFields()
+    public function getLocalizedFields(): ?ShopifyLocalizedFieldConnection
     {
         return $this->localizedFields;
     }
 
     
     /**
+     * The name of the selected market.
+     *
      * @return string
      */
-    public function getMarketName()
+    public function getMarketName(): ?string
     {
         return $this->marketName;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The selected country code that determines the pricing.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getMarketRegionCountryCode()
+    public function getMarketRegionCountryCode(): ?string
     {
         return $this->marketRegionCountryCode;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The identifier for the draft order, which is unique within the store. For example, _#D1223_.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The text from an optional note attached to the draft order.
+     *
      * @return string
      */
-    public function getNote2()
+    public function getNote2(): ?string
     {
         return $this->note2;
     }
 
     
     /**
+     * The order that was created from the draft order.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The associated payment terms for this draft order.
+     *
      * @return ShopifyPaymentTerms
      */
-    public function getPaymentTerms()
+    public function getPaymentTerms(): ?ShopifyPaymentTerms
     {
         return $this->paymentTerms;
     }
 
     
     /**
+     * The assigned phone number.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The list of platform discounts applied.
+     *
      * @return ShopifyDraftOrderPlatformDiscount[]
      */
-    public function getPlatformDiscounts()
+    public function getPlatformDiscounts(): ?array
     {
         return $this->platformDiscounts;
     }
 
     
     /**
+     * The purchase order number.
+     *
      * @return string
      */
-    public function getPoNumber()
+    public function getPoNumber(): ?string
     {
         return $this->poNumber;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The payment currency used for calculation.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getPresentmentCurrencyCode()
+    public function getPresentmentCurrencyCode(): ?string
     {
         return $this->presentmentCurrencyCode;
     }
 
     
     /**
-     * @return ShopifyPurchasingEntity
+     * The purchasing entity.
+     *
+     * @return ShopifyCustomer|ShopifyPurchasingCompany
      */
-    public function getPurchasingEntity()
+    public function getPurchasingEntity(): ShopifyCustomer|ShopifyPurchasingCompany|null
     {
         return $this->purchasingEntity;
     }
 
     
     /**
+     * Whether the draft order is ready and can be completed.
+     * Draft orders might have asynchronous operations that can take time to finish.
+     *
      * @return bool
      */
-    public function getReady()
+    public function getReady(): ?bool
     {
         return $this->ready;
     }
 
     
     /**
+     * The time after which inventory will automatically be restocked.
+     *
      * @return Carbon
      */
-    public function getReserveInventoryUntil()
+    public function getReserveInventoryUntil(): ?Carbon
     {
         return $this->reserveInventoryUntil;
     }
 
     
     /**
+     * The shipping address of the customer.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShopifyMailingAddress
     {
         return $this->shippingAddress;
     }
 
     
     /**
+     * The line item containing the shipping information and costs.
+     *
      * @return ShopifyShippingLine
      */
-    public function getShippingLine()
+    public function getShippingLine(): ?ShopifyShippingLine
     {
         return $this->shippingLine;
     }
 
     
     /**
-     * @return ShopifyDraftOrderStatusEnumObject
+     * The status of the draft order.
+     *
+     * @return string A ShopifyDraftOrderStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The subtotal, in shop currency, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+     *
      * @return string
      */
-    public function getSubtotalPrice()
+    public function getSubtotalPrice(): mixed
     {
         return $this->subtotalPrice;
     }
 
     
     /**
+     * The subtotal, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalPriceSet()
+    public function getSubtotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalPriceSet;
     }
 
     
     /**
+     * The comma separated list of tags associated with the draft order.
+     * Updating `tags` overwrites any existing tags that were previously added to the draft order.
+     * To add new tags without overwriting existing tags, use the [tagsAdd](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd) mutation.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * Whether the draft order is tax exempt.
+     *
      * @return bool
      */
-    public function getTaxExempt()
+    public function getTaxExempt(): ?bool
     {
         return $this->taxExempt;
     }
 
     
     /**
+     * The list of taxes lines charged for each line item and shipping line.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Whether the line item prices include taxes.
+     *
      * @return bool
      */
-    public function getTaxesIncluded()
+    public function getTaxesIncluded(): ?bool
     {
         return $this->taxesIncluded;
     }
 
     
     /**
+     * Total discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDiscountsSet()
+    public function getTotalDiscountsSet(): ?ShopifyMoneyBag
     {
         return $this->totalDiscountsSet;
     }
 
     
     /**
+     * Total price of line items, excluding discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalLineItemsPriceSet()
+    public function getTotalLineItemsPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalLineItemsPriceSet;
     }
 
     
     /**
+     * The total price, in shop currency, includes taxes, shipping charges, and discounts.
+     *
      * @return string
      */
-    public function getTotalPrice()
+    public function getTotalPrice(): mixed
     {
         return $this->totalPrice;
     }
 
     
     /**
+     * The total price, includes taxes, shipping charges, and discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalPriceSet()
+    public function getTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalPriceSet;
     }
 
     
     /**
+     * The sum of individual line item quantities.
+     * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+     *
      * @return int
      */
-    public function getTotalQuantityOfLineItems()
+    public function getTotalQuantityOfLineItems(): ?int
     {
         return $this->totalQuantityOfLineItems;
     }
 
     
     /**
+     * The total shipping price in shop currency.
+     *
      * @return string
      */
-    public function getTotalShippingPrice()
+    public function getTotalShippingPrice(): mixed
     {
         return $this->totalShippingPrice;
     }
 
     
     /**
+     * The total shipping price.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalShippingPriceSet()
+    public function getTotalShippingPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalShippingPriceSet;
     }
 
     
     /**
+     * The total tax in shop currency.
+     *
      * @return string
      */
-    public function getTotalTax()
+    public function getTotalTax(): mixed
     {
         return $this->totalTax;
     }
 
     
     /**
+     * The total tax.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }
 
     
     /**
+     * The total weight in grams of the draft order.
+     *
      * @return string
      */
-    public function getTotalWeight()
+    public function getTotalWeight(): mixed
     {
         return $this->totalWeight;
     }
 
     
     /**
+     * Fingerprint of the current cart.
+     * In order to have bundles work, the fingerprint must be passed to
+     * each request as it was previously returned, unmodified.
+     *
      * @return string
      */
-    public function getTransformerFingerprint()
+    public function getTransformerFingerprint(): ?string
     {
         return $this->transformerFingerprint;
     }
 
     
     /**
+     * The date and time when the draft order was last changed.
+     * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * Whether the draft order will be visible to the customer on the self-serve portal.
+     *
      * @return bool
      */
-    public function getVisibleToCustomer()
+    public function getVisibleToCustomer(): ?bool
     {
         return $this->visibleToCustomer;
     }
 
     
     /**
-     * @return mixed[]
+     * The list of warnings raised while calculating.
+     *
+     * @return ShopifyDraftOrderWarning[]
      */
-    public function getWarnings()
+    public function getWarnings(): ?array
     {
         return $this->warnings;
     }
@@ -748,7 +918,7 @@ class ShopifyDraftOrder
                 $instance->defaultCursor = $data['defaultCursor'];
             }
             if (isset($data['deposit']) && $data['deposit'] !== null) {
-                $instance->deposit = ShopifyDepositConfiguration::fromArray($data['deposit']);
+                $instance->deposit = ShopifyDepositConfigurationHydrator::fromArray($data['deposit']);
             }
             if (isset($data['discountCodes']) && $data['discountCodes'] !== null) {
                 $instance->discountCodes = $data['discountCodes'];
@@ -826,7 +996,7 @@ class ShopifyDraftOrder
                 $instance->presentmentCurrencyCode = $data['presentmentCurrencyCode'];
             }
             if (isset($data['purchasingEntity']) && $data['purchasingEntity'] !== null) {
-                $instance->purchasingEntity = ShopifyPurchasingEntity::fromArray($data['purchasingEntity']);
+                $instance->purchasingEntity = ShopifyPurchasingEntityHydrator::fromArray($data['purchasingEntity']);
             }
             if (isset($data['ready']) && $data['ready'] !== null) {
                 $instance->ready = $data['ready'];
@@ -901,7 +1071,7 @@ class ShopifyDraftOrder
                 $instance->visibleToCustomer = $data['visibleToCustomer'];
             }
             if (isset($data['warnings']) && $data['warnings'] !== null) {
-                $instance->warnings = $data['warnings'];
+                $instance->warnings = array_map(function($item) { return ShopifyDraftOrderWarningHydrator::fromArray($item); }, $data['warnings']);
             }
             return $instance;
         }
@@ -972,7 +1142,7 @@ class ShopifyDraftOrder
                 $data['defaultCursor'] = $this->defaultCursor;
             }
             if ($this->deposit !== null) {
-                $data['deposit'] = $this->deposit->asArray();
+                $data['deposit'] = ShopifyDepositConfigurationHydrator::toArray($this->deposit);
             }
             if ($this->discountCodes !== null) {
                 $data['discountCodes'] = $this->discountCodes;
@@ -1050,7 +1220,7 @@ class ShopifyDraftOrder
                 $data['presentmentCurrencyCode'] = $this->presentmentCurrencyCode;
             }
             if ($this->purchasingEntity !== null) {
-                $data['purchasingEntity'] = $this->purchasingEntity->asArray();
+                $data['purchasingEntity'] = ShopifyPurchasingEntityHydrator::toArray($this->purchasingEntity);
             }
             if ($this->ready !== null) {
                 $data['ready'] = $this->ready;
@@ -1125,7 +1295,7 @@ class ShopifyDraftOrder
                 $data['visibleToCustomer'] = $this->visibleToCustomer;
             }
             if ($this->warnings !== null) {
-                $data['warnings'] = $this->warnings;
+                $data['warnings'] = array_map(function($item) { return ShopifyDraftOrderWarningHydrator::toArray($item); }, $this->warnings);
             }
             return $data;
         }

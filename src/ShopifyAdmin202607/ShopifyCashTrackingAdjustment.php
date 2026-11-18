@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyStaffMember;
 use Carbon\Carbon;
 
-class ShopifyCashTrackingAdjustment
+/**
+ * Tracks an adjustment to the cash in a cash tracking session for a point of sale device over the course of a shift.
+ */
+class ShopifyCashTrackingAdjustment implements ShopifyNode
 {
     protected $cash;
     protected $id;
@@ -16,45 +19,55 @@ class ShopifyCashTrackingAdjustment
 
     
     /**
+     * The amount of cash being added or removed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCash()
+    public function getCash(): ?ShopifyMoneyV2
     {
         return $this->cash;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The note entered when the adjustment was made.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The staff member who made the adjustment.
+     *
      * @return ShopifyStaffMember
      */
-    public function getStaffMember()
+    public function getStaffMember(): ?ShopifyStaffMember
     {
         return $this->staffMember;
     }
 
     
     /**
+     * The time when the adjustment was made.
+     *
      * @return Carbon
      */
-    public function getTime()
+    public function getTime(): ?Carbon
     {
         return $this->time;
     }

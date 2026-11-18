@@ -4,6 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMenuItem;
 
+/**
+ * Individual navigation links that make up store menus, giving customers clickable paths to explore the store. Menu items are the building blocks that connect shoppers to products, collections, pages, or external resources.
+ *
+ * For example, within a "Products" menu, individual menu items might link to specific collections like "Summer Collection" or "Best Sellers," each with its own title, URL, and resource connection.
+ *
+ * Use the `MenuItem` object to:
+ * - Define individual navigation links and their destinations
+ * - Create nested menu hierarchies through item relationships
+ * - Use tags for collection filtering
+ * - Connect menu links to specific store resources
+ *
+ * Menu items support various link types, enabling connections to internal store content or external websites. The nested items capability allows for dropdown or multi-level navigation structures that help organize complex store catalogs.
+ */
 class ShopifyMenuItem
 {
     protected $id;
@@ -16,63 +29,77 @@ class ShopifyMenuItem
 
     
     /**
+     * A globally-unique ID of the navigation menu item.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * List of the menu items nested under this item sorted by position.
+     *
      * @return ShopifyMenuItem[]
      */
-    public function getItems()
+    public function getItems(): ?array
     {
         return $this->items;
     }
 
     
     /**
+     * The ID of the resource to link to.
+     *
      * @return string
      */
-    public function getResourceId()
+    public function getResourceId(): ?string
     {
         return $this->resourceId;
     }
 
     
     /**
+     * The menu item's tags to filter a collection.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The menu item's title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
-     * @return ShopifyMenuItemTypeEnumObject
+     * The menu item's type.
+     *
+     * @return string A ShopifyMenuItemTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The menu item's url.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }

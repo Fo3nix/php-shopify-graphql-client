@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one QuantityPriceBreak and a cursor during pagination.
+ */
 class ShopifyQuantityPriceBreakEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "QuantityPriceBreakEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyQuantityPriceBreakEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of QuantityPriceBreakEdge.
+     */
+    public function selectNode(?ShopifyQuantityPriceBreakEdgeNodeArgumentsObject $argsObject = null): ShopifyQuantityPriceBreakQueryObject
     {
         $object = new ShopifyQuantityPriceBreakQueryObject("node");
         if ($argsObject !== null) {

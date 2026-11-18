@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCashDrawerEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCashDrawer;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPageInfo;
 
+/**
+ * An auto-generated type for paginating through multiple CashDrawers.
+ */
 class ShopifyCashDrawerConnection
 {
     protected $edges;
@@ -14,27 +17,33 @@ class ShopifyCashDrawerConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifyCashDrawerEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * A list of nodes that are contained in CashDrawerEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     *
      * @return ShopifyCashDrawer[]
      */
-    public function getNodes()
+    public function getNodes(): ?array
     {
         return $this->nodes;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySegmentMembership;
 
+/**
+ * A list of maps that contain `segmentId` IDs and `isMember` Booleans. The maps represent segment memberships.
+ */
 class ShopifySegmentMembershipResponse
 {
     protected $memberships;
 
     
     /**
+     * The membership status for the given list of segments.
+     *
      * @return ShopifySegmentMembership[]
      */
-    public function getMemberships()
+    public function getMemberships(): ?array
     {
         return $this->memberships;
     }

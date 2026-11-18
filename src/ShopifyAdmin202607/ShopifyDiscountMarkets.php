@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMarketConnection;
 
+/**
+ * Markets where the discount is available.
+ */
 class ShopifyDiscountMarkets
 {
     protected $markets;
@@ -11,18 +14,22 @@ class ShopifyDiscountMarkets
 
     
     /**
+     * The list of markets where the discount is available.
+     *
      * @return ShopifyMarketConnection
      */
-    public function getMarkets()
+    public function getMarkets(): ?ShopifyMarketConnection
     {
         return $this->markets;
     }
 
     
     /**
+     * The number of markets where the discount is available.
+     *
      * @return int
      */
-    public function getMarketsCount()
+    public function getMarketsCount(): ?int
     {
         return $this->marketsCount;
     }

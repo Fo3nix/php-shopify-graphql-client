@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The portion of the price to be charged at checkout.
+ */
 class ShopifySellingPlanCheckoutChargeValueUnionObject extends UnionObject
 {
-    public function onShopifyMoneyV2()
+    public function onShopifyMoneyV2(): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifySellingPlanCheckoutChargeValueUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifySellingPlanCheckoutChargePercentageValue()
+    public function onShopifySellingPlanCheckoutChargePercentageValue(): ShopifySellingPlanCheckoutChargePercentageValueQueryObject
     {
         $object = new ShopifySellingPlanCheckoutChargePercentageValueQueryObject();
         $this->addPossibleType($object);

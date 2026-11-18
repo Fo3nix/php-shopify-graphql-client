@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The typography customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
 {
     protected $font;
@@ -12,45 +15,55 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyFontEnumObject
+     * The font.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingTypographyFontEnumObject value
      */
-    public function getFont()
+    public function getFont(): ?string
     {
         return $this->font;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyKerningEnumObject
+     * The kerning.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingTypographyKerningEnumObject value
      */
-    public function getKerning()
+    public function getKerning(): ?string
     {
         return $this->kerning;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyLetterCaseEnumObject
+     * The letter case.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingTypographyLetterCaseEnumObject value
      */
-    public function getLetterCase()
+    public function getLetterCase(): ?string
     {
         return $this->letterCase;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographySizeEnumObject
+     * The font size.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingTypographySizeEnumObject value
      */
-    public function getSize()
+    public function getSize(): ?string
     {
         return $this->size;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyWeightEnumObject
+     * The font weight.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingTypographyWeightEnumObject value
      */
-    public function getWeight()
+    public function getWeight(): ?string
     {
         return $this->weight;
     }

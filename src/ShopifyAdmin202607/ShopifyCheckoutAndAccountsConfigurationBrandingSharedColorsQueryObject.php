@@ -4,60 +4,87 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Shared color customizations for semantic and functional colors.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSharedColorsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingSharedColors";
 
-    public function selectAccent()
+    /**
+     * The accent color for interactive elements.
+     */
+    public function selectAccent(): static
     {
         $this->selectField("accent");
 
         return $this;
     }
 
-    public function selectButton()
+    /**
+     * The button color.
+     */
+    public function selectButton(): static
     {
         $this->selectField("button");
 
         return $this;
     }
 
-    public function selectControl()
+    /**
+     * The form control color.
+     */
+    public function selectControl(): static
     {
         $this->selectField("control");
 
         return $this;
     }
 
-    public function selectCritical()
+    /**
+     * The critical/error color.
+     */
+    public function selectCritical(): static
     {
         $this->selectField("critical");
 
         return $this;
     }
 
-    public function selectDecorative()
+    /**
+     * The decorative color.
+     */
+    public function selectDecorative(): static
     {
         $this->selectField("decorative");
 
         return $this;
     }
 
-    public function selectInfo()
+    /**
+     * The informational color.
+     */
+    public function selectInfo(): static
     {
         $this->selectField("info");
 
         return $this;
     }
 
-    public function selectSuccess()
+    /**
+     * The success color.
+     */
+    public function selectSuccess(): static
     {
         $this->selectField("success");
 
         return $this;
     }
 
-    public function selectWarning()
+    /**
+     * The warning color.
+     */
+    public function selectWarning(): static
     {
         $this->selectField("warning");
 

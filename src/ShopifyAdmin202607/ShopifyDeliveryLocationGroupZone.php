@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryMethodDefinitionCoun
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryMethodDefinitionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDeliveryZone;
 
+/**
+ * Links a location group with a zone and the associated method definitions.
+ */
 class ShopifyDeliveryLocationGroupZone
 {
     protected $methodDefinitionCounts;
@@ -14,27 +17,33 @@ class ShopifyDeliveryLocationGroupZone
 
     
     /**
+     * The number of method definitions for the zone.
+     *
      * @return ShopifyDeliveryMethodDefinitionCounts
      */
-    public function getMethodDefinitionCounts()
+    public function getMethodDefinitionCounts(): ?ShopifyDeliveryMethodDefinitionCounts
     {
         return $this->methodDefinitionCounts;
     }
 
     
     /**
+     * The method definitions associated to a zone and location group.
+     *
      * @return ShopifyDeliveryMethodDefinitionConnection
      */
-    public function getMethodDefinitions()
+    public function getMethodDefinitions(): ?ShopifyDeliveryMethodDefinitionConnection
     {
         return $this->methodDefinitions;
     }
 
     
     /**
+     * The zone associated to a location group.
+     *
      * @return ShopifyDeliveryZone
      */
-    public function getZone()
+    public function getZone(): ?ShopifyDeliveryZone
     {
         return $this->zone;
     }

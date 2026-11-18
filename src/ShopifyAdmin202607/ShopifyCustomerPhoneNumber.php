@@ -6,6 +6,9 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerWhatsAppMarketingConsent;
 
+/**
+ * A phone number.
+ */
 class ShopifyCustomerPhoneNumber
 {
     protected $marketingCollectedFrom;
@@ -18,63 +21,80 @@ class ShopifyCustomerPhoneNumber
 
     
     /**
-     * @return ShopifyCustomerConsentCollectedFromEnumObject
+     * The source from which the SMS marketing information for the customer was collected.
+     *
+     * @return string A ShopifyCustomerConsentCollectedFromEnumObject value
      */
-    public function getMarketingCollectedFrom()
+    public function getMarketingCollectedFrom(): ?string
     {
         return $this->marketingCollectedFrom;
     }
 
     
     /**
-     * @return ShopifyCustomerMarketingOptInLevelEnumObject
+     * The marketing subscription opt-in level, as described by the M3AAWG best practices guidelines,
+     * received when the marketing consent was updated.
+     *
+     * @return string A ShopifyCustomerMarketingOptInLevelEnumObject value
      */
-    public function getMarketingOptInLevel()
+    public function getMarketingOptInLevel(): ?string
     {
         return $this->marketingOptInLevel;
     }
 
     
     /**
-     * @return ShopifyCustomerSmsMarketingStateEnumObject
+     * Whether the customer has subscribed to SMS marketing material.
+     *
+     * @return string A ShopifyCustomerSmsMarketingStateEnumObject value
      */
-    public function getMarketingState()
+    public function getMarketingState(): ?string
     {
         return $this->marketingState;
     }
 
     
     /**
+     * The date and time at which the marketing consent was updated.
+     *
+     * No date is provided if the email address never updated its marketing consent.
+     *
      * @return Carbon
      */
-    public function getMarketingUpdatedAt()
+    public function getMarketingUpdatedAt(): ?Carbon
     {
         return $this->marketingUpdatedAt;
     }
 
     
     /**
+     * A customer's phone number.
+     *
      * @return string
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
     
     /**
+     * The location where the customer consented to receive marketing material by SMS.
+     *
      * @return ShopifyLocation
      */
-    public function getSourceLocation()
+    public function getSourceLocation(): ?ShopifyLocation
     {
         return $this->sourceLocation;
     }
 
     
     /**
+     * The [WhatsApp marketing consent](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerWhatsAppMarketingConsent) information for the customer's phone number. Update with the [`customerWhatsAppMarketingConsentUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/customerWhatsAppMarketingConsentUpdate) mutation.
+     *
      * @return ShopifyCustomerWhatsAppMarketingConsent
      */
-    public function getWhatsAppMarketingConsent()
+    public function getWhatsAppMarketingConsent(): ?ShopifyCustomerWhatsAppMarketingConsent
     {
         return $this->whatsAppMarketingConsent;
     }

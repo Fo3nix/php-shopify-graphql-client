@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyComponentizedProductsBundleConsolidatedOptionSelection;
 
+/**
+ * An option on the bundle parent product that is consolidated from multiple different components.
+ */
 class ShopifyComponentizedProductsBundleConsolidatedOption
 {
     protected $name;
@@ -11,18 +14,22 @@ class ShopifyComponentizedProductsBundleConsolidatedOption
 
     
     /**
+     * The name of the consolidated option.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The selections of the consolidated option.
+     *
      * @return ShopifyComponentizedProductsBundleConsolidatedOptionSelection[]
      */
-    public function getSelections()
+    public function getSelections(): ?array
     {
         return $this->selections;
     }

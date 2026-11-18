@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyAppFeedback;
 
+/**
+ * Represents feedback from apps about a resource, and the steps required to set up the apps on the shop.
+ */
 class ShopifyResourceFeedback
 {
     protected $appFeedback;
@@ -12,27 +15,33 @@ class ShopifyResourceFeedback
 
     
     /**
+     * Feedback from an app about the steps a merchant needs to take to set up the app on their store.
+     *
      * @return ShopifyAppFeedback[]
      */
-    public function getAppFeedback()
+    public function getAppFeedback(): ?array
     {
         return $this->appFeedback;
     }
 
     
     /**
+     * List of AppFeedback detailing issues regarding a resource.
+     *
      * @return ShopifyAppFeedback[]
      */
-    public function getDetails()
+    public function getDetails(): ?array
     {
         return $this->details;
     }
 
     
     /**
+     * Summary of resource feedback pertaining to the resource.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }

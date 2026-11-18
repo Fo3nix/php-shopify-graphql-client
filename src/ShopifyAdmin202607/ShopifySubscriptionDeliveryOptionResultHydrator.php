@@ -1,0 +1,44 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+class ShopifySubscriptionDeliveryOptionResultHydrator
+{
+    /**
+     * Hydrates the result class matching the __typename of the data
+     *
+     * @param array $data
+     * @return ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess
+     */
+    public static function fromArray(array $data): ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess
+    {
+        if (!isset($data['__typename'])) {
+            throw new \InvalidArgumentException('Cannot hydrate SubscriptionDeliveryOptionResult: the data has no __typename, select it in the query');
+        }
+        switch ($data['__typename']) {
+            case 'SubscriptionDeliveryOptionResultFailure':
+                return ShopifySubscriptionDeliveryOptionResultFailure::fromArray($data);
+            case 'SubscriptionDeliveryOptionResultSuccess':
+                return ShopifySubscriptionDeliveryOptionResultSuccess::fromArray($data);
+            default:
+                throw new \InvalidArgumentException('Cannot hydrate SubscriptionDeliveryOptionResult: unknown type "' . $data['__typename'] . '", regenerate the schema objects');
+        }
+    }
+
+    /**
+     * Converts a hydrated object to an array, including its __typename so it can be hydrated again
+     *
+     * @param ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess $object
+     * @return array
+     */
+    public static function toArray(ShopifySubscriptionDeliveryOptionResultFailure|ShopifySubscriptionDeliveryOptionResultSuccess $object): array
+    {
+        if ($object instanceof ShopifySubscriptionDeliveryOptionResultFailure) {
+            return ['__typename' => 'SubscriptionDeliveryOptionResultFailure'] + $object->asArray();
+        }
+        if ($object instanceof ShopifySubscriptionDeliveryOptionResultSuccess) {
+            return ['__typename' => 'SubscriptionDeliveryOptionResultSuccess'] + $object->asArray();
+        }
+        throw new \InvalidArgumentException('Cannot convert ' . get_class($object) . ' to an array of SubscriptionDeliveryOptionResult');
+    }
+}

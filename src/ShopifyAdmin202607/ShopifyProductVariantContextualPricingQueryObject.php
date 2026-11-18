@@ -4,11 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The price of a product variant in a specific country.
+ * Prices vary between countries.
+ */
 class ShopifyProductVariantContextualPricingQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductVariantContextualPricing";
 
-    public function selectCompareAtPrice(ShopifyProductVariantContextualPricingCompareAtPriceArgumentsObject $argsObject = null)
+    /**
+     * The final compare-at price after all adjustments are applied.
+     */
+    public function selectCompareAtPrice(?ShopifyProductVariantContextualPricingCompareAtPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("compareAtPrice");
         if ($argsObject !== null) {
@@ -19,7 +26,10 @@ class ShopifyProductVariantContextualPricingQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPrice(ShopifyProductVariantContextualPricingPriceArgumentsObject $argsObject = null)
+    /**
+     * The final price after all adjustments are applied.
+     */
+    public function selectPrice(?ShopifyProductVariantContextualPricingPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -30,7 +40,10 @@ class ShopifyProductVariantContextualPricingQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantityPriceBreaks(ShopifyProductVariantContextualPricingQuantityPriceBreaksArgumentsObject $argsObject = null)
+    /**
+     * A list of quantity breaks for the product variant.
+     */
+    public function selectQuantityPriceBreaks(?ShopifyProductVariantContextualPricingQuantityPriceBreaksArgumentsObject $argsObject = null): ShopifyQuantityPriceBreakConnectionQueryObject
     {
         $object = new ShopifyQuantityPriceBreakConnectionQueryObject("quantityPriceBreaks");
         if ($argsObject !== null) {
@@ -41,7 +54,10 @@ class ShopifyProductVariantContextualPricingQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantityRule(ShopifyProductVariantContextualPricingQuantityRuleArgumentsObject $argsObject = null)
+    /**
+     * The quantity rule applied for a given context.
+     */
+    public function selectQuantityRule(?ShopifyProductVariantContextualPricingQuantityRuleArgumentsObject $argsObject = null): ShopifyQuantityRuleQueryObject
     {
         $object = new ShopifyQuantityRuleQueryObject("quantityRule");
         if ($argsObject !== null) {
@@ -52,7 +68,10 @@ class ShopifyProductVariantContextualPricingQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUnitPrice(ShopifyProductVariantContextualPricingUnitPriceArgumentsObject $argsObject = null)
+    /**
+     * The unit price value for the given context based on the variant measurement.
+     */
+    public function selectUnitPrice(?ShopifyProductVariantContextualPricingUnitPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("unitPrice");
         if ($argsObject !== null) {

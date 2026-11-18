@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOnlineStorePasswordProtection;
 
+/**
+ * The shop's online store channel.
+ */
 class ShopifyOnlineStore
 {
     protected $passwordProtection;
 
     
     /**
+     * Storefront password information.
+     *
      * @return ShopifyOnlineStorePasswordProtection
      */
-    public function getPasswordProtection()
+    public function getPasswordProtection(): ?ShopifyOnlineStorePasswordProtection
     {
         return $this->passwordProtection;
     }

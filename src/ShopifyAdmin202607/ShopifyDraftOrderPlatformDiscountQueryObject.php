@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The platform discounts applied to the draft order.
+ */
 class ShopifyDraftOrderPlatformDiscountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderPlatformDiscount";
 
-    public function selectAllocations(ShopifyDraftOrderPlatformDiscountAllocationsArgumentsObject $argsObject = null)
+    /**
+     * Price reduction allocations across the draft order's lines.
+     */
+    public function selectAllocations(?ShopifyDraftOrderPlatformDiscountAllocationsArgumentsObject $argsObject = null): ShopifyDraftOrderPlatformDiscountAllocationQueryObject
     {
         $object = new ShopifyDraftOrderPlatformDiscountAllocationQueryObject("allocations");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyDraftOrderPlatformDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectAutomaticDiscount()
+    /**
+     * Whether the discount is an automatic discount.
+     */
+    public function selectAutomaticDiscount(): static
     {
         $this->selectField("automaticDiscount");
 
         return $this;
     }
 
-    public function selectBxgyDiscount()
+    /**
+     * Whether the discount is a buy x get y discount.
+     */
+    public function selectBxgyDiscount(): static
     {
         $this->selectField("bxgyDiscount");
 
         return $this;
     }
 
-    public function selectCode()
+    /**
+     * If a code-based discount, the code used to add the discount.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
@@ -41,23 +56,31 @@ class ShopifyDraftOrderPlatformDiscountQueryObject extends QueryObject
     }
 
     /**
+     * The discount class.
+     *
      * @deprecated Use `discountClasses` instead.
      */
-    public function selectDiscountClass()
+    public function selectDiscountClass(): static
     {
         $this->selectField("discountClass");
 
         return $this;
     }
 
-    public function selectDiscountClasses()
+    /**
+     * The discount classes.
+     */
+    public function selectDiscountClasses(): static
     {
         $this->selectField("discountClasses");
 
         return $this;
     }
 
-    public function selectDiscountNode(ShopifyDraftOrderPlatformDiscountDiscountNodeArgumentsObject $argsObject = null)
+    /**
+     * The discount node for the platform discount.
+     */
+    public function selectDiscountNode(?ShopifyDraftOrderPlatformDiscountDiscountNodeArgumentsObject $argsObject = null): ShopifyDiscountNodeQueryObject
     {
         $object = new ShopifyDiscountNodeQueryObject("discountNode");
         if ($argsObject !== null) {
@@ -68,42 +91,60 @@ class ShopifyDraftOrderPlatformDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * The ID of the discount.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectPresentationLevel()
+    /**
+     * Whether the discount is line, order or shipping level.
+     */
+    public function selectPresentationLevel(): static
     {
         $this->selectField("presentationLevel");
 
         return $this;
     }
 
-    public function selectShortSummary()
+    /**
+     * The short summary of the discount.
+     */
+    public function selectShortSummary(): static
     {
         $this->selectField("shortSummary");
 
         return $this;
     }
 
-    public function selectSummary()
+    /**
+     * The summary of the discount.
+     */
+    public function selectSummary(): static
     {
         $this->selectField("summary");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The name of the discount.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTotalAmount(ShopifyDraftOrderPlatformDiscountTotalAmountArgumentsObject $argsObject = null)
+    /**
+     * The discount total amount in shop currency.
+     */
+    public function selectTotalAmount(?ShopifyDraftOrderPlatformDiscountTotalAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalAmount");
         if ($argsObject !== null) {
@@ -114,7 +155,10 @@ class ShopifyDraftOrderPlatformDiscountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalAmountPriceSet(ShopifyDraftOrderPlatformDiscountTotalAmountPriceSetArgumentsObject $argsObject = null)
+    /**
+     * The amount of money discounted, with values shown in both shop currency and presentment currency.
+     */
+    public function selectTotalAmountPriceSet(?ShopifyDraftOrderPlatformDiscountTotalAmountPriceSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("totalAmountPriceSet");
         if ($argsObject !== null) {

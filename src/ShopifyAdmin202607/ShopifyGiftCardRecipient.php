@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomer;
 use Carbon\Carbon;
 
+/**
+ * Represents a recipient who will receive the issued gift card.
+ */
 class ShopifyGiftCardRecipient
 {
     protected $message;
@@ -14,36 +17,44 @@ class ShopifyGiftCardRecipient
 
     
     /**
+     * The message sent with the gift card.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
     
     /**
+     * The preferred name of the recipient who will receive the gift card.
+     *
      * @return string
      */
-    public function getPreferredName()
+    public function getPreferredName(): ?string
     {
         return $this->preferredName;
     }
 
     
     /**
+     * The recipient who will receive the gift card.
+     *
      * @return ShopifyCustomer
      */
-    public function getRecipient()
+    public function getRecipient(): ?ShopifyCustomer
     {
         return $this->recipient;
     }
 
     
     /**
+     * The scheduled datetime on which the gift card will be sent to the recipient. The gift card will be sent within an hour of the specified datetime.
+     *
      * @return Carbon
      */
-    public function getSendNotificationAt()
+    public function getSendNotificationAt(): ?Carbon
     {
         return $this->sendNotificationAt;
     }

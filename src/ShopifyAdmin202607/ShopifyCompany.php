@@ -17,7 +17,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrderConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
-class ShopifyCompany
+/**
+ * A business entity that purchases from the shop as part of B2B commerce. Companies organize multiple locations and contacts who can place orders on behalf of the organization. [`CompanyLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CompanyLocation) objects can have custom pricing through [`Catalog`](https://shopify.dev/docs/api/admin-graphql/latest/interfaces/Catalog) and [`PriceList`](https://shopify.dev/docs/api/admin-graphql/latest/objects/PriceList) configurations.
+ */
+class ShopifyCompany implements ShopifyCommentEventSubject, ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNavigable, ShopifyNode
 {
     protected $contactCount;
     protected $contactRoles;
@@ -48,234 +51,289 @@ class ShopifyCompany
 
     
     /**
+     * The number of contacts that belong to the company.
+     *
      * @return int
      */
-    public function getContactCount()
+    public function getContactCount(): ?int
     {
         return $this->contactCount;
     }
 
     
     /**
+     * The list of roles for the company contacts.
+     *
      * @return ShopifyCompanyContactRoleConnection
      */
-    public function getContactRoles()
+    public function getContactRoles(): ?ShopifyCompanyContactRoleConnection
     {
         return $this->contactRoles;
     }
 
     
     /**
+     * The list of contacts in the company.
+     *
      * @return ShopifyCompanyContactConnection
      */
-    public function getContacts()
+    public function getContacts(): ?ShopifyCompanyContactConnection
     {
         return $this->contacts;
     }
 
     
     /**
+     * The number of contacts that belong to the company.
+     *
      * @return ShopifyCount
      */
-    public function getContactsCount()
+    public function getContactsCount(): ?ShopifyCount
     {
         return $this->contactsCount;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company was created in Shopify.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company became the customer.
+     *
      * @return Carbon
      */
-    public function getCustomerSince()
+    public function getCustomerSince(): ?Carbon
     {
         return $this->customerSince;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * The role proposed by default for a contact at the company.
+     *
      * @return ShopifyCompanyContactRole
      */
-    public function getDefaultRole()
+    public function getDefaultRole(): ?ShopifyCompanyContactRole
     {
         return $this->defaultRole;
     }
 
     
     /**
+     * The list of the company's draft orders.
+     *
      * @return ShopifyDraftOrderConnection
      */
-    public function getDraftOrders()
+    public function getDraftOrders(): ?ShopifyDraftOrderConnection
     {
         return $this->draftOrders;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A unique externally-supplied ID for the company.
+     *
      * @return string
      */
-    public function getExternalId()
+    public function getExternalId(): ?string
     {
         return $this->externalId;
     }
 
     
     /**
+     * Whether the merchant added a timeline comment to the company.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The lifetime duration of the company, since it became a customer of the shop. Examples: `2 days`, `3 months`, `1 year`.
+     *
      * @return string
      */
-    public function getLifetimeDuration()
+    public function getLifetimeDuration(): ?string
     {
         return $this->lifetimeDuration;
     }
 
     
     /**
+     * The list of locations in the company.
+     *
      * @return ShopifyCompanyLocationConnection
      */
-    public function getLocations()
+    public function getLocations(): ?ShopifyCompanyLocationConnection
     {
         return $this->locations;
     }
 
     
     /**
+     * The number of locations that belong to the company.
+     *
      * @return ShopifyCount
      */
-    public function getLocationsCount()
+    public function getLocationsCount(): ?ShopifyCount
     {
         return $this->locationsCount;
     }
 
     
     /**
+     * The main contact for the company.
+     *
      * @return ShopifyCompanyContact
      */
-    public function getMainContact()
+    public function getMainContact(): ?ShopifyCompanyContact
     {
         return $this->mainContact;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The name of the company.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A note about the company.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The list of the company's orders.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * The total number of orders placed for this company, across all its locations.
+     *
      * @return ShopifyCount
      */
-    public function getOrdersCount()
+    public function getOrdersCount(): ?ShopifyCount
     {
         return $this->ordersCount;
     }
 
     
     /**
+     * The total amount spent by this company, across all its locations.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSpent()
+    public function getTotalSpent(): ?ShopifyMoneyV2
     {
         return $this->totalSpent;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company was last modified.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

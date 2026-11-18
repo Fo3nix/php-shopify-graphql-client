@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySubscriptionShippingOption;
 
+/**
+ * A shipping option for delivery of a subscription contract.
+ */
 class ShopifySubscriptionShippingOptionResultSuccess
 {
     protected $shippingOptions;
 
     
     /**
+     * Available shipping options.
+     *
      * @return ShopifySubscriptionShippingOption[]
      */
-    public function getShippingOptions()
+    public function getShippingOptions(): ?array
     {
         return $this->shippingOptions;
     }

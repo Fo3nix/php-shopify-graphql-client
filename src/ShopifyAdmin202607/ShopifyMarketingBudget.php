@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * This type combines budget amount and its marketing budget type.
+ */
 class ShopifyMarketingBudget
 {
     protected $budgetType;
@@ -11,18 +14,22 @@ class ShopifyMarketingBudget
 
     
     /**
-     * @return ShopifyMarketingBudgetBudgetTypeEnumObject
+     * The budget type for a marketing activity.
+     *
+     * @return string A ShopifyMarketingBudgetBudgetTypeEnumObject value
      */
-    public function getBudgetType()
+    public function getBudgetType(): ?string
     {
         return $this->budgetType;
     }
 
     
     /**
+     * The amount of budget for marketing activity.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotal()
+    public function getTotal(): ?ShopifyMoneyV2
     {
         return $this->total;
     }

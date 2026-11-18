@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The checkboxes customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCheckboxQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingCheckbox";
 
-    public function selectCornerRadius()
+    /**
+     * The corner radius.
+     */
+    public function selectCornerRadius(): static
     {
         $this->selectField("cornerRadius");
 

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeader;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain;
 
+/**
+ * The sign-in-specific component customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponents
 {
     protected $header;
@@ -12,18 +15,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingSignInComponents
 
     
     /**
+     * The header customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeader
      */
-    public function getHeader()
+    public function getHeader(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSignInHeader
     {
         return $this->header;
     }
 
     
     /**
+     * The main customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
      */
-    public function getMain()
+    public function getMain(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSignInMain
     {
         return $this->main;
     }

@@ -8,7 +8,10 @@ class ShopifyRootAppInstallationArgumentsObject extends ArgumentsObject
 {
     protected $id;
 
-    public function setId($id)
+    /**
+     * ID used to lookup AppInstallation.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

@@ -5,7 +5,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyBusinessEntityAddress;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyPaymentsAccount;
 
-class ShopifyBusinessEntity
+/**
+ * A legal entity through which a merchant operates. Each business entity contains its own [`BusinessEntityAddress`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BusinessEntityAddress), company information, and can be associated with its own [`ShopifyPaymentsAccount`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsAccount). [`Market`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Market) objects can be assigned to a business entity to determine payment processing and [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) attribution.
+ *
+ * Every shop must have one primary business entity. Additional entities enable international operations by establishing legal presence in multiple countries.
+ *
+ * Learn more about [managing multiple legal entities](https://shopify.dev/docs/apps/build/markets/multiple-entities).
+ */
+class ShopifyBusinessEntity implements ShopifyNode
 {
     protected $address;
     protected $archived;
@@ -18,72 +25,90 @@ class ShopifyBusinessEntity
 
     
     /**
+     * The address of the merchant's Business Entity.
+     *
      * @return ShopifyBusinessEntityAddress
      */
-    public function getAddress()
+    public function getAddress(): ?ShopifyBusinessEntityAddress
     {
         return $this->address;
     }
 
     
     /**
+     * Whether the Business Entity is archived from the shop.
+     *
      * @return bool
      */
-    public function getArchived()
+    public function getArchived(): ?bool
     {
         return $this->archived;
     }
 
     
     /**
+     * The name of the company associated with the merchant's Business Entity.
+     *
      * @return string
      */
-    public function getCompanyName()
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
 
     
     /**
+     * The display name of the merchant's Business Entity.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The stable central legal entity ID associated with this business entity.
+     *
      * @return string
      */
-    public function getLegalEntityId()
+    public function getLegalEntityId(): mixed
     {
         return $this->legalEntityId;
     }
 
     
     /**
+     * Whether it's the merchant's primary Business Entity.
+     *
      * @return bool
      */
-    public function getPrimary()
+    public function getPrimary(): ?bool
     {
         return $this->primary;
     }
 
     
     /**
+     * Returns the Shopify Payments account information for the shop. Includes current balances across all currencies, payout schedules, and bank account configurations.
+     *
+     * The account includes [`ShopifyPaymentsBalanceTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsBalanceTransaction) records showing charges, refunds, and adjustments that affect your balance. Also includes [`ShopifyPaymentsDispute`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsDispute) records and [`ShopifyPaymentsPayout`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsPayout) history between the account and connected [`ShopifyPaymentsBankAccount`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopifyPaymentsBankAccount) configurations.
+     *
      * @return ShopifyShopifyPaymentsAccount
      */
-    public function getShopifyPaymentsAccount()
+    public function getShopifyPaymentsAccount(): ?ShopifyShopifyPaymentsAccount
     {
         return $this->shopifyPaymentsAccount;
     }

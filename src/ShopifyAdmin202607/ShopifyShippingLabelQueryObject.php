@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The optional shipping label for this fulfillment.
+ */
 class ShopifyShippingLabelQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShippingLabel";
 
-    public function selectCancellable()
+    /**
+     * Indicates whether the label is cancellable or not.
+     */
+    public function selectCancellable(): static
     {
         $this->selectField("cancellable");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLocation(ShopifyShippingLabelLocationArgumentsObject $argsObject = null)
+    /**
+     * The location of the shipping origin. This will be null when the shipping origin is unknown.
+     */
+    public function selectLocation(?ShopifyShippingLabelLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -33,14 +45,20 @@ class ShopifyShippingLabelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPrinted()
+    /**
+     * Indicates whether the label was printed or not.
+     */
+    public function selectPrinted(): static
     {
         $this->selectField("printed");
 
         return $this;
     }
 
-    public function selectShippingDocuments(ShopifyShippingLabelShippingDocumentsArgumentsObject $argsObject = null)
+    /**
+     * The documents for a shipping label.
+     */
+    public function selectShippingDocuments(?ShopifyShippingLabelShippingDocumentsArgumentsObject $argsObject = null): ShopifyShippingObjectsShippingDocumentQueryObject
     {
         $object = new ShopifyShippingObjectsShippingDocumentQueryObject("shippingDocuments");
         if ($argsObject !== null) {
@@ -51,7 +69,10 @@ class ShopifyShippingLabelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTrackingInfo(ShopifyShippingLabelTrackingInfoArgumentsObject $argsObject = null)
+    /**
+     * Tracking information for the shipping label.
+     */
+    public function selectTrackingInfo(?ShopifyShippingLabelTrackingInfoArgumentsObject $argsObject = null): ShopifyFulfillmentTrackingInfoQueryObject
     {
         $object = new ShopifyFulfillmentTrackingInfoQueryObject("trackingInfo");
         if ($argsObject !== null) {

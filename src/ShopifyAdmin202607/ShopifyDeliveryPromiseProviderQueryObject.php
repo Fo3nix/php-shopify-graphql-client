@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A delivery promise provider. Currently restricted to select approved delivery promise partners.
+ */
 class ShopifyDeliveryPromiseProviderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryPromiseProvider";
 
-    public function selectActive()
+    /**
+     * Whether the delivery promise provider is active. Defaults to `true` when creating a provider.
+     */
+    public function selectActive(): static
     {
         $this->selectField("active");
 
         return $this;
     }
 
-    public function selectFulfillmentDelay()
+    /**
+     * The number of seconds to add to the current time as a buffer when looking up delivery promises. Represents how long the shop requires before releasing an order to the fulfillment provider.
+     */
+    public function selectFulfillmentDelay(): static
     {
         $this->selectField("fulfillmentDelay");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLocation(ShopifyDeliveryPromiseProviderLocationArgumentsObject $argsObject = null)
+    /**
+     * The location associated with this delivery promise provider.
+     */
+    public function selectLocation(?ShopifyDeliveryPromiseProviderLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -40,7 +55,10 @@ class ShopifyDeliveryPromiseProviderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTimeZone()
+    /**
+     * The time zone to be used for interpreting day of week and cutoff times in delivery schedules when looking up delivery promises.
+     */
+    public function selectTimeZone(): static
     {
         $this->selectField("timeZone");
 

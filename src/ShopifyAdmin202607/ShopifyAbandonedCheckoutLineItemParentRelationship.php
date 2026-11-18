@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyAbandonedCheckoutLineItem;
 
+/**
+ * The line relationship between two line items in an abandoned checkout.
+ */
 class ShopifyAbandonedCheckoutLineItemParentRelationship
 {
     protected $parent;
 
     
     /**
+     * The parent line item of the current line item.
+     *
      * @return ShopifyAbandonedCheckoutLineItem
      */
-    public function getParent()
+    public function getParent(): ?ShopifyAbandonedCheckoutLineItem
     {
         return $this->parent;
     }

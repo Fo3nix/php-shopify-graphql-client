@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLineItem;
 
-class ShopifyExchangeLineItem
+/**
+ * An item for exchange.
+ */
+class ShopifyExchangeLineItem implements ShopifyNode
 {
     protected $id;
     protected $lineItem;
@@ -17,72 +20,88 @@ class ShopifyExchangeLineItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The order line item for the exchange. If the exchange line has been processed multiple times, this will be the first associated line item and won't reflect all processed values.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The order line items for the exchange.
+     *
      * @return ShopifyLineItem[]
      */
-    public function getLineItems()
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The quantity of the exchange item that can be processed.
+     *
      * @return int
      */
-    public function getProcessableQuantity()
+    public function getProcessableQuantity(): ?int
     {
         return $this->processableQuantity;
     }
 
     
     /**
+     * The quantity of the exchange item that have been processed.
+     *
      * @return int
      */
-    public function getProcessedQuantity()
+    public function getProcessedQuantity(): ?int
     {
         return $this->processedQuantity;
     }
 
     
     /**
+     * The number of units ordered, including refunded and removed units.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The quantity of the exchange item that haven't been processed.
+     *
      * @return int
      */
-    public function getUnprocessedQuantity()
+    public function getUnprocessedQuantity(): ?int
     {
         return $this->unprocessedQuantity;
     }
 
     
     /**
+     * The ID of the variant at time of return creation.
+     *
      * @return string
      */
-    public function getVariantId()
+    public function getVariantId(): ?string
     {
         return $this->variantId;
     }

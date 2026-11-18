@@ -2,10 +2,13 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicyAdjustmentValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanPricingPolicyAdjustmentValueHydrator;
 use Carbon\Carbon;
 
-class ShopifySellingPlanRecurringPricingPolicy
+/**
+ * Represents a recurring selling plan pricing policy. It applies after the fixed pricing policy. By using the afterCycle parameter, you can specify the cycle when the recurring pricing policy comes into effect. Recurring pricing policies are not available for deferred purchase options.
+ */
+class ShopifySellingPlanRecurringPricingPolicy implements ShopifySellingPlanPricingPolicyBase
 {
     protected $adjustmentType;
     protected $adjustmentValue;
@@ -14,36 +17,44 @@ class ShopifySellingPlanRecurringPricingPolicy
 
     
     /**
-     * @return ShopifySellingPlanPricingPolicyAdjustmentTypeEnumObject
+     * The price adjustment type.
+     *
+     * @return string A ShopifySellingPlanPricingPolicyAdjustmentTypeEnumObject value
      */
-    public function getAdjustmentType()
+    public function getAdjustmentType(): ?string
     {
         return $this->adjustmentType;
     }
 
     
     /**
-     * @return ShopifySellingPlanPricingPolicyAdjustmentValue
+     * The price adjustment value.
+     *
+     * @return ShopifyMoneyV2|ShopifySellingPlanPricingPolicyPercentageValue
      */
-    public function getAdjustmentValue()
+    public function getAdjustmentValue(): ShopifyMoneyV2|ShopifySellingPlanPricingPolicyPercentageValue|null
     {
         return $this->adjustmentValue;
     }
 
     
     /**
+     * Cycle after which this pricing policy applies.
+     *
      * @return int
      */
-    public function getAfterCycle()
+    public function getAfterCycle(): ?int
     {
         return $this->afterCycle;
     }
 
     
     /**
+     * The date and time when the recurring selling plan pricing policy was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
@@ -59,7 +70,7 @@ class ShopifySellingPlanRecurringPricingPolicy
                 $instance->adjustmentType = $data['adjustmentType'];
             }
             if (isset($data['adjustmentValue']) && $data['adjustmentValue'] !== null) {
-                $instance->adjustmentValue = ShopifySellingPlanPricingPolicyAdjustmentValue::fromArray($data['adjustmentValue']);
+                $instance->adjustmentValue = ShopifySellingPlanPricingPolicyAdjustmentValueHydrator::fromArray($data['adjustmentValue']);
             }
             if (isset($data['afterCycle']) && $data['afterCycle'] !== null) {
                 $instance->afterCycle = $data['afterCycle'];
@@ -94,7 +105,7 @@ class ShopifySellingPlanRecurringPricingPolicy
                 $data['adjustmentType'] = $this->adjustmentType;
             }
             if ($this->adjustmentValue !== null) {
-                $data['adjustmentValue'] = $this->adjustmentValue->asArray();
+                $data['adjustmentValue'] = ShopifySellingPlanPricingPolicyAdjustmentValueHydrator::toArray($this->adjustmentValue);
             }
             if ($this->afterCycle !== null) {
                 $data['afterCycle'] = $this->afterCycle;

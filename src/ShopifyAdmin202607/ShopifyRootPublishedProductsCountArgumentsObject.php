@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootPublishedProductsCountArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["publicationId"];
+
     protected $publicationId;
     protected $limit;
 
-    public function setPublicationId($publicationId)
+    /**
+     * The ID of the publication that the products are published to.
+     */
+    public function setPublicationId($publicationId): static
     {
         $this->publicationId = $publicationId;
 
         return $this;
     }
 
-    public function setLimit($limit)
+    /**
+     * The maximum number of products to count.
+     */
+    public function setLimit($limit): static
     {
         $this->limit = $limit;
 

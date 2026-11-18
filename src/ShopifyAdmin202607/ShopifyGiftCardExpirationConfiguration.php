@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Represents the default expiration configuration of gift cards on the shop.
+ */
 class ShopifyGiftCardExpirationConfiguration
 {
     protected $expirationUnit;
@@ -9,18 +12,22 @@ class ShopifyGiftCardExpirationConfiguration
 
     
     /**
-     * @return ShopifyGiftCardConfigurationExpirationUnitEnumObject
+     * The unit for the default gift card expiration.
+     *
+     * @return string A ShopifyGiftCardConfigurationExpirationUnitEnumObject value
      */
-    public function getExpirationUnit()
+    public function getExpirationUnit(): ?string
     {
         return $this->expirationUnit;
     }
 
     
     /**
+     * The value for the default gift card expiration.
+     *
      * @return int
      */
-    public function getExpirationValue()
+    public function getExpirationValue(): ?int
     {
         return $this->expirationValue;
     }

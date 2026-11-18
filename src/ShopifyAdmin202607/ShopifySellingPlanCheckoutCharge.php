@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanCheckoutChargeValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifySellingPlanCheckoutChargeValueHydrator;
 
+/**
+ * The amount charged at checkout when the full amount isn't charged at checkout.
+ */
 class ShopifySellingPlanCheckoutCharge
 {
     protected $type;
@@ -11,18 +14,22 @@ class ShopifySellingPlanCheckoutCharge
 
     
     /**
-     * @return ShopifySellingPlanCheckoutChargeTypeEnumObject
+     * The charge type for the checkout charge.
+     *
+     * @return string A ShopifySellingPlanCheckoutChargeTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
-     * @return ShopifySellingPlanCheckoutChargeValue
+     * The charge value for the checkout charge.
+     *
+     * @return ShopifyMoneyV2|ShopifySellingPlanCheckoutChargePercentageValue
      */
-    public function getValue()
+    public function getValue(): ShopifyMoneyV2|ShopifySellingPlanCheckoutChargePercentageValue|null
     {
         return $this->value;
     }
@@ -38,7 +45,7 @@ class ShopifySellingPlanCheckoutCharge
                 $instance->type = $data['type'];
             }
             if (isset($data['value']) && $data['value'] !== null) {
-                $instance->value = ShopifySellingPlanCheckoutChargeValue::fromArray($data['value']);
+                $instance->value = ShopifySellingPlanCheckoutChargeValueHydrator::fromArray($data['value']);
             }
             return $instance;
         }
@@ -67,7 +74,7 @@ class ShopifySellingPlanCheckoutCharge
                 $data['type'] = $this->type;
             }
             if ($this->value !== null) {
-                $data['value'] = $this->value->asArray();
+                $data['value'] = ShopifySellingPlanCheckoutChargeValueHydrator::toArray($this->value);
             }
             return $data;
         }

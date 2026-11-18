@@ -8,6 +8,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductBundleComponentOptionSelection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductBundleComponentQuantityOption;
 
+/**
+ * The product's component information.
+ */
 class ShopifyProductBundleComponent
 {
     protected $componentProduct;
@@ -19,54 +22,68 @@ class ShopifyProductBundleComponent
 
     
     /**
+     * The product that's related as a component.
+     *
      * @return ShopifyProduct
      */
-    public function getComponentProduct()
+    public function getComponentProduct(): ?ShopifyProduct
     {
         return $this->componentProduct;
     }
 
     
     /**
+     * The list of products' variants that are components.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getComponentVariants()
+    public function getComponentVariants(): ?ShopifyProductVariantConnection
     {
         return $this->componentVariants;
     }
 
     
     /**
+     * The number of component variants for the product component.
+     *
      * @return ShopifyCount
      */
-    public function getComponentVariantsCount()
+    public function getComponentVariantsCount(): ?ShopifyCount
     {
         return $this->componentVariantsCount;
     }
 
     
     /**
+     * The options in the parent and the component options they're connected to, along with the chosen option values
+     * that appear in the bundle.
+     *
      * @return ShopifyProductBundleComponentOptionSelection[]
      */
-    public function getOptionSelections()
+    public function getOptionSelections(): ?array
     {
         return $this->optionSelections;
     }
 
     
     /**
+     * The quantity of the component product set for this bundle line.
+     * It will be null if there's a quantityOption present.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * The quantity as option of the component product. It will be null if there's a quantity set.
+     *
      * @return ShopifyProductBundleComponentQuantityOption
      */
-    public function getQuantityOption()
+    public function getQuantityOption(): ?ShopifyProductBundleComponentQuantityOption
     {
         return $this->quantityOption;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The attribution details for an order.
+ */
 class ShopifyOrderAttribution
 {
     protected $displayName;
@@ -10,27 +13,33 @@ class ShopifyOrderAttribution
 
     
     /**
+     * The display name of the attribution source.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * An identifier for the attribution source.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * Sanitized SVG content used as the attribution source icon.
+     *
      * @return string
      */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }

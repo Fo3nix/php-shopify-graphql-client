@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingMerchandiseThumbnailBadge;
 
+/**
+ * The merchandise thumbnails customizations.
+ */
 class ShopifyCheckoutBrandingMerchandiseThumbnail
 {
     protected $badge;
@@ -13,36 +16,44 @@ class ShopifyCheckoutBrandingMerchandiseThumbnail
 
     
     /**
+     * The settings for the merchandise thumbnail badge.
+     *
      * @return ShopifyCheckoutBrandingMerchandiseThumbnailBadge
      */
-    public function getBadge()
+    public function getBadge(): ?ShopifyCheckoutBrandingMerchandiseThumbnailBadge
     {
         return $this->badge;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSimpleBorderEnumObject
+     * The border used for merchandise thumbnails.
+     *
+     * @return string A ShopifyCheckoutBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingCornerRadiusEnumObject
+     * The corner radius used for merchandise thumbnails.
+     *
+     * @return string A ShopifyCheckoutBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingObjectFitEnumObject
+     * The property used to customize how the product image fits within merchandise thumbnails.
+     *
+     * @return string A ShopifyCheckoutBrandingObjectFitEnumObject value
      */
-    public function getFit()
+    public function getFit(): ?string
     {
         return $this->fit;
     }

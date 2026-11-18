@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Information about the shop's customer account-related settings. Includes the [customer account version](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerAccountsV2#field-CustomerAccountsV2.fields.customerAccountsVersion) which indicates whether the merchant is using new customer accounts or legacy customer accounts, along with other account configuration such as login requirements.
+ */
 class ShopifyCustomerAccountsV2
 {
     protected $customerAccountsVersion;
@@ -11,36 +14,44 @@ class ShopifyCustomerAccountsV2
 
     
     /**
-     * @return ShopifyCustomerAccountsVersionEnumObject
+     * Indicates which version of customer accounts the merchant is using in online store and checkout.
+     *
+     * @return string A ShopifyCustomerAccountsVersionEnumObject value
      */
-    public function getCustomerAccountsVersion()
+    public function getCustomerAccountsVersion(): ?string
     {
         return $this->customerAccountsVersion;
     }
 
     
     /**
+     * Login links are shown in online store and checkout.
+     *
      * @return bool
      */
-    public function getLoginLinksVisibleOnStorefrontAndCheckout()
+    public function getLoginLinksVisibleOnStorefrontAndCheckout(): ?bool
     {
         return $this->loginLinksVisibleOnStorefrontAndCheckout;
     }
 
     
     /**
+     * Customers are required to log in to their account before checkout.
+     *
      * @return bool
      */
-    public function getLoginRequiredAtCheckout()
+    public function getLoginRequiredAtCheckout(): ?bool
     {
         return $this->loginRequiredAtCheckout;
     }
 
     
     /**
+     * The root url for the customer accounts pages.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

@@ -4,7 +4,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyAttribute;
 
-class ShopifyLineItemGroup
+/**
+ * The information for [line items](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) that are part of a bundle. When a bundle is purchased, each component line item references its [`LineItemGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItemGroup) through the [`lineItemGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem#field-lineItemGroup) field to maintain the relationship with the bundle.
+ *
+ * The parent bundle's product, variant, and custom attributes enable apps to group and display bundle components in order management systems, transactional emails, and other contexts where understanding the bundle structure is needed.
+ *
+ * Learn more about [product bundles](https://shopify.dev/docs/apps/build/product-merchandising/bundles).
+ */
+class ShopifyLineItemGroup implements ShopifyNode
 {
     protected $customAttributes;
     protected $id;
@@ -16,63 +23,77 @@ class ShopifyLineItemGroup
 
     
     /**
+     * A list of attributes that represent custom features or special requests.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * ID of the product of the line item group.
+     *
      * @return string
      */
-    public function getProductId()
+    public function getProductId(): ?string
     {
         return $this->productId;
     }
 
     
     /**
+     * Quantity of the line item group on the order.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Title of the line item group.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * ID of the variant of the line item group.
+     *
      * @return string
      */
-    public function getVariantId()
+    public function getVariantId(): ?string
     {
         return $this->variantId;
     }
 
     
     /**
+     * SKU of the variant of the line item group.
+     *
      * @return string
      */
-    public function getVariantSku()
+    public function getVariantSku(): ?string
     {
         return $this->variantSku;
     }

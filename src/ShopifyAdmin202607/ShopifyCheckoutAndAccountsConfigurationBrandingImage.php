@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyImage;
 
+/**
+ * The image.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingImage
 {
     protected $image;
 
     
     /**
+     * The image details.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }

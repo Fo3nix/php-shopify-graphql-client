@@ -1,0 +1,144 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
+
+class ShopifyMetafieldReferencerHydrator
+{
+    /**
+     * Hydrates the result class matching the __typename of the data
+     *
+     * @param array $data
+     * @return ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop
+     */
+    public static function fromArray(array $data): ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop
+    {
+        if (!isset($data['__typename'])) {
+            throw new \InvalidArgumentException('Cannot hydrate MetafieldReferencer: the data has no __typename, select it in the query');
+        }
+        switch ($data['__typename']) {
+            case 'AppInstallation':
+                return ShopifyAppInstallation::fromArray($data);
+            case 'Article':
+                return ShopifyArticle::fromArray($data);
+            case 'Blog':
+                return ShopifyBlog::fromArray($data);
+            case 'Collection':
+                return ShopifyCollection::fromArray($data);
+            case 'Company':
+                return ShopifyCompany::fromArray($data);
+            case 'CompanyLocation':
+                return ShopifyCompanyLocation::fromArray($data);
+            case 'Customer':
+                return ShopifyCustomer::fromArray($data);
+            case 'DeliveryCustomization':
+                return ShopifyDeliveryCustomization::fromArray($data);
+            case 'DiscountAutomaticNode':
+                return ShopifyDiscountAutomaticNode::fromArray($data);
+            case 'DiscountCodeNode':
+                return ShopifyDiscountCodeNode::fromArray($data);
+            case 'DiscountNode':
+                return ShopifyDiscountNode::fromArray($data);
+            case 'DraftOrder':
+                return ShopifyDraftOrder::fromArray($data);
+            case 'FulfillmentOrder':
+                return ShopifyFulfillmentOrder::fromArray($data);
+            case 'Location':
+                return ShopifyLocation::fromArray($data);
+            case 'Market':
+                return ShopifyMarket::fromArray($data);
+            case 'Metaobject':
+                return ShopifyMetaobject::fromArray($data);
+            case 'Order':
+                return ShopifyOrder::fromArray($data);
+            case 'Page':
+                return ShopifyPage::fromArray($data);
+            case 'PaymentCustomization':
+                return ShopifyPaymentCustomization::fromArray($data);
+            case 'Product':
+                return ShopifyProduct::fromArray($data);
+            case 'ProductVariant':
+                return ShopifyProductVariant::fromArray($data);
+            case 'Shop':
+                return ShopifyShop::fromArray($data);
+            default:
+                throw new \InvalidArgumentException('Cannot hydrate MetafieldReferencer: unknown type "' . $data['__typename'] . '", regenerate the schema objects');
+        }
+    }
+
+    /**
+     * Converts a hydrated object to an array, including its __typename so it can be hydrated again
+     *
+     * @param ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop $object
+     * @return array
+     */
+    public static function toArray(ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop $object): array
+    {
+        if ($object instanceof ShopifyAppInstallation) {
+            return ['__typename' => 'AppInstallation'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyArticle) {
+            return ['__typename' => 'Article'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyBlog) {
+            return ['__typename' => 'Blog'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyCollection) {
+            return ['__typename' => 'Collection'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyCompany) {
+            return ['__typename' => 'Company'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyCompanyLocation) {
+            return ['__typename' => 'CompanyLocation'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyCustomer) {
+            return ['__typename' => 'Customer'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyDeliveryCustomization) {
+            return ['__typename' => 'DeliveryCustomization'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyDiscountAutomaticNode) {
+            return ['__typename' => 'DiscountAutomaticNode'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyDiscountCodeNode) {
+            return ['__typename' => 'DiscountCodeNode'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyDiscountNode) {
+            return ['__typename' => 'DiscountNode'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyDraftOrder) {
+            return ['__typename' => 'DraftOrder'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyFulfillmentOrder) {
+            return ['__typename' => 'FulfillmentOrder'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyLocation) {
+            return ['__typename' => 'Location'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyMarket) {
+            return ['__typename' => 'Market'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyMetaobject) {
+            return ['__typename' => 'Metaobject'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyOrder) {
+            return ['__typename' => 'Order'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyPage) {
+            return ['__typename' => 'Page'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyPaymentCustomization) {
+            return ['__typename' => 'PaymentCustomization'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyProduct) {
+            return ['__typename' => 'Product'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyProductVariant) {
+            return ['__typename' => 'ProductVariant'] + $object->asArray();
+        }
+        if ($object instanceof ShopifyShop) {
+            return ['__typename' => 'Shop'] + $object->asArray();
+        }
+        throw new \InvalidArgumentException('Cannot convert ' . get_class($object) . ' to an array of MetafieldReferencer');
+    }
+}

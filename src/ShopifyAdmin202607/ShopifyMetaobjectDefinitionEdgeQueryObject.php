@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one MetaobjectDefinition and a cursor during pagination.
+ */
 class ShopifyMetaobjectDefinitionEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectDefinitionEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyMetaobjectDefinitionEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of MetaobjectDefinitionEdge.
+     */
+    public function selectNode(?ShopifyMetaobjectDefinitionEdgeNodeArgumentsObject $argsObject = null): ShopifyMetaobjectDefinitionQueryObject
     {
         $object = new ShopifyMetaobjectDefinitionQueryObject("node");
         if ($argsObject !== null) {

@@ -6,7 +6,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPriceList;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyProductVariant;
 
-class ShopifyQuantityPriceBreak
+/**
+ * Quantity price breaks lets you offer different rates that are based on the
+ * amount of a specific variant being ordered.
+ */
+class ShopifyQuantityPriceBreak implements ShopifyNode
 {
     protected $id;
     protected $minimumQuantity;
@@ -16,45 +20,55 @@ class ShopifyQuantityPriceBreak
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Minimum quantity required to reach new quantity break price.
+     *
      * @return int
      */
-    public function getMinimumQuantity()
+    public function getMinimumQuantity(): ?int
     {
         return $this->minimumQuantity;
     }
 
     
     /**
+     * The price of variant after reaching the minimum quantity.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The price list associated with this quantity break.
+     *
      * @return ShopifyPriceList
      */
-    public function getPriceList()
+    public function getPriceList(): ?ShopifyPriceList
     {
         return $this->priceList;
     }
 
     
     /**
+     * The product variant associated with this quantity break.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }

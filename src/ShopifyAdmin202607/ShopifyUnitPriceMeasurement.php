@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml).
+ */
 class ShopifyUnitPriceMeasurement
 {
     protected $measuredType;
@@ -12,45 +15,55 @@ class ShopifyUnitPriceMeasurement
 
     
     /**
-     * @return ShopifyUnitPriceMeasurementMeasuredTypeEnumObject
+     * The type of unit of measurement for the unit price measurement.
+     *
+     * @return string A ShopifyUnitPriceMeasurementMeasuredTypeEnumObject value
      */
-    public function getMeasuredType()
+    public function getMeasuredType(): ?string
     {
         return $this->measuredType;
     }
 
     
     /**
-     * @return ShopifyUnitPriceMeasurementMeasuredUnitEnumObject
+     * The quantity unit for the unit price measurement.
+     *
+     * @return string A ShopifyUnitPriceMeasurementMeasuredUnitEnumObject value
      */
-    public function getQuantityUnit()
+    public function getQuantityUnit(): ?string
     {
         return $this->quantityUnit;
     }
 
     
     /**
+     * The quantity value for the unit price measurement.
+     *
      * @return float
      */
-    public function getQuantityValue()
+    public function getQuantityValue(): ?float
     {
         return $this->quantityValue;
     }
 
     
     /**
-     * @return ShopifyUnitPriceMeasurementMeasuredUnitEnumObject
+     * The reference unit for the unit price measurement.
+     *
+     * @return string A ShopifyUnitPriceMeasurementMeasuredUnitEnumObject value
      */
-    public function getReferenceUnit()
+    public function getReferenceUnit(): ?string
     {
         return $this->referenceUnit;
     }
 
     
     /**
+     * The reference value for the unit price measurement.
+     *
      * @return int
      */
-    public function getReferenceValue()
+    public function getReferenceValue(): ?int
     {
         return $this->referenceValue;
     }

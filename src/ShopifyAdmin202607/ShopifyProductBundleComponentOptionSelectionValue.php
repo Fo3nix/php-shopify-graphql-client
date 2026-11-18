@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * A component option value related to a bundle line.
+ */
 class ShopifyProductBundleComponentOptionSelectionValue
 {
     protected $selectionStatus;
@@ -9,18 +12,22 @@ class ShopifyProductBundleComponentOptionSelectionValue
 
     
     /**
-     * @return ShopifyProductBundleComponentOptionSelectionStatusEnumObject
+     * Selection status of the option.
+     *
+     * @return string A ShopifyProductBundleComponentOptionSelectionStatusEnumObject value
      */
-    public function getSelectionStatus()
+    public function getSelectionStatus(): ?string
     {
         return $this->selectionStatus;
     }
 
     
     /**
+     * The value of the option.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

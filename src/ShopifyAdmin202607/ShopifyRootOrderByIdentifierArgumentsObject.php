@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootOrderByIdentifierArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["identifier"];
+
     protected $identifier;
 
-    public function setIdentifier(ShopifyOrderIdentifierInputInputObject $shopifyOrderIdentifierInputInputObject)
+    /**
+     * The identifier of the order.
+     */
+    public function setIdentifier(ShopifyOrderIdentifierInputInputObject $shopifyOrderIdentifierInputInputObject): static
     {
         $this->identifier = $shopifyOrderIdentifierInputInputObject;
 

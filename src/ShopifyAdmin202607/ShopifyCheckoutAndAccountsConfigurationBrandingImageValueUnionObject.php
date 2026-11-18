@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The image value.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingImageValueUnionObject extends UnionObject
 {
-    public function onShopifyCheckoutAndAccountsConfigurationBrandingImage()
+    public function onShopifyCheckoutAndAccountsConfigurationBrandingImage(): ShopifyCheckoutAndAccountsConfigurationBrandingImageQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingImageQueryObject();
         $this->addPossibleType($object);

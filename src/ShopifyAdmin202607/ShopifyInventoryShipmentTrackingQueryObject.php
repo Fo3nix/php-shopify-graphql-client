@@ -4,32 +4,51 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the tracking information for an inventory shipment.
+ */
 class ShopifyInventoryShipmentTrackingQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryShipmentTracking";
 
-    public function selectArrivesAt()
+    /**
+     * The estimated date and time that the shipment will arrive.
+     */
+    public function selectArrivesAt(): static
     {
         $this->selectField("arrivesAt");
 
         return $this;
     }
 
-    public function selectCompany()
+    /**
+     * The name of the shipping carrier company.
+     */
+    public function selectCompany(): static
     {
         $this->selectField("company");
 
         return $this;
     }
 
-    public function selectTrackingNumber()
+    /**
+     * The tracking number used by the carrier to identify the shipment.
+     */
+    public function selectTrackingNumber(): static
     {
         $this->selectField("trackingNumber");
 
         return $this;
     }
 
-    public function selectTrackingUrl()
+    /**
+     * The URL to track the shipment.
+     *
+     * Given a tracking number and a shipping carrier company name from
+     * [the list](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#field-company),
+     * Shopify will return a generated tracking URL if no tracking URL was set manually.
+     */
+    public function selectTrackingUrl(): static
     {
         $this->selectField("trackingUrl");
 

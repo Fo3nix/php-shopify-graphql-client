@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * Define the pixel size of corner radius options.
+ */
 class ShopifyCheckoutBrandingCornerRadiusVariables
 {
     protected $base;
@@ -10,27 +13,33 @@ class ShopifyCheckoutBrandingCornerRadiusVariables
 
     
     /**
+     * The value in pixels for base corner radii. Example: 5.
+     *
      * @return int
      */
-    public function getBase()
+    public function getBase(): ?int
     {
         return $this->base;
     }
 
     
     /**
+     * The value in pixels for large corner radii. Example: 10.
+     *
      * @return int
      */
-    public function getLarge()
+    public function getLarge(): ?int
     {
         return $this->large;
     }
 
     
     /**
+     * The value in pixels for small corner radii. Example: 3.
+     *
      * @return int
      */
-    public function getSmall()
+    public function getSmall(): ?int
     {
         return $this->small;
     }

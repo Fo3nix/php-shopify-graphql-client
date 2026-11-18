@@ -9,7 +9,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrderConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyContactRoleAssignmentConnection;
 
-class ShopifyCompanyContact
+/**
+ * A person who acts on behalf of a [`Company`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Company) to make B2B purchases. Company contacts are associated with [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) accounts and can place orders on behalf of their company.
+ *
+ * Each contact can be assigned to one or more [`CompanyLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CompanyLocation) objects with specific roles that determine their permissions and access to catalogs, pricing, and payment terms configured for those locations.
+ */
+class ShopifyCompanyContact implements ShopifyNode
 {
     protected $company;
     protected $createdAt;
@@ -26,108 +31,132 @@ class ShopifyCompanyContact
 
     
     /**
+     * The company to which the contact belongs.
+     *
      * @return ShopifyCompany
      */
-    public function getCompany()
+    public function getCompany(): ?ShopifyCompany
     {
         return $this->company;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company contact was created at Shopify.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The customer associated to this contact.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * The list of draft orders for the company contact.
+     *
      * @return ShopifyDraftOrderConnection
      */
-    public function getDraftOrders()
+    public function getDraftOrders(): ?ShopifyDraftOrderConnection
     {
         return $this->draftOrders;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the contact is the main contact of the company.
+     *
      * @return bool
      */
-    public function getIsMainContact()
+    public function getIsMainContact(): ?bool
     {
         return $this->isMainContact;
     }
 
     
     /**
+     * The lifetime duration of the company contact, since its creation date on Shopify. Examples: `1 year`, `2 months`, `3 days`.
+     *
      * @return string
      */
-    public function getLifetimeDuration()
+    public function getLifetimeDuration(): ?string
     {
         return $this->lifetimeDuration;
     }
 
     
     /**
+     * The company contact's locale (language).
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The list of orders for the company contact.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * The list of roles assigned to this company contact.
+     *
      * @return ShopifyCompanyContactRoleAssignmentConnection
      */
-    public function getRoleAssignments()
+    public function getRoleAssignments(): ?ShopifyCompanyContactRoleAssignmentConnection
     {
         return $this->roleAssignments;
     }
 
     
     /**
+     * The company contact's job title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company contact was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

@@ -4,6 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrderRiskAssessment;
 
+/**
+ * Summary of risk characteristics for an order.
+ *
+ * See the [example query "Retrieve order risk assessments"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=retrieve-order-risk-assessments).
+ */
 class ShopifyOrderRiskSummary
 {
     protected $assessments;
@@ -11,18 +16,22 @@ class ShopifyOrderRiskSummary
 
     
     /**
+     * The risk assessments for the order.
+     *
      * @return ShopifyOrderRiskAssessment[]
      */
-    public function getAssessments()
+    public function getAssessments(): ?array
     {
         return $this->assessments;
     }
 
     
     /**
-     * @return ShopifyOrderRiskRecommendationResultEnumObject
+     * The recommended action for the order based on its risk assessments.
+     *
+     * @return string A ShopifyOrderRiskRecommendationResultEnumObject value
      */
-    public function getRecommendation()
+    public function getRecommendation(): ?string
     {
         return $this->recommendation;
     }

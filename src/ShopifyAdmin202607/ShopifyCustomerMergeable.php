@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCustomerMergeRequest;
 
+/**
+ * An object that represents whether a customer can be merged with another customer.
+ */
 class ShopifyCustomerMergeable
 {
     protected $errorFields;
@@ -13,36 +16,44 @@ class ShopifyCustomerMergeable
 
     
     /**
-     * @return ShopifyCustomerMergeErrorFieldTypeEnumObject[]
+     * The list of fields preventing the customer from being merged.
+     *
+     * @return string[] ShopifyCustomerMergeErrorFieldTypeEnumObject values
      */
-    public function getErrorFields()
+    public function getErrorFields(): ?array
     {
         return $this->errorFields;
     }
 
     
     /**
+     * Whether the customer can be merged with another customer.
+     *
      * @return bool
      */
-    public function getIsMergeable()
+    public function getIsMergeable(): ?bool
     {
         return $this->isMergeable;
     }
 
     
     /**
+     * The merge request if one is currently in progress.
+     *
      * @return ShopifyCustomerMergeRequest
      */
-    public function getMergeInProgress()
+    public function getMergeInProgress(): ?ShopifyCustomerMergeRequest
     {
         return $this->mergeInProgress;
     }
 
     
     /**
+     * The reason why the customer can't be merged with another customer.
+     *
      * @return string
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }

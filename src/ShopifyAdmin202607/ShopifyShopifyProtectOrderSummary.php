@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyShopifyProtectOrderEligibility;
 
+/**
+ * A summary of Shopify Protect details for an order.
+ */
 class ShopifyShopifyProtectOrderSummary
 {
     protected $eligibility;
@@ -11,18 +14,22 @@ class ShopifyShopifyProtectOrderSummary
 
     
     /**
+     * The eligibility details of an order's protection against fraudulent chargebacks.
+     *
      * @return ShopifyShopifyProtectOrderEligibility
      */
-    public function getEligibility()
+    public function getEligibility(): ?ShopifyShopifyProtectOrderEligibility
     {
         return $this->eligibility;
     }
 
     
     /**
-     * @return ShopifyShopifyProtectStatusEnumObject
+     * The status of the order's protection against fraudulent chargebacks.
+     *
+     * @return string A ShopifyShopifyProtectStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

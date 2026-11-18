@@ -4,8 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderPlatformDiscountAllocationTarget;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDraftOrderPlatformDiscountAllocationTargetHydrator;
 
+/**
+ * Price reduction allocations across the draft order's lines.
+ */
 class ShopifyDraftOrderPlatformDiscountAllocation
 {
     protected $id;
@@ -16,45 +19,55 @@ class ShopifyDraftOrderPlatformDiscountAllocation
 
     
     /**
+     * The ID of the allocation.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The quantity of the target being discounted.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Amount of the discount allocated to the target.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getReductionAmount()
+    public function getReductionAmount(): ?ShopifyMoneyV2
     {
         return $this->reductionAmount;
     }
 
     
     /**
+     * Amount of the discount allocated to the target in both shop currency and presentment currency.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getReductionAmountSet()
+    public function getReductionAmountSet(): ?ShopifyMoneyBag
     {
         return $this->reductionAmountSet;
     }
 
     
     /**
-     * @return ShopifyDraftOrderPlatformDiscountAllocationTarget
+     * The element of the draft being discounted.
+     *
+     * @return ShopifyCalculatedDraftOrderLineItem|ShopifyDraftOrderLineItem|ShopifyShippingLine
      */
-    public function getTarget()
+    public function getTarget(): ShopifyCalculatedDraftOrderLineItem|ShopifyDraftOrderLineItem|ShopifyShippingLine|null
     {
         return $this->target;
     }
@@ -79,7 +92,7 @@ class ShopifyDraftOrderPlatformDiscountAllocation
                 $instance->reductionAmountSet = ShopifyMoneyBag::fromArray($data['reductionAmountSet']);
             }
             if (isset($data['target']) && $data['target'] !== null) {
-                $instance->target = ShopifyDraftOrderPlatformDiscountAllocationTarget::fromArray($data['target']);
+                $instance->target = ShopifyDraftOrderPlatformDiscountAllocationTargetHydrator::fromArray($data['target']);
             }
             return $instance;
         }
@@ -117,7 +130,7 @@ class ShopifyDraftOrderPlatformDiscountAllocation
                 $data['reductionAmountSet'] = $this->reductionAmountSet->asArray();
             }
             if ($this->target !== null) {
-                $data['target'] = $this->target->asArray();
+                $data['target'] = ShopifyDraftOrderPlatformDiscountAllocationTargetHydrator::toArray($this->target);
             }
             return $data;
         }

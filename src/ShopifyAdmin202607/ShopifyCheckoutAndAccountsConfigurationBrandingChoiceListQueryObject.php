@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The choice list customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingChoiceList";
 
-    public function selectGroup(ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroupArgumentsObject $argsObject = null)
+    /**
+     * The 'group' variant of ChoiceList.
+     */
+    public function selectGroup(?ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroupArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroupQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingChoiceListGroupQueryObject("group");
         if ($argsObject !== null) {

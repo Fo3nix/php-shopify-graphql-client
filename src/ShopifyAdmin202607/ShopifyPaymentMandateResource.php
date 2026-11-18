@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * A payment mandate with resource information, representing the permission
+ * the owner of the payment instrument gives to the merchant to debit it
+ * for specific resources (e.g., Order, Subscriptions).
+ */
 class ShopifyPaymentMandateResource
 {
     protected $id;
@@ -10,27 +15,33 @@ class ShopifyPaymentMandateResource
 
     
     /**
+     * The unique ID of the payment mandate. Matches the corresponding `CustomerPaymentMethod.id` token, so partners can identify which payment method to use for a given mandate scope (e.g., SUBSCRIPTIONS).
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The ID of the resource that this payment method was created for.
+     *
      * @return string
      */
-    public function getResourceId()
+    public function getResourceId(): ?string
     {
         return $this->resourceId;
     }
 
     
     /**
-     * @return ShopifyMandateResourceTypeEnumObject
+     * The resource type that this payment method was created for (e.g., Order, Subscriptions).
+     *
+     * @return string A ShopifyMandateResourceTypeEnumObject value
      */
-    public function getResourceType()
+    public function getResourceType(): ?string
     {
         return $this->resourceType;
     }

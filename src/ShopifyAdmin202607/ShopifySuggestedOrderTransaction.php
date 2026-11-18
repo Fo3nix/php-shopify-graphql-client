@@ -4,8 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyOrderTransaction;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentDetails;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyPaymentDetailsHydrator;
 
+/**
+ * A suggested transaction. Suggested transaction are usually used in the context of refunds
+ * and exchanges.
+ */
 class ShopifySuggestedOrderTransaction
 {
     protected $accountNumber;
@@ -21,90 +25,110 @@ class ShopifySuggestedOrderTransaction
 
     
     /**
+     * The masked account number associated with the payment method.
+     *
      * @return string
      */
-    public function getAccountNumber()
+    public function getAccountNumber(): ?string
     {
         return $this->accountNumber;
     }
 
     
     /**
+     * The amount of the transaction.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
+     * The amount and currency of the suggested order transaction in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The human-readable payment gateway name suggested to process the transaction.
+     *
      * @return string
      */
-    public function getFormattedGateway()
+    public function getFormattedGateway(): ?string
     {
         return $this->formattedGateway;
     }
 
     
     /**
+     * The suggested payment gateway used to process the transaction.
+     *
      * @return string
      */
-    public function getGateway()
+    public function getGateway(): ?string
     {
         return $this->gateway;
     }
 
     
     /**
-     * @return ShopifySuggestedOrderTransactionKindEnumObject
+     * Specifies the kind of the suggested order transaction.
+     *
+     * @return string A ShopifySuggestedOrderTransactionKindEnumObject value
      */
-    public function getKind()
+    public function getKind(): ?string
     {
         return $this->kind;
     }
 
     
     /**
+     * Specifies the available amount to refund on the gateway. Only available within SuggestedRefund.
+     *
      * @return string
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): mixed
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * Specifies the available amount to refund on the gateway in shop and presentment currencies. Only available within SuggestedRefund.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getMaximumRefundableSet()
+    public function getMaximumRefundableSet(): ?ShopifyMoneyBag
     {
         return $this->maximumRefundableSet;
     }
 
     
     /**
+     * The associated parent transaction, for example the authorization of a capture.
+     *
      * @return ShopifyOrderTransaction
      */
-    public function getParentTransaction()
+    public function getParentTransaction(): ?ShopifyOrderTransaction
     {
         return $this->parentTransaction;
     }
 
     
     /**
-     * @return ShopifyPaymentDetails
+     * The associated payment details related to the transaction.
+     *
+     * @return ShopifyCardPaymentDetails|ShopifyLocalPaymentMethodsPaymentDetails|ShopifyPaypalWalletPaymentDetails|ShopifyShopPayInstallmentsPaymentDetails
      */
-    public function getPaymentDetails()
+    public function getPaymentDetails(): ShopifyCardPaymentDetails|ShopifyLocalPaymentMethodsPaymentDetails|ShopifyPaypalWalletPaymentDetails|ShopifyShopPayInstallmentsPaymentDetails|null
     {
         return $this->paymentDetails;
     }
@@ -144,7 +168,7 @@ class ShopifySuggestedOrderTransaction
                 $instance->parentTransaction = ShopifyOrderTransaction::fromArray($data['parentTransaction']);
             }
             if (isset($data['paymentDetails']) && $data['paymentDetails'] !== null) {
-                $instance->paymentDetails = ShopifyPaymentDetails::fromArray($data['paymentDetails']);
+                $instance->paymentDetails = ShopifyPaymentDetailsHydrator::fromArray($data['paymentDetails']);
             }
             return $instance;
         }
@@ -197,7 +221,7 @@ class ShopifySuggestedOrderTransaction
                 $data['parentTransaction'] = $this->parentTransaction->asArray();
             }
             if ($this->paymentDetails !== null) {
-                $data['paymentDetails'] = $this->paymentDetails->asArray();
+                $data['paymentDetails'] = ShopifyPaymentDetailsHydrator::toArray($this->paymentDetails);
             }
             return $data;
         }

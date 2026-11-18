@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMetaobjectFieldCapabilityAdminFilterable;
 
+/**
+ * Capabilities available for a metaobject field definition.
+ */
 class ShopifyMetaobjectFieldDefinitionCapabilities
 {
     protected $adminFilterable;
 
     
     /**
+     * Indicate whether a metaobject field definition is configured for filtering.
+     *
      * @return ShopifyMetaobjectFieldCapabilityAdminFilterable
      */
-    public function getAdminFilterable()
+    public function getAdminFilterable(): ?ShopifyMetaobjectFieldCapabilityAdminFilterable
     {
         return $this->adminFilterable;
     }

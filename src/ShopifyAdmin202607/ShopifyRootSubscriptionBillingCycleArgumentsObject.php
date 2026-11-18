@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootSubscriptionBillingCycleArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["billingCycleInput"];
+
     protected $billingCycleInput;
 
-    public function setBillingCycleInput(ShopifySubscriptionBillingCycleInputInputObject $shopifySubscriptionBillingCycleInputInputObject)
+    /**
+     * Input object used to select and use billing cycles.
+     */
+    public function setBillingCycleInput(ShopifySubscriptionBillingCycleInputInputObject $shopifySubscriptionBillingCycleInputInputObject): static
     {
         $this->billingCycleInput = $shopifySubscriptionBillingCycleInputInputObject;
 

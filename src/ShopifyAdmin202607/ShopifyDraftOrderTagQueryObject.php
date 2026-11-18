@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a draft order tag.
+ */
 class ShopifyDraftOrderTagQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderTag";
 
-    public function selectHandle()
+    /**
+     * Handle of draft order tag.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * ID of draft order tag.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * Title of draft order tag.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

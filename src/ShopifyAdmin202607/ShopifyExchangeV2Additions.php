@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyExchangeV2LineItem;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyTaxLine;
 
+/**
+ * New items associated to the exchange.
+ */
 class ShopifyExchangeV2Additions
 {
     protected $lineItems;
@@ -15,36 +18,44 @@ class ShopifyExchangeV2Additions
 
     
     /**
+     * The list of new items for the exchange.
+     *
      * @return ShopifyExchangeV2LineItem[]
      */
-    public function getLineItems()
+    public function getLineItems(): ?array
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The subtotal of the items being added, including discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalPriceSet()
+    public function getSubtotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalPriceSet;
     }
 
     
     /**
+     * The summary of all taxes of the items being added.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * The total price of the items being added, including discounts and taxes.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalPriceSet()
+    public function getTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalPriceSet;
     }

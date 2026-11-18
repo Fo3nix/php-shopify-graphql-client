@@ -6,9 +6,15 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyProductVariantsInCollectionCountArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["collectionId"];
+
     protected $collectionId;
 
-    public function setCollectionId($collectionId)
+    /**
+     * The ID of the collection to filter variants by.
+     * For example, `collectionId: "gid://shopify/Collection/123"`.
+     */
+    public function setCollectionId($collectionId): static
     {
         $this->collectionId = $collectionId;
 

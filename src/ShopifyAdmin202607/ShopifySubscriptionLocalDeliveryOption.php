@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
 
+/**
+ * A local delivery option for a subscription contract.
+ */
 class ShopifySubscriptionLocalDeliveryOption
 {
     protected $code;
@@ -15,54 +18,66 @@ class ShopifySubscriptionLocalDeliveryOption
 
     
     /**
+     * The code of the local delivery option.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The description of the local delivery option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * Whether a phone number is required for the local delivery option.
+     *
      * @return bool
      */
-    public function getPhoneRequired()
+    public function getPhoneRequired(): ?bool
     {
         return $this->phoneRequired;
     }
 
     
     /**
+     * The presentment title of the local delivery option.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The price of the local delivery option.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * The title of the local delivery option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

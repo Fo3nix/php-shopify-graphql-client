@@ -2,25 +2,32 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-class ShopifyUserError
+/**
+ * An error in the input of a mutation. Mutations return `UserError` objects to indicate validation failures, such as invalid field values or business logic violations, that prevent the operation from completing.
+ */
+class ShopifyUserError implements ShopifyDisplayableError
 {
     protected $field;
     protected $message;
 
     
     /**
+     * The path to the input field that caused the error.
+     *
      * @return string[]
      */
-    public function getField()
+    public function getField(): ?array
     {
         return $this->field;
     }
 
     
     /**
+     * The error message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

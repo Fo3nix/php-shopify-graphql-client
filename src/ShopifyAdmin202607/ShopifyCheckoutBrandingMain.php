@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingContainerDivider;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutBrandingMainSection;
 
+/**
+ * The main container customizations.
+ */
 class ShopifyCheckoutBrandingMain
 {
     protected $backgroundImage;
@@ -15,36 +18,44 @@ class ShopifyCheckoutBrandingMain
 
     
     /**
+     * The background image of the main container.
+     *
      * @return ShopifyCheckoutBrandingImage
      */
-    public function getBackgroundImage()
+    public function getBackgroundImage(): ?ShopifyCheckoutBrandingImage
     {
         return $this->backgroundImage;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSchemeSelectionEnumObject
+     * The selected color scheme of the main container.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSchemeSelectionEnumObject value
      */
-    public function getColorScheme()
+    public function getColorScheme(): ?string
     {
         return $this->colorScheme;
     }
 
     
     /**
+     * The main container's divider style and visibility.
+     *
      * @return ShopifyCheckoutBrandingContainerDivider
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutBrandingContainerDivider
     {
         return $this->divider;
     }
 
     
     /**
+     * The settings for the main sections.
+     *
      * @return ShopifyCheckoutBrandingMainSection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutBrandingMainSection
     {
         return $this->section;
     }

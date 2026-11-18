@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCompanyLocationStaffMemberAssignment;
 
+/**
+ * An auto-generated type which holds one CompanyLocationStaffMemberAssignment and a cursor during pagination.
+ */
 class ShopifyCompanyLocationStaffMemberAssignmentEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyCompanyLocationStaffMemberAssignmentEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of CompanyLocationStaffMemberAssignmentEdge.
+     *
      * @return ShopifyCompanyLocationStaffMemberAssignment
      */
-    public function getNode()
+    public function getNode(): ?ShopifyCompanyLocationStaffMemberAssignment
     {
         return $this->node;
     }

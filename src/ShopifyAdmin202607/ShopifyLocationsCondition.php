@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyLocationConnection;
 
+/**
+ * A condition checking the location that the visitor is shopping from.
+ */
 class ShopifyLocationsCondition
 {
     protected $applicationLevel;
@@ -11,18 +14,22 @@ class ShopifyLocationsCondition
 
     
     /**
-     * @return ShopifyMarketConditionApplicationTypeEnumObject
+     * The application level for the condition.
+     *
+     * @return string A ShopifyMarketConditionApplicationTypeEnumObject value
      */
-    public function getApplicationLevel()
+    public function getApplicationLevel(): ?string
     {
         return $this->applicationLevel;
     }
 
     
     /**
+     * The locations that comprise the market.
+     *
      * @return ShopifyLocationConnection
      */
-    public function getLocations()
+    public function getLocations(): ?ShopifyLocationConnection
     {
         return $this->locations;
     }

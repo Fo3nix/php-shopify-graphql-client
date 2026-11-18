@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-class ShopifyProductTaxonomyNode
+/**
+ * Represents a [Shopify product taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17) node.
+ */
+class ShopifyProductTaxonomyNode implements ShopifyNode
 {
     protected $fullName;
     protected $id;
@@ -12,45 +15,55 @@ class ShopifyProductTaxonomyNode
 
     
     /**
+     * The full name of the product taxonomy node. For example,  Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds.
+     *
      * @return string
      */
-    public function getFullName()
+    public function getFullName(): ?string
     {
         return $this->fullName;
     }
 
     
     /**
+     * The ID of the product taxonomy node.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the node is a leaf node.
+     *
      * @return bool
      */
-    public function getIsLeaf()
+    public function getIsLeaf(): ?bool
     {
         return $this->isLeaf;
     }
 
     
     /**
+     * Whether the node is a root node.
+     *
      * @return bool
      */
-    public function getIsRoot()
+    public function getIsRoot(): ?bool
     {
         return $this->isRoot;
     }
 
     
     /**
+     * The name of the product taxonomy node. For example, Dog Beds.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

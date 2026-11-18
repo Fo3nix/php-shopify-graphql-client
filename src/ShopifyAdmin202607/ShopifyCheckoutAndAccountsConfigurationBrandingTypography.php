@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingFontGroup;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCheckoutAndAccountsConfigurationBrandingFontSize;
 
+/**
+ * The typography customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingTypography
 {
     protected $primary;
@@ -13,27 +16,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypography
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingFontGroup
+     * The font group used for most components such as text, buttons and form controls.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup|ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup
      */
-    public function getPrimary()
+    public function getPrimary(): ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup|ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup|null
     {
         return $this->primary;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingFontGroup
+     * The font group used for heading components by default.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup|ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup
      */
-    public function getSecondary()
+    public function getSecondary(): ShopifyCheckoutAndAccountsConfigurationBrandingCustomFontGroup|ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFontGroup|null
     {
         return $this->secondary;
     }
 
     
     /**
+     * The font size (base size in pixels and scaling between different sizes).
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingFontSize
      */
-    public function getSize()
+    public function getSize(): ?ShopifyCheckoutAndAccountsConfigurationBrandingFontSize
     {
         return $this->size;
     }
@@ -46,10 +55,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypography
         {
             $instance = new self();
             if (isset($data['primary']) && $data['primary'] !== null) {
-                $instance->primary = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroup::fromArray($data['primary']);
+                $instance->primary = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupHydrator::fromArray($data['primary']);
             }
             if (isset($data['secondary']) && $data['secondary'] !== null) {
-                $instance->secondary = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroup::fromArray($data['secondary']);
+                $instance->secondary = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupHydrator::fromArray($data['secondary']);
             }
             if (isset($data['size']) && $data['size'] !== null) {
                 $instance->size = ShopifyCheckoutAndAccountsConfigurationBrandingFontSize::fromArray($data['size']);
@@ -78,10 +87,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingTypography
         {
             $data = [];
             if ($this->primary !== null) {
-                $data['primary'] = $this->primary->asArray();
+                $data['primary'] = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupHydrator::toArray($this->primary);
             }
             if ($this->secondary !== null) {
-                $data['secondary'] = $this->secondary->asArray();
+                $data['secondary'] = ShopifyCheckoutAndAccountsConfigurationBrandingFontGroupHydrator::toArray($this->secondary);
             }
             if ($this->size !== null) {
                 $data['size'] = $this->size->asArray();

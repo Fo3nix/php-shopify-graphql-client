@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A location for in-store pickup.
+ */
 class ShopifyPickupInStoreLocationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PickupInStoreLocation";
 
-    public function selectCode()
+    /**
+     * The code of the pickup location.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDistanceFromBuyer(ShopifyPickupInStoreLocationDistanceFromBuyerArgumentsObject $argsObject = null)
+    /**
+     * Distance from the buyer to the pickup location.
+     */
+    public function selectDistanceFromBuyer(?ShopifyPickupInStoreLocationDistanceFromBuyerArgumentsObject $argsObject = null): ShopifyDistanceQueryObject
     {
         $object = new ShopifyDistanceQueryObject("distanceFromBuyer");
         if ($argsObject !== null) {
@@ -26,35 +35,50 @@ class ShopifyPickupInStoreLocationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectHandle()
+    /**
+     * A unique identifier for this pickup location.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectInstructions()
+    /**
+     * Pickup instructions.
+     */
+    public function selectInstructions(): static
     {
         $this->selectField("instructions");
 
         return $this;
     }
 
-    public function selectLocationId()
+    /**
+     * The location ID of the pickup location.
+     */
+    public function selectLocationId(): static
     {
         $this->selectField("locationId");
 
         return $this;
     }
 
-    public function selectSource()
+    /**
+     * The source of the pickup location.
+     */
+    public function selectSource(): static
     {
         $this->selectField("source");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * Title of the pickup location.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one DraftOrder and a cursor during pagination.
+ */
 class ShopifyDraftOrderEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DraftOrderEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyDraftOrderEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of DraftOrderEdge.
+     */
+    public function selectNode(?ShopifyDraftOrderEdgeNodeArgumentsObject $argsObject = null): ShopifyDraftOrderQueryObject
     {
         $object = new ShopifyDraftOrderQueryObject("node");
         if ($argsObject !== null) {

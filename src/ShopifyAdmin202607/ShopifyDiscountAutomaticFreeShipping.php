@@ -3,12 +3,33 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountCombinesWith;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountContext;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountContextHydrator;
 use Carbon\Carbon;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountShippingDestinationSelection;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountShippingDestinationSelectionHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMoneyV2;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountMinimumRequirement;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountMinimumRequirementHydrator;
 
+/**
+ * The `DiscountAutomaticFreeShipping` object lets you manage
+ * [free shipping discounts](https://help.shopify.com/manual/discounts/discount-types/free-shipping)
+ * that are automatically applied on a cart and at checkout. Free shipping discounts are promotional deals that
+ * merchants offer to customers to waive shipping costs and encourage online purchases.
+ *
+ * The `DiscountAutomaticFreeShipping` object stores information about automatic free shipping discounts that apply to
+ * specific [products and variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountProducts),
+ * [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCollections),
+ * or [all items in a cart](https://shopify.dev/docs/api/admin-graphql/latest/objects/AllDiscountItems).
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including limitations and considerations.
+ *
+ * > Note:
+ * > The [`DiscountCodeFreeShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCodeFreeShipping)
+ * object has similar functionality to the `DiscountAutomaticFreeShipping` object, but customers need to enter a code to
+ * receive a discount.
+ * >
+ * > API versions prior to `2025-10` only return automatic discounts with `context` set to `all`, discounts with other values are filtered out.
+ */
 class ShopifyDiscountAutomaticFreeShipping
 {
     protected $appliesOnOneTimePurchase;
@@ -36,198 +57,275 @@ class ShopifyDiscountAutomaticFreeShipping
 
     
     /**
+     * Whether the discount applies on one-time purchases.
+     * A one-time purchase is a transaction where you pay a
+     * single time for a product, without any ongoing
+     * commitments or recurring charges.
+     *
      * @return bool
      */
-    public function getAppliesOnOneTimePurchase()
+    public function getAppliesOnOneTimePurchase(): ?bool
     {
         return $this->appliesOnOneTimePurchase;
     }
 
     
     /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     *
      * @return bool
      */
-    public function getAppliesOnSubscription()
+    public function getAppliesOnSubscription(): ?bool
     {
         return $this->appliesOnSubscription;
     }
 
     
     /**
+     * The number of times that the discount has been used.
+     * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+     * is automatically applied in 200 transactions, then the
+     * discount has been used 200 times.
+     * This value is updated asynchronously. As a result,
+     * it might be lower than the actual usage count until the
+     * asynchronous process is completed.
+     *
      * @return int
      */
-    public function getAsyncUsageCount()
+    public function getAsyncUsageCount(): ?int
     {
         return $this->asyncUsageCount;
     }
 
     
     /**
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
+     *
      * @return ShopifyDiscountCombinesWith
      */
-    public function getCombinesWith()
+    public function getCombinesWith(): ?ShopifyDiscountCombinesWith
     {
         return $this->combinesWith;
     }
 
     
     /**
-     * @return ShopifyDiscountContext
+     * The context defining which buyers can use the discount.
+     *
+     * @return ShopifyDiscountBuyerSelectionAll|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomers|ShopifyDiscountMarkets
      */
-    public function getContext()
+    public function getContext(): ShopifyDiscountBuyerSelectionAll|ShopifyDiscountCustomerSegments|ShopifyDiscountCustomers|ShopifyDiscountMarkets|null
     {
         return $this->context;
     }
 
     
     /**
+     * The date and time when the discount was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyDiscountShippingDestinationSelection
+     * The countries that qualify for the discount.
+     * You can define
+     * [a list of countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountries)
+     * or specify [all countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountryAll)
+     * to be eligible for the discount.
+     *
+     * @return ShopifyDiscountCountries|ShopifyDiscountCountryAll
      */
-    public function getDestinationSelection()
+    public function getDestinationSelection(): ShopifyDiscountCountries|ShopifyDiscountCountryAll|null
     {
         return $this->destinationSelection;
     }
 
     
     /**
-     * @return ShopifyShippingDiscountClassEnumObject
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
+     *
+     * @return string A ShopifyShippingDiscountClassEnumObject value
      */
-    public function getDiscountClass()
+    public function getDiscountClass(): ?string
     {
         return $this->discountClass;
     }
 
     
     /**
-     * @return ShopifyDiscountClassEnumObject[]
+     * The classes of the discount.
+     *
+     * @return string[] ShopifyDiscountClassEnumObject values
      */
-    public function getDiscountClasses()
+    public function getDiscountClasses(): ?array
     {
         return $this->discountClasses;
     }
 
     
     /**
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
+     *
      * @return Carbon
      */
-    public function getEndsAt()
+    public function getEndsAt(): ?Carbon
     {
         return $this->endsAt;
     }
 
     
     /**
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
+     *
      * @return bool
      */
-    public function getHasTimelineComment()
+    public function getHasTimelineComment(): ?bool
     {
         return $this->hasTimelineComment;
     }
 
     
     /**
+     * The maximum shipping price amount accepted to qualify for the discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMaximumShippingPrice()
+    public function getMaximumShippingPrice(): ?ShopifyMoneyV2
     {
         return $this->maximumShippingPrice;
     }
 
     
     /**
-     * @return ShopifyDiscountMinimumRequirement
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
+     *
+     * @return ShopifyDiscountMinimumQuantity|ShopifyDiscountMinimumSubtotal
      */
-    public function getMinimumRequirement()
+    public function getMinimumRequirement(): ShopifyDiscountMinimumQuantity|ShopifyDiscountMinimumSubtotal|null
     {
         return $this->minimumRequirement;
     }
 
     
     /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     *
      * @return int
      */
-    public function getRecurringCycleLimit()
+    public function getRecurringCycleLimit(): ?int
     {
         return $this->recurringCycleLimit;
     }
 
     
     /**
+     * An abbreviated version of the discount
+     * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticFreeShipping#field-summary)
+     * field.
+     *
      * @return string
      */
-    public function getShortSummary()
+    public function getShortSummary(): ?string
     {
         return $this->shortSummary;
     }
 
     
     /**
+     * The date and time when the discount becomes active and is available to customers.
+     *
      * @return Carbon
      */
-    public function getStartsAt()
+    public function getStartsAt(): ?Carbon
     {
         return $this->startsAt;
     }
 
     
     /**
-     * @return ShopifyDiscountStatusEnumObject
+     * The status of the discount that describes its availability,
+     * expiration, or pending activation.
+     *
+     * @return string A ShopifyDiscountStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * A detailed explanation of what the discount is,
+     * who can use it, when and where it applies, and any associated
+     * rules or limitations.
+     *
      * @return string
      */
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
     
     /**
+     * A list of searchable keywords that are associated with the discount.
+     * For example, a merchant might apply the `loyalty` tag to discounts
+     * that are associated with their loyalty program.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     
     /**
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total sales from orders where the discount was used.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalSales()
+    public function getTotalSales(): ?ShopifyMoneyV2
     {
         return $this->totalSales;
     }
 
     
     /**
+     * The date and time when the discount was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
@@ -252,13 +350,13 @@ class ShopifyDiscountAutomaticFreeShipping
                 $instance->combinesWith = ShopifyDiscountCombinesWith::fromArray($data['combinesWith']);
             }
             if (isset($data['context']) && $data['context'] !== null) {
-                $instance->context = ShopifyDiscountContext::fromArray($data['context']);
+                $instance->context = ShopifyDiscountContextHydrator::fromArray($data['context']);
             }
             if (isset($data['createdAt']) && $data['createdAt'] !== null) {
                 $instance->createdAt = new Carbon($data['createdAt']);
             }
             if (isset($data['destinationSelection']) && $data['destinationSelection'] !== null) {
-                $instance->destinationSelection = ShopifyDiscountShippingDestinationSelection::fromArray($data['destinationSelection']);
+                $instance->destinationSelection = ShopifyDiscountShippingDestinationSelectionHydrator::fromArray($data['destinationSelection']);
             }
             if (isset($data['discountClass']) && $data['discountClass'] !== null) {
                 $instance->discountClass = $data['discountClass'];
@@ -276,7 +374,7 @@ class ShopifyDiscountAutomaticFreeShipping
                 $instance->maximumShippingPrice = ShopifyMoneyV2::fromArray($data['maximumShippingPrice']);
             }
             if (isset($data['minimumRequirement']) && $data['minimumRequirement'] !== null) {
-                $instance->minimumRequirement = ShopifyDiscountMinimumRequirement::fromArray($data['minimumRequirement']);
+                $instance->minimumRequirement = ShopifyDiscountMinimumRequirementHydrator::fromArray($data['minimumRequirement']);
             }
             if (isset($data['recurringCycleLimit']) && $data['recurringCycleLimit'] !== null) {
                 $instance->recurringCycleLimit = $data['recurringCycleLimit'];
@@ -341,13 +439,13 @@ class ShopifyDiscountAutomaticFreeShipping
                 $data['combinesWith'] = $this->combinesWith->asArray();
             }
             if ($this->context !== null) {
-                $data['context'] = $this->context->asArray();
+                $data['context'] = ShopifyDiscountContextHydrator::toArray($this->context);
             }
             if ($this->createdAt !== null) {
                 $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->destinationSelection !== null) {
-                $data['destinationSelection'] = $this->destinationSelection->asArray();
+                $data['destinationSelection'] = ShopifyDiscountShippingDestinationSelectionHydrator::toArray($this->destinationSelection);
             }
             if ($this->discountClass !== null) {
                 $data['discountClass'] = $this->discountClass;
@@ -365,7 +463,7 @@ class ShopifyDiscountAutomaticFreeShipping
                 $data['maximumShippingPrice'] = $this->maximumShippingPrice->asArray();
             }
             if ($this->minimumRequirement !== null) {
-                $data['minimumRequirement'] = $this->minimumRequirement->asArray();
+                $data['minimumRequirement'] = ShopifyDiscountMinimumRequirementHydrator::toArray($this->minimumRequirement);
             }
             if ($this->recurringCycleLimit !== null) {
                 $data['recurringCycleLimit'] = $this->recurringCycleLimit;

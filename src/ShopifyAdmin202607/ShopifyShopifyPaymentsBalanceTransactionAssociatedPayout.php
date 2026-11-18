@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The payout associated with a balance transaction.
+ */
 class ShopifyShopifyPaymentsBalanceTransactionAssociatedPayout
 {
     protected $id;
@@ -9,18 +12,22 @@ class ShopifyShopifyPaymentsBalanceTransactionAssociatedPayout
 
     
     /**
+     * The ID of the payout associated with the balance transaction.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsBalanceTransactionPayoutStatusEnumObject
+     * The status of the payout associated with the balance transaction.
+     *
+     * @return string A ShopifyShopifyPaymentsBalanceTransactionPayoutStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

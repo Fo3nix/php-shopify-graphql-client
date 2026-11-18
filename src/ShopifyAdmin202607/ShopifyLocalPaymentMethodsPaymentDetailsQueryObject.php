@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Local payment methods payment details related to a transaction.
+ */
 class ShopifyLocalPaymentMethodsPaymentDetailsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "LocalPaymentMethodsPaymentDetails";
 
-    public function selectPaymentDescriptor()
+    /**
+     * The descriptor by the payment provider. Only available for Amazon Pay and Buy with Prime.
+     */
+    public function selectPaymentDescriptor(): static
     {
         $this->selectField("paymentDescriptor");
 
         return $this;
     }
 
-    public function selectPaymentMethodName()
+    /**
+     * The name of payment method used by the buyer.
+     */
+    public function selectPaymentMethodName(): static
     {
         $this->selectField("paymentMethodName");
 

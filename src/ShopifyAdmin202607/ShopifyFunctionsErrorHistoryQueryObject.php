@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The error history from running a Shopify Function.
+ */
 class ShopifyFunctionsErrorHistoryQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FunctionsErrorHistory";
 
-    public function selectErrorsFirstOccurredAt()
+    /**
+     * The date and time that the first error occurred.
+     */
+    public function selectErrorsFirstOccurredAt(): static
     {
         $this->selectField("errorsFirstOccurredAt");
 
         return $this;
     }
 
-    public function selectFirstOccurredAt()
+    /**
+     * The date and time that the first error occurred.
+     */
+    public function selectFirstOccurredAt(): static
     {
         $this->selectField("firstOccurredAt");
 
         return $this;
     }
 
-    public function selectHasBeenSharedSinceLastError()
+    /**
+     * Whether the merchant has shared all the recent errors with the developer.
+     */
+    public function selectHasBeenSharedSinceLastError(): static
     {
         $this->selectField("hasBeenSharedSinceLastError");
 
         return $this;
     }
 
-    public function selectHasSharedRecentErrors()
+    /**
+     * Whether the merchant has shared all the recent errors with the developer.
+     */
+    public function selectHasSharedRecentErrors(): static
     {
         $this->selectField("hasSharedRecentErrors");
 

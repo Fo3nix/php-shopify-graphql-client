@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootShopPayPaymentRequestReceiptArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["token"];
+
     protected $token;
 
-    public function setToken($token)
+    /**
+     * Unique identifier of the payment request receipt.
+     */
+    public function setToken($token): static
     {
         $this->token = $token;
 

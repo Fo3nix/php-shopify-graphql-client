@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 
+/**
+ * The entitlements for B2B.
+ */
 class ShopifyB2BType
 {
     protected $enabled;
 
     
     /**
+     * Whether B2B is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
