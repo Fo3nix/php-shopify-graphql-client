@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Presents all Shopify Payments specific information related to an order transaction.
+ */
 class ShopifyShopifyPaymentsTransactionSetQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsTransactionSet";
 
-    public function selectExtendedAuthorizationSet(ShopifyShopifyPaymentsTransactionSetExtendedAuthorizationSetArgumentsObject $argsObject = null)
+    /**
+     * Contains all fields related to an extended authorization.
+     */
+    public function selectExtendedAuthorizationSet(?ShopifyShopifyPaymentsTransactionSetExtendedAuthorizationSetArgumentsObject $argsObject = null): ShopifyShopifyPaymentsExtendedAuthorizationQueryObject
     {
         $object = new ShopifyShopifyPaymentsExtendedAuthorizationQueryObject("extendedAuthorizationSet");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopifyPaymentsTransactionSetQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRefundSet(ShopifyShopifyPaymentsTransactionSetRefundSetArgumentsObject $argsObject = null)
+    /**
+     * Contains all fields related to a refund.
+     */
+    public function selectRefundSet(?ShopifyShopifyPaymentsTransactionSetRefundSetArgumentsObject $argsObject = null): ShopifyShopifyPaymentsRefundSetQueryObject
     {
         $object = new ShopifyShopifyPaymentsRefundSetQueryObject("refundSet");
         if ($argsObject !== null) {

@@ -8,7 +8,10 @@ class ShopifyMenuItemsArgumentsObject extends ArgumentsObject
 {
     protected $limit;
 
-    public function setLimit($limit)
+    /**
+     * The number of menu items to be returned.
+     */
+    public function setLimit($limit): static
     {
         $this->limit = $limit;
 

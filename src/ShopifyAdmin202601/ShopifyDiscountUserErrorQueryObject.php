@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An error that occurs during the execution of a discount mutation.
+ */
 class ShopifyDiscountUserErrorQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountUserError";
 
-    public function selectCode()
+    /**
+     * The error code.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectExtraInfo()
+    /**
+     * Extra information about this error.
+     */
+    public function selectExtraInfo(): static
     {
         $this->selectField("extraInfo");
 
         return $this;
     }
 
-    public function selectField_()
+    /**
+     * The path to the input field that caused the error.
+     */
+    public function selectField_(): static
     {
         $this->selectField("field");
 
         return $this;
     }
 
-    public function selectMessage()
+    /**
+     * The error message.
+     */
+    public function selectMessage(): static
     {
         $this->selectField("message");
 

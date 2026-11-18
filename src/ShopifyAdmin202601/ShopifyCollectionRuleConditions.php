@@ -2,8 +2,23 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCollectionRuleConditionsRuleObject;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCollectionRuleConditionsRuleObjectHydrator;
 
+/**
+ * Defines the available columns and relationships that can be used when creating rules for collections. This provides the schema for building automated collection logic based on product attributes.
+ *
+ * For example, merchants can create rules like "product type equals 'Shirts'" or "vendor contains 'Nike'" using the conditions defined in this object to automatically populate collections.
+ *
+ * Use `CollectionRuleConditions` to:
+ * - Discovering valid field options for collection rule interfaces
+ * - Understanding which conditions are available for automated collections
+ * - Exploring available product attributes for collection automation
+ * - Learning about proper field relationships for rule implementation
+ *
+ * The conditions define which product fields can be used in collection rules and what types of comparisons are allowed for each field.
+ *
+ * Learn more about [collections with conditions](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
+ */
 class ShopifyCollectionRuleConditions
 {
     protected $allowedRelations;
@@ -13,36 +28,44 @@ class ShopifyCollectionRuleConditions
 
     
     /**
-     * @return ShopifyCollectionRuleRelationEnumObject[]
+     * Allowed relations of the rule.
+     *
+     * @return string[] ShopifyCollectionRuleRelationEnumObject values
      */
-    public function getAllowedRelations()
+    public function getAllowedRelations(): ?array
     {
         return $this->allowedRelations;
     }
 
     
     /**
-     * @return ShopifyCollectionRuleRelationEnumObject
+     * Most commonly used relation for this rule.
+     *
+     * @return string A ShopifyCollectionRuleRelationEnumObject value
      */
-    public function getDefaultRelation()
+    public function getDefaultRelation(): ?string
     {
         return $this->defaultRelation;
     }
 
     
     /**
-     * @return ShopifyCollectionRuleConditionsRuleObject
+     * Additional attributes defining the rule.
+     *
+     * @return ShopifyCollectionRuleMetafieldCondition
      */
-    public function getRuleObject()
+    public function getRuleObject(): ?ShopifyCollectionRuleMetafieldCondition
     {
         return $this->ruleObject;
     }
 
     
     /**
-     * @return ShopifyCollectionRuleColumnEnumObject
+     * Type of the rule.
+     *
+     * @return string A ShopifyCollectionRuleColumnEnumObject value
      */
-    public function getRuleType()
+    public function getRuleType(): ?string
     {
         return $this->ruleType;
     }
@@ -61,7 +84,7 @@ class ShopifyCollectionRuleConditions
                 $instance->defaultRelation = $data['defaultRelation'];
             }
             if (isset($data['ruleObject']) && $data['ruleObject'] !== null) {
-                $instance->ruleObject = ShopifyCollectionRuleConditionsRuleObject::fromArray($data['ruleObject']);
+                $instance->ruleObject = ShopifyCollectionRuleConditionsRuleObjectHydrator::fromArray($data['ruleObject']);
             }
             if (isset($data['ruleType']) && $data['ruleType'] !== null) {
                 $instance->ruleType = $data['ruleType'];
@@ -96,7 +119,7 @@ class ShopifyCollectionRuleConditions
                 $data['defaultRelation'] = $this->defaultRelation;
             }
             if ($this->ruleObject !== null) {
-                $data['ruleObject'] = $this->ruleObject->asArray();
+                $data['ruleObject'] = ShopifyCollectionRuleConditionsRuleObjectHydrator::toArray($this->ruleObject);
             }
             if ($this->ruleType !== null) {
                 $data['ruleType'] = $this->ruleType;

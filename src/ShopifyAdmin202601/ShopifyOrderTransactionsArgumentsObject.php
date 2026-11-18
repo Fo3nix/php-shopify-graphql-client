@@ -10,21 +10,31 @@ class ShopifyOrderTransactionsArgumentsObject extends ArgumentsObject
     protected $capturable;
     protected $manuallyResolvable;
 
-    public function setFirst($first)
+    /**
+     * Truncate the array result to this size.
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setCapturable($capturable)
+    /**
+     * Filter transactions by whether they are capturable.
+     */
+    public function setCapturable($capturable): static
     {
         $this->capturable = $capturable;
 
         return $this;
     }
 
-    public function setManuallyResolvable($manuallyResolvable)
+    /**
+     * Filter transactions by whether they can be resolved manually.
+     * For example, fully captured or voided transactions aren't manually resolvable.
+     */
+    public function setManuallyResolvable($manuallyResolvable): static
     {
         $this->manuallyResolvable = $manuallyResolvable;
 

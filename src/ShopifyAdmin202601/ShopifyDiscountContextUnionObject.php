@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The type used to define which buyers can use the discount.
+ */
 class ShopifyDiscountContextUnionObject extends UnionObject
 {
-    public function onShopifyDiscountBuyerSelectionAll()
+    public function onShopifyDiscountBuyerSelectionAll(): ShopifyDiscountBuyerSelectionAllQueryObject
     {
         $object = new ShopifyDiscountBuyerSelectionAllQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyDiscountContextUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountCustomerSegments()
+    public function onShopifyDiscountCustomerSegments(): ShopifyDiscountCustomerSegmentsQueryObject
     {
         $object = new ShopifyDiscountCustomerSegmentsQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyDiscountContextUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountCustomers()
+    public function onShopifyDiscountCustomers(): ShopifyDiscountCustomersQueryObject
     {
         $object = new ShopifyDiscountCustomersQueryObject();
         $this->addPossibleType($object);

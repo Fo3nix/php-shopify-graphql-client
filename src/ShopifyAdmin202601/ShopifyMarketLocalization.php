@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarket;
 use Carbon\Carbon;
 
+/**
+ * The market localization of a field within a resource, which is determined by the market ID.
+ */
 class ShopifyMarketLocalization
 {
     protected $key;
@@ -15,45 +18,55 @@ class ShopifyMarketLocalization
 
     
     /**
+     * A reference to the value being localized on the resource that this market localization belongs to.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The market that the localization is specific to.
+     *
      * @return ShopifyMarket
      */
-    public function getMarket()
+    public function getMarket(): ?ShopifyMarket
     {
         return $this->market;
     }
 
     
     /**
+     * Whether the original content has changed since this market localization was updated.
+     *
      * @return bool
      */
-    public function getOutdated()
+    public function getOutdated(): ?bool
     {
         return $this->outdated;
     }
 
     
     /**
+     * The date and time when the market localization was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The value of the market localization.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

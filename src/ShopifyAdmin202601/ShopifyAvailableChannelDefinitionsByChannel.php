@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyChannelDefinition;
 
+/**
+ * Represents an object containing all information for channels available to a shop.
+ */
 class ShopifyAvailableChannelDefinitionsByChannel
 {
     protected $channelDefinitions;
@@ -11,18 +14,22 @@ class ShopifyAvailableChannelDefinitionsByChannel
 
     
     /**
+     * The channel definitions for channels installed on a shop.
+     *
      * @return ShopifyChannelDefinition[]
      */
-    public function getChannelDefinitions()
+    public function getChannelDefinitions(): ?array
     {
         return $this->channelDefinitions;
     }
 
     
     /**
+     * The name of the channel.
+     *
      * @return string
      */
-    public function getChannelName()
+    public function getChannelName(): ?string
     {
         return $this->channelName;
     }

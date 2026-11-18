@@ -2,25 +2,42 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyWebPixel
+/**
+ * The `WebPixel` object enables you to manage JavaScript code snippets
+ * that run on an online store and collect
+ * [behavioral data](https://shopify.dev/docs/api/web-pixels-api/standard-events)
+ * for marketing campaign optimization and analytics.
+ *
+ * Learn how to create a
+ * [web pixel extension](https://shopify.dev/docs/apps/build/marketing-analytics/build-web-pixels)
+ * to subscribe your app to events that are emitted by Shopify.
+ */
+class ShopifyWebPixel implements ShopifyNode
 {
     protected $id;
     protected $settings;
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The
+     * [settings object](https://shopify.dev/docs/apps/build/marketing-analytics/build-web-pixels#step-2-define-your-web-pixel-settings)
+     * for the web pixel. This object specifies configuration options that control the web pixel's functionality and behavior. You can find the settings for a web pixel in
+     * `extensions/<your_extension_name>/shopify.extension.toml`.
+     *
      * @return string
      */
-    public function getSettings()
+    public function getSettings(): mixed
     {
         return $this->settings;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The list of all the countries from the combined shipping zones for the shop.
+ */
 class ShopifyCountriesInShippingZones
 {
     protected $countryCodes;
@@ -9,18 +12,22 @@ class ShopifyCountriesInShippingZones
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject[]
+     * The list of all the countries from all the combined shipping zones.
+     *
+     * @return string[] ShopifyCountryCodeEnumObject values
      */
-    public function getCountryCodes()
+    public function getCountryCodes(): ?array
     {
         return $this->countryCodes;
     }
 
     
     /**
+     * Whether 'Rest of World' has been defined in any of the shipping zones.
+     *
      * @return bool
      */
-    public function getIncludeRestOfWorld()
+    public function getIncludeRestOfWorld(): ?bool
     {
         return $this->includeRestOfWorld;
     }

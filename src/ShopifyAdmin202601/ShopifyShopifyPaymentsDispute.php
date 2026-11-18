@@ -8,7 +8,10 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyShopifyPaymentsDisputeReasonDetails;
 
-class ShopifyShopifyPaymentsDispute
+/**
+ * A dispute occurs when a buyer questions the legitimacy of a charge with their financial institution.
+ */
+class ShopifyShopifyPaymentsDispute implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $amount;
     protected $disputeEvidence;
@@ -25,108 +28,132 @@ class ShopifyShopifyPaymentsDispute
 
     
     /**
+     * The total amount disputed by the cardholder.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The evidence associated with the dispute.
+     *
      * @return ShopifyShopifyPaymentsDisputeEvidence
      */
-    public function getDisputeEvidence()
+    public function getDisputeEvidence(): ?ShopifyShopifyPaymentsDisputeEvidence
     {
         return $this->disputeEvidence;
     }
 
     
     /**
+     * The deadline for evidence submission.
+     *
      * @return Carbon
      */
-    public function getEvidenceDueBy()
+    public function getEvidenceDueBy(): ?Carbon
     {
         return $this->evidenceDueBy;
     }
 
     
     /**
+     * The date when evidence was sent. Returns null if evidence hasn't yet been sent.
+     *
      * @return Carbon
      */
-    public function getEvidenceSentOn()
+    public function getEvidenceSentOn(): ?Carbon
     {
         return $this->evidenceSentOn;
     }
 
     
     /**
+     * The date when this dispute was resolved. Returns null if the dispute isn't yet resolved.
+     *
      * @return Carbon
      */
-    public function getFinalizedOn()
+    public function getFinalizedOn(): ?Carbon
     {
         return $this->finalizedOn;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The date when this dispute was initiated.
+     *
      * @return Carbon
      */
-    public function getInitiatedAt()
+    public function getInitiatedAt(): ?Carbon
     {
         return $this->initiatedAt;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The order that contains the charge that's under dispute.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The reason of the dispute.
+     *
      * @return ShopifyShopifyPaymentsDisputeReasonDetails
      */
-    public function getReasonDetails()
+    public function getReasonDetails(): ?ShopifyShopifyPaymentsDisputeReasonDetails
     {
         return $this->reasonDetails;
     }
 
     
     /**
-     * @return ShopifyDisputeStatusEnumObject
+     * The current state of the dispute.
+     *
+     * @return string A ShopifyDisputeStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
-     * @return ShopifyDisputeTypeEnumObject
+     * Indicates if this dispute is still in the inquiry phase or has turned into a chargeback.
+     *
+     * @return string A ShopifyDisputeTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }

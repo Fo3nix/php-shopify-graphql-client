@@ -8,7 +8,10 @@ class ShopifySubscriptionDraftDeliveryOptionsArgumentsObject extends ArgumentsOb
 {
     protected $deliveryAddress;
 
-    public function setDeliveryAddress(ShopifyMailingAddressInputInputObject $shopifyMailingAddressInputInputObject)
+    /**
+     * The address to deliver the subscription contract to.
+     */
+    public function setDeliveryAddress(ShopifyMailingAddressInputInputObject $shopifyMailingAddressInputInputObject): static
     {
         $this->deliveryAddress = $shopifyMailingAddressInputInputObject;
 

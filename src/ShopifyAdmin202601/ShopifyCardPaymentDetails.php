@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 
-class ShopifyCardPaymentDetails
+/**
+ * Credit card payment information captured during a transaction. Includes cardholder details, card metadata, verification response codes, and the [`DigitalWallet`](https://shopify.dev/docs/api/admin-graphql/latest/enums/DigitalWallet#valid-values) when used.
+ */
+class ShopifyCardPaymentDetails implements ShopifyBasePaymentDetails
 {
     protected $avsResultCode;
     protected $bin;
@@ -20,99 +23,121 @@ class ShopifyCardPaymentDetails
 
     
     /**
+     * The response code from the address verification system (AVS). The code is always a single letter.
+     *
      * @return string
      */
-    public function getAvsResultCode()
+    public function getAvsResultCode(): ?string
     {
         return $this->avsResultCode;
     }
 
     
     /**
+     * The issuer identification number (IIN), formerly known as bank identification number (BIN) of the customer's credit card. This is made up of the first few digits of the credit card number.
+     *
      * @return string
      */
-    public function getBin()
+    public function getBin(): ?string
     {
         return $this->bin;
     }
 
     
     /**
+     * The name of the company that issued the customer's credit card.
+     *
      * @return string
      */
-    public function getCompany()
+    public function getCompany(): ?string
     {
         return $this->company;
     }
 
     
     /**
+     * The date and time when the card payment details were created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The response code from the credit card company indicating whether the customer entered the card security code, or card verification value, correctly. The code is a single letter or empty string.
+     *
      * @return string
      */
-    public function getCvvResultCode()
+    public function getCvvResultCode(): ?string
     {
         return $this->cvvResultCode;
     }
 
     
     /**
+     * The month in which the used credit card expires.
+     *
      * @return int
      */
-    public function getExpirationMonth()
+    public function getExpirationMonth(): ?int
     {
         return $this->expirationMonth;
     }
 
     
     /**
+     * The year in which the used credit card expires.
+     *
      * @return int
      */
-    public function getExpirationYear()
+    public function getExpirationYear(): ?int
     {
         return $this->expirationYear;
     }
 
     
     /**
+     * The holder of the credit card.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The customer's credit card number, with most of the leading digits redacted.
+     *
      * @return string
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
     
     /**
+     * The name of payment method used by the buyer.
+     *
      * @return string
      */
-    public function getPaymentMethodName()
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }
 
     
     /**
-     * @return ShopifyDigitalWalletEnumObject
+     * Digital wallet used for the payment.
+     *
+     * @return string A ShopifyDigitalWalletEnumObject value
      */
-    public function getWallet()
+    public function getWallet(): ?string
     {
         return $this->wallet;
     }

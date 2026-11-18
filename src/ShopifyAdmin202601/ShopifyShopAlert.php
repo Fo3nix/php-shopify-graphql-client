@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyShopAlertAction;
 
+/**
+ * An alert message that appears in the Shopify admin about a problem with a store setting, with an action to take. For example, you could show an alert to ask the merchant to enter their billing information to activate Shopify Plus.
+ */
 class ShopifyShopAlert
 {
     protected $action;
@@ -11,18 +14,22 @@ class ShopifyShopAlert
 
     
     /**
+     * The text for the button in the alert that links to related information. For example, _Add credit card_.
+     *
      * @return ShopifyShopAlertAction
      */
-    public function getAction()
+    public function getAction(): ?ShopifyShopAlertAction
     {
         return $this->action;
     }
 
     
     /**
+     * A description of the alert and further information, such as whether the merchant will be charged.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }

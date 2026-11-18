@@ -4,60 +4,87 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The order summary sections customizations.
+ */
 class ShopifyCheckoutBrandingOrderSummarySectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingOrderSummarySection";
 
-    public function selectBackground()
+    /**
+     * The background style of the order summary sections.
+     */
+    public function selectBackground(): static
     {
         $this->selectField("background");
 
         return $this;
     }
 
-    public function selectBorder()
+    /**
+     * The border for the order summary sections.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectBorderStyle()
+    /**
+     * The border style of the order summary sections.
+     */
+    public function selectBorderStyle(): static
     {
         $this->selectField("borderStyle");
 
         return $this;
     }
 
-    public function selectBorderWidth()
+    /**
+     * The border width of the order summary sections.
+     */
+    public function selectBorderWidth(): static
     {
         $this->selectField("borderWidth");
 
         return $this;
     }
 
-    public function selectColorScheme()
+    /**
+     * The selected color scheme of the order summary sections.
+     */
+    public function selectColorScheme(): static
     {
         $this->selectField("colorScheme");
 
         return $this;
     }
 
-    public function selectCornerRadius()
+    /**
+     * The corner radius of the order summary sections.
+     */
+    public function selectCornerRadius(): static
     {
         $this->selectField("cornerRadius");
 
         return $this;
     }
 
-    public function selectPadding()
+    /**
+     * The padding of the order summary sections.
+     */
+    public function selectPadding(): static
     {
         $this->selectField("padding");
 
         return $this;
     }
 
-    public function selectShadow()
+    /**
+     * The shadow of the order summary sections.
+     */
+    public function selectShadow(): static
     {
         $this->selectField("shadow");
 

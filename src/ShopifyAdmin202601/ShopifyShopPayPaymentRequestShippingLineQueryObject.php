@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a shipping line for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestShippingLineQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestShippingLine";
 
-    public function selectAmount(ShopifyShopPayPaymentRequestShippingLineAmountArgumentsObject $argsObject = null)
+    /**
+     * The amount for the shipping line.
+     */
+    public function selectAmount(?ShopifyShopPayPaymentRequestShippingLineAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyShopPayPaymentRequestShippingLineQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCode()
+    /**
+     * The code of the shipping line.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectLabel()
+    /**
+     * The label of the shipping line.
+     */
+    public function selectLabel(): static
     {
         $this->selectField("label");
 

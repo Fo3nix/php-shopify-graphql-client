@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLocation;
 
-class ShopifyFulfillmentOrderDestination
+/**
+ * Represents the destination where the items should be sent upon fulfillment.
+ */
+class ShopifyFulfillmentOrderDestination implements ShopifyNode
 {
     protected $address1;
     protected $address2;
@@ -22,117 +25,143 @@ class ShopifyFulfillmentOrderDestination
 
     
     /**
+     * The first line of the address of the destination.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address of the destination.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The city of the destination.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The company of the destination.
+     *
      * @return string
      */
-    public function getCompany()
+    public function getCompany(): ?string
     {
         return $this->company;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The two-letter country code of the destination.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The email of the customer at the destination.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * The first name of the customer at the destination.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The last name of the customer at the destination.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The location designated for the pick-up of the fulfillment order.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The phone number of the customer at the destination.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The province of the destination.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The ZIP code of the destination.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

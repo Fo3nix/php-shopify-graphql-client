@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Merchant approval for accelerated onboarding to channel integration apps.
+ */
 class ShopifyMerchantApprovalSignals
 {
     protected $identityVerified;
@@ -10,27 +13,33 @@ class ShopifyMerchantApprovalSignals
 
     
     /**
+     * Whether the shop's Shopify Payments account identity is verified. Returns `false` if the identity is unverified or if the shop doesn't have a Shopify Payments account.
+     *
      * @return bool
      */
-    public function getIdentityVerified()
+    public function getIdentityVerified(): ?bool
     {
         return $this->identityVerified;
     }
 
     
     /**
+     * Whether Shopify has pre-verified the merchant's business for onboarding to channel integration apps. Returns `false` if the shop isn't marked for verification.
+     *
      * @return bool
      */
-    public function getVerifiedByShopify()
+    public function getVerifiedByShopify(): ?bool
     {
         return $this->verifiedByShopify;
     }
 
     
     /**
+     * Which tier of the Shopify verification was determined for the merchant's business for onboarding to channel integration apps.
+     *
      * @return string
      */
-    public function getVerifiedByShopifyTier()
+    public function getVerifiedByShopifyTier(): ?string
     {
         return $this->verifiedByShopifyTier;
     }

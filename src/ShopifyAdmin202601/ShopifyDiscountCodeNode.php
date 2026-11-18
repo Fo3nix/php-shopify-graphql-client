@@ -2,13 +2,19 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountCode;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountCodeHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyEventConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldDefinitionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldConnection;
 
-class ShopifyDiscountCodeNode
+/**
+ * The `DiscountCodeNode` object enables you to manage [code discounts](https://help.shopify.com/manual/discounts/discount-types#discount-codes) that are applied when customers enter a code at checkout. For example, you can offer discounts where customers have to enter a code to redeem an amount off discount on products, variants, or collections in a store. Or, you can offer discounts where customers have to enter a code to get free shipping. Merchants can create and share discount codes individually with customers.
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including related queries, mutations, limitations, and considerations.
+ */
+class ShopifyDiscountCodeNode implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $codeDiscount;
     protected $events;
@@ -19,54 +25,69 @@ class ShopifyDiscountCodeNode
 
     
     /**
-     * @return ShopifyDiscountCode
+     * The underlying code discount object.
+     *
+     * @return ShopifyDiscountCodeApp|ShopifyDiscountCodeBasic|ShopifyDiscountCodeBxgy|ShopifyDiscountCodeFreeShipping
      */
-    public function getCodeDiscount()
+    public function getCodeDiscount(): ShopifyDiscountCodeApp|ShopifyDiscountCodeBasic|ShopifyDiscountCodeBxgy|ShopifyDiscountCodeFreeShipping|null
     {
         return $this->codeDiscount;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
@@ -79,7 +100,7 @@ class ShopifyDiscountCodeNode
         {
             $instance = new self();
             if (isset($data['codeDiscount']) && $data['codeDiscount'] !== null) {
-                $instance->codeDiscount = ShopifyDiscountCode::fromArray($data['codeDiscount']);
+                $instance->codeDiscount = ShopifyDiscountCodeHydrator::fromArray($data['codeDiscount']);
             }
             if (isset($data['events']) && $data['events'] !== null) {
                 $instance->events = ShopifyEventConnection::fromArray($data['events']);
@@ -120,7 +141,7 @@ class ShopifyDiscountCodeNode
         {
             $data = [];
             if ($this->codeDiscount !== null) {
-                $data['codeDiscount'] = $this->codeDiscount->asArray();
+                $data['codeDiscount'] = ShopifyDiscountCodeHydrator::toArray($this->codeDiscount);
             }
             if ($this->events !== null) {
                 $data['events'] = $this->events->asArray();

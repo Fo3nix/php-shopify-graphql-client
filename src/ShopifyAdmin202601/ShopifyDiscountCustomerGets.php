@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountItems;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountCustomerGetsValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountItemsHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountCustomerGetsValueHydrator;
 
+/**
+ * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
+ */
 class ShopifyDiscountCustomerGets
 {
     protected $appliesOnOneTimePurchase;
@@ -14,36 +17,47 @@ class ShopifyDiscountCustomerGets
 
     
     /**
+     * Whether the discount applies on regular one-time-purchase items.
+     *
      * @return bool
      */
-    public function getAppliesOnOneTimePurchase()
+    public function getAppliesOnOneTimePurchase(): ?bool
     {
         return $this->appliesOnOneTimePurchase;
     }
 
     
     /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     *
      * @return bool
      */
-    public function getAppliesOnSubscription()
+    public function getAppliesOnSubscription(): ?bool
     {
         return $this->appliesOnSubscription;
     }
 
     
     /**
-     * @return ShopifyDiscountItems
+     * The items to which the discount applies.
+     *
+     * @return ShopifyAllDiscountItems|ShopifyDiscountCollections|ShopifyDiscountProducts
      */
-    public function getItems()
+    public function getItems(): ShopifyAllDiscountItems|ShopifyDiscountCollections|ShopifyDiscountProducts|null
     {
         return $this->items;
     }
 
     
     /**
-     * @return ShopifyDiscountCustomerGetsValue
+     * Entitled quantity and the discount value.
+     *
+     * @return ShopifyDiscountAmount|ShopifyDiscountOnQuantity|ShopifyDiscountPercentage
      */
-    public function getValue()
+    public function getValue(): ShopifyDiscountAmount|ShopifyDiscountOnQuantity|ShopifyDiscountPercentage|null
     {
         return $this->value;
     }
@@ -62,10 +76,10 @@ class ShopifyDiscountCustomerGets
                 $instance->appliesOnSubscription = $data['appliesOnSubscription'];
             }
             if (isset($data['items']) && $data['items'] !== null) {
-                $instance->items = ShopifyDiscountItems::fromArray($data['items']);
+                $instance->items = ShopifyDiscountItemsHydrator::fromArray($data['items']);
             }
             if (isset($data['value']) && $data['value'] !== null) {
-                $instance->value = ShopifyDiscountCustomerGetsValue::fromArray($data['value']);
+                $instance->value = ShopifyDiscountCustomerGetsValueHydrator::fromArray($data['value']);
             }
             return $instance;
         }
@@ -97,10 +111,10 @@ class ShopifyDiscountCustomerGets
                 $data['appliesOnSubscription'] = $this->appliesOnSubscription;
             }
             if ($this->items !== null) {
-                $data['items'] = $this->items->asArray();
+                $data['items'] = ShopifyDiscountItemsHydrator::toArray($this->items);
             }
             if ($this->value !== null) {
-                $data['value'] = $this->value->asArray();
+                $data['value'] = ShopifyDiscountCustomerGetsValueHydrator::toArray($this->value);
             }
             return $data;
         }

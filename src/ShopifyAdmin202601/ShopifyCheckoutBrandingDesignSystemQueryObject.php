@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The design system allows you to set values that represent specific attributes
+ * of your brand like color and font. These attributes are used throughout the user
+ * interface. This brings consistency and allows you to easily make broad design changes.
+ */
 class ShopifyCheckoutBrandingDesignSystemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingDesignSystem";
 
-    public function selectColors(ShopifyCheckoutBrandingDesignSystemColorsArgumentsObject $argsObject = null)
+    /**
+     * The color settings for global colors and color schemes.
+     */
+    public function selectColors(?ShopifyCheckoutBrandingDesignSystemColorsArgumentsObject $argsObject = null): ShopifyCheckoutBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -19,7 +27,10 @@ class ShopifyCheckoutBrandingDesignSystemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCornerRadius(ShopifyCheckoutBrandingDesignSystemCornerRadiusArgumentsObject $argsObject = null)
+    /**
+     * The corner radius variables.
+     */
+    public function selectCornerRadius(?ShopifyCheckoutBrandingDesignSystemCornerRadiusArgumentsObject $argsObject = null): ShopifyCheckoutBrandingCornerRadiusVariablesQueryObject
     {
         $object = new ShopifyCheckoutBrandingCornerRadiusVariablesQueryObject("cornerRadius");
         if ($argsObject !== null) {
@@ -30,7 +41,10 @@ class ShopifyCheckoutBrandingDesignSystemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTypography(ShopifyCheckoutBrandingDesignSystemTypographyArgumentsObject $argsObject = null)
+    /**
+     * The typography.
+     */
+    public function selectTypography(?ShopifyCheckoutBrandingDesignSystemTypographyArgumentsObject $argsObject = null): ShopifyCheckoutBrandingTypographyQueryObject
     {
         $object = new ShopifyCheckoutBrandingTypographyQueryObject("typography");
         if ($argsObject !== null) {

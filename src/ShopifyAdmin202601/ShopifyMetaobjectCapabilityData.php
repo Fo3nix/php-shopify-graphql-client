@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetaobjectCapabilityDataOnlineStore;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetaobjectCapabilityDataPublishable;
 
+/**
+ * Provides the capabilities of a metaobject.
+ */
 class ShopifyMetaobjectCapabilityData
 {
     protected $onlineStore;
@@ -12,18 +15,22 @@ class ShopifyMetaobjectCapabilityData
 
     
     /**
+     * The Online Store capability for this metaobject.
+     *
      * @return ShopifyMetaobjectCapabilityDataOnlineStore
      */
-    public function getOnlineStore()
+    public function getOnlineStore(): ?ShopifyMetaobjectCapabilityDataOnlineStore
     {
         return $this->onlineStore;
     }
 
     
     /**
+     * The publishable capability for this metaobject.
+     *
      * @return ShopifyMetaobjectCapabilityDataPublishable
      */
-    public function getPublishable()
+    public function getPublishable(): ?ShopifyMetaobjectCapabilityDataPublishable
     {
         return $this->publishable;
     }

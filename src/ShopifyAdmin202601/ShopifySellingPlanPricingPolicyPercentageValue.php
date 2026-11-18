@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The percentage value of a selling plan pricing policy percentage type.
+ */
 class ShopifySellingPlanPricingPolicyPercentageValue
 {
     protected $percentage;
 
     
     /**
+     * The percentage value.
+     *
      * @return float
      */
-    public function getPercentage()
+    public function getPercentage(): ?float
     {
         return $this->percentage;
     }

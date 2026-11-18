@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents a product duplication job.
+ */
 class ShopifyProductDuplicateJob
 {
     protected $done;
@@ -9,18 +12,22 @@ class ShopifyProductDuplicateJob
 
     
     /**
+     * This indicates if the job is still queued or has been run.
+     *
      * @return bool
      */
-    public function getDone()
+    public function getDone(): ?bool
     {
         return $this->done;
     }
 
     
     /**
+     * A globally-unique ID that's returned when running an asynchronous mutation.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

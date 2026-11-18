@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one FulfillmentOrderMerchantRequest and a cursor during pagination.
+ */
 class ShopifyFulfillmentOrderMerchantRequestEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FulfillmentOrderMerchantRequestEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyFulfillmentOrderMerchantRequestEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of FulfillmentOrderMerchantRequestEdge.
+     */
+    public function selectNode(?ShopifyFulfillmentOrderMerchantRequestEdgeNodeArgumentsObject $argsObject = null): ShopifyFulfillmentOrderMerchantRequestQueryObject
     {
         $object = new ShopifyFulfillmentOrderMerchantRequestQueryObject("node");
         if ($argsObject !== null) {

@@ -9,7 +9,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMediaWarning;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyVideoSource;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMediaPreviewImage;
 
-class ShopifyVideo
+/**
+ * Represents a Shopify hosted video.
+ */
+class ShopifyVideo implements ShopifyFile, ShopifyMedia, ShopifyNode
 {
     protected $alt;
     protected $createdAt;
@@ -29,135 +32,168 @@ class ShopifyVideo
 
     
     /**
+     * A word or phrase to share the nature or contents of a media.
+     *
      * @return string
      */
-    public function getAlt()
+    public function getAlt(): ?string
     {
         return $this->alt;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The video's duration in milliseconds. This value is `null` unless the video's status field is
+     * [READY](https://shopify.dev/api/admin-graphql/latest/enums/MediaStatus#value-ready).
+     *
      * @return int
      */
-    public function getDuration()
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
     
     /**
+     * Any errors that have occurred on the file.
+     *
      * @return ShopifyFileError[]
      */
-    public function getFileErrors()
+    public function getFileErrors(): ?array
     {
         return $this->fileErrors;
     }
 
     
     /**
-     * @return ShopifyFileStatusEnumObject
+     * The status of the file.
+     *
+     * @return string A ShopifyFileStatusEnumObject value
      */
-    public function getFileStatus()
+    public function getFileStatus(): ?string
     {
         return $this->fileStatus;
     }
 
     
     /**
+     * The video's filename.
+     *
      * @return string
      */
-    public function getFilename()
+    public function getFilename(): ?string
     {
         return $this->filename;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyMediaContentTypeEnumObject
+     * The media content type.
+     *
+     * @return string A ShopifyMediaContentTypeEnumObject value
      */
-    public function getMediaContentType()
+    public function getMediaContentType(): ?string
     {
         return $this->mediaContentType;
     }
 
     
     /**
+     * Any errors which have occurred on the media.
+     *
      * @return ShopifyMediaError[]
      */
-    public function getMediaErrors()
+    public function getMediaErrors(): ?array
     {
         return $this->mediaErrors;
     }
 
     
     /**
+     * The warnings attached to the media.
+     *
      * @return ShopifyMediaWarning[]
      */
-    public function getMediaWarnings()
+    public function getMediaWarnings(): ?array
     {
         return $this->mediaWarnings;
     }
 
     
     /**
+     * The video's original source. This value is `null` unless the video's status field is
+     * [READY](https://shopify.dev/api/admin-graphql/latest/enums/MediaStatus#value-ready).
+     *
      * @return ShopifyVideoSource
      */
-    public function getOriginalSource()
+    public function getOriginalSource(): ?ShopifyVideoSource
     {
         return $this->originalSource;
     }
 
     
     /**
+     * The preview image for the media.
+     *
      * @return ShopifyMediaPreviewImage
      */
-    public function getPreview()
+    public function getPreview(): ?ShopifyMediaPreviewImage
     {
         return $this->preview;
     }
 
     
     /**
+     * The video's sources. This value is empty unless the video's status field is
+     * [READY](https://shopify.dev/api/admin-graphql/latest/enums/MediaStatus#value-ready).
+     *
      * @return ShopifyVideoSource[]
      */
-    public function getSources()
+    public function getSources(): ?array
     {
         return $this->sources;
     }
 
     
     /**
-     * @return ShopifyMediaStatusEnumObject
+     * Current status of the media.
+     *
+     * @return string A ShopifyMediaStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

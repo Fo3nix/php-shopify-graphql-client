@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyTaxonomyAttribute
+/**
+ * A Shopify product taxonomy attribute.
+ */
+class ShopifyTaxonomyAttribute implements ShopifyNode
 {
     protected $id;
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

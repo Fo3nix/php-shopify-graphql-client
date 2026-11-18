@@ -6,7 +6,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketingEvent;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyUTMParameters;
 
-class ShopifyCustomerVisit
+/**
+ * A customer's session on the online store. Tracks how the [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) arrived at the store, including the landing page, referral source, and any associated marketing campaigns.
+ *
+ * The visit captures attribution data such as [`UTMParameters`](https://shopify.dev/docs/api/admin-graphql/latest/objects/UTMParameters), referral codes, and the [`MarketingEvent`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MarketingEvent) that drove the session. This information helps merchants understand which marketing efforts successfully bring customers to their store.
+ */
+class ShopifyCustomerVisit implements ShopifyCustomerMoment, ShopifyNode
 {
     protected $id;
     protected $landingPage;
@@ -23,108 +28,137 @@ class ShopifyCustomerVisit
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * URL of the first page the customer landed on for the session.
+     *
      * @return string
      */
-    public function getLandingPage()
+    public function getLandingPage(): mixed
     {
         return $this->landingPage;
     }
 
     
     /**
+     * Landing page information with URL linked in HTML. For example, the first page the customer visited was store.myshopify.com/products/1.
+     *
      * @return string
      */
-    public function getLandingPageHtml()
+    public function getLandingPageHtml(): mixed
     {
         return $this->landingPageHtml;
     }
 
     
     /**
+     * Represent actions taken by an app, on behalf of a merchant,
+     * to market Shopify resources such as products, collections, and discounts.
+     *
      * @return ShopifyMarketingEvent
      */
-    public function getMarketingEvent()
+    public function getMarketingEvent(): ?ShopifyMarketingEvent
     {
         return $this->marketingEvent;
     }
 
     
     /**
+     * The date and time when the customer's session occurred.
+     *
      * @return Carbon
      */
-    public function getOccurredAt()
+    public function getOccurredAt(): ?Carbon
     {
         return $this->occurredAt;
     }
 
     
     /**
+     * Marketing referral code from the link that the customer clicked to visit the store.
+     * Supports the following URL attributes: _ref_, _source_, or _r_.
+     * For example, if the URL is myshopifystore.com/products/slide?ref=j2tj1tn2, then this value is j2tj1tn2.
+     *
      * @return string
      */
-    public function getReferralCode()
+    public function getReferralCode(): ?string
     {
         return $this->referralCode;
     }
 
     
     /**
+     * Referral information with URLs linked in HTML.
+     *
      * @return string
      */
-    public function getReferralInfoHtml()
+    public function getReferralInfoHtml(): mixed
     {
         return $this->referralInfoHtml;
     }
 
     
     /**
+     * Webpage where the customer clicked a link that sent them to the online store.
+     * For example, _https://randomblog.com/page1_ or _android-app://com.google.android.gm_.
+     *
      * @return string
      */
-    public function getReferrerUrl()
+    public function getReferrerUrl(): mixed
     {
         return $this->referrerUrl;
     }
 
     
     /**
+     * Source from which the customer visited the store, such as a platform (Facebook, Google), email, direct,
+     * a website domain, QR code, or unknown.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * Describes the source explicitly for first or last session.
+     *
      * @return string
      */
-    public function getSourceDescription()
+    public function getSourceDescription(): ?string
     {
         return $this->sourceDescription;
     }
 
     
     /**
-     * @return ShopifyMarketingTacticEnumObject
+     * Type of marketing tactic.
+     *
+     * @return string A ShopifyMarketingTacticEnumObject value
      */
-    public function getSourceType()
+    public function getSourceType(): ?string
     {
         return $this->sourceType;
     }
 
     
     /**
+     * A set of UTM parameters gathered from the URL parameters of the referrer.
+     *
      * @return ShopifyUTMParameters
      */
-    public function getUtmParameters()
+    public function getUtmParameters(): ?ShopifyUTMParameters
     {
         return $this->utmParameters;
     }

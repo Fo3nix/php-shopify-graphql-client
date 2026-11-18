@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents the result of a read operation performed on a theme asset.
+ */
 class ShopifyOnlineStoreThemeFileReadResult
 {
     protected $code;
@@ -9,18 +12,22 @@ class ShopifyOnlineStoreThemeFileReadResult
 
     
     /**
-     * @return ShopifyOnlineStoreThemeFileResultTypeEnumObject
+     * Type that indicates the result of the operation.
+     *
+     * @return string A ShopifyOnlineStoreThemeFileResultTypeEnumObject value
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Unique identifier associated with the operation and the theme file.
+     *
      * @return string
      */
-    public function getFilename()
+    public function getFilename(): ?string
     {
         return $this->filename;
     }

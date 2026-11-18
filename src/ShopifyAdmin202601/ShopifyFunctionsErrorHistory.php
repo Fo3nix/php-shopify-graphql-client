@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 
+/**
+ * The error history from running a Shopify Function.
+ */
 class ShopifyFunctionsErrorHistory
 {
     protected $errorsFirstOccurredAt;
@@ -13,36 +16,44 @@ class ShopifyFunctionsErrorHistory
 
     
     /**
+     * The date and time that the first error occurred.
+     *
      * @return Carbon
      */
-    public function getErrorsFirstOccurredAt()
+    public function getErrorsFirstOccurredAt(): ?Carbon
     {
         return $this->errorsFirstOccurredAt;
     }
 
     
     /**
+     * The date and time that the first error occurred.
+     *
      * @return Carbon
      */
-    public function getFirstOccurredAt()
+    public function getFirstOccurredAt(): ?Carbon
     {
         return $this->firstOccurredAt;
     }
 
     
     /**
+     * Whether the merchant has shared all the recent errors with the developer.
+     *
      * @return bool
      */
-    public function getHasBeenSharedSinceLastError()
+    public function getHasBeenSharedSinceLastError(): ?bool
     {
         return $this->hasBeenSharedSinceLastError;
     }
 
     
     /**
+     * Whether the merchant has shared all the recent errors with the developer.
+     *
      * @return bool
      */
-    public function getHasSharedRecentErrors()
+    public function getHasSharedRecentErrors(): ?bool
     {
         return $this->hasSharedRecentErrors;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An order adjustment accounts for the difference between a calculated and actual refund amount.
+ */
 class ShopifyOrderAdjustmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "OrderAdjustment";
 
-    public function selectAmountSet(ShopifyOrderAdjustmentAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The amount of the order adjustment in shop and presentment currencies.
+     */
+    public function selectAmountSet(?ShopifyOrderAdjustmentAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyOrderAdjustmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectReason()
+    /**
+     * An optional reason that explains a discrepancy between calculated and actual refund amounts.
+     */
+    public function selectReason(): static
     {
         $this->selectField("reason");
 
         return $this;
     }
 
-    public function selectTaxAmountSet(ShopifyOrderAdjustmentTaxAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The tax amount of the order adjustment in shop and presentment currencies.
+     */
+    public function selectTaxAmountSet(?ShopifyOrderAdjustmentTaxAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("taxAmountSet");
         if ($argsObject !== null) {

@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a bank account payment instrument.
+ */
 class ShopifyBankAccountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "BankAccount";
 
-    public function selectAccountHolderType()
+    /**
+     * The type of account holder.
+     */
+    public function selectAccountHolderType(): static
     {
         $this->selectField("accountHolderType");
 
         return $this;
     }
 
-    public function selectAccountType()
+    /**
+     * The type of bank account.
+     */
+    public function selectAccountType(): static
     {
         $this->selectField("accountType");
 
         return $this;
     }
 
-    public function selectBankName()
+    /**
+     * The name of the bank.
+     */
+    public function selectBankName(): static
     {
         $this->selectField("bankName");
 
         return $this;
     }
 
-    public function selectBillingAddress(ShopifyBankAccountBillingAddressArgumentsObject $argsObject = null)
+    /**
+     * The billing address associated with the bank account.
+     */
+    public function selectBillingAddress(?ShopifyBankAccountBillingAddressArgumentsObject $argsObject = null): ShopifyCustomerPaymentInstrumentBillingAddressQueryObject
     {
         $object = new ShopifyCustomerPaymentInstrumentBillingAddressQueryObject("billingAddress");
         if ($argsObject !== null) {
@@ -40,7 +55,10 @@ class ShopifyBankAccountQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLastDigits()
+    /**
+     * The last four digits of the account number.
+     */
+    public function selectLastDigits(): static
     {
         $this->selectField("lastDigits");
 

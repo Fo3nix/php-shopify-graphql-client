@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the data used to customize the Shopify admin experience for a logged-in staff member.
+ */
 class ShopifyStaffMemberPrivateDataQueryObject extends QueryObject
 {
     const OBJECT_NAME = "StaffMemberPrivateData";
 
-    public function selectAccountSettingsUrl()
+    /**
+     * The URL to the staff member's account settings page.
+     */
+    public function selectAccountSettingsUrl(): static
     {
         $this->selectField("accountSettingsUrl");
 
         return $this;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the staff member was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
@@ -23,9 +32,11 @@ class ShopifyStaffMemberPrivateDataQueryObject extends QueryObject
     }
 
     /**
+     * Access permissions for the staff member.
+     *
      * @deprecated There's no alternative field to use instead.
      */
-    public function selectPermissions()
+    public function selectPermissions(): static
     {
         $this->selectField("permissions");
 

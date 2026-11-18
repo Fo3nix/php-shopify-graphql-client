@@ -1,0 +1,122 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCalculatedOrder;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCalculatedShippingLine;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrderEditSession;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrderEditAddShippingLineUserError;
+
+/**
+ * Return type for `orderEditAddShippingLine` mutation.
+ */
+class ShopifyOrderEditAddShippingLinePayload
+{
+    protected $calculatedOrder;
+    protected $calculatedShippingLine;
+    protected $orderEditSession;
+    protected $userErrors;
+
+    
+    /**
+     * The [calculated order](https://shopify.dev/api/admin-graphql/latest/objects/calculatedorder)
+     * with the edits applied but not saved.
+     *
+     * @return ShopifyCalculatedOrder
+     */
+    public function getCalculatedOrder(): ?ShopifyCalculatedOrder
+    {
+        return $this->calculatedOrder;
+    }
+
+    
+    /**
+     * The [calculated shipping line](https://shopify.dev/api/admin-graphql/latest/objects/calculatedshippingline)
+     * that's added during this order edit.
+     *
+     * @return ShopifyCalculatedShippingLine
+     */
+    public function getCalculatedShippingLine(): ?ShopifyCalculatedShippingLine
+    {
+        return $this->calculatedShippingLine;
+    }
+
+    
+    /**
+     * The order edit session with the edits applied but not saved.
+     *
+     * @return ShopifyOrderEditSession
+     */
+    public function getOrderEditSession(): ?ShopifyOrderEditSession
+    {
+        return $this->orderEditSession;
+    }
+
+    
+    /**
+     * The list of errors that occurred from executing the mutation.
+     *
+     * @return ShopifyOrderEditAddShippingLineUserError[]
+     */
+    public function getUserErrors(): ?array
+    {
+        return $this->userErrors;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['calculatedOrder']) && $data['calculatedOrder'] !== null) {
+                $instance->calculatedOrder = ShopifyCalculatedOrder::fromArray($data['calculatedOrder']);
+            }
+            if (isset($data['calculatedShippingLine']) && $data['calculatedShippingLine'] !== null) {
+                $instance->calculatedShippingLine = ShopifyCalculatedShippingLine::fromArray($data['calculatedShippingLine']);
+            }
+            if (isset($data['orderEditSession']) && $data['orderEditSession'] !== null) {
+                $instance->orderEditSession = ShopifyOrderEditSession::fromArray($data['orderEditSession']);
+            }
+            if (isset($data['userErrors']) && $data['userErrors'] !== null) {
+                $instance->userErrors = array_map(function($item) { return ShopifyOrderEditAddShippingLineUserError::fromArray($item); }, $data['userErrors']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->calculatedOrder !== null) {
+                $data['calculatedOrder'] = $this->calculatedOrder->asArray();
+            }
+            if ($this->calculatedShippingLine !== null) {
+                $data['calculatedShippingLine'] = $this->calculatedShippingLine->asArray();
+            }
+            if ($this->orderEditSession !== null) {
+                $data['orderEditSession'] = $this->orderEditSession->asArray();
+            }
+            if ($this->userErrors !== null) {
+                $data['userErrors'] = array_map(function($item) { return $item->asArray(); }, $this->userErrors);
+            }
+            return $data;
+        }
+}

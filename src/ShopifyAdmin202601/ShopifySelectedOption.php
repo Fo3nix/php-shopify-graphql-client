@@ -4,6 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductOptionValue;
 
+/**
+ * Properties used by customers to select a product variant.
+ * Products can have multiple options, like different sizes or colors.
+ */
 class ShopifySelectedOption
 {
     protected $name;
@@ -12,27 +16,33 @@ class ShopifySelectedOption
 
     
     /**
+     * The product option’s name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The product option’s value object.
+     *
      * @return ShopifyProductOptionValue
      */
-    public function getOptionValue()
+    public function getOptionValue(): ?ShopifyProductOptionValue
     {
         return $this->optionValue;
     }
 
     
     /**
+     * The product option’s value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

@@ -2,9 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReferencer;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReference;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReferencerHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReferenceHydrator;
 
+/**
+ * Defines a relation between two resources via a reference metafield.
+ * The referencer owns the joining field with a given namespace and key,
+ * while the target is referenced by the field.
+ */
 class ShopifyMetafieldRelation
 {
     protected $key;
@@ -15,45 +20,55 @@ class ShopifyMetafieldRelation
 
     
     /**
+     * The key of the field making the reference.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The name of the field making the reference.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The namespace of the metafield making the reference, or type of the metaobject.
+     *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
     
     /**
-     * @return ShopifyMetafieldReferencer
+     * The resource making the reference.
+     *
+     * @return ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop
      */
-    public function getReferencer()
+    public function getReferencer(): ShopifyAppInstallation|ShopifyArticle|ShopifyBlog|ShopifyCollection|ShopifyCompany|ShopifyCompanyLocation|ShopifyCustomer|ShopifyDeliveryCustomization|ShopifyDiscountAutomaticNode|ShopifyDiscountCodeNode|ShopifyDiscountNode|ShopifyDraftOrder|ShopifyFulfillmentOrder|ShopifyLocation|ShopifyMarket|ShopifyMetaobject|ShopifyOrder|ShopifyPage|ShopifyPaymentCustomization|ShopifyProduct|ShopifyProductVariant|ShopifyShop|null
     {
         return $this->referencer;
     }
 
     
     /**
-     * @return ShopifyMetafieldReference
+     * The referenced resource.
+     *
+     * @return ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo
      */
-    public function getTarget()
+    public function getTarget(): ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo|null
     {
         return $this->target;
     }
@@ -75,10 +90,10 @@ class ShopifyMetafieldRelation
                 $instance->namespace = $data['namespace'];
             }
             if (isset($data['referencer']) && $data['referencer'] !== null) {
-                $instance->referencer = ShopifyMetafieldReferencer::fromArray($data['referencer']);
+                $instance->referencer = ShopifyMetafieldReferencerHydrator::fromArray($data['referencer']);
             }
             if (isset($data['target']) && $data['target'] !== null) {
-                $instance->target = ShopifyMetafieldReference::fromArray($data['target']);
+                $instance->target = ShopifyMetafieldReferenceHydrator::fromArray($data['target']);
             }
             return $instance;
         }
@@ -113,10 +128,10 @@ class ShopifyMetafieldRelation
                 $data['namespace'] = $this->namespace;
             }
             if ($this->referencer !== null) {
-                $data['referencer'] = $this->referencer->asArray();
+                $data['referencer'] = ShopifyMetafieldReferencerHydrator::toArray($this->referencer);
             }
             if ($this->target !== null) {
-                $data['target'] = $this->target->asArray();
+                $data['target'] = ShopifyMetafieldReferenceHydrator::toArray($this->target);
             }
             return $data;
         }

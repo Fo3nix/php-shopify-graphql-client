@@ -7,7 +7,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLinkedMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductOptionValue;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTranslation;
 
-class ShopifyProductOption
+/**
+ * A product attribute that customers can choose from, such as "Size", "Color", or "Material". [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects use options to define the different variations available for purchase. Each option has a name and a set of possible values that combine to create [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects.
+ *
+ * The option includes its display position, associated values, and optional [`LinkedMetafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LinkedMetafield) for structured data. Options support translations for international selling and track which [`ProductOptionValue`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOptionValue) objects that variants actively use versus unused values that exist without associated variants.
+ */
+class ShopifyProductOption implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $createdAt;
     protected $id;
@@ -20,72 +25,88 @@ class ShopifyProductOption
 
     
     /**
+     * The date and time when the product option was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The metafield identifier linked to this option.
+     *
      * @return ShopifyLinkedMetafield
      */
-    public function getLinkedMetafield()
+    public function getLinkedMetafield(): ?ShopifyLinkedMetafield
     {
         return $this->linkedMetafield;
     }
 
     
     /**
+     * The product option’s name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * Similar to values, option_values returns all the corresponding option value objects to the product option, including values not assigned to any variants.
+     *
      * @return ShopifyProductOptionValue[]
      */
-    public function getOptionValues()
+    public function getOptionValues(): ?array
     {
         return $this->optionValues;
     }
 
     
     /**
+     * The product option's position.
+     *
      * @return int
      */
-    public function getPosition()
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The corresponding value to the product option name.
+     *
      * @return string[]
      */
-    public function getValues()
+    public function getValues(): ?array
     {
         return $this->values;
     }

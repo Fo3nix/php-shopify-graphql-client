@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyShopPayPaymentRequestImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyShopPayPaymentRequestDiscount;
 
+/**
+ * Represents a line item for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestLineItem
 {
     protected $finalItemPrice;
@@ -22,99 +25,121 @@ class ShopifyShopPayPaymentRequestLineItem
 
     
     /**
+     * The final item price for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFinalItemPrice()
+    public function getFinalItemPrice(): ?ShopifyMoneyV2
     {
         return $this->finalItemPrice;
     }
 
     
     /**
+     * The final line price for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFinalLinePrice()
+    public function getFinalLinePrice(): ?ShopifyMoneyV2
     {
         return $this->finalLinePrice;
     }
 
     
     /**
+     * The image of the line item.
+     *
      * @return ShopifyShopPayPaymentRequestImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyShopPayPaymentRequestImage
     {
         return $this->image;
     }
 
     
     /**
+     * The item discounts for the line item.
+     *
      * @return ShopifyShopPayPaymentRequestDiscount[]
      */
-    public function getItemDiscounts()
+    public function getItemDiscounts(): ?array
     {
         return $this->itemDiscounts;
     }
 
     
     /**
+     * The label of the line item.
+     *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
     
     /**
+     * The line discounts for the line item.
+     *
      * @return ShopifyShopPayPaymentRequestDiscount[]
      */
-    public function getLineDiscounts()
+    public function getLineDiscounts(): ?array
     {
         return $this->lineDiscounts;
     }
 
     
     /**
+     * The original item price for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalItemPrice()
+    public function getOriginalItemPrice(): ?ShopifyMoneyV2
     {
         return $this->originalItemPrice;
     }
 
     
     /**
+     * The original line price for the line item.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalLinePrice()
+    public function getOriginalLinePrice(): ?ShopifyMoneyV2
     {
         return $this->originalLinePrice;
     }
 
     
     /**
+     * The quantity of the line item.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Whether the line item requires shipping.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * The SKU of the line item.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }

@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The type and value of a price list adjustment.
+ *
+ * For more information on price lists, refer to
+ * [Support different pricing models](https://shopify.dev/apps/internationalization/product-price-lists).
+ */
 class ShopifyPriceListAdjustment
 {
     protected $type;
@@ -9,18 +15,23 @@ class ShopifyPriceListAdjustment
 
     
     /**
-     * @return ShopifyPriceListAdjustmentTypeEnumObject
+     * The type of price adjustment, such as percentage increase or decrease.
+     *
+     * @return string A ShopifyPriceListAdjustmentTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The value of price adjustment, where positive numbers reduce the prices and negative numbers
+     * increase them.
+     *
      * @return float
      */
-    public function getValue()
+    public function getValue(): ?float
     {
         return $this->value;
     }

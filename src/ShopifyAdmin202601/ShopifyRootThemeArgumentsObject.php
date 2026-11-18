@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootThemeArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["id"];
+
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the theme.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

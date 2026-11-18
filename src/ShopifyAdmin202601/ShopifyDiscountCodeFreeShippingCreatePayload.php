@@ -1,0 +1,82 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
+
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountCodeNode;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountUserError;
+
+/**
+ * Return type for `discountCodeFreeShippingCreate` mutation.
+ */
+class ShopifyDiscountCodeFreeShippingCreatePayload
+{
+    protected $codeDiscountNode;
+    protected $userErrors;
+
+    
+    /**
+     * The discount code that was created.
+     *
+     * @return ShopifyDiscountCodeNode
+     */
+    public function getCodeDiscountNode(): ?ShopifyDiscountCodeNode
+    {
+        return $this->codeDiscountNode;
+    }
+
+    
+    /**
+     * The list of errors that occurred from executing the mutation.
+     *
+     * @return ShopifyDiscountUserError[]
+     */
+    public function getUserErrors(): ?array
+    {
+        return $this->userErrors;
+    }
+
+        /**
+         * @param array $data
+         * @return self
+         */
+        public static function fromArray(array $data): self
+        {
+            $instance = new self();
+            if (isset($data['codeDiscountNode']) && $data['codeDiscountNode'] !== null) {
+                $instance->codeDiscountNode = ShopifyDiscountCodeNode::fromArray($data['codeDiscountNode']);
+            }
+            if (isset($data['userErrors']) && $data['userErrors'] !== null) {
+                $instance->userErrors = array_map(function($item) { return ShopifyDiscountUserError::fromArray($item); }, $data['userErrors']);
+            }
+            return $instance;
+        }
+
+        /**
+         * @param string $json
+         * @return self
+         */
+        public static function fromJson(string $json): self
+        {
+            $data = json_decode($json, true);
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new \InvalidArgumentException('Invalid JSON provided to fromJson method: ' . json_last_error_msg());
+            }
+            return self::fromArray($data);
+        }
+
+        /**
+         * Converts this object to an array.
+         * @return array
+         */
+        public function asArray(): array
+        {
+            $data = [];
+            if ($this->codeDiscountNode !== null) {
+                $data['codeDiscountNode'] = $this->codeDiscountNode->asArray();
+            }
+            if ($this->userErrors !== null) {
+                $data['userErrors'] = array_map(function($item) { return $item->asArray(); }, $this->userErrors);
+            }
+            return $data;
+        }
+}

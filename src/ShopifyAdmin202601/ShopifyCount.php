@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A numeric count with precision information indicating whether the count is exact or an estimate.
+ */
 class ShopifyCount
 {
     protected $count;
@@ -9,18 +12,22 @@ class ShopifyCount
 
     
     /**
+     * The count of elements.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
     
     /**
-     * @return ShopifyCountPrecisionEnumObject
+     * The count's precision, or the exactness of the value.
+     *
+     * @return string A ShopifyCountPrecisionEnumObject value
      */
-    public function getPrecision()
+    public function getPrecision(): ?string
     {
         return $this->precision;
     }

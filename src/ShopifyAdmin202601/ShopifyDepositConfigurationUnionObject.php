@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Configuration of the deposit.
+ */
 class ShopifyDepositConfigurationUnionObject extends UnionObject
 {
-    public function onShopifyDepositPercentage()
+    public function onShopifyDepositPercentage(): ShopifyDepositPercentageQueryObject
     {
         $object = new ShopifyDepositPercentageQueryObject();
         $this->addPossibleType($object);

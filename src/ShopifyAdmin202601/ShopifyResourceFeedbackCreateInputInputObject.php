@@ -1,0 +1,57 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
+
+use GraphQL\SchemaObject\InputObject;
+use GraphQL\RawObject;
+
+/**
+ * The input fields for a resource feedback object.
+ */
+class ShopifyResourceFeedbackCreateInputInputObject extends InputObject
+{
+    const REQUIRED = ["feedbackGeneratedAt", "state"];
+
+    protected $feedbackGeneratedAt;
+    protected $messages;
+    protected $state;
+
+    /**
+     * The date and time when the feedback was generated. Used to help determine whether
+     * incoming feedback is outdated compared to existing feedback.
+     */
+    public function setFeedbackGeneratedAt($feedbackGeneratedAt): static
+    {
+        $this->feedbackGeneratedAt = $feedbackGeneratedAt;
+
+        return $this;
+    }
+
+    /**
+     * If the feedback state is `requires_action`, then you can send a string message that communicates the action to be taken by the merchant.
+     * The string must be a single message up to 100 characters long and must end with a period.
+     * You need to adhere to the message formatting rules or your requests will fail:
+     * - `[Explanation of the problem]. [Suggested action].`
+     *
+     * **Examples:**
+     * - `[Your app name]` isn't connected. Connect your account to use this sales channel. `[Learn more]`
+     * - `[Your app name]` isn't configured. Agree to the terms and conditions to use this app. `[Learn more]`
+     * Both `Your app name` and `Learn more` (a button which directs merchants to your app) are automatically populated in the Shopify admin.
+     */
+    public function setMessages(array $messages): static
+    {
+        $this->messages = $messages;
+
+        return $this;
+    }
+
+    /**
+     * The state of the feedback and whether it requires merchant action.
+     */
+    public function setState($shopifyResourceFeedbackState): static
+    {
+        $this->state = new RawObject($shopifyResourceFeedbackState);
+
+        return $this;
+    }
+}

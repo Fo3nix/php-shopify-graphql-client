@@ -10,7 +10,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyAbandonedCheckoutLineItemCon
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTaxLine;
 
-class ShopifyAbandonedCheckout
+/**
+ * An incomplete checkout where the customer added items and provided contact information but didn't complete the purchase. Tracks the customer's cart contents, pricing details, addresses, and timestamps to enable recovery campaigns and abandonment analytics.
+ *
+ * The checkout includes a recovery URL that merchants can send to customers to resume their purchase. [`AbandonedCheckoutLineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/AbandonedCheckoutLineItem) objects preserve the original [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) selections, quantities, and pricing at the time of abandonment.
+ */
+class ShopifyAbandonedCheckout implements ShopifyNavigable, ShopifyNode
 {
     protected $abandonedCheckoutUrl;
     protected $billingAddress;
@@ -38,207 +43,257 @@ class ShopifyAbandonedCheckout
 
     
     /**
+     * The URL for the buyer to recover their checkout.
+     *
      * @return string
      */
-    public function getAbandonedCheckoutUrl()
+    public function getAbandonedCheckoutUrl(): mixed
     {
         return $this->abandonedCheckoutUrl;
     }
 
     
     /**
+     * The billing address provided by the buyer.
+     * Null if the user didn't provide a billing address.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyMailingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The date and time when the buyer completed the checkout.
+     * Null if the checkout hasn't been completed.
+     *
      * @return Carbon
      */
-    public function getCompletedAt()
+    public function getCompletedAt(): ?Carbon
     {
         return $this->completedAt;
     }
 
     
     /**
+     * The date and time when the checkout was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A list of extra information that has been added to the checkout.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * The customer who created this checkout.
+     * May be null if the checkout was created from a draft order or via an app.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that returns the single next record, sorted ascending by ID.
+     *
      * @return string
      */
-    public function getDefaultCursor()
+    public function getDefaultCursor(): ?string
     {
         return $this->defaultCursor;
     }
 
     
     /**
+     * The discount codes entered by the buyer at checkout.
+     *
      * @return string[]
      */
-    public function getDiscountCodes()
+    public function getDiscountCodes(): ?array
     {
         return $this->discountCodes;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A list of the line items in this checkout.
+     *
      * @return ShopifyAbandonedCheckoutLineItemConnection
      */
-    public function getLineItems()
+    public function getLineItems(): ?ShopifyAbandonedCheckoutLineItemConnection
     {
         return $this->lineItems;
     }
 
     
     /**
+     * The number of products in the checkout.
+     *
      * @return int
      */
-    public function getLineItemsQuantity()
+    public function getLineItemsQuantity(): ?int
     {
         return $this->lineItemsQuantity;
     }
 
     
     /**
+     * Unique merchant-facing identifier for the checkout.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A merchant-facing note added to the checkout. Not visible to the buyer.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The shipping address to where the line items will be shipped.
+     * Null if the user didn't provide a shipping address.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShopifyMailingAddress
     {
         return $this->shippingAddress;
     }
 
     
     /**
+     * The sum of all items in the checkout, including discounts but excluding shipping, taxes and tips.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getSubtotalPriceSet()
+    public function getSubtotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->subtotalPriceSet;
     }
 
     
     /**
+     * Individual taxes charged on the checkout.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Whether taxes are included in line item and shipping line prices.
+     *
      * @return bool
      */
-    public function getTaxesIncluded()
+    public function getTaxesIncluded(): ?bool
     {
         return $this->taxesIncluded;
     }
 
     
     /**
+     * The total amount of discounts to be applied.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDiscountSet()
+    public function getTotalDiscountSet(): ?ShopifyMoneyBag
     {
         return $this->totalDiscountSet;
     }
 
     
     /**
+     * The total duties applied to the checkout.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalDutiesSet()
+    public function getTotalDutiesSet(): ?ShopifyMoneyBag
     {
         return $this->totalDutiesSet;
     }
 
     
     /**
+     * The sum of the prices of all line items in the checkout.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalLineItemsPriceSet()
+    public function getTotalLineItemsPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalLineItemsPriceSet;
     }
 
     
     /**
+     * The sum of all items in the checkout, including discounts, shipping, taxes, and tips.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalPriceSet()
+    public function getTotalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->totalPriceSet;
     }
 
     
     /**
+     * The total tax applied to the checkout.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalTaxSet()
+    public function getTotalTaxSet(): ?ShopifyMoneyBag
     {
         return $this->totalTaxSet;
     }
 
     
     /**
+     * The date and time when the checkout was most recently updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple PaymentMandateResources.
+ */
 class ShopifyPaymentMandateResourceConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PaymentMandateResourceConnection";
 
-    public function selectEdges(ShopifyPaymentMandateResourceConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyPaymentMandateResourceConnectionEdgesArgumentsObject $argsObject = null): ShopifyPaymentMandateResourceEdgeQueryObject
     {
         $object = new ShopifyPaymentMandateResourceEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyPaymentMandateResourceConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectNodes(ShopifyPaymentMandateResourceConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in PaymentMandateResourceEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyPaymentMandateResourceConnectionNodesArgumentsObject $argsObject = null): ShopifyPaymentMandateResourceQueryObject
     {
         $object = new ShopifyPaymentMandateResourceQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyPaymentMandateResourceConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPageInfo(ShopifyPaymentMandateResourceConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyPaymentMandateResourceConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

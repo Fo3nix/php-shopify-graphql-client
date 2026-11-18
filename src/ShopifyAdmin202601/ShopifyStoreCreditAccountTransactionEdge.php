@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyStoreCreditAccountTransactionHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyStoreCreditAccountTransaction;
+
+/**
+ * An auto-generated type which holds one StoreCreditAccountTransaction and a cursor during pagination.
+ */
 class ShopifyStoreCreditAccountTransactionEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyStoreCreditAccountTransactionEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of StoreCreditAccountTransactionEdge.
+     *
+     * @return ShopifyStoreCreditAccountTransaction
      */
-    public function getNode()
+    public function getNode(): ?ShopifyStoreCreditAccountTransaction
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyStoreCreditAccountTransactionEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyStoreCreditAccountTransactionHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyStoreCreditAccountTransactionEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyStoreCreditAccountTransactionHydrator::toArray($this->node);
             }
             return $data;
         }

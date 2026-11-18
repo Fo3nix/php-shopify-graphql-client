@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyBulkOperation;
 
+/**
+ * An auto-generated type which holds one BulkOperation and a cursor during pagination.
+ */
 class ShopifyBulkOperationEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyBulkOperationEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of BulkOperationEdge.
+     *
      * @return ShopifyBulkOperation
      */
-    public function getNode()
+    public function getNode(): ?ShopifyBulkOperation
     {
         return $this->node;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents the body of a theme file.
+ */
 class ShopifyOnlineStoreThemeFileBodyText
 {
     protected $content;
 
     
     /**
+     * The body of the theme file.
+     *
      * @return string
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }

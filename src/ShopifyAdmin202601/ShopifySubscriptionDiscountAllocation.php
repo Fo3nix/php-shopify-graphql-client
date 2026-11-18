@@ -3,8 +3,11 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscount;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscountHydrator;
 
+/**
+ * Represents what a particular discount reduces from a line price.
+ */
 class ShopifySubscriptionDiscountAllocation
 {
     protected $amount;
@@ -12,18 +15,22 @@ class ShopifySubscriptionDiscountAllocation
 
     
     /**
+     * Allocation amount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
-     * @return ShopifySubscriptionDiscount
+     * Discount that created the allocation.
+     *
+     * @return ShopifySubscriptionAppliedCodeDiscount|ShopifySubscriptionManualDiscount
      */
-    public function getDiscount()
+    public function getDiscount(): ShopifySubscriptionAppliedCodeDiscount|ShopifySubscriptionManualDiscount|null
     {
         return $this->discount;
     }
@@ -39,7 +46,7 @@ class ShopifySubscriptionDiscountAllocation
                 $instance->amount = ShopifyMoneyV2::fromArray($data['amount']);
             }
             if (isset($data['discount']) && $data['discount'] !== null) {
-                $instance->discount = ShopifySubscriptionDiscount::fromArray($data['discount']);
+                $instance->discount = ShopifySubscriptionDiscountHydrator::fromArray($data['discount']);
             }
             return $instance;
         }
@@ -68,7 +75,7 @@ class ShopifySubscriptionDiscountAllocation
                 $data['amount'] = $this->amount->asArray();
             }
             if ($this->discount !== null) {
-                $data['discount'] = $this->discount->asArray();
+                $data['discount'] = ShopifySubscriptionDiscountHydrator::toArray($this->discount);
             }
             return $data;
         }

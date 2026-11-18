@@ -2,6 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A configured metafield definition validation.
+ *
+ * For example, for a metafield definition of `number_integer` type, you can set a validation with the name `max`
+ * and a value of `15`. This validation will ensure that the value of the metafield is a number less than or equal to 15.
+ *
+ * Refer to the [list of supported validations](https://shopify.dev/docs/apps/build/metafields/list-of-validation-options).
+ */
 class ShopifyMetafieldDefinitionValidation
 {
     protected $name;
@@ -10,27 +18,33 @@ class ShopifyMetafieldDefinitionValidation
 
     
     /**
+     * The validation name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The name for the metafield type of this validation.
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The validation value.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

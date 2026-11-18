@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionLineConnection;
 
+/**
+ * Represents the subscription lines the discount applies on.
+ */
 class ShopifySubscriptionDiscountEntitledLines
 {
     protected $all;
@@ -11,18 +14,22 @@ class ShopifySubscriptionDiscountEntitledLines
 
     
     /**
+     * Specify whether the subscription discount will apply on all subscription lines.
+     *
      * @return bool
      */
-    public function getAll()
+    public function getAll(): ?bool
     {
         return $this->all;
     }
 
     
     /**
+     * The list of subscription lines associated with the subscription discount.
+     *
      * @return ShopifySubscriptionLineConnection
      */
-    public function getLines()
+    public function getLines(): ?ShopifySubscriptionLineConnection
     {
         return $this->lines;
     }

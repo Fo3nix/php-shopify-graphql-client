@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The header customizations.
+ */
 class ShopifyCheckoutBrandingHeaderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingHeader";
 
-    public function selectAlignment()
+    /**
+     * The header alignment.
+     */
+    public function selectAlignment(): static
     {
         $this->selectField("alignment");
 
         return $this;
     }
 
-    public function selectBanner(ShopifyCheckoutBrandingHeaderBannerArgumentsObject $argsObject = null)
+    /**
+     * The background image of the header.
+     */
+    public function selectBanner(?ShopifyCheckoutBrandingHeaderBannerArgumentsObject $argsObject = null): ShopifyCheckoutBrandingImageQueryObject
     {
         $object = new ShopifyCheckoutBrandingImageQueryObject("banner");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyCheckoutBrandingHeaderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCartLink(ShopifyCheckoutBrandingHeaderCartLinkArgumentsObject $argsObject = null)
+    /**
+     * The cart link customizations for 1-page checkout. This field allows to customize the cart icon that renders by default on 1-page checkout.
+     */
+    public function selectCartLink(?ShopifyCheckoutBrandingHeaderCartLinkArgumentsObject $argsObject = null): ShopifyCheckoutBrandingHeaderCartLinkQueryObject
     {
         $object = new ShopifyCheckoutBrandingHeaderCartLinkQueryObject("cartLink");
         if ($argsObject !== null) {
@@ -37,21 +49,30 @@ class ShopifyCheckoutBrandingHeaderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectColorScheme()
+    /**
+     * The selected color scheme of the header container.
+     */
+    public function selectColorScheme(): static
     {
         $this->selectField("colorScheme");
 
         return $this;
     }
 
-    public function selectDivided()
+    /**
+     * The divided setting.
+     */
+    public function selectDivided(): static
     {
         $this->selectField("divided");
 
         return $this;
     }
 
-    public function selectLogo(ShopifyCheckoutBrandingHeaderLogoArgumentsObject $argsObject = null)
+    /**
+     * The store logo.
+     */
+    public function selectLogo(?ShopifyCheckoutBrandingHeaderLogoArgumentsObject $argsObject = null): ShopifyCheckoutBrandingLogoQueryObject
     {
         $object = new ShopifyCheckoutBrandingLogoQueryObject("logo");
         if ($argsObject !== null) {
@@ -62,14 +83,20 @@ class ShopifyCheckoutBrandingHeaderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPadding()
+    /**
+     * The padding of the header container.
+     */
+    public function selectPadding(): static
     {
         $this->selectField("padding");
 
         return $this;
     }
 
-    public function selectPosition()
+    /**
+     * The header position.
+     */
+    public function selectPosition(): static
     {
         $this->selectField("position");
 

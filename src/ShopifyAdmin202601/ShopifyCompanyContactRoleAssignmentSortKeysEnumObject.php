@@ -4,10 +4,25 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\EnumObject;
 
+/**
+ * The set of valid sort keys for the CompanyContactRoleAssignment query.
+ */
 class ShopifyCompanyContactRoleAssignmentSortKeysEnumObject extends EnumObject
 {
+    /**
+     * Sort by the `created_at` value.
+     */
     const CREATED_AT = "CREATED_AT";
+    /**
+     * Sort by the `id` value.
+     */
     const ID = "ID";
+    /**
+     * Sort by the `location_name` value.
+     */
     const LOCATION_NAME = "LOCATION_NAME";
+    /**
+     * Sort by the `updated_at` value.
+     */
     const UPDATED_AT = "UPDATED_AT";
 }

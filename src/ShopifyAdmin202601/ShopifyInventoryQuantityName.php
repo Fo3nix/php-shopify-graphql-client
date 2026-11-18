@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Details about an individual quantity name.
+ */
 class ShopifyInventoryQuantityName
 {
     protected $belongsTo;
@@ -12,45 +15,57 @@ class ShopifyInventoryQuantityName
 
     
     /**
+     * List of quantity names that this quantity name belongs to.
+     *
      * @return string[]
      */
-    public function getBelongsTo()
+    public function getBelongsTo(): ?array
     {
         return $this->belongsTo;
     }
 
     
     /**
+     * List of quantity names that comprise this quantity name.
+     *
      * @return string[]
      */
-    public function getComprises()
+    public function getComprises(): ?array
     {
         return $this->comprises;
     }
 
     
     /**
+     * The display name for quantity names translated into applicable language.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * Whether the quantity name has been used by the merchant.
+     *
      * @return bool
      */
-    public function getIsInUse()
+    public function getIsInUse(): ?bool
     {
         return $this->isInUse;
     }
 
     
     /**
+     * The [name](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps#inventory-states) of
+     * the inventory quantity. Used by
+     * [inventory queries and mutations](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps#graphql-queries-and-mutations).
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

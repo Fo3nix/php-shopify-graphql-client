@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A reverse shipping deliverable that may include a label and tracking information.
+ */
 class ShopifyReverseDeliveryShippingDeliverableQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ReverseDeliveryShippingDeliverable";
 
-    public function selectLabel(ShopifyReverseDeliveryShippingDeliverableLabelArgumentsObject $argsObject = null)
+    /**
+     * The return label attached to the reverse delivery.
+     */
+    public function selectLabel(?ShopifyReverseDeliveryShippingDeliverableLabelArgumentsObject $argsObject = null): ShopifyReverseDeliveryLabelV2QueryObject
     {
         $object = new ShopifyReverseDeliveryLabelV2QueryObject("label");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyReverseDeliveryShippingDeliverableQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTracking(ShopifyReverseDeliveryShippingDeliverableTrackingArgumentsObject $argsObject = null)
+    /**
+     * The information to track the reverse delivery.
+     */
+    public function selectTracking(?ShopifyReverseDeliveryShippingDeliverableTrackingArgumentsObject $argsObject = null): ShopifyReverseDeliveryTrackingV2QueryObject
     {
         $object = new ShopifyReverseDeliveryTrackingV2QueryObject("tracking");
         if ($argsObject !== null) {

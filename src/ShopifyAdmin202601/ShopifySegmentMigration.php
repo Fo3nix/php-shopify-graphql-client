@@ -2,6 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A segment and its corresponding saved search.
+ * For example, you can use `SegmentMigration` to retrieve the segment ID that corresponds to a saved search ID.
+ */
 class ShopifySegmentMigration
 {
     protected $id;
@@ -10,27 +14,33 @@ class ShopifySegmentMigration
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The ID of the saved search.
+     *
      * @return string
      */
-    public function getSavedSearchId()
+    public function getSavedSearchId(): ?string
     {
         return $this->savedSearchId;
     }
 
     
     /**
+     * The ID of the segment.
+     *
      * @return string
      */
-    public function getSegmentId()
+    public function getSegmentId(): ?string
     {
         return $this->segmentId;
     }

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one TranslatableResource and a cursor during pagination.
+ */
 class ShopifyTranslatableResourceEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "TranslatableResourceEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyTranslatableResourceEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of TranslatableResourceEdge.
+     */
+    public function selectNode(?ShopifyTranslatableResourceEdgeNodeArgumentsObject $argsObject = null): ShopifyTranslatableResourceQueryObject
     {
         $object = new ShopifyTranslatableResourceQueryObject("node");
         if ($argsObject !== null) {

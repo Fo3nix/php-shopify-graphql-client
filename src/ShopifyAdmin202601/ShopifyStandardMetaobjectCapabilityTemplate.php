@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Describes a capability that is enabled on a Metaobject Definition.
+ */
 class ShopifyStandardMetaobjectCapabilityTemplate
 {
     protected $capabilityType;
 
     
     /**
-     * @return ShopifyMetaobjectCapabilityTypeEnumObject
+     * The type of capability that's enabled for the metaobject definition.
+     *
+     * @return string A ShopifyMetaobjectCapabilityTypeEnumObject value
      */
-    public function getCapabilityType()
+    public function getCapabilityType(): ?string
     {
         return $this->capabilityType;
     }

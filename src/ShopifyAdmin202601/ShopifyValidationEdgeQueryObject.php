@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one Validation and a cursor during pagination.
+ */
 class ShopifyValidationEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ValidationEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyValidationEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of ValidationEdge.
+     */
+    public function selectNode(?ShopifyValidationEdgeNodeArgumentsObject $argsObject = null): ShopifyValidationQueryObject
     {
         $object = new ShopifyValidationQueryObject("node");
         if ($argsObject !== null) {

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 
+/**
+ * The compare-at price and price of a variant sharing a currency.
+ */
 class ShopifyProductVariantPricePair
 {
     protected $compareAtPrice;
@@ -11,18 +14,22 @@ class ShopifyProductVariantPricePair
 
     
     /**
+     * The compare-at price of the variant with associated currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCompareAtPrice()
+    public function getCompareAtPrice(): ?ShopifyMoneyV2
     {
         return $this->compareAtPrice;
     }
 
     
     /**
+     * The price of the variant with associated currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }

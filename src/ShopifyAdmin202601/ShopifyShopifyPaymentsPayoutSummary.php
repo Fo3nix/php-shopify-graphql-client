@@ -4,6 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 
+/**
+ * Breakdown of the total fees and gross of each of the different types of transactions associated
+ * with the payout.
+ */
 class ShopifyShopifyPaymentsPayoutSummary
 {
     protected $adjustmentsFee;
@@ -22,117 +26,143 @@ class ShopifyShopifyPaymentsPayoutSummary
 
     
     /**
+     * Total fees for all adjustments including disputes.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdjustmentsFee()
+    public function getAdjustmentsFee(): ?ShopifyMoneyV2
     {
         return $this->adjustmentsFee;
     }
 
     
     /**
+     * Total gross amount for all adjustments including disputes.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdjustmentsGross()
+    public function getAdjustmentsGross(): ?ShopifyMoneyV2
     {
         return $this->adjustmentsGross;
     }
 
     
     /**
+     * Total fees for all advances.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdvanceFees()
+    public function getAdvanceFees(): ?ShopifyMoneyV2
     {
         return $this->advanceFees;
     }
 
     
     /**
+     * Total gross amount for all advances.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdvanceGross()
+    public function getAdvanceGross(): ?ShopifyMoneyV2
     {
         return $this->advanceGross;
     }
 
     
     /**
+     * Total fees for all charges.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getChargesFee()
+    public function getChargesFee(): ?ShopifyMoneyV2
     {
         return $this->chargesFee;
     }
 
     
     /**
+     * Total gross amount for all charges.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getChargesGross()
+    public function getChargesGross(): ?ShopifyMoneyV2
     {
         return $this->chargesGross;
     }
 
     
     /**
+     * Total fees for all refunds.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getRefundsFee()
+    public function getRefundsFee(): ?ShopifyMoneyV2
     {
         return $this->refundsFee;
     }
 
     
     /**
+     * Total gross amount for all refunds.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getRefundsFeeGross()
+    public function getRefundsFeeGross(): ?ShopifyMoneyV2
     {
         return $this->refundsFeeGross;
     }
 
     
     /**
+     * Total fees for all reserved funds.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getReservedFundsFee()
+    public function getReservedFundsFee(): ?ShopifyMoneyV2
     {
         return $this->reservedFundsFee;
     }
 
     
     /**
+     * Total gross amount for all reserved funds.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getReservedFundsGross()
+    public function getReservedFundsGross(): ?ShopifyMoneyV2
     {
         return $this->reservedFundsGross;
     }
 
     
     /**
+     * Total fees for all retried payouts.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getRetriedPayoutsFee()
+    public function getRetriedPayoutsFee(): ?ShopifyMoneyV2
     {
         return $this->retriedPayoutsFee;
     }
 
     
     /**
+     * Total gross amount for all retried payouts.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getRetriedPayoutsGross()
+    public function getRetriedPayoutsGross(): ?ShopifyMoneyV2
     {
         return $this->retriedPayoutsGross;
     }
 
     
     /**
+     * Total amount for all usdc rebate credit balance adjustments.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getUsdcRebateCreditAmount()
+    public function getUsdcRebateCreditAmount(): ?ShopifyMoneyV2
     {
         return $this->usdcRebateCreditAmount;
     }

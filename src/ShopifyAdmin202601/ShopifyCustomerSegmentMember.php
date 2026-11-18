@@ -10,7 +10,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCustomerMergeable;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldConnection;
 
-class ShopifyCustomerSegmentMember
+/**
+ * The member of a segment.
+ */
+class ShopifyCustomerSegmentMember implements ShopifyHasMetafields
 {
     protected $amountSpent;
     protected $defaultAddress;
@@ -29,126 +32,157 @@ class ShopifyCustomerSegmentMember
 
     
     /**
+     * The total amount of money that the member has spent on orders.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmountSpent()
+    public function getAmountSpent(): ?ShopifyMoneyV2
     {
         return $this->amountSpent;
     }
 
     
     /**
+     * The member's default address.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getDefaultAddress()
+    public function getDefaultAddress(): ?ShopifyMailingAddress
     {
         return $this->defaultAddress;
     }
 
     
     /**
+     * The member's default email address.
+     *
      * @return ShopifyCustomerEmailAddress
      */
-    public function getDefaultEmailAddress()
+    public function getDefaultEmailAddress(): ?ShopifyCustomerEmailAddress
     {
         return $this->defaultEmailAddress;
     }
 
     
     /**
+     * The member's default phone number.
+     *
      * @return ShopifyCustomerPhoneNumber
      */
-    public function getDefaultPhoneNumber()
+    public function getDefaultPhoneNumber(): ?ShopifyCustomerPhoneNumber
     {
         return $this->defaultPhoneNumber;
     }
 
     
     /**
+     * The full name of the member, which is based on the values of the `first_name` and `last_name` fields. If the member's first name and last name aren't available, then the customer's email address is used. If the customer's email address isn't available, then the customer's phone number is used.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * The member's first name.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * The member’s ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The member's last name.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The ID of the member's most recent order.
+     *
      * @return string
      */
-    public function getLastOrderId()
+    public function getLastOrderId(): ?string
     {
         return $this->lastOrderId;
     }
 
     
     /**
+     * Whether the customer can be merged with another customer.
+     *
      * @return ShopifyCustomerMergeable
      */
-    public function getMergeable()
+    public function getMergeable(): ?ShopifyCustomerMergeable
     {
         return $this->mergeable;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * A note about the member.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The total number of orders that the member has made.
+     *
      * @return string
      */
-    public function getNumberOfOrders()
+    public function getNumberOfOrders(): mixed
     {
         return $this->numberOfOrders;
     }

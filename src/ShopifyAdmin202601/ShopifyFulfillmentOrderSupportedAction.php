@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * One of the actions that the fulfillment order supports in its current state.
+ */
 class ShopifyFulfillmentOrderSupportedAction
 {
     protected $action;
@@ -9,18 +12,23 @@ class ShopifyFulfillmentOrderSupportedAction
 
     
     /**
-     * @return ShopifyFulfillmentOrderActionEnumObject
+     * The action value.
+     *
+     * @return string A ShopifyFulfillmentOrderActionEnumObject value
      */
-    public function getAction()
+    public function getAction(): ?string
     {
         return $this->action;
     }
 
     
     /**
+     * The external URL to be used to initiate the fulfillment process outside Shopify.
+     * Applicable only when the `action` value is `EXTERNAL`.
+     *
      * @return string
      */
-    public function getExternalUrl()
+    public function getExternalUrl(): mixed
     {
         return $this->externalUrl;
     }

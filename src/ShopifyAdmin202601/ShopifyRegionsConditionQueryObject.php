@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A condition checking the visitor's region.
+ */
 class ShopifyRegionsConditionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "RegionsCondition";
 
-    public function selectApplicationLevel()
+    /**
+     * The application level for the condition.
+     */
+    public function selectApplicationLevel(): static
     {
         $this->selectField("applicationLevel");
 
         return $this;
     }
 
-    public function selectRegions(ShopifyRegionsConditionRegionsArgumentsObject $argsObject = null)
+    /**
+     * The regions that comprise the market.
+     */
+    public function selectRegions(?ShopifyRegionsConditionRegionsArgumentsObject $argsObject = null): ShopifyMarketRegionConnectionQueryObject
     {
         $object = new ShopifyMarketRegionConnectionQueryObject("regions");
         if ($argsObject !== null) {

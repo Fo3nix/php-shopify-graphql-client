@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An object that represents whether a customer can be merged with another customer.
+ */
 class ShopifyCustomerMergeableQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergeable";
 
-    public function selectErrorFields()
+    /**
+     * The list of fields preventing the customer from being merged.
+     */
+    public function selectErrorFields(): static
     {
         $this->selectField("errorFields");
 
         return $this;
     }
 
-    public function selectIsMergeable()
+    /**
+     * Whether the customer can be merged with another customer.
+     */
+    public function selectIsMergeable(): static
     {
         $this->selectField("isMergeable");
 
         return $this;
     }
 
-    public function selectMergeInProgress(ShopifyCustomerMergeableMergeInProgressArgumentsObject $argsObject = null)
+    /**
+     * The merge request if one is currently in progress.
+     */
+    public function selectMergeInProgress(?ShopifyCustomerMergeableMergeInProgressArgumentsObject $argsObject = null): ShopifyCustomerMergeRequestQueryObject
     {
         $object = new ShopifyCustomerMergeRequestQueryObject("mergeInProgress");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyCustomerMergeableQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectReason()
+    /**
+     * The reason why the customer can't be merged with another customer.
+     */
+    public function selectReason(): static
     {
         $this->selectField("reason");
 

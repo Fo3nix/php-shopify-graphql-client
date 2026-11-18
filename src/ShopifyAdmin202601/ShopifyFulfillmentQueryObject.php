@@ -4,39 +4,61 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shipment of one or more items from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order). Tracks which [`LineItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LineItem) objects ship, their quantities, and the shipment's tracking information.
+ *
+ * Includes tracking details such as the carrier, tracking numbers, and URLs. The fulfillment connects to both the original order and any associated [`FulfillmentOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentOrder) objects. [`FulfillmentEvent`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent) objects record milestones throughout the shipment lifecycle, from creation through delivery.
+ *
+ * Multiple fulfillments can exist for a single order when items either ship separately or from different locations.
+ */
 class ShopifyFulfillmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Fulfillment";
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the fulfillment was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectDeliveredAt()
+    /**
+     * The date that this fulfillment was delivered.
+     */
+    public function selectDeliveredAt(): static
     {
         $this->selectField("deliveredAt");
 
         return $this;
     }
 
-    public function selectDisplayStatus()
+    /**
+     * Human readable display status for this fulfillment.
+     */
+    public function selectDisplayStatus(): static
     {
         $this->selectField("displayStatus");
 
         return $this;
     }
 
-    public function selectEstimatedDeliveryAt()
+    /**
+     * The estimated date that this fulfillment will arrive.
+     */
+    public function selectEstimatedDeliveryAt(): static
     {
         $this->selectField("estimatedDeliveryAt");
 
         return $this;
     }
 
-    public function selectEvents(ShopifyFulfillmentEventsArgumentsObject $argsObject = null)
+    /**
+     * The history of events associated with this fulfillment.
+     */
+    public function selectEvents(?ShopifyFulfillmentEventsArgumentsObject $argsObject = null): ShopifyFulfillmentEventConnectionQueryObject
     {
         $object = new ShopifyFulfillmentEventConnectionQueryObject("events");
         if ($argsObject !== null) {
@@ -47,7 +69,10 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFulfillmentLineItems(ShopifyFulfillmentFulfillmentLineItemsArgumentsObject $argsObject = null)
+    /**
+     * List of the fulfillment's line items.
+     */
+    public function selectFulfillmentLineItems(?ShopifyFulfillmentFulfillmentLineItemsArgumentsObject $argsObject = null): ShopifyFulfillmentLineItemConnectionQueryObject
     {
         $object = new ShopifyFulfillmentLineItemConnectionQueryObject("fulfillmentLineItems");
         if ($argsObject !== null) {
@@ -58,7 +83,10 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFulfillmentOrders(ShopifyFulfillmentFulfillmentOrdersArgumentsObject $argsObject = null)
+    /**
+     * A paginated list of fulfillment orders for the fulfillment.
+     */
+    public function selectFulfillmentOrders(?ShopifyFulfillmentFulfillmentOrdersArgumentsObject $argsObject = null): ShopifyFulfillmentOrderConnectionQueryObject
     {
         $object = new ShopifyFulfillmentOrderConnectionQueryObject("fulfillmentOrders");
         if ($argsObject !== null) {
@@ -69,28 +97,40 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInTransitAt()
+    /**
+     * The date and time when the fulfillment went into transit.
+     */
+    public function selectInTransitAt(): static
     {
         $this->selectField("inTransitAt");
 
         return $this;
     }
 
-    public function selectLegacyResourceId()
+    /**
+     * The ID of the corresponding resource in the REST Admin API.
+     */
+    public function selectLegacyResourceId(): static
     {
         $this->selectField("legacyResourceId");
 
         return $this;
     }
 
-    public function selectLocation(ShopifyFulfillmentLocationArgumentsObject $argsObject = null)
+    /**
+     * The location that the fulfillment was processed at.
+     */
+    public function selectLocation(?ShopifyFulfillmentLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -101,14 +141,20 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectName()
+    /**
+     * Human readable reference identifier for this fulfillment.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectOrder(ShopifyFulfillmentOrderArgumentsObject $argsObject = null)
+    /**
+     * The order for which the fulfillment was created.
+     */
+    public function selectOrder(?ShopifyFulfillmentOrderArgumentsObject $argsObject = null): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject("order");
         if ($argsObject !== null) {
@@ -119,7 +165,10 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginAddress(ShopifyFulfillmentOriginAddressArgumentsObject $argsObject = null)
+    /**
+     * The address at which the fulfillment occurred. This field is intended for tax purposes, as a full address is required for tax providers to accurately calculate taxes. Typically this is the address of the warehouse or fulfillment center. To retrieve a fulfillment location's address, use the `assignedLocation` field on the [`FulfillmentOrder`](/docs/api/admin-graphql/latest/objects/FulfillmentOrder) object instead.
+     */
+    public function selectOriginAddress(?ShopifyFulfillmentOriginAddressArgumentsObject $argsObject = null): ShopifyFulfillmentOriginAddressQueryObject
     {
         $object = new ShopifyFulfillmentOriginAddressQueryObject("originAddress");
         if ($argsObject !== null) {
@@ -130,14 +179,20 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRequiresShipping()
+    /**
+     * Whether any of the line items in the fulfillment require shipping.
+     */
+    public function selectRequiresShipping(): static
     {
         $this->selectField("requiresShipping");
 
         return $this;
     }
 
-    public function selectService(ShopifyFulfillmentServiceArgumentsObject $argsObject = null)
+    /**
+     * Fulfillment service associated with the fulfillment.
+     */
+    public function selectService(?ShopifyFulfillmentServiceArgumentsObject $argsObject = null): ShopifyFulfillmentServiceQueryObject
     {
         $object = new ShopifyFulfillmentServiceQueryObject("service");
         if ($argsObject !== null) {
@@ -148,21 +203,31 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the fulfillment.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectTotalQuantity()
+    /**
+     * Sum of all line item quantities for the fulfillment.
+     */
+    public function selectTotalQuantity(): static
     {
         $this->selectField("totalQuantity");
 
         return $this;
     }
 
-    public function selectTrackingInfo(ShopifyFulfillmentTrackingInfoArgumentsObject $argsObject = null)
+    /**
+     * Tracking information associated with the fulfillment,
+     * such as the tracking company, tracking number, and tracking URL.
+     */
+    public function selectTrackingInfo(?ShopifyFulfillmentTrackingInfoArgumentsObject $argsObject = null): ShopifyFulfillmentTrackingInfoQueryObject
     {
         $object = new ShopifyFulfillmentTrackingInfoQueryObject("trackingInfo");
         if ($argsObject !== null) {
@@ -173,7 +238,10 @@ class ShopifyFulfillmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the fulfillment was last modified.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

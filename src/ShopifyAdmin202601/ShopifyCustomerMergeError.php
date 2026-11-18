@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The error blocking a customer merge.
+ */
 class ShopifyCustomerMergeError
 {
     protected $errorFields;
@@ -9,18 +12,22 @@ class ShopifyCustomerMergeError
 
     
     /**
-     * @return ShopifyCustomerMergeErrorFieldTypeEnumObject[]
+     * The list of fields preventing the customer from being merged.
+     *
+     * @return string[] ShopifyCustomerMergeErrorFieldTypeEnumObject values
      */
-    public function getErrorFields()
+    public function getErrorFields(): ?array
     {
         return $this->errorFields;
     }
 
     
     /**
+     * The customer merge error message.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

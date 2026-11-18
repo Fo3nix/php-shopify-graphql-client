@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTaxLine;
 
-class ShopifyDuty
+/**
+ * The duty details for a line item.
+ */
+class ShopifyDuty implements ShopifyNode
 {
     protected $countryCodeOfOrigin;
     protected $harmonizedSystemCode;
@@ -15,45 +18,55 @@ class ShopifyDuty
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The ISO 3166-1 alpha-2 country code of the country of origin used in calculating the duty.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCodeOfOrigin()
+    public function getCountryCodeOfOrigin(): ?string
     {
         return $this->countryCodeOfOrigin;
     }
 
     
     /**
+     * The harmonized system code of the item used in calculating the duty.
+     *
      * @return string
      */
-    public function getHarmonizedSystemCode()
+    public function getHarmonizedSystemCode(): ?string
     {
         return $this->harmonizedSystemCode;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The amount of the duty.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyBag
     {
         return $this->price;
     }
 
     
     /**
+     * A list of taxes charged on the duty.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }

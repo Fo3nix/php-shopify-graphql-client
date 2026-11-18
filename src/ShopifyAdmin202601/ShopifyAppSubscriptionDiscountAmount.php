@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 
+/**
+ * The fixed amount value of a discount.
+ */
 class ShopifyAppSubscriptionDiscountAmount
 {
     protected $amount;
 
     
     /**
+     * The fixed amount value of a discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }

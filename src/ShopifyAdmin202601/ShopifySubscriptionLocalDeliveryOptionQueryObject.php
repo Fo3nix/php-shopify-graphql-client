@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A local delivery option for a subscription contract.
+ */
 class ShopifySubscriptionLocalDeliveryOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionLocalDeliveryOption";
 
-    public function selectCode()
+    /**
+     * The code of the local delivery option.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the local delivery option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectPhoneRequired()
+    /**
+     * Whether a phone number is required for the local delivery option.
+     */
+    public function selectPhoneRequired(): static
     {
         $this->selectField("phoneRequired");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the local delivery option.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifySubscriptionLocalDeliveryOptionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of the local delivery option.
+     */
+    public function selectPrice(?ShopifySubscriptionLocalDeliveryOptionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -47,7 +65,10 @@ class ShopifySubscriptionLocalDeliveryOptionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the local delivery option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

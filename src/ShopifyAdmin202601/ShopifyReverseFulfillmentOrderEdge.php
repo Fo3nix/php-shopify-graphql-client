@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyReverseFulfillmentOrder;
 
+/**
+ * An auto-generated type which holds one ReverseFulfillmentOrder and a cursor during pagination.
+ */
 class ShopifyReverseFulfillmentOrderEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyReverseFulfillmentOrderEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of ReverseFulfillmentOrderEdge.
+     *
      * @return ShopifyReverseFulfillmentOrder
      */
-    public function getNode()
+    public function getNode(): ?ShopifyReverseFulfillmentOrder
     {
         return $this->node;
     }

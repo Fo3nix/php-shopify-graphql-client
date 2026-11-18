@@ -8,7 +8,10 @@ class ShopifyDeliveryProfileProfileLocationGroupsArgumentsObject extends Argumen
 {
     protected $locationGroupId;
 
-    public function setLocationGroupId($locationGroupId)
+    /**
+     * Filter the location groups of the profile by location group ID.
+     */
+    public function setLocationGroupId($locationGroupId): static
     {
         $this->locationGroupId = $locationGroupId;
 

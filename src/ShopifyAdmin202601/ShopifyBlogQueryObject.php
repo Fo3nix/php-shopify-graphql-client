@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A blog for publishing articles in the online store. Stores can have multiple blogs to organize content by topic or purpose.
+ *
+ * Each blog contains articles with their associated comments, tags, and metadata. The comment policy controls whether readers can post comments and whether moderation is required. Blogs use customizable URL handles and can apply alternate templates for specialized layouts.
+ */
 class ShopifyBlogQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Blog";
 
-    public function selectArticles(ShopifyBlogArticlesArgumentsObject $argsObject = null)
+    /**
+     * List of the blog's articles.
+     */
+    public function selectArticles(?ShopifyBlogArticlesArgumentsObject $argsObject = null): ShopifyArticleConnectionQueryObject
     {
         $object = new ShopifyArticleConnectionQueryObject("articles");
         if ($argsObject !== null) {
@@ -19,7 +27,10 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectArticlesCount(ShopifyBlogArticlesCountArgumentsObject $argsObject = null)
+    /**
+     * Count of articles. Limited to a maximum of 10000 by default.
+     */
+    public function selectArticlesCount(?ShopifyBlogArticlesCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("articlesCount");
         if ($argsObject !== null) {
@@ -30,21 +41,30 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCommentPolicy()
+    /**
+     * Indicates whether readers can post comments to the blog and if comments are moderated or not.
+     */
+    public function selectCommentPolicy(): static
     {
         $this->selectField("commentPolicy");
 
         return $this;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the blog was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectEvents(ShopifyBlogEventsArgumentsObject $argsObject = null)
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    public function selectEvents(?ShopifyBlogEventsArgumentsObject $argsObject = null): ShopifyEventConnectionQueryObject
     {
         $object = new ShopifyEventConnectionQueryObject("events");
         if ($argsObject !== null) {
@@ -55,7 +75,10 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFeed(ShopifyBlogFeedArgumentsObject $argsObject = null)
+    /**
+     * FeedBurner provider details. Any blogs that aren't already integrated with FeedBurner can't use the service.
+     */
+    public function selectFeed(?ShopifyBlogFeedArgumentsObject $argsObject = null): ShopifyBlogFeedQueryObject
     {
         $object = new ShopifyBlogFeedQueryObject("feed");
         if ($argsObject !== null) {
@@ -66,35 +89,47 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectHandle()
+    /**
+     * A unique, human-friendly string for the blog. If no handle is specified, a handle will be generated automatically from the blog title.
+     * The handle is customizable and is used by the Liquid templating language to refer to the blog.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectMetafield(ShopifyBlogMetafieldArgumentsObject $argsObject = null)
+    /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    public function selectMetafield(ShopifyBlogMetafieldArgumentsObject $argsObject): ShopifyMetafieldQueryObject
     {
         $object = new ShopifyMetafieldQueryObject("metafield");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
     /**
+     * List of metafield definitions.
+     *
      * @deprecated This field will be removed in a future version. Use `QueryRoot.metafieldDefinitions` instead.
      */
-    public function selectMetafieldDefinitions(ShopifyBlogMetafieldDefinitionsArgumentsObject $argsObject = null)
+    public function selectMetafieldDefinitions(?ShopifyBlogMetafieldDefinitionsArgumentsObject $argsObject = null): ShopifyMetafieldDefinitionConnectionQueryObject
     {
         $object = new ShopifyMetafieldDefinitionConnectionQueryObject("metafieldDefinitions");
         if ($argsObject !== null) {
@@ -105,7 +140,11 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMetafields(ShopifyBlogMetafieldsArgumentsObject $argsObject = null)
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    public function selectMetafields(?ShopifyBlogMetafieldsArgumentsObject $argsObject = null): ShopifyMetafieldConnectionQueryObject
     {
         $object = new ShopifyMetafieldConnectionQueryObject("metafields");
         if ($argsObject !== null) {
@@ -116,39 +155,53 @@ class ShopifyBlogQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTags()
+    /**
+     * A list of tags associated with the 200 most recent blog articles.
+     */
+    public function selectTags(): static
     {
         $this->selectField("tags");
 
         return $this;
     }
 
-    public function selectTemplateSuffix()
+    /**
+     * The name of the template a blog is using if it's using an alternate template.
+     * Returns `null` if a blog is using the default blog.liquid template.
+     */
+    public function selectTemplateSuffix(): static
     {
         $this->selectField("templateSuffix");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the blog.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTranslations(ShopifyBlogTranslationsArgumentsObject $argsObject = null)
+    /**
+     * The published translations associated with the resource.
+     */
+    public function selectTranslations(ShopifyBlogTranslationsArgumentsObject $argsObject): ShopifyTranslationQueryObject
     {
         $object = new ShopifyTranslationQueryObject("translations");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time when the blog was update.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

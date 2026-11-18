@@ -4,25 +4,39 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A user account that can access the Shopify admin to manage store operations. Includes personal information and account status.
+ *
+ * You can assign staff members to [`CompanyLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CompanyLocation) objects for [B2B operations](https://shopify.dev/docs/apps/build/b2b), limiting their actions to those locations.
+ */
 class ShopifyStaffMemberQueryObject extends QueryObject
 {
     const OBJECT_NAME = "StaffMember";
 
-    public function selectAccountType()
+    /**
+     * The type of account the staff member has.
+     */
+    public function selectAccountType(): static
     {
         $this->selectField("accountType");
 
         return $this;
     }
 
-    public function selectActive()
+    /**
+     * Whether the staff member is active.
+     */
+    public function selectActive(): static
     {
         $this->selectField("active");
 
         return $this;
     }
 
-    public function selectAvatar(ShopifyStaffMemberAvatarArgumentsObject $argsObject = null)
+    /**
+     * The image used as the staff member's avatar in the Shopify admin.
+     */
+    public function selectAvatar(?ShopifyStaffMemberAvatarArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("avatar");
         if ($argsObject !== null) {
@@ -33,77 +47,110 @@ class ShopifyStaffMemberQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEmail()
+    /**
+     * The staff member's email address.
+     */
+    public function selectEmail(): static
     {
         $this->selectField("email");
 
         return $this;
     }
 
-    public function selectExists()
+    /**
+     * Whether the staff member's account exists.
+     */
+    public function selectExists(): static
     {
         $this->selectField("exists");
 
         return $this;
     }
 
-    public function selectFirstName()
+    /**
+     * The staff member's first name.
+     */
+    public function selectFirstName(): static
     {
         $this->selectField("firstName");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInitials()
+    /**
+     * The staff member's initials, if available.
+     */
+    public function selectInitials(): static
     {
         $this->selectField("initials");
 
         return $this;
     }
 
-    public function selectIsShopOwner()
+    /**
+     * Whether the staff member is the shop owner.
+     */
+    public function selectIsShopOwner(): static
     {
         $this->selectField("isShopOwner");
 
         return $this;
     }
 
-    public function selectLastName()
+    /**
+     * The staff member's last name.
+     */
+    public function selectLastName(): static
     {
         $this->selectField("lastName");
 
         return $this;
     }
 
-    public function selectLocale()
+    /**
+     * The staff member's preferred locale. Locale values use the format `language` or `language-COUNTRY`, where `language` is a two-letter language code, and `COUNTRY` is a two-letter country code. For example: `en` or `en-US`
+     */
+    public function selectLocale(): static
     {
         $this->selectField("locale");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The staff member's full name.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectPhone()
+    /**
+     * The staff member's phone number.
+     */
+    public function selectPhone(): static
     {
         $this->selectField("phone");
 
         return $this;
     }
 
-    public function selectPrivateData(ShopifyStaffMemberPrivateDataArgumentsObject $argsObject = null)
+    /**
+     * The data used to customize the Shopify admin experience for the staff member.
+     */
+    public function selectPrivateData(?ShopifyStaffMemberPrivateDataArgumentsObject $argsObject = null): ShopifyStaffMemberPrivateDataQueryObject
     {
         $object = new ShopifyStaffMemberPrivateDataQueryObject("privateData");
         if ($argsObject !== null) {

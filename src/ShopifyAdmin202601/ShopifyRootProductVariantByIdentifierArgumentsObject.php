@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootProductVariantByIdentifierArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["identifier"];
+
     protected $identifier;
 
-    public function setIdentifier(ShopifyProductVariantIdentifierInputInputObject $shopifyProductVariantIdentifierInputInputObject)
+    /**
+     * The identifier of the product variant.
+     */
+    public function setIdentifier(ShopifyProductVariantIdentifierInputInputObject $shopifyProductVariantIdentifierInputInputObject): static
     {
         $this->identifier = $shopifyProductVariantIdentifierInputInputObject;
 

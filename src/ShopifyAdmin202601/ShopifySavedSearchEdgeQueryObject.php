@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one SavedSearch and a cursor during pagination.
+ */
 class ShopifySavedSearchEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SavedSearchEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifySavedSearchEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of SavedSearchEdge.
+     */
+    public function selectNode(?ShopifySavedSearchEdgeNodeArgumentsObject $argsObject = null): ShopifySavedSearchQueryObject
     {
         $object = new ShopifySavedSearchQueryObject("node");
         if ($argsObject !== null) {

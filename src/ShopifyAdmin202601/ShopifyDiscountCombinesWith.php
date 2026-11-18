@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+ * that you can use in combination with
+ * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
+ */
 class ShopifyDiscountCombinesWith
 {
     protected $orderDiscounts;
@@ -10,27 +15,39 @@ class ShopifyDiscountCombinesWith
 
     
     /**
+     * Whether the discount combines with the
+     * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
+     *
      * @return bool
      */
-    public function getOrderDiscounts()
+    public function getOrderDiscounts(): ?bool
     {
         return $this->orderDiscounts;
     }
 
     
     /**
+     * Whether the discount combines with the
+     * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
+     *
      * @return bool
      */
-    public function getProductDiscounts()
+    public function getProductDiscounts(): ?bool
     {
         return $this->productDiscounts;
     }
 
     
     /**
+     * Whether the discount combines with the
+     * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
+     *
      * @return bool
      */
-    public function getShippingDiscounts()
+    public function getShippingDiscounts(): ?bool
     {
         return $this->shippingDiscounts;
     }

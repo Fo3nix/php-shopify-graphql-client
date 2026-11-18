@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A shareable URL for a discount code.
+ */
 class ShopifyDiscountShareableUrlQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DiscountShareableUrl";
 
-    public function selectTargetItemImage(ShopifyDiscountShareableUrlTargetItemImageArgumentsObject $argsObject = null)
+    /**
+     * The image URL of the item (product or collection) to which the discount applies.
+     */
+    public function selectTargetItemImage(?ShopifyDiscountShareableUrlTargetItemImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("targetItemImage");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyDiscountShareableUrlQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTargetType()
+    /**
+     * The type of page that's associated with the URL.
+     */
+    public function selectTargetType(): static
     {
         $this->selectField("targetType");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the page that's associated with the URL.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * The URL for the discount code.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

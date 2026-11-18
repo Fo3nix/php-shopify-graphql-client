@@ -13,35 +13,50 @@ class ShopifyRootConsentPolicyArgumentsObject extends ArgumentsObject
     protected $consentRequired;
     protected $dataSaleOptOutRequired;
 
-    public function setId($id)
+    /**
+     * Return the policy with the provided ID.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setCountryCode($shopifyPrivacyCountryCode)
+    /**
+     * Return policies with the provided country code.
+     */
+    public function setCountryCode($shopifyPrivacyCountryCode): static
     {
         $this->countryCode = new RawObject($shopifyPrivacyCountryCode);
 
         return $this;
     }
 
-    public function setRegionCode($regionCode)
+    /**
+     * Return policies with the provided region code.
+     */
+    public function setRegionCode($regionCode): static
     {
         $this->regionCode = $regionCode;
 
         return $this;
     }
 
-    public function setConsentRequired($consentRequired)
+    /**
+     * Return policies where consent is required or not.
+     */
+    public function setConsentRequired($consentRequired): static
     {
         $this->consentRequired = $consentRequired;
 
         return $this;
     }
 
-    public function setDataSaleOptOutRequired($dataSaleOptOutRequired)
+    /**
+     * Return policies where data sale opt out is required or not.
+     */
+    public function setDataSaleOptOutRequired($dataSaleOptOutRequired): static
     {
         $this->dataSaleOptOutRequired = $dataSaleOptOutRequired;
 

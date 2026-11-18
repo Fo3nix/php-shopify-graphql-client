@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyFulfillmentOrderLineItemConn
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLocation;
 
+/**
+ * A location that a fulfillment order can potentially move to.
+ */
 class ShopifyFulfillmentOrderLocationForMove
 {
     protected $availableLineItems;
@@ -18,63 +21,80 @@ class ShopifyFulfillmentOrderLocationForMove
 
     
     /**
+     * Fulfillment order line items that can be moved from their current location to the given location.
+     *
      * @return ShopifyFulfillmentOrderLineItemConnection
      */
-    public function getAvailableLineItems()
+    public function getAvailableLineItems(): ?ShopifyFulfillmentOrderLineItemConnection
     {
         return $this->availableLineItems;
     }
 
     
     /**
+     * Total number of fulfillment order line items that can be moved from their current assigned location to the
+     * given location.
+     *
      * @return ShopifyCount
      */
-    public function getAvailableLineItemsCount()
+    public function getAvailableLineItemsCount(): ?ShopifyCount
     {
         return $this->availableLineItemsCount;
     }
 
     
     /**
+     * The location being considered as the fulfillment order's new assigned location.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * A human-readable string with the reason why the fulfillment order, or some of its line items, can't be
+     * moved to the location.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
     
     /**
+     * Whether the fulfillment order can be moved to the location.
+     *
      * @return bool
      */
-    public function getMovable()
+    public function getMovable(): ?bool
     {
         return $this->movable;
     }
 
     
     /**
+     * Fulfillment order line items that cannot be moved from their current location to the given location.
+     *
      * @return ShopifyFulfillmentOrderLineItemConnection
      */
-    public function getUnavailableLineItems()
+    public function getUnavailableLineItems(): ?ShopifyFulfillmentOrderLineItemConnection
     {
         return $this->unavailableLineItems;
     }
 
     
     /**
+     * Total number of fulfillment order line items that can't be moved from their current assigned location to the
+     * given location.
+     *
      * @return ShopifyCount
      */
-    public function getUnavailableLineItemsCount()
+    public function getUnavailableLineItemsCount(): ?ShopifyCount
     {
         return $this->unavailableLineItemsCount;
     }

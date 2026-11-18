@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyShopifyPaymentsDisputeFileUpload
+/**
+ * The file upload associated with the dispute evidence.
+ */
+class ShopifyShopifyPaymentsDisputeFileUpload implements ShopifyNode
 {
     protected $disputeEvidenceType;
     protected $fileSize;
@@ -13,54 +16,66 @@ class ShopifyShopifyPaymentsDisputeFileUpload
 
     
     /**
-     * @return ShopifyShopifyPaymentsDisputeEvidenceFileTypeEnumObject
+     * The type of the file for the dispute evidence.
+     *
+     * @return string A ShopifyShopifyPaymentsDisputeEvidenceFileTypeEnumObject value
      */
-    public function getDisputeEvidenceType()
+    public function getDisputeEvidenceType(): ?string
     {
         return $this->disputeEvidenceType;
     }
 
     
     /**
+     * The file size.
+     *
      * @return int
      */
-    public function getFileSize()
+    public function getFileSize(): ?int
     {
         return $this->fileSize;
     }
 
     
     /**
+     * The file type.
+     *
      * @return string
      */
-    public function getFileType()
+    public function getFileType(): ?string
     {
         return $this->fileType;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The original file name.
+     *
      * @return string
      */
-    public function getOriginalFileName()
+    public function getOriginalFileName(): ?string
     {
         return $this->originalFileName;
     }
 
     
     /**
+     * The URL for accessing the file.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

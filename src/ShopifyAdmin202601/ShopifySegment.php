@@ -4,7 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 
-class ShopifySegment
+/**
+ * A group of [customers](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) that meet specific criteria defined through [ShopifyQL query](https://shopify.dev/docs/api/shopifyql/segment-query-language-reference) conditions. Common use cases for segments include customer analytics, targeted marketing campaigns, and automated discount eligibility.
+ *
+ * The segment's [`query`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Segment#field-query) field contains ShopifyQL conditions that determine membership, such as purchase history, location, or engagement patterns. Tracks when the segment was created with [`creationDate`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Segment#field-creationDate) and when it was last modified with [`lastEditDate`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Segment#field-lastEditDate).
+ */
+class ShopifySegment implements ShopifyNode
 {
     protected $creationDate;
     protected $id;
@@ -13,36 +18,44 @@ class ShopifySegment
 
     
     /**
+     * The date and time when the segment was added to the store.
+     *
      * @return Carbon
      */
-    public function getCreationDate()
+    public function getCreationDate(): ?Carbon
     {
         return $this->creationDate;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The date and time when the segment was last updated.
+     *
      * @return Carbon
      */
-    public function getLastEditDate()
+    public function getLastEditDate(): ?Carbon
     {
         return $this->lastEditDate;
     }
 
     
     /**
+     * The name of the segment.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The adjustment order object.
+ */
 class ShopifyShopifyPaymentsAdjustmentOrderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsAdjustmentOrder";
 
-    public function selectAmount(ShopifyShopifyPaymentsAdjustmentOrderAmountArgumentsObject $argsObject = null)
+    /**
+     * The amount of the adjustment order.
+     */
+    public function selectAmount(?ShopifyShopifyPaymentsAdjustmentOrderAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopifyPaymentsAdjustmentOrderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFees(ShopifyShopifyPaymentsAdjustmentOrderFeesArgumentsObject $argsObject = null)
+    /**
+     * The fee of the adjustment order.
+     */
+    public function selectFees(?ShopifyShopifyPaymentsAdjustmentOrderFeesArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("fees");
         if ($argsObject !== null) {
@@ -30,21 +39,30 @@ class ShopifyShopifyPaymentsAdjustmentOrderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLink()
+    /**
+     * The link to the adjustment order.
+     */
+    public function selectLink(): static
     {
         $this->selectField("link");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the adjustment order.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectNet(ShopifyShopifyPaymentsAdjustmentOrderNetArgumentsObject $argsObject = null)
+    /**
+     * The net of the adjustment order.
+     */
+    public function selectNet(?ShopifyShopifyPaymentsAdjustmentOrderNetArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("net");
         if ($argsObject !== null) {
@@ -55,7 +73,10 @@ class ShopifyShopifyPaymentsAdjustmentOrderQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOrderTransactionId()
+    /**
+     * The ID of the order transaction.
+     */
+    public function selectOrderTransactionId(): static
     {
         $this->selectField("orderTransactionId");
 

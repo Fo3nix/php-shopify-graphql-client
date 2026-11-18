@@ -3,8 +3,11 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscountEntitledLines;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscountValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscountValueHydrator;
 
+/**
+ * Custom subscription discount.
+ */
 class ShopifySubscriptionManualDiscount
 {
     protected $entitledLines;
@@ -19,81 +22,99 @@ class ShopifySubscriptionManualDiscount
 
     
     /**
+     * Entitled line items used to apply the subscription discount on.
+     *
      * @return ShopifySubscriptionDiscountEntitledLines
      */
-    public function getEntitledLines()
+    public function getEntitledLines(): ?ShopifySubscriptionDiscountEntitledLines
     {
         return $this->entitledLines;
     }
 
     
     /**
+     * The unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The maximum number of times the subscription discount will be applied on orders.
+     *
      * @return int
      */
-    public function getRecurringCycleLimit()
+    public function getRecurringCycleLimit(): ?int
     {
         return $this->recurringCycleLimit;
     }
 
     
     /**
-     * @return ShopifySubscriptionDiscountRejectionReasonEnumObject
+     * The reason that the discount on the subscription draft is rejected.
+     *
+     * @return string A ShopifySubscriptionDiscountRejectionReasonEnumObject value
      */
-    public function getRejectionReason()
+    public function getRejectionReason(): ?string
     {
         return $this->rejectionReason;
     }
 
     
     /**
-     * @return ShopifyDiscountTargetTypeEnumObject
+     * Type of line the discount applies on.
+     *
+     * @return string A ShopifyDiscountTargetTypeEnumObject value
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
     
     /**
+     * The title associated with the subscription discount.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
-     * @return ShopifyDiscountTypeEnumObject
+     * The type of the subscription discount.
+     *
+     * @return string A ShopifyDiscountTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The number of times the discount was applied.
+     *
      * @return int
      */
-    public function getUsageCount()
+    public function getUsageCount(): ?int
     {
         return $this->usageCount;
     }
 
     
     /**
-     * @return ShopifySubscriptionDiscountValue
+     * The value of the subscription discount.
+     *
+     * @return ShopifySubscriptionDiscountFixedAmountValue|ShopifySubscriptionDiscountPercentageValue
      */
-    public function getValue()
+    public function getValue(): ShopifySubscriptionDiscountFixedAmountValue|ShopifySubscriptionDiscountPercentageValue|null
     {
         return $this->value;
     }
@@ -130,7 +151,7 @@ class ShopifySubscriptionManualDiscount
                 $instance->usageCount = $data['usageCount'];
             }
             if (isset($data['value']) && $data['value'] !== null) {
-                $instance->value = ShopifySubscriptionDiscountValue::fromArray($data['value']);
+                $instance->value = ShopifySubscriptionDiscountValueHydrator::fromArray($data['value']);
             }
             return $instance;
         }
@@ -180,7 +201,7 @@ class ShopifySubscriptionManualDiscount
                 $data['usageCount'] = $this->usageCount;
             }
             if ($this->value !== null) {
-                $data['value'] = $this->value->asArray();
+                $data['value'] = ShopifySubscriptionDiscountValueHydrator::toArray($this->value);
             }
             return $data;
         }

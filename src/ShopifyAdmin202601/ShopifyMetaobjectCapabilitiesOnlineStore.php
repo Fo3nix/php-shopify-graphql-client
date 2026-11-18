@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetaobjectCapabilityDefinitionDataOnlineStore;
 
+/**
+ * The Online Store capability of a metaobject definition.
+ */
 class ShopifyMetaobjectCapabilitiesOnlineStore
 {
     protected $data;
@@ -11,18 +14,22 @@ class ShopifyMetaobjectCapabilitiesOnlineStore
 
     
     /**
+     * The data associated with the Online Store capability.
+     *
      * @return ShopifyMetaobjectCapabilityDefinitionDataOnlineStore
      */
-    public function getData()
+    public function getData(): ?ShopifyMetaobjectCapabilityDefinitionDataOnlineStore
     {
         return $this->data;
     }
 
     
     /**
+     * Indicates if the capability is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

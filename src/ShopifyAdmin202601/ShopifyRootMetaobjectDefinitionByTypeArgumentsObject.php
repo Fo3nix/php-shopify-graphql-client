@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootMetaobjectDefinitionByTypeArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["type"];
+
     protected $type;
 
-    public function setType($type)
+    /**
+     * The type of the metaobject definition to return.
+     */
+    public function setType($type): static
     {
         $this->type = $type;
 

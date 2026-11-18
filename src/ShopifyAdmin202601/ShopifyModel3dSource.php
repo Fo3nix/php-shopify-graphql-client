@@ -2,6 +2,15 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A source for a Shopify-hosted 3d model.
+ *
+ * Types of sources include GLB and USDZ formatted 3d models, where the former
+ * is an original 3d model and the latter has been converted from the original.
+ *
+ * If the original source is in GLB format and over 15 MBs in size, then both the
+ * original and the USDZ formatted source are optimized to reduce the file size.
+ */
 class ShopifyModel3dSource
 {
     protected $filesize;
@@ -11,36 +20,44 @@ class ShopifyModel3dSource
 
     
     /**
+     * The 3d model source's filesize.
+     *
      * @return int
      */
-    public function getFilesize()
+    public function getFilesize(): ?int
     {
         return $this->filesize;
     }
 
     
     /**
+     * The 3d model source's format.
+     *
      * @return string
      */
-    public function getFormat()
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
     
     /**
+     * The 3d model source's MIME type.
+     *
      * @return string
      */
-    public function getMimeType()
+    public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
     
     /**
+     * The 3d model source's URL.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }

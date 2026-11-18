@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A navigation item, holding basic link attributes.
+ */
 class ShopifyNavigationItem
 {
     protected $id;
@@ -10,27 +13,33 @@ class ShopifyNavigationItem
 
     
     /**
+     * The unique identifier of the navigation item.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the navigation item.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The URL of the page that the navigation item links to.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

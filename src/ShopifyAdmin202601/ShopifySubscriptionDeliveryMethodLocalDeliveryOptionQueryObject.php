@@ -4,46 +4,68 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The selected delivery option on a subscription contract.
+ */
 class ShopifySubscriptionDeliveryMethodLocalDeliveryOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionDeliveryMethodLocalDeliveryOption";
 
-    public function selectCode()
+    /**
+     * A custom reference to the delivery method for use with automations.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The details displayed to the customer to describe the local delivery option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectInstructions()
+    /**
+     * The delivery instructions that the customer can provide to the merchant.
+     */
+    public function selectInstructions(): static
     {
         $this->selectField("instructions");
 
         return $this;
     }
 
-    public function selectPhone()
+    /**
+     * The phone number that the customer provided to the merchant.
+     * Formatted using E.164 standard. For example, `+16135551111`.
+     */
+    public function selectPhone(): static
     {
         $this->selectField("phone");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the local delivery option.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the local delivery option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

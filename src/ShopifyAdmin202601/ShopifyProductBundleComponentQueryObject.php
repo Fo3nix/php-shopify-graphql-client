@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The product's component information.
+ */
 class ShopifyProductBundleComponentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductBundleComponent";
 
-    public function selectComponentProduct(ShopifyProductBundleComponentComponentProductArgumentsObject $argsObject = null)
+    /**
+     * The product that's related as a component.
+     */
+    public function selectComponentProduct(?ShopifyProductBundleComponentComponentProductArgumentsObject $argsObject = null): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject("componentProduct");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyProductBundleComponentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectComponentVariants(ShopifyProductBundleComponentComponentVariantsArgumentsObject $argsObject = null)
+    /**
+     * The list of products' variants that are components.
+     */
+    public function selectComponentVariants(?ShopifyProductBundleComponentComponentVariantsArgumentsObject $argsObject = null): ShopifyProductVariantConnectionQueryObject
     {
         $object = new ShopifyProductVariantConnectionQueryObject("componentVariants");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyProductBundleComponentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectComponentVariantsCount(ShopifyProductBundleComponentComponentVariantsCountArgumentsObject $argsObject = null)
+    /**
+     * The number of component variants for the product component.
+     */
+    public function selectComponentVariantsCount(?ShopifyProductBundleComponentComponentVariantsCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("componentVariantsCount");
         if ($argsObject !== null) {
@@ -41,7 +53,11 @@ class ShopifyProductBundleComponentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOptionSelections(ShopifyProductBundleComponentOptionSelectionsArgumentsObject $argsObject = null)
+    /**
+     * The options in the parent and the component options they're connected to, along with the chosen option values
+     * that appear in the bundle.
+     */
+    public function selectOptionSelections(?ShopifyProductBundleComponentOptionSelectionsArgumentsObject $argsObject = null): ShopifyProductBundleComponentOptionSelectionQueryObject
     {
         $object = new ShopifyProductBundleComponentOptionSelectionQueryObject("optionSelections");
         if ($argsObject !== null) {
@@ -52,14 +68,21 @@ class ShopifyProductBundleComponentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the component product set for this bundle line.
+     * It will be null if there's a quantityOption present.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectQuantityOption(ShopifyProductBundleComponentQuantityOptionArgumentsObject $argsObject = null)
+    /**
+     * The quantity as option of the component product. It will be null if there's a quantity set.
+     */
+    public function selectQuantityOption(?ShopifyProductBundleComponentQuantityOptionArgumentsObject $argsObject = null): ShopifyProductBundleComponentQuantityOptionQueryObject
     {
         $object = new ShopifyProductBundleComponentQuantityOptionQueryObject("quantityOption");
         if ($argsObject !== null) {

@@ -4,39 +4,57 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The typography customizations.
+ */
 class ShopifyCheckoutBrandingTypographyStyleQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingTypographyStyle";
 
-    public function selectFont()
+    /**
+     * The font.
+     */
+    public function selectFont(): static
     {
         $this->selectField("font");
 
         return $this;
     }
 
-    public function selectKerning()
+    /**
+     * The kerning.
+     */
+    public function selectKerning(): static
     {
         $this->selectField("kerning");
 
         return $this;
     }
 
-    public function selectLetterCase()
+    /**
+     * The letter case.
+     */
+    public function selectLetterCase(): static
     {
         $this->selectField("letterCase");
 
         return $this;
     }
 
-    public function selectSize()
+    /**
+     * The font size.
+     */
+    public function selectSize(): static
     {
         $this->selectField("size");
 
         return $this;
     }
 
-    public function selectWeight()
+    /**
+     * The font weight.
+     */
+    public function selectWeight(): static
     {
         $this->selectField("weight");
 

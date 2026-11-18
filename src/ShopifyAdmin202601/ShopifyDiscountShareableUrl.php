@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyImage;
 
+/**
+ * A shareable URL for a discount code.
+ */
 class ShopifyDiscountShareableUrl
 {
     protected $targetItemImage;
@@ -13,36 +16,44 @@ class ShopifyDiscountShareableUrl
 
     
     /**
+     * The image URL of the item (product or collection) to which the discount applies.
+     *
      * @return ShopifyImage
      */
-    public function getTargetItemImage()
+    public function getTargetItemImage(): ?ShopifyImage
     {
         return $this->targetItemImage;
     }
 
     
     /**
-     * @return ShopifyDiscountShareableUrlTargetTypeEnumObject
+     * The type of page that's associated with the URL.
+     *
+     * @return string A ShopifyDiscountShareableUrlTargetTypeEnumObject value
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
     
     /**
+     * The title of the page that's associated with the URL.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The URL for the discount code.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

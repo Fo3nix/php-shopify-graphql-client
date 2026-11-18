@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionBillingAttemptCo
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionBillingCycleEditedContract;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionContract;
 
+/**
+ * A subscription billing cycle.
+ */
 class ShopifySubscriptionBillingCycle
 {
     protected $billingAttemptExpectedDate;
@@ -22,90 +25,110 @@ class ShopifySubscriptionBillingCycle
 
     
     /**
+     * The date on which the billing attempt is expected to be made.
+     *
      * @return Carbon
      */
-    public function getBillingAttemptExpectedDate()
+    public function getBillingAttemptExpectedDate(): ?Carbon
     {
         return $this->billingAttemptExpectedDate;
     }
 
     
     /**
+     * The list of billing attempts associated with the billing cycle.
+     *
      * @return ShopifySubscriptionBillingAttemptConnection
      */
-    public function getBillingAttempts()
+    public function getBillingAttempts(): ?ShopifySubscriptionBillingAttemptConnection
     {
         return $this->billingAttempts;
     }
 
     
     /**
+     * The end date of the billing cycle.
+     *
      * @return Carbon
      */
-    public function getCycleEndAt()
+    public function getCycleEndAt(): ?Carbon
     {
         return $this->cycleEndAt;
     }
 
     
     /**
+     * The index of the billing cycle.
+     *
      * @return int
      */
-    public function getCycleIndex()
+    public function getCycleIndex(): ?int
     {
         return $this->cycleIndex;
     }
 
     
     /**
+     * The start date of the billing cycle.
+     *
      * @return Carbon
      */
-    public function getCycleStartAt()
+    public function getCycleStartAt(): ?Carbon
     {
         return $this->cycleStartAt;
     }
 
     
     /**
+     * Whether this billing cycle was edited.
+     *
      * @return bool
      */
-    public function getEdited()
+    public function getEdited(): ?bool
     {
         return $this->edited;
     }
 
     
     /**
+     * The active edited contract for the billing cycle.
+     *
      * @return ShopifySubscriptionBillingCycleEditedContract
      */
-    public function getEditedContract()
+    public function getEditedContract(): ?ShopifySubscriptionBillingCycleEditedContract
     {
         return $this->editedContract;
     }
 
     
     /**
+     * Whether this billing cycle was skipped.
+     *
      * @return bool
      */
-    public function getSkipped()
+    public function getSkipped(): ?bool
     {
         return $this->skipped;
     }
 
     
     /**
+     * The subscription contract that the billing cycle belongs to.
+     *
      * @return ShopifySubscriptionContract
      */
-    public function getSourceContract()
+    public function getSourceContract(): ?ShopifySubscriptionContract
     {
         return $this->sourceContract;
     }
 
     
     /**
-     * @return ShopifySubscriptionBillingCycleBillingCycleStatusEnumObject
+     * The status of the billing cycle.
+     *
+     * @return string A ShopifySubscriptionBillingCycleBillingCycleStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

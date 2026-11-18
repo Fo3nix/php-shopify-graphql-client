@@ -10,7 +10,11 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketingEvent;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyUTMParameters;
 
-class ShopifyMarketingActivity
+/**
+ * The marketing activity resource represents marketing that a
+ *         merchant created through an app.
+ */
+class ShopifyMarketingActivity implements ShopifyNode
 {
     protected $activityListUrl;
     protected $adSpend;
@@ -43,252 +47,312 @@ class ShopifyMarketingActivity
 
     
     /**
+     * The URL of the marketing activity listing page in the marketing section.
+     *
      * @return string
      */
-    public function getActivityListUrl()
+    public function getActivityListUrl(): mixed
     {
         return $this->activityListUrl;
     }
 
     
     /**
+     * The amount spent on the marketing activity.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAdSpend()
+    public function getAdSpend(): ?ShopifyMoneyV2
     {
         return $this->adSpend;
     }
 
     
     /**
+     * The app which created this marketing activity.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The errors generated when an app publishes the marketing activity.
+     *
      * @return ShopifyMarketingActivityExtensionAppErrors
      */
-    public function getAppErrors()
+    public function getAppErrors(): ?ShopifyMarketingActivityExtensionAppErrors
     {
         return $this->appErrors;
     }
 
     
     /**
+     * The allocated budget for the marketing activity.
+     *
      * @return ShopifyMarketingBudget
      */
-    public function getBudget()
+    public function getBudget(): ?ShopifyMarketingBudget
     {
         return $this->budget;
     }
 
     
     /**
+     * The date and time when the marketing activity was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The completed content in the marketing activity creation form.
+     *
      * @return string
      */
-    public function getFormData()
+    public function getFormData(): ?string
     {
         return $this->formData;
     }
 
     
     /**
-     * @return ShopifyMarketingActivityHierarchyLevelEnumObject
+     * The hierarchy level of the marketing activity.
+     *
+     * @return string A ShopifyMarketingActivityHierarchyLevelEnumObject value
      */
-    public function getHierarchyLevel()
+    public function getHierarchyLevel(): ?string
     {
         return $this->hierarchyLevel;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the marketing activity is in the main workflow version of the marketing automation.
+     *
      * @return bool
      */
-    public function getInMainWorkflowVersion()
+    public function getInMainWorkflowVersion(): ?bool
     {
         return $this->inMainWorkflowVersion;
     }
 
     
     /**
+     * The marketing activity represents an external marketing activity.
+     *
      * @return bool
      */
-    public function getIsExternal()
+    public function getIsExternal(): ?bool
     {
         return $this->isExternal;
     }
 
     
     /**
-     * @return ShopifyMarketingChannelEnumObject
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
+     * @return string A ShopifyMarketingChannelEnumObject value
      */
-    public function getMarketingChannel()
+    public function getMarketingChannel(): ?string
     {
         return $this->marketingChannel;
     }
 
     
     /**
-     * @return ShopifyMarketingChannelEnumObject
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
+     * @return string A ShopifyMarketingChannelEnumObject value
      */
-    public function getMarketingChannelType()
+    public function getMarketingChannelType(): ?string
     {
         return $this->marketingChannelType;
     }
 
     
     /**
+     * Associated marketing event of this marketing activity.
+     *
      * @return ShopifyMarketingEvent
      */
-    public function getMarketingEvent()
+    public function getMarketingEvent(): ?ShopifyMarketingEvent
     {
         return $this->marketingEvent;
     }
 
     
     /**
+     * ID of the parent activity of this marketing activity.
+     *
      * @return string
      */
-    public function getParentActivityId()
+    public function getParentActivityId(): ?string
     {
         return $this->parentActivityId;
     }
 
     
     /**
+     * ID of the parent activity of this marketing activity.
+     *
      * @return string
      */
-    public function getParentRemoteId()
+    public function getParentRemoteId(): ?string
     {
         return $this->parentRemoteId;
     }
 
     
     /**
+     * A contextual description of the marketing activity based on the platform and tactic used.
+     *
      * @return string
      */
-    public function getSourceAndMedium()
+    public function getSourceAndMedium(): ?string
     {
         return $this->sourceAndMedium;
     }
 
     
     /**
-     * @return ShopifyMarketingActivityStatusEnumObject
+     * The current state of the marketing activity.
+     *
+     * @return string A ShopifyMarketingActivityStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
-     * @return ShopifyMarketingActivityStatusBadgeTypeEnumObject
+     * The severity of the marketing activity's status.
+     *
+     * @return string A ShopifyMarketingActivityStatusBadgeTypeEnumObject value
      */
-    public function getStatusBadgeType()
+    public function getStatusBadgeType(): ?string
     {
         return $this->statusBadgeType;
     }
 
     
     /**
-     * @return ShopifyBadgeTypeEnumObject
+     * The severity of the marketing activity's status.
+     *
+     * @return string A ShopifyBadgeTypeEnumObject value
      */
-    public function getStatusBadgeTypeV2()
+    public function getStatusBadgeTypeV2(): ?string
     {
         return $this->statusBadgeTypeV2;
     }
 
     
     /**
+     * The rendered status of the marketing activity.
+     *
      * @return string
      */
-    public function getStatusLabel()
+    public function getStatusLabel(): ?string
     {
         return $this->statusLabel;
     }
 
     
     /**
+     * The [date and time](
+     *           https://help.shopify.com/https://en.wikipedia.org/wiki/ISO_8601
+     *           ) when the activity's status last changed.
+     *
      * @return Carbon
      */
-    public function getStatusTransitionedAt()
+    public function getStatusTransitionedAt(): ?Carbon
     {
         return $this->statusTransitionedAt;
     }
 
     
     /**
-     * @return ShopifyMarketingTacticEnumObject
+     * The method of marketing used for this marketing activity.
+     *
+     * @return string A ShopifyMarketingTacticEnumObject value
      */
-    public function getTactic()
+    public function getTactic(): ?string
     {
         return $this->tactic;
     }
 
     
     /**
-     * @return ShopifyMarketingActivityStatusEnumObject
+     * The status to which the marketing activity is currently transitioning.
+     *
+     * @return string A ShopifyMarketingActivityStatusEnumObject value
      */
-    public function getTargetStatus()
+    public function getTargetStatus(): ?string
     {
         return $this->targetStatus;
     }
 
     
     /**
+     * The marketing activity's title, which is rendered on the marketing listing page.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The date and time when the marketing activity was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The value portion of the URL query parameter used in attributing sessions to this activity.
+     *
      * @return string
      */
-    public function getUrlParameterValue()
+    public function getUrlParameterValue(): ?string
     {
         return $this->urlParameterValue;
     }
 
     
     /**
+     * The set of [Urchin Tracking Module](
+     *           https://help.shopify.com/https://en.wikipedia.org/wiki/UTM_parameters
+     *           ) used in the URL for tracking this marketing activity.
+     *
      * @return ShopifyUTMParameters
      */
-    public function getUtmParameters()
+    public function getUtmParameters(): ?ShopifyUTMParameters
     {
         return $this->utmParameters;
     }

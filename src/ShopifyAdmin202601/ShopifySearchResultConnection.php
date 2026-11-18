@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySearchResultEdge;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyPageInfo;
 
+/**
+ * The connection type for SearchResult.
+ */
 class ShopifySearchResultConnection
 {
     protected $edges;
@@ -13,27 +16,33 @@ class ShopifySearchResultConnection
 
     
     /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     *
      * @return ShopifySearchResultEdge[]
      */
-    public function getEdges()
+    public function getEdges(): ?array
     {
         return $this->edges;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }
 
     
     /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     *
      * @return int
      */
-    public function getResultsAfterCount()
+    public function getResultsAfterCount(): ?int
     {
         return $this->resultsAfterCount;
     }

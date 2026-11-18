@@ -8,7 +8,10 @@ class ShopifySubscriptionBillingCycleEditedContractCustomerPaymentMethodArgument
 {
     protected $showRevoked;
 
-    public function setShowRevoked($showRevoked)
+    /**
+     * Whether to show the customer's revoked payment method.
+     */
+    public function setShowRevoked($showRevoked): static
     {
         $this->showRevoked = $showRevoked;
 

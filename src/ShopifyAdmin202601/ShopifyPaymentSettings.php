@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Settings related to payments.
+ */
 class ShopifyPaymentSettings
 {
     protected $supportedDigitalWallets;
 
     
     /**
-     * @return ShopifyDigitalWalletEnumObject[]
+     * List of the digital wallets which the shop supports.
+     *
+     * @return string[] ShopifyDigitalWalletEnumObject values
      */
-    public function getSupportedDigitalWallets()
+    public function getSupportedDigitalWallets(): ?array
     {
         return $this->supportedDigitalWallets;
     }

@@ -3,22 +3,34 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\InputObject;
+use GraphQL\RawObject;
 
+/**
+ * The input fields required to reimburse duties on a refund.
+ */
 class ShopifyRefundDutyInputInputObject extends InputObject
 {
+    const REQUIRED = ["dutyId"];
+
     protected $dutyId;
     protected $refundType;
 
-    public function setDutyId($dutyId)
+    /**
+     * The ID of the duty in the refund.
+     */
+    public function setDutyId($dutyId): static
     {
         $this->dutyId = $dutyId;
 
         return $this;
     }
 
-    public function setRefundType($refundType)
+    /**
+     * The type of refund for this duty.
+     */
+    public function setRefundType($shopifyRefundDutyRefundType): static
     {
-        $this->refundType = $refundType;
+        $this->refundType = new RawObject($shopifyRefundDutyRefundType);
 
         return $this;
     }

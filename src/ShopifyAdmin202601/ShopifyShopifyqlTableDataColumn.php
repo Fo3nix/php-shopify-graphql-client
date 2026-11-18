@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents a column in a ShopifyQL query response.
+ */
 class ShopifyShopifyqlTableDataColumn
 {
     protected $dataType;
@@ -11,36 +14,44 @@ class ShopifyShopifyqlTableDataColumn
 
     
     /**
-     * @return ShopifyColumnDataTypeEnumObject
+     * The data type of the column.
+     *
+     * @return string A ShopifyColumnDataTypeEnumObject value
      */
-    public function getDataType()
+    public function getDataType(): ?string
     {
         return $this->dataType;
     }
 
     
     /**
+     * The human-readable display name of the column.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * The name of the column.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifyColumnDataTypeEnumObject
+     * The element type of an array column or DAY_DURATION for a range column.
+     *
+     * @return string A ShopifyColumnDataTypeEnumObject value
      */
-    public function getSubType()
+    public function getSubType(): ?string
     {
         return $this->subType;
     }

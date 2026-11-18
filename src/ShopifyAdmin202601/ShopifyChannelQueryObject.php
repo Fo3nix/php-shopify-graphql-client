@@ -4,11 +4,21 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A connection between a Shopify shop and an external selling platform that supports product syndication and optionally order ingestion. Each channel binds a merchant's account on a specific platform — such as Amazon, eBay, Google, or a point-of-sale system — to the shop, establishing the publishing destination for product feeds.
+ *
+ * Sales Channel applications use [`channelCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/channelCreate) to establish channels after merchant authentication, and can manage multiple channel connections per app. Each channel is bound to a channel specification that declares the platform's regional coverage, capabilities, and requirements.
+ *
+ * Use channels to manage where catalog items are syndicated, track publication status across platforms, and control [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) visibility for different selling destinations.
+ */
 class ShopifyChannelQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Channel";
 
-    public function selectApp(ShopifyChannelAppArgumentsObject $argsObject = null)
+    /**
+     * The underlying app used by the channel.
+     */
+    public function selectApp(?ShopifyChannelAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -19,7 +29,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCollectionPublicationsV3(ShopifyChannelCollectionPublicationsV3ArgumentsObject $argsObject = null)
+    /**
+     * The list of collection publications. Each record represents information about the publication of a collection.
+     */
+    public function selectCollectionPublicationsV3(?ShopifyChannelCollectionPublicationsV3ArgumentsObject $argsObject = null): ShopifyResourcePublicationConnectionQueryObject
     {
         $object = new ShopifyResourcePublicationConnectionQueryObject("collectionPublicationsV3");
         if ($argsObject !== null) {
@@ -30,7 +43,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCollections(ShopifyChannelCollectionsArgumentsObject $argsObject = null)
+    /**
+     * The list of collections published to the channel.
+     */
+    public function selectCollections(?ShopifyChannelCollectionsArgumentsObject $argsObject = null): ShopifyCollectionConnectionQueryObject
     {
         $object = new ShopifyCollectionConnectionQueryObject("collections");
         if ($argsObject !== null) {
@@ -41,28 +57,40 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectHandle()
+    /**
+     * A unique, human-readable identifier for the channel within the shop. Set during [`channelCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/channelCreate) or auto-generated from the specification handle and account ID. Use with [`channelByHandle`](https://shopify.dev/docs/api/admin-graphql/latest/queries/channelByHandle) for lookups.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectHasCollection()
+    /**
+     * Whether the collection is available to the channel.
+     */
+    public function selectHasCollection(): static
     {
         $this->selectField("hasCollection");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the channel.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
@@ -70,10 +98,12 @@ class ShopifyChannelQueryObject extends QueryObject
     }
 
     /**
+     * The menu items for the channel, which also appear as submenu items in the left navigation sidebar in the Shopify admin.
+     *
      * @deprecated Use [AppInstallation.navigationItems](
               https://shopify.dev/api/admin-graphql/current/objects/AppInstallation#field-appinstallation-navigationitems) instead.
      */
-    public function selectNavigationItems(ShopifyChannelNavigationItemsArgumentsObject $argsObject = null)
+    public function selectNavigationItems(?ShopifyChannelNavigationItemsArgumentsObject $argsObject = null): ShopifyNavigationItemQueryObject
     {
         $object = new ShopifyNavigationItemQueryObject("navigationItems");
         if ($argsObject !== null) {
@@ -85,10 +115,12 @@ class ShopifyChannelQueryObject extends QueryObject
     }
 
     /**
+     * Home page for the channel.
+     *
      * @deprecated Use [AppInstallation.launchUrl](
               https://shopify.dev/api/admin-graphql/current/objects/AppInstallation#field-appinstallation-launchurl) instead.
      */
-    public function selectOverviewPath()
+    public function selectOverviewPath(): static
     {
         $this->selectField("overviewPath");
 
@@ -96,9 +128,11 @@ class ShopifyChannelQueryObject extends QueryObject
     }
 
     /**
+     * The product publications for the products published to the channel.
+     *
      * @deprecated Use `productPublicationsV3` instead.
      */
-    public function selectProductPublications(ShopifyChannelProductPublicationsArgumentsObject $argsObject = null)
+    public function selectProductPublications(?ShopifyChannelProductPublicationsArgumentsObject $argsObject = null): ShopifyProductPublicationConnectionQueryObject
     {
         $object = new ShopifyProductPublicationConnectionQueryObject("productPublications");
         if ($argsObject !== null) {
@@ -109,7 +143,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProductPublicationsV3(ShopifyChannelProductPublicationsV3ArgumentsObject $argsObject = null)
+    /**
+     * The list of product publication records for products published to this channel.
+     */
+    public function selectProductPublicationsV3(?ShopifyChannelProductPublicationsV3ArgumentsObject $argsObject = null): ShopifyResourcePublicationConnectionQueryObject
     {
         $object = new ShopifyResourcePublicationConnectionQueryObject("productPublicationsV3");
         if ($argsObject !== null) {
@@ -120,7 +157,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProducts(ShopifyChannelProductsArgumentsObject $argsObject = null)
+    /**
+     * The list of products published to the channel.
+     */
+    public function selectProducts(?ShopifyChannelProductsArgumentsObject $argsObject = null): ShopifyProductConnectionQueryObject
     {
         $object = new ShopifyProductConnectionQueryObject("products");
         if ($argsObject !== null) {
@@ -131,7 +171,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProductsCount(ShopifyChannelProductsCountArgumentsObject $argsObject = null)
+    /**
+     * Retrieves the total count of [`products`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) published to a specific sales channel. Limited to a maximum of 10000 by default.
+     */
+    public function selectProductsCount(?ShopifyChannelProductsCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("productsCount");
         if ($argsObject !== null) {
@@ -142,7 +185,10 @@ class ShopifyChannelQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSupportsFuturePublishing()
+    /**
+     * Whether the channel supports future publishing.
+     */
+    public function selectSupportsFuturePublishing(): static
     {
         $this->selectField("supportsFuturePublishing");
 
