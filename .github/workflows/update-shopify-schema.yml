@@ -55,6 +55,9 @@ jobs:
           NODASH="${VERSION//-}"
           DIR="src/ShopifyAdmin${NODASH}"
           BRANCH="shopify-schema/${VERSION}"
+          # Start from an empty directory so classes renamed or dropped by the
+          # generator do not linger next to the regenerated ones
+          rm -rf "$DIR"
           mkdir -p "$DIR"
           printf '\n\n' | php vendor/bin/generate_schema_objects \
             -u "https://shopify.dev/admin-graphql-direct-proxy/${VERSION}" \
