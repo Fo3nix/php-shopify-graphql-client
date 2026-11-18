@@ -22,6 +22,13 @@ class ShopifyInventoryShipmentLineItemQueryObject extends QueryObject
         return $this;
     }
 
+    public function selectCreatedAt()
+    {
+        $this->selectField("createdAt");
+
+        return $this;
+    }
+
     public function selectId()
     {
         $this->selectField("id");

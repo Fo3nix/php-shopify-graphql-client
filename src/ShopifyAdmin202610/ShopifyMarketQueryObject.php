@@ -70,6 +70,13 @@ class ShopifyMarketQueryObject extends QueryObject
         return $object;
     }
 
+    public function selectCreatedAt()
+    {
+        $this->selectField("createdAt");
+
+        return $this;
+    }
+
     public function selectCurrencySettings(ShopifyMarketCurrencySettingsArgumentsObject $argsObject = null)
     {
         $object = new ShopifyMarketCurrencySettingsQueryObject("currencySettings");

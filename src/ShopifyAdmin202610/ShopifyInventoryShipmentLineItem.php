@@ -2,12 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202610;
 
+use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202610\ShopifyInventoryItem;
 
 class ShopifyInventoryShipmentLineItem
 {
     protected $acceptedQuantity;
     protected $canceledQuantity;
+    protected $createdAt;
     protected $id;
     protected $inventoryItem;
     protected $quantity;
@@ -30,6 +32,15 @@ class ShopifyInventoryShipmentLineItem
     public function getCanceledQuantity()
     {
         return $this->canceledQuantity;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     
@@ -90,6 +101,9 @@ class ShopifyInventoryShipmentLineItem
             if (isset($data['canceledQuantity']) && $data['canceledQuantity'] !== null) {
                 $instance->canceledQuantity = $data['canceledQuantity'];
             }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
             if (isset($data['id']) && $data['id'] !== null) {
                 $instance->id = $data['id'];
             }
@@ -133,6 +147,9 @@ class ShopifyInventoryShipmentLineItem
             }
             if ($this->canceledQuantity !== null) {
                 $data['canceledQuantity'] = $this->canceledQuantity;
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->id !== null) {
                 $data['id'] = $this->id;
