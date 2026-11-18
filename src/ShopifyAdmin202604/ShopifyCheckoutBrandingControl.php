@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The form controls customizations.
+ */
 class ShopifyCheckoutBrandingControl
 {
     protected $border;
@@ -11,36 +14,44 @@ class ShopifyCheckoutBrandingControl
 
     
     /**
-     * @return ShopifyCheckoutBrandingSimpleBorderEnumObject
+     * The border used for form controls.
+     *
+     * @return string A ShopifyCheckoutBrandingSimpleBorderEnumObject value
      */
-    public function getBorder()
+    public function getBorder(): ?string
     {
         return $this->border;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSelectionEnumObject
+     * Set to TRANSPARENT to define transparent form controls. If null, form controls inherit colors from their scheme settings (for example, the main section inherits from `design_system.colors.schemes.scheme1.control` by default). Note that usage of the `customizations.control.color` setting to customize the form control color is deprecated.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSelectionEnumObject value
      */
-    public function getColor()
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingCornerRadiusEnumObject
+     * The corner radius used for form controls.
+     *
+     * @return string A ShopifyCheckoutBrandingCornerRadiusEnumObject value
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?string
     {
         return $this->cornerRadius;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingLabelPositionEnumObject
+     * The label position used for form controls.
+     *
+     * @return string A ShopifyCheckoutBrandingLabelPositionEnumObject value
      */
-    public function getLabelPosition()
+    public function getLabelPosition(): ?string
     {
         return $this->labelPosition;
     }

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 
+/**
+ * The financial transfer details for a return outcome that results in an invoice.
+ */
 class ShopifyInvoiceReturnOutcome
 {
     protected $amount;
 
     
     /**
+     * The total monetary value to be invoiced in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyBag
     {
         return $this->amount;
     }

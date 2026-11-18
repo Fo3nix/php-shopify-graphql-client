@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * The value of the discount and how it will be applied.
+ */
 class ShopifySubscriptionDiscountFixedAmountValue
 {
     protected $amount;
@@ -11,18 +14,22 @@ class ShopifySubscriptionDiscountFixedAmountValue
 
     
     /**
+     * The fixed amount value of the discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * Whether the amount is applied per item.
+     *
      * @return bool
      */
-    public function getAppliesOnEachItem()
+    public function getAppliesOnEachItem(): ?bool
     {
         return $this->appliesOnEachItem;
     }

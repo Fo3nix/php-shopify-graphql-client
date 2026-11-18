@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCountry;
 
-class ShopifyDeliveryZone
+/**
+ * A zone is a group of countries that have the same shipping rates. Customers can order products from a store only if they choose a shipping destination that's included in one of the store's zones.
+ */
+class ShopifyDeliveryZone implements ShopifyNode
 {
     protected $countries;
     protected $id;
@@ -12,27 +15,33 @@ class ShopifyDeliveryZone
 
     
     /**
+     * The list of countries within the zone.
+     *
      * @return ShopifyDeliveryCountry[]
      */
-    public function getCountries()
+    public function getCountries(): ?array
     {
         return $this->countries;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the zone.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootPublicationArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["id"];
+
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the Publication to return.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

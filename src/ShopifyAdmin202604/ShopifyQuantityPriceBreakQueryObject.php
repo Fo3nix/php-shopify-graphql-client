@@ -4,25 +4,38 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Quantity price breaks lets you offer different rates that are based on the
+ * amount of a specific variant being ordered.
+ */
 class ShopifyQuantityPriceBreakQueryObject extends QueryObject
 {
     const OBJECT_NAME = "QuantityPriceBreak";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectMinimumQuantity()
+    /**
+     * Minimum quantity required to reach new quantity break price.
+     */
+    public function selectMinimumQuantity(): static
     {
         $this->selectField("minimumQuantity");
 
         return $this;
     }
 
-    public function selectPrice(ShopifyQuantityPriceBreakPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of variant after reaching the minimum quantity.
+     */
+    public function selectPrice(?ShopifyQuantityPriceBreakPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -33,7 +46,10 @@ class ShopifyQuantityPriceBreakQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPriceList(ShopifyQuantityPriceBreakPriceListArgumentsObject $argsObject = null)
+    /**
+     * The price list associated with this quantity break.
+     */
+    public function selectPriceList(?ShopifyQuantityPriceBreakPriceListArgumentsObject $argsObject = null): ShopifyPriceListQueryObject
     {
         $object = new ShopifyPriceListQueryObject("priceList");
         if ($argsObject !== null) {
@@ -44,7 +60,10 @@ class ShopifyQuantityPriceBreakQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectVariant(ShopifyQuantityPriceBreakVariantArgumentsObject $argsObject = null)
+    /**
+     * The product variant associated with this quantity break.
+     */
+    public function selectVariant(?ShopifyQuantityPriceBreakVariantArgumentsObject $argsObject = null): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject("variant");
         if ($argsObject !== null) {

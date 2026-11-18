@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A failure to find the available delivery options for a subscription contract.
+ */
 class ShopifySubscriptionDeliveryOptionResultFailure
 {
     protected $message;
 
     
     /**
+     * The reason for the failure.
+     *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }

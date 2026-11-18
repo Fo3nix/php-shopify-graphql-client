@@ -4,19 +4,30 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for specifying the subscription contract and selecting the associated billing cycle.
+ */
 class ShopifySubscriptionBillingCycleInputInputObject extends InputObject
 {
+    const REQUIRED = ["contractId", "selector"];
+
     protected $contractId;
     protected $selector;
 
-    public function setContractId($contractId)
+    /**
+     * The ID of the subscription contract associated with the billing cycle.
+     */
+    public function setContractId($contractId): static
     {
         $this->contractId = $contractId;
 
         return $this;
     }
 
-    public function setSelector(ShopifySubscriptionBillingCycleSelectorInputObject $shopifySubscriptionBillingCycleSelectorInputObject)
+    /**
+     * Selects the billing cycle by date or index.
+     */
+    public function setSelector(ShopifySubscriptionBillingCycleSelectorInputObject $shopifySubscriptionBillingCycleSelectorInputObject): static
     {
         $this->selector = $shopifySubscriptionBillingCycleSelectorInputObject;
 

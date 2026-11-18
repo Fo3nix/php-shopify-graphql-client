@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A quantity option value related to a componentized product.
+ */
 class ShopifyProductBundleComponentQuantityOptionValue
 {
     protected $name;
@@ -9,18 +12,22 @@ class ShopifyProductBundleComponentQuantityOptionValue
 
     
     /**
+     * The name of the option value.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The quantity of the option value.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }

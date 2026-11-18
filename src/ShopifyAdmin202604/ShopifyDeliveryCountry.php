@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCountryCodeOrRestOfWorld;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryProvince;
 
-class ShopifyDeliveryCountry
+/**
+ * A country that is used to define a shipping zone.
+ */
+class ShopifyDeliveryCountry implements ShopifyNode
 {
     protected $code;
     protected $id;
@@ -15,45 +18,57 @@ class ShopifyDeliveryCountry
 
     
     /**
+     * A two-letter country code in ISO 3166-1 alpha-2 standard.
+     * It also includes a flag indicating whether the country should be
+     * a part of the 'Rest Of World' shipping zone.
+     *
      * @return ShopifyDeliveryCountryCodeOrRestOfWorld
      */
-    public function getCode()
+    public function getCode(): ?ShopifyDeliveryCountryCodeOrRestOfWorld
     {
         return $this->code;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The full name of the country.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The list of regions associated with this country.
+     *
      * @return ShopifyDeliveryProvince[]
      */
-    public function getProvinces()
+    public function getProvinces(): ?array
     {
         return $this->provinces;
     }
 
     
     /**
+     * The translated name of the country. The translation returned is based on the system's locale.
+     *
      * @return string
      */
-    public function getTranslatedName()
+    public function getTranslatedName(): ?string
     {
         return $this->translatedName;
     }

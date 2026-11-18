@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyInventoryItem;
 
-class ShopifyInventoryTransferLineItem
+/**
+ * Represents a line item belonging to an inventory transfer.
+ */
+class ShopifyInventoryTransferLineItem implements ShopifyNode
 {
     protected $id;
     protected $inventoryItem;
@@ -17,72 +20,88 @@ class ShopifyInventoryTransferLineItem
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The inventory item associated with this line item.
+     *
      * @return ShopifyInventoryItem
      */
-    public function getInventoryItem()
+    public function getInventoryItem(): ?ShopifyInventoryItem
     {
         return $this->inventoryItem;
     }
 
     
     /**
+     * The quantity of the item that has been picked for a draft shipment but not yet shipped.
+     *
      * @return int
      */
-    public function getPickedForShipmentQuantity()
+    public function getPickedForShipmentQuantity(): ?int
     {
         return $this->pickedForShipmentQuantity;
     }
 
     
     /**
+     * The quantity of the item that can be actioned upon, such as editing the item quantity on the transfer or adding to a shipment.
+     *
      * @return int
      */
-    public function getProcessableQuantity()
+    public function getProcessableQuantity(): ?int
     {
         return $this->processableQuantity;
     }
 
     
     /**
+     * The quantity of the item that can be shipped.
+     *
      * @return int
      */
-    public function getShippableQuantity()
+    public function getShippableQuantity(): ?int
     {
         return $this->shippableQuantity;
     }
 
     
     /**
+     * The quantity of the item that has been shipped.
+     *
      * @return int
      */
-    public function getShippedQuantity()
+    public function getShippedQuantity(): ?int
     {
         return $this->shippedQuantity;
     }
 
     
     /**
+     * The title of the product associated with this line item.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The total quantity of items being transferred.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }

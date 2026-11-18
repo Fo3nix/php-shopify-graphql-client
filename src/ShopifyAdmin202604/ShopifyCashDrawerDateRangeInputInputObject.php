@@ -4,19 +4,30 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for date and time range filter.
+ */
 class ShopifyCashDrawerDateRangeInputInputObject extends InputObject
 {
+    const REQUIRED = ["from", "to"];
+
     protected $from;
     protected $to;
 
-    public function setFrom($from)
+    /**
+     * The start of the date and time range.
+     */
+    public function setFrom($from): static
     {
         $this->from = $from;
 
         return $this;
     }
 
-    public function setTo($to)
+    /**
+     * The end of the date and time range.
+     */
+    public function setTo($to): static
     {
         $this->to = $to;
 

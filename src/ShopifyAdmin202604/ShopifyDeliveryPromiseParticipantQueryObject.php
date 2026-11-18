@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Returns enabled delivery promise participants.
+ */
 class ShopifyDeliveryPromiseParticipantQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryPromiseParticipant";
 
-    public function selectId()
+    /**
+     * The ID of the promise participant.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectOwner(ShopifyDeliveryPromiseParticipantOwnerArgumentsObject $argsObject = null)
+    /**
+     * The resource that the participant is attached to.
+     */
+    public function selectOwner(?ShopifyDeliveryPromiseParticipantOwnerArgumentsObject $argsObject = null): ShopifyDeliveryPromiseParticipantOwnerUnionObject
     {
         $object = new ShopifyDeliveryPromiseParticipantOwnerUnionObject("owner");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyDeliveryPromiseParticipantQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOwnerType()
+    /**
+     * The owner type of the participant.
+     */
+    public function selectOwnerType(): static
     {
         $this->selectField("ownerType");
 

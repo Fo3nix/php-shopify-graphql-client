@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one ShopifyPaymentsBalanceTransaction and a cursor during pagination.
+ */
 class ShopifyShopifyPaymentsBalanceTransactionEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsBalanceTransactionEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyShopifyPaymentsBalanceTransactionEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of ShopifyPaymentsBalanceTransactionEdge.
+     */
+    public function selectNode(?ShopifyShopifyPaymentsBalanceTransactionEdgeNodeArgumentsObject $argsObject = null): ShopifyShopifyPaymentsBalanceTransactionQueryObject
     {
         $object = new ShopifyShopifyPaymentsBalanceTransactionQueryObject("node");
         if ($argsObject !== null) {

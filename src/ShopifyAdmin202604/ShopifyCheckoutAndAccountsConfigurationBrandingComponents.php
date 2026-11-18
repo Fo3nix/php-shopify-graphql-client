@@ -6,7 +6,7 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingChoiceList;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingControl;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingFooter;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingHeader;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel;
@@ -17,6 +17,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingShared;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingTextField;
 
+/**
+ * The base component customizations that apply to all surfaces.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingComponents
 {
     protected $checkbox;
@@ -39,153 +42,187 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingComponents
 
     
     /**
+     * The checkboxes.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingCheckbox
      */
-    public function getCheckbox()
+    public function getCheckbox(): ?ShopifyCheckoutAndAccountsConfigurationBrandingCheckbox
     {
         return $this->checkbox;
     }
 
     
     /**
+     * The choice list.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingChoiceList
      */
-    public function getChoiceList()
+    public function getChoiceList(): ?ShopifyCheckoutAndAccountsConfigurationBrandingChoiceList
     {
         return $this->choiceList;
     }
 
     
     /**
+     * The form controls.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingControl
      */
-    public function getControl()
+    public function getControl(): ?ShopifyCheckoutAndAccountsConfigurationBrandingControl
     {
         return $this->control;
     }
 
     
     /**
+     * The customizations for the page, content, main, and order summary dividers. For example, by setting the borderStyle to `DOTTED`, you can make these dividers render as dotted lines.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle
     {
         return $this->divider;
     }
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The favicon.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getFavicon()
+    public function getFavicon(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->favicon;
     }
 
     
     /**
+     * The footer.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingFooter
      */
-    public function getFooter()
+    public function getFooter(): ?ShopifyCheckoutAndAccountsConfigurationBrandingFooter
     {
         return $this->footer;
     }
 
     
     /**
+     * The header.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingHeader
      */
-    public function getHeader()
+    public function getHeader(): ?ShopifyCheckoutAndAccountsConfigurationBrandingHeader
     {
         return $this->header;
     }
 
     
     /**
+     * The Heading Level 1.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
      */
-    public function getHeadingLevel1()
+    public function getHeadingLevel1(): ?ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
     {
         return $this->headingLevel1;
     }
 
     
     /**
+     * The Heading Level 2.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
      */
-    public function getHeadingLevel2()
+    public function getHeadingLevel2(): ?ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
     {
         return $this->headingLevel2;
     }
 
     
     /**
+     * The Heading Level 3.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
      */
-    public function getHeadingLevel3()
+    public function getHeadingLevel3(): ?ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
     {
         return $this->headingLevel3;
     }
 
     
     /**
+     * The main area.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingMain
      */
-    public function getMain()
+    public function getMain(): ?ShopifyCheckoutAndAccountsConfigurationBrandingMain
     {
         return $this->main;
     }
 
     
     /**
+     * The merchandise thumbnails.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnail
      */
-    public function getMerchandiseThumbnail()
+    public function getMerchandiseThumbnail(): ?ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnail
     {
         return $this->merchandiseThumbnail;
     }
 
     
     /**
+     * The primary buttons.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingButton
      */
-    public function getPrimaryButton()
+    public function getPrimaryButton(): ?ShopifyCheckoutAndAccountsConfigurationBrandingButton
     {
         return $this->primaryButton;
     }
 
     
     /**
+     * The secondary buttons.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingButton
      */
-    public function getSecondaryButton()
+    public function getSecondaryButton(): ?ShopifyCheckoutAndAccountsConfigurationBrandingButton
     {
         return $this->secondaryButton;
     }
 
     
     /**
+     * The selects.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingSelect
      */
-    public function getSelect()
+    public function getSelect(): ?ShopifyCheckoutAndAccountsConfigurationBrandingSelect
     {
         return $this->select;
     }
 
     
     /**
+     * The shared settings.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingShared
      */
-    public function getShared()
+    public function getShared(): ?ShopifyCheckoutAndAccountsConfigurationBrandingShared
     {
         return $this->shared;
     }
 
     
     /**
+     * The text fields.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingTextField
      */
-    public function getTextField()
+    public function getTextField(): ?ShopifyCheckoutAndAccountsConfigurationBrandingTextField
     {
         return $this->textField;
     }
@@ -210,7 +247,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingComponents
                 $instance->divider = ShopifyCheckoutAndAccountsConfigurationBrandingDividerStyle::fromArray($data['divider']);
             }
             if (isset($data['favicon']) && $data['favicon'] !== null) {
-                $instance->favicon = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['favicon']);
+                $instance->favicon = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['favicon']);
             }
             if (isset($data['footer']) && $data['footer'] !== null) {
                 $instance->footer = ShopifyCheckoutAndAccountsConfigurationBrandingFooter::fromArray($data['footer']);
@@ -284,7 +321,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingComponents
                 $data['divider'] = $this->divider->asArray();
             }
             if ($this->favicon !== null) {
-                $data['favicon'] = $this->favicon->asArray();
+                $data['favicon'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->favicon);
             }
             if ($this->footer !== null) {
                 $data['footer'] = $this->footer->asArray();

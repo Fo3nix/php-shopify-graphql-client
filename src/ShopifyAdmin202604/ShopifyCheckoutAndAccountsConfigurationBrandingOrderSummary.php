@@ -2,11 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySection;
 
+/**
+ * The order summary customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
 {
     protected $backgroundImage;
@@ -16,36 +19,44 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The background image of the order summary container.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getBackgroundImage()
+    public function getBackgroundImage(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->backgroundImage;
     }
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The order summary container's divider style and visibility.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
     {
         return $this->divider;
     }
 
     
     /**
+     * The order summary sections.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySection
     {
         return $this->section;
     }
@@ -58,7 +69,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
         {
             $instance = new self();
             if (isset($data['backgroundImage']) && $data['backgroundImage'] !== null) {
-                $instance->backgroundImage = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['backgroundImage']);
+                $instance->backgroundImage = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['backgroundImage']);
             }
             if (isset($data['colors']) && $data['colors'] !== null) {
                 $instance->colors = ShopifyCheckoutAndAccountsConfigurationBrandingColors::fromArray($data['colors']);
@@ -93,7 +104,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummary
         {
             $data = [];
             if ($this->backgroundImage !== null) {
-                $data['backgroundImage'] = $this->backgroundImage->asArray();
+                $data['backgroundImage'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->backgroundImage);
             }
             if ($this->colors !== null) {
                 $data['colors'] = $this->colors->asArray();

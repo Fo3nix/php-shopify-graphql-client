@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * A summary of cash management data.
+ */
 class ShopifyCashManagementSummary
 {
     protected $cashBalanceAtEnd;
@@ -15,54 +18,66 @@ class ShopifyCashManagementSummary
 
     
     /**
+     * The cumulative cash balance of all cash drawers at the provided end date.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCashBalanceAtEnd()
+    public function getCashBalanceAtEnd(): ?ShopifyMoneyV2
     {
         return $this->cashBalanceAtEnd;
     }
 
     
     /**
+     * The cumulative cash balance of all cash drawers at the provided start date.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCashBalanceAtStart()
+    public function getCashBalanceAtStart(): ?ShopifyMoneyV2
     {
         return $this->cashBalanceAtStart;
     }
 
     
     /**
+     * The net cash flow during the specified period (start date to end date). Calculated as net sales plus adjustments.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNetCash()
+    public function getNetCash(): ?ShopifyMoneyV2
     {
         return $this->netCash;
     }
 
     
     /**
+     * The number of sessions that were closed during the specified period (start date to end date).
+     *
      * @return int
      */
-    public function getSessionsClosed()
+    public function getSessionsClosed(): ?int
     {
         return $this->sessionsClosed;
     }
 
     
     /**
+     * The number of sessions that were opened during the specified period (start date to end date).
+     *
      * @return int
      */
-    public function getSessionsOpened()
+    public function getSessionsOpened(): ?int
     {
         return $this->sessionsOpened;
     }
 
     
     /**
+     * The total cash discrepancies during the specified period (start date to end date).
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDiscrepancies()
+    public function getTotalDiscrepancies(): ?ShopifyMoneyV2
     {
         return $this->totalDiscrepancies;
     }

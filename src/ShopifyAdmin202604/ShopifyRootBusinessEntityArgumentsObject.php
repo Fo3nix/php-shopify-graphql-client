@@ -8,7 +8,10 @@ class ShopifyRootBusinessEntityArgumentsObject extends ArgumentsObject
 {
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the Business Entity to return. Returns the primary Business Entity if not provided.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

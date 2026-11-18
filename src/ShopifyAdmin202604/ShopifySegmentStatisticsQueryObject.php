@@ -4,16 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The statistics of a given segment.
+ */
 class ShopifySegmentStatisticsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SegmentStatistics";
 
-    public function selectAttributeStatistics(ShopifySegmentStatisticsAttributeStatisticsArgumentsObject $argsObject = null)
+    /**
+     * The statistics of a given attribute.
+     */
+    public function selectAttributeStatistics(ShopifySegmentStatisticsAttributeStatisticsArgumentsObject $argsObject): ShopifySegmentAttributeStatisticsQueryObject
     {
         $object = new ShopifySegmentAttributeStatisticsQueryObject("attributeStatistics");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;

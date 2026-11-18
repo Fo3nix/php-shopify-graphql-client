@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Specifies the condition for a text field.
+ */
 class ShopifyCollectionRuleTextCondition
 {
     protected $value;
 
     
     /**
+     * The value of the condition.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

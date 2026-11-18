@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Information about product is restricted for a given resource.
+ */
 class ShopifyRestrictedForResource
 {
     protected $restricted;
@@ -9,18 +12,22 @@ class ShopifyRestrictedForResource
 
     
     /**
+     * Returns true when the product is restricted for the given resource.
+     *
      * @return bool
      */
-    public function getRestricted()
+    public function getRestricted(): ?bool
     {
         return $this->restricted;
     }
 
     
     /**
+     * Restriction reason for the given resource.
+     *
      * @return string
      */
-    public function getRestrictedReason()
+    public function getRestrictedReason(): ?string
     {
         return $this->restrictedReason;
     }

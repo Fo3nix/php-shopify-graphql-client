@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * The order-level discount applied to a draft order.
+ */
 class ShopifyDraftOrderAppliedDiscount
 {
     protected $amount;
@@ -17,63 +20,78 @@ class ShopifyDraftOrderAppliedDiscount
 
     
     /**
+     * Amount of the order-level discount that's applied to the draft order in shop currency.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
+     * The amount of money discounted, with values shown in both shop currency and presentment currency.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * Amount of money discounted.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmountV2()
+    public function getAmountV2(): ?ShopifyMoneyV2
     {
         return $this->amountV2;
     }
 
     
     /**
+     * Description of the order-level discount.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * Name of the order-level discount.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The order level discount amount. If `valueType` is `"percentage"`,
+     * then `value` is the percentage discount.
+     *
      * @return float
      */
-    public function getValue()
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
     
     /**
-     * @return ShopifyDraftOrderAppliedDiscountTypeEnumObject
+     * Type of the order-level discount.
+     *
+     * @return string A ShopifyDraftOrderAppliedDiscountTypeEnumObject value
      */
-    public function getValueType()
+    public function getValueType(): ?string
     {
         return $this->valueType;
     }

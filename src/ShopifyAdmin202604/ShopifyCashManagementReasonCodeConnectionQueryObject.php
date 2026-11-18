@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple CashManagementReasonCodes.
+ */
 class ShopifyCashManagementReasonCodeConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CashManagementReasonCodeConnection";
 
-    public function selectEdges(ShopifyCashManagementReasonCodeConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyCashManagementReasonCodeConnectionEdgesArgumentsObject $argsObject = null): ShopifyCashManagementReasonCodeEdgeQueryObject
     {
         $object = new ShopifyCashManagementReasonCodeEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCashManagementReasonCodeConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectNodes(ShopifyCashManagementReasonCodeConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in CashManagementReasonCodeEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyCashManagementReasonCodeConnectionNodesArgumentsObject $argsObject = null): ShopifyCashManagementReasonCodeUnionObject
     {
         $object = new ShopifyCashManagementReasonCodeUnionObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCashManagementReasonCodeConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPageInfo(ShopifyCashManagementReasonCodeConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyCashManagementReasonCodeConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

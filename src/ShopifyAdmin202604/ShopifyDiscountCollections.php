@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCollectionConnection;
 
+/**
+ * A list of collections that the discount can have as a prerequisite or a list of collections to which the discount can be applied.
+ */
 class ShopifyDiscountCollections
 {
     protected $collections;
 
     
     /**
+     * The list of collections that the discount can have as a prerequisite or the list of collections to which the discount can be applied.
+     *
      * @return ShopifyCollectionConnection
      */
-    public function getCollections()
+    public function getCollections(): ?ShopifyCollectionConnection
     {
         return $this->collections;
     }

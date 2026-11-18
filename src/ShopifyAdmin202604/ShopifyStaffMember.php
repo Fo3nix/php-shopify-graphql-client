@@ -5,7 +5,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyStaffMemberPrivateData;
 
-class ShopifyStaffMember
+/**
+ * A user account that can access the Shopify admin to manage store operations. Includes personal information and account status.
+ *
+ * You can assign staff members to [`CompanyLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CompanyLocation) objects for [B2B operations](https://shopify.dev/docs/apps/build/b2b), limiting their actions to those locations.
+ */
+class ShopifyStaffMember implements ShopifyNode
 {
     protected $accountType;
     protected $active;
@@ -24,126 +29,154 @@ class ShopifyStaffMember
 
     
     /**
-     * @return ShopifyAccountTypeEnumObject
+     * The type of account the staff member has.
+     *
+     * @return string A ShopifyAccountTypeEnumObject value
      */
-    public function getAccountType()
+    public function getAccountType(): ?string
     {
         return $this->accountType;
     }
 
     
     /**
+     * Whether the staff member is active.
+     *
      * @return bool
      */
-    public function getActive()
+    public function getActive(): ?bool
     {
         return $this->active;
     }
 
     
     /**
+     * The image used as the staff member's avatar in the Shopify admin.
+     *
      * @return ShopifyImage
      */
-    public function getAvatar()
+    public function getAvatar(): ?ShopifyImage
     {
         return $this->avatar;
     }
 
     
     /**
+     * The staff member's email address.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     
     /**
+     * Whether the staff member's account exists.
+     *
      * @return bool
      */
-    public function getExists()
+    public function getExists(): ?bool
     {
         return $this->exists;
     }
 
     
     /**
+     * The staff member's first name.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The staff member's initials, if available.
+     *
      * @return string[]
      */
-    public function getInitials()
+    public function getInitials(): ?array
     {
         return $this->initials;
     }
 
     
     /**
+     * Whether the staff member is the shop owner.
+     *
      * @return bool
      */
-    public function getIsShopOwner()
+    public function getIsShopOwner(): ?bool
     {
         return $this->isShopOwner;
     }
 
     
     /**
+     * The staff member's last name.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The staff member's preferred locale. Locale values use the format `language` or `language-COUNTRY`, where `language` is a two-letter language code, and `COUNTRY` is a two-letter country code. For example: `en` or `en-US`
+     *
      * @return string
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
 
     
     /**
+     * The staff member's full name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The staff member's phone number.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The data used to customize the Shopify admin experience for the staff member.
+     *
      * @return ShopifyStaffMemberPrivateData
      */
-    public function getPrivateData()
+    public function getPrivateData(): ?ShopifyStaffMemberPrivateData
     {
         return $this->privateData;
     }

@@ -14,42 +14,60 @@ class ShopifyRootPublicationsArgumentsObject extends ArgumentsObject
     protected $before;
     protected $reverse;
 
-    public function setCatalogType($shopifyCatalogType)
+    /**
+     * Filter publications by catalog type.
+     */
+    public function setCatalogType($shopifyCatalogType): static
     {
         $this->catalogType = new RawObject($shopifyCatalogType);
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 

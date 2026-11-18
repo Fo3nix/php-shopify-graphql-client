@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketRegionConnection;
 
+/**
+ * A condition checking the visitor's region.
+ */
 class ShopifyRegionsCondition
 {
     protected $applicationLevel;
@@ -11,18 +14,22 @@ class ShopifyRegionsCondition
 
     
     /**
-     * @return ShopifyMarketConditionApplicationTypeEnumObject
+     * The application level for the condition.
+     *
+     * @return string A ShopifyMarketConditionApplicationTypeEnumObject value
      */
-    public function getApplicationLevel()
+    public function getApplicationLevel(): ?string
     {
         return $this->applicationLevel;
     }
 
     
     /**
+     * The regions that comprise the market.
+     *
      * @return ShopifyMarketRegionConnection
      */
-    public function getRegions()
+    public function getRegions(): ?ShopifyMarketRegionConnection
     {
         return $this->regions;
     }

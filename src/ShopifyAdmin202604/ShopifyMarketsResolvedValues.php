@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketCatalogConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyResolvedPriceInclusivity;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketWebPresenceConnection;
 
+/**
+ * The resolved values based on the markets configuration for a buyer signal. Resolved values include the resolved catalogs, web presences, currency, and price inclusivity.
+ */
 class ShopifyMarketsResolvedValues
 {
     protected $catalogs;
@@ -15,36 +18,44 @@ class ShopifyMarketsResolvedValues
 
     
     /**
+     * The resolved catalogs.
+     *
      * @return ShopifyMarketCatalogConnection
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyMarketCatalogConnection
     {
         return $this->catalogs;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The resolved currency code.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getCurrencyCode()
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
 
     
     /**
+     * The resolved price inclusivity attributes.
+     *
      * @return ShopifyResolvedPriceInclusivity
      */
-    public function getPriceInclusivity()
+    public function getPriceInclusivity(): ?ShopifyResolvedPriceInclusivity
     {
         return $this->priceInclusivity;
     }
 
     
     /**
+     * The resolved web presences ordered by priority.
+     *
      * @return ShopifyMarketWebPresenceConnection
      */
-    public function getWebPresences()
+    public function getWebPresences(): ?ShopifyMarketWebPresenceConnection
     {
         return $this->webPresences;
     }

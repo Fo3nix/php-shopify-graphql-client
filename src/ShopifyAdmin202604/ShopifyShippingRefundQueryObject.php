@@ -4,21 +4,29 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the shipping costs refunded on the Refund.
+ */
 class ShopifyShippingRefundQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShippingRefund";
 
     /**
+     * The monetary value of the shipping fees to be refunded.
+     *
      * @deprecated Use `amountSet` instead.
      */
-    public function selectAmount()
+    public function selectAmount(): static
     {
         $this->selectField("amount");
 
         return $this;
     }
 
-    public function selectAmountSet(ShopifyShippingRefundAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The monetary value of the shipping fees to be refunded in shop and presentment currencies.
+     */
+    public function selectAmountSet(?ShopifyShippingRefundAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -30,16 +38,21 @@ class ShopifyShippingRefundQueryObject extends QueryObject
     }
 
     /**
+     * The maximum amount of shipping fees currently refundable.
+     *
      * @deprecated Use `maximumRefundableSet` instead.
      */
-    public function selectMaximumRefundable()
+    public function selectMaximumRefundable(): static
     {
         $this->selectField("maximumRefundable");
 
         return $this;
     }
 
-    public function selectMaximumRefundableSet(ShopifyShippingRefundMaximumRefundableSetArgumentsObject $argsObject = null)
+    /**
+     * The maximum amount of shipping fees currently refundable in shop and presentment currencies.
+     */
+    public function selectMaximumRefundableSet(?ShopifyShippingRefundMaximumRefundableSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("maximumRefundableSet");
         if ($argsObject !== null) {
@@ -51,16 +64,21 @@ class ShopifyShippingRefundQueryObject extends QueryObject
     }
 
     /**
+     * The monetary value of the tax allocated to shipping fees to be refunded.
+     *
      * @deprecated Use `taxSet` instead.
      */
-    public function selectTax()
+    public function selectTax(): static
     {
         $this->selectField("tax");
 
         return $this;
     }
 
-    public function selectTaxSet(ShopifyShippingRefundTaxSetArgumentsObject $argsObject = null)
+    /**
+     * The monetary value of the tax allocated to shipping fees to be refunded in shop and presentment currencies.
+     */
+    public function selectTaxSet(?ShopifyShippingRefundTaxSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("taxSet");
         if ($argsObject !== null) {

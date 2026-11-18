@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Resource limits of a shop.
+ */
 class ShopifyShopResourceLimits
 {
     protected $locationLimit;
@@ -11,36 +14,44 @@ class ShopifyShopResourceLimits
 
     
     /**
+     * Maximum number of locations allowed.
+     *
      * @return int
      */
-    public function getLocationLimit()
+    public function getLocationLimit(): ?int
     {
         return $this->locationLimit;
     }
 
     
     /**
+     * Maximum number of product options allowed.
+     *
      * @return int
      */
-    public function getMaxProductOptions()
+    public function getMaxProductOptions(): ?int
     {
         return $this->maxProductOptions;
     }
 
     
     /**
+     * The maximum number of variants allowed per product.
+     *
      * @return int
      */
-    public function getMaxProductVariants()
+    public function getMaxProductVariants(): ?int
     {
         return $this->maxProductVariants;
     }
 
     
     /**
+     * Whether the shop has reached the limit of the number of URL redirects it can make for resources.
+     *
      * @return bool
      */
-    public function getRedirectLimitReached()
+    public function getRedirectLimitReached(): ?bool
     {
         return $this->redirectLimitReached;
     }

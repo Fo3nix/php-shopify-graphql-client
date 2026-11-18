@@ -2,7 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyMailingAddress
+/**
+ * A physical mailing address. For example, a [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer)'s default address and an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order)'s billing address are both mailing addresses. Stores standard address components, customer name information, and company details.
+ *
+ * The address includes geographic coordinates ([`latitude`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MailingAddress#field-MailingAddress.fields.latitude) and [`longitude`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MailingAddress#field-MailingAddress.fields.longitude)). You can format addresses for display using the [`formatted`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MailingAddress#field-MailingAddress.fields.formatted) field with options to include or exclude name and company information.
+ */
+class ShopifyMailingAddress implements ShopifyNode
 {
     protected $address1;
     protected $address2;
@@ -29,198 +34,249 @@ class ShopifyMailingAddress
 
     
     /**
+     * The first line of the address. Typically the street address or PO Box number.
+     *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress1(): ?string
     {
         return $this->address1;
     }
 
     
     /**
+     * The second line of the address. Typically the number of the apartment, suite, or unit.
+     *
      * @return string
      */
-    public function getAddress2()
+    public function getAddress2(): ?string
     {
         return $this->address2;
     }
 
     
     /**
+     * The name of the city, district, village, or town.
+     *
      * @return string
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     
     /**
+     * The name of the customer's company or organization.
+     *
      * @return string
      */
-    public function getCompany()
+    public function getCompany(): ?string
     {
         return $this->company;
     }
 
     
     /**
+     * Whether the address corresponds to recognized latitude and longitude values.
+     *
      * @return bool
      */
-    public function getCoordinatesValidated()
+    public function getCoordinatesValidated(): ?bool
     {
         return $this->coordinatesValidated;
     }
 
     
     /**
+     * The name of the country.
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The two-letter code for the country of the address.
+     *
+     * For example, US.
+     *
      * @return string
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The two-letter code for the country of the address.
+     *
+     * For example, US.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCodeV2()
+    public function getCountryCodeV2(): ?string
     {
         return $this->countryCodeV2;
     }
 
     
     /**
+     * The first name of the customer.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * A formatted version of the address, customized by the provided arguments.
+     *
      * @return string[]
      */
-    public function getFormatted()
+    public function getFormatted(): ?array
     {
         return $this->formatted;
     }
 
     
     /**
+     * A comma-separated list of the values for city, province, and country.
+     *
      * @return string
      */
-    public function getFormattedArea()
+    public function getFormattedArea(): ?string
     {
         return $this->formattedArea;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The last name of the customer.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The latitude coordinate of the customer address.
+     *
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
     
     /**
+     * The longitude coordinate of the customer address.
+     *
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
     
     /**
+     * The full name of the customer, based on firstName and lastName.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A unique phone number for the customer.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * The region of the address, such as the province, state, or district.
+     *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     
     /**
+     * The alphanumeric code for the region.
+     *
+     * For example, ON.
+     *
      * @return string
      */
-    public function getProvinceCode()
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }
 
     
     /**
+     * The time zone of the address.
+     *
      * @return string
      */
-    public function getTimeZone()
+    public function getTimeZone(): ?string
     {
         return $this->timeZone;
     }
 
     
     /**
-     * @return ShopifyMailingAddressValidationResultEnumObject
+     * The validation status that's leveraged by the address validation feature in the Shopify Admin.
+     * See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address) for more details.
+     *
+     * @return string A ShopifyMailingAddressValidationResultEnumObject value
      */
-    public function getValidationResultSummary()
+    public function getValidationResultSummary(): ?string
     {
         return $this->validationResultSummary;
     }
 
     
     /**
+     * The zip or postal code of the address.
+     *
      * @return string
      */
-    public function getZip()
+    public function getZip(): ?string
     {
         return $this->zip;
     }

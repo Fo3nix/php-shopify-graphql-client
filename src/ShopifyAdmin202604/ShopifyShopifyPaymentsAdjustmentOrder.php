@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * The adjustment order object.
+ */
 class ShopifyShopifyPaymentsAdjustmentOrder
 {
     protected $amount;
@@ -15,54 +18,66 @@ class ShopifyShopifyPaymentsAdjustmentOrder
 
     
     /**
+     * The amount of the adjustment order.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The fee of the adjustment order.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getFees()
+    public function getFees(): ?ShopifyMoneyV2
     {
         return $this->fees;
     }
 
     
     /**
+     * The link to the adjustment order.
+     *
      * @return string
      */
-    public function getLink()
+    public function getLink(): mixed
     {
         return $this->link;
     }
 
     
     /**
+     * The name of the adjustment order.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The net of the adjustment order.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNet()
+    public function getNet(): ?ShopifyMoneyV2
     {
         return $this->net;
     }
 
     
     /**
+     * The ID of the order transaction.
+     *
      * @return string
      */
-    public function getOrderTransactionId()
+    public function getOrderTransactionId(): mixed
     {
         return $this->orderTransactionId;
     }

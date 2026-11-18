@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The identifier for the metafield linked to this option.
+ *
+ * This API is currently in early access. See [Metafield-linked product options](https://shopify.dev/docs/api/admin/migrate/new-product-model/metafield-linked) for more details.
+ */
 class ShopifyLinkedMetafield
 {
     protected $key;
@@ -9,18 +14,22 @@ class ShopifyLinkedMetafield
 
     
     /**
+     * Key of the metafield the option is linked to.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * Namespace of the metafield the option is linked to.
+     *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }

@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketsRegionsEntitlement;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketsRetailEntitlement;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketsThemesEntitlement;
 
+/**
+ * Markets entitlement information.
+ */
 class ShopifyMarketsType
 {
     protected $b2b;
@@ -16,36 +19,44 @@ class ShopifyMarketsType
 
     
     /**
+     * The entitlements for B2B markets.
+     *
      * @return ShopifyMarketsB2BEntitlement
      */
-    public function getB2b()
+    public function getB2b(): ?ShopifyMarketsB2BEntitlement
     {
         return $this->b2b;
     }
 
     
     /**
+     * The entitlements for region markets.
+     *
      * @return ShopifyMarketsRegionsEntitlement
      */
-    public function getRegions()
+    public function getRegions(): ?ShopifyMarketsRegionsEntitlement
     {
         return $this->regions;
     }
 
     
     /**
+     * The entitlements for retail markets.
+     *
      * @return ShopifyMarketsRetailEntitlement
      */
-    public function getRetail()
+    public function getRetail(): ?ShopifyMarketsRetailEntitlement
     {
         return $this->retail;
     }
 
     
     /**
+     * The entitlements for themes.
+     *
      * @return ShopifyMarketsThemesEntitlement
      */
-    public function getThemes()
+    public function getThemes(): ?ShopifyMarketsThemesEntitlement
     {
         return $this->themes;
     }

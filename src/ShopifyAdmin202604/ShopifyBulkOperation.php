@@ -4,7 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Carbon\Carbon;
 
-class ShopifyBulkOperation
+/**
+ * An asynchronous operation that exports large datasets or imports data in bulk. Create bulk operations using [bulkOperationRunQuery](https://shopify.dev/docs/api/admin-graphql/latest/mutations/bulkOperationRunQuery) to export data or [bulkOperationRunMutation](https://shopify.dev/docs/api/admin-graphql/latest/mutations/bulkOperationRunMutation) to import data.
+ *
+ * After creation, check the [`status`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation#field-BulkOperation.fields.status) field to track progress. When completed, the [`url`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation#field-BulkOperation.fields.url) field contains a link to download results in [JSONL](http://jsonlines.org/) format. The [`objectCount`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation#field-BulkOperation.fields.objectCount) field shows the running total of processed objects, while [`rootObjectCount`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation#field-BulkOperation.fields.rootObjectCount) tracks only root-level objects in nested queries.
+ *
+ * If an operation fails but retrieves partial data, then the [`partialDataUrl`](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation#field-BulkOperation.fields.partialDataUrl) field provides access to incomplete results.
+ *
+ * > Note: `url` and `partialDataUrl` values expire after seven days.
+ *
+ * Learn more about [exporting](https://shopify.dev/docs/api/usage/bulk-operations/queries) and [importing](https://shopify.dev/docs/api/usage/bulk-operations/imports) data in bulk.
+ */
+class ShopifyBulkOperation implements ShopifyNode
 {
     protected $completedAt;
     protected $createdAt;
@@ -20,99 +31,127 @@ class ShopifyBulkOperation
 
     
     /**
+     * When the bulk operation was successfully completed.
+     *
      * @return Carbon
      */
-    public function getCompletedAt()
+    public function getCompletedAt(): ?Carbon
     {
         return $this->completedAt;
     }
 
     
     /**
+     * When the bulk operation was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyBulkOperationErrorCodeEnumObject
+     * Error code for failed operations.
+     *
+     * @return string A ShopifyBulkOperationErrorCodeEnumObject value
      */
-    public function getErrorCode()
+    public function getErrorCode(): ?string
     {
         return $this->errorCode;
     }
 
     
     /**
+     * File size in bytes of the file in the `url` field.
+     *
      * @return string
      */
-    public function getFileSize()
+    public function getFileSize(): mixed
     {
         return $this->fileSize;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A running count of all the objects processed.
+     * For example, when fetching all the products and their variants, this field counts both products and variants.
+     * This field can be used to track operation progress.
+     *
      * @return string
      */
-    public function getObjectCount()
+    public function getObjectCount(): mixed
     {
         return $this->objectCount;
     }
 
     
     /**
+     * The URL that points to the partial or incomplete response data (in [JSONL](http://jsonlines.org/) format) that was returned by a failed operation.
+     * The URL expires 7 days after the operation fails. Returns `null` when there's no data available.
+     *
      * @return string
      */
-    public function getPartialDataUrl()
+    public function getPartialDataUrl(): mixed
     {
         return $this->partialDataUrl;
     }
 
     
     /**
+     * A running count of all the objects that are processed at the root of the query.
+     * For example, when fetching all the products and their variants, this field only counts products.
+     * This field can be used to track operation progress.
+     *
      * @return string
      */
-    public function getRootObjectCount()
+    public function getRootObjectCount(): mixed
     {
         return $this->rootObjectCount;
     }
 
     
     /**
-     * @return ShopifyBulkOperationStatusEnumObject
+     * Status of the bulk operation.
+     *
+     * @return string A ShopifyBulkOperationStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
-     * @return ShopifyBulkOperationTypeEnumObject
+     * The bulk operation's type.
+     *
+     * @return string A ShopifyBulkOperationTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The URL that points to the response data in [JSONL](http://jsonlines.org/) format.
+     * The URL expires 7 days after the operation completes.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }

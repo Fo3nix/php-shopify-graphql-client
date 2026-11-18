@@ -3,9 +3,13 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCondition;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryRateProvider;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryRateProviderHydrator;
 
-class ShopifyDeliveryMethodDefinition
+/**
+ * A method definition contains the delivery rate and the conditions that must be met for the method to be
+ * applied.
+ */
+class ShopifyDeliveryMethodDefinition implements ShopifyNode
 {
     protected $active;
     protected $description;
@@ -16,54 +20,66 @@ class ShopifyDeliveryMethodDefinition
 
     
     /**
+     * Whether this method definition is active.
+     *
      * @return bool
      */
-    public function getActive()
+    public function getActive(): ?bool
     {
         return $this->active;
     }
 
     
     /**
+     * The description of the method definition. Only available on shipping rates that are custom.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The method conditions that must pass for this method definition to be applied to an order.
+     *
      * @return ShopifyDeliveryCondition[]
      */
-    public function getMethodConditions()
+    public function getMethodConditions(): ?array
     {
         return $this->methodConditions;
     }
 
     
     /**
+     * The name of the method definition.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifyDeliveryRateProvider
+     * The provided rate for this method definition, from a rate definition or participant.
+     *
+     * @return ShopifyDeliveryParticipant|ShopifyDeliveryRateDefinition
      */
-    public function getRateProvider()
+    public function getRateProvider(): ShopifyDeliveryParticipant|ShopifyDeliveryRateDefinition|null
     {
         return $this->rateProvider;
     }
@@ -91,7 +107,7 @@ class ShopifyDeliveryMethodDefinition
                 $instance->name = $data['name'];
             }
             if (isset($data['rateProvider']) && $data['rateProvider'] !== null) {
-                $instance->rateProvider = ShopifyDeliveryRateProvider::fromArray($data['rateProvider']);
+                $instance->rateProvider = ShopifyDeliveryRateProviderHydrator::fromArray($data['rateProvider']);
             }
             return $instance;
         }
@@ -132,7 +148,7 @@ class ShopifyDeliveryMethodDefinition
                 $data['name'] = $this->name;
             }
             if ($this->rateProvider !== null) {
-                $data['rateProvider'] = $this->rateProvider->asArray();
+                $data['rateProvider'] = ShopifyDeliveryRateProviderHydrator::toArray($this->rateProvider);
             }
             return $data;
         }

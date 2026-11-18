@@ -2,6 +2,14 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingFontHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingFont;
+
+/**
+ * A font group. To learn more about updating fonts, refer to the
+ * [checkoutBrandingUpsert](https://shopify.dev/api/admin-graphql/unstable/mutations/checkoutBrandingUpsert)
+ * mutation and the checkout branding [tutorial](https://shopify.dev/docs/apps/checkout/styling).
+ */
 class ShopifyCheckoutBrandingFontGroup
 {
     protected $base;
@@ -11,36 +19,44 @@ class ShopifyCheckoutBrandingFontGroup
 
     
     /**
-     * @return mixed
+     * The base font.
+     *
+     * @return ShopifyCheckoutBrandingFont
      */
-    public function getBase()
+    public function getBase(): ?ShopifyCheckoutBrandingFont
     {
         return $this->base;
     }
 
     
     /**
-     * @return mixed
+     * The bold font.
+     *
+     * @return ShopifyCheckoutBrandingFont
      */
-    public function getBold()
+    public function getBold(): ?ShopifyCheckoutBrandingFont
     {
         return $this->bold;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingFontLoadingStrategyEnumObject
+     * The font loading strategy.
+     *
+     * @return string A ShopifyCheckoutBrandingFontLoadingStrategyEnumObject value
      */
-    public function getLoadingStrategy()
+    public function getLoadingStrategy(): ?string
     {
         return $this->loadingStrategy;
     }
 
     
     /**
+     * The font group name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -53,10 +69,10 @@ class ShopifyCheckoutBrandingFontGroup
         {
             $instance = new self();
             if (isset($data['base']) && $data['base'] !== null) {
-                $instance->base = $data['base'];
+                $instance->base = ShopifyCheckoutBrandingFontHydrator::fromArray($data['base']);
             }
             if (isset($data['bold']) && $data['bold'] !== null) {
-                $instance->bold = $data['bold'];
+                $instance->bold = ShopifyCheckoutBrandingFontHydrator::fromArray($data['bold']);
             }
             if (isset($data['loadingStrategy']) && $data['loadingStrategy'] !== null) {
                 $instance->loadingStrategy = $data['loadingStrategy'];
@@ -88,10 +104,10 @@ class ShopifyCheckoutBrandingFontGroup
         {
             $data = [];
             if ($this->base !== null) {
-                $data['base'] = $this->base;
+                $data['base'] = ShopifyCheckoutBrandingFontHydrator::toArray($this->base);
             }
             if ($this->bold !== null) {
-                $data['bold'] = $this->bold;
+                $data['bold'] = ShopifyCheckoutBrandingFontHydrator::toArray($this->bold);
             }
             if ($this->loadingStrategy !== null) {
                 $data['loadingStrategy'] = $this->loadingStrategy;

@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFileHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFile;
+
+/**
+ * Provides attributes for visual representation.
+ */
 class ShopifyMetaobjectThumbnail
 {
     protected $file;
@@ -9,18 +15,22 @@ class ShopifyMetaobjectThumbnail
 
     
     /**
-     * @return mixed
+     * The file to be used for visual representation of this metaobject.
+     *
+     * @return ShopifyFile
      */
-    public function getFile()
+    public function getFile(): ?ShopifyFile
     {
         return $this->file;
     }
 
     
     /**
+     * The hexadecimal color code to be used for representing this metaobject.
+     *
      * @return string
      */
-    public function getHex()
+    public function getHex(): ?string
     {
         return $this->hex;
     }
@@ -33,7 +43,7 @@ class ShopifyMetaobjectThumbnail
         {
             $instance = new self();
             if (isset($data['file']) && $data['file'] !== null) {
-                $instance->file = $data['file'];
+                $instance->file = ShopifyFileHydrator::fromArray($data['file']);
             }
             if (isset($data['hex']) && $data['hex'] !== null) {
                 $instance->hex = $data['hex'];
@@ -62,7 +72,7 @@ class ShopifyMetaobjectThumbnail
         {
             $data = [];
             if ($this->file !== null) {
-                $data['file'] = $this->file;
+                $data['file'] = ShopifyFileHydrator::toArray($this->file);
             }
             if ($this->hex !== null) {
                 $data['hex'] = $this->hex;

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingFooterContent;
 
+/**
+ * A container for the footer section customizations.
+ */
 class ShopifyCheckoutBrandingFooter
 {
     protected $alignment;
@@ -15,54 +18,66 @@ class ShopifyCheckoutBrandingFooter
 
     
     /**
-     * @return ShopifyCheckoutBrandingFooterAlignmentEnumObject
+     * The footer alignment.
+     *
+     * @return string A ShopifyCheckoutBrandingFooterAlignmentEnumObject value
      */
-    public function getAlignment()
+    public function getAlignment(): ?string
     {
         return $this->alignment;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingColorSchemeSelectionEnumObject
+     * The selected color scheme of the footer container.
+     *
+     * @return string A ShopifyCheckoutBrandingColorSchemeSelectionEnumObject value
      */
-    public function getColorScheme()
+    public function getColorScheme(): ?string
     {
         return $this->colorScheme;
     }
 
     
     /**
+     * The footer content settings.
+     *
      * @return ShopifyCheckoutBrandingFooterContent
      */
-    public function getContent()
+    public function getContent(): ?ShopifyCheckoutBrandingFooterContent
     {
         return $this->content;
     }
 
     
     /**
+     * The divided setting.
+     *
      * @return bool
      */
-    public function getDivided()
+    public function getDivided(): ?bool
     {
         return $this->divided;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingSpacingKeywordEnumObject
+     * The padding of the footer container.
+     *
+     * @return string A ShopifyCheckoutBrandingSpacingKeywordEnumObject value
      */
-    public function getPadding()
+    public function getPadding(): ?string
     {
         return $this->padding;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingFooterPositionEnumObject
+     * The footer position.
+     *
+     * @return string A ShopifyCheckoutBrandingFooterPositionEnumObject value
      */
-    public function getPosition()
+    public function getPosition(): ?string
     {
         return $this->position;
     }

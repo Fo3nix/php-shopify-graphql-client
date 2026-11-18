@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Tracks an adjustment to the cash in a cash tracking session for a point of sale device over the course of a shift.
+ */
 class ShopifyCashTrackingAdjustmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CashTrackingAdjustment";
 
-    public function selectCash(ShopifyCashTrackingAdjustmentCashArgumentsObject $argsObject = null)
+    /**
+     * The amount of cash being added or removed.
+     */
+    public function selectCash(?ShopifyCashTrackingAdjustmentCashArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("cash");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyCashTrackingAdjustmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectNote()
+    /**
+     * The note entered when the adjustment was made.
+     */
+    public function selectNote(): static
     {
         $this->selectField("note");
 
         return $this;
     }
 
-    public function selectStaffMember(ShopifyCashTrackingAdjustmentStaffMemberArgumentsObject $argsObject = null)
+    /**
+     * The staff member who made the adjustment.
+     */
+    public function selectStaffMember(?ShopifyCashTrackingAdjustmentStaffMemberArgumentsObject $argsObject = null): ShopifyStaffMemberQueryObject
     {
         $object = new ShopifyStaffMemberQueryObject("staffMember");
         if ($argsObject !== null) {
@@ -44,7 +59,10 @@ class ShopifyCashTrackingAdjustmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTime()
+    /**
+     * The time when the adjustment was made.
+     */
+    public function selectTime(): static
     {
         $this->selectField("time");
 

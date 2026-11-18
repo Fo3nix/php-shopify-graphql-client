@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The price range of the product.
+ */
 class ShopifyProductPriceRangeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductPriceRange";
 
-    public function selectMaxVariantPrice(ShopifyProductPriceRangeMaxVariantPriceArgumentsObject $argsObject = null)
+    /**
+     * The highest variant's price.
+     */
+    public function selectMaxVariantPrice(?ShopifyProductPriceRangeMaxVariantPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("maxVariantPrice");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyProductPriceRangeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectMinVariantPrice(ShopifyProductPriceRangeMinVariantPriceArgumentsObject $argsObject = null)
+    /**
+     * The lowest variant's price.
+     */
+    public function selectMinVariantPrice(?ShopifyProductPriceRangeMinVariantPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("minVariantPrice");
         if ($argsObject !== null) {

@@ -1,0 +1,43 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use GraphQL\SchemaObject\QueryObject;
+
+/**
+ * A filter with a date value that's been added to a segment query.
+ */
+class ShopifySegmentDateFilterQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "SegmentDateFilter";
+
+    /**
+     * The localized name of the filter.
+     */
+    public function selectLocalizedName(): static
+    {
+        $this->selectField("localizedName");
+
+        return $this;
+    }
+
+    /**
+     * Whether a file can have multiple values for a single customer.
+     */
+    public function selectMultiValue(): static
+    {
+        $this->selectField("multiValue");
+
+        return $this;
+    }
+
+    /**
+     * The query name of the filter.
+     */
+    public function selectQueryName(): static
+    {
+        $this->selectField("queryName");
+
+        return $this;
+    }
+}

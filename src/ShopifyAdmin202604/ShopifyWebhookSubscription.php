@@ -4,10 +4,16 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApiVersion;
 use Carbon\Carbon;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyWebhookSubscriptionEndpoint;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyWebhookSubscriptionEndpointHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyWebhookSubscriptionMetafieldIdentifier;
 
-class ShopifyWebhookSubscription
+/**
+ * A webhook subscription is a persisted data object created by an app using the REST Admin API or GraphQL Admin API.
+ * It describes the topic that the app wants to receive, and a destination where Shopify should send webhooks of the specified topic.
+ * When an event for a given topic occurs, the webhook subscription sends a relevant payload to the destination.
+ * Learn more about the [webhooks system](https://shopify.dev/apps/webhooks).
+ */
+class ShopifyWebhookSubscription implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $apiVersion;
     protected $callbackUrl;
@@ -27,135 +33,165 @@ class ShopifyWebhookSubscription
 
     
     /**
+     * The Admin API version that Shopify uses to serialize webhook events. This value is inherited from the app that created the webhook subscription.
+     *
      * @return ShopifyApiVersion
      */
-    public function getApiVersion()
+    public function getApiVersion(): ?ShopifyApiVersion
     {
         return $this->apiVersion;
     }
 
     
     /**
+     * The destination URI to which the webhook subscription will send a message when an event occurs.
+     *
      * @return string
      */
-    public function getCallbackUrl()
+    public function getCallbackUrl(): mixed
     {
         return $this->callbackUrl;
     }
 
     
     /**
+     * The date and time when the webhook subscription was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyWebhookSubscriptionEndpoint
+     * The endpoint to which the webhook subscription will send events.
+     *
+     * @return ShopifyWebhookEventBridgeEndpoint|ShopifyWebhookHttpEndpoint|ShopifyWebhookPubSubEndpoint
      */
-    public function getEndpoint()
+    public function getEndpoint(): ShopifyWebhookEventBridgeEndpoint|ShopifyWebhookHttpEndpoint|ShopifyWebhookPubSubEndpoint|null
     {
         return $this->endpoint;
     }
 
     
     /**
+     * A constraint specified using search syntax that ensures only webhooks that match the specified filter are emitted. See our [guide on filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+     *
      * @return string
      */
-    public function getFilter()
+    public function getFilter(): ?string
     {
         return $this->filter;
     }
 
     
     /**
-     * @return ShopifyWebhookSubscriptionFormatEnumObject
+     * The format in which the webhook subscription should send the data.
+     *
+     * @return string A ShopifyWebhookSubscriptionFormatEnumObject value
      */
-    public function getFormat()
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The list of fields to be included in the webhook subscription. Only the fields specified will be included in the webhook payload. If null, then all fields will be included. Learn more about [modifying webhook payloads](https://shopify.dev/docs/apps/build/webhooks/customize/modify-payloads).
+     *
      * @return string[]
      */
-    public function getIncludeFields()
+    public function getIncludeFields(): ?array
     {
         return $this->includeFields;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The list of namespaces for any metafields that should be included in the webhook subscription.
+     *
      * @return string[]
      */
-    public function getMetafieldNamespaces()
+    public function getMetafieldNamespaces(): ?array
     {
         return $this->metafieldNamespaces;
     }
 
     
     /**
+     * The list of identifiers specifying metafields to include in the webhook subscription.
+     *
      * @return ShopifyWebhookSubscriptionMetafieldIdentifier[]
      */
-    public function getMetafields()
+    public function getMetafields(): ?array
     {
         return $this->metafields;
     }
 
     
     /**
+     * A human-readable name for the webhook subscription.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifyWebhookSubscriptionTopicEnumObject
+     * The type of event that triggers the webhook. The topic determines when the webhook subscription sends a webhook, as well as what class of data object that webhook contains.
+     *
+     * @return string A ShopifyWebhookSubscriptionTopicEnumObject value
      */
-    public function getTopic()
+    public function getTopic(): ?string
     {
         return $this->topic;
     }
 
     
     /**
+     * The date and time when the webhook subscription was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The URI to which the webhook subscription will send events.
+     *
      * @return string
      */
-    public function getUri()
+    public function getUri(): ?string
     {
         return $this->uri;
     }
@@ -177,7 +213,7 @@ class ShopifyWebhookSubscription
                 $instance->createdAt = new Carbon($data['createdAt']);
             }
             if (isset($data['endpoint']) && $data['endpoint'] !== null) {
-                $instance->endpoint = ShopifyWebhookSubscriptionEndpoint::fromArray($data['endpoint']);
+                $instance->endpoint = ShopifyWebhookSubscriptionEndpointHydrator::fromArray($data['endpoint']);
             }
             if (isset($data['filter']) && $data['filter'] !== null) {
                 $instance->filter = $data['filter'];
@@ -245,7 +281,7 @@ class ShopifyWebhookSubscription
                 $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->endpoint !== null) {
-                $data['endpoint'] = $this->endpoint->asArray();
+                $data['endpoint'] = ShopifyWebhookSubscriptionEndpointHydrator::toArray($this->endpoint);
             }
             if ($this->filter !== null) {
                 $data['filter'] = $this->filter;

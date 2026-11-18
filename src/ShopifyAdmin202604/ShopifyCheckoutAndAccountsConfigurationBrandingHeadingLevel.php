@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle;
 
+/**
+ * The heading level customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingHeadingLevel
 {
     protected $typography;
 
     
     /**
+     * The typography.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutAndAccountsConfigurationBrandingTypographyStyle
     {
         return $this->typography;
     }

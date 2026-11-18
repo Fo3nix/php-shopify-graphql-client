@@ -3,7 +3,12 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyImage;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyNodeHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyNode;
 
+/**
+ * Represents an individual result returned from a search.
+ */
 class ShopifySearchResult
 {
     protected $description;
@@ -14,45 +19,55 @@ class ShopifySearchResult
 
     
     /**
+     * Returns the search result description text.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * Returns the Image resource presented to accompany a search result.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
-     * @return mixed
+     * Returns the resource represented by the search result.
+     *
+     * @return ShopifyNode
      */
-    public function getReference()
+    public function getReference(): ?ShopifyNode
     {
         return $this->reference;
     }
 
     
     /**
+     * Returns the resource title.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * Returns the absolute URL to the resource in the search result.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }
@@ -71,7 +86,7 @@ class ShopifySearchResult
                 $instance->image = ShopifyImage::fromArray($data['image']);
             }
             if (isset($data['reference']) && $data['reference'] !== null) {
-                $instance->reference = $data['reference'];
+                $instance->reference = ShopifyNodeHydrator::fromArray($data['reference']);
             }
             if (isset($data['title']) && $data['title'] !== null) {
                 $instance->title = $data['title'];
@@ -109,7 +124,7 @@ class ShopifySearchResult
                 $data['image'] = $this->image->asArray();
             }
             if ($this->reference !== null) {
-                $data['reference'] = $this->reference;
+                $data['reference'] = ShopifyNodeHydrator::toArray($this->reference);
             }
             if ($this->title !== null) {
                 $data['title'] = $this->title;

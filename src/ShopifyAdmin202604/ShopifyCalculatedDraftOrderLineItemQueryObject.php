@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The calculated line item for a draft order.
+ */
 class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CalculatedDraftOrderLineItem";
 
-    public function selectAppliedDiscount(ShopifyCalculatedDraftOrderLineItemAppliedDiscountArgumentsObject $argsObject = null)
+    /**
+     * The custom applied discount.
+     */
+    public function selectAppliedDiscount(?ShopifyCalculatedDraftOrderLineItemAppliedDiscountArgumentsObject $argsObject = null): ShopifyDraftOrderAppliedDiscountQueryObject
     {
         $object = new ShopifyDraftOrderAppliedDiscountQueryObject("appliedDiscount");
         if ($argsObject !== null) {
@@ -19,7 +25,12 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectApproximateDiscountedUnitPriceSet(ShopifyCalculatedDraftOrderLineItemApproximateDiscountedUnitPriceSetArgumentsObject $argsObject = null)
+    /**
+     * The `discountedTotal` divided by `quantity`,
+     * equal to the average value of the line item price per unit after discounts are applied.
+     * This value doesn't include discounts applied to the entire draft order.
+     */
+    public function selectApproximateDiscountedUnitPriceSet(?ShopifyCalculatedDraftOrderLineItemApproximateDiscountedUnitPriceSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("approximateDiscountedUnitPriceSet");
         if ($argsObject !== null) {
@@ -31,9 +42,11 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
     }
 
     /**
+     * The bundle components of the draft order line item.
+     *
      * @deprecated Use `components` instead.
      */
-    public function selectBundleComponents(ShopifyCalculatedDraftOrderLineItemBundleComponentsArgumentsObject $argsObject = null)
+    public function selectBundleComponents(?ShopifyCalculatedDraftOrderLineItemBundleComponentsArgumentsObject $argsObject = null): ShopifyCalculatedDraftOrderLineItemQueryObject
     {
         $object = new ShopifyCalculatedDraftOrderLineItemQueryObject("bundleComponents");
         if ($argsObject !== null) {
@@ -44,7 +57,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectComponents(ShopifyCalculatedDraftOrderLineItemComponentsArgumentsObject $argsObject = null)
+    /**
+     * The components of the draft order line item.
+     */
+    public function selectComponents(?ShopifyCalculatedDraftOrderLineItemComponentsArgumentsObject $argsObject = null): ShopifyCalculatedDraftOrderLineItemQueryObject
     {
         $object = new ShopifyCalculatedDraftOrderLineItemQueryObject("components");
         if ($argsObject !== null) {
@@ -55,14 +71,20 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustom()
+    /**
+     * Whether the line item is custom (`true`) or contains a product variant (`false`).
+     */
+    public function selectCustom(): static
     {
         $this->selectField("custom");
 
         return $this;
     }
 
-    public function selectCustomAttributes(ShopifyCalculatedDraftOrderLineItemCustomAttributesArgumentsObject $argsObject = null)
+    /**
+     * A list of attributes that represent custom features or special requests.
+     */
+    public function selectCustomAttributes(?ShopifyCalculatedDraftOrderLineItemCustomAttributesArgumentsObject $argsObject = null): ShopifyAttributeQueryObject
     {
         $object = new ShopifyAttributeQueryObject("customAttributes");
         if ($argsObject !== null) {
@@ -73,7 +95,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustomAttributesV2(ShopifyCalculatedDraftOrderLineItemCustomAttributesV2ArgumentsObject $argsObject = null)
+    /**
+     * The list of additional information (metafields) with the associated types.
+     */
+    public function selectCustomAttributesV2(?ShopifyCalculatedDraftOrderLineItemCustomAttributesV2ArgumentsObject $argsObject = null): ShopifyTypedAttributeQueryObject
     {
         $object = new ShopifyTypedAttributeQueryObject("customAttributesV2");
         if ($argsObject !== null) {
@@ -84,7 +109,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDiscountedTotal(ShopifyCalculatedDraftOrderLineItemDiscountedTotalArgumentsObject $argsObject = null)
+    /**
+     * The total price with discounts applied.
+     */
+    public function selectDiscountedTotal(?ShopifyCalculatedDraftOrderLineItemDiscountedTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("discountedTotal");
         if ($argsObject !== null) {
@@ -95,7 +123,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDiscountedTotalSet(ShopifyCalculatedDraftOrderLineItemDiscountedTotalSetArgumentsObject $argsObject = null)
+    /**
+     * The total price with discounts applied.
+     */
+    public function selectDiscountedTotalSet(?ShopifyCalculatedDraftOrderLineItemDiscountedTotalSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("discountedTotalSet");
         if ($argsObject !== null) {
@@ -107,9 +138,11 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
     }
 
     /**
+     * The unit price with discounts applied.
+     *
      * @deprecated Use `approximateDiscountedUnitPriceSet` instead.
      */
-    public function selectDiscountedUnitPrice(ShopifyCalculatedDraftOrderLineItemDiscountedUnitPriceArgumentsObject $argsObject = null)
+    public function selectDiscountedUnitPrice(?ShopifyCalculatedDraftOrderLineItemDiscountedUnitPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("discountedUnitPrice");
         if ($argsObject !== null) {
@@ -121,9 +154,11 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
     }
 
     /**
+     * The unit price with discounts applied.
+     *
      * @deprecated Use `approximateDiscountedUnitPriceSet` instead.
      */
-    public function selectDiscountedUnitPriceSet(ShopifyCalculatedDraftOrderLineItemDiscountedUnitPriceSetArgumentsObject $argsObject = null)
+    public function selectDiscountedUnitPriceSet(?ShopifyCalculatedDraftOrderLineItemDiscountedUnitPriceSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("discountedUnitPriceSet");
         if ($argsObject !== null) {
@@ -134,7 +169,15 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFulfillmentService(ShopifyCalculatedDraftOrderLineItemFulfillmentServiceArgumentsObject $argsObject = null)
+    /**
+     * Name of the service provider who fulfilled the order.
+     *
+     * Valid values are either **manual** or the name of the provider.
+     * For example, **amazon**, **shipwire**.
+     *
+     * Deleted fulfillment services will return null.
+     */
+    public function selectFulfillmentService(?ShopifyCalculatedDraftOrderLineItemFulfillmentServiceArgumentsObject $argsObject = null): ShopifyFulfillmentServiceQueryObject
     {
         $object = new ShopifyFulfillmentServiceQueryObject("fulfillmentService");
         if ($argsObject !== null) {
@@ -145,7 +188,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectImage(ShopifyCalculatedDraftOrderLineItemImageArgumentsObject $argsObject = null)
+    /**
+     * The image associated with the draft order line item.
+     */
+    public function selectImage(?ShopifyCalculatedDraftOrderLineItemImageArgumentsObject $argsObject = null): ShopifyImageQueryObject
     {
         $object = new ShopifyImageQueryObject("image");
         if ($argsObject !== null) {
@@ -156,21 +202,30 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectIsGiftCard()
+    /**
+     * Whether the line item represents the purchase of a gift card.
+     */
+    public function selectIsGiftCard(): static
     {
         $this->selectField("isGiftCard");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the product.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectOriginalTotal(ShopifyCalculatedDraftOrderLineItemOriginalTotalArgumentsObject $argsObject = null)
+    /**
+     * The total price, excluding discounts, equal to the original unit price multiplied by quantity.
+     */
+    public function selectOriginalTotal(?ShopifyCalculatedDraftOrderLineItemOriginalTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalTotal");
         if ($argsObject !== null) {
@@ -181,7 +236,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalTotalSet(ShopifyCalculatedDraftOrderLineItemOriginalTotalSetArgumentsObject $argsObject = null)
+    /**
+     * The total price excluding discounts, equal to the original unit price multiplied by quantity.
+     */
+    public function selectOriginalTotalSet(?ShopifyCalculatedDraftOrderLineItemOriginalTotalSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("originalTotalSet");
         if ($argsObject !== null) {
@@ -192,7 +250,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalUnitPrice(ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceArgumentsObject $argsObject = null)
+    /**
+     * The line item price without any discounts applied.
+     */
+    public function selectOriginalUnitPrice(?ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalUnitPrice");
         if ($argsObject !== null) {
@@ -203,7 +264,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalUnitPriceSet(ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceSetArgumentsObject $argsObject = null)
+    /**
+     * The price without any discounts applied.
+     */
+    public function selectOriginalUnitPriceSet(?ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("originalUnitPriceSet");
         if ($argsObject !== null) {
@@ -214,7 +278,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalUnitPriceWithCurrency(ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceWithCurrencyArgumentsObject $argsObject = null)
+    /**
+     * The original custom line item input price.
+     */
+    public function selectOriginalUnitPriceWithCurrency(?ShopifyCalculatedDraftOrderLineItemOriginalUnitPriceWithCurrencyArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalUnitPriceWithCurrency");
         if ($argsObject !== null) {
@@ -225,7 +292,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPriceOverride(ShopifyCalculatedDraftOrderLineItemPriceOverrideArgumentsObject $argsObject = null)
+    /**
+     * The price override for the line item.
+     */
+    public function selectPriceOverride(?ShopifyCalculatedDraftOrderLineItemPriceOverrideArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("priceOverride");
         if ($argsObject !== null) {
@@ -236,7 +306,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectProduct(ShopifyCalculatedDraftOrderLineItemProductArgumentsObject $argsObject = null)
+    /**
+     * The product for the line item.
+     */
+    public function selectProduct(?ShopifyCalculatedDraftOrderLineItemProductArgumentsObject $argsObject = null): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject("product");
         if ($argsObject !== null) {
@@ -247,42 +320,61 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of items. For a bundle item, this is the quantity of bundles,
+     * not the quantity of items contained in the bundles themselves.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectRequiresShipping()
+    /**
+     * Whether physical shipping is required for the variant.
+     */
+    public function selectRequiresShipping(): static
     {
         $this->selectField("requiresShipping");
 
         return $this;
     }
 
-    public function selectSku()
+    /**
+     * The SKU number of the product variant.
+     */
+    public function selectSku(): static
     {
         $this->selectField("sku");
 
         return $this;
     }
 
-    public function selectTaxable()
+    /**
+     * Whether the variant is taxable.
+     */
+    public function selectTaxable(): static
     {
         $this->selectField("taxable");
 
         return $this;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the product or variant. This field only applies to custom line items.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 
         return $this;
     }
 
-    public function selectTotalDiscount(ShopifyCalculatedDraftOrderLineItemTotalDiscountArgumentsObject $argsObject = null)
+    /**
+     * The total value of the discount.
+     */
+    public function selectTotalDiscount(?ShopifyCalculatedDraftOrderLineItemTotalDiscountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("totalDiscount");
         if ($argsObject !== null) {
@@ -293,7 +385,10 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTotalDiscountSet(ShopifyCalculatedDraftOrderLineItemTotalDiscountSetArgumentsObject $argsObject = null)
+    /**
+     * The total discount amount.
+     */
+    public function selectTotalDiscountSet(?ShopifyCalculatedDraftOrderLineItemTotalDiscountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("totalDiscountSet");
         if ($argsObject !== null) {
@@ -304,14 +399,21 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUuid()
+    /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     */
+    public function selectUuid(): static
     {
         $this->selectField("uuid");
 
         return $this;
     }
 
-    public function selectVariant(ShopifyCalculatedDraftOrderLineItemVariantArgumentsObject $argsObject = null)
+    /**
+     * The product variant for the line item.
+     */
+    public function selectVariant(?ShopifyCalculatedDraftOrderLineItemVariantArgumentsObject $argsObject = null): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject("variant");
         if ($argsObject !== null) {
@@ -322,21 +424,30 @@ class ShopifyCalculatedDraftOrderLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectVariantTitle()
+    /**
+     * The name of the variant.
+     */
+    public function selectVariantTitle(): static
     {
         $this->selectField("variantTitle");
 
         return $this;
     }
 
-    public function selectVendor()
+    /**
+     * The name of the vendor who created the product variant.
+     */
+    public function selectVendor(): static
     {
         $this->selectField("vendor");
 
         return $this;
     }
 
-    public function selectWeight(ShopifyCalculatedDraftOrderLineItemWeightArgumentsObject $argsObject = null)
+    /**
+     * The weight unit and value.
+     */
+    public function selectWeight(?ShopifyCalculatedDraftOrderLineItemWeightArgumentsObject $argsObject = null): ShopifyWeightQueryObject
     {
         $object = new ShopifyWeightQueryObject("weight");
         if ($argsObject !== null) {

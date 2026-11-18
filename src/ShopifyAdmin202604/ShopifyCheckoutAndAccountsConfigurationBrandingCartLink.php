@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The customizations that you can make to cart links at checkout.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCartLink
 {
     protected $visibility;
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject
+     * Whether the cart link is visible at checkout.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyShopPayInstallmentsPaymentDetails
+/**
+ * Shop Pay Installments payment details related to a transaction.
+ */
+class ShopifyShopPayInstallmentsPaymentDetails implements ShopifyBasePaymentDetails
 {
     protected $paymentMethodName;
 
     
     /**
+     * The name of payment method used by the buyer.
+     *
      * @return string
      */
-    public function getPaymentMethodName()
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }

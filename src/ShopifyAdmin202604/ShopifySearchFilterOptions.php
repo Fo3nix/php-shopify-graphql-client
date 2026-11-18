@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFilterOption;
 
+/**
+ * A list of search filters along with their specific options in value and label pair for filtering.
+ */
 class ShopifySearchFilterOptions
 {
     protected $productAvailability;
 
     
     /**
+     * A list of options that can be use to filter product availability.
+     *
      * @return ShopifyFilterOption[]
      */
-    public function getProductAvailability()
+    public function getProductAvailability(): ?array
     {
         return $this->productAvailability;
     }

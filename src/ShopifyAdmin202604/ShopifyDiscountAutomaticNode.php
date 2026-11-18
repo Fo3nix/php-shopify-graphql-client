@@ -2,13 +2,19 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDiscountAutomatic;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDiscountAutomaticHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyEventConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldConnection;
 
-class ShopifyDiscountAutomaticNode
+/**
+ * The `DiscountAutomaticNode` object enables you to manage [automatic discounts](https://help.shopify.com/manual/discounts/discount-types#automatic-discounts) that are applied when an order meets specific criteria. You can create amount off, free shipping, or buy X get Y automatic discounts. For example, you can offer customers a free shipping discount that applies when conditions are met. Or you can offer customers a buy X get Y discount that's automatically applied when customers spend a specified amount of money, or a specified quantity of products.
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including related queries, mutations, limitations, and considerations.
+ */
+class ShopifyDiscountAutomaticNode implements ShopifyHasEvents, ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $automaticDiscount;
     protected $events;
@@ -19,54 +25,69 @@ class ShopifyDiscountAutomaticNode
 
     
     /**
-     * @return ShopifyDiscountAutomatic
+     * A discount that's applied automatically when an order meets specific criteria. Learn more about [automatic discounts](https://help.shopify.com/manual/discounts/discount-types#automatic-discounts).
+     *
+     * @return ShopifyDiscountAutomaticApp|ShopifyDiscountAutomaticBasic|ShopifyDiscountAutomaticBxgy|ShopifyDiscountAutomaticFreeShipping
      */
-    public function getAutomaticDiscount()
+    public function getAutomaticDiscount(): ShopifyDiscountAutomaticApp|ShopifyDiscountAutomaticBasic|ShopifyDiscountAutomaticBxgy|ShopifyDiscountAutomaticFreeShipping|null
     {
         return $this->automaticDiscount;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
@@ -79,7 +100,7 @@ class ShopifyDiscountAutomaticNode
         {
             $instance = new self();
             if (isset($data['automaticDiscount']) && $data['automaticDiscount'] !== null) {
-                $instance->automaticDiscount = ShopifyDiscountAutomatic::fromArray($data['automaticDiscount']);
+                $instance->automaticDiscount = ShopifyDiscountAutomaticHydrator::fromArray($data['automaticDiscount']);
             }
             if (isset($data['events']) && $data['events'] !== null) {
                 $instance->events = ShopifyEventConnection::fromArray($data['events']);
@@ -120,7 +141,7 @@ class ShopifyDiscountAutomaticNode
         {
             $data = [];
             if ($this->automaticDiscount !== null) {
-                $data['automaticDiscount'] = $this->automaticDiscount->asArray();
+                $data['automaticDiscount'] = ShopifyDiscountAutomaticHydrator::toArray($this->automaticDiscount);
             }
             if ($this->events !== null) {
                 $data['events'] = $this->events->asArray();

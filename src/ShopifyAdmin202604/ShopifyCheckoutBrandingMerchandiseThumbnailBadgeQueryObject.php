@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The merchandise thumbnail badges customizations.
+ */
 class ShopifyCheckoutBrandingMerchandiseThumbnailBadgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingMerchandiseThumbnailBadge";
 
-    public function selectBackground()
+    /**
+     * The background used for merchandise thumbnail badges.
+     */
+    public function selectBackground(): static
     {
         $this->selectField("background");
 

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents actions that market a merchant's store or products.
+ */
 class ShopifyMarketingEventQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MarketingEvent";
 
-    public function selectApp(ShopifyMarketingEventAppArgumentsObject $argsObject = null)
+    /**
+     * The app that the marketing event is attributed to.
+     */
+    public function selectApp(?ShopifyMarketingEventAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("app");
         if ($argsObject !== null) {
@@ -20,93 +26,135 @@ class ShopifyMarketingEventQueryObject extends QueryObject
     }
 
     /**
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     *
      * @deprecated Use `marketingChannelType` instead.
      */
-    public function selectChannel()
+    public function selectChannel(): static
     {
         $this->selectField("channel");
 
         return $this;
     }
 
-    public function selectChannelHandle()
+    /**
+     * The unique string identifier of the channel to which this activity belongs. For the correct handle for your channel, contact your partner manager.
+     */
+    public function selectChannelHandle(): static
     {
         $this->selectField("channelHandle");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * A human-readable description of the marketing event.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectEndedAt()
+    /**
+     * The date and time when the marketing event ended.
+     */
+    public function selectEndedAt(): static
     {
         $this->selectField("endedAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLegacyResourceId()
+    /**
+     * The ID of the corresponding resource in the REST Admin API.
+     */
+    public function selectLegacyResourceId(): static
     {
         $this->selectField("legacyResourceId");
 
         return $this;
     }
 
-    public function selectManageUrl()
+    /**
+     * The URL where the marketing event can be managed.
+     */
+    public function selectManageUrl(): static
     {
         $this->selectField("manageUrl");
 
         return $this;
     }
 
-    public function selectMarketingChannelType()
+    /**
+     * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
+     */
+    public function selectMarketingChannelType(): static
     {
         $this->selectField("marketingChannelType");
 
         return $this;
     }
 
-    public function selectPreviewUrl()
+    /**
+     * The URL where the marketing event can be previewed.
+     */
+    public function selectPreviewUrl(): static
     {
         $this->selectField("previewUrl");
 
         return $this;
     }
 
-    public function selectRemoteId()
+    /**
+     * An optional ID that helps Shopify validate engagement data.
+     */
+    public function selectRemoteId(): static
     {
         $this->selectField("remoteId");
 
         return $this;
     }
 
-    public function selectScheduledToEndAt()
+    /**
+     * The date and time when the marketing event is scheduled to end.
+     */
+    public function selectScheduledToEndAt(): static
     {
         $this->selectField("scheduledToEndAt");
 
         return $this;
     }
 
-    public function selectSourceAndMedium()
+    /**
+     * Where the `MarketingEvent` occurred and what kind of content was used.
+     * Because `utmSource` and `utmMedium` are often used interchangeably, this is
+     * based on a combination of `marketingChannel`, `referringDomain`, and `type` to
+     * provide a consistent representation for any given piece of marketing
+     * regardless of the app that created it.
+     */
+    public function selectSourceAndMedium(): static
     {
         $this->selectField("sourceAndMedium");
 
         return $this;
     }
 
-    public function selectStartedAt()
+    /**
+     * The date and time when the marketing event started.
+     */
+    public function selectStartedAt(): static
     {
         $this->selectField("startedAt");
 
@@ -114,37 +162,51 @@ class ShopifyMarketingEventQueryObject extends QueryObject
     }
 
     /**
+     * The display text for the marketing event type.
+     *
      * @deprecated Use `sourceAndMedium` instead.
      */
-    public function selectTargetTypeDisplayText()
+    public function selectTargetTypeDisplayText(): static
     {
         $this->selectField("targetTypeDisplayText");
 
         return $this;
     }
 
-    public function selectType()
+    /**
+     * The marketing event type.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectUtmCampaign()
+    /**
+     * The name of the marketing campaign.
+     */
+    public function selectUtmCampaign(): static
     {
         $this->selectField("utmCampaign");
 
         return $this;
     }
 
-    public function selectUtmMedium()
+    /**
+     * The medium that the marketing campaign is using. Example values: `cpc`, `banner`.
+     */
+    public function selectUtmMedium(): static
     {
         $this->selectField("utmMedium");
 
         return $this;
     }
 
-    public function selectUtmSource()
+    /**
+     * The referrer of the marketing event. Example values: `google`, `newsletter`.
+     */
+    public function selectUtmSource(): static
     {
         $this->selectField("utmSource");
 

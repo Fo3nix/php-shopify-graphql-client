@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A zone is a group of countries that have the same shipping rates. Customers can order products from a store only if they choose a shipping destination that's included in one of the store's zones.
+ */
 class ShopifyDeliveryZoneQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryZone";
 
-    public function selectCountries(ShopifyDeliveryZoneCountriesArgumentsObject $argsObject = null)
+    /**
+     * The list of countries within the zone.
+     */
+    public function selectCountries(?ShopifyDeliveryZoneCountriesArgumentsObject $argsObject = null): ShopifyDeliveryCountryQueryObject
     {
         $object = new ShopifyDeliveryCountryQueryObject("countries");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyDeliveryZoneQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the zone.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

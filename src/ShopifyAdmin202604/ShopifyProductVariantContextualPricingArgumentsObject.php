@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyProductVariantContextualPricingArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["context"];
+
     protected $context;
 
-    public function setContext(ShopifyContextualPricingContextInputObject $shopifyContextualPricingContextInputObject)
+    /**
+     * The context used to generate contextual pricing for the variant.
+     */
+    public function setContext(ShopifyContextualPricingContextInputObject $shopifyContextualPricingContextInputObject): static
     {
         $this->context = $shopifyContextualPricingContextInputObject;
 

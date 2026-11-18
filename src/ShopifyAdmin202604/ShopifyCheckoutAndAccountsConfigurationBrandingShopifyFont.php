@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The Shopify font customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFont
 {
     protected $sources;
@@ -9,18 +12,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingShopifyFont
 
     
     /**
+     * The font sources.
+     *
      * @return string
      */
-    public function getSources()
+    public function getSources(): ?string
     {
         return $this->sources;
     }
 
     
     /**
+     * The font weight.
+     *
      * @return int
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }

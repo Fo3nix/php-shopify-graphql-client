@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerCreditCardBillingAddress;
 
+/**
+ * Represents a card instrument for customer payment method.
+ */
 class ShopifyCustomerCreditCard
 {
     protected $billingAddress;
@@ -21,108 +24,132 @@ class ShopifyCustomerCreditCard
 
     
     /**
+     * The billing address of the card.
+     *
      * @return ShopifyCustomerCreditCardBillingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCustomerCreditCardBillingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * The brand of the card.
+     *
      * @return string
      */
-    public function getBrand()
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
 
     
     /**
+     * Whether the card is about to expire.
+     *
      * @return bool
      */
-    public function getExpiresSoon()
+    public function getExpiresSoon(): ?bool
     {
         return $this->expiresSoon;
     }
 
     
     /**
+     * The expiry month of the card.
+     *
      * @return int
      */
-    public function getExpiryMonth()
+    public function getExpiryMonth(): ?int
     {
         return $this->expiryMonth;
     }
 
     
     /**
+     * The expiry year of the card.
+     *
      * @return int
      */
-    public function getExpiryYear()
+    public function getExpiryYear(): ?int
     {
         return $this->expiryYear;
     }
 
     
     /**
+     * The card's BIN number.
+     *
      * @return string
      */
-    public function getFirstDigits()
+    public function getFirstDigits(): ?string
     {
         return $this->firstDigits;
     }
 
     
     /**
+     * The payment method can be revoked if there are no active subscription contracts.
+     *
      * @return bool
      */
-    public function getIsRevocable()
+    public function getIsRevocable(): ?bool
     {
         return $this->isRevocable;
     }
 
     
     /**
+     * The last 4 digits of the card.
+     *
      * @return string
      */
-    public function getLastDigits()
+    public function getLastDigits(): ?string
     {
         return $this->lastDigits;
     }
 
     
     /**
+     * The masked card number with only the last 4 digits displayed.
+     *
      * @return string
      */
-    public function getMaskedNumber()
+    public function getMaskedNumber(): ?string
     {
         return $this->maskedNumber;
     }
 
     
     /**
+     * The name of the card holder.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The source of the card if coming from a wallet such as Apple Pay.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * The last 4 digits of the Device Account Number.
+     *
      * @return string
      */
-    public function getVirtualLastDigits()
+    public function getVirtualLastDigits(): ?string
     {
         return $this->virtualLastDigits;
     }

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the default expiration configuration of gift cards on the shop.
+ */
 class ShopifyGiftCardExpirationConfigurationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "GiftCardExpirationConfiguration";
 
-    public function selectExpirationUnit()
+    /**
+     * The unit for the default gift card expiration.
+     */
+    public function selectExpirationUnit(): static
     {
         $this->selectField("expirationUnit");
 
         return $this;
     }
 
-    public function selectExpirationValue()
+    /**
+     * The value for the default gift card expiration.
+     */
+    public function selectExpirationValue(): static
     {
         $this->selectField("expirationValue");
 

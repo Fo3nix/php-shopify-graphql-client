@@ -4,7 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyTranslation;
 
-class ShopifyCookieBanner
+/**
+ * A shop's banner settings.
+ */
+class ShopifyCookieBanner implements ShopifyHasPublishedTranslations
 {
     protected $autoManaged;
     protected $enabled;
@@ -12,27 +15,33 @@ class ShopifyCookieBanner
 
     
     /**
+     * Indicates if the banner is auto managed.
+     *
      * @return bool
      */
-    public function getAutoManaged()
+    public function getAutoManaged(): ?bool
     {
         return $this->autoManaged;
     }
 
     
     /**
+     * Indicates if the banner is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }

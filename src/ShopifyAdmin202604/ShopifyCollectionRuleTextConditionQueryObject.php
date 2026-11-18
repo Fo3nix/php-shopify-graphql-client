@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Specifies the condition for a text field.
+ */
 class ShopifyCollectionRuleTextConditionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CollectionRuleTextCondition";
 
-    public function selectValue()
+    /**
+     * The value of the condition.
+     */
+    public function selectValue(): static
     {
         $this->selectField("value");
 

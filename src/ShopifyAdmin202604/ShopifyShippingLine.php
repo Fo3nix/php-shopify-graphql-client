@@ -9,6 +9,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFulfillmentService;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyTaxLine;
 
+/**
+ * The shipping method that customers select for an order. Includes pricing details, carrier information, and any applied discounts or taxes.
+ */
 class ShopifyShippingLine
 {
     protected $carrierIdentifier;
@@ -34,180 +37,224 @@ class ShopifyShippingLine
 
     
     /**
+     * A reference to the carrier service that provided the rate.
+     * Present when the rate was computed by a third-party carrier service.
+     *
      * @return string
      */
-    public function getCarrierIdentifier()
+    public function getCarrierIdentifier(): ?string
     {
         return $this->carrierIdentifier;
     }
 
     
     /**
+     * A reference to the shipping method.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The date and time when the shipping line was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The current shipping price after applying refunds, after applying discounts. If the parent `order.taxesIncluded`` field is true, then this price includes taxes. Otherwise, this field is the pre-tax price.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getCurrentDiscountedPriceSet()
+    public function getCurrentDiscountedPriceSet(): ?ShopifyMoneyBag
     {
         return $this->currentDiscountedPriceSet;
     }
 
     
     /**
+     * Whether the shipping line is custom or not.
+     *
      * @return bool
      */
-    public function getCustom()
+    public function getCustom(): ?bool
     {
         return $this->custom;
     }
 
     
     /**
+     * The general classification of the delivery method.
+     *
      * @return string
      */
-    public function getDeliveryCategory()
+    public function getDeliveryCategory(): ?string
     {
         return $this->deliveryCategory;
     }
 
     
     /**
+     * The discounts that have been allocated to the shipping line.
+     *
      * @return ShopifyDiscountAllocation[]
      */
-    public function getDiscountAllocations()
+    public function getDiscountAllocations(): ?array
     {
         return $this->discountAllocations;
     }
 
     
     /**
+     * The pre-tax shipping price with discounts applied.
+     * As of API version 2024-07, this will be calculated including cart level discounts, such as the free shipping discount.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getDiscountedPrice()
+    public function getDiscountedPrice(): ?ShopifyMoneyV2
     {
         return $this->discountedPrice;
     }
 
     
     /**
+     * The shipping price after applying discounts. If the parent order.taxesIncluded field is true, then this price includes taxes. If not, it's the pre-tax price.
+     * As of API version 2024-07, this will be calculated including cart level discounts, such as the free shipping discount.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedPriceSet()
+    public function getDiscountedPriceSet(): ?ShopifyMoneyBag
     {
         return $this->discountedPriceSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Whether the shipping line has been removed.
+     *
      * @return bool
      */
-    public function getIsRemoved()
+    public function getIsRemoved(): ?bool
     {
         return $this->isRemoved;
     }
 
     
     /**
+     * The shipping price without any discounts applied. If the parent order.taxesIncluded field is true, then this price includes taxes. Otherwise, this field is the pre-tax price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOriginalPrice()
+    public function getOriginalPrice(): ?ShopifyMoneyV2
     {
         return $this->originalPrice;
     }
 
     
     /**
+     * The shipping price without any discounts applied. If the parent order.taxesIncluded field is true, then this price includes taxes. Otherwise, this field is the pre-tax price.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalPriceSet()
+    public function getOriginalPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalPriceSet;
     }
 
     
     /**
+     * The phone number at the shipping address.
+     *
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
     
     /**
+     * Returns the price of the shipping line.
+     *
      * @return string
      */
-    public function getPrice()
+    public function getPrice(): mixed
     {
         return $this->price;
     }
 
     
     /**
+     * The fulfillment service requested for the shipping method.
+     * Present if the shipping method requires processing by a third party fulfillment service.
+     *
      * @return ShopifyFulfillmentService
      */
-    public function getRequestedFulfillmentService()
+    public function getRequestedFulfillmentService(): ?ShopifyFulfillmentService
     {
         return $this->requestedFulfillmentService;
     }
 
     
     /**
+     * A unique identifier for the shipping rate. The format can change without notice and isn't meant to be shown to users.
+     *
      * @return string
      */
-    public function getShippingRateHandle()
+    public function getShippingRateHandle(): ?string
     {
         return $this->shippingRateHandle;
     }
 
     
     /**
+     * Returns the rate source for the shipping line.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * The TaxLine objects connected to this shipping line.
+     *
      * @return ShopifyTaxLine[]
      */
-    public function getTaxLines()
+    public function getTaxLines(): ?array
     {
         return $this->taxLines;
     }
 
     
     /**
+     * Returns the title of the shipping line.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

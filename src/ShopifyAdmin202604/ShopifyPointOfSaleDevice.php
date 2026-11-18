@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyPointOfSaleDevicePaymentSession;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCashDrawer;
 
-class ShopifyPointOfSaleDevice
+/**
+ * Represents a mobile device that Shopify Point of Sale has been installed on.
+ */
+class ShopifyPointOfSaleDevice implements ShopifyNode
 {
     protected $activePaymentSession;
     protected $cashDrawer;
@@ -13,27 +16,33 @@ class ShopifyPointOfSaleDevice
 
     
     /**
+     * The currently open payment session for this device. Data is returned only if the device's location has a POS Pro subscription.
+     *
      * @return ShopifyPointOfSaleDevicePaymentSession
      */
-    public function getActivePaymentSession()
+    public function getActivePaymentSession(): ?ShopifyPointOfSaleDevicePaymentSession
     {
         return $this->activePaymentSession;
     }
 
     
     /**
+     * The cash drawer that this device is currently assigned to. Data is returned only if the device's location has a POS Pro subscription.
+     *
      * @return ShopifyCashDrawer
      */
-    public function getCashDrawer()
+    public function getCashDrawer(): ?ShopifyCashDrawer
     {
         return $this->cashDrawer;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

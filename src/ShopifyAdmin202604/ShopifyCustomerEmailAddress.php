@@ -5,6 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 
+/**
+ * A customer's email address with marketing consent. This includes the email address, marketing subscription status, and opt-in level according to [M3AAWG best practices guidelines](https://www.m3aawg.org/news/updated-m3aawg-best-practices-for-senders-urge-opt-in-only-mailings-address-sender-transparency).
+ *
+ * It also provides the timestamp of when customers last updated marketing consent and URLs for unsubscribing from marketing emails or opting in or out of email open tracking. The [`sourceLocation`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CustomerEmailAddress#field-CustomerEmailAddress.fields.sourceLocation) field indicates where the customer consented to receive marketing material.
+ */
 class ShopifyCustomerEmailAddress
 {
     protected $emailAddress;
@@ -19,81 +24,105 @@ class ShopifyCustomerEmailAddress
 
     
     /**
+     * The customer's default email address.
+     *
      * @return string
      */
-    public function getEmailAddress()
+    public function getEmailAddress(): ?string
     {
         return $this->emailAddress;
     }
 
     
     /**
-     * @return ShopifyCustomerMarketingOptInLevelEnumObject
+     * The marketing subscription opt-in level, as described by the M3AAWG best practices guidelines,
+     * received when the marketing consent was updated.
+     *
+     * @return string A ShopifyCustomerMarketingOptInLevelEnumObject value
      */
-    public function getMarketingOptInLevel()
+    public function getMarketingOptInLevel(): ?string
     {
         return $this->marketingOptInLevel;
     }
 
     
     /**
-     * @return ShopifyCustomerEmailAddressMarketingStateEnumObject
+     * Whether the customer has subscribed to email marketing.
+     *
+     * @return string A ShopifyCustomerEmailAddressMarketingStateEnumObject value
      */
-    public function getMarketingState()
+    public function getMarketingState(): ?string
     {
         return $this->marketingState;
     }
 
     
     /**
+     * The URL to unsubscribe a member from all mailing lists.
+     *
      * @return string
      */
-    public function getMarketingUnsubscribeUrl()
+    public function getMarketingUnsubscribeUrl(): mixed
     {
         return $this->marketingUnsubscribeUrl;
     }
 
     
     /**
+     * The date and time at which the marketing consent was updated.
+     *
+     * No date is provided if the email address never updated its marketing consent.
+     *
      * @return Carbon
      */
-    public function getMarketingUpdatedAt()
+    public function getMarketingUpdatedAt(): ?Carbon
     {
         return $this->marketingUpdatedAt;
     }
 
     
     /**
-     * @return ShopifyCustomerEmailAddressOpenTrackingLevelEnumObject
+     * Whether the customer has opted in to having their opened emails tracked.
+     *
+     * @return string A ShopifyCustomerEmailAddressOpenTrackingLevelEnumObject value
      */
-    public function getOpenTrackingLevel()
+    public function getOpenTrackingLevel(): ?string
     {
         return $this->openTrackingLevel;
     }
 
     
     /**
+     * The URL that can be used to opt a customer in or out of email open tracking.
+     *
      * @return string
      */
-    public function getOpenTrackingUrl()
+    public function getOpenTrackingUrl(): mixed
     {
         return $this->openTrackingUrl;
     }
 
     
     /**
+     * The location where the customer consented to receive marketing material by email.
+     *
      * @return ShopifyLocation
      */
-    public function getSourceLocation()
+    public function getSourceLocation(): ?ShopifyLocation
     {
         return $this->sourceLocation;
     }
 
     
     /**
+     * Whether the email address is formatted correctly.
+     *
+     * Returns `true` when the email is formatted correctly. This doesn't guarantee that the email address
+     * actually exists.
+     *
      * @return bool
      */
-    public function getValidFormat()
+    public function getValidFormat(): ?bool
     {
         return $this->validFormat;
     }

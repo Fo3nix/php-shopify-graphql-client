@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyApp;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFunctionsAppBridge;
 
+/**
+ * A Shopify Function.
+ */
 class ShopifyShopifyFunction
 {
     protected $apiType;
@@ -21,99 +24,121 @@ class ShopifyShopifyFunction
 
     
     /**
+     * The API type of the Shopify Function.
+     *
      * @return string
      */
-    public function getApiType()
+    public function getApiType(): ?string
     {
         return $this->apiType;
     }
 
     
     /**
+     * The API version of the Shopify Function.
+     *
      * @return string
      */
-    public function getApiVersion()
+    public function getApiVersion(): ?string
     {
         return $this->apiVersion;
     }
 
     
     /**
+     * The app that owns the Shopify Function.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The App Bridge information for the Shopify Function.
+     *
      * @return ShopifyFunctionsAppBridge
      */
-    public function getAppBridge()
+    public function getAppBridge(): ?ShopifyFunctionsAppBridge
     {
         return $this->appBridge;
     }
 
     
     /**
+     * The client ID of the app that owns the Shopify Function.
+     *
      * @return string
      */
-    public function getAppKey()
+    public function getAppKey(): ?string
     {
         return $this->appKey;
     }
 
     
     /**
+     * The description of the Shopify Function.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The handle of the Shopify Function.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * The ID of the Shopify Function.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The input query of the Shopify Function.
+     *
      * @return string
      */
-    public function getInputQuery()
+    public function getInputQuery(): ?string
     {
         return $this->inputQuery;
     }
 
     
     /**
+     * The title of the Shopify Function.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * If the Shopify Function uses the creation UI in the Admin.
+     *
      * @return bool
      */
-    public function getUseCreationUi()
+    public function getUseCreationUi(): ?bool
     {
         return $this->useCreationUi;
     }

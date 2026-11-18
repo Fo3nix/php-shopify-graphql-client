@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple Validations.
+ */
 class ShopifyValidationConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ValidationConnection";
 
-    public function selectEdges(ShopifyValidationConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyValidationConnectionEdgesArgumentsObject $argsObject = null): ShopifyValidationEdgeQueryObject
     {
         $object = new ShopifyValidationEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyValidationConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectNodes(ShopifyValidationConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in ValidationEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyValidationConnectionNodesArgumentsObject $argsObject = null): ShopifyValidationQueryObject
     {
         $object = new ShopifyValidationQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyValidationConnectionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPageInfo(ShopifyValidationConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyValidationConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

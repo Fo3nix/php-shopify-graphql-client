@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * PayPal Wallet payment details related to a transaction.
+ */
 class ShopifyPaypalWalletPaymentDetailsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PaypalWalletPaymentDetails";
 
-    public function selectPaymentMethodName()
+    /**
+     * The name of payment method used by the buyer.
+     */
+    public function selectPaymentMethodName(): static
     {
         $this->selectField("paymentMethodName");
 

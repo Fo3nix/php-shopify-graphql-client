@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A product and the subset of associated variants that are part of this delivery profile.
+ */
 class ShopifyDeliveryProfileItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryProfileItem";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectProduct(ShopifyDeliveryProfileItemProductArgumentsObject $argsObject = null)
+    /**
+     * A product associated with this profile.
+     */
+    public function selectProduct(?ShopifyDeliveryProfileItemProductArgumentsObject $argsObject = null): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject("product");
         if ($argsObject !== null) {
@@ -26,7 +35,10 @@ class ShopifyDeliveryProfileItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectVariants(ShopifyDeliveryProfileItemVariantsArgumentsObject $argsObject = null)
+    /**
+     * The product variants associated with this delivery profile.
+     */
+    public function selectVariants(?ShopifyDeliveryProfileItemVariantsArgumentsObject $argsObject = null): ShopifyProductVariantConnectionQueryObject
     {
         $object = new ShopifyProductVariantConnectionQueryObject("variants");
         if ($argsObject !== null) {

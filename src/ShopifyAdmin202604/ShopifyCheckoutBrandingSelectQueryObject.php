@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The selects customizations.
+ */
 class ShopifyCheckoutBrandingSelectQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutBrandingSelect";
 
-    public function selectBorder()
+    /**
+     * The border used for selects.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectTypography(ShopifyCheckoutBrandingSelectTypographyArgumentsObject $argsObject = null)
+    /**
+     * The typography customizations used for selects.
+     */
+    public function selectTypography(?ShopifyCheckoutBrandingSelectTypographyArgumentsObject $argsObject = null): ShopifyCheckoutBrandingTypographyStyleQueryObject
     {
         $object = new ShopifyCheckoutBrandingTypographyStyleQueryObject("typography");
         if ($argsObject !== null) {

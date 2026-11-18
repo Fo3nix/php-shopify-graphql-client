@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The evidence associated with the dispute.
+ */
 class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsDisputeEvidence";
 
-    public function selectAccessActivityLog()
+    /**
+     * The activity logs associated with the dispute evidence.
+     */
+    public function selectAccessActivityLog(): static
     {
         $this->selectField("accessActivityLog");
 
         return $this;
     }
 
-    public function selectBillingAddress(ShopifyShopifyPaymentsDisputeEvidenceBillingAddressArgumentsObject $argsObject = null)
+    /**
+     * The billing address that's provided by the customer.
+     */
+    public function selectBillingAddress(?ShopifyShopifyPaymentsDisputeEvidenceBillingAddressArgumentsObject $argsObject = null): ShopifyMailingAddressQueryObject
     {
         $object = new ShopifyMailingAddressQueryObject("billingAddress");
         if ($argsObject !== null) {
@@ -26,14 +35,20 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCancellationPolicyDisclosure()
+    /**
+     * The cancellation policy disclosure associated with the dispute evidence.
+     */
+    public function selectCancellationPolicyDisclosure(): static
     {
         $this->selectField("cancellationPolicyDisclosure");
 
         return $this;
     }
 
-    public function selectCancellationPolicyFile(ShopifyShopifyPaymentsDisputeEvidenceCancellationPolicyFileArgumentsObject $argsObject = null)
+    /**
+     * The cancellation policy file associated with the dispute evidence.
+     */
+    public function selectCancellationPolicyFile(?ShopifyShopifyPaymentsDisputeEvidenceCancellationPolicyFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("cancellationPolicyFile");
         if ($argsObject !== null) {
@@ -44,14 +59,20 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCancellationRebuttal()
+    /**
+     * The cancellation rebuttal associated with the dispute evidence.
+     */
+    public function selectCancellationRebuttal(): static
     {
         $this->selectField("cancellationRebuttal");
 
         return $this;
     }
 
-    public function selectCustomerCommunicationFile(ShopifyShopifyPaymentsDisputeEvidenceCustomerCommunicationFileArgumentsObject $argsObject = null)
+    /**
+     * The customer communication file associated with the dispute evidence.
+     */
+    public function selectCustomerCommunicationFile(?ShopifyShopifyPaymentsDisputeEvidenceCustomerCommunicationFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("customerCommunicationFile");
         if ($argsObject !== null) {
@@ -62,35 +83,50 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustomerEmailAddress()
+    /**
+     * The customer's email address.
+     */
+    public function selectCustomerEmailAddress(): static
     {
         $this->selectField("customerEmailAddress");
 
         return $this;
     }
 
-    public function selectCustomerFirstName()
+    /**
+     * The customer's first name.
+     */
+    public function selectCustomerFirstName(): static
     {
         $this->selectField("customerFirstName");
 
         return $this;
     }
 
-    public function selectCustomerLastName()
+    /**
+     * The customer's last name.
+     */
+    public function selectCustomerLastName(): static
     {
         $this->selectField("customerLastName");
 
         return $this;
     }
 
-    public function selectCustomerPurchaseIp()
+    /**
+     * The customer purchase ip for this dispute evidence.
+     */
+    public function selectCustomerPurchaseIp(): static
     {
         $this->selectField("customerPurchaseIp");
 
         return $this;
     }
 
-    public function selectDispute(ShopifyShopifyPaymentsDisputeEvidenceDisputeArgumentsObject $argsObject = null)
+    /**
+     * The dispute associated with the evidence.
+     */
+    public function selectDispute(?ShopifyShopifyPaymentsDisputeEvidenceDisputeArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeQueryObject("dispute");
         if ($argsObject !== null) {
@@ -101,7 +137,10 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDisputeFileUploads(ShopifyShopifyPaymentsDisputeEvidenceDisputeFileUploadsArgumentsObject $argsObject = null)
+    /**
+     * The file uploads associated with the dispute evidence.
+     */
+    public function selectDisputeFileUploads(?ShopifyShopifyPaymentsDisputeEvidenceDisputeFileUploadsArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("disputeFileUploads");
         if ($argsObject !== null) {
@@ -112,7 +151,10 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFulfillments(ShopifyShopifyPaymentsDisputeEvidenceFulfillmentsArgumentsObject $argsObject = null)
+    /**
+     * The fulfillments associated with the dispute evidence.
+     */
+    public function selectFulfillments(?ShopifyShopifyPaymentsDisputeEvidenceFulfillmentsArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFulfillmentQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFulfillmentQueryObject("fulfillments");
         if ($argsObject !== null) {
@@ -123,28 +165,40 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectProductDescription()
+    /**
+     * The product description for this dispute evidence.
+     */
+    public function selectProductDescription(): static
     {
         $this->selectField("productDescription");
 
         return $this;
     }
 
-    public function selectRefundPolicyDisclosure()
+    /**
+     * The refund policy disclosure associated with the dispute evidence.
+     */
+    public function selectRefundPolicyDisclosure(): static
     {
         $this->selectField("refundPolicyDisclosure");
 
         return $this;
     }
 
-    public function selectRefundPolicyFile(ShopifyShopifyPaymentsDisputeEvidenceRefundPolicyFileArgumentsObject $argsObject = null)
+    /**
+     * The refund policy file associated with the dispute evidence.
+     */
+    public function selectRefundPolicyFile(?ShopifyShopifyPaymentsDisputeEvidenceRefundPolicyFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("refundPolicyFile");
         if ($argsObject !== null) {
@@ -155,14 +209,20 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRefundRefusalExplanation()
+    /**
+     * The refund refusal explanation associated with dispute evidence.
+     */
+    public function selectRefundRefusalExplanation(): static
     {
         $this->selectField("refundRefusalExplanation");
 
         return $this;
     }
 
-    public function selectServiceDocumentationFile(ShopifyShopifyPaymentsDisputeEvidenceServiceDocumentationFileArgumentsObject $argsObject = null)
+    /**
+     * The service documentation file associated with the dispute evidence.
+     */
+    public function selectServiceDocumentationFile(?ShopifyShopifyPaymentsDisputeEvidenceServiceDocumentationFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("serviceDocumentationFile");
         if ($argsObject !== null) {
@@ -173,7 +233,10 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShippingAddress(ShopifyShopifyPaymentsDisputeEvidenceShippingAddressArgumentsObject $argsObject = null)
+    /**
+     * The mailing address for shipping that's provided by the customer.
+     */
+    public function selectShippingAddress(?ShopifyShopifyPaymentsDisputeEvidenceShippingAddressArgumentsObject $argsObject = null): ShopifyMailingAddressQueryObject
     {
         $object = new ShopifyMailingAddressQueryObject("shippingAddress");
         if ($argsObject !== null) {
@@ -184,7 +247,10 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectShippingDocumentationFile(ShopifyShopifyPaymentsDisputeEvidenceShippingDocumentationFileArgumentsObject $argsObject = null)
+    /**
+     * The shipping documentation file associated with the dispute evidence.
+     */
+    public function selectShippingDocumentationFile(?ShopifyShopifyPaymentsDisputeEvidenceShippingDocumentationFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("shippingDocumentationFile");
         if ($argsObject !== null) {
@@ -195,14 +261,20 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSubmitted()
+    /**
+     * Whether the dispute evidence is submitted.
+     */
+    public function selectSubmitted(): static
     {
         $this->selectField("submitted");
 
         return $this;
     }
 
-    public function selectUncategorizedFile(ShopifyShopifyPaymentsDisputeEvidenceUncategorizedFileArgumentsObject $argsObject = null)
+    /**
+     * The uncategorized file associated with the dispute evidence.
+     */
+    public function selectUncategorizedFile(?ShopifyShopifyPaymentsDisputeEvidenceUncategorizedFileArgumentsObject $argsObject = null): ShopifyShopifyPaymentsDisputeFileUploadQueryObject
     {
         $object = new ShopifyShopifyPaymentsDisputeFileUploadQueryObject("uncategorizedFile");
         if ($argsObject !== null) {
@@ -213,7 +285,10 @@ class ShopifyShopifyPaymentsDisputeEvidenceQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUncategorizedText()
+    /**
+     * The uncategorized text for the dispute evidence.
+     */
+    public function selectUncategorizedText(): static
     {
         $this->selectField("uncategorizedText");
 

@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionSupportedValidation;
 
+/**
+ * A metafield definition type provides basic foundation and validation for a metafield.
+ */
 class ShopifyMetafieldDefinitionType
 {
     protected $category;
@@ -14,45 +17,56 @@ class ShopifyMetafieldDefinitionType
 
     
     /**
+     * The category associated with the metafield definition type.
+     *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     
     /**
+     * The name of the type for the metafield definition.
+     * See the list of [supported types](https://shopify.dev/apps/metafields/types).
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The supported validations for a metafield definition type.
+     *
      * @return ShopifyMetafieldDefinitionSupportedValidation[]
      */
-    public function getSupportedValidations()
+    public function getSupportedValidations(): ?array
     {
         return $this->supportedValidations;
     }
 
     
     /**
+     * Whether metafields without a definition can be migrated to a definition of this type.
+     *
      * @return bool
      */
-    public function getSupportsDefinitionMigrations()
+    public function getSupportsDefinitionMigrations(): ?bool
     {
         return $this->supportsDefinitionMigrations;
     }
 
     
     /**
-     * @return ShopifyMetafieldValueTypeEnumObject
+     * The value type for a metafield created with this definition type.
+     *
+     * @return string A ShopifyMetafieldValueTypeEnumObject value
      */
-    public function getValueType()
+    public function getValueType(): ?string
     {
         return $this->valueType;
     }

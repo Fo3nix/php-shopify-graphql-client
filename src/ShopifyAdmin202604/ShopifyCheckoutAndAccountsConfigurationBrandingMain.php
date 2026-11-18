@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigura
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingMainSection;
 
+/**
+ * The main container customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingMain
 {
     protected $colors;
@@ -14,27 +17,33 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingMain
 
     
     /**
+     * The colors customizations.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutAndAccountsConfigurationBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The main container's divider style and visibility.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
      */
-    public function getDivider()
+    public function getDivider(): ?ShopifyCheckoutAndAccountsConfigurationBrandingContainerDivider
     {
         return $this->divider;
     }
 
     
     /**
+     * The main sections.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
      */
-    public function getSection()
+    public function getSection(): ?ShopifyCheckoutAndAccountsConfigurationBrandingMainSection
     {
         return $this->section;
     }

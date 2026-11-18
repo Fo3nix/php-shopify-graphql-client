@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOrder;
 
+/**
+ * The billing attempt completed successfully and created an order.
+ */
 class ShopifySubscriptionBillingAttemptSuccessState
 {
     protected $order;
 
     
     /**
+     * The order created by the successful billing attempt. May be null if the order was deleted.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }

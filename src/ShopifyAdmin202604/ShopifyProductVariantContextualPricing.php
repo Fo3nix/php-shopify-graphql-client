@@ -6,6 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyQuantityPriceBreakConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyQuantityRule;
 
+/**
+ * The price of a product variant in a specific country.
+ * Prices vary between countries.
+ */
 class ShopifyProductVariantContextualPricing
 {
     protected $compareAtPrice;
@@ -16,45 +20,55 @@ class ShopifyProductVariantContextualPricing
 
     
     /**
+     * The final compare-at price after all adjustments are applied.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCompareAtPrice()
+    public function getCompareAtPrice(): ?ShopifyMoneyV2
     {
         return $this->compareAtPrice;
     }
 
     
     /**
+     * The final price after all adjustments are applied.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }
 
     
     /**
+     * A list of quantity breaks for the product variant.
+     *
      * @return ShopifyQuantityPriceBreakConnection
      */
-    public function getQuantityPriceBreaks()
+    public function getQuantityPriceBreaks(): ?ShopifyQuantityPriceBreakConnection
     {
         return $this->quantityPriceBreaks;
     }
 
     
     /**
+     * The quantity rule applied for a given context.
+     *
      * @return ShopifyQuantityRule
      */
-    public function getQuantityRule()
+    public function getQuantityRule(): ?ShopifyQuantityRule
     {
         return $this->quantityRule;
     }
 
     
     /**
+     * The unit price value for the given context based on the variant measurement.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getUnitPrice()
+    public function getUnitPrice(): ?ShopifyMoneyV2
     {
         return $this->unitPrice;
     }

@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingExpressCheckoutButton;
 
+/**
+ * The Express Checkout customizations.
+ */
 class ShopifyCheckoutBrandingExpressCheckout
 {
     protected $button;
 
     
     /**
+     * The Express Checkout buttons customizations.
+     *
      * @return ShopifyCheckoutBrandingExpressCheckoutButton
      */
-    public function getButton()
+    public function getButton(): ?ShopifyCheckoutBrandingExpressCheckoutButton
     {
         return $this->button;
     }

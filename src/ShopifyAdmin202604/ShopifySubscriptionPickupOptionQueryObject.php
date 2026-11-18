@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A pickup option to deliver a subscription contract.
+ */
 class ShopifySubscriptionPickupOptionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionPickupOption";
 
-    public function selectCode()
+    /**
+     * The code of the pickup option.
+     */
+    public function selectCode(): static
     {
         $this->selectField("code");
 
         return $this;
     }
 
-    public function selectDescription()
+    /**
+     * The description of the pickup option.
+     */
+    public function selectDescription(): static
     {
         $this->selectField("description");
 
         return $this;
     }
 
-    public function selectLocation(ShopifySubscriptionPickupOptionLocationArgumentsObject $argsObject = null)
+    /**
+     * The pickup location.
+     */
+    public function selectLocation(?ShopifySubscriptionPickupOptionLocationArgumentsObject $argsObject = null): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject("location");
         if ($argsObject !== null) {
@@ -33,28 +45,40 @@ class ShopifySubscriptionPickupOptionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPhoneRequired()
+    /**
+     * Whether a phone number is required for the pickup option.
+     */
+    public function selectPhoneRequired(): static
     {
         $this->selectField("phoneRequired");
 
         return $this;
     }
 
-    public function selectPickupTime()
+    /**
+     * The estimated amount of time it takes for the pickup to be ready. For example, "Usually ready in 24 hours".).
+     */
+    public function selectPickupTime(): static
     {
         $this->selectField("pickupTime");
 
         return $this;
     }
 
-    public function selectPresentmentTitle()
+    /**
+     * The presentment title of the pickup option.
+     */
+    public function selectPresentmentTitle(): static
     {
         $this->selectField("presentmentTitle");
 
         return $this;
     }
 
-    public function selectPrice(ShopifySubscriptionPickupOptionPriceArgumentsObject $argsObject = null)
+    /**
+     * The price of the pickup option.
+     */
+    public function selectPrice(?ShopifySubscriptionPickupOptionPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("price");
         if ($argsObject !== null) {
@@ -65,7 +89,10 @@ class ShopifySubscriptionPickupOptionQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTitle()
+    /**
+     * The title of the pickup option.
+     */
+    public function selectTitle(): static
     {
         $this->selectField("title");
 

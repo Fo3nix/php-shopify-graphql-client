@@ -1,0 +1,27 @@
+<?php
+
+namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
+
+use GraphQL\SchemaObject\QueryObject;
+
+/**
+ * Return type for `deliveryShippingOriginAssign` mutation.
+ */
+class ShopifyDeliveryShippingOriginAssignPayloadQueryObject extends QueryObject
+{
+    const OBJECT_NAME = "DeliveryShippingOriginAssignPayload";
+
+    /**
+     * The list of errors that occurred from executing the mutation.
+     */
+    public function selectUserErrors(?ShopifyDeliveryShippingOriginAssignPayloadUserErrorsArgumentsObject $argsObject = null): ShopifyUserErrorQueryObject
+    {
+        $object = new ShopifyUserErrorQueryObject("userErrors");
+        if ($argsObject !== null) {
+            $object->appendArguments($argsObject->toArray());
+        }
+        $this->selectField($object);
+
+        return $object;
+    }
+}

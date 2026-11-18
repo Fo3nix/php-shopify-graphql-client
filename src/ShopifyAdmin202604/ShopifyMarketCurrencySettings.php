@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCurrencySetting;
 
+/**
+ * A market's currency settings.
+ */
 class ShopifyMarketCurrencySettings
 {
     protected $baseCurrency;
@@ -12,27 +15,36 @@ class ShopifyMarketCurrencySettings
 
     
     /**
+     * The currency which this market's customers must use if local currencies are disabled.
+     *
      * @return ShopifyCurrencySetting
      */
-    public function getBaseCurrency()
+    public function getBaseCurrency(): ?ShopifyCurrencySetting
     {
         return $this->baseCurrency;
     }
 
     
     /**
+     * Whether or not local currencies are enabled. If enabled, then prices will
+     * be converted to give each customer the best experience based on their
+     * region. If disabled, then all customers in this market will see prices
+     * in the market's base currency.
+     *
      * @return bool
      */
-    public function getLocalCurrencies()
+    public function getLocalCurrencies(): ?bool
     {
         return $this->localCurrencies;
     }
 
     
     /**
+     * Whether or not rounding is enabled on multi-currency prices.
+     *
      * @return bool
      */
-    public function getRoundingEnabled()
+    public function getRoundingEnabled(): ?bool
     {
         return $this->roundingEnabled;
     }

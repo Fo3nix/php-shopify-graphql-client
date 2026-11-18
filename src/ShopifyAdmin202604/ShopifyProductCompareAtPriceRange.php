@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * The compare-at price range of the product.
+ */
 class ShopifyProductCompareAtPriceRange
 {
     protected $maxVariantCompareAtPrice;
@@ -11,18 +14,22 @@ class ShopifyProductCompareAtPriceRange
 
     
     /**
+     * The highest variant's compare-at price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMaxVariantCompareAtPrice()
+    public function getMaxVariantCompareAtPrice(): ?ShopifyMoneyV2
     {
         return $this->maxVariantCompareAtPrice;
     }
 
     
     /**
+     * The lowest variant's compare-at price.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMinVariantCompareAtPrice()
+    public function getMinVariantCompareAtPrice(): ?ShopifyMoneyV2
     {
         return $this->minVariantCompareAtPrice;
     }

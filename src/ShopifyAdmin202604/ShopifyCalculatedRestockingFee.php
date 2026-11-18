@@ -4,7 +4,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 
-class ShopifyCalculatedRestockingFee
+/**
+ * The calculated costs of handling a return line item.
+ * Typically, this would cover the costs of inspecting, repackaging, and restocking the item.
+ */
+class ShopifyCalculatedRestockingFee implements ShopifyCalculatedReturnFee
 {
     protected $amountSet;
     protected $id;
@@ -12,27 +16,33 @@ class ShopifyCalculatedRestockingFee
 
     
     /**
+     * The calculated amount of the return fee, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The value of the fee as a percentage.
+     *
      * @return float
      */
-    public function getPercentage()
+    public function getPercentage(): ?float
     {
         return $this->percentage;
     }

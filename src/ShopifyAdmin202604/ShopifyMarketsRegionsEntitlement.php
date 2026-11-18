@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMarketsCatalogsEntitlement;
 
+/**
+ * The entitlements for region markets.
+ */
 class ShopifyMarketsRegionsEntitlement
 {
     protected $catalogs;
@@ -11,18 +14,22 @@ class ShopifyMarketsRegionsEntitlement
 
     
     /**
+     * The entitlements for region market catalogs.
+     *
      * @return ShopifyMarketsCatalogsEntitlement
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyMarketsCatalogsEntitlement
     {
         return $this->catalogs;
     }
 
     
     /**
+     * Whether region markets are enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The country and language settings assigned to a domain.
+ */
 class ShopifyDomainLocalization
 {
     protected $alternateLocales;
@@ -10,27 +13,33 @@ class ShopifyDomainLocalization
 
     
     /**
+     * The ISO codes for the domain’s alternate locales. For example, `["en"]`.
+     *
      * @return string[]
      */
-    public function getAlternateLocales()
+    public function getAlternateLocales(): ?array
     {
         return $this->alternateLocales;
     }
 
     
     /**
+     * The ISO code for the country assigned to the domain. For example, `"CA"` or "*" for a domain set to "Rest of world".
+     *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * The ISO code for the domain’s default locale. For example, `"en"`.
+     *
      * @return string
      */
-    public function getDefaultLocale()
+    public function getDefaultLocale(): ?string
     {
         return $this->defaultLocale;
     }

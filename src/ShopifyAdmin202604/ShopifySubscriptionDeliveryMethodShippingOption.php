@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryCarrierService;
 
+/**
+ * Represents the selected shipping option on a subscription contract.
+ */
 class ShopifySubscriptionDeliveryMethodShippingOption
 {
     protected $carrierService;
@@ -14,45 +17,56 @@ class ShopifySubscriptionDeliveryMethodShippingOption
 
     
     /**
+     * The carrier service that's providing this shipping option.
+     * This field isn't currently supported and returns null.
+     *
      * @return ShopifyDeliveryCarrierService
      */
-    public function getCarrierService()
+    public function getCarrierService(): ?ShopifyDeliveryCarrierService
     {
         return $this->carrierService;
     }
 
     
     /**
+     * The code of the shipping option.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The description of the shipping option.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The presentment title of the shipping option.
+     *
      * @return string
      */
-    public function getPresentmentTitle()
+    public function getPresentmentTitle(): ?string
     {
         return $this->presentmentTitle;
     }
 
     
     /**
+     * The title of the shipping option.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

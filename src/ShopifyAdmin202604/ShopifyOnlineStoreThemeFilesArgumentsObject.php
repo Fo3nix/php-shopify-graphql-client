@@ -10,21 +10,30 @@ class ShopifyOnlineStoreThemeFilesArgumentsObject extends ArgumentsObject
     protected $first;
     protected $after;
 
-    public function setFilenames(array $filenames)
+    /**
+     * The filenames of the theme files. At most 50 filenames can be specified. Use '*' to match zero or more characters.
+     */
+    public function setFilenames(array $filenames): static
     {
         $this->filenames = $filenames;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * Returns at most the first n files for this theme. Fewer than n files may be returned to stay within the payload size limit, or when the end of the list is reached. At most 2500 can be fetched at once.
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * A cursor for use in pagination.
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 

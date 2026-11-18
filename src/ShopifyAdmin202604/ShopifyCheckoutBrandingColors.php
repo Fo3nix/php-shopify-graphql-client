@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingColorGlobal;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutBrandingColorSchemes;
 
+/**
+ * The color settings for global colors and color schemes.
+ */
 class ShopifyCheckoutBrandingColors
 {
     protected $global;
@@ -12,18 +15,22 @@ class ShopifyCheckoutBrandingColors
 
     
     /**
+     * A group of global colors for customizing the overall look and feel of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorGlobal
      */
-    public function getGlobal()
+    public function getGlobal(): ?ShopifyCheckoutBrandingColorGlobal
     {
         return $this->global;
     }
 
     
     /**
+     * A set of color schemes which apply to different areas of the user interface.
+     *
      * @return ShopifyCheckoutBrandingColorSchemes
      */
-    public function getSchemes()
+    public function getSchemes(): ?ShopifyCheckoutBrandingColorSchemes
     {
         return $this->schemes;
     }

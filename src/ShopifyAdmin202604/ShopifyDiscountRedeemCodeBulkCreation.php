@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDiscountRedeemCodeBulkCreati
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDiscountCodeNode;
 
-class ShopifyDiscountRedeemCodeBulkCreation
+/**
+ * The properties and status of a bulk discount redeem code creation operation.
+ */
+class ShopifyDiscountRedeemCodeBulkCreation implements ShopifyNode
 {
     protected $codes;
     protected $codesCount;
@@ -19,72 +22,88 @@ class ShopifyDiscountRedeemCodeBulkCreation
 
     
     /**
+     * The result of each code creation operation associated with the bulk creation operation including any errors that might have occurred during the operation.
+     *
      * @return ShopifyDiscountRedeemCodeBulkCreationCodeConnection
      */
-    public function getCodes()
+    public function getCodes(): ?ShopifyDiscountRedeemCodeBulkCreationCodeConnection
     {
         return $this->codes;
     }
 
     
     /**
+     * The number of codes to create.
+     *
      * @return int
      */
-    public function getCodesCount()
+    public function getCodesCount(): ?int
     {
         return $this->codesCount;
     }
 
     
     /**
+     * The date and time when the bulk creation was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The code discount associated with the created codes.
+     *
      * @return ShopifyDiscountCodeNode
      */
-    public function getDiscountCode()
+    public function getDiscountCode(): ?ShopifyDiscountCodeNode
     {
         return $this->discountCode;
     }
 
     
     /**
+     * Whether the bulk creation is still queued (`false`) or has been run (`true`).
+     *
      * @return bool
      */
-    public function getDone()
+    public function getDone(): ?bool
     {
         return $this->done;
     }
 
     
     /**
+     * The number of codes that weren't created successfully.
+     *
      * @return int
      */
-    public function getFailedCount()
+    public function getFailedCount(): ?int
     {
         return $this->failedCount;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The number of codes created successfully.
+     *
      * @return int
      */
-    public function getImportedCount()
+    public function getImportedCount(): ?int
     {
         return $this->importedCount;
     }

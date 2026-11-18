@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a line item for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestLineItem";
 
-    public function selectFinalItemPrice(ShopifyShopPayPaymentRequestLineItemFinalItemPriceArgumentsObject $argsObject = null)
+    /**
+     * The final item price for the line item.
+     */
+    public function selectFinalItemPrice(?ShopifyShopPayPaymentRequestLineItemFinalItemPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("finalItemPrice");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFinalLinePrice(ShopifyShopPayPaymentRequestLineItemFinalLinePriceArgumentsObject $argsObject = null)
+    /**
+     * The final line price for the line item.
+     */
+    public function selectFinalLinePrice(?ShopifyShopPayPaymentRequestLineItemFinalLinePriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("finalLinePrice");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectImage(ShopifyShopPayPaymentRequestLineItemImageArgumentsObject $argsObject = null)
+    /**
+     * The image of the line item.
+     */
+    public function selectImage(?ShopifyShopPayPaymentRequestLineItemImageArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestImageQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestImageQueryObject("image");
         if ($argsObject !== null) {
@@ -41,7 +53,10 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectItemDiscounts(ShopifyShopPayPaymentRequestLineItemItemDiscountsArgumentsObject $argsObject = null)
+    /**
+     * The item discounts for the line item.
+     */
+    public function selectItemDiscounts(?ShopifyShopPayPaymentRequestLineItemItemDiscountsArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestDiscountQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestDiscountQueryObject("itemDiscounts");
         if ($argsObject !== null) {
@@ -52,14 +67,20 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLabel()
+    /**
+     * The label of the line item.
+     */
+    public function selectLabel(): static
     {
         $this->selectField("label");
 
         return $this;
     }
 
-    public function selectLineDiscounts(ShopifyShopPayPaymentRequestLineItemLineDiscountsArgumentsObject $argsObject = null)
+    /**
+     * The line discounts for the line item.
+     */
+    public function selectLineDiscounts(?ShopifyShopPayPaymentRequestLineItemLineDiscountsArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestDiscountQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestDiscountQueryObject("lineDiscounts");
         if ($argsObject !== null) {
@@ -70,7 +91,10 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalItemPrice(ShopifyShopPayPaymentRequestLineItemOriginalItemPriceArgumentsObject $argsObject = null)
+    /**
+     * The original item price for the line item.
+     */
+    public function selectOriginalItemPrice(?ShopifyShopPayPaymentRequestLineItemOriginalItemPriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalItemPrice");
         if ($argsObject !== null) {
@@ -81,7 +105,10 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalLinePrice(ShopifyShopPayPaymentRequestLineItemOriginalLinePriceArgumentsObject $argsObject = null)
+    /**
+     * The original line price for the line item.
+     */
+    public function selectOriginalLinePrice(?ShopifyShopPayPaymentRequestLineItemOriginalLinePriceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalLinePrice");
         if ($argsObject !== null) {
@@ -92,21 +119,30 @@ class ShopifyShopPayPaymentRequestLineItemQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the line item.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 
         return $this;
     }
 
-    public function selectRequiresShipping()
+    /**
+     * Whether the line item requires shipping.
+     */
+    public function selectRequiresShipping(): static
     {
         $this->selectField("requiresShipping");
 
         return $this;
     }
 
-    public function selectSku()
+    /**
+     * The SKU of the line item.
+     */
+    public function selectSku(): static
     {
         $this->selectField("sku");
 

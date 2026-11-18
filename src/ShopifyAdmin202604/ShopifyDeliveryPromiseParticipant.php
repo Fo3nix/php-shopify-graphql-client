@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryPromiseParticipantOwner;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryPromiseParticipantOwnerHydrator;
 
-class ShopifyDeliveryPromiseParticipant
+/**
+ * Returns enabled delivery promise participants.
+ */
+class ShopifyDeliveryPromiseParticipant implements ShopifyNode
 {
     protected $id;
     protected $owner;
@@ -12,27 +15,33 @@ class ShopifyDeliveryPromiseParticipant
 
     
     /**
+     * The ID of the promise participant.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyDeliveryPromiseParticipantOwner
+     * The resource that the participant is attached to.
+     *
+     * @return ShopifyProductVariant
      */
-    public function getOwner()
+    public function getOwner(): ?ShopifyProductVariant
     {
         return $this->owner;
     }
 
     
     /**
-     * @return ShopifyDeliveryPromiseParticipantOwnerTypeEnumObject
+     * The owner type of the participant.
+     *
+     * @return string A ShopifyDeliveryPromiseParticipantOwnerTypeEnumObject value
      */
-    public function getOwnerType()
+    public function getOwnerType(): ?string
     {
         return $this->ownerType;
     }
@@ -48,7 +57,7 @@ class ShopifyDeliveryPromiseParticipant
                 $instance->id = $data['id'];
             }
             if (isset($data['owner']) && $data['owner'] !== null) {
-                $instance->owner = ShopifyDeliveryPromiseParticipantOwner::fromArray($data['owner']);
+                $instance->owner = ShopifyDeliveryPromiseParticipantOwnerHydrator::fromArray($data['owner']);
             }
             if (isset($data['ownerType']) && $data['ownerType'] !== null) {
                 $instance->ownerType = $data['ownerType'];
@@ -80,7 +89,7 @@ class ShopifyDeliveryPromiseParticipant
                 $data['id'] = $this->id;
             }
             if ($this->owner !== null) {
-                $data['owner'] = $this->owner->asArray();
+                $data['owner'] = ShopifyDeliveryPromiseParticipantOwnerHydrator::toArray($this->owner);
             }
             if ($this->ownerType !== null) {
                 $data['ownerType'] = $this->ownerType;

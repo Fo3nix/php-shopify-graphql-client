@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductVariantConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyProductConnection;
 
+/**
+ * A list of products and product variants that the discount can have as a prerequisite or a list of products and product variants to which the discount can be applied.
+ */
 class ShopifyDiscountProducts
 {
     protected $productVariants;
@@ -12,18 +15,22 @@ class ShopifyDiscountProducts
 
     
     /**
+     * The list of product variants that the discount can have as a prerequisite or the list of product variants to which the discount can be applied.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getProductVariants()
+    public function getProductVariants(): ?ShopifyProductVariantConnection
     {
         return $this->productVariants;
     }
 
     
     /**
+     * The list of products that the discount can have as a prerequisite or the list of products to which the discount can be applied.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProducts()
+    public function getProducts(): ?ShopifyProductConnection
     {
         return $this->products;
     }

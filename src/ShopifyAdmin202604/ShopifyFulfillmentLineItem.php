@@ -6,7 +6,12 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyBag;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLineItem;
 
-class ShopifyFulfillmentLineItem
+/**
+ * A line item from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) that's included in a [`Fulfillment`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Fulfillment). Links the fulfillment to specific items from the original order, tracking how many units were fulfilled.
+ *
+ * > Note: The discounted total excludes order-level discounts, showing only line-item specific discount amounts.
+ */
+class ShopifyFulfillmentLineItem implements ShopifyNode
 {
     protected $createdAt;
     protected $discountedTotal;
@@ -19,72 +24,88 @@ class ShopifyFulfillmentLineItem
 
     
     /**
+     * The date and time when the fulfillment line item was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The total price after discounts are applied.
+     *
      * @return string
      */
-    public function getDiscountedTotal()
+    public function getDiscountedTotal(): mixed
     {
         return $this->discountedTotal;
     }
 
     
     /**
+     * The total price after discounts are applied in shop and presentment currencies. This value doesn't include order-level discounts.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getDiscountedTotalSet()
+    public function getDiscountedTotalSet(): ?ShopifyMoneyBag
     {
         return $this->discountedTotalSet;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The associated order's line item.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The total price before discounts are applied.
+     *
      * @return string
      */
-    public function getOriginalTotal()
+    public function getOriginalTotal(): mixed
     {
         return $this->originalTotal;
     }
 
     
     /**
+     * The total price before discounts are applied in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalTotalSet()
+    public function getOriginalTotalSet(): ?ShopifyMoneyBag
     {
         return $this->originalTotalSet;
     }
 
     
     /**
+     * Number of line items in the fulfillment.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }

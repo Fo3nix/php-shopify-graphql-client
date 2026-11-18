@@ -5,7 +5,13 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyUrlRedirectImportPreview;
 
-class ShopifyUrlRedirectImport
+/**
+ * A request to import a [`URLRedirect`](https://shopify.dev/api/admin-graphql/latest/objects/UrlRedirect) object
+ * into the Online Store channel. Apps can use this to query the state of an `UrlRedirectImport` request.
+ *
+ * For more information, see [`url-redirect`](https://help.shopify.com/en/manual/online-store/menus-and-links/url-redirect)s.
+ */
+class ShopifyUrlRedirectImport implements ShopifyNode
 {
     protected $count;
     protected $createdCount;
@@ -18,72 +24,88 @@ class ShopifyUrlRedirectImport
 
     
     /**
+     * The number of rows in the file.
+     *
      * @return int
      */
-    public function getCount()
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
     
     /**
+     * The number of redirects created from the import.
+     *
      * @return int
      */
-    public function getCreatedCount()
+    public function getCreatedCount(): ?int
     {
         return $this->createdCount;
     }
 
     
     /**
+     * The number of redirects that failed to be imported.
+     *
      * @return int
      */
-    public function getFailedCount()
+    public function getFailedCount(): ?int
     {
         return $this->failedCount;
     }
 
     
     /**
+     * Whether the import is finished.
+     *
      * @return bool
      */
-    public function getFinished()
+    public function getFinished(): ?bool
     {
         return $this->finished;
     }
 
     
     /**
+     * The date and time when the import finished.
+     *
      * @return Carbon
      */
-    public function getFinishedAt()
+    public function getFinishedAt(): ?Carbon
     {
         return $this->finishedAt;
     }
 
     
     /**
+     * The ID of the `UrlRedirectImport` object.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A list of up to three previews of the URL redirects to be imported.
+     *
      * @return ShopifyUrlRedirectImportPreview[]
      */
-    public function getPreviewRedirects()
+    public function getPreviewRedirects(): ?array
     {
         return $this->previewRedirects;
     }
 
     
     /**
+     * The number of redirects updated during the import.
+     *
      * @return int
      */
-    public function getUpdatedCount()
+    public function getUpdatedCount(): ?int
     {
         return $this->updatedCount;
     }

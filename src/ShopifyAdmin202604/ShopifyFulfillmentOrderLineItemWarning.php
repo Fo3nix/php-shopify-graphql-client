@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * A fulfillment order line item warning. For example, a warning about why a fulfillment request was rejected.
+ */
 class ShopifyFulfillmentOrderLineItemWarning
 {
     protected $description;
@@ -9,18 +12,22 @@ class ShopifyFulfillmentOrderLineItemWarning
 
     
     /**
+     * The description of warning.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * The title of warning.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

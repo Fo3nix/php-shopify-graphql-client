@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Represents the selling plan for a line item.
+ */
 class ShopifyLineItemSellingPlan
 {
     protected $name;
@@ -9,18 +12,22 @@ class ShopifyLineItemSellingPlan
 
     
     /**
+     * The name of the selling plan for display purposes.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The ID of the selling plan associated with the line item.
+     *
      * @return string
      */
-    public function getSellingPlanId()
+    public function getSellingPlanId(): ?string
     {
         return $this->sellingPlanId;
     }

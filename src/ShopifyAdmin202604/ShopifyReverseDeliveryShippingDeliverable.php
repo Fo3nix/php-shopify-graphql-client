@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyReverseDeliveryLabelV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyReverseDeliveryTrackingV2;
 
+/**
+ * A reverse shipping deliverable that may include a label and tracking information.
+ */
 class ShopifyReverseDeliveryShippingDeliverable
 {
     protected $label;
@@ -12,18 +15,22 @@ class ShopifyReverseDeliveryShippingDeliverable
 
     
     /**
+     * The return label attached to the reverse delivery.
+     *
      * @return ShopifyReverseDeliveryLabelV2
      */
-    public function getLabel()
+    public function getLabel(): ?ShopifyReverseDeliveryLabelV2
     {
         return $this->label;
     }
 
     
     /**
+     * The information to track the reverse delivery.
+     *
      * @return ShopifyReverseDeliveryTrackingV2
      */
-    public function getTracking()
+    public function getTracking(): ?ShopifyReverseDeliveryTrackingV2
     {
         return $this->tracking;
     }

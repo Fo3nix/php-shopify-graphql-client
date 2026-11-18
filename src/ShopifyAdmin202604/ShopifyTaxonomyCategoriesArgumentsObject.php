@@ -15,56 +15,80 @@ class ShopifyTaxonomyCategoriesArgumentsObject extends ArgumentsObject
     protected $last;
     protected $before;
 
-    public function setSearch($search)
+    /**
+     * Searches the product taxonomy for matching categories.
+     */
+    public function setSearch($search): static
     {
         $this->search = $search;
 
         return $this;
     }
 
-    public function setChildrenOf($childrenOf)
+    /**
+     * The ID of the category associated with the child categories to return.
+     */
+    public function setChildrenOf($childrenOf): static
     {
         $this->childrenOf = $childrenOf;
 
         return $this;
     }
 
-    public function setSiblingsOf($siblingsOf)
+    /**
+     * The ID of the category associated with the sibling categories to return.
+     */
+    public function setSiblingsOf($siblingsOf): static
     {
         $this->siblingsOf = $siblingsOf;
 
         return $this;
     }
 
-    public function setDescendantsOf($descendantsOf)
+    /**
+     * The ID of the category associated with the descendant categories to return.
+     */
+    public function setDescendantsOf($descendantsOf): static
     {
         $this->descendantsOf = $descendantsOf;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 

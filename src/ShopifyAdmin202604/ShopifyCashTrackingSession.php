@@ -9,7 +9,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyStaffMember;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyLocation;
 
-class ShopifyCashTrackingSession
+/**
+ * Tracks the balance in a cash drawer for a point of sale device over the course of a shift.
+ */
+class ShopifyCashTrackingSession implements ShopifyNode
 {
     protected $adjustments;
     protected $cashTrackingEnabled;
@@ -36,198 +39,242 @@ class ShopifyCashTrackingSession
 
     
     /**
+     * The adjustments made to the cash drawer during this session.
+     *
      * @return ShopifyCashTrackingAdjustmentConnection
      */
-    public function getAdjustments()
+    public function getAdjustments(): ?ShopifyCashTrackingAdjustmentConnection
     {
         return $this->adjustments;
     }
 
     
     /**
+     * Whether this session is tracking cash payments.
+     *
      * @return bool
      */
-    public function getCashTrackingEnabled()
+    public function getCashTrackingEnabled(): ?bool
     {
         return $this->cashTrackingEnabled;
     }
 
     
     /**
+     * The cash transactions made during this session.
+     *
      * @return ShopifyOrderTransactionConnection
      */
-    public function getCashTransactions()
+    public function getCashTransactions(): ?ShopifyOrderTransactionConnection
     {
         return $this->cashTransactions;
     }
 
     
     /**
+     * The counted cash balance when the session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getClosingBalance()
+    public function getClosingBalance(): ?ShopifyMoneyV2
     {
         return $this->closingBalance;
     }
 
     
     /**
+     * The note entered when the session was closed.
+     *
      * @return string
      */
-    public function getClosingNote()
+    public function getClosingNote(): ?string
     {
         return $this->closingNote;
     }
 
     
     /**
+     * The user who closed the session.
+     *
      * @return ShopifyStaffMember
      */
-    public function getClosingStaffMember()
+    public function getClosingStaffMember(): ?ShopifyStaffMember
     {
         return $this->closingStaffMember;
     }
 
     
     /**
+     * When the session was closed.
+     *
      * @return Carbon
      */
-    public function getClosingTime()
+    public function getClosingTime(): ?Carbon
     {
         return $this->closingTime;
     }
 
     
     /**
+     * The expected balance at the end of the session or the expected current balance for sessions that are still open.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getExpectedBalance()
+    public function getExpectedBalance(): ?ShopifyMoneyV2
     {
         return $this->expectedBalance;
     }
 
     
     /**
+     * The amount that was expected to be in the cash drawer at the end of the session, calculated after the session was closed.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getExpectedClosingBalance()
+    public function getExpectedClosingBalance(): ?ShopifyMoneyV2
     {
         return $this->expectedClosingBalance;
     }
 
     
     /**
+     * The amount expected to be in the cash drawer based on the previous session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getExpectedOpeningBalance()
+    public function getExpectedOpeningBalance(): ?ShopifyMoneyV2
     {
         return $this->expectedOpeningBalance;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The location of the point of sale device during this session.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * The net cash sales made for the duration of this cash tracking session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getNetCashSales()
+    public function getNetCashSales(): ?ShopifyMoneyV2
     {
         return $this->netCashSales;
     }
 
     
     /**
+     * The counted cash balance when the session was opened.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getOpeningBalance()
+    public function getOpeningBalance(): ?ShopifyMoneyV2
     {
         return $this->openingBalance;
     }
 
     
     /**
+     * The note entered when the session was opened.
+     *
      * @return string
      */
-    public function getOpeningNote()
+    public function getOpeningNote(): ?string
     {
         return $this->openingNote;
     }
 
     
     /**
+     * The user who opened the session.
+     *
      * @return ShopifyStaffMember
      */
-    public function getOpeningStaffMember()
+    public function getOpeningStaffMember(): ?ShopifyStaffMember
     {
         return $this->openingStaffMember;
     }
 
     
     /**
+     * When the session was opened.
+     *
      * @return Carbon
      */
-    public function getOpeningTime()
+    public function getOpeningTime(): ?Carbon
     {
         return $this->openingTime;
     }
 
     
     /**
+     * The register name for the point of sale device that this session is tracking cash for.
+     *
      * @return string
      */
-    public function getRegisterName()
+    public function getRegisterName(): ?string
     {
         return $this->registerName;
     }
 
     
     /**
+     * The sum of all adjustments made during the session, excluding the final adjustment.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalAdjustments()
+    public function getTotalAdjustments(): ?ShopifyMoneyV2
     {
         return $this->totalAdjustments;
     }
 
     
     /**
+     * The sum of all cash refunds for the duration of this cash tracking session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalCashRefunds()
+    public function getTotalCashRefunds(): ?ShopifyMoneyV2
     {
         return $this->totalCashRefunds;
     }
 
     
     /**
+     * The sum of all cash sales for the duration of this cash tracking session.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalCashSales()
+    public function getTotalCashSales(): ?ShopifyMoneyV2
     {
         return $this->totalCashSales;
     }
 
     
     /**
+     * The total discrepancy for the session including starting and ending.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalDiscrepancy()
+    public function getTotalDiscrepancy(): ?ShopifyMoneyV2
     {
         return $this->totalDiscrepancy;
     }

@@ -8,7 +8,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldDefinitionConnectio
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyFunction;
 
-class ShopifyValidation
+/**
+ * A server-side validation that enforces business rules before customers complete their purchases. Each validation links to a [`ShopifyFunction`](https://shopify.dev/docs/api/functions/latest/cart-and-checkout-validation) that implements the validation logic.
+ *
+ * Validations run on Shopify's servers and are enforced throughout the checkout process. Validation errors always block checkout progress. The `blockOnFailure` setting determines whether runtime exceptions, like timeouts, also block checkout. Tracks runtime exception history for the validation function and supports custom data through [`Metafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield) objects.
+ */
+class ShopifyValidation implements ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $blockOnFailure;
     protected $enabled;
@@ -22,81 +27,102 @@ class ShopifyValidation
 
     
     /**
+     * Whether the validation should block on failures other than expected violations.
+     *
      * @return bool
      */
-    public function getBlockOnFailure()
+    public function getBlockOnFailure(): ?bool
     {
         return $this->blockOnFailure;
     }
 
     
     /**
+     * Whether the validation is enabled on the merchant checkout.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The error history on the most recent version of the validation function.
+     *
      * @return ShopifyFunctionsErrorHistory
      */
-    public function getErrorHistory()
+    public function getErrorHistory(): ?ShopifyFunctionsErrorHistory
     {
         return $this->errorHistory;
     }
 
     
     /**
+     * Global ID for the validation.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The Shopify Function implementing the validation.
+     *
      * @return ShopifyShopifyFunction
      */
-    public function getShopifyFunction()
+    public function getShopifyFunction(): ?ShopifyShopifyFunction
     {
         return $this->shopifyFunction;
     }
 
     
     /**
+     * The merchant-facing validation name.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryConditionCriteria;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDeliveryConditionCriteriaHydrator;
 
-class ShopifyDeliveryCondition
+/**
+ * A condition that must pass for a delivery method definition to be applied to an order.
+ */
+class ShopifyDeliveryCondition implements ShopifyNode
 {
     protected $conditionCriteria;
     protected $field;
@@ -13,36 +16,44 @@ class ShopifyDeliveryCondition
 
     
     /**
-     * @return ShopifyDeliveryConditionCriteria
+     * The value (weight or price) that the condition field is compared to.
+     *
+     * @return ShopifyMoneyV2|ShopifyWeight
      */
-    public function getConditionCriteria()
+    public function getConditionCriteria(): ShopifyMoneyV2|ShopifyWeight|null
     {
         return $this->conditionCriteria;
     }
 
     
     /**
-     * @return ShopifyDeliveryConditionFieldEnumObject
+     * The field to compare the criterion value against, using the operator.
+     *
+     * @return string A ShopifyDeliveryConditionFieldEnumObject value
      */
-    public function getField()
+    public function getField(): ?string
     {
         return $this->field;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyDeliveryConditionOperatorEnumObject
+     * The operator to compare the field and criterion value.
+     *
+     * @return string A ShopifyDeliveryConditionOperatorEnumObject value
      */
-    public function getOperator()
+    public function getOperator(): ?string
     {
         return $this->operator;
     }
@@ -55,7 +66,7 @@ class ShopifyDeliveryCondition
         {
             $instance = new self();
             if (isset($data['conditionCriteria']) && $data['conditionCriteria'] !== null) {
-                $instance->conditionCriteria = ShopifyDeliveryConditionCriteria::fromArray($data['conditionCriteria']);
+                $instance->conditionCriteria = ShopifyDeliveryConditionCriteriaHydrator::fromArray($data['conditionCriteria']);
             }
             if (isset($data['field']) && $data['field'] !== null) {
                 $instance->field = $data['field'];
@@ -90,7 +101,7 @@ class ShopifyDeliveryCondition
         {
             $data = [];
             if ($this->conditionCriteria !== null) {
-                $data['conditionCriteria'] = $this->conditionCriteria->asArray();
+                $data['conditionCriteria'] = ShopifyDeliveryConditionCriteriaHydrator::toArray($this->conditionCriteria);
             }
             if ($this->field !== null) {
                 $data['field'] = $this->field;

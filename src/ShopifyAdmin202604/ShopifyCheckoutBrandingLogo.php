@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyImage;
 
+/**
+ * The store logo customizations.
+ */
 class ShopifyCheckoutBrandingLogo
 {
     protected $image;
@@ -12,27 +15,33 @@ class ShopifyCheckoutBrandingLogo
 
     
     /**
+     * The logo image.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * The maximum width of the logo.
+     *
      * @return int
      */
-    public function getMaxWidth()
+    public function getMaxWidth(): ?int
     {
         return $this->maxWidth;
     }
 
     
     /**
-     * @return ShopifyCheckoutBrandingVisibilityEnumObject
+     * The visibility of the logo.
+     *
+     * @return string A ShopifyCheckoutBrandingVisibilityEnumObject value
      */
-    public function getVisibility()
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }

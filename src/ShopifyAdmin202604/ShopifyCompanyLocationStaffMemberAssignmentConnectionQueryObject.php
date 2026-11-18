@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type for paginating through multiple CompanyLocationStaffMemberAssignments.
+ */
 class ShopifyCompanyLocationStaffMemberAssignmentConnectionQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CompanyLocationStaffMemberAssignmentConnection";
 
-    public function selectEdges(ShopifyCompanyLocationStaffMemberAssignmentConnectionEdgesArgumentsObject $argsObject = null)
+    /**
+     * The connection between the node and its parent. Each edge contains a minimum of the edge's cursor and the node.
+     */
+    public function selectEdges(?ShopifyCompanyLocationStaffMemberAssignmentConnectionEdgesArgumentsObject $argsObject = null): ShopifyCompanyLocationStaffMemberAssignmentEdgeQueryObject
     {
         $object = new ShopifyCompanyLocationStaffMemberAssignmentEdgeQueryObject("edges");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCompanyLocationStaffMemberAssignmentConnectionQueryObject extends Q
         return $object;
     }
 
-    public function selectNodes(ShopifyCompanyLocationStaffMemberAssignmentConnectionNodesArgumentsObject $argsObject = null)
+    /**
+     * A list of nodes that are contained in CompanyLocationStaffMemberAssignmentEdge. You can fetch data about an individual node, or you can follow the edges to fetch data about a collection of related nodes. At each node, you specify the fields that you want to retrieve.
+     */
+    public function selectNodes(?ShopifyCompanyLocationStaffMemberAssignmentConnectionNodesArgumentsObject $argsObject = null): ShopifyCompanyLocationStaffMemberAssignmentQueryObject
     {
         $object = new ShopifyCompanyLocationStaffMemberAssignmentQueryObject("nodes");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCompanyLocationStaffMemberAssignmentConnectionQueryObject extends Q
         return $object;
     }
 
-    public function selectPageInfo(ShopifyCompanyLocationStaffMemberAssignmentConnectionPageInfoArgumentsObject $argsObject = null)
+    /**
+     * An object that’s used to retrieve [cursor information](https://shopify.dev/api/usage/pagination-graphql) about the current page.
+     */
+    public function selectPageInfo(?ShopifyCompanyLocationStaffMemberAssignmentConnectionPageInfoArgumentsObject $argsObject = null): ShopifyPageInfoQueryObject
     {
         $object = new ShopifyPageInfoQueryObject("pageInfo");
         if ($argsObject !== null) {

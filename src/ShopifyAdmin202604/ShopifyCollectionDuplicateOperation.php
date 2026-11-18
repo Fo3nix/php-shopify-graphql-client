@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyJob;
 
+/**
+ * Represents an in-progress collection duplication operation. Collection duplication is a synchronous operation for simple collections, and an asynchronous operation for collections containing too many products to process synchronously.
+ */
 class ShopifyCollectionDuplicateOperation
 {
     protected $collectionRole;
@@ -11,18 +14,22 @@ class ShopifyCollectionDuplicateOperation
 
     
     /**
-     * @return ShopifyCollectionDuplicateOperationRoleEnumObject
+     * Whether the collection is the source that products are being duplicated from, or the target collection that products are being duplicated onto.
+     *
+     * @return string A ShopifyCollectionDuplicateOperationRoleEnumObject value
      */
-    public function getCollectionRole()
+    public function getCollectionRole(): ?string
     {
         return $this->collectionRole;
     }
 
     
     /**
+     * The background job performing the duplication.
+     *
      * @return ShopifyJob
      */
-    public function getJob()
+    public function getJob(): ?ShopifyJob
     {
         return $this->job;
     }

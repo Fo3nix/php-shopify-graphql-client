@@ -11,6 +11,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyGiftCardConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOrderConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCustomerPhoneNumber;
 
+/**
+ * The fields that will be kept as part of a customer merge preview.
+ */
 class ShopifyCustomerMergePreviewDefaultFields
 {
     protected $addresses;
@@ -34,162 +37,198 @@ class ShopifyCustomerMergePreviewDefaultFields
 
     
     /**
+     * The merged addresses resulting from a customer merge.
+     *
      * @return ShopifyMailingAddressConnection
      */
-    public function getAddresses()
+    public function getAddresses(): ?ShopifyMailingAddressConnection
     {
         return $this->addresses;
     }
 
     
     /**
+     * The default address resulting from a customer merge.
+     *
      * @return ShopifyMailingAddress
      */
-    public function getDefaultAddress()
+    public function getDefaultAddress(): ?ShopifyMailingAddress
     {
         return $this->defaultAddress;
     }
 
     
     /**
+     * The total number of customer-specific discounts resulting from a customer merge.
+     *
      * @return string
      */
-    public function getDiscountNodeCount()
+    public function getDiscountNodeCount(): mixed
     {
         return $this->discountNodeCount;
     }
 
     
     /**
+     * The merged customer-specific discounts resulting from a customer merge.
+     *
      * @return ShopifyDiscountNodeConnection
      */
-    public function getDiscountNodes()
+    public function getDiscountNodes(): ?ShopifyDiscountNodeConnection
     {
         return $this->discountNodes;
     }
 
     
     /**
+     * The full name of the customer, based on the values for `first_name` and `last_name`. If `first_name` and `last_name` aren't available, then this field falls back to the customer's email address. If the customer's email isn't available, then this field falls back to the customer's phone number.
+     *
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
     
     /**
+     * The total number of merged draft orders.
+     *
      * @return string
      */
-    public function getDraftOrderCount()
+    public function getDraftOrderCount(): mixed
     {
         return $this->draftOrderCount;
     }
 
     
     /**
+     * The merged draft orders resulting from a customer merge.
+     *
      * @return ShopifyDraftOrderConnection
      */
-    public function getDraftOrders()
+    public function getDraftOrders(): ?ShopifyDraftOrderConnection
     {
         return $this->draftOrders;
     }
 
     
     /**
+     * The email state of a customer.
+     *
      * @return ShopifyCustomerEmailAddress
      */
-    public function getEmail()
+    public function getEmail(): ?ShopifyCustomerEmailAddress
     {
         return $this->email;
     }
 
     
     /**
+     * The first name resulting from a customer merge.
+     *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     
     /**
+     * The total number of merged gift cards.
+     *
      * @return string
      */
-    public function getGiftCardCount()
+    public function getGiftCardCount(): mixed
     {
         return $this->giftCardCount;
     }
 
     
     /**
+     * The merged gift cards resulting from a customer merge.
+     *
      * @return ShopifyGiftCardConnection
      */
-    public function getGiftCards()
+    public function getGiftCards(): ?ShopifyGiftCardConnection
     {
         return $this->giftCards;
     }
 
     
     /**
+     * The last name resulting from a customer merge.
+     *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
     
     /**
+     * The total number of merged metafields.
+     *
      * @return string
      */
-    public function getMetafieldCount()
+    public function getMetafieldCount(): mixed
     {
         return $this->metafieldCount;
     }
 
     
     /**
+     * The merged note resulting from a customer merge.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The total number of merged orders.
+     *
      * @return string
      */
-    public function getOrderCount()
+    public function getOrderCount(): mixed
     {
         return $this->orderCount;
     }
 
     
     /**
+     * The merged orders resulting from a customer merge.
+     *
      * @return ShopifyOrderConnection
      */
-    public function getOrders()
+    public function getOrders(): ?ShopifyOrderConnection
     {
         return $this->orders;
     }
 
     
     /**
+     * The phone number state of a customer.
+     *
      * @return ShopifyCustomerPhoneNumber
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?ShopifyCustomerPhoneNumber
     {
         return $this->phoneNumber;
     }
 
     
     /**
+     * The merged tags resulting from a customer merge.
+     *
      * @return string[]
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }

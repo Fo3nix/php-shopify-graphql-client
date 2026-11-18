@@ -7,6 +7,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsMerchantCateg
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyFinancialKycShopOwner;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyShopifyPaymentsTaxIdentification;
 
+/**
+ * Shopify Payments account information shared with embedded finance applications.
+ */
 class ShopifyFinanceKycInformation
 {
     protected $businessAddress;
@@ -18,54 +21,66 @@ class ShopifyFinanceKycInformation
 
     
     /**
+     * The legal entity business address.
+     *
      * @return ShopifyShopifyPaymentsAddressBasic
      */
-    public function getBusinessAddress()
+    public function getBusinessAddress(): ?ShopifyShopifyPaymentsAddressBasic
     {
         return $this->businessAddress;
     }
 
     
     /**
-     * @return ShopifyShopifyPaymentsBusinessTypeEnumObject
+     * The legal entity business type.
+     *
+     * @return string A ShopifyShopifyPaymentsBusinessTypeEnumObject value
      */
-    public function getBusinessType()
+    public function getBusinessType(): ?string
     {
         return $this->businessType;
     }
 
     
     /**
+     * Business industry.
+     *
      * @return ShopifyShopifyPaymentsMerchantCategoryCode
      */
-    public function getIndustry()
+    public function getIndustry(): ?ShopifyShopifyPaymentsMerchantCategoryCode
     {
         return $this->industry;
     }
 
     
     /**
+     * Returns the business legal name.
+     *
      * @return string
      */
-    public function getLegalName()
+    public function getLegalName(): ?string
     {
         return $this->legalName;
     }
 
     
     /**
+     * The shop owner information for financial KYC purposes.
+     *
      * @return ShopifyFinancialKycShopOwner
      */
-    public function getShopOwner()
+    public function getShopOwner(): ?ShopifyFinancialKycShopOwner
     {
         return $this->shopOwner;
     }
 
     
     /**
+     * Tax identification information.
+     *
      * @return ShopifyShopifyPaymentsTaxIdentification
      */
-    public function getTaxIdentification()
+    public function getTaxIdentification(): ?ShopifyShopifyPaymentsTaxIdentification
     {
         return $this->taxIdentification;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * Access permissions for the definition's metaobjects.
+ */
 class ShopifyMetaobjectAccess
 {
     protected $admin;
@@ -10,27 +13,33 @@ class ShopifyMetaobjectAccess
 
     
     /**
-     * @return ShopifyMetaobjectAdminAccessEnumObject
+     * The access permitted on the Admin API.
+     *
+     * @return string A ShopifyMetaobjectAdminAccessEnumObject value
      */
-    public function getAdmin()
+    public function getAdmin(): ?string
     {
         return $this->admin;
     }
 
     
     /**
-     * @return ShopifyMetaobjectCustomerAccountAccessEnumObject
+     * The access permitted on the Customer Account API.
+     *
+     * @return string A ShopifyMetaobjectCustomerAccountAccessEnumObject value
      */
-    public function getCustomerAccount()
+    public function getCustomerAccount(): ?string
     {
         return $this->customerAccount;
     }
 
     
     /**
-     * @return ShopifyMetaobjectStorefrontAccessEnumObject
+     * The access permitted on the Storefront API.
+     *
+     * @return string A ShopifyMetaobjectStorefrontAccessEnumObject value
      */
-    public function getStorefront()
+    public function getStorefront(): ?string
     {
         return $this->storefront;
     }

@@ -5,7 +5,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBranding;
 use Carbon\Carbon;
 
-class ShopifyCheckoutAndAccountsConfigurationOverride
+/**
+ * A checkout and account configuration override modifies a parent configuration for specific markets.
+ */
+class ShopifyCheckoutAndAccountsConfigurationOverride implements ShopifyCheckoutAndAccountsConfigurationInterface, ShopifyNode
 {
     protected $branding;
     protected $createdAt;
@@ -16,54 +19,66 @@ class ShopifyCheckoutAndAccountsConfigurationOverride
 
     
     /**
+     * The branding configuration.
+     *
      * @return ShopifyCheckoutAndAccountsConfigurationBranding
      */
-    public function getBranding()
+    public function getBranding(): ?ShopifyCheckoutAndAccountsConfigurationBranding
     {
         return $this->branding;
     }
 
     
     /**
+     * The date and time when the configuration was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The date and time when the configuration was last edited.
+     *
      * @return Carbon
      */
-    public function getEditedAt()
+    public function getEditedAt(): ?Carbon
     {
         return $this->editedAt;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The configuration name.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The date and time when the configuration was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

@@ -4,95 +4,139 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A tracking event that records the status and location of a fulfillment at a specific point in time. Each event captures details such as the [status](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent#field-FulfillmentEvent.fields.status) (for example, in transit, out for delivery, delivered) and any [messages](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentEvent#field-FulfillmentEvent.fields.message) associated with the event.
+ *
+ * Fulfillment events provide a chronological history of a package's journey from shipment to delivery. They include timestamps, geographic coordinates, and estimated delivery dates to track fulfillment progress.
+ */
 class ShopifyFulfillmentEventQueryObject extends QueryObject
 {
     const OBJECT_NAME = "FulfillmentEvent";
 
-    public function selectAddress1()
+    /**
+     * The street address where this fulfillment event occurred.
+     */
+    public function selectAddress1(): static
     {
         $this->selectField("address1");
 
         return $this;
     }
 
-    public function selectCity()
+    /**
+     * The city where this fulfillment event occurred.
+     */
+    public function selectCity(): static
     {
         $this->selectField("city");
 
         return $this;
     }
 
-    public function selectCountry()
+    /**
+     * The country where this fulfillment event occurred.
+     */
+    public function selectCountry(): static
     {
         $this->selectField("country");
 
         return $this;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the fulfillment event was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectEstimatedDeliveryAt()
+    /**
+     * The estimated delivery date and time of the fulfillment.
+     */
+    public function selectEstimatedDeliveryAt(): static
     {
         $this->selectField("estimatedDeliveryAt");
 
         return $this;
     }
 
-    public function selectHappenedAt()
+    /**
+     * The time at which this fulfillment event happened.
+     */
+    public function selectHappenedAt(): static
     {
         $this->selectField("happenedAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLatitude()
+    /**
+     * The latitude where this fulfillment event occurred.
+     */
+    public function selectLatitude(): static
     {
         $this->selectField("latitude");
 
         return $this;
     }
 
-    public function selectLongitude()
+    /**
+     * The longitude where this fulfillment event occurred.
+     */
+    public function selectLongitude(): static
     {
         $this->selectField("longitude");
 
         return $this;
     }
 
-    public function selectMessage()
+    /**
+     * A message associated with this fulfillment event.
+     */
+    public function selectMessage(): static
     {
         $this->selectField("message");
 
         return $this;
     }
 
-    public function selectProvince()
+    /**
+     * The province where this fulfillment event occurred.
+     */
+    public function selectProvince(): static
     {
         $this->selectField("province");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of this fulfillment event.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 
         return $this;
     }
 
-    public function selectZip()
+    /**
+     * The zip code of the location where this fulfillment event occurred.
+     */
+    public function selectZip(): static
     {
         $this->selectField("zip");
 

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The store credit configuration for a shop.
+ */
 class ShopifyStoreCreditConfigurationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "StoreCreditConfiguration";
 
-    public function selectStoreCreditEnabled()
+    /**
+     * Whether store credit is enabled for customers on checkout.
+     */
+    public function selectStoreCreditEnabled(): static
     {
         $this->selectField("storeCreditEnabled");
 

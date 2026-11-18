@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The merchandise thumbnails customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingMerchandiseThumbnail";
 
-    public function selectBadge(ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeArgumentsObject $argsObject = null)
+    /**
+     * The merchandise thumbnail badge.
+     */
+    public function selectBadge(?ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeQueryObject("badge");
         if ($argsObject !== null) {
@@ -19,21 +25,30 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailQueryOb
         return $object;
     }
 
-    public function selectBorder()
+    /**
+     * The border.
+     */
+    public function selectBorder(): static
     {
         $this->selectField("border");
 
         return $this;
     }
 
-    public function selectCornerRadius()
+    /**
+     * The corner radius.
+     */
+    public function selectCornerRadius(): static
     {
         $this->selectField("cornerRadius");
 
         return $this;
     }
 
-    public function selectFit()
+    /**
+     * The property used to customize how the product image fits within merchandise thumbnails.
+     */
+    public function selectFit(): static
     {
         $this->selectField("fit");
 

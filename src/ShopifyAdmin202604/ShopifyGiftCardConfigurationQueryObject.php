@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents information about the configuration of gift cards on the shop.
+ */
 class ShopifyGiftCardConfigurationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "GiftCardConfiguration";
 
-    public function selectExpirationConfiguration(ShopifyGiftCardConfigurationExpirationConfigurationArgumentsObject $argsObject = null)
+    /**
+     * The default expiration configuration of gift cards on the shop. This field is null if the shop hasn't set a default expiration for gift cards.
+     */
+    public function selectExpirationConfiguration(?ShopifyGiftCardConfigurationExpirationConfigurationArgumentsObject $argsObject = null): ShopifyGiftCardExpirationConfigurationQueryObject
     {
         $object = new ShopifyGiftCardExpirationConfigurationQueryObject("expirationConfiguration");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyGiftCardConfigurationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectIssueLimit(ShopifyGiftCardConfigurationIssueLimitArgumentsObject $argsObject = null)
+    /**
+     * The issue limit for gift cards in the default shop currency.
+     */
+    public function selectIssueLimit(?ShopifyGiftCardConfigurationIssueLimitArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("issueLimit");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyGiftCardConfigurationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectPurchaseLimit(ShopifyGiftCardConfigurationPurchaseLimitArgumentsObject $argsObject = null)
+    /**
+     * The purchase limit for gift cards in the default shop currency.
+     */
+    public function selectPurchaseLimit(?ShopifyGiftCardConfigurationPurchaseLimitArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("purchaseLimit");
         if ($argsObject !== null) {

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the url of the body of a theme file.
+ */
 class ShopifyOnlineStoreThemeFileBodyUrlQueryObject extends QueryObject
 {
     const OBJECT_NAME = "OnlineStoreThemeFileBodyUrl";
 
-    public function selectUrl()
+    /**
+     * The short lived url for the body of the theme file.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootMetaobjectByHandleArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["handle"];
+
     protected $handle;
 
-    public function setHandle(ShopifyMetaobjectHandleInputInputObject $shopifyMetaobjectHandleInputInputObject)
+    /**
+     * The identifier of the metaobject to return.
+     */
+    public function setHandle(ShopifyMetaobjectHandleInputInputObject $shopifyMetaobjectHandleInputInputObject): static
     {
         $this->handle = $shopifyMetaobjectHandleInputInputObject;
 

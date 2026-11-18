@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifySegmentStatisticsAttributeStatisticsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["attributeName"];
+
     protected $attributeName;
 
-    public function setAttributeName($attributeName)
+    /**
+     * The attribute that statistics are retrieved for.
+     */
+    public function setAttributeName($attributeName): static
     {
         $this->attributeName = $attributeName;
 

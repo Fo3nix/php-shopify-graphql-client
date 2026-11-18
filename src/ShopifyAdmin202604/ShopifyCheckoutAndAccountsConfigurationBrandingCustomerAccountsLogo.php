@@ -2,8 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValue;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator;
 
+/**
+ * The customer accounts store logo customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
 {
     protected $image;
@@ -11,18 +14,22 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImageValue
+     * The logo image.
+     *
+     * @return ShopifyCheckoutAndAccountsConfigurationBrandingImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyCheckoutAndAccountsConfigurationBrandingImage
     {
         return $this->image;
     }
 
     
     /**
+     * The maximum width of the logo.
+     *
      * @return int
      */
-    public function getMaxWidth()
+    public function getMaxWidth(): ?int
     {
         return $this->maxWidth;
     }
@@ -35,7 +42,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
         {
             $instance = new self();
             if (isset($data['image']) && $data['image'] !== null) {
-                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValue::fromArray($data['image']);
+                $instance->image = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::fromArray($data['image']);
             }
             if (isset($data['maxWidth']) && $data['maxWidth'] !== null) {
                 $instance->maxWidth = $data['maxWidth'];
@@ -64,7 +71,7 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingCustomerAccountsLogo
         {
             $data = [];
             if ($this->image !== null) {
-                $data['image'] = $this->image->asArray();
+                $data['image'] = ShopifyCheckoutAndAccountsConfigurationBrandingImageValueHydrator::toArray($this->image);
             }
             if ($this->maxWidth !== null) {
                 $data['maxWidth'] = $this->maxWidth;

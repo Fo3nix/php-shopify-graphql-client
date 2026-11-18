@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The color settings used to customize the user interface.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingColors";
 
-    public function selectBase(ShopifyCheckoutAndAccountsConfigurationBrandingColorsBaseArgumentsObject $argsObject = null)
+    /**
+     * The main colors, used for the surface background, text, links, and more.
+     */
+    public function selectBase(?ShopifyCheckoutAndAccountsConfigurationBrandingColorsBaseArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRolesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingBaseColorRolesQueryObject("base");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject extends Q
         return $object;
     }
 
-    public function selectControl(ShopifyCheckoutAndAccountsConfigurationBrandingColorsControlArgumentsObject $argsObject = null)
+    /**
+     * The colors of form controls, such as the [`TextField`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/textfield) and [`ChoiceList`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/choicelist) components.
+     */
+    public function selectControl(?ShopifyCheckoutAndAccountsConfigurationBrandingColorsControlArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingControlColorRolesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingControlColorRolesQueryObject("control");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject extends Q
         return $object;
     }
 
-    public function selectPrimaryButton(ShopifyCheckoutAndAccountsConfigurationBrandingColorsPrimaryButtonArgumentsObject $argsObject = null)
+    /**
+     * The colors of the primary button. For example, the main payment, or **Pay now** button.
+     */
+    public function selectPrimaryButton(?ShopifyCheckoutAndAccountsConfigurationBrandingColorsPrimaryButtonArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRolesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingPrimaryButtonColorRolesQueryObject("primaryButton");
         if ($argsObject !== null) {
@@ -41,7 +53,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject extends Q
         return $object;
     }
 
-    public function selectSecondaryButton(ShopifyCheckoutAndAccountsConfigurationBrandingColorsSecondaryButtonArgumentsObject $argsObject = null)
+    /**
+     * The colors of the secondary button, which is used for secondary actions. For example, **Buy again**.
+     */
+    public function selectSecondaryButton(?ShopifyCheckoutAndAccountsConfigurationBrandingColorsSecondaryButtonArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingSecondaryButtonColorRolesQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingSecondaryButtonColorRolesQueryObject("secondaryButton");
         if ($argsObject !== null) {

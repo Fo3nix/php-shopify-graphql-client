@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyMoneyV2;
 
+/**
+ * Represents a shipping line for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestShippingLine
 {
     protected $amount;
@@ -12,27 +15,33 @@ class ShopifyShopPayPaymentRequestShippingLine
 
     
     /**
+     * The amount for the shipping line.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmount()
+    public function getAmount(): ?ShopifyMoneyV2
     {
         return $this->amount;
     }
 
     
     /**
+     * The code of the shipping line.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * The label of the shipping line.
+     *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }

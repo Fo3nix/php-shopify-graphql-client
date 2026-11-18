@@ -6,7 +6,12 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyOnlineStoreThemeFileConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyTranslation;
 
-class ShopifyOnlineStoreTheme
+/**
+ * A theme for display on the storefront. Themes control the visual appearance and functionality of the online store through templates, stylesheets, and assets that determine how [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection), and other content display to customers.
+ *
+ * Each theme has a [role](https://shopify.dev/docs/api/admin-graphql/latest/objects/OnlineStoreTheme#field-OnlineStoreTheme.fields.role) that indicates its status. Main themes are live on the storefront, unpublished themes are inactive, demo themes require purchase before publishing, and development themes are temporary for previewing during development. The theme includes [translations](https://shopify.dev/docs/api/admin-graphql/latest/objects/OnlineStoreTheme#field-OnlineStoreTheme.fields.translations) for multi-language support.
+ */
+class ShopifyOnlineStoreTheme implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $createdAt;
     protected $files;
@@ -22,99 +27,121 @@ class ShopifyOnlineStoreTheme
 
     
     /**
+     * The date and time when the theme was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The files in the theme.
+     *
      * @return ShopifyOnlineStoreThemeFileConnection
      */
-    public function getFiles()
+    public function getFiles(): ?ShopifyOnlineStoreThemeFileConnection
     {
         return $this->files;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the theme, set by the merchant.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The prefix of the theme.
+     *
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     
     /**
+     * Whether the theme is processing.
+     *
      * @return bool
      */
-    public function getProcessing()
+    public function getProcessing(): ?bool
     {
         return $this->processing;
     }
 
     
     /**
+     * Whether the theme processing failed.
+     *
      * @return bool
      */
-    public function getProcessingFailed()
+    public function getProcessingFailed(): ?bool
     {
         return $this->processingFailed;
     }
 
     
     /**
-     * @return ShopifyThemeRoleEnumObject
+     * The role of the theme.
+     *
+     * @return string A ShopifyThemeRoleEnumObject value
      */
-    public function getRole()
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
     
     /**
+     * The theme store ID.
+     *
      * @return int
      */
-    public function getThemeStoreId()
+    public function getThemeStoreId(): ?int
     {
         return $this->themeStoreId;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The date and time when the theme was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

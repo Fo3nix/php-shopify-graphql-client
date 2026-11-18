@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202604\ShopifyDistance;
 
+/**
+ * A location for in-store pickup.
+ */
 class ShopifyPickupInStoreLocation
 {
     protected $code;
@@ -16,63 +19,77 @@ class ShopifyPickupInStoreLocation
 
     
     /**
+     * The code of the pickup location.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     
     /**
+     * Distance from the buyer to the pickup location.
+     *
      * @return ShopifyDistance
      */
-    public function getDistanceFromBuyer()
+    public function getDistanceFromBuyer(): ?ShopifyDistance
     {
         return $this->distanceFromBuyer;
     }
 
     
     /**
+     * A unique identifier for this pickup location.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * Pickup instructions.
+     *
      * @return string
      */
-    public function getInstructions()
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
 
     
     /**
+     * The location ID of the pickup location.
+     *
      * @return string
      */
-    public function getLocationId()
+    public function getLocationId(): ?string
     {
         return $this->locationId;
     }
 
     
     /**
+     * The source of the pickup location.
+     *
      * @return string
      */
-    public function getSource()
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
     
     /**
+     * Title of the pickup location.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }

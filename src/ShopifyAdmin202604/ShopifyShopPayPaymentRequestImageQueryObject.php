@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents an image for a Shop Pay payment request line item.
+ */
 class ShopifyShopPayPaymentRequestImageQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestImage";
 
-    public function selectAlt()
+    /**
+     * The alt text of the image.
+     */
+    public function selectAlt(): static
     {
         $this->selectField("alt");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * The source URL of the image.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

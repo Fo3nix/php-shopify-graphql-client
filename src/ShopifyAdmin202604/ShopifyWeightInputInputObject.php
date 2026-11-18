@@ -3,22 +3,34 @@
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\InputObject;
+use GraphQL\RawObject;
 
+/**
+ * The input fields for the weight unit and value inputs.
+ */
 class ShopifyWeightInputInputObject extends InputObject
 {
+    const REQUIRED = ["value", "unit"];
+
     protected $value;
     protected $unit;
 
-    public function setValue($value)
+    /**
+     * The weight value using the unit system specified with `weight_unit`.
+     */
+    public function setValue($value): static
     {
         $this->value = $value;
 
         return $this;
     }
 
-    public function setUnit($unit)
+    /**
+     * Unit of measurement for `value`.
+     */
+    public function setUnit($shopifyWeightUnit): static
     {
-        $this->unit = $unit;
+        $this->unit = new RawObject($shopifyWeightUnit);
 
         return $this;
     }

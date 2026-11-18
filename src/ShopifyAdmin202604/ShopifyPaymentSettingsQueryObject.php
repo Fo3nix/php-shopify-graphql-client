@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Settings related to payments.
+ */
 class ShopifyPaymentSettingsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PaymentSettings";
 
-    public function selectSupportedDigitalWallets()
+    /**
+     * List of the digital wallets which the shop supports.
+     */
+    public function selectSupportedDigitalWallets(): static
     {
         $this->selectField("supportedDigitalWallets");
 

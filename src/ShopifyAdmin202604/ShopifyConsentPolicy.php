@@ -2,7 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyConsentPolicy
+/**
+ * A consent policy describes the level of consent that the merchant requires from the user before actually
+ * collecting and processing the data.
+ */
+class ShopifyConsentPolicy implements ShopifyNode
 {
     protected $consentRequired;
     protected $countryCode;
@@ -13,54 +17,66 @@ class ShopifyConsentPolicy
 
     
     /**
+     * Whether consent is required for the region.
+     *
      * @return bool
      */
-    public function getConsentRequired()
+    public function getConsentRequired(): ?bool
     {
         return $this->consentRequired;
     }
 
     
     /**
-     * @return ShopifyPrivacyCountryCodeEnumObject
+     * The `ISO 3166` country code for which the policy applies.
+     *
+     * @return string A ShopifyPrivacyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * Whether data sale opt-out is required for the region.
+     *
      * @return bool
      */
-    public function getDataSaleOptOutRequired()
+    public function getDataSaleOptOutRequired(): ?bool
     {
         return $this->dataSaleOptOutRequired;
     }
 
     
     /**
+     * The global ID of the consent policy. IDs prefixed with `SD-` are system default policies.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The `ISO 3166` region code for which the policy applies.
+     *
      * @return string
      */
-    public function getRegionCode()
+    public function getRegionCode(): ?string
     {
         return $this->regionCode;
     }
 
     
     /**
+     * The global ID of the shop that owns the policy.
+     *
      * @return string
      */
-    public function getShopId()
+    public function getShopId(): ?string
     {
         return $this->shopId;
     }

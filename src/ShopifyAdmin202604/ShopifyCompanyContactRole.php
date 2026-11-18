@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
-class ShopifyCompanyContactRole
+/**
+ * The role for a [company contact](https://shopify.dev/api/admin-graphql/latest/objects/companycontact).
+ */
+class ShopifyCompanyContactRole implements ShopifyNode
 {
     protected $id;
     protected $name;
@@ -10,27 +13,33 @@ class ShopifyCompanyContactRole
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of a role. For example, `admin` or `buyer`.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * A note for the role.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }

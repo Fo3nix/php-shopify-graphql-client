@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
+/**
+ * The merchandise thumbnail badges customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadge
 {
     protected $background;
 
     
     /**
-     * @return ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeBackgroundEnumObject
+     * The background.
+     *
+     * @return string A ShopifyCheckoutAndAccountsConfigurationBrandingMerchandiseThumbnailBadgeBackgroundEnumObject value
      */
-    public function getBackground()
+    public function getBackground(): ?string
     {
         return $this->background;
     }

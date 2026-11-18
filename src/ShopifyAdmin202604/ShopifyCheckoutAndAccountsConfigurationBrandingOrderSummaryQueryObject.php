@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202604;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The order summary customizations.
+ */
 class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CheckoutAndAccountsConfigurationBrandingOrderSummary";
 
-    public function selectBackgroundImage(ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryBackgroundImageArgumentsObject $argsObject = null)
+    /**
+     * The background image of the order summary container.
+     */
+    public function selectBackgroundImage(?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryBackgroundImageArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingImageValueUnionObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingImageValueUnionObject("backgroundImage");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject ext
         return $object;
     }
 
-    public function selectColors(ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryColorsArgumentsObject $argsObject = null)
+    /**
+     * The colors customizations.
+     */
+    public function selectColors(?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryColorsArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingColorsQueryObject("colors");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject ext
         return $object;
     }
 
-    public function selectDivider(ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryDividerArgumentsObject $argsObject = null)
+    /**
+     * The order summary container's divider style and visibility.
+     */
+    public function selectDivider(?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryDividerArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingContainerDividerQueryObject("divider");
         if ($argsObject !== null) {
@@ -41,7 +53,10 @@ class ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummaryQueryObject ext
         return $object;
     }
 
-    public function selectSection(ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySectionArgumentsObject $argsObject = null)
+    /**
+     * The order summary sections.
+     */
+    public function selectSection(?ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySectionArgumentsObject $argsObject = null): ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySectionQueryObject
     {
         $object = new ShopifyCheckoutAndAccountsConfigurationBrandingOrderSummarySectionQueryObject("section");
         if ($argsObject !== null) {
