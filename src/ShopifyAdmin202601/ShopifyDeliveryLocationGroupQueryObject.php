@@ -4,18 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A location group is a collection of locations. They share zones and delivery methods across delivery
+ * profiles.
+ */
 class ShopifyDeliveryLocationGroupQueryObject extends QueryObject
 {
     const OBJECT_NAME = "DeliveryLocationGroup";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLocations(ShopifyDeliveryLocationGroupLocationsArgumentsObject $argsObject = null)
+    /**
+     * A list of all locations that are part of this location group.
+     */
+    public function selectLocations(?ShopifyDeliveryLocationGroupLocationsArgumentsObject $argsObject = null): ShopifyLocationConnectionQueryObject
     {
         $object = new ShopifyLocationConnectionQueryObject("locations");
         if ($argsObject !== null) {
@@ -26,7 +36,10 @@ class ShopifyDeliveryLocationGroupQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLocationsCount(ShopifyDeliveryLocationGroupLocationsCountArgumentsObject $argsObject = null)
+    /**
+     * A count of all locations that are part of this location group.
+     */
+    public function selectLocationsCount(?ShopifyDeliveryLocationGroupLocationsCountArgumentsObject $argsObject = null): ShopifyCountQueryObject
     {
         $object = new ShopifyCountQueryObject("locationsCount");
         if ($argsObject !== null) {

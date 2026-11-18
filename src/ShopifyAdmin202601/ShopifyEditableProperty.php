@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The attribute editable information.
+ */
 class ShopifyEditableProperty
 {
     protected $locked;
@@ -9,18 +12,22 @@ class ShopifyEditableProperty
 
     
     /**
+     * Whether the attribute is locked for editing.
+     *
      * @return bool
      */
-    public function getLocked()
+    public function getLocked(): ?bool
     {
         return $this->locked;
     }
 
     
     /**
+     * The reason the attribute is locked for editing.
+     *
      * @return string
      */
-    public function getReason()
+    public function getReason(): mixed
     {
         return $this->reason;
     }

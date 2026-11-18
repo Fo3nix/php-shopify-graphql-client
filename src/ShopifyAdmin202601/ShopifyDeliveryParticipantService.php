@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A mail service provided by the participant.
+ */
 class ShopifyDeliveryParticipantService
 {
     protected $active;
@@ -9,18 +12,22 @@ class ShopifyDeliveryParticipantService
 
     
     /**
+     * Whether the service is active.
+     *
      * @return bool
      */
-    public function getActive()
+    public function getActive(): ?bool
     {
         return $this->active;
     }
 
     
     /**
+     * The name of the service.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

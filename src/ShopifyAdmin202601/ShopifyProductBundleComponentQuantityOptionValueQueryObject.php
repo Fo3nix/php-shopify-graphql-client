@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A quantity option value related to a componentized product.
+ */
 class ShopifyProductBundleComponentQuantityOptionValueQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductBundleComponentQuantityOptionValue";
 
-    public function selectName()
+    /**
+     * The name of the option value.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectQuantity()
+    /**
+     * The quantity of the option value.
+     */
+    public function selectQuantity(): static
     {
         $this->selectField("quantity");
 

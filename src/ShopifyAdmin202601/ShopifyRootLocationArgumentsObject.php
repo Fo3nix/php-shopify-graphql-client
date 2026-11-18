@@ -8,7 +8,10 @@ class ShopifyRootLocationArgumentsObject extends ArgumentsObject
 {
     protected $id;
 
-    public function setId($id)
+    /**
+     * The ID of the location to return. If no ID is provided, the primary location of the Shop is returned.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 

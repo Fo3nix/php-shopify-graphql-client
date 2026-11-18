@@ -16,7 +16,17 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketRegionConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketWebPresence;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketWebPresenceConnection;
 
-class ShopifyMarket
+/**
+ * A merchant-defined group of buyers identified by conditions such as their
+ * region, retail location, or company location. Each market allows configuration
+ * of a distinct, localized buyer experience. Customizations include, but are
+ * not limited to,
+ * [currency](https://shopify.dev/api/admin-graphql/current/mutations/marketCurrencySettingsUpdate),
+ * [pricing and product availability](https://shopify.dev/apps/internationalization/product-price-lists),
+ * [web presence](https://shopify.dev/api/admin-graphql/current/objects/MarketWebPresence),
+ * and content translations.
+ */
+class ShopifyMarket implements ShopifyHasMetafieldDefinitions, ShopifyHasMetafields, ShopifyNode
 {
     protected $assignedCustomization;
     protected $catalogs;
@@ -42,189 +52,248 @@ class ShopifyMarket
 
     
     /**
+     * Whether the market has a customization with the given ID.
+     *
      * @return bool
      */
-    public function getAssignedCustomization()
+    public function getAssignedCustomization(): ?bool
     {
         return $this->assignedCustomization;
     }
 
     
     /**
+     * The catalogs that belong to the market.
+     *
      * @return ShopifyMarketCatalogConnection
      */
-    public function getCatalogs()
+    public function getCatalogs(): ?ShopifyMarketCatalogConnection
     {
         return $this->catalogs;
     }
 
     
     /**
+     * The number of catalogs that belong to the market.
+     *
      * @return ShopifyCount
      */
-    public function getCatalogsCount()
+    public function getCatalogsCount(): ?ShopifyCount
     {
         return $this->catalogsCount;
     }
 
     
     /**
+     * The conditions under which a visitor is in the market.
+     *
      * @return ShopifyMarketConditions
      */
-    public function getConditions()
+    public function getConditions(): ?ShopifyMarketConditions
     {
         return $this->conditions;
     }
 
     
     /**
+     * The date and time the market was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The market’s currency settings.
+     *
      * @return ShopifyMarketCurrencySettings
      */
-    public function getCurrencySettings()
+    public function getCurrencySettings(): ?ShopifyMarketCurrencySettings
     {
         return $this->currencySettings;
     }
 
     
     /**
+     * Whether the market is enabled to receive visitors and sales. **Note**: Regions in inactive
+     * markets can't be selected on the storefront or in checkout.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * A short, human-readable unique identifier for the market. This is changeable by the merchant.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * List of metafield definitions.
+     *
      * @return ShopifyMetafieldDefinitionConnection
      */
-    public function getMetafieldDefinitions()
+    public function getMetafieldDefinitions(): ?ShopifyMetafieldDefinitionConnection
     {
         return $this->metafieldDefinitions;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The name of the market. Not shown to customers.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The inclusive pricing strategy for a market. This determines if prices include duties and / or taxes.
+     *
      * @return ShopifyMarketPriceInclusions
      */
-    public function getPriceInclusions()
+    public function getPriceInclusions(): ?ShopifyMarketPriceInclusions
     {
         return $this->priceInclusions;
     }
 
     
     /**
+     * The market’s price list, which specifies a percentage-based price adjustment as well as
+     * fixed price overrides for specific variants.
+     *
+     * Markets with multiple catalogs can have multiple price lists. To query which price lists are connected to
+     * a market, please query for price lists through the catalogs connection.
+     *
      * @return ShopifyPriceList
      */
-    public function getPriceList()
+    public function getPriceList(): ?ShopifyPriceList
     {
         return $this->priceList;
     }
 
     
     /**
+     * Whether the market is the shop’s primary market.
+     *
      * @return bool
      */
-    public function getPrimary()
+    public function getPrimary(): ?bool
     {
         return $this->primary;
     }
 
     
     /**
+     * The regions that comprise the market.
+     *
      * @return ShopifyMarketRegionConnection
      */
-    public function getRegions()
+    public function getRegions(): ?ShopifyMarketRegionConnection
     {
         return $this->regions;
     }
 
     
     /**
-     * @return ShopifyMarketStatusEnumObject
+     * Status of the market. Replaces the enabled field.
+     *
+     * @return string A ShopifyMarketStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
-     * @return ShopifyMarketTypeEnumObject
+     * The type of the market.
+     *
+     * @return string A ShopifyMarketTypeEnumObject value
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The market’s web presence, which defines its SEO strategy. This can be a different domain,
+     * subdomain, or subfolders of the primary domain. Each web presence comprises one or more
+     * language variants. If a market doesn't have its own web presence, then the market is accessible on the
+     * primary market's domains using [country
+     * selectors](https://shopify.dev/themes/internationalization/multiple-currencies-languages#the-country-selector).
+     * If it's the primary market and it has multiple web presences, then this field will return the primary domain web presence.
+     *
      * @return ShopifyMarketWebPresence
      */
-    public function getWebPresence()
+    public function getWebPresence(): ?ShopifyMarketWebPresence
     {
         return $this->webPresence;
     }
 
     
     /**
+     * The market’s web presences, which defines its SEO strategy. This can be a different domain,
+     * subdomain, or subfolders of the primary domain. Each web presence comprises one or more
+     * language variants. If a market doesn't have any web presences, then the market is accessible on the
+     * primary market's domains using [country
+     * selectors](https://shopify.dev/themes/internationalization/multiple-currencies-languages#the-country-selector).
+     *
      * @return ShopifyMarketWebPresenceConnection
      */
-    public function getWebPresences()
+    public function getWebPresences(): ?ShopifyMarketWebPresenceConnection
     {
         return $this->webPresences;
     }

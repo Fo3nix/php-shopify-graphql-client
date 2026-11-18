@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDraftOrderShippingRate;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyPickupInStoreLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyPageInfo;
 
+/**
+ * The available delivery options for a draft order.
+ */
 class ShopifyDraftOrderAvailableDeliveryOptions
 {
     protected $availableLocalDeliveryRates;
@@ -15,36 +18,44 @@ class ShopifyDraftOrderAvailableDeliveryOptions
 
     
     /**
+     * The available local delivery rates for the draft order. Requires a customer with a valid shipping address and at least one line item.
+     *
      * @return ShopifyDraftOrderShippingRate[]
      */
-    public function getAvailableLocalDeliveryRates()
+    public function getAvailableLocalDeliveryRates(): ?array
     {
         return $this->availableLocalDeliveryRates;
     }
 
     
     /**
+     * The available local pickup options for the draft order. Requires at least one line item.
+     *
      * @return ShopifyPickupInStoreLocation[]
      */
-    public function getAvailableLocalPickupOptions()
+    public function getAvailableLocalPickupOptions(): ?array
     {
         return $this->availableLocalPickupOptions;
     }
 
     
     /**
+     * The available shipping rates for the draft order. Requires a customer with a valid shipping address and at least one line item.
+     *
      * @return ShopifyDraftOrderShippingRate[]
      */
-    public function getAvailableShippingRates()
+    public function getAvailableShippingRates(): ?array
     {
         return $this->availableShippingRates;
     }
 
     
     /**
+     * Returns information about pagination of local pickup options.
+     *
      * @return ShopifyPageInfo
      */
-    public function getPageInfo()
+    public function getPageInfo(): ?ShopifyPageInfo
     {
         return $this->pageInfo;
     }

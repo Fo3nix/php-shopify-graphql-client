@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The third-party confirmation of a reverse fulfillment order.
+ */
 class ShopifyReverseFulfillmentOrderThirdPartyConfirmation
 {
     protected $status;
 
     
     /**
-     * @return ShopifyReverseFulfillmentOrderThirdPartyConfirmationStatusEnumObject
+     * The status of the reverse fulfillment order third-party confirmation.
+     *
+     * @return string A ShopifyReverseFulfillmentOrderThirdPartyConfirmationStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

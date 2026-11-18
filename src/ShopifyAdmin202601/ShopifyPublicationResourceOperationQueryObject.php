@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A bulk update operation on a publication.
+ */
 class ShopifyPublicationResourceOperationQueryObject extends QueryObject
 {
     const OBJECT_NAME = "PublicationResourceOperation";
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectProcessedRowCount()
+    /**
+     * The count of processed rows, summing imported, failed, and skipped rows.
+     */
+    public function selectProcessedRowCount(): static
     {
         $this->selectField("processedRowCount");
 
         return $this;
     }
 
-    public function selectRowCount(ShopifyPublicationResourceOperationRowCountArgumentsObject $argsObject = null)
+    /**
+     * Represents a rows objects within this background operation.
+     */
+    public function selectRowCount(?ShopifyPublicationResourceOperationRowCountArgumentsObject $argsObject = null): ShopifyRowCountQueryObject
     {
         $object = new ShopifyRowCountQueryObject("rowCount");
         if ($argsObject !== null) {
@@ -33,7 +45,10 @@ class ShopifyPublicationResourceOperationQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectStatus()
+    /**
+     * The status of this operation.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

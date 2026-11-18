@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyOrderEditSession
+/**
+ * An edit session for an order.
+ */
+class ShopifyOrderEditSession implements ShopifyNode
 {
     protected $id;
 
     
     /**
+     * The unique ID of the order edit session.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

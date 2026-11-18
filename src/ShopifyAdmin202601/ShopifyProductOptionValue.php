@@ -5,7 +5,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductOptionValueSwatch;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTranslation;
 
-class ShopifyProductOptionValue
+/**
+ * A specific value for a [`ProductOption`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOption), such as "Red" or "Blue" for a "Color" option. Each value can be assigned to [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects to create different versions of a [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product).
+ *
+ * The value tracks whether any variants currently use it through the [`hasVariants`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOptionValue#field-hasVariants) field. Values can include visual representations through swatches that display colors or images. When linked to a [`Metafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield), the [`linkedMetafieldValue`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOptionValue#field-linkedMetafieldValue) provides additional structured data for the option value.
+ */
+class ShopifyProductOptionValue implements ShopifyHasPublishedTranslations, ShopifyNode
 {
     protected $hasVariants;
     protected $id;
@@ -16,54 +21,66 @@ class ShopifyProductOptionValue
 
     
     /**
+     * Whether the product option value has any linked variants.
+     *
      * @return bool
      */
-    public function getHasVariants()
+    public function getHasVariants(): ?bool
     {
         return $this->hasVariants;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The value of the linked metafield.
+     *
      * @return string
      */
-    public function getLinkedMetafieldValue()
+    public function getLinkedMetafieldValue(): ?string
     {
         return $this->linkedMetafieldValue;
     }
 
     
     /**
+     * The name of the product option value.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The swatch associated with the product option value.
+     *
      * @return ShopifyProductOptionValueSwatch
      */
-    public function getSwatch()
+    public function getSwatch(): ?ShopifyProductOptionValueSwatch
     {
         return $this->swatch;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }

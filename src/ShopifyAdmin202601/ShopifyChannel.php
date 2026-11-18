@@ -10,7 +10,14 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductPublicationConnection
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCount;
 
-class ShopifyChannel
+/**
+ * A connection between a Shopify shop and an external selling platform that supports product syndication and optionally order ingestion. Each channel binds a merchant's account on a specific platform — such as Amazon, eBay, Google, or a point-of-sale system — to the shop, establishing the publishing destination for product feeds.
+ *
+ * Sales Channel applications use [`channelCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/channelCreate) to establish channels after merchant authentication, and can manage multiple channel connections per app. Each channel is bound to a channel specification that declares the platform's regional coverage, capabilities, and requirements.
+ *
+ * Use channels to manage where catalog items are syndicated, track publication status across platforms, and control [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) visibility for different selling destinations.
+ */
+class ShopifyChannel implements ShopifyNode
 {
     protected $app;
     protected $collectionPublicationsV3;
@@ -29,126 +36,154 @@ class ShopifyChannel
 
     
     /**
+     * The underlying app used by the channel.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The list of collection publications. Each record represents information about the publication of a collection.
+     *
      * @return ShopifyResourcePublicationConnection
      */
-    public function getCollectionPublicationsV3()
+    public function getCollectionPublicationsV3(): ?ShopifyResourcePublicationConnection
     {
         return $this->collectionPublicationsV3;
     }
 
     
     /**
+     * The list of collections published to the channel.
+     *
      * @return ShopifyCollectionConnection
      */
-    public function getCollections()
+    public function getCollections(): ?ShopifyCollectionConnection
     {
         return $this->collections;
     }
 
     
     /**
+     * A unique, human-readable identifier for the channel within the shop. Set during [`channelCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/channelCreate) or auto-generated from the specification handle and account ID. Use with [`channelByHandle`](https://shopify.dev/docs/api/admin-graphql/latest/queries/channelByHandle) for lookups.
+     *
      * @return string
      */
-    public function getHandle()
+    public function getHandle(): ?string
     {
         return $this->handle;
     }
 
     
     /**
+     * Whether the collection is available to the channel.
+     *
      * @return bool
      */
-    public function getHasCollection()
+    public function getHasCollection(): ?bool
     {
         return $this->hasCollection;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the channel.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
+     * The menu items for the channel, which also appear as submenu items in the left navigation sidebar in the Shopify admin.
+     *
      * @return ShopifyNavigationItem[]
      */
-    public function getNavigationItems()
+    public function getNavigationItems(): ?array
     {
         return $this->navigationItems;
     }
 
     
     /**
+     * Home page for the channel.
+     *
      * @return string
      */
-    public function getOverviewPath()
+    public function getOverviewPath(): mixed
     {
         return $this->overviewPath;
     }
 
     
     /**
+     * The product publications for the products published to the channel.
+     *
      * @return ShopifyProductPublicationConnection
      */
-    public function getProductPublications()
+    public function getProductPublications(): ?ShopifyProductPublicationConnection
     {
         return $this->productPublications;
     }
 
     
     /**
+     * The list of product publication records for products published to this channel.
+     *
      * @return ShopifyResourcePublicationConnection
      */
-    public function getProductPublicationsV3()
+    public function getProductPublicationsV3(): ?ShopifyResourcePublicationConnection
     {
         return $this->productPublicationsV3;
     }
 
     
     /**
+     * The list of products published to the channel.
+     *
      * @return ShopifyProductConnection
      */
-    public function getProducts()
+    public function getProducts(): ?ShopifyProductConnection
     {
         return $this->products;
     }
 
     
     /**
+     * Retrieves the total count of [`products`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) published to a specific sales channel. Limited to a maximum of 10000 by default.
+     *
      * @return ShopifyCount
      */
-    public function getProductsCount()
+    public function getProductsCount(): ?ShopifyCount
     {
         return $this->productsCount;
     }
 
     
     /**
+     * Whether the channel supports future publishing.
+     *
      * @return bool
      */
-    public function getSupportsFuturePublishing()
+    public function getSupportsFuturePublishing(): ?bool
     {
         return $this->supportsFuturePublishing;
     }

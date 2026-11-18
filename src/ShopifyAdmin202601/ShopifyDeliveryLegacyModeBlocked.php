@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Whether the shop is blocked from converting to full multi-location delivery profiles mode. If the shop is blocked, then the blocking reasons are also returned.
+ */
 class ShopifyDeliveryLegacyModeBlocked
 {
     protected $blocked;
@@ -9,18 +12,22 @@ class ShopifyDeliveryLegacyModeBlocked
 
     
     /**
+     * Whether the shop can convert to full multi-location delivery profiles mode.
+     *
      * @return bool
      */
-    public function getBlocked()
+    public function getBlocked(): ?bool
     {
         return $this->blocked;
     }
 
     
     /**
-     * @return ShopifyDeliveryLegacyModeBlockedReasonEnumObject[]
+     * The reasons why the shop is blocked from converting to full multi-location delivery profiles mode.
+     *
+     * @return string[] ShopifyDeliveryLegacyModeBlockedReasonEnumObject values
      */
-    public function getReasons()
+    public function getReasons(): ?array
     {
         return $this->reasons;
     }

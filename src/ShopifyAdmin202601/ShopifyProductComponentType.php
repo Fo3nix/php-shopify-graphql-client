@@ -6,6 +6,9 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductVariantConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProduct;
 
+/**
+ * The product component information.
+ */
 class ShopifyProductComponentType
 {
     protected $componentVariants;
@@ -16,45 +19,55 @@ class ShopifyProductComponentType
 
     
     /**
+     * The list of products' variants that are components.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getComponentVariants()
+    public function getComponentVariants(): ?ShopifyProductVariantConnection
     {
         return $this->componentVariants;
     }
 
     
     /**
+     * The number of component variants for the product component.
+     *
      * @return ShopifyCount
      */
-    public function getComponentVariantsCount()
+    public function getComponentVariantsCount(): ?ShopifyCount
     {
         return $this->componentVariantsCount;
     }
 
     
     /**
+     * The list of products' variants that are not components.
+     *
      * @return ShopifyProductVariantConnection
      */
-    public function getNonComponentVariants()
+    public function getNonComponentVariants(): ?ShopifyProductVariantConnection
     {
         return $this->nonComponentVariants;
     }
 
     
     /**
+     * The number of non_components variants for the product component.
+     *
      * @return ShopifyCount
      */
-    public function getNonComponentVariantsCount()
+    public function getNonComponentVariantsCount(): ?ShopifyCount
     {
         return $this->nonComponentVariantsCount;
     }
 
     
     /**
+     * The product that's a component.
+     *
      * @return ShopifyProduct
      */
-    public function getProduct()
+    public function getProduct(): ?ShopifyProduct
     {
         return $this->product;
     }

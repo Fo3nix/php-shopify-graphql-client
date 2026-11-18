@@ -4,10 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldDefinition;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReference;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyHasMetafieldsHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyHasMetafields;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReferenceHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldReferenceConnection;
 
-class ShopifyMetafield
+/**
+ * Metafields enable you to attach additional information to a Shopify resource, such as a [Product](https://shopify.dev/api/admin-graphql/latest/objects/product) or a [Collection](https://shopify.dev/api/admin-graphql/latest/objects/collection).
+ * For more information about where you can attach metafields refer to [HasMetafields](https://shopify.dev/api/admin-graphql/latest/interfaces/HasMetafields).
+ * Some examples of the data that metafields enable you to store are specifications, size charts, downloadable documents, release dates, images, or part numbers.
+ * Metafields are identified by an owner resource, namespace, and key. and store a value along with type information for that value.
+ */
+class ShopifyMetafield implements ShopifyHasCompareDigest, ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $compareDigest;
     protected $createdAt;
@@ -28,144 +36,177 @@ class ShopifyMetafield
 
     
     /**
+     * The data stored in the resource, represented as a digest.
+     *
      * @return string
      */
-    public function getCompareDigest()
+    public function getCompareDigest(): ?string
     {
         return $this->compareDigest;
     }
 
     
     /**
+     * The date and time when the metafield was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The metafield definition that the metafield belongs to, if any. Returns `null` when the metafield's value doesn't pass validation against the definition with the same namespace and key. To list those metafields, query the definition's `metafields` connection with `validationStatus: INVALID`.
+     *
      * @return ShopifyMetafieldDefinition
      */
-    public function getDefinition()
+    public function getDefinition(): ?ShopifyMetafieldDefinition
     {
         return $this->definition;
     }
 
     
     /**
+     * The description of the metafield.
+     *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The data stored in the metafield in JSON format.
+     *
      * @return string
      */
-    public function getJsonValue()
+    public function getJsonValue(): mixed
     {
         return $this->jsonValue;
     }
 
     
     /**
+     * The unique identifier for the metafield within its namespace. If the metafield was requested with a combined `namespace.key` value, such as through the `keys` argument, this field returns the combined value.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The container for a group of metafields that the metafield is associated with.
+     *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
     
     /**
-     * @return mixed
+     * The resource that the metafield is attached to.
+     *
+     * @return ShopifyHasMetafields
      */
-    public function getOwner()
+    public function getOwner(): ?ShopifyHasMetafields
     {
         return $this->owner;
     }
 
     
     /**
-     * @return ShopifyMetafieldOwnerTypeEnumObject
+     * The type of resource that the metafield is attached to.
+     *
+     * @return string A ShopifyMetafieldOwnerTypeEnumObject value
      */
-    public function getOwnerType()
+    public function getOwnerType(): ?string
     {
         return $this->ownerType;
     }
 
     
     /**
-     * @return ShopifyMetafieldReference
+     * Returns a reference object if the metafield definition's type is a resource reference.
+     *
+     * @return ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo
      */
-    public function getReference()
+    public function getReference(): ShopifyArticle|ShopifyCollection|ShopifyCompany|ShopifyCustomer|ShopifyGenericFile|ShopifyMediaImage|ShopifyMetaobject|ShopifyModel3d|ShopifyOrder|ShopifyPage|ShopifyProduct|ShopifyProductVariant|ShopifyTaxonomyValue|ShopifyVideo|null
     {
         return $this->reference;
     }
 
     
     /**
+     * A list of reference objects if the metafield's type is a resource reference list.
+     *
      * @return ShopifyMetafieldReferenceConnection
      */
-    public function getReferences()
+    public function getReferences(): ?ShopifyMetafieldReferenceConnection
     {
         return $this->references;
     }
 
     
     /**
+     * The type of data that's stored in the metafield.
+     * Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
+     *
      * @return string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     
     /**
+     * The date and time when the metafield was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The data stored in the metafield. Always stored as a string, regardless of the metafield's type.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
@@ -205,13 +246,13 @@ class ShopifyMetafield
                 $instance->namespace = $data['namespace'];
             }
             if (isset($data['owner']) && $data['owner'] !== null) {
-                $instance->owner = $data['owner'];
+                $instance->owner = ShopifyHasMetafieldsHydrator::fromArray($data['owner']);
             }
             if (isset($data['ownerType']) && $data['ownerType'] !== null) {
                 $instance->ownerType = $data['ownerType'];
             }
             if (isset($data['reference']) && $data['reference'] !== null) {
-                $instance->reference = ShopifyMetafieldReference::fromArray($data['reference']);
+                $instance->reference = ShopifyMetafieldReferenceHydrator::fromArray($data['reference']);
             }
             if (isset($data['references']) && $data['references'] !== null) {
                 $instance->references = ShopifyMetafieldReferenceConnection::fromArray($data['references']);
@@ -276,13 +317,13 @@ class ShopifyMetafield
                 $data['namespace'] = $this->namespace;
             }
             if ($this->owner !== null) {
-                $data['owner'] = $this->owner;
+                $data['owner'] = ShopifyHasMetafieldsHydrator::toArray($this->owner);
             }
             if ($this->ownerType !== null) {
                 $data['ownerType'] = $this->ownerType;
             }
             if ($this->reference !== null) {
-                $data['reference'] = $this->reference->asArray();
+                $data['reference'] = ShopifyMetafieldReferenceHydrator::toArray($this->reference);
             }
             if ($this->references !== null) {
                 $data['references'] = $this->references->asArray();

@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The order associated to the balance transaction.
+ */
 class ShopifyShopifyPaymentsAssociatedOrderQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopifyPaymentsAssociatedOrder";
 
-    public function selectId()
+    /**
+     * The ID of the associated order.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the associated order.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 

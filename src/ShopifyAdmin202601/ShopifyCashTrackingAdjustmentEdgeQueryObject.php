@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An auto-generated type which holds one CashTrackingAdjustment and a cursor during pagination.
+ */
 class ShopifyCashTrackingAdjustmentEdgeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CashTrackingAdjustmentEdge";
 
-    public function selectCursor()
+    /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function selectCursor(): static
     {
         $this->selectField("cursor");
 
         return $this;
     }
 
-    public function selectNode(ShopifyCashTrackingAdjustmentEdgeNodeArgumentsObject $argsObject = null)
+    /**
+     * The item at the end of CashTrackingAdjustmentEdge.
+     */
+    public function selectNode(?ShopifyCashTrackingAdjustmentEdgeNodeArgumentsObject $argsObject = null): ShopifyCashTrackingAdjustmentQueryObject
     {
         $object = new ShopifyCashTrackingAdjustmentQueryObject("node");
         if ($argsObject !== null) {

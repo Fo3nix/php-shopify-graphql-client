@@ -9,6 +9,13 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionDiscountAllocati
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionPricingPolicy;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyImage;
 
+/**
+ * A product line item within a [`SubscriptionContract`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SubscriptionContract). Each line represents a specific product variant that the customer subscribes to, including its quantity, pricing, and whether shipping is required.
+ *
+ * The line maintains references to the [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant), [`SellingPlan`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlan), and custom [`Attribute`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Attribute) objects. It tracks the current price and any scheduled price changes through its [`pricingPolicy`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SubscriptionPricingPolicy). You can modify lines through [`SubscriptionDraft`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SubscriptionDraft) objects without affecting the original contract until you commit changes.
+ *
+ * Learn more about [subscription contracts](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts) and [selling plans](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans).
+ */
 class ShopifySubscriptionLine
 {
     protected $concatenatedOriginContract;
@@ -32,162 +39,212 @@ class ShopifySubscriptionLine
 
     
     /**
+     * The origin contract of the line if it was concatenated from another contract.
+     *
      * @return ShopifySubscriptionContract
      */
-    public function getConcatenatedOriginContract()
+    public function getConcatenatedOriginContract(): ?ShopifySubscriptionContract
     {
         return $this->concatenatedOriginContract;
     }
 
     
     /**
+     * The price per unit for the subscription line in the contract's currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getCurrentPrice()
+    public function getCurrentPrice(): ?ShopifyMoneyV2
     {
         return $this->currentPrice;
     }
 
     
     /**
+     * List of custom attributes associated to the line item.
+     *
      * @return ShopifyAttribute[]
      */
-    public function getCustomAttributes()
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
 
     
     /**
+     * Discount allocations.
+     *
      * @return ShopifySubscriptionDiscountAllocation[]
      */
-    public function getDiscountAllocations()
+    public function getDiscountAllocations(): ?array
     {
         return $this->discountAllocations;
     }
 
     
     /**
+     * The unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * Total line price including all discounts.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getLineDiscountedPrice()
+    public function getLineDiscountedPrice(): ?ShopifyMoneyV2
     {
         return $this->lineDiscountedPrice;
     }
 
     
     /**
+     * Describe the price changes of the line over time.
+     *
      * @return ShopifySubscriptionPricingPolicy
      */
-    public function getPricingPolicy()
+    public function getPricingPolicy(): ?ShopifySubscriptionPricingPolicy
     {
         return $this->pricingPolicy;
     }
 
     
     /**
+     * The product ID associated with the subscription line.
+     *
      * @return string
      */
-    public function getProductId()
+    public function getProductId(): ?string
     {
         return $this->productId;
     }
 
     
     /**
+     * The quantity of the unit selected for the subscription line.
+     *
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     
     /**
+     * Whether physical shipping is required for the variant.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * The selling plan ID associated to the line.
+     *
+     * Indicates which selling plan was used to create this
+     * contract line initially. The selling plan ID is also used to
+     * find the associated delivery profile.
+     *
+     * The subscription contract, subscription line, or selling plan might have
+     * changed. As a result, the selling plan's attributes might not
+     * match the information on the contract.
+     *
      * @return string
      */
-    public function getSellingPlanId()
+    public function getSellingPlanId(): ?string
     {
         return $this->sellingPlanId;
     }
 
     
     /**
+     * The selling plan name associated to the line. This name describes
+     * the order line items created from this subscription line
+     * for both merchants and customers.
+     *
+     * The value can be different from the selling plan's name, because both
+     * the selling plan's name and the subscription line's selling_plan_name
+     * attribute can be updated independently.
+     *
      * @return string
      */
-    public function getSellingPlanName()
+    public function getSellingPlanName(): ?string
     {
         return $this->sellingPlanName;
     }
 
     
     /**
+     * Variant SKU number of the item associated with the subscription line.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * Whether the variant is taxable.
+     *
      * @return bool
      */
-    public function getTaxable()
+    public function getTaxable(): ?bool
     {
         return $this->taxable;
     }
 
     
     /**
+     * Product title of the item associated with the subscription line.
+     *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     
     /**
+     * The product variant ID associated with the subscription line.
+     *
      * @return string
      */
-    public function getVariantId()
+    public function getVariantId(): ?string
     {
         return $this->variantId;
     }
 
     
     /**
+     * The image associated with the line item's variant or product.
+     *
      * @return ShopifyImage
      */
-    public function getVariantImage()
+    public function getVariantImage(): ?ShopifyImage
     {
         return $this->variantImage;
     }
 
     
     /**
+     * Product variant title of the item associated with the subscription line.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }

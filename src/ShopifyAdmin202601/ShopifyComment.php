@@ -7,7 +7,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCommentAuthor;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyEventConnection;
 
-class ShopifyComment
+/**
+ * A comment on an article.
+ */
+class ShopifyComment implements ShopifyHasEvents, ShopifyNode
 {
     protected $article;
     protected $author;
@@ -25,117 +28,143 @@ class ShopifyComment
 
     
     /**
+     * The article associated with the comment.
+     *
      * @return ShopifyArticle
      */
-    public function getArticle()
+    public function getArticle(): ?ShopifyArticle
     {
         return $this->article;
     }
 
     
     /**
+     * The comment’s author.
+     *
      * @return ShopifyCommentAuthor
      */
-    public function getAuthor()
+    public function getAuthor(): ?ShopifyCommentAuthor
     {
         return $this->author;
     }
 
     
     /**
+     * The content of the comment.
+     *
      * @return string
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
     
     /**
+     * The content of the comment, complete with HTML formatting.
+     *
      * @return string
      */
-    public function getBodyHtml()
+    public function getBodyHtml(): mixed
     {
         return $this->bodyHtml;
     }
 
     
     /**
+     * The date and time when the comment was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The paginated list of events associated with the host subject.
+     *
      * @return ShopifyEventConnection
      */
-    public function getEvents()
+    public function getEvents(): ?ShopifyEventConnection
     {
         return $this->events;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The IP address of the commenter.
+     *
      * @return string
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     
     /**
+     * Whether or not the comment is published.
+     *
      * @return bool
      */
-    public function getIsPublished()
+    public function getIsPublished(): ?bool
     {
         return $this->isPublished;
     }
 
     
     /**
+     * The date and time when the comment was published.
+     *
      * @return Carbon
      */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?Carbon
     {
         return $this->publishedAt;
     }
 
     
     /**
-     * @return ShopifyCommentStatusEnumObject
+     * The status of the comment.
+     *
+     * @return string A ShopifyCommentStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * The date and time when the comment was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
 
     
     /**
+     * The user agent of the commenter.
+     *
      * @return string
      */
-    public function getUserAgent()
+    public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }

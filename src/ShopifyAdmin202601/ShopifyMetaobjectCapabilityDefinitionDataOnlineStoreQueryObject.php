@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The Online Store capability data for the metaobject definition.
+ */
 class ShopifyMetaobjectCapabilityDefinitionDataOnlineStoreQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectCapabilityDefinitionDataOnlineStore";
 
-    public function selectCanCreateRedirects()
+    /**
+     * Flag indicating if a sufficient number of redirects are available to redirect all published entries.
+     */
+    public function selectCanCreateRedirects(): static
     {
         $this->selectField("canCreateRedirects");
 
         return $this;
     }
 
-    public function selectUrlHandle()
+    /**
+     * The URL handle for accessing pages of this metaobject type in the Online Store.
+     */
+    public function selectUrlHandle(): static
     {
         $this->selectField("urlHandle");
 

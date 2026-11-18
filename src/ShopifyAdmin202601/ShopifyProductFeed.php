@@ -2,7 +2,10 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyProductFeed
+/**
+ * A product feed.
+ */
+class ShopifyProductFeed implements ShopifyNode
 {
     protected $country;
     protected $id;
@@ -11,36 +14,44 @@ class ShopifyProductFeed
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The country of the product feed.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyLanguageCodeEnumObject
+     * The language of the product feed.
+     *
+     * @return string A ShopifyLanguageCodeEnumObject value
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
     
     /**
-     * @return ShopifyProductFeedStatusEnumObject
+     * The status of the product feed.
+     *
+     * @return string A ShopifyProductFeedStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }

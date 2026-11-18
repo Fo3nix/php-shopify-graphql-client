@@ -16,56 +16,83 @@ class ShopifyShopAssignedFulfillmentOrdersArgumentsObject extends ArgumentsObjec
     protected $reverse;
     protected $sortKey;
 
-    public function setAssignmentStatus($shopifyFulfillmentOrderAssignmentStatus)
+    /**
+     * The assignment status of the fulfillment orders that should be returned.
+     * If `assignmentStatus` argument is not provided, then
+     * the query will return all assigned fulfillment orders,
+     * except those that have the `CLOSED` status.
+     */
+    public function setAssignmentStatus($shopifyFulfillmentOrderAssignmentStatus): static
     {
         $this->assignmentStatus = new RawObject($shopifyFulfillmentOrderAssignmentStatus);
 
         return $this;
     }
 
-    public function setLocationIds(array $locationIds)
+    /**
+     * Returns fulfillment orders only for certain locations, specified by a list of location IDs.
+     */
+    public function setLocationIds(array $locationIds): static
     {
         $this->locationIds = $locationIds;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 
         return $this;
     }
 
-    public function setLast($last)
+    /**
+     * The last `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setLast($last): static
     {
         $this->last = $last;
 
         return $this;
     }
 
-    public function setBefore($before)
+    /**
+     * The elements that come before the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setBefore($before): static
     {
         $this->before = $before;
 
         return $this;
     }
 
-    public function setReverse($reverse)
+    /**
+     * Reverse the order of the underlying list.
+     */
+    public function setReverse($reverse): static
     {
         $this->reverse = $reverse;
 
         return $this;
     }
 
-    public function setSortKey($shopifyFulfillmentOrderSortKeys)
+    /**
+     * Sort the underlying list using a key. If your query is slow or returns an error, then [try specifying a sort key that matches the field used in the search](https://shopify.dev/api/usage/pagination-graphql#search-performance-considerations).
+     */
+    public function setSortKey($shopifyFulfillmentOrderSortKeys): static
     {
         $this->sortKey = new RawObject($shopifyFulfillmentOrderSortKeys);
 

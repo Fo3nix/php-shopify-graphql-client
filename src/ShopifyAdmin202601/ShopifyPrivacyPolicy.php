@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A shop's privacy policy settings.
+ */
 class ShopifyPrivacyPolicy
 {
     protected $autoManaged;
@@ -9,18 +12,22 @@ class ShopifyPrivacyPolicy
 
     
     /**
+     * Whether the policy is auto managed.
+     *
      * @return bool
      */
-    public function getAutoManaged()
+    public function getAutoManaged(): ?bool
     {
         return $this->autoManaged;
     }
 
     
     /**
+     * Policy template supported locales.
+     *
      * @return string[]
      */
-    public function getSupportedLocales()
+    public function getSupportedLocales(): ?array
     {
         return $this->supportedLocales;
     }

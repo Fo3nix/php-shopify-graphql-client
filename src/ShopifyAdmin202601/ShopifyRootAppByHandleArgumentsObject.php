@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootAppByHandleArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["handle"];
+
     protected $handle;
 
-    public function setHandle($handle)
+    /**
+     * Handle of the App.
+     */
+    public function setHandle($handle): static
     {
         $this->handle = $handle;
 

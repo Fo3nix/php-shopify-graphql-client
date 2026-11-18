@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a card instrument for customer payment method.
+ */
 class ShopifyCustomerCreditCardQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerCreditCard";
 
-    public function selectBillingAddress(ShopifyCustomerCreditCardBillingAddressArgumentsObject $argsObject = null)
+    /**
+     * The billing address of the card.
+     */
+    public function selectBillingAddress(?ShopifyCustomerCreditCardBillingAddressArgumentsObject $argsObject = null): ShopifyCustomerCreditCardBillingAddressQueryObject
     {
         $object = new ShopifyCustomerCreditCardBillingAddressQueryObject("billingAddress");
         if ($argsObject !== null) {
@@ -19,77 +25,110 @@ class ShopifyCustomerCreditCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectBrand()
+    /**
+     * The brand of the card.
+     */
+    public function selectBrand(): static
     {
         $this->selectField("brand");
 
         return $this;
     }
 
-    public function selectExpiresSoon()
+    /**
+     * Whether the card is about to expire.
+     */
+    public function selectExpiresSoon(): static
     {
         $this->selectField("expiresSoon");
 
         return $this;
     }
 
-    public function selectExpiryMonth()
+    /**
+     * The expiry month of the card.
+     */
+    public function selectExpiryMonth(): static
     {
         $this->selectField("expiryMonth");
 
         return $this;
     }
 
-    public function selectExpiryYear()
+    /**
+     * The expiry year of the card.
+     */
+    public function selectExpiryYear(): static
     {
         $this->selectField("expiryYear");
 
         return $this;
     }
 
-    public function selectFirstDigits()
+    /**
+     * The card's BIN number.
+     */
+    public function selectFirstDigits(): static
     {
         $this->selectField("firstDigits");
 
         return $this;
     }
 
-    public function selectIsRevocable()
+    /**
+     * The payment method can be revoked if there are no active subscription contracts.
+     */
+    public function selectIsRevocable(): static
     {
         $this->selectField("isRevocable");
 
         return $this;
     }
 
-    public function selectLastDigits()
+    /**
+     * The last 4 digits of the card.
+     */
+    public function selectLastDigits(): static
     {
         $this->selectField("lastDigits");
 
         return $this;
     }
 
-    public function selectMaskedNumber()
+    /**
+     * The masked card number with only the last 4 digits displayed.
+     */
+    public function selectMaskedNumber(): static
     {
         $this->selectField("maskedNumber");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the card holder.
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectSource()
+    /**
+     * The source of the card if coming from a wallet such as Apple Pay.
+     */
+    public function selectSource(): static
     {
         $this->selectField("source");
 
         return $this;
     }
 
-    public function selectVirtualLastDigits()
+    /**
+     * The last 4 digits of the Device Account Number.
+     */
+    public function selectVirtualLastDigits(): static
     {
         $this->selectField("virtualLastDigits");
 

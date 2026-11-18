@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * Types of resources that may use metafields to reference other resources.
+ */
 class ShopifyMetafieldReferencerUnionObject extends UnionObject
 {
-    public function onShopifyAppInstallation()
+    public function onShopifyAppInstallation(): ShopifyAppInstallationQueryObject
     {
         $object = new ShopifyAppInstallationQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyArticle()
+    public function onShopifyArticle(): ShopifyArticleQueryObject
     {
         $object = new ShopifyArticleQueryObject();
         $this->addPossibleType($object);
@@ -22,7 +25,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyBlog()
+    public function onShopifyBlog(): ShopifyBlogQueryObject
     {
         $object = new ShopifyBlogQueryObject();
         $this->addPossibleType($object);
@@ -30,7 +33,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCollection()
+    public function onShopifyCollection(): ShopifyCollectionQueryObject
     {
         $object = new ShopifyCollectionQueryObject();
         $this->addPossibleType($object);
@@ -38,7 +41,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCompany()
+    public function onShopifyCompany(): ShopifyCompanyQueryObject
     {
         $object = new ShopifyCompanyQueryObject();
         $this->addPossibleType($object);
@@ -46,7 +49,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCompanyLocation()
+    public function onShopifyCompanyLocation(): ShopifyCompanyLocationQueryObject
     {
         $object = new ShopifyCompanyLocationQueryObject();
         $this->addPossibleType($object);
@@ -54,7 +57,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyCustomer()
+    public function onShopifyCustomer(): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject();
         $this->addPossibleType($object);
@@ -62,7 +65,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDeliveryCustomization()
+    public function onShopifyDeliveryCustomization(): ShopifyDeliveryCustomizationQueryObject
     {
         $object = new ShopifyDeliveryCustomizationQueryObject();
         $this->addPossibleType($object);
@@ -70,7 +73,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountAutomaticNode()
+    public function onShopifyDiscountAutomaticNode(): ShopifyDiscountAutomaticNodeQueryObject
     {
         $object = new ShopifyDiscountAutomaticNodeQueryObject();
         $this->addPossibleType($object);
@@ -78,7 +81,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountCodeNode()
+    public function onShopifyDiscountCodeNode(): ShopifyDiscountCodeNodeQueryObject
     {
         $object = new ShopifyDiscountCodeNodeQueryObject();
         $this->addPossibleType($object);
@@ -86,7 +89,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDiscountNode()
+    public function onShopifyDiscountNode(): ShopifyDiscountNodeQueryObject
     {
         $object = new ShopifyDiscountNodeQueryObject();
         $this->addPossibleType($object);
@@ -94,7 +97,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyDraftOrder()
+    public function onShopifyDraftOrder(): ShopifyDraftOrderQueryObject
     {
         $object = new ShopifyDraftOrderQueryObject();
         $this->addPossibleType($object);
@@ -102,7 +105,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyFulfillmentOrder()
+    public function onShopifyFulfillmentOrder(): ShopifyFulfillmentOrderQueryObject
     {
         $object = new ShopifyFulfillmentOrderQueryObject();
         $this->addPossibleType($object);
@@ -110,7 +113,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyLocation()
+    public function onShopifyLocation(): ShopifyLocationQueryObject
     {
         $object = new ShopifyLocationQueryObject();
         $this->addPossibleType($object);
@@ -118,7 +121,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyMarket()
+    public function onShopifyMarket(): ShopifyMarketQueryObject
     {
         $object = new ShopifyMarketQueryObject();
         $this->addPossibleType($object);
@@ -126,7 +129,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyMetaobject()
+    public function onShopifyMetaobject(): ShopifyMetaobjectQueryObject
     {
         $object = new ShopifyMetaobjectQueryObject();
         $this->addPossibleType($object);
@@ -134,7 +137,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyOrder()
+    public function onShopifyOrder(): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject();
         $this->addPossibleType($object);
@@ -142,7 +145,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPage()
+    public function onShopifyPage(): ShopifyPageQueryObject
     {
         $object = new ShopifyPageQueryObject();
         $this->addPossibleType($object);
@@ -150,7 +153,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyPaymentCustomization()
+    public function onShopifyPaymentCustomization(): ShopifyPaymentCustomizationQueryObject
     {
         $object = new ShopifyPaymentCustomizationQueryObject();
         $this->addPossibleType($object);
@@ -158,7 +161,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyProduct()
+    public function onShopifyProduct(): ShopifyProductQueryObject
     {
         $object = new ShopifyProductQueryObject();
         $this->addPossibleType($object);
@@ -166,7 +169,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyProductVariant()
+    public function onShopifyProductVariant(): ShopifyProductVariantQueryObject
     {
         $object = new ShopifyProductVariantQueryObject();
         $this->addPossibleType($object);
@@ -174,7 +177,7 @@ class ShopifyMetafieldReferencerUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyShop()
+    public function onShopifyShop(): ShopifyShopQueryObject
     {
         $object = new ShopifyShopQueryObject();
         $this->addPossibleType($object);

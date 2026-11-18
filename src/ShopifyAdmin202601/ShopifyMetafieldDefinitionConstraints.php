@@ -4,6 +4,10 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldDefinitionConstraintValueConnection;
 
+/**
+ * The [constraints](https://shopify.dev/apps/build/custom-data/metafields/conditional-metafield-definitions)
+ * that determine what subtypes of resources a metafield definition applies to.
+ */
 class ShopifyMetafieldDefinitionConstraints
 {
     protected $key;
@@ -11,18 +15,22 @@ class ShopifyMetafieldDefinitionConstraints
 
     
     /**
+     * The category of resource subtypes that the definition applies to.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * The specific constraint subtype values that the definition applies to.
+     *
      * @return ShopifyMetafieldDefinitionConstraintValueConnection
      */
-    public function getValues()
+    public function getValues(): ?ShopifyMetafieldDefinitionConstraintValueConnection
     {
         return $this->values;
     }

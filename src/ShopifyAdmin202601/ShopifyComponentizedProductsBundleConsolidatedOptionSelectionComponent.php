@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A component that's included in a bundle consolidated option selection.
+ */
 class ShopifyComponentizedProductsBundleConsolidatedOptionSelectionComponent
 {
     protected $optionId;
@@ -9,18 +12,22 @@ class ShopifyComponentizedProductsBundleConsolidatedOptionSelectionComponent
 
     
     /**
+     * The ID of the component's option that's included in this consolidated option selection.
+     *
      * @return string
      */
-    public function getOptionId()
+    public function getOptionId(): ?string
     {
         return $this->optionId;
     }
 
     
     /**
+     * The value of the component's option value that's included in this consolidated option selection.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

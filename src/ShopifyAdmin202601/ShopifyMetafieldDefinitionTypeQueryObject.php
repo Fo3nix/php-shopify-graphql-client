@@ -4,25 +4,38 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A metafield definition type provides basic foundation and validation for a metafield.
+ */
 class ShopifyMetafieldDefinitionTypeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetafieldDefinitionType";
 
-    public function selectCategory()
+    /**
+     * The category associated with the metafield definition type.
+     */
+    public function selectCategory(): static
     {
         $this->selectField("category");
 
         return $this;
     }
 
-    public function selectName()
+    /**
+     * The name of the type for the metafield definition.
+     * See the list of [supported types](https://shopify.dev/apps/metafields/types).
+     */
+    public function selectName(): static
     {
         $this->selectField("name");
 
         return $this;
     }
 
-    public function selectSupportedValidations(ShopifyMetafieldDefinitionTypeSupportedValidationsArgumentsObject $argsObject = null)
+    /**
+     * The supported validations for a metafield definition type.
+     */
+    public function selectSupportedValidations(?ShopifyMetafieldDefinitionTypeSupportedValidationsArgumentsObject $argsObject = null): ShopifyMetafieldDefinitionSupportedValidationQueryObject
     {
         $object = new ShopifyMetafieldDefinitionSupportedValidationQueryObject("supportedValidations");
         if ($argsObject !== null) {
@@ -33,7 +46,10 @@ class ShopifyMetafieldDefinitionTypeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectSupportsDefinitionMigrations()
+    /**
+     * Whether metafields without a definition can be migrated to a definition of this type.
+     */
+    public function selectSupportsDefinitionMigrations(): static
     {
         $this->selectField("supportsDefinitionMigrations");
 
@@ -41,9 +57,11 @@ class ShopifyMetafieldDefinitionTypeQueryObject extends QueryObject
     }
 
     /**
+     * The value type for a metafield created with this definition type.
+     *
      * @deprecated `valueType` is deprecated and `name` should be used for type information.
      */
-    public function selectValueType()
+    public function selectValueType(): static
     {
         $this->selectField("valueType");
 

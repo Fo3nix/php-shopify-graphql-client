@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The Online Store capability for the parent metaobject.
+ */
 class ShopifyMetaobjectCapabilityDataOnlineStore
 {
     protected $templateSuffix;
 
     
     /**
+     * The theme template used when viewing the metaobject in a store.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }

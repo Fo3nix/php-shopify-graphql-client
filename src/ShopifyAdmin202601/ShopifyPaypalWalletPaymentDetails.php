@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-class ShopifyPaypalWalletPaymentDetails
+/**
+ * PayPal Wallet payment details related to a transaction.
+ */
+class ShopifyPaypalWalletPaymentDetails implements ShopifyBasePaymentDetails
 {
     protected $paymentMethodName;
 
     
     /**
+     * The name of payment method used by the buyer.
+     *
      * @return string
      */
-    public function getPaymentMethodName()
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }

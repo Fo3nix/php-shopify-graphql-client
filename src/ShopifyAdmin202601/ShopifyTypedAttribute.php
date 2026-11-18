@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents a typed custom attribute.
+ */
 class ShopifyTypedAttribute
 {
     protected $key;
@@ -9,18 +12,22 @@ class ShopifyTypedAttribute
 
     
     /**
+     * Key or name of the attribute.
+     *
      * @return string
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     
     /**
+     * Value of the attribute.
+     *
      * @return string
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }

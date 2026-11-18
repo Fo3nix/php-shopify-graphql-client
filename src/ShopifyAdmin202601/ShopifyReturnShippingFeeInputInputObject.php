@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for a return shipping fee.
+ */
 class ShopifyReturnShippingFeeInputInputObject extends InputObject
 {
+    const REQUIRED = ["amount"];
+
     protected $amount;
 
-    public function setAmount(ShopifyMoneyInputInputObject $shopifyMoneyInputInputObject)
+    /**
+     * The value of the fee as a fixed amount in the presentment currency of the order.
+     */
+    public function setAmount(ShopifyMoneyInputInputObject $shopifyMoneyInputInputObject): static
     {
         $this->amount = $shopifyMoneyInputInputObject;
 

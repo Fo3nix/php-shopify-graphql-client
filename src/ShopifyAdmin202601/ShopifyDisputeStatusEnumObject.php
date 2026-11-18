@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\EnumObject;
 
+/**
+ * The possible statuses of a dispute.
+ */
 class ShopifyDisputeStatusEnumObject extends EnumObject
 {
     const ACCEPTED = "ACCEPTED";

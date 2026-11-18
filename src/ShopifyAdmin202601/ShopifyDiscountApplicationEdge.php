@@ -2,6 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountApplicationHydrator;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyDiscountApplication;
+
+/**
+ * An auto-generated type which holds one DiscountApplication and a cursor during pagination.
+ */
 class ShopifyDiscountApplicationEdge
 {
     protected $cursor;
@@ -9,18 +15,22 @@ class ShopifyDiscountApplicationEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
-     * @return mixed
+     * The item at the end of DiscountApplicationEdge.
+     *
+     * @return ShopifyDiscountApplication
      */
-    public function getNode()
+    public function getNode(): ?ShopifyDiscountApplication
     {
         return $this->node;
     }
@@ -36,7 +46,7 @@ class ShopifyDiscountApplicationEdge
                 $instance->cursor = $data['cursor'];
             }
             if (isset($data['node']) && $data['node'] !== null) {
-                $instance->node = $data['node'];
+                $instance->node = ShopifyDiscountApplicationHydrator::fromArray($data['node']);
             }
             return $instance;
         }
@@ -65,7 +75,7 @@ class ShopifyDiscountApplicationEdge
                 $data['cursor'] = $this->cursor;
             }
             if ($this->node !== null) {
-                $data['node'] = $this->node;
+                $data['node'] = ShopifyDiscountApplicationHydrator::toArray($this->node);
             }
             return $data;
         }

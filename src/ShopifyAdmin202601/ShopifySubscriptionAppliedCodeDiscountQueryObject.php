@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents an applied code discount.
+ */
 class ShopifySubscriptionAppliedCodeDiscountQueryObject extends QueryObject
 {
     const OBJECT_NAME = "SubscriptionAppliedCodeDiscount";
 
-    public function selectId()
+    /**
+     * The unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectRedeemCode()
+    /**
+     * The redeem code of the discount that applies on the subscription.
+     */
+    public function selectRedeemCode(): static
     {
         $this->selectField("redeemCode");
 
         return $this;
     }
 
-    public function selectRejectionReason()
+    /**
+     * The reason that the discount on the subscription draft is rejected.
+     */
+    public function selectRejectionReason(): static
     {
         $this->selectField("rejectionReason");
 

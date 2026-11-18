@@ -5,6 +5,11 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyAppSubscriptionDiscount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 
+/**
+ * The pricing information about a subscription app.
+ * The object contains an interval (the frequency at which the shop is billed for an app subscription) and
+ * a price (the amount to be charged to the subscribing shop at each interval).
+ */
 class ShopifyAppRecurringPricing
 {
     protected $discount;
@@ -14,36 +19,44 @@ class ShopifyAppRecurringPricing
 
     
     /**
+     * The discount applied to the subscription for a given number of billing intervals.
+     *
      * @return ShopifyAppSubscriptionDiscount
      */
-    public function getDiscount()
+    public function getDiscount(): ?ShopifyAppSubscriptionDiscount
     {
         return $this->discount;
     }
 
     
     /**
-     * @return ShopifyAppPricingIntervalEnumObject
+     * The frequency at which the subscribing shop is billed for an app subscription.
+     *
+     * @return string A ShopifyAppPricingIntervalEnumObject value
      */
-    public function getInterval()
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
 
     
     /**
+     * The app store pricing plan handle.
+     *
      * @return string
      */
-    public function getPlanHandle()
+    public function getPlanHandle(): ?string
     {
         return $this->planHandle;
     }
 
     
     /**
+     * The amount and currency to be charged to the subscribing shop every billing interval.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPrice()
+    public function getPrice(): ?ShopifyMoneyV2
     {
         return $this->price;
     }

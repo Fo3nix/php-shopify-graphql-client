@@ -4,11 +4,19 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * An instance of custom structured data defined by a [`MetaobjectDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/MetaobjectDefinition). [Metaobjects](https://shopify.dev/docs/apps/build/custom-data#what-are-metaobjects) store reusable data that extends beyond Shopify's standard resources, such as product highlights, size charts, or custom content sections.
+ *
+ * Each metaobject includes fields that match the field types and validation rules specified in its definition, which also determines the metaobject's capabilities, such as storefront visibility, publishing and translation support. [`Metafields`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Metafield) can reference metaobjects to connect custom data with [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects, [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) objects, and other Shopify resources.
+ */
 class ShopifyMetaobjectQueryObject extends QueryObject
 {
     const OBJECT_NAME = "Metaobject";
 
-    public function selectCapabilities(ShopifyMetaobjectCapabilitiesArgumentsObject $argsObject = null)
+    /**
+     * Metaobject capabilities for this Metaobject.
+     */
+    public function selectCapabilities(?ShopifyMetaobjectCapabilitiesArgumentsObject $argsObject = null): ShopifyMetaobjectCapabilityDataQueryObject
     {
         $object = new ShopifyMetaobjectCapabilityDataQueryObject("capabilities");
         if ($argsObject !== null) {
@@ -19,14 +27,20 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * When the object was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCreatedBy(ShopifyMetaobjectCreatedByArgumentsObject $argsObject = null)
+    /**
+     * The app used to create the object.
+     */
+    public function selectCreatedBy(?ShopifyMetaobjectCreatedByArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("createdBy");
         if ($argsObject !== null) {
@@ -37,7 +51,10 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedByApp(ShopifyMetaobjectCreatedByAppArgumentsObject $argsObject = null)
+    /**
+     * The app used to create the object.
+     */
+    public function selectCreatedByApp(?ShopifyMetaobjectCreatedByAppArgumentsObject $argsObject = null): ShopifyAppQueryObject
     {
         $object = new ShopifyAppQueryObject("createdByApp");
         if ($argsObject !== null) {
@@ -48,7 +65,10 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedByStaff(ShopifyMetaobjectCreatedByStaffArgumentsObject $argsObject = null)
+    /**
+     * The staff member who created the metaobject.
+     */
+    public function selectCreatedByStaff(?ShopifyMetaobjectCreatedByStaffArgumentsObject $argsObject = null): ShopifyStaffMemberQueryObject
     {
         $object = new ShopifyStaffMemberQueryObject("createdByStaff");
         if ($argsObject !== null) {
@@ -59,7 +79,10 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDefinition(ShopifyMetaobjectDefinitionArgumentsObject $argsObject = null)
+    /**
+     * The MetaobjectDefinition that models this object type.
+     */
+    public function selectDefinition(?ShopifyMetaobjectDefinitionArgumentsObject $argsObject = null): ShopifyMetaobjectDefinitionQueryObject
     {
         $object = new ShopifyMetaobjectDefinitionQueryObject("definition");
         if ($argsObject !== null) {
@@ -70,25 +93,32 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDisplayName()
+    /**
+     * The preferred display name field value of the metaobject.
+     */
+    public function selectDisplayName(): static
     {
         $this->selectField("displayName");
 
         return $this;
     }
 
-    public function selectField_(ShopifyMetaobjectFieldArgumentsObject $argsObject = null)
+    /**
+     * The field for an object key, or null if the key has no field definition.
+     */
+    public function selectField_(ShopifyMetaobjectFieldArgumentsObject $argsObject): ShopifyMetaobjectFieldQueryObject
     {
         $object = new ShopifyMetaobjectFieldQueryObject("field");
-        if ($argsObject !== null) {
-            $object->appendArguments($argsObject->toArray());
-        }
+        $object->appendArguments($argsObject->toArray());
         $this->selectField($object);
 
         return $object;
     }
 
-    public function selectFields(ShopifyMetaobjectFieldsArgumentsObject $argsObject = null)
+    /**
+     * All ordered fields of the metaobject with their definitions and values.
+     */
+    public function selectFields(?ShopifyMetaobjectFieldsArgumentsObject $argsObject = null): ShopifyMetaobjectFieldQueryObject
     {
         $object = new ShopifyMetaobjectFieldQueryObject("fields");
         if ($argsObject !== null) {
@@ -99,21 +129,30 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectHandle()
+    /**
+     * The unique handle of the object, useful as a custom ID.
+     */
+    public function selectHandle(): static
     {
         $this->selectField("handle");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectReferencedBy(ShopifyMetaobjectReferencedByArgumentsObject $argsObject = null)
+    /**
+     * List of back references metafields that belong to the resource.
+     */
+    public function selectReferencedBy(?ShopifyMetaobjectReferencedByArgumentsObject $argsObject = null): ShopifyMetafieldRelationConnectionQueryObject
     {
         $object = new ShopifyMetafieldRelationConnectionQueryObject("referencedBy");
         if ($argsObject !== null) {
@@ -125,9 +164,11 @@ class ShopifyMetaobjectQueryObject extends QueryObject
     }
 
     /**
+     * The staff member who created the metaobject.
+     *
      * @deprecated Use `createdByStaff` instead.
      */
-    public function selectStaffMember(ShopifyMetaobjectStaffMemberArgumentsObject $argsObject = null)
+    public function selectStaffMember(?ShopifyMetaobjectStaffMemberArgumentsObject $argsObject = null): ShopifyStaffMemberQueryObject
     {
         $object = new ShopifyStaffMemberQueryObject("staffMember");
         if ($argsObject !== null) {
@@ -138,7 +179,10 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectThumbnailField(ShopifyMetaobjectThumbnailFieldArgumentsObject $argsObject = null)
+    /**
+     * The recommended field to visually represent this metaobject. May be a file reference or color         field.
+     */
+    public function selectThumbnailField(?ShopifyMetaobjectThumbnailFieldArgumentsObject $argsObject = null): ShopifyMetaobjectFieldQueryObject
     {
         $object = new ShopifyMetaobjectFieldQueryObject("thumbnailField");
         if ($argsObject !== null) {
@@ -149,14 +193,20 @@ class ShopifyMetaobjectQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectType()
+    /**
+     * The type of the metaobject.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 
         return $this;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * When the object was last updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

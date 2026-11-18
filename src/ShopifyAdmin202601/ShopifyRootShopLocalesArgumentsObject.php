@@ -8,7 +8,10 @@ class ShopifyRootShopLocalesArgumentsObject extends ArgumentsObject
 {
     protected $published;
 
-    public function setPublished($published)
+    /**
+     * Return only published locales.
+     */
+    public function setPublished($published): static
     {
         $this->published = $published;
 

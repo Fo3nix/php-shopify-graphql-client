@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 
+/**
+ * The return label file information for a reverse delivery.
+ */
 class ShopifyReverseDeliveryLabelV2
 {
     protected $createdAt;
@@ -12,27 +15,33 @@ class ShopifyReverseDeliveryLabelV2
 
     
     /**
+     * The date and time when the reverse delivery label was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * A public link that can be used to download the label image.
+     *
      * @return string
      */
-    public function getPublicFileUrl()
+    public function getPublicFileUrl(): mixed
     {
         return $this->publicFileUrl;
     }
 
     
     /**
+     * The date and time when the reverse delivery label was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

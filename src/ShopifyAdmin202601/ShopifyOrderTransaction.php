@@ -11,12 +11,36 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTransactionFee;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLocation;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrderTransaction;
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyPaymentDetails;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyPaymentDetailsHydrator;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyImage;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyShopifyPaymentsTransactionSet;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyStaffMember;
 
-class ShopifyOrderTransaction
+/**
+ * The `OrderTransaction` object represents a payment transaction that's associated with an order. An order
+ * transaction is a specific action or event that happens within the context of an order, such as a customer paying
+ * for a purchase or receiving a refund, or other payment-related activity.
+ *
+ * Use the `OrderTransaction` object to capture the complete lifecycle of a payment, from initial
+ * authorization to final settlement, including refunds and currency exchanges. Common use cases for using the
+ * `OrderTransaction` object include:
+ *
+ * - Processing new payments for orders
+ * - Managing payment authorizations and captures
+ * - Processing refunds for returned items
+ * - Tracking payment status and errors
+ * - Managing multi-currency transactions
+ * - Handling payment gateway integrations
+ *
+ * Each `OrderTransaction` object has a [`kind`](https://shopify.dev/docs/api/admin-graphql/latest/enums/OrderTransactionKind)
+ * that defines the type of transaction and a [`status`](https://shopify.dev/docs/api/admin-graphql/latest/enums/OrderTransactionStatus)
+ * that indicates the current state of the transaction. The object stores detailed information about payment
+ * methods, gateway processing, and settlement details.
+ *
+ * Learn more about [payment processing](https://help.shopify.com/manual/payments)
+ * and [payment gateway integrations](https://www.shopify.com/ca/payment-gateways).
+ */
+class ShopifyOrderTransaction implements ShopifyNode
 {
     protected $accountNumber;
     protected $amount;
@@ -60,351 +84,443 @@ class ShopifyOrderTransaction
 
     
     /**
+     * The masked account number associated with the payment method.
+     *
      * @return string
      */
-    public function getAccountNumber()
+    public function getAccountNumber(): ?string
     {
         return $this->accountNumber;
     }
 
     
     /**
+     * The amount of money.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }
 
     
     /**
+     * The rounding adjustment applied on the cash amount in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountRoundingSet()
+    public function getAmountRoundingSet(): ?ShopifyMoneyBag
     {
         return $this->amountRoundingSet;
     }
 
     
     /**
+     * The amount and currency of the transaction in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getAmountSet()
+    public function getAmountSet(): ?ShopifyMoneyBag
     {
         return $this->amountSet;
     }
 
     
     /**
+     * The amount and currency of the transaction.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getAmountV2()
+    public function getAmountV2(): ?ShopifyMoneyV2
     {
         return $this->amountV2;
     }
 
     
     /**
+     * Authorization code associated with the transaction.
+     *
      * @return string
      */
-    public function getAuthorizationCode()
+    public function getAuthorizationCode(): ?string
     {
         return $this->authorizationCode;
     }
 
     
     /**
+     * The time when the authorization expires. This field is available only to stores on a Shopify Plus plan.
+     *
      * @return Carbon
      */
-    public function getAuthorizationExpiresAt()
+    public function getAuthorizationExpiresAt(): ?Carbon
     {
         return $this->authorizationExpiresAt;
     }
 
     
     /**
+     * Date and time when the transaction was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * An adjustment on the transaction showing the amount lost or gained  due to fluctuations in the currency exchange rate.
+     *
      * @return ShopifyCurrencyExchangeAdjustment
      */
-    public function getCurrencyExchangeAdjustment()
+    public function getCurrencyExchangeAdjustment(): ?ShopifyCurrencyExchangeAdjustment
     {
         return $this->currencyExchangeAdjustment;
     }
 
     
     /**
+     * The Shopify Point of Sale device used to process the transaction.
+     *
      * @return ShopifyPointOfSaleDevice
      */
-    public function getDevice()
+    public function getDevice(): ?ShopifyPointOfSaleDevice
     {
         return $this->device;
     }
 
     
     /**
-     * @return ShopifyOrderTransactionErrorCodeEnumObject
+     * A standardized error code, independent of the payment provider.
+     *
+     * @return string A ShopifyOrderTransactionErrorCodeEnumObject value
      */
-    public function getErrorCode()
+    public function getErrorCode(): ?string
     {
         return $this->errorCode;
     }
 
     
     /**
+     * The transaction fees charged on the order transaction. Only present for Shopify Payments transactions.
+     *
      * @return ShopifyTransactionFee[]
      */
-    public function getFees()
+    public function getFees(): ?array
     {
         return $this->fees;
     }
 
     
     /**
+     * The human-readable payment gateway name used to process the transaction.
+     *
      * @return string
      */
-    public function getFormattedGateway()
+    public function getFormattedGateway(): ?string
     {
         return $this->formattedGateway;
     }
 
     
     /**
+     * The payment gateway used to process the transaction.
+     *
      * @return string
      */
-    public function getGateway()
+    public function getGateway(): ?string
     {
         return $this->gateway;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
-     * @return ShopifyOrderTransactionKindEnumObject
+     * The kind of transaction.
+     *
+     * @return string A ShopifyOrderTransactionKindEnumObject value
      */
-    public function getKind()
+    public function getKind(): ?string
     {
         return $this->kind;
     }
 
     
     /**
+     * The physical location where the transaction was processed.
+     *
      * @return ShopifyLocation
      */
-    public function getLocation()
+    public function getLocation(): ?ShopifyLocation
     {
         return $this->location;
     }
 
     
     /**
+     * Whether the transaction is processed by manual payment gateway.
+     *
      * @return bool
      */
-    public function getManualPaymentGateway()
+    public function getManualPaymentGateway(): ?bool
     {
         return $this->manualPaymentGateway;
     }
 
     
     /**
+     * Whether the transaction can be manually captured.
+     *
      * @return bool
      */
-    public function getManuallyCapturable()
+    public function getManuallyCapturable(): ?bool
     {
         return $this->manuallyCapturable;
     }
 
     
     /**
+     * Specifies the available amount to refund on the gateway.
+     * This value is only available for transactions of type `SuggestedRefund`.
+     *
      * @return string
      */
-    public function getMaximumRefundable()
+    public function getMaximumRefundable(): mixed
     {
         return $this->maximumRefundable;
     }
 
     
     /**
+     * Specifies the available amount with currency to refund on the gateway.
+     * This value is only available for transactions of type `SuggestedRefund`.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getMaximumRefundableV2()
+    public function getMaximumRefundableV2(): ?ShopifyMoneyV2
     {
         return $this->maximumRefundableV2;
     }
 
     
     /**
+     * Whether the transaction can be captured multiple times.
+     *
      * @return bool
      */
-    public function getMultiCapturable()
+    public function getMultiCapturable(): ?bool
     {
         return $this->multiCapturable;
     }
 
     
     /**
+     * The associated order.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The associated parent transaction, for example the authorization of a capture.
+     *
      * @return ShopifyOrderTransaction
      */
-    public function getParentTransaction()
+    public function getParentTransaction(): ?ShopifyOrderTransaction
     {
         return $this->parentTransaction;
     }
 
     
     /**
-     * @return ShopifyPaymentDetails
+     * The payment details for the transaction.
+     *
+     * @return ShopifyCardPaymentDetails|ShopifyLocalPaymentMethodsPaymentDetails|ShopifyPaypalWalletPaymentDetails|ShopifyShopPayInstallmentsPaymentDetails
      */
-    public function getPaymentDetails()
+    public function getPaymentDetails(): ShopifyCardPaymentDetails|ShopifyLocalPaymentMethodsPaymentDetails|ShopifyPaypalWalletPaymentDetails|ShopifyShopPayInstallmentsPaymentDetails|null
     {
         return $this->paymentDetails;
     }
 
     
     /**
+     * The payment icon to display for the transaction.
+     *
      * @return ShopifyImage
      */
-    public function getPaymentIcon()
+    public function getPaymentIcon(): ?ShopifyImage
     {
         return $this->paymentIcon;
     }
 
     
     /**
+     * The payment ID associated with the transaction.
+     *
      * @return string
      */
-    public function getPaymentId()
+    public function getPaymentId(): ?string
     {
         return $this->paymentId;
     }
 
     
     /**
-     * @return ShopifyPaymentMethodsEnumObject
+     * The payment method used for the transaction. This value is `null` if the payment method is unknown.
+     *
+     * @return string A ShopifyPaymentMethodsEnumObject value
      */
-    public function getPaymentMethod()
+    public function getPaymentMethod(): ?string
     {
         return $this->paymentMethod;
     }
 
     
     /**
+     * Date and time when the transaction was processed.
+     *
      * @return Carbon
      */
-    public function getProcessedAt()
+    public function getProcessedAt(): ?Carbon
     {
         return $this->processedAt;
     }
 
     
     /**
+     * The transaction receipt that the payment gateway attaches to the transaction.
+     * > **Note:** This field is **gateway-specific** and **not a stable contract**.
+     * > Its structure and contents can vary by payment gateway and may change without notice.
+     * > Apps **shouldn't parse or rely on this field for business logic**; prefer typed fields on `OrderTransaction` and related objects.
+     *
      * @return string
      */
-    public function getReceiptJson()
+    public function getReceiptJson(): mixed
     {
         return $this->receiptJson;
     }
 
     
     /**
-     * @return ShopifyCurrencyCodeEnumObject
+     * The settlement currency.
+     *
+     * @return string A ShopifyCurrencyCodeEnumObject value
      */
-    public function getSettlementCurrency()
+    public function getSettlementCurrency(): ?string
     {
         return $this->settlementCurrency;
     }
 
     
     /**
+     * The rate used when converting the transaction amount to settlement currency.
+     *
      * @return string
      */
-    public function getSettlementCurrencyRate()
+    public function getSettlementCurrencyRate(): mixed
     {
         return $this->settlementCurrencyRate;
     }
 
     
     /**
+     * Contains all Shopify Payments information related to an order transaction. This field is available only to stores on a Shopify Plus plan.
+     *
      * @return ShopifyShopifyPaymentsTransactionSet
      */
-    public function getShopifyPaymentsSet()
+    public function getShopifyPaymentsSet(): ?ShopifyShopifyPaymentsTransactionSet
     {
         return $this->shopifyPaymentsSet;
     }
 
     
     /**
-     * @return ShopifyOrderTransactionStatusEnumObject
+     * The status of this transaction.
+     *
+     * @return string A ShopifyOrderTransactionStatusEnumObject value
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     
     /**
+     * Whether the transaction is a test transaction.
+     *
      * @return bool
      */
-    public function getTest()
+    public function getTest(): ?bool
     {
         return $this->test;
     }
 
     
     /**
+     * The amount of the original authorization that remains unsettled.
+     * During a pending capture, this reflects the full outstanding balance including the pending amount.
+     * When no capture is pending, this equals the capturable amount.
+     * Only available when an amount is capturable or manually marked as paid.
+     *
      * @return string
      */
-    public function getTotalUnsettled()
+    public function getTotalUnsettled(): mixed
     {
         return $this->totalUnsettled;
     }
 
     
     /**
+     * The amount of the original authorization that remains unsettled, in shop and presentment currencies.
+     * During a pending capture, this reflects the full outstanding balance including the pending amount.
+     * When no capture is pending, this equals the capturable amount.
+     * Only available when an amount is capturable or manually marked as paid.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getTotalUnsettledSet()
+    public function getTotalUnsettledSet(): ?ShopifyMoneyBag
     {
         return $this->totalUnsettledSet;
     }
 
     
     /**
+     * The amount with currency of the original authorization that remains unsettled.
+     * During a pending capture, this reflects the full outstanding balance including the pending amount.
+     * When no capture is pending, this equals the capturable amount.
+     * Only available when an amount is capturable or manually marked as paid.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getTotalUnsettledV2()
+    public function getTotalUnsettledV2(): ?ShopifyMoneyV2
     {
         return $this->totalUnsettledV2;
     }
 
     
     /**
+     * Staff member who was logged into the Shopify POS device when the transaction was processed.
+     *
      * @return ShopifyStaffMember
      */
-    public function getUser()
+    public function getUser(): ?ShopifyStaffMember
     {
         return $this->user;
     }
@@ -489,7 +605,7 @@ class ShopifyOrderTransaction
                 $instance->parentTransaction = ShopifyOrderTransaction::fromArray($data['parentTransaction']);
             }
             if (isset($data['paymentDetails']) && $data['paymentDetails'] !== null) {
-                $instance->paymentDetails = ShopifyPaymentDetails::fromArray($data['paymentDetails']);
+                $instance->paymentDetails = ShopifyPaymentDetailsHydrator::fromArray($data['paymentDetails']);
             }
             if (isset($data['paymentIcon']) && $data['paymentIcon'] !== null) {
                 $instance->paymentIcon = ShopifyImage::fromArray($data['paymentIcon']);
@@ -629,7 +745,7 @@ class ShopifyOrderTransaction
                 $data['parentTransaction'] = $this->parentTransaction->asArray();
             }
             if ($this->paymentDetails !== null) {
-                $data['paymentDetails'] = $this->paymentDetails->asArray();
+                $data['paymentDetails'] = ShopifyPaymentDetailsHydrator::toArray($this->paymentDetails);
             }
             if ($this->paymentIcon !== null) {
                 $data['paymentIcon'] = $this->paymentIcon->asArray();

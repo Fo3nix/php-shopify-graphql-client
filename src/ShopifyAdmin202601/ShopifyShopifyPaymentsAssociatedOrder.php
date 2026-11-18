@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The order associated to the balance transaction.
+ */
 class ShopifyShopifyPaymentsAssociatedOrder
 {
     protected $id;
@@ -9,18 +12,22 @@ class ShopifyShopifyPaymentsAssociatedOrder
 
     
     /**
+     * The ID of the associated order.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The name of the associated order.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

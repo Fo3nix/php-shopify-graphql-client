@@ -2,9 +2,12 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
-use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOnlineStoreThemeFileBody;
+use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOnlineStoreThemeFileBodyHydrator;
 use Carbon\Carbon;
 
+/**
+ * Represents a theme file.
+ */
 class ShopifyOnlineStoreThemeFile
 {
     protected $body;
@@ -17,63 +20,77 @@ class ShopifyOnlineStoreThemeFile
 
     
     /**
-     * @return ShopifyOnlineStoreThemeFileBody
+     * The body of the theme file.
+     *
+     * @return ShopifyOnlineStoreThemeFileBodyBase64|ShopifyOnlineStoreThemeFileBodyText|ShopifyOnlineStoreThemeFileBodyUrl
      */
-    public function getBody()
+    public function getBody(): ShopifyOnlineStoreThemeFileBodyBase64|ShopifyOnlineStoreThemeFileBodyText|ShopifyOnlineStoreThemeFileBodyUrl|null
     {
         return $this->body;
     }
 
     
     /**
+     * The md5 digest of the theme file for data integrity.
+     *
      * @return string
      */
-    public function getChecksumMd5()
+    public function getChecksumMd5(): ?string
     {
         return $this->checksumMd5;
     }
 
     
     /**
+     * The content type of the theme file.
+     *
      * @return string
      */
-    public function getContentType()
+    public function getContentType(): ?string
     {
         return $this->contentType;
     }
 
     
     /**
+     * The date and time when the theme file was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The unique identifier of the theme file.
+     *
      * @return string
      */
-    public function getFilename()
+    public function getFilename(): ?string
     {
         return $this->filename;
     }
 
     
     /**
+     * The size of the theme file in bytes.
+     *
      * @return string
      */
-    public function getSize()
+    public function getSize(): mixed
     {
         return $this->size;
     }
 
     
     /**
+     * The date and time when the theme file was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }
@@ -86,7 +103,7 @@ class ShopifyOnlineStoreThemeFile
         {
             $instance = new self();
             if (isset($data['body']) && $data['body'] !== null) {
-                $instance->body = ShopifyOnlineStoreThemeFileBody::fromArray($data['body']);
+                $instance->body = ShopifyOnlineStoreThemeFileBodyHydrator::fromArray($data['body']);
             }
             if (isset($data['checksumMd5']) && $data['checksumMd5'] !== null) {
                 $instance->checksumMd5 = $data['checksumMd5'];
@@ -130,7 +147,7 @@ class ShopifyOnlineStoreThemeFile
         {
             $data = [];
             if ($this->body !== null) {
-                $data['body'] = $this->body->asArray();
+                $data['body'] = ShopifyOnlineStoreThemeFileBodyHydrator::toArray($this->body);
             }
             if ($this->checksumMd5 !== null) {
                 $data['checksumMd5'] = $this->checksumMd5;

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a shipping total for a Shop Pay payment request.
+ */
 class ShopifyShopPayPaymentRequestTotalShippingPriceQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopPayPaymentRequestTotalShippingPrice";
 
-    public function selectDiscounts(ShopifyShopPayPaymentRequestTotalShippingPriceDiscountsArgumentsObject $argsObject = null)
+    /**
+     * The discounts for the shipping total.
+     */
+    public function selectDiscounts(?ShopifyShopPayPaymentRequestTotalShippingPriceDiscountsArgumentsObject $argsObject = null): ShopifyShopPayPaymentRequestDiscountQueryObject
     {
         $object = new ShopifyShopPayPaymentRequestDiscountQueryObject("discounts");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyShopPayPaymentRequestTotalShippingPriceQueryObject extends QueryObj
         return $object;
     }
 
-    public function selectFinalTotal(ShopifyShopPayPaymentRequestTotalShippingPriceFinalTotalArgumentsObject $argsObject = null)
+    /**
+     * The final total for the shipping line.
+     */
+    public function selectFinalTotal(?ShopifyShopPayPaymentRequestTotalShippingPriceFinalTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("finalTotal");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyShopPayPaymentRequestTotalShippingPriceQueryObject extends QueryObj
         return $object;
     }
 
-    public function selectOriginalTotal(ShopifyShopPayPaymentRequestTotalShippingPriceOriginalTotalArgumentsObject $argsObject = null)
+    /**
+     * The original total for the shipping line.
+     */
+    public function selectOriginalTotal(?ShopifyShopPayPaymentRequestTotalShippingPriceOriginalTotalArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("originalTotal");
         if ($argsObject !== null) {

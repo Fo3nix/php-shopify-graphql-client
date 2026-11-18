@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySubscriptionCyclePriceAdjustment;
 
+/**
+ * Represents a Subscription Line Pricing Policy.
+ */
 class ShopifySubscriptionPricingPolicy
 {
     protected $basePrice;
@@ -12,18 +15,22 @@ class ShopifySubscriptionPricingPolicy
 
     
     /**
+     * The base price per unit for the subscription line in the contract's currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getBasePrice()
+    public function getBasePrice(): ?ShopifyMoneyV2
     {
         return $this->basePrice;
     }
 
     
     /**
+     * The adjustments per cycle for the subscription line.
+     *
      * @return ShopifySubscriptionCyclePriceAdjustment[]
      */
-    public function getCycleDiscounts()
+    public function getCycleDiscounts(): ?array
     {
         return $this->cycleDiscounts;
     }

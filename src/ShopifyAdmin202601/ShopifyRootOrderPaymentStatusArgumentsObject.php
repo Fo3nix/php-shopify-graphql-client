@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootOrderPaymentStatusArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["paymentReferenceId", "orderId"];
+
     protected $paymentReferenceId;
     protected $orderId;
 
-    public function setPaymentReferenceId($paymentReferenceId)
+    /**
+     * Unique identifier returned by orderCreatePayment.
+     */
+    public function setPaymentReferenceId($paymentReferenceId): static
     {
         $this->paymentReferenceId = $paymentReferenceId;
 
         return $this;
     }
 
-    public function setOrderId($orderId)
+    /**
+     * ID of the order for which the payment was initiated.
+     */
+    public function setOrderId($orderId): static
     {
         $this->orderId = $orderId;
 

@@ -6,7 +6,10 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafield;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMetafieldConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyTranslation;
 
-class ShopifyImage
+/**
+ * Represents an image resource.
+ */
+class ShopifyImage implements ShopifyHasMetafields, ShopifyHasPublishedTranslations
 {
     protected $altText;
     protected $height;
@@ -23,108 +26,148 @@ class ShopifyImage
 
     
     /**
+     * A word or phrase to share the nature or contents of an image.
+     *
      * @return string
      */
-    public function getAltText()
+    public function getAltText(): ?string
     {
         return $this->altText;
     }
 
     
     /**
+     * The original height of the image in pixels. Returns `null` if the image isn't hosted by Shopify.
+     *
      * @return int
      */
-    public function getHeight()
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
     
     /**
+     * A unique ID for the image.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     *
      * @return ShopifyMetafield
      */
-    public function getMetafield()
+    public function getMetafield(): ?ShopifyMetafield
     {
         return $this->metafield;
     }
 
     
     /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     *
      * @return ShopifyMetafieldConnection
      */
-    public function getMetafields()
+    public function getMetafields(): ?ShopifyMetafieldConnection
     {
         return $this->metafields;
     }
 
     
     /**
+     * The location of the original image as a URL.
+     *
+     * If there are any existing transformations in the original source URL, they will remain and not be stripped.
+     *
      * @return string
      */
-    public function getOriginalSrc()
+    public function getOriginalSrc(): mixed
     {
         return $this->originalSrc;
     }
 
     
     /**
+     * The location of the image as a URL.
+     *
      * @return string
      */
-    public function getSrc()
+    public function getSrc(): mixed
     {
         return $this->src;
     }
 
     
     /**
+     * The ThumbHash of the image.
+     *
+     * Useful to display placeholder images while the original image is loading.
+     *
      * @return string
      */
-    public function getThumbhash()
+    public function getThumbhash(): ?string
     {
         return $this->thumbhash;
     }
 
     
     /**
+     * The location of the transformed image as a URL.
+     *
+     * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
+     * Otherwise any transformations which an image type doesn't support will be ignored.
+     *
      * @return string
      */
-    public function getTransformedSrc()
+    public function getTransformedSrc(): mixed
     {
         return $this->transformedSrc;
     }
 
     
     /**
+     * The published translations associated with the resource.
+     *
      * @return ShopifyTranslation[]
      */
-    public function getTranslations()
+    public function getTranslations(): ?array
     {
         return $this->translations;
     }
 
     
     /**
+     * The location of the image as a URL.
+     *
+     * If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
+     *
+     * All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
+     *
+     * If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): mixed
     {
         return $this->url;
     }
 
     
     /**
+     * The original width of the image in pixels. Returns `null` if the image isn't hosted by Shopify.
+     *
      * @return int
      */
-    public function getWidth()
+    public function getWidth(): ?int
     {
         return $this->width;
     }

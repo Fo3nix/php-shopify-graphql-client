@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyAppRevenueAttributionRecord;
 
+/**
+ * An auto-generated type which holds one AppRevenueAttributionRecord and a cursor during pagination.
+ */
 class ShopifyAppRevenueAttributionRecordEdge
 {
     protected $cursor;
@@ -11,18 +14,22 @@ class ShopifyAppRevenueAttributionRecordEdge
 
     
     /**
+     * The position of each node in an array, used in [pagination](https://shopify.dev/api/usage/pagination-graphql).
+     *
      * @return string
      */
-    public function getCursor()
+    public function getCursor(): ?string
     {
         return $this->cursor;
     }
 
     
     /**
+     * The item at the end of AppRevenueAttributionRecordEdge.
+     *
      * @return ShopifyAppRevenueAttributionRecord
      */
-    public function getNode()
+    public function getNode(): ?ShopifyAppRevenueAttributionRecord
     {
         return $this->node;
     }

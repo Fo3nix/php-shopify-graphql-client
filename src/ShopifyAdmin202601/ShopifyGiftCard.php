@@ -9,7 +9,14 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyOrder;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyGiftCardRecipient;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyGiftCardTransactionConnection;
 
-class ShopifyGiftCard
+/**
+ * A gift card that customers use as a payment method. Stores the initial value, current balance, and expiration date.
+ *
+ * You can issue gift cards to a specific [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) or send them to a [`GiftCardRecipient`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardRecipient) with a personalized message. The card tracks its transaction history through [`GiftCardCreditTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardCreditTransaction) and [`GiftCardDebitTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardDebitTransaction) records. You can create and deactivate gift cards using the [`GiftCardCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/giftCardCreate) and [`GiftCardDeactivate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/giftCardDeactivate) mutations, respectively.
+ *
+ * > Note: After a gift card is deactivated, it can't be used for further purchases or re-enabled.
+ */
+class ShopifyGiftCard implements ShopifyNode
 {
     protected $balance;
     protected $createdAt;
@@ -30,144 +37,176 @@ class ShopifyGiftCard
 
     
     /**
+     * The gift card's remaining balance.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getBalance()
+    public function getBalance(): ?ShopifyMoneyV2
     {
         return $this->balance;
     }
 
     
     /**
+     * The date and time at which the gift card was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
+     * The customer that the gift card was sold or issued to, as opposed to the gift recipient. This customer can be reassigned.
+     *
      * @return ShopifyCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): ?ShopifyCustomer
     {
         return $this->customer;
     }
 
     
     /**
+     * The date and time at which the gift card was deactivated.
+     *
      * @return Carbon
      */
-    public function getDeactivatedAt()
+    public function getDeactivatedAt(): ?Carbon
     {
         return $this->deactivatedAt;
     }
 
     
     /**
+     * Whether the gift card is enabled.
+     *
      * @return bool
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     
     /**
+     * The date at which the gift card will expire.
+     *
      * @return Carbon
      */
-    public function getExpiresOn()
+    public function getExpiresOn(): ?Carbon
     {
         return $this->expiresOn;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The initial value of the gift card.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getInitialValue()
+    public function getInitialValue(): ?ShopifyMoneyV2
     {
         return $this->initialValue;
     }
 
     
     /**
+     * The final four characters of the gift card code.
+     *
      * @return string
      */
-    public function getLastCharacters()
+    public function getLastCharacters(): ?string
     {
         return $this->lastCharacters;
     }
 
     
     /**
+     * The gift card code. Everything but the final four characters is masked.
+     *
      * @return string
      */
-    public function getMaskedCode()
+    public function getMaskedCode(): ?string
     {
         return $this->maskedCode;
     }
 
     
     /**
+     * The note associated with the gift card, which isn't visible to the customer.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
     
     /**
+     * The order associated with the gift card. This value is `null` if the gift card was issued manually.
+     *
      * @return ShopifyOrder
      */
-    public function getOrder()
+    public function getOrder(): ?ShopifyOrder
     {
         return $this->order;
     }
 
     
     /**
+     * The recipient of the gift card and the details sent with it: preferred name, message, and send time.
+     *
      * @return ShopifyGiftCardRecipient
      */
-    public function getRecipientAttributes()
+    public function getRecipientAttributes(): ?ShopifyGiftCardRecipient
     {
         return $this->recipientAttributes;
     }
 
     
     /**
+     * The theme template used to render the gift card online.
+     *
      * @return string
      */
-    public function getTemplateSuffix()
+    public function getTemplateSuffix(): ?string
     {
         return $this->templateSuffix;
     }
 
     
     /**
+     * The transaction history of the gift card.
+     *
      * @return ShopifyGiftCardTransactionConnection
      */
-    public function getTransactions()
+    public function getTransactions(): ?ShopifyGiftCardTransactionConnection
     {
         return $this->transactions;
     }
 
     
     /**
+     * The date and time at which the gift card was updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

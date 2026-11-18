@@ -4,15 +4,20 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMarketsType;
 
+/**
+ * The shop's entitlements.
+ */
 class ShopifyEntitlementsType
 {
     protected $markets;
 
     
     /**
+     * Represents the markets for the shop.
+     *
      * @return ShopifyMarketsType
      */
-    public function getMarkets()
+    public function getMarkets(): ?ShopifyMarketsType
     {
         return $this->markets;
     }

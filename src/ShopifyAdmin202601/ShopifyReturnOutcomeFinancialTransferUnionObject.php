@@ -4,9 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\UnionObject;
 
+/**
+ * The financial transfer details for the return outcome.
+ */
 class ShopifyReturnOutcomeFinancialTransferUnionObject extends UnionObject
 {
-    public function onShopifyInvoiceReturnOutcome()
+    public function onShopifyInvoiceReturnOutcome(): ShopifyInvoiceReturnOutcomeQueryObject
     {
         $object = new ShopifyInvoiceReturnOutcomeQueryObject();
         $this->addPossibleType($object);
@@ -14,7 +17,7 @@ class ShopifyReturnOutcomeFinancialTransferUnionObject extends UnionObject
         return $object;
     }
 
-    public function onShopifyRefundReturnOutcome()
+    public function onShopifyRefundReturnOutcome(): ShopifyRefundReturnOutcomeQueryObject
     {
         $object = new ShopifyRefundReturnOutcomeQueryObject();
         $this->addPossibleType($object);

@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * A purchase amount in the context of a discount. This object can be used to define the minimum purchase amount required for a discount to be applicable.
+ */
 class ShopifyDiscountPurchaseAmount
 {
     protected $amount;
 
     
     /**
+     * The purchase amount in decimal format.
+     *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): mixed
     {
         return $this->amount;
     }

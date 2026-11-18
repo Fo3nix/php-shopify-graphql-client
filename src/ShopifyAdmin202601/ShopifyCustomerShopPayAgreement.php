@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCustomerCreditCardBillingAddress;
 
+/**
+ * Represents a Shop Pay card instrument for customer payment method.
+ */
 class ShopifyCustomerShopPayAgreement
 {
     protected $billingAddress;
@@ -18,81 +21,99 @@ class ShopifyCustomerShopPayAgreement
 
     
     /**
+     * The billing address of the card.
+     *
      * @return ShopifyCustomerCreditCardBillingAddress
      */
-    public function getBillingAddress()
+    public function getBillingAddress(): ?ShopifyCustomerCreditCardBillingAddress
     {
         return $this->billingAddress;
     }
 
     
     /**
+     * Whether the card is about to expire.
+     *
      * @return bool
      */
-    public function getExpiresSoon()
+    public function getExpiresSoon(): ?bool
     {
         return $this->expiresSoon;
     }
 
     
     /**
+     * The expiry month of the card.
+     *
      * @return int
      */
-    public function getExpiryMonth()
+    public function getExpiryMonth(): ?int
     {
         return $this->expiryMonth;
     }
 
     
     /**
+     * The expiry year of the card.
+     *
      * @return int
      */
-    public function getExpiryYear()
+    public function getExpiryYear(): ?int
     {
         return $this->expiryYear;
     }
 
     
     /**
+     * Whether the Shop Pay billing agreement is inactive.
+     *
      * @return bool
      */
-    public function getInactive()
+    public function getInactive(): ?bool
     {
         return $this->inactive;
     }
 
     
     /**
+     * The payment method can be revoked if there are no active subscription contracts.
+     *
      * @return bool
      */
-    public function getIsRevocable()
+    public function getIsRevocable(): ?bool
     {
         return $this->isRevocable;
     }
 
     
     /**
+     * The last 4 digits of the card.
+     *
      * @return string
      */
-    public function getLastDigits()
+    public function getLastDigits(): ?string
     {
         return $this->lastDigits;
     }
 
     
     /**
+     * The masked card number with only the last 4 digits displayed.
+     *
      * @return string
      */
-    public function getMaskedNumber()
+    public function getMaskedNumber(): ?string
     {
         return $this->maskedNumber;
     }
 
     
     /**
+     * The name of the card holder.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

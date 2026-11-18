@@ -2,6 +2,11 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Returns information about pagination in a connection, in accordance with the
+ * [Relay specification](https://relay.dev/graphql/connections.htm#sec-undefined.PageInfo).
+ * For more information, please read our [GraphQL Pagination Usage Guide](https://shopify.dev/api/usage/pagination-graphql).
+ */
 class ShopifyPageInfo
 {
     protected $endCursor;
@@ -11,36 +16,44 @@ class ShopifyPageInfo
 
     
     /**
+     * The cursor corresponding to the last node in edges.
+     *
      * @return string
      */
-    public function getEndCursor()
+    public function getEndCursor(): ?string
     {
         return $this->endCursor;
     }
 
     
     /**
+     * Whether there are more pages to fetch following the current page.
+     *
      * @return bool
      */
-    public function getHasNextPage()
+    public function getHasNextPage(): ?bool
     {
         return $this->hasNextPage;
     }
 
     
     /**
+     * Whether there are any pages prior to the current page.
+     *
      * @return bool
      */
-    public function getHasPreviousPage()
+    public function getHasPreviousPage(): ?bool
     {
         return $this->hasPreviousPage;
     }
 
     
     /**
+     * The cursor corresponding to the first node in edges.
+     *
      * @return string
      */
-    public function getStartCursor()
+    public function getStartCursor(): ?string
     {
         return $this->startCursor;
     }

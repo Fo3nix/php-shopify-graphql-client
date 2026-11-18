@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents a refunded duty.
+ */
 class ShopifyRefundDutyQueryObject extends QueryObject
 {
     const OBJECT_NAME = "RefundDuty";
 
-    public function selectAmountSet(ShopifyRefundDutyAmountSetArgumentsObject $argsObject = null)
+    /**
+     * The amount of a refunded duty in shop and presentment currencies.
+     */
+    public function selectAmountSet(?ShopifyRefundDutyAmountSetArgumentsObject $argsObject = null): ShopifyMoneyBagQueryObject
     {
         $object = new ShopifyMoneyBagQueryObject("amountSet");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyRefundDutyQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectOriginalDuty(ShopifyRefundDutyOriginalDutyArgumentsObject $argsObject = null)
+    /**
+     * The duty associated with this refunded duty.
+     */
+    public function selectOriginalDuty(?ShopifyRefundDutyOriginalDutyArgumentsObject $argsObject = null): ShopifyDutyQueryObject
     {
         $object = new ShopifyDutyQueryObject("originalDuty");
         if ($argsObject !== null) {

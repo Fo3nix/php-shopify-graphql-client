@@ -4,7 +4,12 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifySearchFilter;
 
-class ShopifySavedSearch
+/**
+ * A representation of a search query in the Shopify admin used on resource index views. Preserves complex queries with search terms and filters, enabling merchants to quickly access frequently used data views. For example, a saved search can be applied to the product index table to filter products. The query string combines free-text search terms with structured filters to narrow results based on resource attributes.
+ *
+ * The search applies to a specific resource type such as [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer), [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), or [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) objects.
+ */
+class ShopifySavedSearch implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $filters;
     protected $id;
@@ -15,54 +20,66 @@ class ShopifySavedSearch
 
     
     /**
+     * The filters of a saved search.
+     *
      * @return ShopifySearchFilter[]
      */
-    public function getFilters()
+    public function getFilters(): ?array
     {
         return $this->filters;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The name of a saved search.
+     *
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     
     /**
-     * @return ShopifySearchResultTypeEnumObject
+     * The type of resource this saved search is searching in.
+     *
+     * @return string A ShopifySearchResultTypeEnumObject value
      */
-    public function getResourceType()
+    public function getResourceType(): ?string
     {
         return $this->resourceType;
     }
 
     
     /**
+     * The search terms of a saved search.
+     *
      * @return string
      */
-    public function getSearchTerms()
+    public function getSearchTerms(): ?string
     {
         return $this->searchTerms;
     }

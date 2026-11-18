@@ -4,25 +4,37 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents the information used to track a reverse delivery.
+ */
 class ShopifyReverseDeliveryTrackingV2QueryObject extends QueryObject
 {
     const OBJECT_NAME = "ReverseDeliveryTrackingV2";
 
-    public function selectCarrierName()
+    /**
+     * The provider of the tracking information, in a human-readable format for display purposes.
+     */
+    public function selectCarrierName(): static
     {
         $this->selectField("carrierName");
 
         return $this;
     }
 
-    public function selectNumber()
+    /**
+     * The identifier used by the courier to identify the shipment.
+     */
+    public function selectNumber(): static
     {
         $this->selectField("number");
 
         return $this;
     }
 
-    public function selectUrl()
+    /**
+     * The URL to track a shipment.
+     */
+    public function selectUrl(): static
     {
         $this->selectField("url");
 

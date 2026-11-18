@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * The country-specific harmonized system code and ISO country code for an inventory item.
+ */
 class ShopifyCountryHarmonizedSystemCode
 {
     protected $countryCode;
@@ -9,18 +12,22 @@ class ShopifyCountryHarmonizedSystemCode
 
     
     /**
-     * @return ShopifyCountryCodeEnumObject
+     * The ISO 3166-1 alpha-2 country code for the country that issued the specified harmonized system code.
+     *
+     * @return string A ShopifyCountryCodeEnumObject value
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     
     /**
+     * The country-specific harmonized system code. These are usually longer than 6 digits.
+     *
      * @return string
      */
-    public function getHarmonizedSystemCode()
+    public function getHarmonizedSystemCode(): ?string
     {
         return $this->harmonizedSystemCode;
     }

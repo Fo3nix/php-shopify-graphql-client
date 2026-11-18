@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Transaction fee related to an order transaction.
+ */
 class ShopifyTransactionFeeQueryObject extends QueryObject
 {
     const OBJECT_NAME = "TransactionFee";
 
-    public function selectAmount(ShopifyTransactionFeeAmountArgumentsObject $argsObject = null)
+    /**
+     * Amount of the fee.
+     */
+    public function selectAmount(?ShopifyTransactionFeeAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("amount");
         if ($argsObject !== null) {
@@ -19,14 +25,20 @@ class ShopifyTransactionFeeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time when the transaction fee was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectFlatFee(ShopifyTransactionFeeFlatFeeArgumentsObject $argsObject = null)
+    /**
+     * Flat rate charge for a transaction.
+     */
+    public function selectFlatFee(?ShopifyTransactionFeeFlatFeeArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("flatFee");
         if ($argsObject !== null) {
@@ -37,35 +49,50 @@ class ShopifyTransactionFeeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFlatFeeName()
+    /**
+     * Name of the credit card flat fee.
+     */
+    public function selectFlatFeeName(): static
     {
         $this->selectField("flatFeeName");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectRate()
+    /**
+     * Percentage charge.
+     */
+    public function selectRate(): static
     {
         $this->selectField("rate");
 
         return $this;
     }
 
-    public function selectRateName()
+    /**
+     * Name of the credit card rate.
+     */
+    public function selectRateName(): static
     {
         $this->selectField("rateName");
 
         return $this;
     }
 
-    public function selectTaxAmount(ShopifyTransactionFeeTaxAmountArgumentsObject $argsObject = null)
+    /**
+     * Tax amount charged on the fee.
+     */
+    public function selectTaxAmount(?ShopifyTransactionFeeTaxAmountArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("taxAmount");
         if ($argsObject !== null) {
@@ -76,7 +103,10 @@ class ShopifyTransactionFeeQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectType()
+    /**
+     * Name of the type of fee.
+     */
+    public function selectType(): static
     {
         $this->selectField("type");
 

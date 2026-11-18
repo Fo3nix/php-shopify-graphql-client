@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * General inventory properties for the shop.
+ */
 class ShopifyInventoryPropertiesQueryObject extends QueryObject
 {
     const OBJECT_NAME = "InventoryProperties";
 
-    public function selectQuantityNames(ShopifyInventoryPropertiesQuantityNamesArgumentsObject $argsObject = null)
+    /**
+     * All the quantity names.
+     */
+    public function selectQuantityNames(?ShopifyInventoryPropertiesQuantityNamesArgumentsObject $argsObject = null): ShopifyInventoryQuantityNameQueryObject
     {
         $object = new ShopifyInventoryQuantityNameQueryObject("quantityNames");
         if ($argsObject !== null) {

@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Represents operations involving a collection.
+ */
 class ShopifyCollectionOperationsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CollectionOperations";
 
-    public function selectDuplicate(ShopifyCollectionOperationsDuplicateArgumentsObject $argsObject = null)
+    /**
+     * Collection duplicate operations.
+     */
+    public function selectDuplicate(?ShopifyCollectionOperationsDuplicateArgumentsObject $argsObject = null): ShopifyCollectionDuplicateOperationQueryObject
     {
         $object = new ShopifyCollectionDuplicateOperationQueryObject("duplicate");
         if ($argsObject !== null) {

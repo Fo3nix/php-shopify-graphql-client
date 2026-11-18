@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The fields that can be used to override the default fields.
+ */
 class ShopifyCustomerMergePreviewAlternateFieldsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergePreviewAlternateFields";
 
-    public function selectDefaultAddress(ShopifyCustomerMergePreviewAlternateFieldsDefaultAddressArgumentsObject $argsObject = null)
+    /**
+     * The default address of a customer.
+     */
+    public function selectDefaultAddress(?ShopifyCustomerMergePreviewAlternateFieldsDefaultAddressArgumentsObject $argsObject = null): ShopifyMailingAddressQueryObject
     {
         $object = new ShopifyMailingAddressQueryObject("defaultAddress");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCustomerMergePreviewAlternateFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectEmail(ShopifyCustomerMergePreviewAlternateFieldsEmailArgumentsObject $argsObject = null)
+    /**
+     * The email state of a customer.
+     */
+    public function selectEmail(?ShopifyCustomerMergePreviewAlternateFieldsEmailArgumentsObject $argsObject = null): ShopifyCustomerEmailAddressQueryObject
     {
         $object = new ShopifyCustomerEmailAddressQueryObject("email");
         if ($argsObject !== null) {
@@ -30,21 +39,30 @@ class ShopifyCustomerMergePreviewAlternateFieldsQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectFirstName()
+    /**
+     * The first name of a customer.
+     */
+    public function selectFirstName(): static
     {
         $this->selectField("firstName");
 
         return $this;
     }
 
-    public function selectLastName()
+    /**
+     * The last name of a customer.
+     */
+    public function selectLastName(): static
     {
         $this->selectField("lastName");
 
         return $this;
     }
 
-    public function selectPhoneNumber(ShopifyCustomerMergePreviewAlternateFieldsPhoneNumberArgumentsObject $argsObject = null)
+    /**
+     * The phone number state of a customer.
+     */
+    public function selectPhoneNumber(?ShopifyCustomerMergePreviewAlternateFieldsPhoneNumberArgumentsObject $argsObject = null): ShopifyCustomerPhoneNumberQueryObject
     {
         $object = new ShopifyCustomerPhoneNumberQueryObject("phoneNumber");
         if ($argsObject !== null) {

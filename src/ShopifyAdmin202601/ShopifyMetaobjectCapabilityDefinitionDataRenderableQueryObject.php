@@ -4,18 +4,27 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The renderable capability data for the metaobject definition.
+ */
 class ShopifyMetaobjectCapabilityDefinitionDataRenderableQueryObject extends QueryObject
 {
     const OBJECT_NAME = "MetaobjectCapabilityDefinitionDataRenderable";
 
-    public function selectMetaDescriptionKey()
+    /**
+     * The metaobject field used as an alias for the SEO page description.
+     */
+    public function selectMetaDescriptionKey(): static
     {
         $this->selectField("metaDescriptionKey");
 
         return $this;
     }
 
-    public function selectMetaTitleKey()
+    /**
+     * The metaobject field used as an alias for the SEO page title.
+     */
+    public function selectMetaTitleKey(): static
     {
         $this->selectField("metaTitleKey");
 

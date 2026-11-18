@@ -4,11 +4,18 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A preview of the results of a customer merge request. Use `resultingCustomerId` to check which customer
+ * would be kept before running `customerMerge`.
+ */
 class ShopifyCustomerMergePreviewQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CustomerMergePreview";
 
-    public function selectAlternateFields(ShopifyCustomerMergePreviewAlternateFieldsArgumentsObject $argsObject = null)
+    /**
+     * The fields that can be used to override the default fields.
+     */
+    public function selectAlternateFields(?ShopifyCustomerMergePreviewAlternateFieldsArgumentsObject $argsObject = null): ShopifyCustomerMergePreviewAlternateFieldsQueryObject
     {
         $object = new ShopifyCustomerMergePreviewAlternateFieldsQueryObject("alternateFields");
         if ($argsObject !== null) {
@@ -19,7 +26,10 @@ class ShopifyCustomerMergePreviewQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectBlockingFields(ShopifyCustomerMergePreviewBlockingFieldsArgumentsObject $argsObject = null)
+    /**
+     * The fields that will block the merge if the two customers are merged.
+     */
+    public function selectBlockingFields(?ShopifyCustomerMergePreviewBlockingFieldsArgumentsObject $argsObject = null): ShopifyCustomerMergePreviewBlockingFieldsQueryObject
     {
         $object = new ShopifyCustomerMergePreviewBlockingFieldsQueryObject("blockingFields");
         if ($argsObject !== null) {
@@ -30,7 +40,10 @@ class ShopifyCustomerMergePreviewQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCustomerMergeErrors(ShopifyCustomerMergePreviewCustomerMergeErrorsArgumentsObject $argsObject = null)
+    /**
+     * The errors blocking the customer merge.
+     */
+    public function selectCustomerMergeErrors(?ShopifyCustomerMergePreviewCustomerMergeErrorsArgumentsObject $argsObject = null): ShopifyCustomerMergeErrorQueryObject
     {
         $object = new ShopifyCustomerMergeErrorQueryObject("customerMergeErrors");
         if ($argsObject !== null) {
@@ -41,7 +54,10 @@ class ShopifyCustomerMergePreviewQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDefaultFields(ShopifyCustomerMergePreviewDefaultFieldsArgumentsObject $argsObject = null)
+    /**
+     * The fields that will be kept if the two customers are merged.
+     */
+    public function selectDefaultFields(?ShopifyCustomerMergePreviewDefaultFieldsArgumentsObject $argsObject = null): ShopifyCustomerMergePreviewDefaultFieldsQueryObject
     {
         $object = new ShopifyCustomerMergePreviewDefaultFieldsQueryObject("defaultFields");
         if ($argsObject !== null) {
@@ -52,7 +68,10 @@ class ShopifyCustomerMergePreviewQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectResultingCustomerId()
+    /**
+     * The ID of the customer that would be kept if the two customers were merged.
+     */
+    public function selectResultingCustomerId(): static
     {
         $this->selectField("resultingCustomerId");
 

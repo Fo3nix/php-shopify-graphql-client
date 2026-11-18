@@ -2,15 +2,20 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Details about the order cancellation.
+ */
 class ShopifyOrderCancellation
 {
     protected $staffNote;
 
     
     /**
+     * Staff provided note for the order cancellation.
+     *
      * @return string
      */
-    public function getStaffNote()
+    public function getStaffNote(): ?string
     {
         return $this->staffNote;
     }

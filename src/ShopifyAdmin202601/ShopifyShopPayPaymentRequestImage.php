@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Represents an image for a Shop Pay payment request line item.
+ */
 class ShopifyShopPayPaymentRequestImage
 {
     protected $alt;
@@ -9,18 +12,22 @@ class ShopifyShopPayPaymentRequestImage
 
     
     /**
+     * The alt text of the image.
+     *
      * @return string
      */
-    public function getAlt()
+    public function getAlt(): ?string
     {
         return $this->alt;
     }
 
     
     /**
+     * The source URL of the image.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }

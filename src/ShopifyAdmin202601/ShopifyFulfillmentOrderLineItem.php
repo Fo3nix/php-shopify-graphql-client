@@ -10,7 +10,12 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductVariant;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyFulfillmentOrderLineItemWarning;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyWeight;
 
-class ShopifyFulfillmentOrderLineItem
+/**
+ * Associates an order line item with the quantities that require fulfillment as part of a fulfillment order. Each Fulfillment Order Line Item object tracks the total quantity to fulfill and the remaining quantity yet to be fulfilled, along with details about the line item being fulfilled and pricing information.
+ *
+ * The line item provides additional fulfillment data including whether the item requires shipping. Financial summaries show pricing details with discounts applied, while warning messages alert merchants to any issues that might affect fulfillment.
+ */
+class ShopifyFulfillmentOrderLineItem implements ShopifyNode
 {
     protected $financialSummaries;
     protected $id;
@@ -31,144 +36,176 @@ class ShopifyFulfillmentOrderLineItem
 
     
     /**
+     * The financial summary for the Fulfillment Order's Line Items.
+     *
      * @return ShopifyFulfillmentOrderLineItemFinancialSummary[]
      */
-    public function getFinancialSummaries()
+    public function getFinancialSummaries(): ?array
     {
         return $this->financialSummaries;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The image associated to the line item's variant.
+     *
      * @return ShopifyImage
      */
-    public function getImage()
+    public function getImage(): ?ShopifyImage
     {
         return $this->image;
     }
 
     
     /**
+     * The ID of the inventory item.
+     *
      * @return string
      */
-    public function getInventoryItemId()
+    public function getInventoryItemId(): ?string
     {
         return $this->inventoryItemId;
     }
 
     
     /**
+     * The associated order line item.
+     *
      * @return ShopifyLineItem
      */
-    public function getLineItem()
+    public function getLineItem(): ?ShopifyLineItem
     {
         return $this->lineItem;
     }
 
     
     /**
+     * The variant unit price without discounts applied, in shop and presentment currencies.
+     *
      * @return ShopifyMoneyBag
      */
-    public function getOriginalUnitPriceSet()
+    public function getOriginalUnitPriceSet(): ?ShopifyMoneyBag
     {
         return $this->originalUnitPriceSet;
     }
 
     
     /**
+     * The title of the product.
+     *
      * @return string
      */
-    public function getProductTitle()
+    public function getProductTitle(): ?string
     {
         return $this->productTitle;
     }
 
     
     /**
+     * The number of units remaining to be fulfilled.
+     *
      * @return int
      */
-    public function getRemainingQuantity()
+    public function getRemainingQuantity(): ?int
     {
         return $this->remainingQuantity;
     }
 
     
     /**
+     * Whether physical shipping is required for the variant.
+     *
      * @return bool
      */
-    public function getRequiresShipping()
+    public function getRequiresShipping(): ?bool
     {
         return $this->requiresShipping;
     }
 
     
     /**
+     * The variant SKU number.
+     *
      * @return string
      */
-    public function getSku()
+    public function getSku(): ?string
     {
         return $this->sku;
     }
 
     
     /**
+     * The total number of units to be fulfilled.
+     *
      * @return int
      */
-    public function getTotalQuantity()
+    public function getTotalQuantity(): ?int
     {
         return $this->totalQuantity;
     }
 
     
     /**
+     * The product variant associated to the fulfillment order line item.
+     *
      * @return ShopifyProductVariant
      */
-    public function getVariant()
+    public function getVariant(): ?ShopifyProductVariant
     {
         return $this->variant;
     }
 
     
     /**
+     * The name of the variant.
+     *
      * @return string
      */
-    public function getVariantTitle()
+    public function getVariantTitle(): ?string
     {
         return $this->variantTitle;
     }
 
     
     /**
+     * The name of the vendor who made the variant.
+     *
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): ?string
     {
         return $this->vendor;
     }
 
     
     /**
+     * Warning messages for a fulfillment order line item.
+     *
      * @return ShopifyFulfillmentOrderLineItemWarning[]
      */
-    public function getWarnings()
+    public function getWarnings(): ?array
     {
         return $this->warnings;
     }
 
     
     /**
+     * The weight of a line item unit.
+     *
      * @return ShopifyWeight
      */
-    public function getWeight()
+    public function getWeight(): ?ShopifyWeight
     {
         return $this->weight;
     }

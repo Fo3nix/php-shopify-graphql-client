@@ -6,6 +6,11 @@ use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCheckoutBrandingColors;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCheckoutBrandingCornerRadiusVariables;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyCheckoutBrandingTypography;
 
+/**
+ * The design system allows you to set values that represent specific attributes
+ * of your brand like color and font. These attributes are used throughout the user
+ * interface. This brings consistency and allows you to easily make broad design changes.
+ */
 class ShopifyCheckoutBrandingDesignSystem
 {
     protected $colors;
@@ -14,27 +19,33 @@ class ShopifyCheckoutBrandingDesignSystem
 
     
     /**
+     * The color settings for global colors and color schemes.
+     *
      * @return ShopifyCheckoutBrandingColors
      */
-    public function getColors()
+    public function getColors(): ?ShopifyCheckoutBrandingColors
     {
         return $this->colors;
     }
 
     
     /**
+     * The corner radius variables.
+     *
      * @return ShopifyCheckoutBrandingCornerRadiusVariables
      */
-    public function getCornerRadius()
+    public function getCornerRadius(): ?ShopifyCheckoutBrandingCornerRadiusVariables
     {
         return $this->cornerRadius;
     }
 
     
     /**
+     * The typography.
+     *
      * @return ShopifyCheckoutBrandingTypography
      */
-    public function getTypography()
+    public function getTypography(): ?ShopifyCheckoutBrandingTypography
     {
         return $this->typography;
     }

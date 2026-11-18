@@ -7,6 +7,11 @@ use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLink;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyUserError;
 
+/**
+ * Reports the status of shops and their resources and displays this information
+ * within Shopify admin. AppFeedback is used to notify merchants about steps they need to take
+ * to set up an app on their store.
+ */
 class ShopifyAppFeedback
 {
     protected $app;
@@ -17,45 +22,55 @@ class ShopifyAppFeedback
 
     
     /**
+     * The application associated to the feedback.
+     *
      * @return ShopifyApp
      */
-    public function getApp()
+    public function getApp(): ?ShopifyApp
     {
         return $this->app;
     }
 
     
     /**
+     * The date and time when the app feedback was generated.
+     *
      * @return Carbon
      */
-    public function getFeedbackGeneratedAt()
+    public function getFeedbackGeneratedAt(): ?Carbon
     {
         return $this->feedbackGeneratedAt;
     }
 
     
     /**
+     * A link to where merchants can resolve errors.
+     *
      * @return ShopifyLink
      */
-    public function getLink()
+    public function getLink(): ?ShopifyLink
     {
         return $this->link;
     }
 
     
     /**
+     * The feedback message presented to the merchant.
+     *
      * @return ShopifyUserError[]
      */
-    public function getMessages()
+    public function getMessages(): ?array
     {
         return $this->messages;
     }
 
     
     /**
-     * @return ShopifyResourceFeedbackStateEnumObject
+     * Conveys the state of the feedback and whether it requires merchant action or not.
+     *
+     * @return string A ShopifyResourceFeedbackStateEnumObject value
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->state;
     }

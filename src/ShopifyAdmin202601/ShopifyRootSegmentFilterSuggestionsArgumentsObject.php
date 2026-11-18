@@ -6,25 +6,36 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootSegmentFilterSuggestionsArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["search", "first"];
+
     protected $search;
     protected $first;
     protected $after;
 
-    public function setSearch($search)
+    /**
+     * Returns the elements of a list by keyword or term.
+     */
+    public function setSearch($search): static
     {
         $this->search = $search;
 
         return $this;
     }
 
-    public function setFirst($first)
+    /**
+     * The first `n` elements from the [paginated list](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setFirst($first): static
     {
         $this->first = $first;
 
         return $this;
     }
 
-    public function setAfter($after)
+    /**
+     * The elements that come after the specified [cursor](https://shopify.dev/api/usage/pagination-graphql).
+     */
+    public function setAfter($after): static
     {
         $this->after = $after;
 

@@ -6,9 +6,14 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootAppByKeyArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["apiKey"];
+
     protected $apiKey;
 
-    public function setApiKey($apiKey)
+    /**
+     * Client ID of the app.
+     */
+    public function setApiKey($apiKey): static
     {
         $this->apiKey = $apiKey;
 

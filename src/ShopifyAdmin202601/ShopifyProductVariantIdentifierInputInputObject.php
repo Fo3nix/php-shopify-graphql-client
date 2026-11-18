@@ -4,19 +4,28 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\InputObject;
 
+/**
+ * The input fields for identifying a product variant.
+ */
 class ShopifyProductVariantIdentifierInputInputObject extends InputObject
 {
     protected $id;
     protected $customId;
 
-    public function setId($id)
+    /**
+     * The ID of the product variant.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setCustomId(ShopifyUniqueMetafieldValueInputInputObject $shopifyUniqueMetafieldValueInputInputObject)
+    /**
+     * The [custom ID](https://shopify.dev/docs/apps/build/custom-data/metafields/working-with-custom-ids) of the product variant.
+     */
+    public function setCustomId(ShopifyUniqueMetafieldValueInputInputObject $shopifyUniqueMetafieldValueInputInputObject): static
     {
         $this->customId = $shopifyUniqueMetafieldValueInputInputObject;
 

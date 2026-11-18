@@ -4,11 +4,21 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A gift card that customers use as a payment method. Stores the initial value, current balance, and expiration date.
+ *
+ * You can issue gift cards to a specific [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer) or send them to a [`GiftCardRecipient`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardRecipient) with a personalized message. The card tracks its transaction history through [`GiftCardCreditTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardCreditTransaction) and [`GiftCardDebitTransaction`](https://shopify.dev/docs/api/admin-graphql/latest/objects/GiftCardDebitTransaction) records. You can create and deactivate gift cards using the [`GiftCardCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/giftCardCreate) and [`GiftCardDeactivate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/giftCardDeactivate) mutations, respectively.
+ *
+ * > Note: After a gift card is deactivated, it can't be used for further purchases or re-enabled.
+ */
 class ShopifyGiftCardQueryObject extends QueryObject
 {
     const OBJECT_NAME = "GiftCard";
 
-    public function selectBalance(ShopifyGiftCardBalanceArgumentsObject $argsObject = null)
+    /**
+     * The gift card's remaining balance.
+     */
+    public function selectBalance(?ShopifyGiftCardBalanceArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("balance");
         if ($argsObject !== null) {
@@ -19,14 +29,20 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time at which the gift card was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectCustomer(ShopifyGiftCardCustomerArgumentsObject $argsObject = null)
+    /**
+     * The customer that the gift card was sold or issued to, as opposed to the gift recipient. This customer can be reassigned.
+     */
+    public function selectCustomer(?ShopifyGiftCardCustomerArgumentsObject $argsObject = null): ShopifyCustomerQueryObject
     {
         $object = new ShopifyCustomerQueryObject("customer");
         if ($argsObject !== null) {
@@ -37,35 +53,50 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectDeactivatedAt()
+    /**
+     * The date and time at which the gift card was deactivated.
+     */
+    public function selectDeactivatedAt(): static
     {
         $this->selectField("deactivatedAt");
 
         return $this;
     }
 
-    public function selectEnabled()
+    /**
+     * Whether the gift card is enabled.
+     */
+    public function selectEnabled(): static
     {
         $this->selectField("enabled");
 
         return $this;
     }
 
-    public function selectExpiresOn()
+    /**
+     * The date at which the gift card will expire.
+     */
+    public function selectExpiresOn(): static
     {
         $this->selectField("expiresOn");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectInitialValue(ShopifyGiftCardInitialValueArgumentsObject $argsObject = null)
+    /**
+     * The initial value of the gift card.
+     */
+    public function selectInitialValue(?ShopifyGiftCardInitialValueArgumentsObject $argsObject = null): ShopifyMoneyV2QueryObject
     {
         $object = new ShopifyMoneyV2QueryObject("initialValue");
         if ($argsObject !== null) {
@@ -76,28 +107,40 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectLastCharacters()
+    /**
+     * The final four characters of the gift card code.
+     */
+    public function selectLastCharacters(): static
     {
         $this->selectField("lastCharacters");
 
         return $this;
     }
 
-    public function selectMaskedCode()
+    /**
+     * The gift card code. Everything but the final four characters is masked.
+     */
+    public function selectMaskedCode(): static
     {
         $this->selectField("maskedCode");
 
         return $this;
     }
 
-    public function selectNote()
+    /**
+     * The note associated with the gift card, which isn't visible to the customer.
+     */
+    public function selectNote(): static
     {
         $this->selectField("note");
 
         return $this;
     }
 
-    public function selectOrder(ShopifyGiftCardOrderArgumentsObject $argsObject = null)
+    /**
+     * The order associated with the gift card. This value is `null` if the gift card was issued manually.
+     */
+    public function selectOrder(?ShopifyGiftCardOrderArgumentsObject $argsObject = null): ShopifyOrderQueryObject
     {
         $object = new ShopifyOrderQueryObject("order");
         if ($argsObject !== null) {
@@ -108,7 +151,10 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectRecipientAttributes(ShopifyGiftCardRecipientAttributesArgumentsObject $argsObject = null)
+    /**
+     * The recipient of the gift card and the details sent with it: preferred name, message, and send time.
+     */
+    public function selectRecipientAttributes(?ShopifyGiftCardRecipientAttributesArgumentsObject $argsObject = null): ShopifyGiftCardRecipientQueryObject
     {
         $object = new ShopifyGiftCardRecipientQueryObject("recipientAttributes");
         if ($argsObject !== null) {
@@ -119,14 +165,20 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectTemplateSuffix()
+    /**
+     * The theme template used to render the gift card online.
+     */
+    public function selectTemplateSuffix(): static
     {
         $this->selectField("templateSuffix");
 
         return $this;
     }
 
-    public function selectTransactions(ShopifyGiftCardTransactionsArgumentsObject $argsObject = null)
+    /**
+     * The transaction history of the gift card.
+     */
+    public function selectTransactions(?ShopifyGiftCardTransactionsArgumentsObject $argsObject = null): ShopifyGiftCardTransactionConnectionQueryObject
     {
         $object = new ShopifyGiftCardTransactionConnectionQueryObject("transactions");
         if ($argsObject !== null) {
@@ -137,7 +189,10 @@ class ShopifyGiftCardQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time at which the gift card was updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

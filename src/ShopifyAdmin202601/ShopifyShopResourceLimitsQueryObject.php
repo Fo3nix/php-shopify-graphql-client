@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * Resource limits of a shop.
+ */
 class ShopifyShopResourceLimitsQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ShopResourceLimits";
 
-    public function selectLocationLimit()
+    /**
+     * Maximum number of locations allowed.
+     */
+    public function selectLocationLimit(): static
     {
         $this->selectField("locationLimit");
 
         return $this;
     }
 
-    public function selectMaxProductOptions()
+    /**
+     * Maximum number of product options allowed.
+     */
+    public function selectMaxProductOptions(): static
     {
         $this->selectField("maxProductOptions");
 
         return $this;
     }
 
-    public function selectMaxProductVariants()
+    /**
+     * The maximum number of variants allowed per product.
+     */
+    public function selectMaxProductVariants(): static
     {
         $this->selectField("maxProductVariants");
 
         return $this;
     }
 
-    public function selectRedirectLimitReached()
+    /**
+     * Whether the shop has reached the limit of the number of URL redirects it can make for resources.
+     */
+    public function selectRedirectLimitReached(): static
     {
         $this->selectField("redirectLimitReached");
 

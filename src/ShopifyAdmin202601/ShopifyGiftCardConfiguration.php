@@ -4,6 +4,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyMoneyV2;
 
+/**
+ * Represents information about the configuration of gift cards on the shop.
+ */
 class ShopifyGiftCardConfiguration
 {
     protected $issueLimit;
@@ -11,18 +14,22 @@ class ShopifyGiftCardConfiguration
 
     
     /**
+     * The issue limit for gift cards in the default shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getIssueLimit()
+    public function getIssueLimit(): ?ShopifyMoneyV2
     {
         return $this->issueLimit;
     }
 
     
     /**
+     * The purchase limit for gift cards in the default shop currency.
+     *
      * @return ShopifyMoneyV2
      */
-    public function getPurchaseLimit()
+    public function getPurchaseLimit(): ?ShopifyMoneyV2
     {
         return $this->purchaseLimit;
     }

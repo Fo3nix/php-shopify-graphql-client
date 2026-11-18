@@ -4,32 +4,47 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * A product feed.
+ */
 class ShopifyProductFeedQueryObject extends QueryObject
 {
     const OBJECT_NAME = "ProductFeed";
 
-    public function selectCountry()
+    /**
+     * The country of the product feed.
+     */
+    public function selectCountry(): static
     {
         $this->selectField("country");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectLanguage()
+    /**
+     * The language of the product feed.
+     */
+    public function selectLanguage(): static
     {
         $this->selectField("language");
 
         return $this;
     }
 
-    public function selectStatus()
+    /**
+     * The status of the product feed.
+     */
+    public function selectStatus(): static
     {
         $this->selectField("status");
 

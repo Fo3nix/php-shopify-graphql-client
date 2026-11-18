@@ -4,11 +4,17 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use GraphQL\SchemaObject\QueryObject;
 
+/**
+ * The CompanyContactRoleAssignment describes the company and location associated to a company contact's role.
+ */
 class ShopifyCompanyContactRoleAssignmentQueryObject extends QueryObject
 {
     const OBJECT_NAME = "CompanyContactRoleAssignment";
 
-    public function selectCompany(ShopifyCompanyContactRoleAssignmentCompanyArgumentsObject $argsObject = null)
+    /**
+     * The company this role assignment belongs to.
+     */
+    public function selectCompany(?ShopifyCompanyContactRoleAssignmentCompanyArgumentsObject $argsObject = null): ShopifyCompanyQueryObject
     {
         $object = new ShopifyCompanyQueryObject("company");
         if ($argsObject !== null) {
@@ -19,7 +25,10 @@ class ShopifyCompanyContactRoleAssignmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCompanyContact(ShopifyCompanyContactRoleAssignmentCompanyContactArgumentsObject $argsObject = null)
+    /**
+     * The company contact for whom this role is assigned.
+     */
+    public function selectCompanyContact(?ShopifyCompanyContactRoleAssignmentCompanyContactArgumentsObject $argsObject = null): ShopifyCompanyContactQueryObject
     {
         $object = new ShopifyCompanyContactQueryObject("companyContact");
         if ($argsObject !== null) {
@@ -30,7 +39,10 @@ class ShopifyCompanyContactRoleAssignmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCompanyLocation(ShopifyCompanyContactRoleAssignmentCompanyLocationArgumentsObject $argsObject = null)
+    /**
+     * The company location to which the role is assigned.
+     */
+    public function selectCompanyLocation(?ShopifyCompanyContactRoleAssignmentCompanyLocationArgumentsObject $argsObject = null): ShopifyCompanyLocationQueryObject
     {
         $object = new ShopifyCompanyLocationQueryObject("companyLocation");
         if ($argsObject !== null) {
@@ -41,21 +53,30 @@ class ShopifyCompanyContactRoleAssignmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectCreatedAt()
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the assignment record was created.
+     */
+    public function selectCreatedAt(): static
     {
         $this->selectField("createdAt");
 
         return $this;
     }
 
-    public function selectId()
+    /**
+     * A globally-unique ID.
+     */
+    public function selectId(): static
     {
         $this->selectField("id");
 
         return $this;
     }
 
-    public function selectRole(ShopifyCompanyContactRoleAssignmentRoleArgumentsObject $argsObject = null)
+    /**
+     * The role that's assigned to the company contact.
+     */
+    public function selectRole(?ShopifyCompanyContactRoleAssignmentRoleArgumentsObject $argsObject = null): ShopifyCompanyContactRoleQueryObject
     {
         $object = new ShopifyCompanyContactRoleQueryObject("role");
         if ($argsObject !== null) {
@@ -66,7 +87,10 @@ class ShopifyCompanyContactRoleAssignmentQueryObject extends QueryObject
         return $object;
     }
 
-    public function selectUpdatedAt()
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the assignment record was last updated.
+     */
+    public function selectUpdatedAt(): static
     {
         $this->selectField("updatedAt");
 

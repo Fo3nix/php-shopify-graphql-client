@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyLocation;
 
+/**
+ * The record of when a customer consented to receive marketing material by email.
+ */
 class ShopifyCustomerEmailMarketingConsentState
 {
     protected $consentUpdatedAt;
@@ -14,36 +17,47 @@ class ShopifyCustomerEmailMarketingConsentState
 
     
     /**
+     * The date and time at which the customer consented to receive marketing material by email.
+     * The customer's consent state reflects the consent record with the most recent `consent_updated_at` date.
+     * If no date is provided, then the date and time at which the consent information was sent is used.
+     *
      * @return Carbon
      */
-    public function getConsentUpdatedAt()
+    public function getConsentUpdatedAt(): ?Carbon
     {
         return $this->consentUpdatedAt;
     }
 
     
     /**
-     * @return ShopifyCustomerMarketingOptInLevelEnumObject
+     * The marketing subscription opt-in level, as described by the M3AAWG best practices guidelines,
+     * that the customer gave when they consented to receive marketing material by email.
+     *
+     * @return string A ShopifyCustomerMarketingOptInLevelEnumObject value
      */
-    public function getMarketingOptInLevel()
+    public function getMarketingOptInLevel(): ?string
     {
         return $this->marketingOptInLevel;
     }
 
     
     /**
-     * @return ShopifyCustomerEmailMarketingStateEnumObject
+     * The current email marketing state for the customer.
+     *
+     * @return string A ShopifyCustomerEmailMarketingStateEnumObject value
      */
-    public function getMarketingState()
+    public function getMarketingState(): ?string
     {
         return $this->marketingState;
     }
 
     
     /**
+     * The location where the customer consented to receive marketing material by email.
+     *
      * @return ShopifyLocation
      */
-    public function getSourceLocation()
+    public function getSourceLocation(): ?ShopifyLocation
     {
         return $this->sourceLocation;
     }

@@ -5,6 +5,9 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductOption;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202601\ShopifyProductBundleComponentOptionSelectionValue;
 
+/**
+ * A relationship between a component option and a parent option.
+ */
 class ShopifyProductBundleComponentOptionSelection
 {
     protected $componentOption;
@@ -13,27 +16,33 @@ class ShopifyProductBundleComponentOptionSelection
 
     
     /**
+     * The option that existed on the component product prior to the fixed bundle creation.
+     *
      * @return ShopifyProductOption
      */
-    public function getComponentOption()
+    public function getComponentOption(): ?ShopifyProductOption
     {
         return $this->componentOption;
     }
 
     
     /**
+     * The option that was created on the parent product.
+     *
      * @return ShopifyProductOption
      */
-    public function getParentOption()
+    public function getParentOption(): ?ShopifyProductOption
     {
         return $this->parentOption;
     }
 
     
     /**
+     * The component option values that are actively selected for this relationship.
+     *
      * @return ShopifyProductBundleComponentOptionSelectionValue[]
      */
-    public function getValues()
+    public function getValues(): ?array
     {
         return $this->values;
     }

@@ -2,6 +2,9 @@
 
 namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
+/**
+ * Local pickup settings associated with a location.
+ */
 class ShopifyDeliveryLocalPickupSettings
 {
     protected $instructions;
@@ -9,18 +12,22 @@ class ShopifyDeliveryLocalPickupSettings
 
     
     /**
+     * Additional instructions or information related to the local pickup.
+     *
      * @return string
      */
-    public function getInstructions()
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
 
     
     /**
-     * @return ShopifyDeliveryLocalPickupTimeEnumObject
+     * The estimated pickup time to show customers at checkout.
+     *
+     * @return string A ShopifyDeliveryLocalPickupTimeEnumObject value
      */
-    public function getPickupTime()
+    public function getPickupTime(): ?string
     {
         return $this->pickupTime;
     }

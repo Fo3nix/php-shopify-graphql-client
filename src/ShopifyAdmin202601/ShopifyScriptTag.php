@@ -4,7 +4,14 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202601;
 
 use Carbon\Carbon;
 
-class ShopifyScriptTag
+/**
+ * <div class="note"><h4>Theme app extensions</h4>
+ *   <p>If your app integrates with a Shopify theme and you plan to submit it to the Shopify App Store, you must use theme app extensions instead of Script tags. Script tags can only be used with vintage themes. <a href="/apps/online-store#what-integration-method-should-i-use" target="_blank">Learn more</a>.</p></div>
+ *
+ *
+ * A script tag represents remote JavaScript code that is loaded into the pages of a shop's storefront or the **Order status** page of checkout.
+ */
+class ShopifyScriptTag implements ShopifyLegacyInteroperability, ShopifyNode
 {
     protected $cache;
     protected $createdAt;
@@ -16,63 +23,80 @@ class ShopifyScriptTag
 
     
     /**
+     * Whether the Shopify CDN can cache and serve the script tag.
+     * If `true`, then the script will be cached and served by the CDN.
+     * The cache expires 15 minutes after the script tag is successfully returned.
+     * If `false`, then the script will be served as is.
+     *
      * @return bool
      */
-    public function getCache()
+    public function getCache(): ?bool
     {
         return $this->cache;
     }
 
     
     /**
+     * The date and time when the script tag was created.
+     *
      * @return Carbon
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?Carbon
     {
         return $this->createdAt;
     }
 
     
     /**
-     * @return ShopifyScriptTagDisplayScopeEnumObject
+     * The page or pages on the online store that the script should be included.
+     *
+     * @return string A ShopifyScriptTagDisplayScopeEnumObject value
      */
-    public function getDisplayScope()
+    public function getDisplayScope(): ?string
     {
         return $this->displayScope;
     }
 
     
     /**
+     * A globally-unique ID.
+     *
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     
     /**
+     * The ID of the corresponding resource in the REST Admin API.
+     *
      * @return string
      */
-    public function getLegacyResourceId()
+    public function getLegacyResourceId(): mixed
     {
         return $this->legacyResourceId;
     }
 
     
     /**
+     * The URL to the remote script.
+     *
      * @return string
      */
-    public function getSrc()
+    public function getSrc(): mixed
     {
         return $this->src;
     }
 
     
     /**
+     * The date and time when the script tag was last updated.
+     *
      * @return Carbon
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?Carbon
     {
         return $this->updatedAt;
     }

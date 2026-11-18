@@ -6,17 +6,25 @@ use GraphQL\SchemaObject\ArgumentsObject;
 
 class ShopifyRootCustomerPaymentMethodArgumentsObject extends ArgumentsObject
 {
+    const REQUIRED = ["id"];
+
     protected $id;
     protected $showRevoked;
 
-    public function setId($id)
+    /**
+     * The ID of the CustomerPaymentMethod to return.
+     */
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function setShowRevoked($showRevoked)
+    /**
+     * Whether to show the customer's revoked payment method.
+     */
+    public function setShowRevoked($showRevoked): static
     {
         $this->showRevoked = $showRevoked;
 
