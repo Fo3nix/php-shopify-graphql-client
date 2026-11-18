@@ -5,6 +5,7 @@ namespace Fo3nix\ShopifyGraphQL\ShopifyAdmin202607;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMarketCatalogConnection;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyCount;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMarketConditions;
+use Carbon\Carbon;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMarketCurrencySettings;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyMarketDeliveryConfigurations;
 use Fo3nix\ShopifyGraphQL\ShopifyAdmin202607\ShopifyDiscountNodeConnection;
@@ -23,6 +24,7 @@ class ShopifyMarket
     protected $catalogs;
     protected $catalogsCount;
     protected $conditions;
+    protected $createdAt;
     protected $currencySettings;
     protected $delivery;
     protected $discounts;
@@ -77,6 +79,15 @@ class ShopifyMarket
     public function getConditions()
     {
         return $this->conditions;
+    }
+
+    
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     
@@ -269,6 +280,9 @@ class ShopifyMarket
             if (isset($data['conditions']) && $data['conditions'] !== null) {
                 $instance->conditions = ShopifyMarketConditions::fromArray($data['conditions']);
             }
+            if (isset($data['createdAt']) && $data['createdAt'] !== null) {
+                $instance->createdAt = new Carbon($data['createdAt']);
+            }
             if (isset($data['currencySettings']) && $data['currencySettings'] !== null) {
                 $instance->currencySettings = ShopifyMarketCurrencySettings::fromArray($data['currencySettings']);
             }
@@ -360,6 +374,9 @@ class ShopifyMarket
             }
             if ($this->conditions !== null) {
                 $data['conditions'] = $this->conditions->asArray();
+            }
+            if ($this->createdAt !== null) {
+                $data['createdAt'] = $this->createdAt->toIso8601String();
             }
             if ($this->currencySettings !== null) {
                 $data['currencySettings'] = $this->currencySettings->asArray();

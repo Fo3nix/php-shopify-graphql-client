@@ -6,6 +6,7 @@ use GraphQL\SchemaObject\EnumObject;
 
 class ShopifyPageSortKeysEnumObject extends EnumObject
 {
+    const CREATED_AT = "CREATED_AT";
     const ID = "ID";
     const PUBLISHED_AT = "PUBLISHED_AT";
     const TITLE = "TITLE";
